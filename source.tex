@@ -1,0 +1,186 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{amsthm}
+\usepackage{longtable}
+\usepackage{upgreek}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{graphicx} 
+\usepackage{gensymb}
+\usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{dsfont}
+% \usepackage{amsfonts}
+ % \usepackage{bbold}
+\newcommand{\rEarth}{R_{\oplus}}
+\newcommand{\viiva}{\mathop{\Bigg/}}
+\newcommand{\sij}[3]{\viiva\limits_{\hspace*{-5mm}{#1}}^{\hspace*{5mm}{#2}}{#3}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\B}[1]{\mathbf{#1}}
+
+
+\newtheorem{thm}{Theorem} 
+\newtheorem{thm1}{Theorem}
+\newtheorem{thm2}{Theorem}
+\newtheorem{thm3}{Theorem}
+\theoremstyle{definition}
+\newtheorem{lemma}[thm1]{Lemma}
+\newtheorem{remark}[thm2]{Remark}
+\newtheorem{defn}[thm3]{Definition}
+\theoremstyle{plain}
+\newtheorem{thm4}{Theorem}
+\newtheorem{thm5}{Theorem}
+\newtheorem{thm6}{Theorem}
+\newtheorem{thm7}{Theorem} 
+\newtheorem{prop}[thm4]{Proposition}
+\newtheorem{kor}[thm5]{Corollary}
+\newtheorem{conjecture}[thm6]{Conjecture}
+\newtheorem{approximation}[thm7]{Approximation}
+
+
+
+\usepackage{amsmath,amsfonts}
+\usepackage{algorithmic}
+\usepackage{array}
+\usepackage[caption=false,font=normalsize]{subfig}
+\usepackage{textcomp}
+\usepackage{stfloats}
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\hyphenation{op-tical net-works semi-conduc-tor IEEE-Xplore}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\usepackage{balance}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\title{Stochastic geometry analysis of a LEO uplink with mixed Gaussian shadowing}
+
+\author{\IEEEauthorblockN{1\textsuperscript{st} Ilari Angervuori}
+\IEEEauthorblockA{\textit{Department of Electrical Engineering} \\
+\textit{Aalto University}\\
+Espoo, Finland \\
+ilari.Angervuori@aalto.fi}
+\and
+\IEEEauthorblockN{3\textsuperscript{rd} Risto Wichman}
+\IEEEauthorblockA{\textit{Department of Electrical Engineering} \\
+\textit{Aalto University}\\
+Espoo, Finland \\
+risto.wichman@aalto.fi}
+}
+\maketitle
+         \begin{abstract}
+         \end{abstract}
+
+         % Note that keywords are not normally used for peerreview papers.
+         \begin{IEEEkeywords}
+           LEO, SIR meta distribution, Nakagami fading
+         \end{IEEEkeywords}
+
+
+         \section{Introduction}
+
+         hhihhi
+        
+          \begin{table}
+           \begin{center}
+             \begin{tabular}{| c | p{7cm}  |}
+               \hline
+               \multicolumn{2}{|c|}{Glossary of principal symbols} \\
+               \hline
+               Symbol& Explanation 
+               \\ 
+               \hline
+               $h$ & Altitude of the SBSs. \\
+               $\epsilon$ & Elevation angle of the SBSs. \\
+               $G[\cdot]$ & The SBS antenna gain.\\
+               $\varphi_{\text{RX}}$ & Width of the SBSs $3$ dB gain. \\
+               $\Theta \subset E $ & Poisson p.p. on the earth's surface $E \subset \R^3$. \\
+               $\Phi \subset \R^2$ & Poisson p.p. on the plane. \\
+                $\mathcal{G} \subset (0,1)$ & A nonhomogeneous Poisson p.p.; the gain process of the approximate signal gains at the typical SBS.  \\
+               $x_0$ & Nearest point to the origin in $\Phi$.  \\
+               $\lambda$ & Density parameter of $\Phi$ and $\Theta$. \\
+               $\kappa$ & Parameter that reflects the approximate mean number of UEs inside a SBS's $3$ dB footprint;  $\kappa = h^2\pi \lambda \varphi_{\textup{RX}}^2/\sin^4(\epsilon)$. \\
+               ${\tilde{\kappa}}$ &  $\kappa/\log(2)$.\\
+               $g_x$ &   Gamma distributed random fading gain of a transmitter $x$.     \\
+               $\theta$ & SIR or SINR threshold for a successful transmission.\\
+               $I$ & Interference at the typical SBS in the plane model.\\
+               $S$ & The signal power of the served UE at the typical SBS in the plane model.\\
+               $\mathring{I}$ & Interference at the typical SBS in the spherical model.\\
+               $\mathring{S}$ & The signal power of the served UE at the typical SBS in the spherical model.\\ 
+               $\hat{d}_{h,\epsilon}$ & The distance between the SBS and the center of the footprint in the plane model.\\
+               $d_{0}$ & Normalizing distance.  \\           
+             
+               \hline
+             \end{tabular}
+           \end{center}
+         \end{table}   
+
+      
+          \section{Analysis}
+
+          \subsection{Gain process}
+          Let the constant $D_{h,\epsilon} \triangleq \sin^2(\epsilon)/h$ be the derivative of the function $\|x\| \mapsto \varphi_x $ at $\|x\| =0$. Consequently, $\varphi_x \approx D_{h,\epsilon}\|x\|$ for small $\|x\|$.
+          Define the gain process (GP)
+          \begin{equation}
+            \mathcal{G} = \left\{x \in \Phi : H_x G[D_{h,\epsilon}\|x\|] \right\},
+          \end{equation}
+          where $\{H_x\}$ are i.i.d. shadowing variables (possibly degenerate), and 
+          \begin{equation}
+            G[\cdot] = 2^{-(\cdot)^2/\varphi^2_{\text{RX}}}
+          \end{equation}
+          is the Gaussian antenna pattern $G:[0,\infty) \rightarrow [0,1]$ characterized by the halfwidth of the $3$ dB gain $\varphi_{\text{RX}}$. We use the value $\varphi_{\text{RX}} = 1.6 \degree$ according to the International Telecommunication Union Recommendations (ITU-R) \cite{ITURS1528}. The GP is a \textit{projection process} and, as such, a nonhomogeneous PPP [CITE].
+
+            The density of the GP has the following connection to the fading distribution:
+
+          \begin{prop}[Density of the GP]
+            Let $f_H(\cdot)$ and $F_H(\cdot)$ be the pdf and the complementary cdf (ccdf) of $H$, respectively. The density of $\mathcal{G}$ is given by
+            \begin{equation}
+              \label{eq:GPdensity}
+              \lambda_{\mathcal{G}}(t)= \tilde{\kappa}F_H(t)/t
+            \end{equation}
+            for $t>1$.
+            \begin{proof}
+              By [CITE],
+              \begin{align*}
+                &\lambda_{\mathcal{G}}(t) \overset{}{=} \pi \lambda \mathbb{E}\left[\left( G^{-1}[t/H] \right)^2 \right]=\tilde{\kappa}\frac{d}{dt} \int_t^{\infty} G^{-1}[t/y]f_H(y) dy\\
+                &  = \tilde{\kappa}\frac{d}{dt} \int_t^{\infty} \log(t/y)f_H(y) dy = \tilde{\kappa} \sij{t}{\infty} \log(t/y)F_H(y)\\ 
+                & + \tilde{\kappa} \frac{d}{dt} \int_0^{t}F_H(y)/y dy =  \tilde{\kappa}F_H(t)/t,
+              \end{align*}
+            as long as $\log(t/y) F_H(y) =0$ as $y \rightarrow 0$ for all $t>0$.  $G^{-1}[\cdot]$ is considered to be the generalized inverse $G^{-1}[\cdot] = \inf \{x:G[x]<y\}$.
+              \end{proof}
+          \end{prop}
+
+          The mean and the variance of the total received power are given by
+          \begin{align}
+            &\mathbb{E}\left(\sum_{x \in \mathcal{G}} x \right) = \int_{0}^{\infty} t\lambda_{\mathcal{G}}(t) dt = \tilde{\kappa} \int_{0}^{\infty}F_H(t) dt \nonumber \\
+            &=\tilde{\kappa} \mathbb{E}(H), \\\
+            &\text{var}\left(\sum_{x \in \mathcal{G}} x \right) = \int_{0}^{\infty} t^2\lambda_{\mathcal{G}}(t) dt= \tilde{\kappa} \int_0^{\infty}tF_H(t) dt  \nonumber \\
+           & \tilde{\kappa} \frac{\text{var}(H) + \mathbb{E}(H)^2}{2} = \tilde{\kappa}  \mathbb{E}[H^2]/2,
+          \end{align}
+          respectively. 
+
+                    Unfortunately, unlike in terrestrial networks with a singular path loss, where the density of the projection process is dependent only on a single moment of $H$, $\lambda_{\mathcal{G}}(t)$ has an explicit pointwise dependence on the ccdf of the fading distribution. However, the density functions are similar for certain fading distributions with matched moments. For example,
+          
+          \subsection{Explicit fading model}
+          The power fading distribution for the mixed Gaussian model is given by
+
+
+
+
+          
+         
+
+
+         \bibliographystyle{IEEEtran}
+         %\bibliography{IEEEabrv, bib}
+         \bibliography{IEEEabrv,source}
+             
+             
+\end{document}
