@@ -60,7 +60,7 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{Stochastic geometry analysis of a LEO uplink with mixed Gaussian shadowing}
+\title{Stochastic geometry analysis of a narrow-beam LEO uplink with mixed Gaussian shadowing}
 
 \author{\IEEEauthorblockN{1\textsuperscript{st} Ilari Angervuori}
 \IEEEauthorblockA{\textit{Department of Electrical Engineering} \\
@@ -166,8 +166,32 @@ risto.wichman@aalto.fi}
           \end{align}
           respectively. 
 
-                    Unfortunately, unlike in terrestrial networks with a singular path loss, where the density of the projection process is dependent only on a single moment of $H$, $\lambda_{\mathcal{G}}(t)$ has an explicit pointwise dependence on the ccdf of the fading distribution. However, the density functions are similar for certain fading distributions with matched moments. For example,
-          
+          Unfortunately, unlike in terrestrial networks with a singular path loss, where the density of the projection process is dependent only on a single moment of $H$, $\lambda_{\mathcal{G}}(t)$ has an explicit pointwise dependence on the ccdf of the fading distribution. However, the density functions are similar for certain fading distributions with matched moments. For example,
+
+
+          \begin{prop}
+            Let $H_0$ the fading variable of the UE $x_0$ with the strongest signal. In the simple coverage coverage region $\theta \geq 1$,
+            \begin{align}
+              \label{eq:probofcov}
+              &p_c(\theta) \triangleq \mathbb{P}\left( \frac{x_0}{\sum_{x \in \cup \mathcal{G}_i}x + N} > \theta \right) \nonumber \\
+              &= \lambda \int_{ x \in \R^2}\mathbb{P}\left(H_0 > \theta/\mu  2^{(D_{h,\epsilon}\|x\|)^2/\varphi^2_{\textup{RX}} } \left(\sum_{x \in \cup \mathcal{G}_i}x +W \right)\right) \nonumber dx  \nonumber  \\
+              &\overset{(a)}{\approx} 2 \pi \int_{0}^{\infty} r \prod_{i=1}^{N}\mathbb{E}_{\mathcal{G}_i}\exp \left\{-\theta 2^{(D_{h,\epsilon}r)^2/\varphi^2_{\textup{RX}}}/\mu \sum_{x \in \mathcal{G}_i}x \right\}  \cdot \nonumber\\
+              & \hspace{1.8cm}\exp \left\{- \theta/\mu  2^{(D_{h,\epsilon}r)^2/\varphi^2_{\textup{RX}}} W  \right\} dr \nonumber \\
+              &=2 \pi \int_{0}^{\infty} r \prod_{i=1}^{N} \left(\frac{1}{1 + 2^{(D_{h,\epsilon}r)^2/\varphi^2_{\textup{RX}}} \theta}\right)^{\kappa_i}  \cdot \nonumber \\
+              &\hspace{1.8cm} \exp \left\{ \theta/\mu 2^{(D_{h,\epsilon}r)^2/\varphi^2_{\textup{RX}}}W  \right\} dr.           
+            \end{align}
+           
+            \begin{proof}
+         In the simple coverage region, the UE is covered only if it have the strongest signal, and utlilizing Slivnyak's theorem leads to the probability of coverage by the integral. In (a), a exponential $H_0$ allows the expression in terms of product of Laplace transforms of $\{\sum_{x \in \mathcal{G}_1}x, \sum_{x \in \mathcal{G}_2}x, \dots, \sum_{x \in \mathcal{G}_i } x\}$  and $N$. In the exponential case, the formers are gamma distributed. 
+            \end{proof}
+          \end{prop}
+          For $W=0$, the scale parameter $\mu$ is cancelled out in $p_c(\theta)$, meaning that the severity of the fading does not have any effect on the probability of coverage. 
+
+          In a single-tier interference-only channel, \eqref{eq:probofcov} has the analytical expression
+          \begin{equation}
+p_c(\theta) =  \theta^{-\kappa} {_2F_1}\left(\kappa, \kappa;\kappa + 1; -1/\theta \right).
+          \end{equation}
+          where $_2F_1(\cdot)$ is the hypergeometric function.
           \subsection{Explicit fading model}
           The power fading distribution for the mixed Gaussian model is given by
 
