@@ -126,16 +126,16 @@ risto.wichman@aalto.fi}
           \section{Analysis}
 
           \subsection{Gain process}
-          Let the constant $D_{h,\epsilon} \triangleq \sin^2(\epsilon)/h$ be the derivative of the function $\|x\| \mapsto \varphi_x $ at $\|x\| =0$. Consequently, $\varphi_x \approx D_{h,\epsilon}\|x\|$ for small $\|x\|$.
-          Define the gain process (GP)
+          We denote the derivative of the function $\|x\| \mapsto \varphi_x $ at $\|x\| =0$ with $D_{h,\epsilon} \triangleq \sin^2(\epsilon)/h$. Consequently, $\varphi_x \approx D_{h,\epsilon}\|x\|$ for small $\|x\|$.
+          Define the (shadowed) gain process (GP)
           \begin{equation}
-            \mathcal{G} = \left\{x \in \Phi : H_x G[D_{h,\epsilon}\|x\|] \right\},
+            \mathcal{G} = \left\{x \in \Phi : H_x G(\|x\|) \right\},
           \end{equation}
-          where $\{H_x\}$ are i.i.d. shadowing variables (possibly degenerate), and 
+          where $\{H_x\}$ are i.i.d. shadowing variables, possibly degenerate, and 
           \begin{equation}
-            G[\cdot] = 2^{-(\cdot)^2/\varphi^2_{\text{RX}}}
+            G(r) = 2^{-(D_{h,\epsilon}r)^2/\varphi^2_{\text{RX}}}
           \end{equation}
-          is the Gaussian antenna pattern $G:[0,\infty) \rightarrow [0,1]$ characterized by the halfwidth of the $3$ dB gain $\varphi_{\text{RX}}$. We use the value $\varphi_{\text{RX}} = 1.6 \degree$ according to the International Telecommunication Union Recommendations (ITU-R) \cite{ITURS1528}. The GP is a \textit{projection process} and, as such, a nonhomogeneous PPP [CITE].
+          is the Gaussian antenna pattern characterized by the halfwidth of the $3$ dB gain $\varphi_{\text{RX}}$. We use the value $\varphi_{\text{RX}} = 1.6 \degree$ according to the International Telecommunication Union Recommendations (ITU-R) \cite{ITURS1528}. The GP is a \textit{projection process} and, as such, a nonhomogeneous PPP [CITE].
 
             The density of the GP has the following connection to the fading distribution:
 
@@ -143,17 +143,22 @@ risto.wichman@aalto.fi}
             Let $f_H(\cdot)$ and $F_H(\cdot)$ be the pdf and the complementary cdf (ccdf) of $H$, respectively. The density of $\mathcal{G}$ is given by
             \begin{equation}
               \label{eq:GPdensity}
-              \lambda_{\mathcal{G}}(t)= \tilde{\kappa}F_H(t)/t
+              \lambda_{\mathcal{G}}(t)= \tilde{\kappa}F_H(t)/t, \text{ \text{for} }t>0,
             \end{equation}
-            for $t>1$.
+            where $\tilde{\kappa}= \kappa/\log(2)$ and
+            \begin{equation}
+              \label{eq:kappa}
+                    {\kappa} \triangleq    \pi \lambda   \left(\frac{h \varphi_{\textup{RX}}}{\sin^2(\epsilon)  }\right)^2
+            \end{equation}
+            is approximately the mean number of UEs inside the $3$ dB footprint of a SBS.
+            
             \begin{proof}
               By [CITE],
               \begin{align*}
-                &\lambda_{\mathcal{G}}(t) \overset{}{=} \pi \lambda \mathbb{E}\left[\left( G^{-1}[t/H] \right)^2 \right]=\tilde{\kappa}\frac{d}{dt} \int_t^{\infty} G^{-1}[t/y]f_H(y) dy\\
-                &  = \tilde{\kappa}\frac{d}{dt} \int_t^{\infty} \log(t/y)f_H(y) dy = \tilde{\kappa} \sij{t}{\infty} \log(t/y)F_H(y)\\ 
-                & + \tilde{\kappa} \frac{d}{dt} \int_0^{t}F_H(y)/y dy =  \tilde{\kappa}F_H(t)/t,
+                &\lambda_{\mathcal{G}}(t) \overset{}{=} \frac{d}{dt}\pi \lambda \mathbb{E}\left[\left( G^{-1}[t/H] \right)^2 \right] \\
+                &=\tilde{\kappa}\frac{d}{dt} \int_t^{\infty} G^{-1}(t/y)f_H(y) dy  = \tilde{\kappa}\frac{d}{dt} \int_t^{\infty} \log(t/y)f_H(y) dy\\ &= \tilde{\kappa} \sij{t}{\infty} \log(t/y)F_H(y) + \tilde{\kappa} \frac{d}{dt} \int_0^{t}\frac{F_H(y)}{y} dy =  \tilde{\kappa}F_H(t)/t,
               \end{align*}
-            as long as $\log(t/y) F_H(y) =0$ as $y \rightarrow 0$ for all $t>0$.  $G^{-1}[\cdot]$ is considered to be the generalized inverse $G^{-1}[\cdot] = \inf \{x:G[x]<y\}$.
+            as long as $\log(t/y) F_H(y) =0$ as $y \rightarrow 0$ for all $t>0$.  $G^{-1}(\cdot)$ is considered to be the generalized inverse $G^{-1}(y) = \inf \{x:G(x)<y\}$.
               \end{proof}
           \end{prop}
 
@@ -168,30 +173,61 @@ risto.wichman@aalto.fi}
 
           Unfortunately, unlike in terrestrial networks with a singular path loss, where the density of the projection process is dependent only on a single moment of $H$, $\lambda_{\mathcal{G}}(t)$ has an explicit pointwise dependence on the ccdf of the fading distribution. However, the density functions are similar for certain fading distributions with matched moments. For example,
 
+          \subsection{Shadowing tiers}
 
+          
+          We consider $J$ different tiers identically and independently randomly assigned for each UE. In this work, the tiers represent different types of shadowing. We denote by $T_x \in \mathcal{T} \triangleq \{1,\dots, J\}$ the type (of the fading) of the UE $x \in \Phi $. Each tier is characterized by its unique fading variable and the probability $\mathbb{P}(T_x = i)$ that the transmitter belongs to tier $i$. It holds that $\sum_{i \in \mathcal{T}} \mathbb{P}(T_x = i) =1$. In this work, the probability is identical for all UEs, and we can denote $\mathbb{P}(T = i) \triangleq \mathbb{P}(T_x = i)$. Also, the fading variables are i.d.d.; hence, we denote $(H | T=i) \triangleq (H_x | T_x=i)$. We denote by $\Phi_i$ the point process of tier $i$ transmitters and $\mathcal{G}_i$ the corresponding GP. By the thinning theorem [CITE], both are PPPs, and if $\lambda$ is the density of $\Phi=\cup_{i \in \mathcal{T}} \Phi_i$, we can sum the densities of the separate tiers $\lambda = \sum_{i \in \mathcal{T}} \lambda_i$ with $\lambda_i \triangleq \lambda \mathbb{P}(T = i)$. Accordingly,  ${\kappa}_i \triangleq \mathbb{P}(T = i){\kappa}$, where $\kappa$ is the mean number of UEs inside the $3$ dB footprint in $\Phi$ as in $\eqref{eq:kappa}$, and $\kappa_i$ and $(H|T=i)$ determine the density $\lambda_{\mathcal{G}_i}(t)$ as in $\eqref{eq:GPdensity}$. Also GPs can be superpositioned: if $\mathcal{G}$ is the GP of $\Phi=\cup_{i \in \mathcal{T}} \Phi_i$, $\lambda_{\mathcal{G}}(t)= \sum_{i \in \mathcal{T}}\lambda_{\mathcal{G}_i}(t)$. 
+
+          Of course, the index set $\mathcal{T}$ does not have to be a set of the first $J$ integers; for example, we could you use $\mathcal{T}=\{\text{NLoS, LoS} \}$.
+
+          Let $W>0$ be a normalized noise power constant. We consider a NB and define the spatial path-loss to be equal to all transmitters, and depending only on the distance between the SBS and its antennas boresights location on the earth's surface $d_{h,\epsilon}$. The path-loss law is defined as $\ell({d}) \triangleq ({d}/d_0)^{\gamma}$, where $\gamma$ is the power path-loss exponent. The SINR of the strongest signal $x_0 \triangleq \max  \mathcal{G}$ at the typical SBS is defined as
+          \begin{equation}
+            \text{SINR} = \frac{x_0/\ell(\hat{d}_{h,\epsilon})}{\sum_{x \in \mathcal{G} \setminus \{x_0\}}x/\ell(\hat{d}_{h,\epsilon})+ W}.
+          \end{equation}
+         
+          We are ready to derive a approximation for the probability of coverage of the UE with the srongest signal.
+
+          \subsection{Gaussian mixture model}
+          The power fading RV of a transmitter $x \in \Phi$  in the two-tier $\mathcal{T} = \{\text{LoS},\text{NLoS}\}$ Gaussian mixture model is given by
+            \begin{align}
+              &H_x  \nonumber \\
+              &=   \mathds{1}(T_x =\text{LoS})e^{\mu_{\text{LoS}}+\sigma_{\text{LoS}}Z} +\mathds{1}(T_x =\text{NLoS})e^{\mu_{\text{NLoS}}+\sigma_{\text{NLoS}}Z},
+            \end{align}
+            $\mathds{1}(\cdot)$ is the indicator function and $Z$ is a standard normal RV. Accordingly, the conditional fading variables follow a log-normal distribution
+            \begin{align}
+              &(H_x|T_x=\text{LoS}) \sim \text{Lognormal}(\mu_{\text{LoS}},\sigma_{\text{LoS}}^2) \\
+              &(H_x|T_x=\text{NLoS}) \sim \text{Lognormal}(\mu_{\text{NLoS}},\sigma_{\text{NLoS}}^2).
+            \end{align}
+            
+            
+
+            
+            
           \begin{prop}
-            Let $H_0$ the fading variable of the UE $x_0$ with the strongest signal. In the simple coverage coverage region $\theta \geq 1$,
+            Assume a network of density $\lambda$ with the tiers $\mathcal{T}$. Let $H_{x_0}$ be the shadowing variable, and ${x'}_0 =  H_{x_0}G(\|x_0\|) \in \cup_{i \in \mathcal{T}} \mathcal{G}_i$ be the strongest signal of the UEs. In the simple coverage region $\theta \geq 1$,
             \begin{align}
               \label{eq:probofcov}
-              &p_c(\theta) \triangleq \mathbb{P}\left( \frac{x_0}{\sum_{x \in \cup \mathcal{G}_i}x + N} > \theta \right) \nonumber \\
-              &= \lambda \int_{ x \in \R^2}\mathbb{P}\left(H_0 > \theta/\mu  2^{(D_{h,\epsilon}\|x\|)^2/\varphi^2_{\textup{RX}} } \left(\sum_{x \in \cup \mathcal{G}_i}x +W \right)\right) \nonumber dx  \nonumber  \\
-              &\overset{(a)}{\approx} 2 \pi \int_{0}^{\infty} r \prod_{i=1}^{N}\mathbb{E}_{\mathcal{G}_i}\exp \left\{-\theta 2^{(D_{h,\epsilon}r)^2/\varphi^2_{\textup{RX}}}/\mu \sum_{x \in \mathcal{G}_i}x \right\}  \cdot \nonumber\\
-              & \hspace{1.8cm}\exp \left\{- \theta/\mu  2^{(D_{h,\epsilon}r)^2/\varphi^2_{\textup{RX}}} W  \right\} dr \nonumber \\
-              &=2 \pi \int_{0}^{\infty} r \prod_{i=1}^{N} \left(\frac{1}{1 + 2^{(D_{h,\epsilon}r)^2/\varphi^2_{\textup{RX}}} \theta}\right)^{\kappa_i}  \cdot \nonumber \\
-              &\hspace{1.8cm} \exp \left\{ \theta/\mu 2^{(D_{h,\epsilon}r)^2/\varphi^2_{\textup{RX}}}W  \right\} dr.           
+              &p_c(\theta) \triangleq \mathbb{P}\left( \frac{H_{x_0} G(\|x_0\|)}{\sum_{x' \in  \cup\mathcal{G}_i \setminus \{x'_0\}}x'  + W\ell(\hat{d}_{h,\epsilon})} > \theta \right) \nonumber \\      
+              &\overset{(a)}= \sum_{i\in \mathcal{T}} \mathbb{P}(T_{x_0}  = i)\lambda \int_{ \R^2}\mathbb{P}\Bigg((H_{x_0}|T_{x_0} = i) > \theta  2^{\left(\frac{D_{h,\epsilon}\|y\|}{\varphi_{\textup{RX}}}\right)^2 } \nonumber \\
+              &\cdot \left(\sum_{x \in \cup\mathcal{G}_i }x +W\ell(\hat{d}_{h,\epsilon}) \right)\Bigg) \nonumber dy  \nonumber  \\              
+              &\overset{(b)}{\approx} 2 \pi \lambda\sum_{i\in \mathcal{T}} \mathbb{P}(T_{}  = i) \cdot \nonumber \\
+              &\int_{0}^{\infty} r \prod_{k \in \mathcal{T}}\mathbb{E} \left(e^{-\frac{\theta \sum_{x \in { \mathcal{G}_k}} x}{2^{-(D_{h,\epsilon}r/\varphi_{\textup{RX}})^2} m_i  }}\right)  e^{- \theta   \frac{W\ell(\hat{d}_{h,\epsilon})}{2^{-(D_{h,\epsilon}r/\varphi_{\textup{RX}})^2} m_i}} dr \nonumber \\
+              &\overset{(c)}{=}  2 {} \sum_{i \in \mathcal{T}}\kappa_i\int_0^{\infty}u  \frac{\exp \{- \theta 2^{u^2}W\ell(\hat{d}_{h,\epsilon})/m_i \}}{\prod_{k \in \mathcal{T}}\left(1 + \theta2^{u^2}  m_k/m_i\right)^{\tilde{\kappa}_k}} du,
             \end{align}
-           
+            where $m_j \triangleq \mathbb{E}(H| T = j)$ is the mean of the fading variable of tier $j$, ${\kappa}_i =\mathbb{P}(T_{}  = i) {\kappa}=\mathbb{P}(T_{}  = i) {\tilde{\kappa}}\log(2)$, where $  \kappa =  \tilde{\kappa}\log(2)=\pi \lambda   \left(h \varphi_{\textup{RX}}/\sin^2(\epsilon) \right)^2$ reflects the mean number of UEs inside the (spatial) $3$ dB footprint of all tiers.
             \begin{proof}
-         In the simple coverage region, the UE is covered only if it have the strongest signal, and utlilizing Slivnyak's theorem leads to the probability of coverage by the integral. In (a), a exponential $H_0$ allows the expression in terms of product of Laplace transforms of $\{\sum_{x \in \mathcal{G}_1}x, \sum_{x \in \mathcal{G}_2}x, \dots, \sum_{x \in \mathcal{G}_i } x\}$  and $N$. In the exponential case, the formers are gamma distributed. 
+              The detailed proof is presented in [CITE]. Step (a) heuristically: In the simple coverage region, the UE is covered \textit{only if} it has the strongest signal. Using the translation invariance of the stationary PPP and utilizing Slivnyak's and Gambell's theorems leads to the probability of coverage given by the integral over the plane.
+
+              In (b), an exponential $(H_{x_0}|T_{x_0}=i)$ allows the expression of the probability in terms of the Laplace transforms of $\sum_{x \in \cup \mathcal{G}_i}x$ and $W$. The formers are gamma distributed. Also, by the independent shadowing, the are independent and can be expressed as the product. 
             \end{proof}
           \end{prop}
-          For $W=0$, the scale parameter $\mu$ is cancelled out in $p_c(\theta)$, meaning that the severity of the fading does not have any effect on the probability of coverage. 
 
-          In a single-tier interference-only channel, \eqref{eq:probofcov} has the analytical expression
+
+          For the interference-only channel with a single tier, the coverage probability depends on the mean number $\kappa = \tilde{\kappa} \log(2)$ of UEs inside the  $3$ dB footprint of the typical SBS and the treshold $\theta$, and \eqref{eq:probofcov} has the analytical expression
           \begin{equation}
-p_c(\theta) =  \theta^{-\kappa} {_2F_1}\left(\kappa, \kappa;\kappa + 1; -1/\theta \right).
+p_c(\theta) =  \theta^{-\tilde{\kappa}} {_2F_1}\left(\tilde{\kappa}, \tilde{\kappa};\tilde{\kappa} + 1; -1/\theta \right).
           \end{equation}
-          where $_2F_1(\cdot)$ is the hypergeometric function.
+          where $_2F_1(\cdot)$ is the hypergeometric function. 
           \subsection{Explicit fading model}
           The power fading distribution for the mixed Gaussian model is given by
 
