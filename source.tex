@@ -12,8 +12,8 @@
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{dsfont}
-% \usepackage{amsfonts}
- % \usepackage{bbold}
+%\usepackage{amsfonts}
+%\usepackage{bbold}
 \newcommand{\rEarth}{R_{\oplus}}
 \newcommand{\viiva}{\mathop{\Bigg/}}
 \newcommand{\sij}[3]{\viiva\limits_{\hspace*{-5mm}{#1}}^{\hspace*{5mm}{#2}}{#3}}
@@ -39,8 +39,6 @@
 \newtheorem{kor}[thm5]{Corollary}
 \newtheorem{conjecture}[thm6]{Conjecture}
 \newtheorem{approximation}[thm7]{Approximation}
-
-
 
 \usepackage{amsmath,amsfonts}
 \usepackage{algorithmic}
@@ -108,7 +106,7 @@ risto.wichman@aalto.fi}
                $\lambda$ & Density parameter of $\Phi$ and $\Theta$. \\
                $\kappa$ & Parameter that reflects the approximate mean number of UEs inside a SBS's $3$ dB footprint;  $\kappa = h^2\pi \lambda \varphi_{\textup{RX}}^2/\sin^4(\epsilon)$. \\
                ${\tilde{\kappa}}$ &  $\kappa/\log(2)$.\\
-               $g_x$ &   Gamma distributed random fading gain of a transmitter $x$.     \\
+               $g_x$ &   Gamma-distributed random fading gain of a transmitter $x$.     \\
                $\theta$ & SIR or SINR threshold for a successful transmission.\\
                $I$ & Interference at the typical SBS in the plane model.\\
                $S$ & The signal power of the served UE at the typical SBS in the plane model.\\
@@ -173,7 +171,7 @@ risto.wichman@aalto.fi}
 
           Unfortunately, unlike in terrestrial networks with a singular path loss, where the density of the projection process is dependent only on a single moment of $H$, $\lambda_{\mathcal{G}}(t)$ has an explicit pointwise dependence on the ccdf of the fading distribution. However, the density functions are similar for certain fading distributions with matched moments. For example,
 
-          \subsection{Shadowing tiers}
+          \subsection{Multitier network}
 
           
           We consider $J$ different tiers identically and independently randomly assigned for each UE. In this work, the tiers represent different types of shadowing. We denote by $T_x \in \mathcal{T} \triangleq \{1,\dots, J\}$ the type (of the fading) of the UE $x \in \Phi $. Each tier is characterized by its unique fading variable and the probability $\mathbb{P}(T_x = i)$ that the transmitter belongs to tier $i$. It holds that $\sum_{i \in \mathcal{T}} \mathbb{P}(T_x = i) =1$. In this work, the probability is identical for all UEs, and we can denote $\mathbb{P}(T = i) \triangleq \mathbb{P}(T_x = i)$. Also, the fading variables are i.d.d.; hence, we denote $(H | T=i) \triangleq (H_x | T_x=i)$. We denote by $\Phi_i$ the point process of tier $i$ transmitters and $\mathcal{G}_i$ the corresponding GP. By the thinning theorem [CITE], both are PPPs, and if $\lambda$ is the density of $\Phi=\cup_{i \in \mathcal{T}} \Phi_i$, we can sum the densities of the separate tiers $\lambda = \sum_{i \in \mathcal{T}} \lambda_i$ with $\lambda_i \triangleq \lambda \mathbb{P}(T = i)$. Accordingly,  ${\kappa}_i \triangleq \mathbb{P}(T = i){\kappa}$, where $\kappa$ is the mean number of UEs inside the $3$ dB footprint in $\Phi$ as in $\eqref{eq:kappa}$, and $\kappa_i$ and $(H|T=i)$ determine the density $\lambda_{\mathcal{G}_i}(t)$ as in $\eqref{eq:GPdensity}$. Also the GP tiers can be superpositioned: if $\mathcal{G}$ is the GP of $\Phi=\cup_{i \in \mathcal{T}} \Phi_i$, $\lambda_{\mathcal{G}}(t)= \sum_{i \in \mathcal{T}}\lambda_{\mathcal{G}_i}(t)$. 
@@ -190,6 +188,7 @@ risto.wichman@aalto.fi}
           The Laplace function of the total received power is given as [CITE]
 
           \begin{equation}
+            \label{eq:lapdef}
             \mathcal{L}_{\mathcal{G}}(s)\triangleq \mathbb{E}\left(e^{-s\sum\limits_{x \in \mathcal{G}}x}\right)= \exp\left\{-\int_0^{\infty}(1-e^{-sr}) \lambda_{\mathcal{G}}(r) dr \right\}.
           \end{equation}
           Assuming a exponential fading variable $H$ with mean $m$;
@@ -197,7 +196,7 @@ risto.wichman@aalto.fi}
             \label{eq:lapexp}
             \mathcal{L}_{\mathcal{G}}(s)= \exp\left\{-\mathcal{\kappa}\int_0^{\infty}(1-e^{-sr})\frac{e^{-r/m}}{r} dr \right\}=(1+sm)^{-\tilde{\kappa}},
           \end{equation}
-          which is the Laplace transform of the \textbf{gamma distribution} with shape parameter $\tilde{\kappa}$ and scale parameter $m$: the total received power is gamma distributed with exponential fading and approximately gamma distributed with any fading that produces the GP that can be approximated with the exponential-type density function – like the log-normal fading in suitable regimes.
+          which is the Laplace transform of the \textbf{gamma distribution} with shape parameter $\tilde{\kappa}$ and scale parameter $m$: the total received power is gamma-distributed with exponential fading and approximately gamma-distributed with any fading that produces the GP that can be approximated with the exponential-type density function – like the log-normal fading in suitable regimes.
           
           For independent $\{\mathcal{G}_i\}_{i \in \mathcal{\tau}}$, $\mathcal{L}_{\sum_{i \in \mathcal{T}} \mathcal{G}_i}(s) = \prod_{i \in \mathcal{T}} \mathcal{L}_{\mathcal{G}_i}(s)$
           
@@ -212,19 +211,21 @@ risto.wichman@aalto.fi}
               &\overset{(a)}= \sum_{i\in \mathcal{T}} \mathbb{P}(T_{x_0}  = i)\lambda \int_{ \R^2}\mathbb{P}\Bigg((H_{x_0}|T_{x_0} = i) > \theta  2^{\left(\frac{D_{h,\epsilon}\|y\|}{\varphi_{\textup{RX}}}\right)^2 } \nonumber \\
               &\cdot \left(\sum_{x \in \cup\mathcal{G}_i }x +W\ell(\hat{d}_{h,\epsilon}) \right)\Bigg) \nonumber dy  \nonumber  \\              
               &\overset{(b)}{\approx} 2 \pi \lambda\sum_{i\in \mathcal{T}} \mathbb{P}(T_{}  = i) \cdot \nonumber \\
-              &\int_{0}^{\infty} r \prod_{k \in \mathcal{T}}\mathbb{E} \left(e^{-\frac{\theta \sum_{x \in { \mathcal{G}_k}} x}{2^{-(D_{h,\epsilon}r/\varphi_{\textup{RX}})^2} m_i  }}\right)  e^{- \theta   \frac{W\ell(\hat{d}_{h,\epsilon})}{2^{-(D_{h,\epsilon}r/\varphi_{\textup{RX}})^2} m_i}} dr \nonumber \\
-              &\overset{(c)}{=}  2 {} \sum_{i \in \mathcal{T}}\kappa_i\int_0^{\infty}u  \frac{\exp \{- \theta 2^{u^2}W\ell(\hat{d}_{h,\epsilon})/m_i \}}{\prod\limits_{k \in \mathcal{T}}\left(1 + \theta2^{u^2}  m_k/m_i\right)^{\tilde{\kappa}_k}} du,
+              &\int_{0}^{\infty} r \prod_{k \in \mathcal{T}}\mathbb{E} \left(e^{-\frac{\theta \sum_{x \in { \mathcal{G}_k}} x}{2^{-(D_{h,\epsilon}r/\varphi_{\textup{RX}})^2} m_i  }} \cdot e^{- \theta   \frac{W\ell(\hat{d}_{h,\epsilon})}{2^{-(D_{h,\epsilon}r/\varphi_{\textup{RX}})^2} m_i}} \right) dr \nonumber \\
+              &\overset{(c)}{=}  2 {} \sum_{i \in \mathcal{T}}\kappa_i\int_0^{\infty} \mathcal{L}_{\mathcal{G}_i}\left(\frac{\theta 2^{u^2}  m_k}{m_i} \right)  \mathcal{L}_{W}\left( \frac{\theta 2^{u^2}W\ell(\hat{d}_{h,\epsilon})}{m_i} \right)du \nonumber \\
+              &\overset{}{=}  2 {} \sum_{i \in \mathcal{T}}\kappa_i\int_0^{\infty}  \frac{u\exp \{- \theta 2^{u^2}W\ell(\hat{d}_{h,\epsilon})/m_i \}}{\prod\limits_{k \in \mathcal{T}}\left(1 + \theta 2^{u^2}  m_k/m_i\right)^{\tilde{\kappa}_k}} du,
             \end{align}
-            where $m_j \triangleq \mathbb{E}(H| T = j)$ is the mean of the fading variable of tier $j$, ${\kappa}_i =\mathbb{P}(T_{}  = i) {\kappa}=\mathbb{P}(T_{}  = i) {\tilde{\kappa}}\log(2)$, where $  \kappa =  \tilde{\kappa}\log(2)=\pi \lambda   \left(h \varphi_{\textup{RX}}/\sin^2(\epsilon) \right)^2$ reflects the mean number of UEs inside the (spatial) $3$ dB footprint of all tiers.
+            where $m_j \triangleq \mathbb{E}(H| T = j)$ is the mean of the fading variable of tier $j$, ${\kappa}_i =\mathbb{P}(T_{}  = i) {\kappa}=\mathbb{P}(T_{}  = i) {\tilde{\kappa}}\log(2)$, where $  \kappa =  \tilde{\kappa}\log(2)=\pi \lambda   \left(h \varphi_{\textup{RX}}/\sin^2(\epsilon) \right)^2$ reflects the mean number of UEs inside the (spatial) $3$ dB footprint of all tiers. Recall that the Laplace transform $\mathcal{L}_{\mathcal{G}}(s)$ of the sum of $\mathcal{G}$  is defined in \eqref{eq:lapdef} and given in the exponential fading case in \eqref{eq:lapexp}. The Laplace transform of $W$ is defined accordingly as $\mathcal{L}_W(s) \triangleq \mathbb{E}\left(e^{-sW} \right)$, which reduces to $e^{-sW}$ for deterministic $W$.
             \begin{proof}
               The detailed proof is presented in [CITE]. Step (a) heuristically: In the simple coverage region, the UE is covered \textit{only if} it has the strongest signal. Using the translation invariance of the stationary PPP and utilizing Slivnyak's and Gambell's theorems leads to the probability of coverage given by the integral over the plane.
 
-              In (b), an exponential $(H_{x_0}|T_{x_0}=i)$ allows the expression of the probability in terms of the Laplace transforms \eqref{eq:lapexp} of $\sum_{x \in \cup \mathcal{G}_i}x$ and $W$. The formers are gamma distributed. Also, by the independent shadowing, the are independent and can be expressed as the product. 
+              In (b), an exponential $(H_{x_0}|T_{x_0}=i)$ allows the expression of the probability in terms of the Laplace transforms of $\sum_{x \in \cup \mathcal{G}_i}x$ and $W$. By the independent shadowing, they are independent and can be expressed as the product. A change of variable $D_{h,\epsilon}r/\varphi_{\text{RX}} \mapsto u$ was made in (c). 
+              
             \end{proof}
           \end{prop}
+          Notice that $p_c(\theta)$ is the probability of coverage of the UE with the \textit{strongest signal}, which is \textit{not} necessarily the spatially  \textit{nearest transmitter}.
 
-
-          For the interference-only channel with a single tier, the coverage probability depends on the mean number $\kappa = \tilde{\kappa} \log(2)$ of UEs inside the  $3$ dB footprint of the typical SBS and the treshold $\theta$, and \eqref{eq:probofcov} has the analytical expression
+          For a single-tier network in an interference-only channel $W=0$, the coverage probability depends on the mean number $\kappa = \tilde{\kappa} \log(2)$ of UEs inside the  $3$ dB footprint of the typical SBS and the threshold $\theta$, and \eqref{eq:probofcov} has the analytical expression
           \begin{equation}
 p_c(\theta) =  \theta^{-\tilde{\kappa}} {_2F_1}\left(\tilde{\kappa}, \tilde{\kappa};\tilde{\kappa} + 1; -1/\theta \right).
           \end{equation}
