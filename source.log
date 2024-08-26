@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.14)  23 AUG 2024 18:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.14)  26 AUG 2024 21:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -618,20 +618,26 @@ Overfull \hbox (8.10117pt too wide) in paragraph at lines 91--120
  []
 
 
-LaTeX Warning: Citation `ITURS1528' on page 1 undefined on input line 136.
+LaTeX Warning: Citation `ITURS1528' on page 1 undefined on input line 137.
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
-Overfull \hbox (0.96748pt too wide) detected at line 193
+Overfull \hbox (5.67882pt too wide) detected at line 195
 [][][]\OMS/cmsy/m/n/10 L[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 s\OT1/cmr/m/n/10 ) 
 \U/msa/m/n/10 , \U/msb/m/n/10 E [] \OT1/cmr/m/n/10 = [] [] \OML/cmm/m/it/10 :
  []
 
+
+Overfull \hbox (1.34192pt too wide) detected at line 204
+[][][]\OMS/cmsy/m/n/10 L[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 s\OT1/cmr/m/n/10 ) 
+= [] [] = (1 + \OML/cmm/m/it/10 sm\OT1/cmr/m/n/10 )[]\OML/cmm/m/it/10 ;
+ []
+
 [2]
 LaTeX Font Info:    Trying to load font information for U+dsrom on input line 2
-42.
+45.
  (/usr/share/texlive/texmf-dist/tex/latex/doublestroke/Udsrom.fd
 File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
 )
@@ -654,16 +660,16 @@ Before submitting the final camera ready copy, remember to:
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `source.out' has not changed.
-(rerunfilecheck)             Checksum: 9DCBFD58F8E7596A4D505FDC5CF83A7F;1092.
+(rerunfilecheck)             Checksum: A4E1AFB7326FDFF57E4830B36B71E80D;1297.
  ) 
 Here is how much of TeX's memory you used:
- 12693 strings out of 479574
- 206312 string characters out of 5877220
- 525583 words of memory out of 5000000
- 30456 multiletter control sequences out of 15000+600000
+ 12698 strings out of 479574
+ 206406 string characters out of 5877220
+ 525699 words of memory out of 5000000
+ 30460 multiletter control sequences out of 15000+600000
  517757 words of font info for 134 fonts, out of 8000000 for 9000
  399 hyphenation exceptions out of 8191
- 60i,15n,63p,1585b,353s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,15n,63p,1585b,474s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/share/texlive/texmf-
@@ -687,10 +693,10 @@ fonts/symbols/msbm7.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/ut
 mb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr
 /share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on source.pdf (3 pages, 262318 bytes).
+Output written on source.pdf (3 pages, 266807 bytes).
 PDF statistics:
- 204 PDF objects out of 1000 (max. 8388607)
- 143 compressed objects within 2 object streams
- 27 named destinations out of 1000 (max. 500000)
- 57 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 217 PDF objects out of 1000 (max. 8388607)
+ 153 compressed objects within 2 object streams
+ 28 named destinations out of 1000 (max. 500000)
+ 65 words of extra memory for PDF output out of 10000 (max. 10000000)
 
