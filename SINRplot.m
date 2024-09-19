@@ -29,7 +29,7 @@ simdist3 = S.dist3;
 %% [f8,x8] = ecdf(simdist2);
 %% [f9,x9] = ecdf(simdist3);
 
-tau = linspace(1,10,10000);
+tau = linspace(1,10,250);
 
 dist1=[];
 dist2=[];
@@ -94,6 +94,9 @@ for theta = tau
 end
 
 
+
+
+
 % Create figure
 figure1 = figure;
 
@@ -107,13 +110,14 @@ plot([-1],[-1],'--','color','black','linewidth',2)
 %% plot(10*log10(tau),dist1,'color',"#0072BD",'linewidth',2)
 %% plot(10*log10(tau),dist2,'color',"#D95319",'linewidth',2)
 %% plot(10*log10(tau),dist3,'color',"#EDB120",'linewidth',2)
-%plot(10*log10(tau),dist4,'color',"#0072BD",'linewidth',2)
+plot(10*log10(tau),dist4,'color',"#0072BD",'linewidth',2)
 plot(10*log10(tau),dist5,'color',"#D95319",'linewidth',2)
-%plot(10*log10(tau),dist6,'color',"#EDB120",'linewidth',2)
+plot(10*log10(tau),dist6,'color',"#EDB120",'linewidth',2)
 %% plot(10*log10(tau),dist7,'color',"#0072BD",'linewidth',2)
 %% plot(10*log10(tau),dist8,'color',"#D95319",'linewidth',2)
 %% plot(10*log10(tau),dist9,'color',"#EDB120",'linewidth',2)
 
+plot(10*log10(tau),(1+tau).^-c2,'color',"black",'linewidth',2)
 
  
 %%  plot(10*log10(x1),1-f1,'--','color','#0072BD','linewidth',2)

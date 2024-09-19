@@ -7,8 +7,8 @@ function pc=pc(theta,kappa,w,elevation)
   sigmaNLoS=9*rho;
   mLoS=exp(muLoS+sigmaLoS^2/2);
   mNLoS=exp(muNLoS+sigmaNLoS^2/2);
-  %% mLoS = sqrt(exp(2*muLoS+sigmaLoS^2)*(-1+exp(muLoS^2)));
-  %% mNLoS = sqrt(exp(2*muNLoS+sigmaNLoS^2)*(-1+exp(muNLoS^2)));
+ %% mLoS = sqrt(exp(2*muLoS+sigmaLoS^2)*(-1+exp(sigmaLoS^2)));
+  %%mNLoS = sqrt(exp(2*muNLoS+sigmaNLoS^2)*(-1+exp(sigmaNLoS^2)));
   beta=2.3;
   pLoS=exp(-beta*cot(deg2rad(elevation)));
   
