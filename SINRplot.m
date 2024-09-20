@@ -29,7 +29,7 @@ simdist3 = S.dist3;
 %% [f8,x8] = ecdf(simdist2);
 %% [f9,x9] = ecdf(simdist3);
 
-tau = linspace(1,10,10000);
+tau = linspace(1,10,250);
 
 dist1=[];
 dist2=[];
@@ -43,7 +43,7 @@ dist9=[];
 
 
 
-w=0.2;
+w=0;
 c1=1/2;
 c2=1;
 c3=2;
@@ -117,6 +117,7 @@ plot(10*log10(tau),dist6,'color',"#EDB120",'linewidth',2)
 %% plot(10*log10(tau),dist8,'color',"#D95319",'linewidth',2)
 %% plot(10*log10(tau),dist9,'color',"#EDB120",'linewidth',2)
 
+plot(10*log10(tau),(1+tau).^-c2,'color',"black",'linewidth',2)
 
  
 %%  plot(10*log10(x1),1-f1,'--','color','#0072BD','linewidth',2)
@@ -132,7 +133,7 @@ plot(10*log10(x6),1-f6,'--', 'color','#EDB120','linewidth',2)
 %%  plot(10*log10(x9),1-f9,'--', 'color','#EDB120','linewidth',2)
 
 
-axis([[10*log10(min(tau)),10*log10(max(tau))],[0,0.4]])
+axis([[10*log10(min(tau)),10*log10(max(tau))],[0,0.8]])
 grid on
 ax = gca;
 ax.FontSize = 14;

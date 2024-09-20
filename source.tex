@@ -85,8 +85,8 @@ risto.wichman@aalto.fi}
          \section{Introduction}
 
          hhihhi
-        
-          \begin{table}
+         
+         \begin{table}
            \begin{center}
              \begin{tabular}{| c | p{7cm}  |}
                \hline
@@ -101,7 +101,7 @@ risto.wichman@aalto.fi}
                $\varphi_{\text{RX}}$ & Width of the SBSs $3$ dB gain. \\
                $\Theta \subset E $ & Poisson p.p. on the earth's surface $E \subset \R^3$. \\
                $\Phi \subset \R^2$ & Poisson p.p. on the plane. \\
-                $\mathcal{G} \subset (0,1)$ & A nonhomogeneous Poisson p.p.; the gain process of the approximate signal gains at the typical SBS.  \\
+               $\mathcal{G} \subset (0,1)$ & A nonhomogeneous Poisson p.p.; the gain process of the approximate signal gains at the typical SBS.  \\
                $x_0$ & Nearest point to the origin in $\Phi$.  \\
                $\lambda$ & Density parameter of $\Phi$ and $\Theta$. \\
                $\kappa$ & Parameter that reflects the approximate mean number of UEs inside a SBS's $3$ dB footprint;  $\kappa = h^2\pi \lambda \varphi_{\textup{RX}}^2/\sin^4(\epsilon)$. \\
@@ -113,8 +113,7 @@ risto.wichman@aalto.fi}
                $\mathring{I}$ & Interference at the typical SBS in the spherical model.\\
                $\mathring{S}$ & The signal power of the served UE at the typical SBS in the spherical model.\\ 
                $\hat{d}_{h,\epsilon}$ & The distance between the SBS and the center of the footprint in the plane model.\\
-               $d_{0}$ & Normalizing distance.  \\           
-             
+               $d_{0}$ & Normalizing distance.  \\                        
                \hline
              \end{tabular}
            \end{center}
@@ -125,7 +124,7 @@ risto.wichman@aalto.fi}
 
           \subsection{Gain process}
           We denote the derivative of the function $\|x\| \mapsto \varphi_x $ at $\|x\| =0$ with $D_{h,\epsilon} \triangleq \sin^2(\epsilon)/h$. Consequently, $\varphi_x \approx D_{h,\epsilon}\|x\|$ for small $\|x\|$.
-          Given a PPP $\Phi \subset \R^2$ of density $\lambda$, define the (shadowed) gain process (GP)
+          Given a PPP $\Phi \subset \R^2$ of density $\lambda$, define the shadowed gain process (GP)
           \begin{equation}
             \label{eq:gainprocess}
             \mathcal{G} \triangleq \left\{x \in \Phi : H_x G(\|x\|) \right\},
