@@ -1,11 +1,16 @@
 clear all;
 close all;
-addpath("/home/ilari/fillbetweenareacurve")
+%addpath("/home/ilari/fillbetweenareacurve")
 rho=log(10)/10;
 muLoS=0*rho;
-muNLoS=-12*rho;
+muNLoS=-12*rho
+%muLoS=12*rho;
+%muNLoS=0*rho;
+
 sigmaLoS=2.8*rho;
 sigmaNLoS=9*rho;
+%mLoS=exp(muLoS+sigmaLoS^2)/sqrt(2);
+%mNLoS=exp(muNLoS+sigmaNLoS^2)/sqrt(2);
 mLoS=exp(muLoS+sigmaLoS^2/2);
 mNLoS=exp(muNLoS+sigmaNLoS^2/2);
 %mLoS = sqrt(exp(2*muLoS+sigmaLoS^2)*(-1+exp(sigmaLoS^2)));
@@ -21,8 +26,16 @@ elevation3=60;
 
 lnLoS = makedist('Lognormal','mu',muLoS,'sigma',sigmaLoS);
 lnNLoS = makedist('Lognormal','mu',muNLoS,'sigma',sigmaNLoS);
-mean(lnLoS)
-var(lnNLoS)
+"lnLoS"
+%mean(lnLoS)
+%var(lnLoS)
+var(lnLoS)+mean(lnLoS)^2
+"lnNLoS"
+%mean(lnNLoS)
+%var(lnNLoS)
+var(lnNLoS)+mean(lnNLoS)^2
+
+
 pLoS=exp(-beta*cot(deg2rad(elevation1)));
 lnFH1 = @(t) kappa*pLoS*(1-cdf(lnLoS,t))./t+kappa*(1-pLoS)*(1-cdf(lnNLoS,t))./t;
 pLoS=exp(-beta*cot(deg2rad(elevation2)));
@@ -32,8 +45,15 @@ lnFH3 = @(t) kappa*pLoS*(1-cdf(lnLoS,t))./t+kappa*(1-pLoS)*(1-cdf(lnNLoS,t))./t;
 
 expLoS = makedist('Exponential','mu',mLoS);
 expNLoS = makedist('Exponential','mu',mNLoS);
-mean(expLoS)
-var(expNLoS)
+"expLoS"
+%mean(expLoS)
+%var(expLoS)
+var(expLoS)+mean(expLoS)^2
+"expNLoS"
+%mean(expNLoS)
+%var(expNLoS)
+var(expNLoS)+mean(expNLoS)^2
+
 
 pLoS=exp(-beta*cot(deg2rad(elevation1)));
 expFH1 = @(t) kappa*pLoS*(1-cdf(expLoS,t))./t+kappa*(1-pLoS)*(1-cdf(expNLoS,t))./t;
@@ -79,7 +99,7 @@ fill([t,fliplr(t)],[lnFH3(t),fliplr(expFH3(t))],[0.9290 0.6940 0.1250],'FaceAlph
 
 axis([[0,max],[0,5]])
 legend('Mixed log-normal shadowing','Mixed exponential shadowing',...
-       'No shadowing',...
+       'No shadowing; $\tilde{\kappa}/t, t \in(0,1)$',...
     'Interpreter','latex',...
     'FontSize',14)
 fontsize(14,"points")
