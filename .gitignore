@@ -1,0 +1,13 @@
+#Ignore all compiling files.
+*.aux
+*.bbl
+*.blg
+*.toc
+*.nav
+*.log
+*.out
+*.mx
+*.mat
+
+source.pdf
+
