@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.6.26)  20 SEP 2024 20:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.6.26)  24 SEP 2024 19:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -613,14 +613,17 @@ LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 7
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-Overfull \hbox (8.10117pt too wide) in paragraph at lines 91--119
+Overfull \hbox (8.10117pt too wide) in paragraph at lines 90--118
  [] 
  []
 
 
-LaTeX Warning: Citation `ITURS1528' on page 1 undefined on input line 136.
+LaTeX Warning: Citation `ITURS1528' on page 1 undefined on input line 135.
 
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+
+Underfull \vbox (badness 1281) has occurred while \output is active []
+
+ [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
@@ -665,11 +668,11 @@ Package rerunfilecheck Info: File `source.out' has not changed.
 Here is how much of TeX's memory you used:
  12698 strings out of 480171
  206406 string characters out of 5894489
- 524246 words of memory out of 5000000
+ 521246 words of memory out of 5000000
  30424 multiletter control sequences out of 15000+600000
  517757 words of font info for 134 fonts, out of 8000000 for 9000
  63 hyphenation exceptions out of 8191
- 60i,15n,63p,1585b,474s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,15n,63p,1585b,438s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/share/texlive/texmf-
@@ -693,7 +696,7 @@ fonts/symbols/msbm7.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/ut
 mb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr
 /share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on source.pdf (3 pages, 266901 bytes).
+Output written on source.pdf (3 pages, 267704 bytes).
 PDF statistics:
  217 PDF objects out of 1000 (max. 8388607)
  153 compressed objects within 2 object streams

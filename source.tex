@@ -84,7 +84,6 @@ risto.wichman@aalto.fi}
 
          \section{Introduction}
 
-         hhihhi
          
          \begin{table}
            \begin{center}
@@ -101,7 +100,6 @@ risto.wichman@aalto.fi}
                $\varphi_{\text{RX}}$ & Width of the SBSs $3$ dB gain. \\
                $\Theta \subset E $ & Poisson p.p. on the earth's surface $E \subset \R^3$. \\
                $\Phi \subset \R^2$ & Poisson p.p. on the plane. \\
-               $\mathcal{G} \subset (0,1)$ & A nonhomogeneous Poisson p.p.; the gain process of the approximate signal gains at the typical SBS.  \\
                $x_0$ & Nearest point to the origin in $\Phi$.  \\
                $\lambda$ & Density parameter of $\Phi$ and $\Theta$. \\
                $\kappa$ & Parameter that reflects the approximate mean number of UEs inside a SBS's $3$ dB footprint;  $\kappa = h^2\pi \lambda \varphi_{\textup{RX}}^2/\sin^4(\epsilon)$. \\
@@ -127,38 +125,39 @@ risto.wichman@aalto.fi}
           Given a PPP $\Phi \subset \R^2$ of density $\lambda$, define the shadowed gain process (GP)
           \begin{equation}
             \label{eq:gainprocess}
-            \mathcal{G} \triangleq \left\{x \in \Phi : H_x G(\|x\|) \right\},
+            \mathcal{G} \triangleq \left\{x \in \Phi : H_x G(D_{h,\epsilon}\|x\|) \right\},
           \end{equation}
           where $\{H_x\}$ are i.i.d. shadowing variables, possibly degenerate, and 
           \begin{equation}
-            G(r) = 2^{-(D_{h,\epsilon}r)^2/\varphi^2_{\text{RX}}}
+            G(\varphi) = 2^{-\varphi^2/\varphi^2_{\text{RX}}}
           \end{equation}
-          is the Gaussian antenna pattern characterized by the halfwidth of the $3$ dB gain $\varphi_{\text{RX}}$. We use the value $\varphi_{\text{RX}} = 1.6 \degree$ according to the International Telecommunication Union Recommendations (ITU-R) \cite{ITURS1528}. The GP is a \textit{projection process} and, as such, a nonhomogeneous PPP [CITE].
+          is the Gaussian antenna pattern $G:[0,\infty) \rightarrow (0,1]$ characterized by the halfwidth of the $3$ dB gain $\varphi_{\text{RX}}$. We use the value $\varphi_{\text{RX}} = 1.6 \degree$ according to the International Telecommunication Union Recommendations (ITU-R) \cite{ITURS1528}. The GP is a \textit{projection process} and, as such, a nonhomogeneous PPP [CITE].
 
             The density of the GP has the following connection to the fading distribution:
 
-          \begin{prop}[Density of the GP]
-            Let $f_H(\cdot)$ and $F_H(\cdot)$ be the pdf and the complementary cdf (ccdf) of $H$, respectively. The density of $\mathcal{G}$ is given by
-            \begin{equation}
-              \label{eq:GPdensity}
-              \lambda_{\mathcal{G}}(t)= \tilde{\kappa}F_H(t)/t, \text{ \text{for} }t>0,
-            \end{equation}
-            where $\tilde{\kappa}= \kappa/\log(2)$ and
-            \begin{equation}
-              \label{eq:kappa}
-                    {\kappa} \triangleq    \pi \lambda   \left(\frac{h \varphi_{\textup{RX}}}{\sin^2(\epsilon)  }\right)^2
-            \end{equation}
-            is approximately the mean number of UEs inside the $3$ dB footprint of a SBS.
-            
-            \begin{proof}
-              By [CITE],
-              \begin{align*}
-                &\lambda_{\mathcal{G}}(t) \overset{}{=} \frac{d}{dt}\pi \lambda \mathbb{E}\left[\left( G^{-1}[t/H] \right)^2 \right] \\
-                &=\tilde{\kappa}\frac{d}{dt} \int_t^{\infty} G^{-1}(t/y)f_H(y) dy  = \tilde{\kappa}\frac{d}{dt} \int_t^{\infty} \log(t/y)f_H(y) dy\\ &= \tilde{\kappa} \sij{t}{\infty} \log(t/y)F_H(y) + \tilde{\kappa} \frac{d}{dt} \int_0^{t}\frac{F_H(y)}{y} dy =  \tilde{\kappa}F_H(t)/t,
-              \end{align*}
-            as long as $\log(t/y) F_H(y) =0$ as $y \rightarrow 0$ for all $t>0$.  $G^{-1}(\cdot)$ is considered to be the generalized inverse $G^{-1}(y) = \inf \{x:G(x)<y\}$.
+            \begin{prop}[Density of the GP]
+              Let $F_H(\cdot)$ be the complementary cdf (ccdf) of $H$. The density of $\mathcal{G}$ is given by
+              \begin{equation}
+                \label{eq:GPdensity}
+                \lambda_{\mathcal{G}}(t)= \tilde{\kappa}F_H(t)/t, \text{ \text{for} }t>0,
+              \end{equation}
+              where $\tilde{\kappa}= \kappa/\log(2)$ and
+              \begin{equation}
+                \label{eq:kappa}
+                      {\kappa} \triangleq    \pi \lambda   \left(\frac{h \varphi_{\textup{RX}}}{\sin^2(\epsilon)  }\right)^2
+              \end{equation}
+              is approximately the mean number of UEs inside the $3$ dB footprint of a SBS.            
+              \begin{proof}
+                Let $f_H(\cdot)$ be the pdf of $H$. We denote $G^{-1}(\cdot)$ as the generalized inverse $G^{-1}(y) = \inf \{x:G(x)<y\}$. By [CITE],
+                \begin{align*}
+                  &\int_t^{\infty}\lambda_{\mathcal{G}}(y)dy \overset{}{=} \pi \lambda \mathbb{E}\left[ \left(\frac{G^{-1}(t/H)}{D_{h,\epsilon}}\right)^2 \right] \\
+                  &=\pi \lambda \int_t^{\infty} \left(-\frac{h \varphi_{\text{RX}}\sqrt{-\log(t/h)}}{\sin^2(\epsilon) \sqrt{\log(2)}}\right)^2f_H(h) dh  \\
+                  &= -\tilde{\kappa} \int_t^{\infty} \log(t/h)f_H(h) dh\\
+                  &\overset{(a)}{=} -\tilde{\kappa} \sij{t}{\infty} \log(t/h)F_H(h) - \tilde{\kappa} \int_t^{\infty}\frac{F_H(h)}{h} dh.
+                \end{align*}
+                In (a), we use the integration by parts. The result follows by derivating w.r.t. $t$ and taking the minus sign---as long as $\int_t^{\infty} \log(t/h)f_H(h) dh$ converges for all $t>0$.
               \end{proof}
-          \end{prop}
+            \end{prop}
 
           The mean and the variance of the total received power are given by
           \begin{align}
