@@ -41,61 +41,54 @@ dist7=[];
 dist8=[];
 dist9=[];
 
-
-
-w=0;
+w=0.2;
 c1=1/2;
 c2=1;
 c3=2;
+
+elevation1=90;
 elevation2=80;
+elevation3=60;
 
-elevation=90;
 for theta = tau 
-  dist1 = [dist1 pc(theta,c1,w,elevation)];
-end
-
-elevation=elevation2;
-for theta = tau 
-  dist2 = [dist2 pc(theta,c1,w,elevation)];
-end
-
-elevation=45;
-for theta = tau 
-  dist3 = [dist3 pc(theta,c1,w,elevation)];
-end
-
-elevation=90;
-for theta = tau 
-  dist4 = [dist4 pc(theta,c2,w,elevation)];
-end
-
-elevation=elevation2;
-for theta = tau 
-  dist5 = [dist5 pc(theta,c2,w,elevation)];
-end
-
-elevation=60;
-for theta = tau 
-  dist6 = [dist6 pc(theta,c2,w,elevation)];
-end
-
-elevation=90;
-for theta = tau 
-  dist7 = [dist7 pc(theta,c3,w,elevation)];
-end
-elevation=elevation2;
-for theta = tau 
-  dist8 = [dist8 pc(theta,c3,w,elevation)];
-end
-
-elevation=45;
-for theta = tau 
-  dist9 = [dist9 pc(theta,c3,w,elevation)];
+  dist1 = [dist1 pc(theta,c1,w,elevation1)];
 end
 
 
+for theta = tau 
+  dist2 = [dist2 pc(theta,c1,w,elevation2)];
+end
+
+for theta = tau 
+  dist3 = [dist3 pc(theta,c1,w,elevation3)];
+end
 
 
+for theta = tau 
+  dist4 = [dist4 pc(theta,c2,w,elevation1)];
+end
+
+for theta = tau 
+  dist5 = [dist5 pc(theta,c2,w,elevation2)];
+end
+
+for theta = tau 
+  dist6 = [dist6 pc(theta,c2,w,elevation3)];
+end
+
+
+for theta = tau 
+  dist7 = [dist7 pc(theta,c3,w,elevation1)];
+end
+
+for theta = tau 
+  dist8 = [dist8 pc(theta,c3,w,elevation2)];
+end
+
+
+for theta = tau 
+  dist9 = [dist9 pc(theta,c3,w,elevation3)];
+end
 
 % Create figure
 figure1 = figure;
@@ -117,8 +110,15 @@ plot(10*log10(tau),dist6,'color',"#EDB120",'linewidth',2)
 %% plot(10*log10(tau),dist8,'color',"#D95319",'linewidth',2)
 %% plot(10*log10(tau),dist9,'color',"#EDB120",'linewidth',2)
 
-plot(10*log10(tau),(1+tau).^-c2,'color',"black",'linewidth',2)
+%plot(10*log10(tau),(1+tau).^-c2.*genexpint(c2+1,w.*tau)*c2,'color',"black",'linewidth',2)
 
+nakdist1=[];
+m=10;
+for theta = tau 
+  nakdist1 = [nakdist1 mthmomentSINR(m,1,c2,theta,w)];
+end
+
+plot(10*log10(tau),nakdist1,'color','b','linewidth',2)
  
 %%  plot(10*log10(x1),1-f1,'--','color','#0072BD','linewidth',2)
 %%  plot(10*log10(x2),1-f2,'--','color','#D95319','linewidth',2)
