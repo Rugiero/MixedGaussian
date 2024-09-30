@@ -25,15 +25,20 @@ elevation3=60;
 
 
 lnLoS = makedist('Lognormal','mu',muLoS,'sigma',sigmaLoS);
-lnNLoS = makedist('Lognormal','mu',muNLoS,'sigma',sigmaNLoS);
-"lnLoS"
-%mean(lnLoS)
+lnNLoS = makedist('Lognormal','mu',muNLoS,'sigma',sigmaNLoS)
+expLoS = makedist('Exponential','mu',mLoS);
+expNLoS = makedist('Exponential','mu',mNLoS);
+
+
+"LoS"
+abs(mean(lnLoS)-mean(expLoS))
 %var(lnLoS)
-var(lnLoS)+mean(lnLoS)^2
-"lnNLoS"
-%mean(lnNLoS)
+abs(var(lnLoS)+mean(lnLoS)^2-(var(expLoS)+mean(expLoS)^2))
+"NLoS"
+abs(mean(lnNLoS)-mean(expNLoS))
 %var(lnNLoS)
-var(lnNLoS)+mean(lnNLoS)^2
+abs(var(lnNLoS)+mean(lnNLoS)^2-(var(expNLoS)+mean(expNLoS)^2))
+
 
 
 pLoS=exp(-beta*cot(deg2rad(elevation1)));
@@ -43,16 +48,6 @@ lnFH2 = @(t) kappa*pLoS*(1-cdf(lnLoS,t))./t+kappa*(1-pLoS)*(1-cdf(lnNLoS,t))./t;
 pLoS=exp(-beta*cot(deg2rad(elevation3)));
 lnFH3 = @(t) kappa*pLoS*(1-cdf(lnLoS,t))./t+kappa*(1-pLoS)*(1-cdf(lnNLoS,t))./t;
 
-expLoS = makedist('Exponential','mu',mLoS);
-expNLoS = makedist('Exponential','mu',mNLoS);
-"expLoS"
-%mean(expLoS)
-%var(expLoS)
-var(expLoS)+mean(expLoS)^2
-"expNLoS"
-%mean(expNLoS)
-%var(expNLoS)
-var(expNLoS)+mean(expNLoS)^2
 
 
 pLoS=exp(-beta*cot(deg2rad(elevation1)));
@@ -88,7 +83,7 @@ plot(t,expFH3(t),'--', 'color','#EDB120','linewidth',2)
 ylabel('$\lambda_{\mathcal{G}}(t)$','FontSize',14,'Interpreter','latex','Rotation',0)
 xlabel('t','FontSize',14,'Interpreter','latex')
 % Create title
-title('Density function of the GP with $\tilde{\kappa}=1$',...
+title('Density function of the GP',...
       'Interpreter','latex');
 
 fill([t,fliplr(t)],[lnFH1(t),fliplr(expFH1(t))],[0 0.4470 0.7410],'FaceAlpha',0.3,'EdgeColor','none');
