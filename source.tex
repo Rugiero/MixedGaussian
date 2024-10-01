@@ -20,8 +20,6 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\B}[1]{\mathbf{#1}}
-
-
 \newtheorem{thm}{Theorem} 
 \newtheorem{thm1}{Theorem}
 \newtheorem{thm2}{Theorem}
@@ -39,7 +37,6 @@
 \newtheorem{kor}[thm5]{Corollary}
 \newtheorem{conjecture}[thm6]{Conjecture}
 \newtheorem{approximation}[thm7]{Approximation}
-
 \usepackage{amsmath,amsfonts}
 \usepackage{algorithmic}
 \usepackage{array}
@@ -117,15 +114,15 @@ risto.wichman@aalto.fi}
            \end{center}
          \end{table}   
 
-      
-          \section{Analysis}
-
-          \subsection{Gain process}
-          We denote the derivative of the function $\|x\| \mapsto \varphi_x $ at $\|x\| =0$ with $D_{h,\epsilon} \triangleq \sin^2(\epsilon)/h$. Consequently, $\varphi_x \approx D_{h,\epsilon}\|x\|$ for small $\|x\|$.
-          Given a PPP $\Phi \subset \R^2$ of density $\lambda$, define the shadowed gain process (GP)
-          \begin{equation}
-            \label{eq:gainprocess}
-            \mathcal{G} \triangleq \left\{x \in \Phi : H_x G(D_{h,\epsilon}\|x\|) \right\},
+         
+         \section{Analysis}
+         
+         \subsection{Gain process}
+         We denote the derivative of the function $\|x\| \mapsto \varphi_x $ at $\|x\| =0$ with $D_{h,\epsilon} \triangleq \sin^2(\epsilon)/h$. Consequently, $\varphi_x \approx D_{h,\epsilon}\|x\|$ for small $\|x\|$.
+         Given a PPP $\Phi \subset \R^2$ of density $\lambda$, define the shadowed gain process (GP)
+         \begin{equation}
+           \label{eq:gainprocess}
+           \mathcal{G} \triangleq \left\{x \in \Phi : H_x G(D_{h,\epsilon}\|x\|) \right\},
           \end{equation}
           where $\{H_x\}$ are i.i.d. shadowing variables, possibly degenerate, and 
           \begin{equation}

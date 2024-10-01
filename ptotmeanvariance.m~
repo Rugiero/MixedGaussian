@@ -1,0 +1,5 @@
+meanintegrand1 = @(t) kappa*pLoS*(1-cdf(lnLoS,t))./t+kappa*(1-pLoS)*(1-cdf(lnNLoS,t))./t;
+meanintegrand2=exp(-beta*cot(deg2rad(elevation2)));
+lnFH2 = @(t) kappa*pLoS*(1-cdf(lnLoS,t))./t+kappa*(1-pLoS)*(1-cdf(lnNLoS,t))./t;
+meanintegrand3=exp(-beta*cot(deg2rad(elevation3)));
+lnFH3 = @(t) (kappa*pLoS*(1-cdf(lnLoS,t))./t+kappa*(1-pLoS)*(1-cdf(lnNLoS,t))./t).*t;

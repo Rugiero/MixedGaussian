@@ -1,5 +1,5 @@
 clear all;
-%close all;
+close all;
 %addpath("/home/ilari/fillbetweenareacurve")
 rho=log(10)/10;
 muLoS=0*rho;
@@ -11,12 +11,11 @@ sigmaLoS=2.8*rho;
 sigmaNLoS=9*rho;
 %mLoS=exp(muLoS+sigmaLoS^2)/sqrt(2);
 %mNLoS=exp(muNLoS+sigmaNLoS^2)/sqrt(2);
-%mLoS=exp(muLoS+sigmaLoS^2/2);
-%mNLoS=exp(muNLoS+sigmaNLoS^2/2);
+mLoS=exp(muLoS+sigmaLoS^2/2);
+mNLoS=exp(muNLoS+sigmaNLoS^2/2);
 %mLoS = sqrt(exp(2*muLoS+sigmaLoS^2)*(-1+exp(sigmaLoS^2)));
 %mNLoS = sqrt(exp(2*muNLoS+sigmaNLoS^2)*(-1+exp(sigmaNLoS^2)));
-
-
+ 
 beta=2.3;
 kappa=1;
 
@@ -24,29 +23,23 @@ elevation1=90;
 elevation2=80;
 elevation3=60;
 
+
 lnLoS = makedist('Lognormal','mu',muLoS,'sigma',sigmaLoS);
 lnNLoS = makedist('Lognormal','mu',muNLoS,'sigma',sigmaNLoS)
+expLoS = makedist('Exponential','mu',mLoS);
+expNLoS = makedist('Exponential','mu',mNLoS);
 
-ms= solveexpmeans(elevation1);
-expLoS1 = makedist('Exponential','mu',ms(1));
-expNLoS1 = makedist('Exponential','mu',ms(2));
-
-ms= solveexpmeans(elevation2);
-expLoS2 = makedist('Exponential','mu',ms(1));
-expNLoS2 = makedist('Exponential','mu',ms(2));
-
-ms= solveexpmeans(elevation3);
-expLoS3 = makedist('Exponential','mu',ms(1));
-expNLoS3 = makedist('Exponential','mu',ms(2));
 
 "LoS"
-(mean(lnLoS)-mean(expLoS1))^2
+abs(mean(lnLoS)-mean(expLoS))
 %var(lnLoS)
-abs(var(lnLoS)+mean(lnLoS)^2-(var(expLoS2)+mean(expLoS2)^2))
+abs(var(lnLoS)+mean(lnLoS)^2-(var(expLoS)+mean(expLoS)^2))
 "NLoS"
-(mean(lnNLoS)-mean(expNLoS1))^2
+abs(mean(lnNLoS)-mean(expNLoS))
 %var(lnNLoS)
-(var(lnNLoS)+mean(lnNLoS)^2-(var(expNLoS2)+mean(expNLoS2)^2))^2
+abs(var(lnNLoS)+mean(lnNLoS)^2-(var(expNLoS)+mean(expNLoS)^2))
+
+
 
 pLoS=exp(-beta*cot(deg2rad(elevation1)));
 lnFH1 = @(t) kappa*pLoS*(1-cdf(lnLoS,t))./t+kappa*(1-pLoS)*(1-cdf(lnNLoS,t))./t;
@@ -55,12 +48,14 @@ lnFH2 = @(t) kappa*pLoS*(1-cdf(lnLoS,t))./t+kappa*(1-pLoS)*(1-cdf(lnNLoS,t))./t;
 pLoS=exp(-beta*cot(deg2rad(elevation3)));
 lnFH3 = @(t) kappa*pLoS*(1-cdf(lnLoS,t))./t+kappa*(1-pLoS)*(1-cdf(lnNLoS,t))./t;
 
+
+
 pLoS=exp(-beta*cot(deg2rad(elevation1)));
-expFH1 = @(t) kappa*pLoS*(1-cdf(expLoS1,t))./t+kappa*(1-pLoS)*(1-cdf(expNLoS1,t))./t;
+expFH1 = @(t) kappa*pLoS*(1-cdf(expLoS,t))./t+kappa*(1-pLoS)*(1-cdf(expNLoS,t))./t;
 pLoS=exp(-beta*cot(deg2rad(elevation2)));
-expFH2 = @(t) kappa*pLoS*(1-cdf(expLoS2,t))./t+kappa*(1-pLoS)*(1-cdf(expNLoS2,t))./t;
+expFH2 = @(t) kappa*pLoS*(1-cdf(expLoS,t))./t+kappa*(1-pLoS)*(1-cdf(expNLoS,t))./t;
 pLoS=exp(-beta*cot(deg2rad(elevation3)));
-expFH3 = @(t) kappa*pLoS*(1-cdf(expLoS3,t))./t+kappa*(1-pLoS)*(1-cdf(expNLoS3,t))./t;
+expFH3 = @(t) kappa*pLoS*(1-cdf(expLoS,t))./t+kappa*(1-pLoS)*(1-cdf(expNLoS,t))./t;
 
 min=0.01;
 max = 2;
