@@ -9,8 +9,8 @@ muNLoS=-12*rho
 
 sigmaLoS=2.8*rho;
 sigmaNLoS=9*rho;
-%mLoS=exp(muLoS+sigmaLoS^2)/sqrt(2);
-%mNLoS=exp(muNLoS+sigmaNLoS^2)/sqrt(2);
+%%mLoS=exp(muLoS+sigmaLoS^2)/sqrt(2);
+%%mNLoS=exp(muNLoS+sigmaNLoS^2)/sqrt(2);
 mLoS=exp(muLoS+sigmaLoS^2/2);
 mNLoS=exp(muNLoS+sigmaNLoS^2/2);
 %mLoS = sqrt(exp(2*muLoS+sigmaLoS^2)*(-1+exp(sigmaLoS^2)));

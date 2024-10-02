@@ -18,13 +18,21 @@ function means=solveexpmeans(elevation)
   %% minfun=@(x) ((pLoS*x(1)+(1-pLoS)*x(2)-(mlnLoS+mlnNLoS))^2+...
   %%(varexpLoS(x(1))+varexpNLoS(x(2))-...
   %% (varlnLoS+varlnNLoS))^2)*(x(1)>=0)*(x(2)>=0) +10^4*(x(1)<0)+10^4*(x(2)<0);
-  minfun1=@(x) (pLoS*x-mlnLoS).^2+(varexpLoS(x)-varlnLoS).^2;
-  minfun2=@(x) ((1-pLoS)*x-mlnNLoS).^2+(varexpNLoS(x)-varlnNLoS).^2;
-  if(elevation==90)
-    means=[fminsearch(minfun1,10), 1];
-  elseif(elevation<20)
-    means=[1, fminsearch(minfun2,10)];
-  else
-    means=[fminsearch(minfun1,10), fminsearch(minfun2,10)];
-  end
+  
+%%  minfun1=@(x) (pLoS*x-mlnLoS).^2+(varexpLoS(x)-varlnLoS).^2;
+ %% minfun2=@(x) ((1-pLoS)*x-mlnNLoS).^2+(varexpNLoS(x)-varlnNLoS).^2;
+
+ %% minfun3=@(x) ((pLoS*x(1)+(1-pLoS)*x(2)-(mlnLoS+mlnNLoS)).^2+(varexpLoS(x(1))+varexpNLoS(x(2))-(varlnLoS+varlnNLoS)).^2)+1000*(x(1)<0)+1000*(x(2)<0);
+ %%minfun3=@(x) ((varexpLoS(x(1))+varexpNLoS(x(2))-(varlnLoS+varlnNLoS)).^2)+1000*(x(1)<0)+1000*(x(2)<0);
+ minfun3=@(x) ((pLoS*x(1)+(1-pLoS)*x(2)-(mlnLoS+mlnNLoS)).^2)+1000*(x(1)<0)+1000*(x(2)<0);
+  
+  means=fminsearch(minfun3,[10,10]);
+  %% if(elevation==90)
+  %%   means=[fminsearch(minfun1,10), 1];
+  %% elseif(elevation<20)
+  %%   means=[1, fminsearch(minfun2,10)];
+  %% else
+  %%   means=[fminsearch(minfun1,10), fminsearch(minfun2,10)];
+  %% end
+  
 end
