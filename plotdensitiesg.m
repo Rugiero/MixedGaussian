@@ -2,13 +2,16 @@ clear all;
 %close all;
 %addpath("/home/ilari/fillbetweenareacurve")
 rho=log(10)/10;
+%% muLoS=0*rho;
+%% muNLoS=-12*rho
 muLoS=0*rho;
-muNLoS=-12*rho
-%muLoS=12*rho;
-%muNLoS=0*rho;
+muNLoS=-25*rho;
 
-sigmaLoS=2.8*rho;
-sigmaNLoS=9*rho;
+%% sigmaLoS=2.8*rho;
+%% sigmaNLoS=9*rho
+sigmaLoS=4*rho;
+sigmaNLoS=6*rho;
+
 %mLoS=exp(muLoS+sigmaLoS^2)/sqrt(2);
 %mNLoS=exp(muNLoS+sigmaNLoS^2)/sqrt(2);
 %%mLoS=exp(muLoS+sigmaLoS^2/2);
@@ -27,8 +30,10 @@ elevation3=60;
 lnLoS = makedist('Lognormal','mu',muLoS,'sigma',sigmaLoS);
 lnNLoS = makedist('Lognormal','mu',muNLoS,'sigma',sigmaNLoS)
 
-a=1/2*exp(muNLoS+3*sigmaNLoS^2/2);
-b=exp(sigmaNLoS^2)/2;
+%a=1/2*exp(muNLoS+3*sigmaNLoS^2/2);
+a=1/0.560286;
+%b=exp(sigmaNLoS^2)/2;
+b=1.16784;
 p=exp(muLoS+sigmaLoS^2/2);
 q=1-exp(-2*muLoS-sigmaLoS^2)*sqrt(-exp(4*muLoS+2*sigmaLoS^2)+exp(4*muLoS+3*sigmaLoS^2));
 
@@ -37,13 +42,21 @@ lnFH1 = @(t) kappa*pLoS*(1-cdf(lnLoS,t))./t+kappa*(1-pLoS)*(1-cdf(lnNLoS,t))./t;
 pLoS=exp(-beta*cot(deg2rad(elevation2)));
 lnFH2 = @(t) kappa*pLoS*(1-cdf(lnLoS,t))./t+kappa*(1-pLoS)*(1-cdf(lnNLoS,t))./t;
 pLoS=exp(-beta*cot(deg2rad(elevation3)));
+
 lnFH3 = @(t) kappa*pLoS*(1-cdf(lnLoS,t))./t+kappa*(1-pLoS)*(1-cdf(lnNLoS,t))./t;
 
 pLoS=exp(-beta*cot(deg2rad(elevation1)));
+pLoS=0;
 expFH1 = @(t) kappa*pLoS*(exp(-(t-p*q)/(p*(1-q))).*(t>=p*q)+(t<p*q))./t+kappa*(1-pLoS)*(exp(-t/a)/b)./t;
 pLoS=exp(-beta*cot(deg2rad(elevation2)));
+a=1/0.561768;
+b=1.74261;
+pLoS=0;
 expFH2 = @(t) kappa*pLoS*(exp(-(t-p*q)/(p*(1-q))).*(t>=p*q)+(t<p*q))./t+kappa*(1-pLoS)*(exp(-t/a)/b)./t;
 pLoS=exp(-beta*cot(deg2rad(elevation3)));
+a=1/0.568503;
+b=4.27896;
+pLoS=0;
 expFH3 = @(t) kappa*pLoS*(exp(-(t-p*q)/(p*(1-q))).*(t>=p*q)+(t<p*q))./t+kappa*(1-pLoS)*(exp(-t/a)/b)./t;
 
 min=0.01;

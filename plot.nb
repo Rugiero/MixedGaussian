@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    718383,      12160]
-NotebookOptionsPosition[    716403,      12128]
-NotebookOutlinePosition[    716802,      12144]
-CellTagsIndexPosition[    716759,      12141]
+NotebookDataLength[    719340,      12173]
+NotebookOptionsPosition[    717357,      12141]
+NotebookOutlinePosition[    717758,      12157]
+CellTagsIndexPosition[    717715,      12154]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -11903,7 +11903,7 @@ Cell[BoxData[
       RowBox[{"r", ",", "h", ",", "lambda"}], " ", "]"}]}], ";"}], 
    "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"elevation", " ", "=", "60."}], ";"}], "\[IndentingNewLine]", 
+    RowBox[{"elevation", " ", "=", "70."}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"pLoS", " ", "=", " ", 
      RowBox[{"Exp", "[", 
@@ -11975,7 +11975,7 @@ Cell[BoxData[
      RowBox[{"SIR", "/", "SINR"}], " ", 
      RowBox[{"distributions", "."}]}], "*)"}], "\[IndentingNewLine]", 
    RowBox[{"Export", "[", 
-    RowBox[{"\"\</home/ilari/MixedGaussian/SIRdists1g.mat\>\"", ",", 
+    RowBox[{"\"\</home/ilari/MixedGaussian/SINRdists1g.mat\>\"", ",", 
      RowBox[{"{", 
       RowBox[{
        RowBox[{"\"\<dist1\>\"", "->", "res1"}], ",", 
@@ -12028,18 +12028,31 @@ Cell[BoxData[
    3.936713900399218*^9}, {3.936714372950254*^9, 3.936714376593779*^9}, 
    3.936714408041278*^9, 3.936714660018114*^9, {3.936845911834578*^9, 
    3.936845917717811*^9}, {3.936845983928056*^9, 3.936846007142599*^9}, 
-   3.936846086458419*^9, {3.9368474207012014`*^9, 3.936847446982767*^9}, 
-   3.936847611997181*^9, 3.936849366241815*^9, {3.9368494783555994`*^9, 
+   3.936846086458419*^9, {3.9368474207012005`*^9, 3.936847446982767*^9}, 
+   3.936847611997181*^9, 3.936849366241815*^9, {3.936849478355599*^9, 
    3.93684947854539*^9}, 3.936849525475458*^9, 3.936849668968897*^9, {
    3.936866466658084*^9, 3.936866489133971*^9}, {3.937043613454341*^9, 
-   3.937043620280573*^9}, 3.9370471359179792`*^9},
+   3.937043620280573*^9}, 3.937047135917979*^9, {3.937894185290669*^9, 
+   3.937894185389339*^9}, {3.937894837536551*^9, 3.937894879160658*^9}, {
+   3.937895088577424*^9, 3.937895116718523*^9}, {3.937895232632121*^9, 
+   3.937895256076436*^9}, 3.937898227933296*^9, {3.937898261507914*^9, 
+   3.9378982615792027`*^9}, {3.937898377852833*^9, 3.937898405037434*^9}, {
+   3.937899802161327*^9, 3.9378998054219713`*^9}, {3.9378998505175543`*^9, 
+   3.9378998506182404`*^9}, {3.93789992402017*^9, 3.937899946709159*^9}},
  CellLabel->
-  "In[2900]:=",ExpressionUUID->"7659b909-5584-4464-8dc0-33f3653207a6"],
+  "In[2383]:=",ExpressionUUID->"7659b909-5584-4464-8dc0-33f3653207a6"],
 
-Cell[BoxData["\<\"/home/ilari/MixedGaussian/SIRdists1g.mat\"\>"], "Output",
- CellChangeTimes->{3.937047217989802*^9},
+Cell[BoxData["\<\"/home/ilari/MixedGaussian/SINRdists1g.mat\"\>"], "Output",
+ CellChangeTimes->{
+  3.937047217989802*^9, 3.937894131504887*^9, 3.937894200281045*^9, 
+   3.9378944128127623`*^9, {3.9378948501237288`*^9, 3.937894892317024*^9}, {
+   3.9378951084901114`*^9, 3.937895129783944*^9}, {3.937895246392768*^9, 
+   3.937895271012053*^9}, 3.937896031653215*^9, 3.937896081593028*^9, 
+   3.9378982140247583`*^9, {3.937898254787765*^9, 3.9378982763146887`*^9}, 
+   3.937898390253769*^9, 3.937898426276598*^9, 3.937899826426478*^9, 
+   3.9378998636216087`*^9, {3.937899937692204*^9, 3.937899961571154*^9}},
  CellLabel->
-  "Out[2915]=",ExpressionUUID->"e0a3067c-f7d2-4c2f-9990-aabf84841515"]
+  "Out[2398]=",ExpressionUUID->"02d45494-9253-485a-9fe0-6d40826ac946"]
 }, Open  ]],
 
 Cell[BoxData[{
@@ -12127,7 +12140,7 @@ Cell[BoxData[""], "Input",
 9b7a92a8c1ff"]
 },
 WindowSize->{614.25, 669},
-WindowMargins->{{-1536, Automatic}, {Automatic, 0}},
+WindowMargins->{{-921.75, Automatic}, {Automatic, 0}},
 FrontEndVersion->"14.0 for Linux x86 (64-bit) (December 12, 2023)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"7bb316a0-f8d0-45a8-9389-40f9a3f4879c"
@@ -12156,12 +12169,12 @@ Cell[698901, 11688, 131, 3, 29, "Input",ExpressionUUID->"e4197cb9-8e0d-4db4-9c25
 Cell[699035, 11693, 400, 9, 50, "Input",ExpressionUUID->"a037fcb7-1cb2-4899-b6f6-fc09023c6528"],
 Cell[699438, 11704, 2198, 57, 216, "Input",ExpressionUUID->"a3362057-84fa-446e-adf1-360955d88905"],
 Cell[CellGroupData[{
-Cell[701661, 11765, 11466, 271, 1164, "Input",ExpressionUUID->"7659b909-5584-4464-8dc0-33f3653207a6"],
-Cell[713130, 12038, 201, 3, 47, "Output",ExpressionUUID->"e0a3067c-f7d2-4c2f-9990-aabf84841515"]
+Cell[701661, 11765, 11930, 277, 1164, "Input",ExpressionUUID->"7659b909-5584-4464-8dc0-33f3653207a6"],
+Cell[713594, 12044, 691, 10, 95, "Output",ExpressionUUID->"02d45494-9253-485a-9fe0-6d40826ac946"]
 }, Open  ]],
-Cell[713346, 12044, 2312, 62, 250, "Input",ExpressionUUID->"d76c6e2b-9ae2-4f9e-9b12-2dfb87402c0d"],
-Cell[715661, 12108, 510, 12, 50, "Input",ExpressionUUID->"d7fdc1ff-8d59-4dcd-bd06-89ff25f5c646"],
-Cell[716174, 12122, 225, 4, 29, "Input",ExpressionUUID->"734e5f0f-ed7e-4ce0-aa6e-9b7a92a8c1ff"]
+Cell[714300, 12057, 2312, 62, 250, "Input",ExpressionUUID->"d76c6e2b-9ae2-4f9e-9b12-2dfb87402c0d"],
+Cell[716615, 12121, 510, 12, 50, "Input",ExpressionUUID->"d7fdc1ff-8d59-4dcd-bd06-89ff25f5c646"],
+Cell[717128, 12135, 225, 4, 29, "Input",ExpressionUUID->"734e5f0f-ed7e-4ce0-aa6e-9b7a92a8c1ff"]
 }
 ]
 *)

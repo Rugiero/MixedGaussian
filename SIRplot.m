@@ -4,7 +4,7 @@ clear all;
 addpath("/home/ilari/genexpint")
 
 
-S = importdata("SIRdists1.mat");
+S = importdata("SIRdists1g.mat");
 simdist1 = S.dist1;
 simdist2 = S.dist2;
 simdist3 = S.dist3;
@@ -13,7 +13,7 @@ simdist3 = S.dist3;
 [f3,x3] = ecdf(simdist3);
 
 
-S = importdata("SIRdists5.mat");
+S = importdata("SIRdists5g.mat");
 simdist1 = S.dist1;
 simdist2 = S.dist2;
 simdist3 = S.dist3;
@@ -100,7 +100,6 @@ axes1 = axes('Parent',figure1);
 hold(axes1,'on');
 
 plot([-1],[-1],'color','black','linewidth',2)
-
 plot([-1],[-1],'--','color','black','linewidth',2)
 plot(10*log10(tau),dist1,'color',"#0072BD",'linewidth',2)
 plot(10*log10(tau),dist2,'color',"#D95319",'linewidth',2)
@@ -133,8 +132,8 @@ end
 
 
 %plot(10*log10(tau1),nakdist1,'color','b','linewidth',2)
-plot(10*log10(tau1),nakdist2,'color','black','linewidth',2)
-plot(10*log10(tau1),nakdist3,'color','black','linewidth',2)
+%plot(10*log10(tau1),nakdist2,'color','black','linewidth',2)
+%plot(10*log10(tau1),nakdist3,'color','black','linewidth',2)
 
 
 plot(10*log10(x1),1-f1,'--','color','#0072BD','linewidth',2)
@@ -156,7 +155,7 @@ ax = gca;
 ax.FontSize = 14;
 yticks([0 0.2 0.4 0.6 0.8 1])
 xticks(round(linspace(10*log10(min(tau1)),round(10*log10(max(tau))),5),1))
-title('Interference-limited channel$','FontSize',14,'Interpreter','latex')
+title('Interference-limited channel','FontSize',14,'Interpreter','latex')
 
 %% text(1,0.6,'${m}=1,2,5$','FontSize',14,'Interpreter','latex')
 %% text(1,0.6,'$\kappa=0.1 \log(2)$','FontSize',14,'Interpreter','latex')
