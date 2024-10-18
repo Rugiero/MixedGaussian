@@ -174,7 +174,6 @@ risto.wichman@aalto.fi}
 
           Of course, the index set $\mathcal{T}$ does not have to be a set of the first $J$ integers; for example, we could you use $\mathcal{T}=\{\text{NLoS, LoS} \}$.
 
-
           \subsection{Signal-to-interference ratio}
           Let $W>0$ be a normalized noise power constant. As we consider a NB that decays much faster than the spatial path loss w.r.t. $\|x\|$, $x \in \Phi$ as in the definition of the GP \eqref{eq:gainprocess}, we approximate that \textbf{the spatial path loss is equal to all transmitters} and depends on the distance between the SBS and its antenna boresight location on the earth's surface $\hat{d}_{h,\epsilon}$. The path loss law is defined as $\ell({d_x}) \triangleq ({d_x}/d_0)^{\gamma}$, where $d_x$ is the Euclidean distance between the UE $x \in \mathcal{G}$ and the typical SBS, and $\gamma$ is the power path loss exponent. We define the SINR of the strongest signal $x_0 \triangleq \max  \mathcal{G}$ at the typical SBS as
           \begin{equation}
@@ -193,73 +192,30 @@ risto.wichman@aalto.fi}
 
           
           \subsubsection{Rayleigh fading case}
+          Assuming a exponential fading variable $H$ with mean $m$;
+          \begin{equation}
+            \label{eq:lapexp}
+            \mathcal{L}_{S_{\mathcal{G}}}(s)= \exp\left\{-\mathcal{\kappa}\int_0^{\infty}(1-e^{-sr})\frac{e^{-r/m}}{r} dr \right\}=(1+sm)^{-\tilde{\kappa}},
+          \end{equation}
+          which is the Laplace transform of the \textbf{gamma distribution} with shape parameter $\tilde{\kappa}$ and scale parameter $m$: the total received power is gamma-distributed if all UEs are Rayleigh faded and approximately gamma-distributed with any fading that produces the GP that can be approximated with the exponential-type density function – like the log-normal fading in suitable regimes (see Figure [FIG]).
+          
           
           We are ready to derive a approximation for the probability of coverage of the UE with the srongest signal.
 
             
-
-          \subsection{Gaussian mixture model}
-          Let us consider a two-tier $\mathcal{T} = \{\text{LoS},\text{NLoS}\}$ logarithmic Gaussian mixture fading model with the mean and standard deviation $\mu_{i},\sigma_{i}$, $i \in \{\text{LoS},\text{NLoS} \}$, for the line-of-sight and the non-line-of-sight tiers, respectively. Consequently, The power fading RV of a transmitter $x \in \Phi$ is given by
-            \begin{equation}
-            H_x \sim
-            \begin{cases}
-               \text{Lognormal}(\mu_{\text{LoS}},\sigma_{\text{LoS}}^2), \text{ if } U<p_{\text{LoS}} \\
-               \text{Lognormal}(\mu_{\text{NLoS}},\sigma_{\text{NLoS}}^2)\text{ if } U \geq p_{\text{NLoS}},              \label{eq:tier2lognormal}
-            \end{cases}
-            \end{equation}
-            where $U \sim U(0,1)$ follows the uniform distribution.
-            
-            The mean of the lognormal RV is given by $ m_i=\mathbb{E}(H|T=i) = \exp \{\mu_i+\sigma_i^2/2\}$.
-            
-            In the two-tier network $\mathcal{T} =\{\text{LoS}, \text{NLoS}\}$ with the lognormal fading variables \eqref{eq:tier1lognormal} and \eqref{eq:tier2lognormal}, in the simple coverage region, the approximate probability of coverage is given by evaluating \eqref{eq:probofcov} with $m_{LoS}=\exp \{\mu_{\text{LoS}}+\sigma_{\text{LoS}}^2/2\}$, $m_{NLoS}=\exp \{\mu_{\text{NLoS}}+\sigma_{\text{NLoS}}^2/2\}$, $\mathcal{\kappa}_{\text{LoS}} = p_{\text{LoS}}\kappa$ and $\mathcal{\kappa}_{\text{NLoS}}=(1-p_{\text{LoS}})\kappa$, where $\kappa$ is given in given in $\eqref{eq:kappa}$, for a density $\lambda$ of the entire netwrok.
-
-            \subsection{Approximation of the lognormal distribution}
-             For a tradeoff between accuracy and analytical tractability, we approximate the mixed lognormal shadowing distribution with a mixture distribution consisting of an exponential distribution and an atomic probability measure at $0$, where the parameters are chosen by matching the mean, and the variance of the total received power.
-             Accordingly, the exponential shadowing approximation is defined by
-             \begin{equation}
-               \hat{H}_x \sim
-            \begin{cases}
-               0, \text{ if } U < 1-b,\\
-                \text{Exp}(a), \text{ if } U \geq1- b,              \label{eq:tier2exponential}
-            \end{cases}
-            \end{equation}
-             with $a>0$ and $0<b\leq1$.
-
-
-            The complementary CDF (CCDF) is given by the defective distribution function
-            \begin{equation}
-              \label{eq:defexp}
-              F_{\hat{H}_{\text{exp}}}(t)=e^{-at}b,
-            \end{equation}
-            where
-            \begin{align}
-              &a=\frac{2 (p_{\text{LoS}}-1) e^{{\mu_{N\text{LoS}}}+\frac{{\sigma_{N\text{LoS}}}^2}{2}}-2 p_{\text{LoS}} e^{{\mu_{\text{LoS}}}+\frac{{\sigma_{\text{LoS}}}^2}{2}}}{(p_{\text{LoS}}-1) e^{2 \left({\mu_{N\text{LoS}}}+{\sigma_{N\text{LoS}}}^2\right)}-p_{\text{LoS}} e^{2 \left({\mu_{\text{LoS}}}+{\sigma_{\text{LoS}}}^2\right)}},\\
-              &b=\frac{2 \left(({p_\text{LoS}}-1) e^{{\mu_{\text{N\text{LoS}}}}+\frac{{\sigma_{\text{N\text{LoS}}}}^2}{2}}-{p_\text{LoS}} e^{{\mu_{\text{LoS}}}+\frac{{\sigma_{\text{LoS}}}^2}{2}}\right)^2}{({p_\text{LoS}}-1) e^{2 \left({\mu_{\text{N\text{LoS}}}}+{\sigma_{\text{N\text{LoS}}}}^2\right)}-{p_\text{LoS}} e^{2 \left({\mu_{\text{LoS}}}+{\sigma_{\text{LoS}}}^2\right)}}.              
-            \end{align} 
-            At the probability $1-b$, the signal power maps to $0$: this reflects the severe shadowing occurrences when the signal strength in the lognormal shadowing model gets mapped very close to $0$. Notice that the exponential approximation is applicable only if $0<b\leq 1$; hence, it does not apply under general shadowing.
-
-            \subsection{Distribution of the total received power}
-             Under the shadowing approximation $\eqref{eq:defexp}$, the total received power can be simply characterized by the gamma distribution.
-          \begin{align}
-            \label{eq:lapexp}
-            &\mathcal{L}_{S_{\mathcal{G}}}(s) \approx \exp\left\{-\mathcal{\kappa}\int_0^{\infty}(1-e^{-sr})\frac{F_{\hat{H}}(t)}{r} dr \right\}, \\
-            &= \exp\left\{-\mathcal{\kappa}\int_0^{\infty}(1-e^{-sr})\frac{e^{-ra}b}{r} dr \right\}=(1+s/a)^{-b\tilde{\kappa}},
-          \end{align}
-          which is the Laplace transform of the gamma distribution with shape parameter $b\tilde{\kappa}$ and scale parameter $1/a$.
-
-
-                    \begin{prop}
+          \begin{prop}
             Assume a network of density $\lambda$ with the tiers $\mathcal{T}$. Let $H_{x_0}$ be the shadowing variable, and ${x'}_0 =  H_{x_0}G(\|x_0\|) \in \mathcal{G} =\cup_{i \in \mathcal{T}} \mathcal{G}_i$ be the strongest signal of the UEs. In the simple coverage region $\theta \geq 1$,
             \begin{align}
               \label{eq:probofcov}
-              &p_c(\theta) \approx \mathbb{P}\left( \frac{\hat{H}_{x_0} G(\|x_0\|)}{\sum\limits_{x' \in   \mathcal{G} \setminus \{x'_0\}}x'  + W\ell(\hat{d}_{h,\epsilon})} > \theta \right) \nonumber \\      
-              &\overset{(a)}=  \lambda \int_{ \R^2}\mathbb{P}\Bigg(\hat{H}_{x_0} > \theta  2^{\left(\frac{D_{h,\epsilon}\|y\|}{\varphi_{\textup{RX}}}\right)^2 } \cdot \left(\sum_{x \in \mathcal{G}_i }x +W\ell(\hat{d}_{h,\epsilon}) \right)\Bigg) \nonumber dy  \nonumber  \\              
-              &\overset{(b)}{\approx} 2 \pi \lambda b \cdot \nonumber \\
-              &\int_{0}^{\infty} r \prod_{k \in \mathcal{T}}\mathbb{E} \left(e^{-\frac{\theta a \sum_{x \in { \mathcal{G}}} x}{2^{-(D_{h,\epsilon}r/\varphi_{\textup{RX}})^2}   }} \cdot e^{- \theta   \frac{W\ell(\hat{d}_{h,\epsilon})a}{2^{-(D_{h,\epsilon}r/\varphi_{\textup{RX}})^2} }} \right) dr \nonumber \\
-              &\overset{(c)}{=}  \tilde{\kappa}b\int_1^{\infty} \mathcal{L}_{S_{\mathcal{G}}}\left(\theta v a \right)  \mathcal{L}_{W}\left( \theta vW\ell(\hat{d}_{h,\epsilon})a \right)/v dv \nonumber \\
-              &\overset{}{=}   {} \tilde{\kappa}b\int_1^{\infty}  \frac{\exp \{- \theta v W(\hat{d}_{h,\epsilon}/d_0)^{\gamma}  a\}}{v\left(1 + \theta v  \right)^{b\tilde{\kappa}}} dv.
+              &p_c(\theta) \triangleq \mathbb{P}\left( \frac{H_{x_0} G(\|x_0\|)}{\sum\limits_{x' \in   \mathcal{G} \setminus \{x'_0\}}x'  + W\ell(\hat{d}_{h,\epsilon})} > \theta \right) \nonumber \\      
+              &\overset{(a)}= \sum_{i\in \mathcal{T}} \mathbb{P}(T_{x_0}  = i)\lambda \int_{ \R^2}\mathbb{P}\Bigg((H_{x_0}|T_{x_0} = i) > \theta  2^{\left(\frac{D_{h,\epsilon}\|y\|}{\varphi_{\textup{RX}}}\right)^2 } \nonumber \\
+              &\cdot \left(\sum_{x \in \cup\mathcal{G}_i }x +W\ell(\hat{d}_{h,\epsilon}) \right)\Bigg) \nonumber dy  \nonumber  \\              
+              &\overset{(b)}{\approx} 2 \pi \lambda\sum_{i\in \mathcal{T}} \mathbb{P}(T_{}  = i) \cdot \nonumber \\
+              &\int_{0}^{\infty} r \prod_{k \in \mathcal{T}}\mathbb{E} \left(e^{-\frac{\theta \sum_{x \in { \mathcal{G}_k}} x}{2^{-(D_{h,\epsilon}r/\varphi_{\textup{RX}})^2} m_i  }} \cdot e^{- \theta   \frac{W\ell(\hat{d}_{h,\epsilon})}{2^{-(D_{h,\epsilon}r/\varphi_{\textup{RX}})^2} m_i}} \right) dr \nonumber \\
+              &\overset{(c)}{=}   {} \sum_{i \in \mathcal{T}}\tilde{\kappa}_i\int_1^{\infty} \mathcal{L}_{S_{\mathcal{G}_i}}\left(\frac{\theta v  m_k}{m_i} \right)  \mathcal{L}_{W}\left( \frac{\theta vW\ell(\hat{d}_{h,\epsilon})}{m_i} \right)/v dv \nonumber \\
+              &\overset{}{=}   {} \sum_{i \in \mathcal{T}} \tilde{\kappa}_i\int_1^{\infty}  \frac{\exp \{- \theta v W(\hat{d}_{h,\epsilon}/d_0)^{\gamma}/m_i \}}{v\prod\limits_{k \in \mathcal{T}}\left(1 + \theta v  m_k/m_i\right)^{\tilde{\kappa}_k}} dv,
             \end{align}
-            
+            where $m_j \triangleq \mathbb{E}(H| T = j)$ is the mean of the fading variable of tier $j$, $\tilde{\kappa}_i =\mathbb{P}(T_{}  = i) {\tilde{\kappa}}$, where $   \tilde{\kappa}\log(2)= \kappa=\pi \lambda   \left(h \varphi_{\textup{RX}}/\sin^2(\epsilon) \right)^2$ reflects the mean number of UEs inside the (spatial) $3$ dB footprint of all tiers as defined in the equation \eqref{eq:kappa}. The Laplace transform $\mathcal{L}_{S_\mathcal{G}}(s)$ is defined in \eqref{eq:lapdef} and is given for exponential $H$ in \eqref{eq:lapexp}. The Laplace transform of $W$ is defined accordingly as $\mathcal{L}_W(s) \triangleq \mathbb{E}\left(e^{-sW} \right)$, which reduces to $e^{-sW}$ for deterministic $W$.
             \begin{proof}
               The detailed proof is presented in [CITE]. Step (a) heuristically: In the simple coverage region, the UE is covered \textit{only if} it has the strongest signal. Using the translation invariance of the stationary PPP and utilizing Slivnyak's and Gambell's theorems leads to the probability of coverage given by the integral over the plane
 .s
@@ -269,18 +225,30 @@ risto.wichman@aalto.fi}
           \end{prop}
           Notice that $p_c(\theta)$ is the probability of coverage of the UE with the \textit{strongest signal}, which is \textit{not} necessarily the spatially  \textit{nearest transmitter}.
 
-          In an interference-only channel, $W=0$, the coverage probability \eqref{eq:probofcov} has the analytical expression
+          For a single-tier network in an interference-only channel $W=0$, the coverage probability depends on the mean number $\kappa = \tilde{\kappa} \log(2)$ of UEs inside the  $3$ dB footprint of the typical SBS and the threshold $\theta$, and \eqref{eq:probofcov} has the analytical expression
           \begin{equation}
-p_c(\theta) =  \theta^{-\tilde{\kappa}b} {_2F_1}\left(\tilde{\kappa}b, \tilde{\kappa}b;\tilde{\kappa}b + 1; -1/\theta \right),
+p_c(\theta) =  \theta^{-\tilde{\kappa}} {_2F_1}\left(\tilde{\kappa}, \tilde{\kappa};\tilde{\kappa} + 1; -1/\theta \right).
           \end{equation}
-          where $_2F_1(\cdot)$ is the hypergeometric function. The coverage probability does not depend on the scale parameter $a$. However, the probability $b$ that the signal strength of the UEs is more than $0$ has an effect on the coverage probability in a decreasing sense w.r.t. the $b$: for $b \rightarrow 0$, $p_c(\theta) =1$; hence, small $p_{\text{LoS}}$ causing severe shadowing (which is the case with the low elevation angles) is beneficial for the coverage. Directly seen from \eqref{eq:probofcov}, the same insight holds in the interference-plus-noise-limited channel $W>0$.
+          where $_2F_1(\cdot)$ is the hypergeometric function. 
 
 
+          \subsection{Gaussian mixture model}
+          Let us consider a two-tier $\mathcal{T} = \{\text{LoS},\text{NLoS}\}$ logarithmic Gaussian mixture fading model with the mean and standard deviation $\mu_{i},\sigma_{i}$, $i \in \{\text{LoS},\text{NLoS} \}$, for the line-of-sight and the non-line-of-sight tiers, respectively. Consequently, the power fading RV of a transmitter $x \in \Phi$ is given by
+            \begin{align}
+              &H_x  \nonumber \\
+              &=   \mathds{1}(T_x =\text{LoS})e^{\mu_{\text{LoS}}+\sigma_{\text{LoS}}Z} +\mathds{1}(T_x =\text{NLoS})e^{\mu_{\text{NLoS}}+\sigma_{\text{NLoS}}Z},
+            \end{align}
+            where $\mathds{1}(\cdot)$ is the indicator function and $Z$ is a standard normal RV. Accordingly, the conditional fading variables follow a log-normal distribution
+            \begin{align}
+              \label{eq:tier1lognormal}
+              &(H_x|T_x=\text{LoS}) \sim \text{Lognormal}(\mu_{\text{LoS}},\sigma_{\text{LoS}}^2) \\
+              &(H_x|T_x=\text{NLoS}) \sim \text{Lognormal}(\mu_{\text{NLoS}},\sigma_{\text{NLoS}}^2).              \label{eq:tier2lognormal}
+            \end{align}
+            The mean of the lognormal RV is given by $ m_i=\mathbb{E}(H|T=i) = \exp \{\mu_i+\sigma_i^2/2\}$.
+            
+            In the two-tier network $\mathcal{T} =\{\text{LoS}, \text{NLoS}\}$ with the lognormal fading variables \eqref{eq:tier1lognormal} and \eqref{eq:tier2lognormal}, in the simple coverage region, the approximate probability of coverage is given by evaluating \eqref{eq:probofcov} with $m_{LoS}=\exp \{\mu_{\text{LoS}}+\sigma_{\text{LoS}}^2/2\}$, $m_{NLoS}=\exp \{\mu_{\text{NLoS}}+\sigma_{\text{NLoS}}^2/2\}$, $\mathcal{\kappa}_{\text{LoS}} = p_{\text{LoS}}\kappa$ and $\mathcal{\kappa}_{\text{NLoS}}=(1-p_{\text{LoS}})\kappa$, where $\kappa$ is given in given in $\eqref{eq:kappa}$, for a density $\lambda$ of the entire network.
 
-          
-          
 
-          
          \bibliographystyle{IEEEtran}
          %\bibliography{IEEEabrv, bib}
          \bibliography{IEEEabrv,source}

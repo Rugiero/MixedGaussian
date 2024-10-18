@@ -3,7 +3,7 @@ clear all;
 
 addpath("/home/ilari/genexpint")
 
-S = importdata("SIRdists1ln.mat");
+S = importdata("SINRdists1ln.mat");
 simdist1 = S.dist1;
 simdist2 = S.dist2;
 simdist3 = S.dist3;
@@ -12,7 +12,7 @@ simdist3 = S.dist3;
 [f3,x3] = ecdf(simdist3);
 
 
-S = importdata("SIRdists5ln.mat");
+S = importdata("SINRdists5ln.mat");
 simdist1 = S.dist1;
 simdist2 = S.dist2;
 simdist3 = S.dist3;
@@ -20,7 +20,7 @@ simdist3 = S.dist3;
 [f5,x5] = ecdf(simdist2);
 [f6,x6] = ecdf(simdist3);
 
-S = importdata("SIRdists10ln.mat");
+S = importdata("SINRdists10ln.mat");
 simdist1 = S.dist1;
 simdist2 = S.dist2;
 simdist3 = S.dist3;
@@ -28,7 +28,7 @@ simdist3 = S.dist3;
 [f8,x8] = ecdf(simdist2);
 [f9,x9] = ecdf(simdist3);
 
-S = importdata("SIRdists1g.mat");
+S = importdata("SINRdists1g.mat");
 simdist1 = S.dist1;
 simdist2 = S.dist2;
 simdist3 = S.dist3;
@@ -37,7 +37,7 @@ simdist3 = S.dist3;
 [f12,x12] = ecdf(simdist3);
 
 
-S = importdata("SIRdists5g.mat");
+S = importdata("SINRdists5g.mat");
 simdist1 = S.dist1;
 simdist2 = S.dist2;
 simdist3 = S.dist3;
@@ -45,7 +45,7 @@ simdist3 = S.dist3;
 [f14,x14] = ecdf(simdist2);
 [f15,x15] = ecdf(simdist3);
 
-S = importdata("SIRdists10g.mat");
+S = importdata("SINRdists10g.mat");
 simdist1 = S.dist1;
 simdist2 = S.dist2;
 simdist3 = S.dist3;
@@ -166,9 +166,9 @@ plot(10*log10(x1),1-f1,'--','color','#0072BD','linewidth',2)
 plot(10*log10(x2),1-f2,'--','color','#D95319','linewidth',2)
 plot(10*log10(x3),1-f3,'--', 'color','#EDB120','linewidth',2)
 
-%% plot(10*log10(x4),1-f4,'--','color','#0072BD','linewidth',2)
-%% plot(10*log10(x5),1-f5,'--','color','#D95319','linewidth',2)
-%% plot(10*log10(x6),1-f6,'--', 'color','#EDB120','linewidth',2)
+plot(10*log10(x4),1-f4,'--','color','#0072BD','linewidth',2)
+plot(10*log10(x5),1-f5,'--','color','#D95319','linewidth',2)
+plot(10*log10(x6),1-f6,'--', 'color','#EDB120','linewidth',2)
 
 %% plot(10*log10(x7),1-f7,'--','color','#0072BD','linewidth',2)
 %% plot(10*log10(x8),1-f8,'--','color','#D95319','linewidth',2)
@@ -178,13 +178,13 @@ plot(10*log10(x10),1-f10,'color','#0072BD','linewidth',2)
 plot(10*log10(x11),1-f11,'color','#D95319','linewidth',2)
 plot(10*log10(x12),1-f12, 'color','#EDB120','linewidth',2)
 
-%% plot(10*log10(x13),1-f13,'--','color','#0072BD','linewidth',2)
-%% plot(10*log10(x14),1-f14,'--','color','#D95319','linewidth',2)
-%% plot(10*log10(x15),1-f15,'--', 'color','#EDB120','linewidth',2)
+plot(10*log10(x13),1-f13,'color','#0072BD','linewidth',2)
+plot(10*log10(x14),1-f14,'color','#D95319','linewidth',2)
+plot(10*log10(x15),1-f15, 'color','#EDB120','linewidth',2)
 
-%% plot(10*log10(x16),1-f16,'--','color','#0072BD','linewidth',2)
-%% plot(10*log10(x17),1-f17,'--','color','#D95319','linewidth',2)
-%% plot(10*log10(x18),1-f18,'--', 'color','#EDB120','linewidth',2)
+%% plot(10*log10(x16),1-f16,'color','#0072BD','linewidth',2)
+%% plot(10*log10(x17),1-f17,'color','#D95319','linewidth',2)
+%% plot(10*log10(x18),1-f18, 'color','#EDB120','linewidth',2)
 
 
 axis([[10*log10(min(tau1)),10*log10(max(tau))],[0,1]])
