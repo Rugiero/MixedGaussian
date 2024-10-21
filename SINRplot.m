@@ -40,14 +40,14 @@ dist7=[];
 dist8=[];
 dist9=[];
 
-w=0.1;
+w=1;
 c1=1;
 c2=5;
 c3=2;
 
 elevation1=90;
-elevation2=80;
-elevation3=60;
+elevation2=70;
+elevation3=45;
 
 for theta = tau 
   dist1 = [dist1 pc(theta,c1,w,elevation1)];

@@ -95,6 +95,8 @@ end
 % Create figure
 figure1 = figure;
 
+				% figH = figure;
+
 % Create axes
 axes1 = axes('Parent',figure1);
 hold(axes1,'on');

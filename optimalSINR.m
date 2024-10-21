@@ -1,51 +1,27 @@
 clear all;
-close all;
-addpath("/home/ilari/genexpint")
+%close all;
+
 %S = importdata("optimalSINRN1.mat");
-S1 = importdata("optimalSINRN1.mat");
-S2 = importdata("optimalSINRN5.mat");
+%S1 = importdata("optimalSINRN1.mat");
+%S2 = importdata("optimalSINRN5.mat");
 
 elevation = 90;
 h=1500;
+tKAPPA=linspace(0,20,1000);
 
-varphiRX = 0.027925;
-D = sin(deg2rad(elevation))^2/h;
-d = h/sin(deg2rad(elevation));
-per3dB = [0 linspace(0.1,5,30)];
-per3dBtheory = linspace(0,10,100);
-
-c = per3dB/log(2);
-ctheory =  per3dBtheory/log(2);
-
-tau = 1;
-%dist1 = (1+tau).^-ctheory;
 dist1=[];
-dist2= [];
+dist2=[];
 dist3=[];
-dist4=[];
+w=1;
+elevation1=90;
+elevation2=60;
+elevation3=45;
 
-dist5=[];
-dist6=[];
-dist7=[];
-dist8=[];
-
-m1= 1;
-m2=5;
-
-%% for(cc = ctheory)
-%%   dist1 = [dist1 mthmoment(m1,1,cc,tau)];
-%%   dist2 = [dist2 mthmomentSINR(m1,1,cc,tau,0.3)];
-%%   dist3 = [dist3 mthmomentSINR(m1,1,cc,tau,1)];
-%%   dist4 = [dist4 mthmomentSINR(m1,1,cc,tau,0.01)];
-%% end
-
-%% for(cc = ctheory)
-%%   dist5 = [dist5 mthmoment(m2,1,cc,tau)];
-%%   dist6 = [dist6 mthmomentSINR(m2,1,cc,tau,0.3)];
-%%   dist7 = [dist7 mthmomentSINR(m2,1,cc,tau,1)];
-%%   dist8 = [dist8 mthmomentSINR(m2,1,cc,tau,0.01)];
-%% end
-
+for(tkappa = tKAPPA)
+  dist1 = [dist1 pcg(1,tkappa,w,elevation1)];
+  dist2 = [dist2 pcg(1,tkappa,w,elevation2)];
+  dist3 = [dist3 pcg(1,tkappa,w,elevation3)];
+end
 
 figure(1)
 plot([-1],[-1],'color','black','linewidth',2)
@@ -60,31 +36,15 @@ plot([-1],[-1],'s','MarkerSize',10,'MarkerEdgeColor',"#0072BD", 'MarkerFaceColor
 											     
 											     
 
-%% plot(per3dBtheory,dist1,'color',"#D95319",'linewidth',2)
-%% plot(per3dBtheory,dist2,'color',"#D95319",'linewidth',2)
-%% plot(per3dBtheory,dist3,'color',"#D95319",'linewidth',2)
-%% plot(per3dBtheory,dist4,'color',"#D95319",'linewidth',2)
-
-%% plot(per3dBtheory,dist5,'color',"#0072BD",'linewidth',2)
-%% plot(per3dBtheory,dist6,'color',"#0072BD",'linewidth',2)
-%% plot(per3dBtheory,dist7,'color',"#0072BD",'linewidth',2)
-%% plot(per3dBtheory,dist8,'color',"#0072BD",'linewidth',2)
+plot(tKAPPA*log(2),dist1,'color',"black",'linewidth',2)
+plot(tKAPPA*log(2),dist2,'color',"black",'linewidth',2)
+plot(tKAPPA*log(2),dist3,'color',"#D95319",'linewidth',2)
 
 
  %% plot(per3dB,[1; S.res1],'--','color','#D95319','linewidth',2)
  %% plot(per3dB,[0; S.res2],'--','color','#0072BD','linewidth',2)
  %% plot(per3dB,[0; S.res3],'--', 'color','#EDB120','linewidth',2)
  %% plot(per3dB,[0; S.res4],'--','color','#7E2F8E','linewidth',2)
-
-plot(per3dB,[1; S1.res1],'o','color','#D95319','linewidth',2)
-plot(per3dB,[0; S1.res2],'o','color','#D95319','linewidth',2)
-plot(per3dB,[0; S1.res3],'o', 'color','#D95319','linewidth',2)
-plot(per3dB,[0; S1.res4],'o','color','#D95319','linewidth',2)
- 
-plot(per3dB,[1; S2.res1],'o','color','#0072BD','linewidth',2)
-plot(per3dB,[0; S2.res2],'o','color','#0072BD','linewidth',2)
-plot(per3dB,[0; S2.res3],'o', 'color','#0072BD','linewidth',2)
-plot(per3dB,[0; S2.res4],'o','color','#0072BD','linewidth',2)
 
 plot(log(2)*ones(1,100), linspace(0, 2.5,100),'color','black')
 text(log(2)*0.5,-0.05,'$\log(2)$','FontSize',14,'Interpreter','latex')
@@ -107,7 +67,7 @@ text(0.4,0.06,"$W= 1 \cdot (d_0/\hat{d}_{h,\epsilon})^{\gamma}$",'Interpreter','
 text(0.4,0.06,"$W= 0.3 \cdot (d_0/\hat{d}_{h,\epsilon})^{\gamma}$",'Interpreter','latex')
 text(0.4,0.06,"$W= 0$",'Interpreter','latex')
 
-axis([[0, 3],[0,1]])
+axis([[0, max(tKAPPA)*log(2)],[0,1]])
 grid on
 ax = gca;
 ax.FontSize = 14;

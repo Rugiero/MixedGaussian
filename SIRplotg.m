@@ -193,16 +193,20 @@ ax = gca;
 ax.FontSize = 14;
 yticks([0 0.2 0.4 0.6 0.8 1])
 xticks(round(linspace(10*log10(min(tau1)),round(10*log10(max(tau))),5),1))
-title('Interference-limited channel$','FontSize',14,'Interpreter','latex')
+title('Interference-limited channel','FontSize',14,'Interpreter','latex')
 
 %% text(1,0.6,'${m}=1,2,5$','FontSize',14,'Interpreter','latex')
 %% text(1,0.6,'$\kappa=0.1 \log(2)$','FontSize',14,'Interpreter','latex')
 %% text(1,0.6,'$\kappa=\log(2)$','FontSize',14,'Interpreter','latex')
 %% text(1,0.6,'$\kappa=10\log(2)$','FontSize',14,'Interpreter','latex')
 
+%legend('𝔼$x$','Simulated actual',...
+ %   'Interpreter','latex',...
+  %  'FontSize',14)
 legend('Analysis; $\hat{F}^{{\textrm{SINR}}}_{{\kappa,W,m}}(\theta)$','Simulated actual',...
     'Interpreter','latex',...
     'FontSize',14)
-fontsize(14,"points")
-
+fontsize(18,"points")
+latex2axes(figure1,"Times New Roman",18,"normal")
+%latex2pax(figure1)
 

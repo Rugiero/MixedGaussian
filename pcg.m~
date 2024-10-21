@@ -1,0 +1,19 @@
+%%Probability of coverage.
+function PC=pc(THETA,kappa,w,elevation)
+  rho=log(10)/10;
+  muLoS=0*rho;
+  muNLoS=-25*rho;
+  sigmaLoS=4*rho;
+  sigmaNLoS=6*rho;
+
+  mLoS = ms(1);
+  mNLoS = ms(2);
+  PC=[];
+  beta=2.3;
+  pLoS=exp(-beta*cot(deg2rad(elevation)));  
+  for theta = THETA
+    integrand = @(v) kappa.*pLoS*exp(-theta.*v.*w./mLoS)./(v.*(1+theta.*v.*mNLoS/mLoS).^(kappa.*(1-pLoS)).*(1+theta.*v).^(kappa*pLoS))+...
+		kappa*(1-pLoS)*exp(-theta.*v*w/mNLoS)./(v.*(1+theta.*v).^(kappa.*(1-pLoS)).*(1+theta.*mLoS./mNLoS.*v).^(kappa*pLoS));
+    PC = [PC integral(integrand,1,inf)];
+  end 
+end

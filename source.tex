@@ -257,7 +257,7 @@ risto.wichman@aalto.fi}
               &\overset{(b)}{\approx} 2 \pi \lambda b \cdot \nonumber \\
               &\int_{0}^{\infty} r \prod_{k \in \mathcal{T}}\mathbb{E} \left(e^{-\frac{\theta a \sum_{x \in { \mathcal{G}}} x}{2^{-(D_{h,\epsilon}r/\varphi_{\textup{RX}})^2}   }} \cdot e^{- \theta   \frac{W\ell(\hat{d}_{h,\epsilon})a}{2^{-(D_{h,\epsilon}r/\varphi_{\textup{RX}})^2} }} \right) dr \nonumber \\
               &\overset{(c)}{=}  \tilde{\kappa}b\int_1^{\infty} \mathcal{L}_{S_{\mathcal{G}}}\left(\theta v a \right)  \mathcal{L}_{W}\left( \theta vW\ell(\hat{d}_{h,\epsilon})a \right)/v dv \nonumber \\
-              &\overset{}{=}   {} \tilde{\kappa}b\int_1^{\infty}  \frac{\exp \{- \theta v W(\hat{d}_{h,\epsilon}/d_0)^{\gamma}  a\}}{v\left(1 + \theta v  \right)^{b\tilde{\kappa}}} dv.
+              &\overset{}{=}   {} \tilde{\kappa}b\int_1^{\infty}  \frac{\exp \{- \theta v W(\hat{d}_{h,\epsilon}/d_0)^{\gamma}  a\}}{v\left(1 + \theta v  \right)^{\tilde{\kappa}b}} dv.
             \end{align}
             
             \begin{proof}
@@ -275,8 +275,17 @@ p_c(\theta) =  \theta^{-\tilde{\kappa}b} {_2F_1}\left(\tilde{\kappa}b, \tilde{\k
           \end{equation}
           where $_2F_1(\cdot)$ is the hypergeometric function. The coverage probability does not depend on the scale parameter $a$. However, the probability $b$ that the signal strength of the UEs is more than $0$ has an effect on the coverage probability in a decreasing sense w.r.t. the $b$: for $b \rightarrow 0$, $p_c(\theta) =1$; hence, small $p_{\text{LoS}}$ causing severe shadowing (which is the case with the low elevation angles) is beneficial for the coverage. Directly seen from \eqref{eq:probofcov}, the same insight holds in the interference-plus-noise-limited channel $W>0$.
 
+          \subsubsection{Average SIR}
+          The average SIR conditioning that $\theta \geq 1$ is given by
+          \begin{equation}
+            \mathbb{E}(\text{SIR})=\int_{1}^{\infty}\frac{p_c(y)}{p_c(1)}dy= \frac{\, _2F_1(\tilde{\kappa}b-1,\tilde{\kappa}b;\tilde{\kappa}b+1;-1)}{p_c(1)(\tilde{\kappa}b-1)},
+          \end{equation}          
+          which goes to $\infty$ as $\tilde{\kappa}b \rightarrow 1+$. For $\tilde{\kappa}b<1$, the expectation is undefined.
+          
 
+          \section{Numerical results}
 
+          
           
           
 
