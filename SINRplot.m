@@ -40,13 +40,13 @@ dist7=[];
 dist8=[];
 dist9=[];
 
-w=1;
+w=0.1;
 c1=1;
 c2=5;
 c3=2;
 
 elevation1=90;
-elevation2=70;
+elevation2=60;
 elevation3=45;
 
 for theta = tau 
@@ -102,9 +102,9 @@ plot([-1],[-1],'--','color','black','linewidth',2)
 plot(10*log10(tau),dist1,'color',"#0072BD",'linewidth',2)
 plot(10*log10(tau),dist2,'color',"#D95319",'linewidth',2)
 plot(10*log10(tau),dist3,'color',"#EDB120",'linewidth',2)
-plot(10*log10(tau),dist4,'color',"#0072BD",'linewidth',2)
-plot(10*log10(tau),dist5,'color',"#D95319",'linewidth',2)
-plot(10*log10(tau),dist6,'color',"#EDB120",'linewidth',2)
+%% plot(10*log10(tau),dist4,'color',"#0072BD",'linewidth',2)
+%% plot(10*log10(tau),dist5,'color',"#D95319",'linewidth',2)
+%% plot(10*log10(tau),dist6,'color',"#EDB120",'linewidth',2)
 %% plot(10*log10(tau),dist7,'color',"#0072BD",'linewidth',2)
 %% plot(10*log10(tau),dist8,'color',"#D95319",'linewidth',2)
 %% plot(10*log10(tau),dist9,'color',"#EDB120",'linewidth',2)
@@ -125,9 +125,9 @@ plot(10*log10(x1),1-f1,'--','color','#0072BD','linewidth',2)
 plot(10*log10(x2),1-f2,'--','color','#D95319','linewidth',2)
 plot(10*log10(x3),1-f3,'--', 'color','#EDB120','linewidth',2)
 
-plot(10*log10(x4),1-f4,'--','color','#0072BD','linewidth',2)
-plot(10*log10(x5),1-f5,'--','color','#D95319','linewidth',2)
-plot(10*log10(x6),1-f6,'--', 'color','#EDB120','linewidth',2)
+%% plot(10*log10(x4),1-f4,'--','color','#0072BD','linewidth',2)
+%% plot(10*log10(x5),1-f5,'--','color','#D95319','linewidth',2)
+%% plot(10*log10(x6),1-f6,'--', 'color','#EDB120','linewidth',2)
 
 %%  plot(10*log10(x7),1-f7,'--','color','#0072BD','linewidth',2)
 %%  plot(10*log10(x8),1-f8,'--','color','#D95319','linewidth',2)

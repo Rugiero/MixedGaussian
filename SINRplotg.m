@@ -72,8 +72,8 @@ c2=5;
 c3=10;
 
 elevation1=90;
-elevation2=80;
-elevation3=70;
+elevation2=70;
+elevation3=60;
 
 
 
@@ -162,9 +162,9 @@ nakdist1=[];
 %plot(10*log10(tau1),nakdist3,'color','black','linewidth',2)
 
 
-%% plot(10*log10(x1),1-f1,'--','color','#0072BD','linewidth',2)
-%% plot(10*log10(x2),1-f2,'--','color','#D95319','linewidth',2)
-%% plot(10*log10(x3),1-f3,'--', 'color','#EDB120','linewidth',2)
+plot(10*log10(x1),1-f1,'--','color','#0072BD','linewidth',2)
+plot(10*log10(x2),1-f2,'--','color','#D95319','linewidth',2)
+plot(10*log10(x3),1-f3,'--', 'color','#EDB120','linewidth',2)
 
 %% plot(10*log10(x4),1-f4,'--','color','#0072BD','linewidth',2)
 %% plot(10*log10(x5),1-f5,'--','color','#D95319','linewidth',2)
@@ -174,13 +174,13 @@ nakdist1=[];
 %% plot(10*log10(x8),1-f8,'--','color','#D95319','linewidth',2)
 %% plot(10*log10(x9),1-f9,'--', 'color','#EDB120','linewidth',2)
 
-plot(10*log10(x10),1-f10,'--','color','#0072BD','linewidth',2)
-plot(10*log10(x11),1-f11,'--','color','#D95319','linewidth',2)
-plot(10*log10(x12),1-f12,'--','color','#EDB120','linewidth',2)
+plot(10*log10(x10),1-f10,'-.','color','#0072BD','linewidth',2)
+plot(10*log10(x11),1-f11,'-.','color','#D95319','linewidth',2)
+plot(10*log10(x12),1-f12,'-.','color','#EDB120','linewidth',2)
 
-plot(10*log10(x13),1-f13,'--','color','#0072BD','linewidth',2)
-plot(10*log10(x14),1-f14,'--','color','#D95319','linewidth',2)
-plot(10*log10(x15),1-f15,'--','color','#EDB120','linewidth',2)
+%% plot(10*log10(x13),1-f13,'--','color','#0072BD','linewidth',2)
+%% plot(10*log10(x14),1-f14,'--','color','#D95319','linewidth',2)
+%% plot(10*log10(x15),1-f15,'--','color','#EDB120','linewidth',2)
 
 %% plot(10*log10(x16),1-f16,'--','color','#0072BD','linewidth',2)
 %% plot(10*log10(x17),1-f17,'--','color','#D95319','linewidth',2)
