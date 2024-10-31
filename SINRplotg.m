@@ -73,7 +73,7 @@ c3=10;
 
 elevation1=90;
 elevation2=70;
-elevation3=60;
+elevation3=45;
 
 
 
@@ -162,9 +162,9 @@ nakdist1=[];
 %plot(10*log10(tau1),nakdist3,'color','black','linewidth',2)
 
 
-plot(10*log10(x1),1-f1,'--','color','#0072BD','linewidth',2)
-plot(10*log10(x2),1-f2,'--','color','#D95319','linewidth',2)
-plot(10*log10(x3),1-f3,'--', 'color','#EDB120','linewidth',2)
+%% plot(10*log10(x1),1-f1,'--','color','#0072BD','linewidth',2)
+%% plot(10*log10(x2),1-f2,'--','color','#D95319','linewidth',2)
+%% plot(10*log10(x3),1-f3,'--', 'color','#EDB120','linewidth',2)
 
 %% plot(10*log10(x4),1-f4,'--','color','#0072BD','linewidth',2)
 %% plot(10*log10(x5),1-f5,'--','color','#D95319','linewidth',2)

@@ -1,17 +1,16 @@
 clear all;
-close all;
+%close all;
 
 S = importdata("optimalSINR.mat");
 %S1 = importdata("optimalSINRN1.mat");
 %S2 = importdata("optimalSINRN5.mat");
 
-elevation = 90;
-h=1200;
-lambda = 10^-3;
-VARPHIX1 = rad2deg(linspace(0,0.1745,100));
 
-VARPHIX = rad2deg(linspace(0.001,0.1745,50));
-tKAPPA= (lambda*pi*(h.*deg2rad(VARPHIX1)./(sin(elevation))).^2)/log(2);
+h=200;
+lambda = 10^-1;
+
+VARPHIX1 = rad2deg(linspace(0,1,1000));
+VARPHIX = rad2deg(linspace(0.001,0.0314,5));
 
 dist1=[];
 dist2=[];
@@ -20,33 +19,49 @@ w=0.1;
 elevation1=90;
 elevation2=60;
 elevation3=45;
+%% tKAPPA1= (lambda*pi*(h.*deg2rad(VARPHIX1)./(sin(elevation1).^2)).^2)/log(2);
+%% tKAPPA2= (lambda*pi*(h.*deg2rad(VARPHIX1)./(sin(elevation1).^2)).^2)/log(2);
+%% tKAPPA3= (lambda*pi*(h.*deg2rad(VARPHIX1)./(sin(elevation1).^2)).^2)/log(2);
 
+tKAPPA = (lambda*pi*(h.*deg2rad(VARPHIX)./(sin(deg2rad(elevation1)).^2)).^2)/log(2); 
+tKAPPA1= (lambda*pi*(h.*deg2rad(VARPHIX1)./(sin(deg2rad(elevation1)).^2)).^2)/log(2);
+tKAPPA2= (lambda*pi*(h.*deg2rad(VARPHIX1)./(sin(deg2rad(elevation2)).^2)).^2)/log(2);
+tKAPPA3= (lambda*pi*(h.*deg2rad(VARPHIX1)./(sin(deg2rad(elevation3)).^2)).^2)/log(2);
 
-for(tkappa = tKAPPA)
-  dist1 = [dist1 pcg(1,tkappa,w,elevation1)];
-  dist2 = [dist2 pcg(1,tkappa,w,elevation2)];
-  dist3 = [dist3 pcg(1,tkappa,w,elevation3)];
+for(iii = 1:length(tKAPPA1))
+  dist1 = [dist1 pcg(1,tKAPPA1(iii),w,elevation1)];
+  dist2 = [dist2 pcg(1,tKAPPA2(iii),w,elevation2)];
+  dist3 = [dist3 pcg(1,tKAPPA3(iii),w,elevation3)];
 end
 
-figure(1)
-plot([-1],[-1],'color','black','linewidth',2)
+figure(2)
+%plot([-1],[-1],'color','black','linewidth',2)
 hold on;
 %plot(per3dBtheory,dist1,'-x','color',"#D95319",'linewidth',2)
 %plot([-1],[-1],'color','black','linewidth',2)
-plot([-1],[-1],'o','color','black','linewidth',2)
+%plot([-1],[-1],'o','color','black','linewidth',2)
 %plot([-1],[-1],'-o','color','black','linewidth',2)
 plot([-1],[-1],'s','MarkerSize',10,'MarkerEdgeColor',"#D95319", 'MarkerFaceColor',"#D95319")
 plot([-1],[-1],'s','MarkerSize',10,'MarkerEdgeColor',"#0072BD", 'MarkerFaceColor',"#0072BD")
-
+plot([-1],[-1],'s','MarkerSize',10,'MarkerEdgeColor',"#0072BD", 'MarkerFaceColor',"#EDB120")
 								
 plot(VARPHIX1,dist1,'color','#D95319','linewidth',2)
 plot(VARPHIX1,dist2,'color','#0072BD','linewidth',2)
 plot(VARPHIX1,dist3,'color','#EDB120','linewidth',2)
 
+%% plot(tKAPPA1,dist1,'color','#D95319','linewidth',2)
+%% plot(tKAPPA2,dist2,'color','#0072BD','linewidth',2)
+%% plot(tKAPPA3,dist3,'color','#EDB120','linewidth',2)
+
 
 plot(VARPHIX, S.res1','--','color','#D95319','linewidth',2)
 plot(VARPHIX, S.res2','--','color','#0072BD','linewidth',2)
 plot(VARPHIX, S.res3','--', 'color','#EDB120','linewidth',2)
+
+%% plot(tKAPPA, S.res1','--','color','#D95319','linewidth',2)
+%% plot(tKAPPA, S.res2','--','color','#0072BD','linewidth',2)
+%% plot(tKAPPA, S.res3','--', 'color','#EDB120','linewidth',2)
+
 % plot(per3dB,[0; S.res4],'--','color','#7E2F8E','linewidth',2)
 
 plot(log(2)*ones(1,100), linspace(0, 2.5,100),'color','black')
@@ -64,23 +79,17 @@ text(log(2)*0.5,-0.05,'$\log(2)$','FontSize',14,'Interpreter','latex')
 %text(0.5,0,'$\tilde{\lambda}_M^{[1 \cdot P/d_{h,\epsilon}^{\gamma}, 1]} \simeq 0.7$','FontSize',14,'Interpreter','latex')
 
 
-text(0.4,0.6,"$W= 0.01 \cdot (d_0/\hat{d}_{h,\epsilon})^{\gamma}$",'Interpreter','latex')
-%text(0.7,0.2,"$W= 1 \cdot P/\hat{d}_{h,\epsilon}^{\gamma}$",'Interpreter','latex')
-text(0.4,0.06,"$W= 1 \cdot (d_0/\hat{d}_{h,\epsilon})^{\gamma}$",'Interpreter','latex')
-text(0.4,0.06,"$W= 0.3 \cdot (d_0/\hat{d}_{h,\epsilon})^{\gamma}$",'Interpreter','latex')
-text(0.4,0.06,"$W= 0$",'Interpreter','latex')
 
-axis([[0, 3],[0,1]])
+axis([[0, 2],[0,1]])
 grid on
 ax = gca;
 ax.FontSize = 14;
 yticks(linspace(0,1,5))
 
-
 ylabel('Transmission success probability','FontSize',14,'Interpreter','latex')
 xlabel('${\varphi_{\textrm{RX}}}$','FontSize',14,'Interpreter','latex')
 
-legend('$\hat{F}^{[{\kappa,m}]}_{\textrm{SIR}}(1),\hat{F}^{[{\kappa},W,m]}_{\textrm{SINR}}(1)$','Simulated actual','Rayleigh ($m=1$)','Nakagami-$5$','FontSize',14,'Interpreter','latex')
+legend('90','60','45','FontSize',14,'Interpreter','latex')
 fontsize(14,"points")
 %xslegend('boxoff')
 
