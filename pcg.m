@@ -1,5 +1,5 @@
 %%Probability of coverage.
-function PC=pcg(THETA,kappa,w,elevation)
+function PC=pcg(THETA,kappa,w,elevation,h)
   rho=log(10)/10;
   muLoS=0*rho;
   muNLoS=-25*rho;
@@ -10,10 +10,12 @@ function PC=pcg(THETA,kappa,w,elevation)
   
   a = (2*exp(muNLoS+sigmaNLoS^2/2)*(-1+pLoS)-2*exp(muLoS+sigmaLoS^2/2)*pLoS)/(exp(2*(muNLoS+sigmaNLoS^2))*(-1+pLoS)-exp(2*(muLoS+sigmaLoS^2))*pLoS);
   b=(-exp(2*muNLoS+sigmaNLoS^2)*(-1+pLoS)+exp(2*(muLoS+sigmaLoS^2))*pLoS)/(2*(exp(muNLoS+sigmaNLoS^2/2)*(-1+pLoS)-exp(muLoS+sigmaLoS^2/2)*pLoS)^2);
+  
   b=1/b;
   PC=[];
   beta=2.3;
   pLoS=exp(-beta*cot(deg2rad(elevation)));
+
   for theta = THETA
     if w == 0
       PC = [PC theta^-(kappa*b)*hypergeom([kappa*b,kappa*b],kappa*b+1,-1/theta)];

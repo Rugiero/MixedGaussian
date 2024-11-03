@@ -66,55 +66,57 @@ dist7=[];
 dist8=[];
 dist9=[];
 
-w=0.1;
+h=1;
+d=h/sin(deg2rad(90));
+alpha=2;
+w=0.1/d^alpha;
+
 c1=1;
 c2=5;
 c3=10;
 
 elevation1=90;
-elevation2=70;
+elevation2=60;
 elevation3=45;
 
-
-
 for theta = tau 
-  dist1 = [dist1 pcg(theta,c1,w,elevation1)];
+  dist1 = [dist1 pc(theta,c1,w,elevation1,h)];
 end
 
 
 for theta = tau 
-  dist2 = [dist2 pcg(theta,c1,w,elevation2)];
+  dist2 = [dist2 pc(theta,c1,w,elevation2,h)];
 end
 
 for theta = tau 
-  dist3 = [dist3 pcg(theta,c1,w,elevation3)];
-end
-
-
-for theta = tau 
-  dist4 = [dist4 pcg(theta,c2,w,elevation1)];
-end
-
-for theta = tau 
-  dist5 = [dist5 pcg(theta,c2,w,elevation2)];
-end
-
-for theta = tau 
-  dist6 = [dist6 pcg(theta,c2,w,elevation3)];
+  dist3 = [dist3 pc(theta,c1,w,elevation3,h)];
 end
 
 
 for theta = tau 
-  dist7 = [dist7 pcg(theta,c3,w,elevation1)];
+  dist4 = [dist4 pc(theta,c2,w,elevation1,h)];
 end
 
 for theta = tau 
-  dist8 = [dist8 pcg(theta,c3,w,elevation2)];
+  dist5 = [dist5 pc(theta,c2,w,elevation2,h)];
+end
+
+for theta = tau 
+  dist6 = [dist6 pc(theta,c2,w,elevation3,h)];
 end
 
 
 for theta = tau 
-  dist9 = [dist9 pcg(theta,c3,w,elevation3)];
+  dist7 = [dist7 pc(theta,c3,w,elevation1,h)];
+end
+
+for theta = tau 
+  dist8 = [dist8 pc(theta,c3,w,elevation2,h)];
+end
+
+
+for theta = tau 
+  dist9 = [dist9 pc(theta,c3,w,elevation3,h)];
 end
 
 % Create figure

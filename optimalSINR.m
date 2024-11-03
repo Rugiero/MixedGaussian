@@ -10,7 +10,7 @@ h=200;
 lambda = 10^-1;
 
 VARPHIX1 = rad2deg(linspace(0,1,1000));
-VARPHIX = rad2deg(linspace(0.001,0.0314,5));
+VARPHIX = rad2deg(linspace(0.001,0.0314,20));
 
 dist1=[];
 dist2=[];
