@@ -8,14 +8,17 @@ S = importdata("optimalSINR.mat");
 
 h=200;
 lambda = 10^-1;
+d=h/sin(deg2rad(90));
+alpha=2;
+w=0.1/d^alpha;
 
 VARPHIX1 = rad2deg(linspace(0,1,1000));
-VARPHIX = rad2deg(linspace(0.001,0.0314,20));
+VARPHIX = rad2deg(linspace(0.001,0.0314,10));
 
 dist1=[];
 dist2=[];
 dist3=[];
-w=0.1;
+
 elevation1=90;
 elevation2=60;
 elevation3=45;
@@ -29,9 +32,9 @@ tKAPPA2= (lambda*pi*(h.*deg2rad(VARPHIX1)./(sin(deg2rad(elevation2)).^2)).^2)/lo
 tKAPPA3= (lambda*pi*(h.*deg2rad(VARPHIX1)./(sin(deg2rad(elevation3)).^2)).^2)/log(2);
 
 for(iii = 1:length(tKAPPA1))
-  dist1 = [dist1 pcg(1,tKAPPA1(iii),w,elevation1)];
-  dist2 = [dist2 pcg(1,tKAPPA2(iii),w,elevation2)];
-  dist3 = [dist3 pcg(1,tKAPPA3(iii),w,elevation3)];
+  dist1 = [dist1 pcg(1,tKAPPA1(iii),w,elevation1,h)];
+  dist2 = [dist2 pcg(1,tKAPPA2(iii),w,elevation2,h)];
+  dist3 = [dist3 pcg(1,tKAPPA3(iii),w,elevation3,h)];
 end
 
 figure(2)

@@ -15,12 +15,15 @@ function PC=pcg(THETA,kappa,w,elevation,h)
   PC=[];
   beta=2.3;
   pLoS=exp(-beta*cot(deg2rad(elevation)));
+  d=h/sin(deg2rad(elevation));
+  alpha=2;
+  
 
   for theta = THETA
     if w == 0
       PC = [PC theta^-(kappa*b)*hypergeom([kappa*b,kappa*b],kappa*b+1,-1/theta)];
     else
-      integrand = @(v) exp(-theta*v*w*a)./(v.*(1+theta*v).^(kappa*b));
+      integrand = @(v) exp(-theta*v*w*a*d^alpha)./(v.*(1+theta*v).^(kappa*b));
       PC = [PC kappa*b*integral(integrand,1,inf)];
     end 
   end
