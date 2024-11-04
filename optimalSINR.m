@@ -12,8 +12,8 @@ d=h/sin(deg2rad(90));
 alpha=2;
 w=0.1/d^alpha;
 
-VARPHIX1 = rad2deg(linspace(0,1,1000));
-VARPHIX = rad2deg(linspace(0.001,0.0314,10));
+VARPHIX1 = rad2deg(linspace(0,1,10000));
+VARPHIX = rad2deg(linspace(0.001,0.0314,20));
 
 dist1=[];
 dist2=[];
@@ -36,8 +36,13 @@ for(iii = 1:length(tKAPPA1))
   dist2 = [dist2 pcg(1,tKAPPA2(iii),w,elevation2,h)];
   dist3 = [dist3 pcg(1,tKAPPA3(iii),w,elevation3,h)];
 end
+figure1 = figure;
 
-figure(2)
+% Create axes
+axes1 = axes('Parent',figure1);
+hold(axes1,'on');
+
+
 %plot([-1],[-1],'color','black','linewidth',2)
 hold on;
 %plot(per3dBtheory,dist1,'-x','color',"#D95319",'linewidth',2)
