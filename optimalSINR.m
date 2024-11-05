@@ -6,14 +6,15 @@ S = importdata("optimalSINR.mat");
 %S2 = importdata("optimalSINRN5.mat");
 
 
-h=200;
-lambda = 10^-1;
+h=1200;
+lambda = 10^-3*0.2;
 d=h/sin(deg2rad(90));
-alpha=2;
-w=0.1/d^alpha;
+alpha=4;
+w=0.00000000000001/d^alpha;
+
 
 VARPHIX1 = rad2deg(linspace(0,1,10000));
-VARPHIX = rad2deg(linspace(0.001,0.0314,20));
+VARPHIX = rad2deg(linspace(0.001,0.0314,10));
 
 dist1=[];
 dist2=[];
