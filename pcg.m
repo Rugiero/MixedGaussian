@@ -16,7 +16,7 @@ function PC=pcg(THETA,kappa,w,elevation,h)
   beta=2.3;
   pLoS=exp(-beta*cot(deg2rad(elevation)));
   d=h/sin(deg2rad(elevation));
-  alpha=2;
+  alpha=4;
   
 
   for theta = THETA

@@ -7,14 +7,15 @@ S = importdata("optimalSINR.mat");
 
 
 h=1200;
-lambda = 10^-3*0.2;
+lambda = 10^-3;
 d=h/sin(deg2rad(90));
 alpha=4;
-w=0.00000000000001/d^alpha;
-
+%w=0.1/d^alpha;
+w = sidetot(lambda,h,alpha);
 
 VARPHIX1 = rad2deg(linspace(0,1,10000));
-VARPHIX = rad2deg(linspace(0.001,0.0314,10));
+%VARPHIX = rad2deg(linspace(0.001,0.0314,10));
+VARPHIX = rad2deg(linspace(0.001,0.1,10));
 
 dist1=[];
 dist2=[];
@@ -89,7 +90,7 @@ text(log(2)*0.5,-0.05,'$\log(2)$','FontSize',14,'Interpreter','latex')
 
 
 
-axis([[0, 2],[0,1]])
+axis([[0, 5.7296],[0,1]])
 grid on
 ax = gca;
 ax.FontSize = 14;
