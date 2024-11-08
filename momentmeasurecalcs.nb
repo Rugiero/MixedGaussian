@@ -1,0 +1,248 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 14.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8843,        240]
+NotebookOptionsPosition[      8310,        224]
+NotebookOutlinePosition[      8704,        240]
+CellTagsIndexPosition[      8661,        237]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.940069421706723*^9, 3.9400694246184683`*^9}, 
+   3.9400696559816647`*^9},ExpressionUUID->"ed3ec2a5-d3e6-41cc-81bf-\
+0385f8d0674b"],
+
+Cell[BoxData[{
+ RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"momentmeasureintegrand", "[", 
+   RowBox[{"t_", ",", "v_"}], "]"}], "\[NonBreakingSpace]", ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "hatTn", ",", "\[Xi]", ",", "g", ",", "listProduct", ",", 
+      "\[ScriptCapitalL]D", ",", "\[ScriptCapitalL]I", " ", ",", 
+      "\[ScriptCapitalL]W"}], "}"}], " ", ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"listProduct", "[", "x_List", "]"}], " ", ":=", 
+      RowBox[{"Times", " ", "@@", " ", "x"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"hatTn", "=", 
+      RowBox[{"1", "/", 
+       RowBox[{"(", 
+        RowBox[{"1", "-", 
+         RowBox[{"Total", "[", "t", "]"}]}], ")"}]}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"\[Xi]", "=", 
+      RowBox[{"Total", "[", 
+       RowBox[{"t", "*", "v"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"\[ScriptCapitalL]W", "=", 
+      RowBox[{"Exp", "[", 
+       RowBox[{
+        RowBox[{"-", "a"}], "*", "w", "*", "hatTn", "*", "\[Xi]"}], "]"}]}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"\[ScriptCapitalL]I", "=", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"1", "+", 
+         RowBox[{"hatTn", "*", "\[Xi]"}]}], ")"}], "^", 
+       RowBox[{"-", 
+        RowBox[{"(", 
+         RowBox[{"\[Kappa]", "*", "b"}], ")"}]}]}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"g", "[", "j_", "]"}], ":=", 
+      RowBox[{"1", "/", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"Product", "[", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"t", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], "*", 
+              RowBox[{"v", "[", 
+               RowBox[{"[", "i", "]"}], "]"}]}], "+", 
+             RowBox[{"a", "*", "hatTn", "*", 
+              RowBox[{"t", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], "\[Xi]"}]}], ")"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "1", ",", 
+             RowBox[{"Length", "[", "t", "]"}]}], "}"}]}], "]"}], "/", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"t", "[", 
+             RowBox[{"[", "j", "]"}], "]"}], "*", 
+            RowBox[{"v", "[", 
+             RowBox[{"[", "j", "]"}], "]"}]}], "+", 
+           RowBox[{"a", "*", "hatTn", "*", 
+            RowBox[{"t", "[", 
+             RowBox[{"[", "j", "]"}], "]"}], "\[Xi]"}]}], ")"}]}], ")"}]}]}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"\[ScriptCapitalL]D", " ", "=", " ", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"listProduct", "[", "t", "]"}], "/", "\[Xi]"}], "*", 
+       RowBox[{"Sum", "[", 
+        RowBox[{
+         RowBox[{"g", "[", "j", "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"j", ",", "1", ",", 
+           RowBox[{"Length", "[", "t", "]"}]}], "}"}]}], "]"}]}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+     "\[ScriptCapitalL]W", "*", "\[ScriptCapitalL]I", "*", 
+      "\[ScriptCapitalL]D"}]}]}], "\[IndentingNewLine]", 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"momentmeasureintegrand", "[", 
+   RowBox[{"t_", ",", "v_"}], "]"}], "\[NonBreakingSpace]", ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "hatTn", ",", "\[Xi]", ",", "g", ",", "listProduct", ",", 
+      "\[ScriptCapitalL]D", ",", "\[ScriptCapitalL]I", " ", ",", 
+      "\[ScriptCapitalL]W"}], "}"}], " ", ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"listProduct", "[", "x_List", "]"}], " ", ":=", 
+      RowBox[{"Times", " ", "@@", " ", "x"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"hatTn", "=", 
+      RowBox[{"1", "/", 
+       RowBox[{"(", 
+        RowBox[{"1", "-", 
+         RowBox[{"Total", "[", "t", "]"}]}], ")"}]}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"\[Xi]", "=", 
+      RowBox[{"Total", "[", 
+       RowBox[{"t", "*", "v"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"\[ScriptCapitalL]W", "=", 
+      RowBox[{"Exp", "[", 
+       RowBox[{
+        RowBox[{"-", "a"}], "*", "w", "*", "hatTn", "*", "\[Xi]"}], "]"}]}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"\[ScriptCapitalL]I", "=", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"1", "+", 
+         RowBox[{"hatTn", "*", "\[Xi]"}]}], ")"}], "^", 
+       RowBox[{"-", 
+        RowBox[{"(", 
+         RowBox[{"\[Kappa]", "*", "b"}], ")"}]}]}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"g", "[", "j_", "]"}], ":=", 
+      RowBox[{"1", "/", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"Product", "[", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"t", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], "*", 
+              RowBox[{"v", "[", 
+               RowBox[{"[", "i", "]"}], "]"}]}], "+", 
+             RowBox[{"a", "*", "hatTn", "*", 
+              RowBox[{"t", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], "\[Xi]"}]}], ")"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "1", ",", 
+             RowBox[{"Length", "[", "t", "]"}]}], "}"}]}], "]"}], "/", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"t", "[", 
+             RowBox[{"[", "j", "]"}], "]"}], "*", 
+            RowBox[{"v", "[", 
+             RowBox[{"[", "j", "]"}], "]"}]}], "+", 
+           RowBox[{"a", "*", "hatTn", "*", 
+            RowBox[{"t", "[", 
+             RowBox[{"[", "j", "]"}], "]"}], "\[Xi]"}]}], ")"}]}], ")"}]}]}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"\[ScriptCapitalL]D", " ", "=", " ", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"listProduct", "[", "t", "]"}], "/", "\[Xi]"}], "*", 
+       RowBox[{"Sum", "[", 
+        RowBox[{
+         RowBox[{"g", "[", "j", "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"j", ",", "1", ",", 
+           RowBox[{"Length", "[", "t", "]"}]}], "}"}]}], "]"}]}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+     "\[ScriptCapitalL]W", "*", "\[ScriptCapitalL]I", "*", 
+      "\[ScriptCapitalL]D"}]}]}], "\[IndentingNewLine]", "]"}]}]}], "Input",
+ CellChangeTimes->{{3.940068992487524*^9, 3.9400690787780743`*^9}, {
+  3.9400691188096743`*^9, 3.940069352428257*^9}, {3.94006940772742*^9, 
+  3.9400694465700893`*^9}, {3.940069543727663*^9, 3.940069557055311*^9}, {
+  3.940069591441382*^9, 3.940069591776373*^9}, {3.9400696575844307`*^9, 
+  3.940069657985623*^9}, {3.940069824604492*^9, 3.9400698293585873`*^9}, {
+  3.940069866609272*^9, 3.940069875168997*^9}, {3.940070041298601*^9, 
+  3.940070068577833*^9}, {3.940070189042914*^9, 
+  3.940070195623665*^9}},ExpressionUUID->"f66c3e63-9f70-43a2-ae36-\
+0f7b274a6794"],
+
+Cell[BoxData[
+ RowBox[{"FullSimplify", "[", 
+  RowBox[{"momentmeasure", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"1", "/", 
+       RowBox[{"(", 
+        RowBox[{"1", "+", "t1"}], ")"}]}], ",", 
+      RowBox[{"1", "/", 
+       RowBox[{"(", 
+        RowBox[{"1", "+", "t2"}], ")"}]}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"v1", ",", "v2"}], "}"}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.940069401195077*^9, 3.940069415530395*^9}, {
+  3.9400694565242453`*^9, 3.9400694649713507`*^9}, {3.940069639038147*^9, 
+  3.9400696407630167`*^9}, {3.940070009469901*^9, 3.9400700099976997`*^9}, {
+  3.940070082190812*^9, 3.940070085038988*^9}, {3.94007014966278*^9, 
+  3.940070162701358*^9}},
+ CellLabel->
+  "In[132]:=",ExpressionUUID->"4434bb66-0444-447f-910a-03970fd371c3"]
+},
+WindowSize->{576, 673.5},
+WindowMargins->{{0, Automatic}, {0, Automatic}},
+FrontEndVersion->"14.0 for Linux x86 (64-bit) (December 12, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"b7a0becf-5aa4-41d2-b22e-3935b5be7c03"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 179, 3, 29, "Input",ExpressionUUID->"ed3ec2a5-d3e6-41cc-81bf-0385f8d0674b"],
+Cell[740, 25, 6762, 175, 612, "Input",ExpressionUUID->"f66c3e63-9f70-43a2-ae36-0f7b274a6794"],
+Cell[7505, 202, 801, 20, 29, "Input",ExpressionUUID->"4434bb66-0444-447f-910a-03970fd371c3"]
+}
+]
+*)
+

@@ -247,6 +247,7 @@ risto.wichman@aalto.fi}
           \end{align}
           which is the Laplace transform of the gamma distribution with shape parameter $b\tilde{\kappa}$ and scale parameter $1/a$.
 
+          
 
                     \begin{prop}
             Assume a network of density $\lambda$ with the tiers $\mathcal{T}$. Let $H_{x_0}$ be the shadowing variable, and ${x'}_0 =  H_{x_0}G(\|x_0\|) \in \mathcal{G} =\cup_{i \in \mathcal{T}} \mathcal{G}_i$ be the strongest signal of the UEs. In the simple coverage region $\theta \geq 1$,
@@ -274,6 +275,26 @@ p_c(\theta) =  \theta^{-\tilde{\kappa}b} {_2F_1}\left(\tilde{\kappa}b, \tilde{\k
           \end{equation}
           where $_2F_1(\cdot)$ is the hypergeometric function. The coverage probability does not depend on the scale parameter $a$. However, the probability $b$ that the signal strength of the UEs is more than $0$ has an effect on the coverage probability in a decreasing sense w.r.t. the $b$: for $b \rightarrow 0$, $p_c(\theta) =1$; hence, small $p_{\text{LoS}}$ causing severe shadowing (which is the case with the low elevation angles) is beneficial for the coverage. Directly seen from \eqref{eq:probofcov}, the same insight holds in the interference-plus-noise-limited channel $W>0$.
 
+          
+          \begin{prop}
+            Let $\mu_M \triangleq \sum_{i=1}^nt'_i/G(D_{h,\epsilon}\|x_i\|)$ and ${T}'_n\triangleq T_n(t_1,\cdots,t_n)=1/(1-\sum_{i=1}^nt'_i)$. The $n$-moment measure of the STINR process is given by
+            \begin{align}
+              &M'^{(n)}(t'_1,\dots,t'_n) =(2 \pi b)^n\nonumber\\
+              & \times\int\limits_{(\R_+)^n} \mathcal{L}_W(a\mu_MT_n)\mathcal{L}_I(a\mu_MT_n)\mathcal{L}_D(a\mu_MT_n)\prod_{i=1}^nr_i dr_i\nonumber \\
+              &=(2 \pi b)^n \int\limits_{(\R_+)^n} \exp\left\{-aW\ell(\hat{d}_{h,\epsilon})T_n\sum\limits_{i=1}^nt'_i2^{\left(\frac{D_{h,\epsilon}r_i}{\varphi_{\text{RX}}}\right)^2}\right\} \nonumber\\
+              &\hspace{0.8cm}\times\left(1+T_n\sum\limits_{i=1}^nt'_i2^{\left(\frac{D_{h,\epsilon}r_i}{\varphi_{\text{RX}}}\right)^2}\right)^{- \tilde{\kappa}b} \frac{\prod\limits_{i=1}^nt'_i2^{\left(\frac{D_{h,\epsilon}r_i}{\varphi_{\text{RX}}}\right)^2}}{\sum\limits_{i=1}^nt'_i2^{\left(\frac{D_{h,\epsilon}r_i}{\varphi_{\text{RX}}}\right)^2}} \nonumber\\
+              &\hspace{0.8cm}\times  \left[\sum\limits_{j=1}^n\frac{1}{\prod\limits_{i\neq j}\left(t'_i 2^{\left(\frac{D_{h,\epsilon}r_i}{\varphi_{\text{RX}}}\right)^2}+a t_i'T_n\sum\limits_{k=1}^nt'_k2^{\left(\frac{D_{h,\epsilon}r_k}{\varphi_{\text{RX}}}\right)^2} \right)} \right] \nonumber\\
+              &\hspace{0.8cm}\times r_1 dr_1 \dots r_n dr_n.
+            \end{align}
+            With the successive substitutions $\{u_i\}_{i= 1}^n$= $\{  (r_i D_{h,\epsilon}/\varphi_{\text{RX}})^2\}_{i= 1}^n$ and $\{v_i\}_{i= 1}^n$ =$\{ 2^{u_i^2}\}_{i= 1}^n$,
+            \begin{align}
+              &M'^{(n)}(t'_1,\dots,t'_n) =\left(\frac{\tilde{\kappa} b}{\lambda}\right)^n \nonumber\\
+              & \times\int\limits_{(1,\infty)^n} \exp\left\{-aW\ell(\hat{d}_{h,\epsilon})T_n\sum\limits_{i=1}^nt'_iv_i\right\} \left(1+T_n\sum\limits_{i=1}^nt'_iv_i\right)^{-\tilde{\kappa}b}  \nonumber\\
+              &\hspace{0.8cm}\times \frac{\prod\limits_{i=1}^nt'_i}{\sum\limits_{i=1}^nt'_iv_i}  \left[\sum\limits_{j=1}^n\frac{1}{\prod\limits_{i\neq j}\left(t'_i v_i+a t_i'T_n\sum\limits_{k=1}^nt'_kv_k \right)} \right] \prod_{i=1}^n dv_i.
+              \end{align}
+          \end{prop}
+
+          
           \subsubsection{Average SIR}
           The average SIR conditioning that $\theta \geq 1$ is given by
           \begin{equation}
