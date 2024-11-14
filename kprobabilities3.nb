@@ -1,0 +1,256 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 14.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9096,        248]
+NotebookOptionsPosition[      8647,        233]
+NotebookOutlinePosition[      9046,        249]
+CellTagsIndexPosition[      9003,        246]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"partialdens", "[", 
+    RowBox[{"z_", ",", "i_"}], "]"}], ":=", " ", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "s", ",", "\[Xi]vec", ",", "z\[Xi]vec", ",", "\[Mu]", ",", 
+       "\[Xi]vector", ",", "integrand", ",", "totallength", ",", "cn", ",", 
+       "\[Xi]"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"Total", "[", "z", "]"}], "+", 
+         RowBox[{"i", "*", 
+          RowBox[{"z", "[", 
+           RowBox[{"[", 
+            RowBox[{"Length", "[", "z", "]"}], "]"}], "]"}]}]}], ">=", "1"}], 
+       ",", "0", ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"listProduct", "[", "x_List", "]"}], " ", ":=", 
+         RowBox[{"Times", " ", "@@", " ", "x"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"totallength", "=", 
+         RowBox[{
+          RowBox[{"Length", "[", "z", "]"}], "+", "i"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"cn", "=", 
+         RowBox[{
+          RowBox[{"\[Delta]", "^", 
+           RowBox[{"(", 
+            RowBox[{"totallength", "-", "1"}], ")"}]}], "*", 
+          RowBox[{
+           RowBox[{"Gamma", "[", "totallength", "]"}], "/", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"Gamma", "[", 
+              RowBox[{
+               RowBox[{"(", "totallength", ")"}], "*", "\[Delta]"}], "]"}], 
+             "*", 
+             RowBox[{
+              RowBox[{"Gamma", "[", 
+               RowBox[{"1", "-", "\[Delta]"}], "]"}], "^", "totallength"}]}], 
+            ")"}]}]}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"\[Mu]", "[", "t_", "]"}], ":=", " ", 
+         RowBox[{"cn", "*", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"listProduct", "[", "t", "]"}], "^", 
+            RowBox[{"-", 
+             RowBox[{"(", 
+              RowBox[{"\[Delta]", "+", "1"}], ")"}]}]}], ")"}], "*", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"1", "-", 
+             RowBox[{"Total", "[", "t", "]"}]}], ")"}], "^", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"totallength", "*", "\[Delta]"}], "-", "1"}], ")"}]}], 
+          "*", 
+          RowBox[{"Boole", "[", 
+           RowBox[{
+            RowBox[{"Total", "[", "t", "]"}], "<", "1"}], "]"}]}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"i", "==", "0"}], ",", 
+          RowBox[{"\[Mu]", "[", "z", "]"}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"\[Xi]vector", "=", 
+            RowBox[{"Array", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"\[Xi]", "[", "#", "]"}], "&"}], ",", "i"}], "]"}]}], 
+           ";", "\[IndentingNewLine]", 
+           RowBox[{"z\[Xi]vec", "=", 
+            RowBox[{"{", 
+             RowBox[{"z", ",", "\[Xi]vector"}], "}"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"z\[Xi]vec", "=", 
+            RowBox[{"Flatten", "[", "z\[Xi]vec", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"integrand", "=", 
+            RowBox[{"\[Mu]", "[", "z\[Xi]vec", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"cube", "=", 
+            RowBox[{"Cuboid", "[", 
+             RowBox[{
+              RowBox[{"Table", "[", 
+               RowBox[{
+                RowBox[{"z", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"Length", "[", "z", "]"}], "]"}], "]"}], ",", "i"}],
+                "]"}], ",", 
+              RowBox[{"Table", "[", 
+               RowBox[{"1", ",", "i"}], "]"}]}], "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"-", "1"}], ")"}], "^", "i"}], "*", 
+            RowBox[{
+             RowBox[{"NIntegrate", "[", 
+              RowBox[{"integrand", ",", 
+               RowBox[{"\[Xi]vector", " ", "\[Element]", "cube"}], ",", 
+               RowBox[{"AccuracyGoal", "->", "1"}], ",", 
+               RowBox[{"PrecisionGoal", "->", "1"}]}], "]"}], "/", 
+             RowBox[{"i", "!"}]}]}]}]}], "\[IndentingNewLine]", "]"}]}]}], 
+      "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"kprobintegrand", "[", "z_", "]"}], ":=", " ", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"imax", ",", "orderedz"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"orderedz", "=", 
+        RowBox[{"DeleteDuplicates", "[", 
+         RowBox[{"Sort", "[", 
+          RowBox[{"z", ",", "Greater"}], "]"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"Total", "[", "z", "]"}], "<", "1"}], "&&", 
+          RowBox[{
+           RowBox[{"z", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], ">", 
+           RowBox[{"z", "[", 
+            RowBox[{"[", "2", "]"}], "]"}], ">", 
+           RowBox[{"z", "[", 
+            RowBox[{"[", "3", "]"}], "]"}]}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"imax", "=", 
+           RowBox[{"Ceiling", "[", 
+            RowBox[{
+             RowBox[{"1", "/", 
+              RowBox[{"z", "[", 
+               RowBox[{"[", 
+                RowBox[{"Length", "[", "z", "]"}], "]"}], "]"}]}], "-", 
+             RowBox[{"Length", "[", "z", "]"}], "-", "1"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"(*", 
+           RowBox[{
+            RowBox[{"Print", "[", "z", "]"}], ";", "\[IndentingNewLine]", 
+            RowBox[{"Print", "[", 
+             RowBox[{
+              RowBox[{"DeleteDuplicates", "[", 
+               RowBox[{"Sort", "[", 
+                RowBox[{"z", ",", "Greater"}], "]"}], "]"}], "==", "z"}], 
+             "]"}], ";", "\[IndentingNewLine]", 
+            RowBox[{"Print", "[", 
+             RowBox[{
+              RowBox[{"Total", "[", "z", "]"}], "<", "1"}], "]"}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"Print", "[", "imax", "]"}], ";"}], "*)"}], 
+          "\[IndentingNewLine]", 
+          RowBox[{"Sum", "[", 
+           RowBox[{
+            RowBox[{"partialdens", "[", 
+             RowBox[{"z", ",", "i"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "0", ",", "imax"}], "}"}]}], "]"}]}], 
+         "\[IndentingNewLine]", ",", "0"}], "]"}]}]}], "\[IndentingNewLine]", 
+     "]"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]"}], "Input",\
+
+ CellChangeTimes->{{3.940517467986734*^9, 
+  3.9405174989826508`*^9}},ExpressionUUID->"da994529-53c8-4dc9-8591-\
+5a8187fa98c9"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"\[Delta]", "=", 
+   RowBox[{"2", "/", "3"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Tau]", "=", "0.09090909090909091`"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"NIntegrate", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"kprobintegrand", "[", 
+      RowBox[{"{", 
+       RowBox[{"z1", ",", "z2", ",", "z3"}], "}"}], "]"}], "*", 
+     RowBox[{"Boole", "[", 
+      RowBox[{"z1", ">", "z2", ">", "z3"}], "]"}], "*", 
+     RowBox[{"Boole", "[", 
+      RowBox[{
+       RowBox[{"z1", "+", "z2", "+", "z3"}], "<", "1"}], "]"}]}], ",", 
+    RowBox[{"{", 
+     RowBox[{"z1", ",", "\[Tau]", ",", "1"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"z2", ",", "\[Tau]", ",", "1"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"z3", ",", "\[Tau]", ",", "1"}], "}"}], ",", 
+    RowBox[{"Method", "->", 
+     RowBox[{"{", 
+      RowBox[{"Automatic", ",", 
+       RowBox[{"\"\<SymbolicProcessing\>\"", "->", "0"}]}], "}"}]}], ",", 
+    RowBox[{"MinRecursion", "->", "2"}], ",", 
+    RowBox[{"AccuracyGoal", "->", "2"}], ",", 
+    RowBox[{"PrecisionGoal", "->", "2"}]}], "]"}], "//", 
+  "AbsoluteTiming"}], "\[IndentingNewLine]"}], "Input",ExpressionUUID->\
+"a1e066f5-4562-4445-9676-11e17bd0efd1"]
+},
+WindowSize->{614.25, 669},
+WindowMargins->{{-1536, Automatic}, {Automatic, 0}},
+FrontEndVersion->"14.0 for Linux x86 (64-bit) (December 12, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"a82b7f0d-bb58-447a-96d3-df9cf97e0c95"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 6835, 176, 729, "Input",ExpressionUUID->"da994529-53c8-4dc9-8591-5a8187fa98c9"],
+Cell[7396, 198, 1247, 33, 150, "Input",ExpressionUUID->"a1e066f5-4562-4445-9676-11e17bd0efd1"]
+}
+]
+*)
+
