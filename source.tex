@@ -242,10 +242,11 @@ risto.wichman@aalto.fi}
              Under the shadowing approximation $\eqref{eq:defexp}$, the total received power can be simply characterized by the gamma distribution.
           \begin{align}
             \label{eq:lapexp}
-            &\mathcal{L}_{S_{\mathcal{G}}}(s) \approx \exp\left\{-\mathcal{\kappa}\int_0^{\infty}(1-e^{-sr})\frac{F_{\hat{H}}(t)}{r} dr \right\}, \\
-            &= \exp\left\{-\mathcal{\kappa}\int_0^{\infty}(1-e^{-sr})\frac{e^{-ra}b}{r} dr \right\}=(1+s/a)^{-b\tilde{\kappa}},
+            &\mathcal{L}_{S_{\mathcal{G}}}(s) \approx \exp\left\{-\mathcal{\kappa}\int_0^{\infty}(1-e^{-sr})\frac{F_{\hat{H}}(t)}{r} dr \right\}, \nonumber \\
+            &= \exp\left\{-\mathcal{\kappa}\int_0^{\infty}(1-e^{-sr})\frac{e^{-ra}b}{r} dr \right\}=(1+s/a)^{-b\tilde{\kappa}}, 
           \end{align}
           which is the Laplace transform of the gamma distribution with shape parameter $b\tilde{\kappa}$ and scale parameter $1/a$.
+
 
           
 
@@ -266,14 +267,50 @@ risto.wichman@aalto.fi}
               In (b), we assume an exponential $(H_{x_0}|T_{x_0}=i)$ to approximate the probability of coverage, which allows the probability to be expressed in terms of the Laplace transforms of $S_{\mathcal{G}_i} = \sum_{x \in \cup \mathcal{G}_i}x$ and $W$. By the independent shadowing, they are independent and can be expressed as the product. In (c), we made the substitutions $D_{h,\epsilon}r/\varphi_{\text{RX}} \mapsto u$, and further, $2^{u^2} \mapsto v$.
               
             \end{proof}
-          \end{prop}
+                    \end{prop}
           Notice that $p_c(\theta)$ is the probability of coverage of the UE with the \textit{strongest signal}, which is \textit{not} necessarily the spatially  \textit{nearest transmitter}.
+
+
+                    
+          Let $(\tau_s, s\geq 0)$ be a \textit{gamma subordinator}, that is, a pure-jump increasing Lévy process with the intensity measure $\lambda(r) = e^{-ar}/r$ . Assume $(\tau_s)$ has no drift component, so
+          \begin{equation}
+            \label{eq:lapsubord}
+            \mathbb{E}(\exp\{-t \tau_s\}) = \exp\left\{-s \int_0^{\infty}(1-e^{-t r})\frac{e^{-ar}}{r} dr \right\}.
+          \end{equation}
+          But \eqref{eq:lapsubord} equals to \eqref{eq:lapexp} for $t=b \kappa$. Let $V_1(\tau_s) \geq V_2(\tau_s)\geq \dots \geq 0 $ denote the jumps of the subordinator $(\tau_s)$ at time $s$. By definition, the sequence
+          \begin{equation}
+            \left(\frac{V_1(\tau_{b\kappa})}{\tau_{b\kappa}},\frac{V_2(\tau_{b\kappa})}{\tau_{b\kappa}} \dots \right)
+          \end{equation}
+          is the process of the STIR values of the UEs $\{x_1,x_2 \dots\}$. It has the Poisson-Dirichlet distribution PD$(0, b \kappa)$.
+                    
 
           In an interference-only channel, $W=0$, the coverage probability \eqref{eq:probofcov} has the analytical expression
           \begin{equation}
 p_c(\theta) =  \theta^{-\tilde{\kappa}b} {_2F_1}\left(\tilde{\kappa}b, \tilde{\kappa}b;\tilde{\kappa}b + 1; -1/\theta \right),
           \end{equation}
-          where $_2F_1(\cdot)$ is the hypergeometric function. The coverage probability does not depend on the scale parameter $a$. However, the probability $b$ that the signal strength of the UEs is more than $0$ has an effect on the coverage probability in a decreasing sense w.r.t. the $b$: for $b \rightarrow 0$, $p_c(\theta) =1$; hence, small $p_{\text{LoS}}$ causing severe shadowing (which is the case with the low elevation angles) is beneficial for the coverage. Directly seen from \eqref{eq:probofcov}, the same insight holds in the interference-plus-noise-limited channel $W>0$.
+          where $_2F_1(\cdot)$ is the hypergeometric function. 
+
+          And the probability density function (PDF) in the region $z \geq 1$,
+          \begin{equation}
+            f_{(1)}(z) = p_c'(z)= \tilde{\kappa} b  \left(\frac{1}{z }+1\right)^{- \tilde{\kappa}b } z^{- \tilde{\kappa}b -1}.
+          \end{equation}
+
+          The coverage probability does not depend on the scale parameter $a$.
+           
+          
+
+          We may calculate a lower bound for the first two moments for the SIR:
+
+
+
+          \begin{align}
+            &\mathbb{E}(\text{SIR}_1)  \geq\int_{1}^{\infty}f_{(1)}(z)zdz=\frac{b \tilde{\kappa}  2^{1-b \kappa }}{b \tilde{\kappa} -1}, \tilde{\kappa}b >1, \\
+            &\mathbb{E}(\text{SIR}^2_1) \geq \int_{1}^{\infty}f_{(1)}(z)z^2dz = \frac{b^2 \tilde{\kappa} ^2 2^{1-b \tilde{\kappa} }}{b^2 \tilde{\kappa} ^2-3 b \tilde{\kappa} +2},\tilde{\kappa}b >2.
+          \end{align}
+          This implies that the variance of SIR$_1$ is undefined for $\tilde{\kappa}b \leq 1$ and infinite for $1 <\tilde{\kappa}b \leq 2$.
+          
+
+          
 
           
           \begin{prop}
@@ -307,15 +344,11 @@ p_c(\theta) =  \theta^{-\tilde{\kappa}b} {_2F_1}\left(\tilde{\kappa}b, \tilde{\k
             where $\tau' = \tau/(1+\tau)$ and the sum is bounded by $i_{\text{max}}< 1/\epsilon-k$. 
           \end{prop}
 
-          
 
           
-          \subsubsection{Average SIR}
-          The average SIR conditioning that $\theta \geq 1$ is given by
-          \begin{equation}
-            \mathbb{E}(\text{SIR})=\int_{1}^{\infty}\frac{p_c(y)}{p_c(1)}dy= \frac{\, _2F_1(\tilde{\kappa}b-1,\tilde{\kappa}b;\tilde{\kappa}b+1;-1)}{p_c(1)(\tilde{\kappa}b-1)},
-          \end{equation}          
-          which goes to $\infty$ as $\tilde{\kappa}b \rightarrow 1+$. For $\tilde{\kappa}b<1$, the expectation is undefined.
+        
+
+          
           
           
           \section{Numerical results}
