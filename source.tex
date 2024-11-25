@@ -118,17 +118,20 @@ risto.wichman@aalto.fi}
          \section{Analysis}
          
          \subsection{Gain process}
-         We denote the derivative of the function $\|x\| \mapsto \varphi_x $ at $\|x\| =0$ with $D_{h,\epsilon} \triangleq \sin^2(\epsilon)/h$. Consequently, $\varphi_x \approx D_{h,\epsilon}\|x\|$ for small $\|x\|$.
-         Given a PPP $\Phi \subset \R^2$ of density $\lambda$, define the shadowed gain process (GP)
+
+         The path loss law is Gaussian, a exponentially decaying function, representing the antenna gain of a narrow-beam LEO satellite. The path loss is a function of the distance $r$ from the origin, 
+          \begin{equation}
+            G(r) = 2^{-(D_{h,\epsilon}r)^2/\varphi^2_{\text{RX}}},
+          \end{equation}
+          where $\varphi_{\text{RX}}$ is the width of the $3$ dB gain and $D_{h,\epsilon}=\sin^2(\epsilon)/h$ is a scaling constant. We will come back to the interpetation of these parameters in the LEO satellite context in Section XXX. 
+          
+
+         Given a homogeneous PPP $\Phi \subset \R^2$ of density $\lambda$, define the shadowed gain process (GP)
          \begin{equation}
            \label{eq:gainprocess}
-           \mathcal{G} \triangleq \left\{x \in \Phi : H_x G(D_{h,\epsilon}\|x\|) \right\},
+           \mathcal{G} \triangleq \left\{x \in \Phi : H_x G(\|x\|) \right\},
           \end{equation}
-          where $\{H_x\}$ are i.i.d. shadowing variables, possibly degenerate, and 
-          \begin{equation}
-            G(\varphi) = 2^{-\varphi^2/\varphi^2_{\text{RX}}}
-          \end{equation}
-          is the Gaussian antenna pattern $G:[0,\infty) \rightarrow (0,1]$ characterized by the halfwidth of the $3$ dB gain $\varphi_{\text{RX}}$. We use the value $\varphi_{\text{RX}} = 1.6 \degree$ according to the International Telecommunication Union Recommendations (ITU-R) \cite{ITURS1528}. The GP is a \textit{projection process} and, as such, a nonhomogeneous PPP [CITE].
+          where $\{H_x\}$ are i.i.d. shadowing variables, possibly degenerate, and $\|x\|$ is the Euclidean distance. We use the value $\varphi_{\text{RX}} = 1.6 \degree$ according to the International Telecommunication Union Recommendations (ITU-R) \cite{ITURS1528}. The GP is a \textit{projection process} and, as such, a nonhomogeneous PPP [CITE].
 
           The density of the GP has the following connection to the fading distribution:
 
@@ -141,14 +144,14 @@ risto.wichman@aalto.fi}
               where $\tilde{\kappa}= \kappa/\log(2)$ and
               \begin{equation}
                 \label{eq:kappa}
-                      {\kappa} \triangleq    \pi \lambda   \left(\frac{h \varphi_{\textup{RX}}}{\sin^2(\epsilon)  }\right)^2
+                      {\kappa} \triangleq    \pi \lambda   \left(\frac{\varphi_{\textup{RX}}}{D_{h,\epsilon}}\right)^2.
               \end{equation}
-              is approximately the mean number of UEs inside the $3$ dB footprint of a SBS.            
+              The parameter $\kappa$ has an interpretation as the mean number of UEs inside the $3$ dB footprint of a SBS (see appendix XX).
               \begin{proof}
                 Let $f_H(\cdot)$ be the pdf of $H$. We denote $G^{-1}(\cdot)$ as the generalized inverse $G^{-1}(y) = \inf \{x:G(x)<y\}$. By [CITE],
                 \begin{align*}
                   &\int_t^{\infty}\lambda_{\mathcal{G}}(y)dy \overset{}{=} \pi \lambda \mathbb{E}\left[ \left(\frac{G^{-1}(t/H)}{D_{h,\epsilon}}\right)^2 \right] \\
-                  &=\pi \lambda \int_t^{\infty} \left(-\frac{h \varphi_{\text{RX}}\sqrt{-\log(t/h)}}{\sin^2(\epsilon) \sqrt{\log(2)}}\right)^2f_H(h) dh  \\
+                  &=\pi \lambda \int_t^{\infty} \left(-\frac{\varphi_{\text{RX}}\sqrt{-\log(t/h)}}{D_{h,\epsilon} \sqrt{\log(2)}}\right)^2f_H(h) dh  \\
                   &= -\tilde{\kappa} \int_t^{\infty} \log(t/h)f_H(h) dh\\
                   &\overset{(a)}{=} -\tilde{\kappa} \sij{t}{\infty} \log(t/h)F_H(h) - \tilde{\kappa} \int_t^{\infty}\frac{F_H(h)}{h} dh.
                 \end{align*}
@@ -165,23 +168,37 @@ risto.wichman@aalto.fi}
           \end{align}
           respectively. 
 
-          Unfortunately, unlike in terrestrial networks with a singular path loss, where the density of the projection process is dependent only on a single moment of $H$, $\lambda_{\mathcal{G}}(t)$ has an explicit pointwise dependence on the ccdf of the fading distribution. However, the density functions are similar for certain fading distributions with matched moments. For example,
-
-          \subsection{Multitier network}
-
-          
-          We consider $J$ different tiers identically and independently randomly assigned for each UE. In this work, the tiers represent different types of shadowing. We denote by $T_x \in \mathcal{T} \triangleq \{1,\dots, J\}$ the type (of the fading) of the UE $x \in \Phi $. Each tier is characterized by its unique fading variable and the probability $\mathbb{P}(T_x = i)$ that the transmitter belongs to tier $i$. It holds that $\sum_{i \in \mathcal{T}} \mathbb{P}(T_x = i) =1$. In this work, the probability is identical for all UEs, and we can denote $\mathbb{P}(T = i) \triangleq \mathbb{P}(T_x = i)$. Also, the fading variables are i.d.d.; hence, we denote $(H | T=i) \triangleq (H_x | T_x=i)$. We denote by $\Phi_i$ the point process of tier $i$ transmitters and $\mathcal{G}_i$ the corresponding GP. By the thinning theorem [CITE], both are PPPs, and if $\lambda$ is the density of $\Phi=\cup_{i \in \mathcal{T}} \Phi_i$, we can sum the densities of the separate tiers $\lambda = \sum_{i \in \mathcal{T}} \lambda_i$ with $\lambda_i \triangleq \lambda \mathbb{P}(T = i)$. Accordingly,  ${\kappa}_i \triangleq \mathbb{P}(T = i){\kappa}$, where $\kappa$ is the mean number of UEs inside the $3$ dB footprint in $\Phi$ as in $\eqref{eq:kappa}$, and $\kappa_i$ and $(H|T=i)$ determine the density $\lambda_{\mathcal{G}_i}(t)$ as in $\eqref{eq:GPdensity}$. Also the GP tiers can be superpositioned: if $\mathcal{G}$ is the GP of $\Phi=\cup_{i \in \mathcal{T}} \Phi_i$, $\lambda_{\mathcal{G}}(t)= \sum_{i \in \mathcal{T}}\lambda_{\mathcal{G}_i}(t)$. 
-
-          Of course, the index set $\mathcal{T}$ does not have to be a set of the first $J$ integers; for example, we could you use $\mathcal{T}=\{\text{NLoS, LoS} \}$.
+          Unfortunately, unlike in terrestrial networks with a singular path loss, where the density of the projection process is dependent only on a single moment of $H$, $\lambda_{\mathcal{G}}(t)$ has an explicit pointwise dependence on the ccdf of the fading distribution. 
 
 
-          \subsection{Signal-to-interference ratio}
-          Let $W>0$ be a normalized noise power constant. As we consider a NB that decays much faster than the spatial path loss w.r.t. $\|x\|$, $x \in \Phi$ as in the definition of the GP \eqref{eq:gainprocess}, we approximate that \textbf{the spatial path loss is equal to all transmitters} and depends on the distance between the SBS and its antenna boresight location on the earth's surface $\hat{d}_{h,\epsilon}$. The path loss law is defined as $\ell({d_x}) \triangleq ({d_x}/d_0)^{\gamma}$, where $d_x$ is the Euclidean distance between the UE $x \in \mathcal{G}$ and the typical SBS, and $\gamma$ is the power path loss exponent. We define the SINR of the strongest signal $x_0 \triangleq \max  \mathcal{G}$ at the typical SBS as
-          \begin{equation}
-            \text{SINR} \triangleq \frac{x_0/\ell(\hat{d}_{h,\epsilon})}{\sum\limits_{x \in \mathcal{G} \setminus \{x_0\}}x/\ell(\hat{d}_{h,\epsilon})+ W}.
-          \end{equation}
+                      \subsection{Slow-fading distribution}
+ While analytically tractable, the defective exponential distribution can capture the mean and the variance of a more complicated fading distribution with high variance, particularly the lognormal distribution, which is a well-established shadowing model in the LEO networks. The shadowing is defined by the mixed exponential RV
+             \begin{equation}
+               \hat{H}_x \sim
+            \begin{cases}
+               0, \text{ if } U < 1-b,\\
+                \text{Exp}(a), \text{ if } U \geq1- b,              \label{eq:tier2exponential}
+            \end{cases}
+            \end{equation}
+             with $a>0$ and $0<b\leq1$, and $U \sim U(0,1)$ follows the uniform distribution.
 
-          \subsection{Laplace transform of the total received power}
+
+            The complementary CDF (CCDF) is given by the defective distribution function
+            \begin{equation}
+              \label{eq:defexp}
+              F_{\hat{H}_{\text{exp}}}(t)=e^{-at}b.
+            \end{equation}
+            %%where
+            %% \begin{align}
+            %%   &a=\frac{2 (p_{\text{LoS}}-1) e^{{\mu_{N\text{LoS}}}+\frac{{\sigma_{N\text{LoS}}}^2}{2}}-2 p_{\text{LoS}} e^{{\mu_{\text{LoS}}}+\frac{{\sigma_{\text{LoS}}}^2}{2}}}{(p_{\text{LoS}}-1) e^{2 \left({\mu_{N\text{LoS}}}+{\sigma_{N\text{LoS}}}^2\right)}-p_{\text{LoS}} e^{2 \left({\mu_{\text{LoS}}}+{\sigma_{\text{LoS}}}^2\right)}},\\
+            %%   &b=\frac{2 \left(({p_\text{LoS}}-1) e^{{\mu_{\text{N\text{LoS}}}}+\frac{{\sigma_{\text{N\text{LoS}}}}^2}{2}}-{p_\text{LoS}} e^{{\mu_{\text{LoS}}}+\frac{{\sigma_{\text{LoS}}}^2}{2}}\right)^2}{({p_\text{LoS}}-1) e^{2 \left({\mu_{\text{N\text{LoS}}}}+{\sigma_{\text{N\text{LoS}}}}^2\right)}-{p_\text{LoS}} e^{2 \left({\mu_{\text{LoS}}}+{\sigma_{\text{LoS}}}^2\right)}}.              
+            %% \end{align} 
+            At the probability $1-b$, the signal power maps to $0$: this reflects highly severe shadowing occurrences. 
+
+
+
+
+          \subsection{Total interference and its Laplace transform}
 
           The Laplace function of the total of the points in $\mathcal{G}$ is defined as $S_{\mathcal{G}} \triangleq \sum_{x \in \mathcal{G}}x$, i.e., the \textit{total received power} scaled by the spatial path loss $\ell(\hat{d}_{h,\epsilon})$ from all UEs in $\mathcal{G}$ at the typical SBS, is given by
 
@@ -196,6 +213,12 @@ risto.wichman@aalto.fi}
           
           We are ready to derive a approximation for the probability of coverage of the UE with the srongest signal.
 
+          \subsection{Signal-to-interference ratio}
+          Define the SIR of the $k$\textit{th} strongest signal at the typical SBS as
+          \begin{equation}
+            \text{SIR}_k \triangleq \frac{x_k}{\sum\limits_{x \in \mathcal{G} \setminus \{x_0\}}x},
+          \end{equation}
+          $k\in\{1,2,\dots\}$.
             
 
           \subsection{Gaussian mixture model}
@@ -211,32 +234,8 @@ risto.wichman@aalto.fi}
             
             The mean of the lognormal RV is given by $ m_i=\mathbb{E}(H|T=i) = \exp \{\mu_i+\sigma_i^2/2\}$.
             
-            In the two-tier network $\mathcal{T} =\{\text{LoS}, \text{NLoS}\}$ with the lognormal fading variables \eqref{eq:tier1lognormal} and \eqref{eq:tier2lognormal}, in the simple coverage region, the approximate probability of coverage is given by evaluating \eqref{eq:probofcov} with $m_{LoS}=\exp \{\mu_{\text{LoS}}+\sigma_{\text{LoS}}^2/2\}$, $m_{NLoS}=\exp \{\mu_{\text{NLoS}}+\sigma_{\text{NLoS}}^2/2\}$, $\mathcal{\kappa}_{\text{LoS}} = p_{\text{LoS}}\kappa$ and $\mathcal{\kappa}_{\text{NLoS}}=(1-p_{\text{LoS}})\kappa$, where $\kappa$ is given in given in $\eqref{eq:kappa}$, for a density $\lambda$ of the entire netwrok.
-
-            \subsection{Approximation of the lognormal distribution}
-             For a tradeoff between accuracy and analytical tractability, we approximate the mixed lognormal shadowing distribution with a mixture distribution consisting of an exponential distribution and an atomic probability measure at $0$, where the parameters are chosen by matching the mean, and the variance of the total received power.
-             Accordingly, the exponential shadowing approximation is defined by
-             \begin{equation}
-               \hat{H}_x \sim
-            \begin{cases}
-               0, \text{ if } U < 1-b,\\
-                \text{Exp}(a), \text{ if } U \geq1- b,              \label{eq:tier2exponential}
-            \end{cases}
-            \end{equation}
-             with $a>0$ and $0<b\leq1$.
 
 
-            The complementary CDF (CCDF) is given by the defective distribution function
-            \begin{equation}
-              \label{eq:defexp}
-              F_{\hat{H}_{\text{exp}}}(t)=e^{-at}b,
-            \end{equation}
-            where
-            \begin{align}
-              &a=\frac{2 (p_{\text{LoS}}-1) e^{{\mu_{N\text{LoS}}}+\frac{{\sigma_{N\text{LoS}}}^2}{2}}-2 p_{\text{LoS}} e^{{\mu_{\text{LoS}}}+\frac{{\sigma_{\text{LoS}}}^2}{2}}}{(p_{\text{LoS}}-1) e^{2 \left({\mu_{N\text{LoS}}}+{\sigma_{N\text{LoS}}}^2\right)}-p_{\text{LoS}} e^{2 \left({\mu_{\text{LoS}}}+{\sigma_{\text{LoS}}}^2\right)}},\\
-              &b=\frac{2 \left(({p_\text{LoS}}-1) e^{{\mu_{\text{N\text{LoS}}}}+\frac{{\sigma_{\text{N\text{LoS}}}}^2}{2}}-{p_\text{LoS}} e^{{\mu_{\text{LoS}}}+\frac{{\sigma_{\text{LoS}}}^2}{2}}\right)^2}{({p_\text{LoS}}-1) e^{2 \left({\mu_{\text{N\text{LoS}}}}+{\sigma_{\text{N\text{LoS}}}}^2\right)}-{p_\text{LoS}} e^{2 \left({\mu_{\text{LoS}}}+{\sigma_{\text{LoS}}}^2\right)}}.              
-            \end{align} 
-            At the probability $1-b$, the signal power maps to $0$: this reflects the severe shadowing occurrences when the signal strength in the lognormal shadowing model gets mapped very close to $0$. Notice that the exponential approximation is applicable only if $0<b\leq 1$; hence, it does not apply under general shadowing.
 
             \subsection{Distribution of the total received power}
              Under the shadowing approximation $\eqref{eq:defexp}$, the total received power can be simply characterized by the gamma distribution.
@@ -246,29 +245,6 @@ risto.wichman@aalto.fi}
             &= \exp\left\{-\mathcal{\kappa}\int_0^{\infty}(1-e^{-sr})\frac{e^{-ra}b}{r} dr \right\}=(1+s/a)^{-b\tilde{\kappa}}, 
           \end{align}
           which is the Laplace transform of the gamma distribution with shape parameter $b\tilde{\kappa}$ and scale parameter $1/a$.
-
-
-          
-
-                    \begin{prop}
-            Assume a network of density $\lambda$ with the tiers $\mathcal{T}$. Let $H_{x_0}$ be the shadowing variable, and ${x'}_0 =  H_{x_0}G(\|x_0\|) \in \mathcal{G} =\cup_{i \in \mathcal{T}} \mathcal{G}_i$ be the strongest signal of the UEs. In the simple coverage region $\theta \geq 1$,
-            \begin{align}
-              \label{eq:probofcov}
-              &p_c(\theta) \approx \mathbb{P}\left( \frac{\hat{H}_{x_0} G(\|x_0\|)}{\sum\limits_{x' \in   \mathcal{G} \setminus \{x'_0\}}x'  + W\ell(\hat{d}_{h,\epsilon})} > \theta \right) \nonumber \\      
-              &\overset{(a)}=  \lambda \int_{ \R^2}\mathbb{P}\Bigg(\hat{H}_{x_0} > \theta  2^{\left(\frac{D_{h,\epsilon}\|y\|}{\varphi_{\textup{RX}}}\right)^2 } \cdot \left(\sum_{x \in \mathcal{G}_i }x +W\ell(\hat{d}_{h,\epsilon}) \right)\Bigg) \nonumber dy  \nonumber  \\              
-              &\overset{(b)}{\approx} 2 \pi \lambda b \cdot \nonumber \\
-              &\int_{0}^{\infty} r \prod_{k \in \mathcal{T}}\mathbb{E} \left(e^{-\frac{\theta a \sum_{x \in { \mathcal{G}}} x}{2^{-(D_{h,\epsilon}r/\varphi_{\textup{RX}})^2}   }} \cdot e^{- \theta   \frac{W\ell(\hat{d}_{h,\epsilon})a}{2^{-(D_{h,\epsilon}r/\varphi_{\textup{RX}})^2} }} \right) dr \nonumber \\
-              &\overset{(c)}{=}  \tilde{\kappa}b\int_1^{\infty} \mathcal{L}_{S_{\mathcal{G}}}\left(\theta v a \right)  \mathcal{L}_{W}\left( \theta vW\ell(\hat{d}_{h,\epsilon})a \right)/v dv \nonumber \\
-              &\overset{}{=}   {} \tilde{\kappa}b\int_1^{\infty}  \frac{\exp \{- \theta v W(\hat{d}_{h,\epsilon}/d_0)^{\gamma}  a\}}{v\left(1 + \theta v  \right)^{\tilde{\kappa}b}} dv.
-            \end{align}
-            
-            \begin{proof}
-              The detailed proof is presented in [CITE]. Step (a) heuristically: In the simple coverage region, the UE is covered \textit{only if} it has the strongest signal. Using the translation invariance of the stationary PPP and utilizing Slivnyak's and Gambell's theorems leads to the probability of coverage given by the integral over the plane.
-              In (b), we assume an exponential $(H_{x_0}|T_{x_0}=i)$ to approximate the probability of coverage, which allows the probability to be expressed in terms of the Laplace transforms of $S_{\mathcal{G}_i} = \sum_{x \in \cup \mathcal{G}_i}x$ and $W$. By the independent shadowing, they are independent and can be expressed as the product. In (c), we made the substitutions $D_{h,\epsilon}r/\varphi_{\text{RX}} \mapsto u$, and further, $2^{u^2} \mapsto v$.
-              
-            \end{proof}
-                    \end{prop}
-          Notice that $p_c(\theta)$ is the probability of coverage of the UE with the \textit{strongest signal}, which is \textit{not} necessarily the spatially  \textit{nearest transmitter}.
 
 
                     
@@ -299,16 +275,7 @@ p_c(\theta) =  \theta^{-\tilde{\kappa}b} {_2F_1}\left(\tilde{\kappa}b, \tilde{\k
            
           
 
-          We may calculate a lower bound for the first two moments for the SIR:
-
-
-
-          \begin{align}
-            &\mathbb{E}(\text{SIR}_1)  \geq\int_{1}^{\infty}f_{(1)}(z)zdz=\frac{b \tilde{\kappa}  2^{1-b \kappa }}{b \tilde{\kappa} -1}, \tilde{\kappa}b >1, \\
-            &\mathbb{E}(\text{SIR}^2_1) \geq \int_{1}^{\infty}f_{(1)}(z)z^2dz = \frac{b^2 \tilde{\kappa} ^2 2^{1-b \tilde{\kappa} }}{b^2 \tilde{\kappa} ^2-3 b \tilde{\kappa} +2},\tilde{\kappa}b >2.
-          \end{align}
-          This implies that the variance of SIR$_1$ is undefined for $\tilde{\kappa}b \leq 1$ and infinite for $1 <\tilde{\kappa}b \leq 2$.
-          
+                    
 
           
 
@@ -316,7 +283,8 @@ p_c(\theta) =  \theta^{-\tilde{\kappa}b} {_2F_1}\left(\tilde{\kappa}b, \tilde{\k
           \begin{prop}
             The density of the nth factorial moment measure of the STIR process at the NB LEO with the Gaussian antenna beam is given by
             \begin{align}
-              \mu'^{(n)}(t_1',\dots,t'_n) = (\tilde{\kappa}b)^n\prod_{i=1}^n{t'}_{1}^{-1}\left(1- \sum_{j=1}^nt'_j \right)^{\tilde{\kappa}b-1},       
+              \label{eq:factorialmoment}
+              \mu'^{(n)}(t_1',\dots,t'_n) = (\tilde{\kappa}b)^n\prod_{j=1}^n{t'}_{j}^{-1}\left(1- \sum_{j=1}^nt'_j \right)^{\tilde{\kappa}b-1},       
             \end{align}
             whenever $t_1>\dots >t_n$ and $\sum_{i=1}^n t_i <1$, and $0$ otherwise.
           \end{prop}
@@ -330,10 +298,37 @@ p_c(\theta) =  \theta^{-\tilde{\kappa}b} {_2F_1}\left(\tilde{\kappa}b, \tilde{\k
 
           
           The joint probability density of the vector of $k$ strongest values of the STIR process $(\mathsf{Z}'_{(1)}, \dots, \mathsf{Z}'_{(n)})$ is equal to
-          \begin{equation} 
+          \begin{equation}
+            \label{eq:jointprobability}
             f'_{(k)}(z'_1,\dots,z'_k)= \sum^{i_{\text{max}}}_{i=0}\frac{(-1)^i}{i!}{\mu'}_k^{(k+i)}(z'_1,\dots,z'_k),
           \end{equation}
           where $i_{\text{max}}<1/z'_k-k$, is the maximum index of the non-zero terms of the expansion.
+          The joint pdf of the SIR process can by obtained from $\eqref{eq:jointprobability}$ by
+          \begin{equation}
+            \label{eq:SIRjointprobability}
+            \mu^{(n)}(t_1,\dots,t_n) = \prod_{j=1}^n\frac{1}{(1+t_j)^2}\mu'^{(n)}\left(\frac{t_1}{1+t_1},\dots,\frac{t_n}{1+t_n}\right).
+          \end{equation}
+
+          Combining \eqref{eq:SIRjointprobability}, \eqref{eq:jointprobability} and \eqref{eq:factorialmoment}, we get the PDF for the SIR of the strongest signal for $z\geq 1$:
+          
+          \begin{equation}
+            f_{(1)}(z) = \frac {b\kappa\left({z + 1} \right)^{-b\kappa}} {z}.
+          \end{equation}
+
+
+          We may calculate a lower bounds for the first two moments for the SIR:
+
+
+
+          \begin{align}
+            &\mathbb{E}(\text{SIR}_1)  \geq\int_{1}^{\infty}f_{(1)}(z)zdz=\frac{b \tilde{\kappa}  2^{1-b \kappa }}{b \tilde{\kappa} -1}, \tilde{\kappa}b >1, \\
+            &\mathbb{E}(\text{SIR}^2_1) \geq \int_{1}^{\infty}f_{(1)}(z)z^2dz = \frac{(b \tilde{\kappa}) ^2 2^{1-b \tilde{\kappa} }}{(b\tilde{\kappa} - 2)  (b\tilde{\kappa} - 1)},\tilde{\kappa}b >2.
+          \end{align}
+          The mean and the second moment diverge for $\tilde{\kappa}b\leq 1$ and $\tilde{\kappa}b\leq 2$, respectively. This implies that the variance of SIR$_1$ is undefined for $\tilde{\kappa}b \leq 1$ and infinite for $1 <\tilde{\kappa}b \leq 2$. The insight is crucial because it reflects that, at the optimal \textit{average} performance $\tilde{\kappa}b = 1$, the user experience of the link quality varies significantly. Recall \eqref{eq:kappa}: $\tilde{\kappa}b$ depends on the shadowing (small $b$ corresponds to severe shadowing), UE density, antenna gain width, altitude and elevation angle. We will demonstrate that signal cancellation and combination can improve user fairness without degrading the link quality.
+
+
+
+          
           Finally, we arrive to the ICSC-SIR probability of coverage.
           \begin{prop}
             \begin{align}
@@ -344,7 +339,8 @@ p_c(\theta) =  \theta^{-\tilde{\kappa}b} {_2F_1}\left(\tilde{\kappa}b, \tilde{\k
             where $\tau' = \tau/(1+\tau)$ and the sum is bounded by $i_{\text{max}}< 1/\epsilon-k$. 
           \end{prop}
 
-
+          
+          
           
         
 
