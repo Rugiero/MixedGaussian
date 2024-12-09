@@ -3,17 +3,22 @@ clear all;
 
 
 
+%% S = importdata("kprobssimexp.mat");
+%% simres1exp = S.simres1;
+%% simres2exp = S.simres2;
+%% simres3exp = S.simres3;
+
 S = importdata("kprobstheory.mat");
 theoryres1 = round(S.theoryres1,2);
 theoryres2 = round(S.theoryres2,2);
 theoryres3 = round(S.theoryres3,2);
-theoryres4 = round(S.theoryres4,2);
+%theoryres4 = round(S.theoryres4,2);
 
 S = importdata("kprobssim90.mat");
 simres190 = S.simres1;
 simres290 = S.simres2;
 simres390 = S.simres3;
-simres490 = S.simres4;
+%simres490 = S.simres4;
 
 %% S = importdata("kprobssim70.mat");
 %% simres170 = S.simres1;
@@ -25,7 +30,7 @@ S = importdata("kprobssim40.mat");
 simres140 = S.simres1;
 simres240 = S.simres2;
 simres340 = S.simres3;
-simres440 = S.simres4;
+%simres440 = S.simres4;
 
 %% S = importdata("kprobssim30.mat");
 %% simres130 = S.simres1;
@@ -48,6 +53,13 @@ simres440 = S.simres4;
 
 tau = linspace(-8,4,25);
 simtau=linspace(-8,4,13);
+
+
+%% plot(simtau,simres1exp,'-*','color',"#0072BD",'linewidth',2)
+%% plot(simtau,simres2exp,'-s','color',"#D95319",'linewidth',2)
+%% plot(simtau,simres3exp,'-^','color',"#EDB120",'linewidth',2)
+
+
 
 
 figure1 = figure;
@@ -97,24 +109,25 @@ fill([simtau,fliplr(simtau)],[simres340',fliplr(simres390')],[0.9290 0.6940 0.12
 
 
 
-legend('Theory; k=1','Theory; k=2','Theory; k=3','Simulations for $\epsilon \in [90^{\circ},40^{\circ}]$, $\tilde{\kappa}=1/b_{\epsilon}$ ','Interpreter','latex',...
+legend('Theory; k=1 (exponential shadowing)','Theory; k=2 (exponential shadowing)','Theory; k=3 (exponential shadowing)','Range of the simulated values for $\{\epsilon\}$','Interpreter','latex',...
     'FontSize',14,BackgroundAlpha=.5)
 
 xlabel('$\tau$(dB)','FontSize',14,'Interpreter','latex')
 ylabel('$\mathcal{P}^{(k)}(\tau)$','FontSize',14,'Interpreter','latex')
-%title('Comparison of the theoretical model and the simulations','FontSize',14,'Interpreter','latex')
+title('$\tilde{\kappa}B_{\epsilon}= 5$','FontSize',14,'Interpreter','latex')
 grid on
 axis([[-8,4],[0,1]])
 
 % Create text
-text('Parent',axes1,'FontSize',14,'Interpreter','latex',...
-    'String','$\epsilon=90^{\circ}$',...
-    'Position',[-0.00452488687782404 0.408219178082192 0]);
+%% text('Parent',axes1,'FontSize',14,'Interpreter','latex',...
+%%     'String','$\epsilon=90^{\circ}$',...
+%%     'Position',[-0.00452488687782404 0.408219178082192 0]);
 
 % Create text
-text('Parent',axes1,'FontSize',14,'Interpreter','latex',...
-    'String','$\epsilon=40^{\circ}$',...
-    'Position',[1.32579185520363 0.6 0]);
+%% text('Parent',axes1,'FontSize',14,'Interpreter','latex',...
+%%     'String','$\epsilon=40^{\circ}$',...
+%%     'Position',[1.32579185520363 0.6 0]);
 
+%title('$\tilde{\kappa}=1/b_{\epsilon}, \epsilon \in \{90,80,70,60,50,40\}^{\circ}$','FontSize',14,'Interpreter','latex')
 
 latex2axes(figure1,"Times New Roman",14,"normal")
