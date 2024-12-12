@@ -20,11 +20,17 @@ simres290 = S.simres2;
 simres390 = S.simres3;
 %simres490 = S.simres4;
 
-%% S = importdata("kprobssim70.mat");
-%% simres170 = S.simres1;
-%% simres270 = S.simres2;
-%% simres370 = S.simres3;
-%simres470 = S.simres4;
+S = importdata("kprobssim70.mat");
+simres170 = S.simres1;
+simres270 = S.simres2;
+simres370 = S.simres3;
+
+
+S = importdata("kprobssim60.mat");
+simres160 = S.simres1;
+simres260 = S.simres2;
+simres360 = S.simres3;
+
 
 S = importdata("kprobssim40kappa1.mat");
 simres140 = S.simres1;
@@ -39,20 +45,8 @@ simres340 = S.simres3;
 %simres430 = S.simres4;
 
 
-
-%% simdist1 = S.dist1;
-%% simdist2 = S.dist2;
-%% simdist3 = S.dist3;
-%% [f1,x1] = ecdf(simdist1);
-%% [f2,x2] = ecdf(simdist2);
-%% [f3,x3] = ecdf(simdist3);
-
-%% plot(10*log10(x1),1-f1,'--','color','#0072BD','linewidth',2)
-%% plot(10*log10(x2),1-f2,'--','color','#D95319','linewidth',2)
-%% plot(10*log10(x3),1-f3,'--', 'color','#EDB120','linewidth',2)
-
-tau = linspace(-8,4,25);
-simtau=linspace(-8,4,13);
+tau = linspace(-9,4,27);
+simtau=linspace(-9,4,14);
 
 
 figure1 = figure;
@@ -76,9 +70,14 @@ plot(tau,theoryres3,'-^','color',"#EDB120",'linewidth',2)
 %plot(simtau,simres390,'--','color',"black",'linewidth',1)
 %plot(simtau,simres490,'--','color',"black",'linewidth',1)
 
-%plot(simtau,simres170,'--','color',"black",'linewidth',1)
-%plot(simtau,simres270,'--','color',"black",'linewidth',1)
-%plot(simtau,simres370,'--','color',"black",'linewidth',1)
+%% plot(simtau,simres170,'--','color',"black",'linewidth',1)
+%% plot(simtau,simres270,'--','color',"black",'linewidth',1)
+%% plot(simtau,simres370,'--','color',"black",'linewidth',1)
+
+%% plot(simtau,simres160,'--','color',"black",'linewidth',1)
+%% plot(simtau,simres260,'--','color',"black",'linewidth',1)
+%% plot(simtau,simres360,'--','color',"black",'linewidth',1)
+
 %plot(simtau,simres470,'--','color',"black",'linewidth',1)
 
 
@@ -93,6 +92,9 @@ plot(tau,theoryres3,'-^','color',"#EDB120",'linewidth',2)
 %plot(simtau,simres440,'--','color',"black",'linewidth',1)
 
 fill([-10,fliplr(-10)],[1,fliplr(1)],[0 0 0],'FaceAlpha',0.3,'EdgeColor','flat');
+fill([-10,fliplr(-10)],[1,fliplr(1)],[1 1 1],'FaceAlpha',0.3,'EdgeColor','none');
+fill([-10,fliplr(-10)],[1,fliplr(1)],[1 1 1],'FaceAlpha',0.3,'EdgeColor','none');
+
 
 fill([simtau,fliplr(simtau)],[simres140',fliplr(simres190')],[0 0.4470 0.7410],'FaceAlpha',0.3,'EdgeColor','flat');
 
@@ -103,22 +105,16 @@ fill([simtau,fliplr(simtau)],[simres340',fliplr(simres390')],[0.9290 0.6940 0.12
 
 
 % Create legend
-legend1 = legend(axes1,'show');
-set(legend1,...
-    'Position',[0.336499488529572 0.65060787302535 0.627438133302787 0.254824225740082],...
-    'Interpreter','latex',...
-    'FontSize',14,...
-    'BackgroundAlpha',0.5);
-legend('Theory; k=1 (exponential shadowing)','Theory; k=2 (exponential shadowing)','Theory; k=3 (exponential shadowing)','Range of the simulated values for $\{\epsilon\}$','Interpreter','latex',...
+legend('Theory; k=1 (exponential shadowing)','Theory; k=2 (exponential shadowing)','Theory; k=3 (exponential shadowing)','Range of the simulated values for the','various elevation angles (log-normal',' shadowing)','Interpreter','latex',...
     'FontSize',14,BackgroundAlpha=.5)
 
 xlabel('$\tau$(dB)','FontSize',14,'Interpreter','latex')
 ylabel('$\mathcal{P}^{(k)}(\tau)$','FontSize',14,'Interpreter','latex')
 %title('$\tilde{\kappa}=3/b_{\epsilon}, \epsilon \in \{90,80,70,60,50,40\}^{\circ}$','FontSize',14,'Interpreter','latex')
 grid on
-axis([[-8,4],[0,1]])
+axis([[-9,4],[0,1]])
 
-title('$\tilde{\kappa}\mathcal{B}_{\epsilon}= 1$','FontSize',14,'Interpreter','latex')
+title('$\tilde{\kappa}\rho_{\epsilon}= 1$','FontSize',14,'Interpreter','latex')
 
 %% % Create text
 %% text('Parent',axes1,'FontSize',14,'Interpreter','latex',...

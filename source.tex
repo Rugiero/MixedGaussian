@@ -176,24 +176,24 @@ risto.wichman@aalto.fi}
              \begin{equation}
                \hat{H}_x \sim
             \begin{cases}
-               0, \text{ if } U < 1-b,\\
-                \text{Exp}(a), \text{ if } U \geq1- b,              \label{eq:tier2exponential}
+               0, \text{ if } U < 1-\rho,\\
+                \text{Exp}(\mu), \text{ if } U \geq1- \rho,              \label{eq:tier2exponential}
             \end{cases}
             \end{equation}
-             with $a>0$ and $0<b\leq1$, and $U \sim U(0,1)$ follows the uniform distribution.
+             with $\mu>0$ and $0<\rho\leq1$, and $U \sim U(0,1)$ follows the uniform distribution.
 
 
             The complementary CDF (CCDF) is given by the defective distribution function
             \begin{equation}
               \label{eq:defexp}
-              F_{\hat{H}_{\text{exp}}}(t)=e^{-at}b.
+              F_{\hat{H}_{\text{exp}}}(t)=e^{-\mu t}\rho_{}.
             \end{equation}
             %%where
             %% \begin{align}
             %%   &a=\frac{2 (p_{\text{LoS}}-1) e^{{\mu_{N\text{LoS}}}+\frac{{\sigma_{N\text{LoS}}}^2}{2}}-2 p_{\text{LoS}} e^{{\mu_{\text{LoS}}}+\frac{{\sigma_{\text{LoS}}}^2}{2}}}{(p_{\text{LoS}}-1) e^{2 \left({\mu_{N\text{LoS}}}+{\sigma_{N\text{LoS}}}^2\right)}-p_{\text{LoS}} e^{2 \left({\mu_{\text{LoS}}}+{\sigma_{\text{LoS}}}^2\right)}},\\
             %%   &b=\frac{2 \left(({p_\text{LoS}}-1) e^{{\mu_{\text{N\text{LoS}}}}+\frac{{\sigma_{\text{N\text{LoS}}}}^2}{2}}-{p_\text{LoS}} e^{{\mu_{\text{LoS}}}+\frac{{\sigma_{\text{LoS}}}^2}{2}}\right)^2}{({p_\text{LoS}}-1) e^{2 \left({\mu_{\text{N\text{LoS}}}}+{\sigma_{\text{N\text{LoS}}}}^2\right)}-{p_\text{LoS}} e^{2 \left({\mu_{\text{LoS}}}+{\sigma_{\text{LoS}}}^2\right)}}.              
             %% \end{align} 
-            At the probability $1-b$, the signal power maps to $0$: this reflects highly severe shadowing occurrences. 
+            At the probability $1-\rho$, the signal power maps to $0$: this reflects highly severe shadowing occurrences. 
 
 
 

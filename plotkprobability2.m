@@ -51,8 +51,10 @@ simres340 = S.simres3;
 %% plot(10*log10(x2),1-f2,'--','color','#D95319','linewidth',2)
 %% plot(10*log10(x3),1-f3,'--', 'color','#EDB120','linewidth',2)
 
-tau = linspace(-8,4,25);
-simtau=linspace(-8,4,13);
+
+tau = linspace(-9,4,27);
+simtau=linspace(-9,4,14);
+
 
 
 %% plot(simtau,simres1exp,'-*','color',"#0072BD",'linewidth',2)
@@ -95,8 +97,10 @@ plot(tau,theoryres3,'-^','color',"#EDB120",'linewidth',2)
 %plot(simtau,simres330,'--','color',"black",'linewidth',1)
 
 %plot(simtau,simres440,'--','color',"black",'linewidth',1)
-
 fill([-10,fliplr(-10)],[1,fliplr(1)],[0 0 0],'FaceAlpha',0.3,'EdgeColor','flat');
+fill([-10,fliplr(-10)],[1,fliplr(1)],[1 1 1],'FaceAlpha',0.3,'EdgeColor','none');
+fill([-10,fliplr(-10)],[1,fliplr(1)],[1 1 1],'FaceAlpha',0.3,'EdgeColor','none');
+
 
 fill([simtau,fliplr(simtau)],[simres140',fliplr(simres190')],[0 0.4470 0.7410],'FaceAlpha',0.3,'EdgeColor','flat');
 
@@ -109,14 +113,14 @@ fill([simtau,fliplr(simtau)],[simres340',fliplr(simres390')],[0.9290 0.6940 0.12
 
 
 
-legend('Theory; k=1 (exponential shadowing)','Theory; k=2 (exponential shadowing)','Theory; k=3 (exponential shadowing)','Range of the simulated values for $\{\epsilon\}$','Interpreter','latex',...
+legend('Theory; k=1 (exponential shadowing)','Theory; k=2 (exponential shadowing)','Theory; k=3 (exponential shadowing)','Range of the simulated values for the','various elevation angles (log-normal',' shadowing)','Interpreter','latex',...
     'FontSize',14,BackgroundAlpha=.5)
 
 xlabel('$\tau$(dB)','FontSize',14,'Interpreter','latex')
 ylabel('$\mathcal{P}^{(k)}(\tau)$','FontSize',14,'Interpreter','latex')
-title('$\tilde{\kappa}B_{\epsilon}= 5$','FontSize',14,'Interpreter','latex')
+title('$\tilde{\kappa}\rho_{\epsilon}= 10$','FontSize',14,'Interpreter','latex')
 grid on
-axis([[-8,4],[0,1]])
+axis([[-9,4],[0,1]])
 
 % Create text
 %% text('Parent',axes1,'FontSize',14,'Interpreter','latex',...
