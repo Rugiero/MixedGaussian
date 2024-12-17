@@ -30,36 +30,36 @@ elevation3=60;
 lnLoS = makedist('Lognormal','mu',muLoS,'sigma',sigmaLoS);
 lnNLoS = makedist('Lognormal','mu',muNLoS,'sigma',sigmaNLoS)
 
-%pLoS=exp(-beta*cot(deg2rad(elevation1)));
-pLoS=0.992;
+pLoS=exp(-beta*cot(deg2rad(elevation1)));
+
 %a=1/2*exp(muNLoS+3*sigmaNLoS^2/2);
-lnFH1 = @(t) kappa*pLoS*(1-cdf(lnLoS,t))./t+kappa*(1-pLoS)*(1-cdf(lnNLoS,t))./t;
-%%pLoS=exp(-beta*cot(deg2rad(elevation2)));
-%% pLoS=0.968;
-%% lnFH2 = @(t) kappa*pLoS*(1-cdf(lnLoS,t))./t+kappa*(1-pLoS)*(1-cdf(lnNLoS,t))./t;
-%%pLoS=exp(-beta*cot(deg2rad(elevation3)));
-pLoS=0.613;
-lnFH3 = @(t) kappa*pLoS*(1-cdf(lnLoS,t))./t+kappa*(1-pLoS)*(1-cdf(lnNLoS,t))./t;
-
-
-pLoS=0.992;
 a = (2*exp(muNLoS+sigmaNLoS^2/2)*(-1+pLoS)-2*exp(muLoS+sigmaLoS^2/2)*pLoS)/(exp(2*(muNLoS+sigmaNLoS^2))*(-1+pLoS)-exp(2*(muLoS+sigmaLoS^2))*pLoS);
 b=(-exp(2*muNLoS+sigmaNLoS^2)*(-1+pLoS)+exp(2*(muLoS+sigmaLoS^2))*pLoS)/(2*(exp(muNLoS+sigmaNLoS^2/2)*(-1+pLoS)-exp(muLoS+sigmaLoS^2/2)*pLoS)^2);
-1/b
+
+
+lnFH1 = @(t) kappa*pLoS*(1-cdf(lnLoS,t))./t+kappa*(1-pLoS)*(1-cdf(lnNLoS,t))./t;
+pLoS=exp(-beta*cot(deg2rad(elevation2)));
+lnFH2 = @(t) kappa*pLoS*(1-cdf(lnLoS,t))./t+kappa*(1-pLoS)*(1-cdf(lnNLoS,t))./t;
+pLoS=exp(-beta*cot(deg2rad(elevation3)));
+lnFH3 = @(t) kappa*pLoS*(1-cdf(lnLoS,t))./t+kappa*(1-pLoS)*(1-cdf(lnNLoS,t))./t;
+
+pLoS=0;
 expFH1 = @(t) kappa*(exp(-t*a)/b)./t;
 
 
-%% pLoS=0.968;
-%% a = (2*exp(muNLoS+sigmaNLoS^2/2)*(-1+pLoS)-2*exp(muLoS+sigmaLoS^2/2)*pLoS)/(exp(2*(muNLoS+sigmaNLoS^2))*(-1+pLoS)-exp(2*(muLoS+sigmaLoS^2))*pLoS);
-%% b=(-exp(2*muNLoS+sigmaNLoS^2)*(-1+pLoS)+exp(2*(muLoS+sigmaLoS^2))*pLoS)/(2*(exp(muNLoS+sigmaNLoS^2/2)*(-1+pLoS)-exp(muLoS+sigmaLoS^2/2)*pLoS)^2);
-%% 1/b
-%% expFH2 = @(t) kappa*(exp(-t*a)/b)./t;
-
-
-pLoS=0.613;
+pLoS=exp(-beta*cot(deg2rad(elevation2)));
 a = (2*exp(muNLoS+sigmaNLoS^2/2)*(-1+pLoS)-2*exp(muLoS+sigmaLoS^2/2)*pLoS)/(exp(2*(muNLoS+sigmaNLoS^2))*(-1+pLoS)-exp(2*(muLoS+sigmaLoS^2))*pLoS);
 b=(-exp(2*muNLoS+sigmaNLoS^2)*(-1+pLoS)+exp(2*(muLoS+sigmaLoS^2))*pLoS)/(2*(exp(muNLoS+sigmaNLoS^2/2)*(-1+pLoS)-exp(muLoS+sigmaLoS^2/2)*pLoS)^2);
-1/b
+
+pLoS=0;
+expFH2 = @(t) kappa*(exp(-t*a)/b)./t;
+
+
+pLoS=exp(-beta*cot(deg2rad(elevation3)));
+a = (2*exp(muNLoS+sigmaNLoS^2/2)*(-1+pLoS)-2*exp(muLoS+sigmaLoS^2/2)*pLoS)/(exp(2*(muNLoS+sigmaNLoS^2))*(-1+pLoS)-exp(2*(muLoS+sigmaLoS^2))*pLoS);
+b=(-exp(2*muNLoS+sigmaNLoS^2)*(-1+pLoS)+exp(2*(muLoS+sigmaLoS^2))*pLoS)/(2*(exp(muNLoS+sigmaNLoS^2/2)*(-1+pLoS)-exp(muLoS+sigmaLoS^2/2)*pLoS)^2);
+
+pLoS=0;
 expFH3 = @(t) kappa*(exp(-t*a)/b)./t;
 
 min=0.01;
@@ -78,11 +78,7 @@ plot([-1],[-1],'--','color','black','linewidth',2)
 plot(t,1./t.*(t<=1),'-.', 'color','black','linewidth',2)
 
 plot(t,lnFH1(t),'color','#0072BD','linewidth',2)
-%plot(t,lnFH2(t),'color','#D95319','linewidth',2)
-plot(t,lnFH3(t),'color','#EDB120','linewidth',2)
 plot(t,expFH1(t),'--','color','#0072BD','linewidth',2)
-%plot(t,expFH2(t),'--','color','#D95319','linewidth',2)
-plot(t,expFH3(t),'--', 'color','#EDB120','linewidth',2)
 
 
 ylabel('$\lambda_{\mathcal{G}}(t)$','FontSize',14,'Interpreter','latex','Rotation',0)
@@ -93,9 +89,6 @@ title('Density function of the GP',...
 
 fill([t,fliplr(t)],[lnFH1(t),fliplr(expFH1(t))],[0 0.4470 0.7410],'FaceAlpha',0.3,'EdgeColor','none');
 
-%fill([t,fliplr(t)],[lnFH2(t),fliplr(expFH2(t))],[0.8500 0.3250 0.0980],'FaceAlpha',0.3,'EdgeColor','none');
-
-fill([t,fliplr(t)],[lnFH3(t),fliplr(expFH3(t))],[0.9290 0.6940 0.1250],'FaceAlpha',0.3,'EdgeColor','none');
 
 axis([[0,max],[0,5]])
 legend('Mixed log-normal shadowing','Mixed exponential shadowing',...

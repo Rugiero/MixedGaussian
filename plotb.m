@@ -16,7 +16,7 @@ plot(elevations,bs,'-^','linewidth',2)
 set ( gca, 'xdir', 'reverse' )
 xlabel('Elevation angle $\epsilon$ of the SBS($^{\circ}$)','FontSize',14,'Interpreter','latex')
 
-legend('$p_{\textrm{LoS}}$','$B_{p_{\textrm{LoS}}}$','Interpreter','latex',...
+legend('$p_{\textrm{LoS}}$','$\rho_{\textrm{LoS}}$','Interpreter','latex',...
     'FontSize',14,BackgroundAlpha=.5)
 
 latex2axes(figure1,"Times New Roman",14,"normal")

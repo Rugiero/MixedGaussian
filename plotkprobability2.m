@@ -113,7 +113,7 @@ fill([simtau,fliplr(simtau)],[simres340',fliplr(simres390')],[0.9290 0.6940 0.12
 
 
 
-legend('Theory; k=1 (exponential shadowing)','Theory; k=2 (exponential shadowing)','Theory; k=3 (exponential shadowing)','Range of the simulated values for the','various elevation angles (log-normal',' shadowing)','Interpreter','latex',...
+legend('Theory; k=1 (exponential shadowing)','Theory; k=2 (exponential shadowing)','Theory; k=3 (exponential shadowing)','Range of the simulated values for the','elevation angles $\epsilon \in (0^{\circ},40^{\circ})$ ',' (log-normal shadowing)','Interpreter','latex',...
     'FontSize',14,BackgroundAlpha=.5)
 
 xlabel('$\tau$(dB)','FontSize',14,'Interpreter','latex')
