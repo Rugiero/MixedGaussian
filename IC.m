@@ -49,7 +49,7 @@ xticks([linspace(1,10,10)])
 
 legend('Theory; k=1 (exponential shadowing)','Theory; k=2 (exponential shadowing)','Theory; k=3 (exponential shadowing)','Interpreter','latex',...
     'FontSize',14,BackgroundAlpha=.5)
-title('$\tau=0.5$')
+title('$\tau=1$')
 
 
 latex2axes(figure1,"Times New Roman",14,"normal")

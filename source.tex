@@ -121,7 +121,7 @@ risto.wichman@aalto.fi}
 
          The path loss law is Gaussian, a exponentially decaying function, representing the antenna gain of a narrow-beam LEO satellite. The path loss is a function of the distance $r$ from the origin, 
          \begin{equation}
-           G(r) = 2^{-(D_{h,\epsilon}r)^2/\varphi^2_{\text{RX}}},
+           G(r) = 2^{-r^2/\varphi^2_{\text{RX}}},
          \end{equation}
          where $\varphi_{\text{RX}}$ is the width of the $3$ dB gain and $D_{h,\epsilon}=\sin^2(\epsilon)/h$ is a scaling constant. We will come back to the interpetation of these parameters in the LEO satellite context in Section XXX. 
           
@@ -129,9 +129,9 @@ risto.wichman@aalto.fi}
          Given a homogeneous PPP $\Phi \subset \R^2$ of density $\lambda$, define the shadowed gain process (GP)
          \begin{equation}
            \label{eq:gainprocess}
-           \mathcal{G} \triangleq \left\{x \in \Phi : H_x G(\|x\|) \right\},
+           \mathcal{G} \triangleq \left\{x \in \Phi : H_x G(D_{h,\epsilon}\|x\|) \right\},
           \end{equation}
-          where $\{H_x\}$ are i.i.d. shadowing variables, possibly degenerate, and $\|x\|$ is the Euclidean distance. We use the value $\varphi_{\text{RX}} = 1.6 \degree$ according to the International Telecommunication Union Recommendations (ITU-R) \cite{ITURS1528}. The GP is a \textit{projection process} and, as such, a nonhomogeneous PPP [CITE].
+          where $\{H_x\}$ are i.i.d. shadowing variables, possibly degenerate, and $\|x\|$ is the Euclidean distance of $x \in \Phi$. We use the value $\varphi_{\text{RX}} = 1.6 \degree$ according to the International Telecommunication Union Recommendations (ITU-R) \cite{ITURS1528}. The GP is a \textit{projection process} and, as such, a nonhomogeneous PPP [CITE].
 
           The density of the GP has the following connection to the fading distribution:
 
@@ -260,18 +260,13 @@ risto.wichman@aalto.fi}
           is the process of the STIR values of the UEs $\{x_1,x_2 \dots\}$. It has the Poisson-Dirichlet distribution PD$(0, b \kappa)$.
                     
 
-          In an interference-only channel, $W=0$, the coverage probability \eqref{eq:probofcov} has the analytical expression
-          \begin{equation}
-p_c(\theta) =  \theta^{-\tilde{\kappa}b} {_2F_1}\left(\tilde{\kappa}b, \tilde{\kappa}b;\tilde{\kappa}b + 1; -1/\theta \right),
-          \end{equation}
-          where $_2F_1(\cdot)$ is the hypergeometric function. 
+         %%  In an interference-only channel, $W=0$, the coverage probability \eqref{eq:probofcov} has the analytical expression
+%%           \begin{equation}
+%% p_c(\theta) =  \theta^{-\tilde{\kappa}b} {_2F_1}\left(\tilde{\kappa}b, \tilde{\kappa}b;\tilde{\kappa}b + 1; -1/\theta \right),
+%%           \end{equation}
+%%           where $_2F_1(\cdot)$ is the hypergeometric function. 
 
-          And the probability density function (PDF) in the region $z \geq 1$,
-          \begin{equation}
-            f_{(1)}(z) = p_c'(z)= \tilde{\kappa} b  \left(\frac{1}{z }+1\right)^{- \tilde{\kappa}b } z^{- \tilde{\kappa}b -1}.
-          \end{equation}
 
-          The coverage probability does not depend on the scale parameter $a$.
            
           
 
@@ -307,6 +302,7 @@ p_c(\theta) =  \theta^{-\tilde{\kappa}b} {_2F_1}\left(\tilde{\kappa}b, \tilde{\k
           \begin{equation}
       \mathcal{P}^{(k)}(\tau) \triangleq  \int_{\tau'}^1\dots \int_{\tau'}^1 f'_{(k)}({z'_1},\dots,{z'_k})dz'_1 \dots d{z'_k}.
           \end{equation}
+
           
           The joint pdf of the SIR process can by obtained from $\eqref{eq:jointprobability}$ by
           \begin{equation}
@@ -352,9 +348,9 @@ p_c(\theta) =  \theta^{-\tilde{\kappa}b} {_2F_1}\left(\tilde{\kappa}b, \tilde{\k
           
           
           
-          \section{Numerical results}
-
-          With $\epsilon = -7$ dB, we can achieve the same expected SIR $1.3$ at $\tilde{\kappa} b= 2.5$ with $k=2$, and the similar expected SIR with $k=1$ is at $\tilde{\kappa} b = 1.8$, which is in the infinite variance zone. KATSO trapezoidals.nb.
+          \section{Numerical results and the connection to the satellite communications}
+TRAPEZOIDAL METHODS
+          With $\epsilon = -7$ dB, we can achieve the same expected SIR $1.16+0.2=1.4$ at $\tilde{\kappa} b= 2$ with $k=1$.  The excpected SIR with $k=1$ is at $\tilde{\kappa} b = 2$, is in the infinite variance zone, which is bad. KATSO trapezoidals.nb. However, with $k=2$ interference cancellation we get the same expected SIR with $\tilde{\kappa}b =2.7$ (täsmällinen $2.68$? yes). In this case the vvariance is  only about $2$, but the average SIR remains the same. This is a greate improvement in the variation in the user experience of the link.  Hence, cancelling the second strongest transmitter, we can make the network denser singificantly improving the user fairness, while maintaining the same performance. 
           
           
           
