@@ -17,16 +17,28 @@ hold(axes1,'on');
 
 
 kappa = linspace(1,10,19);
-simkappa=linspace(1,10,10);
-
+%simkappa=linspace(1,10,10);
+simkappa = [1 2 6 10];
 
 plot(kappa,theoryres1,'-*','color',"#0072BD",'linewidth',2)
 plot(kappa,theoryres2,'-s','color',"#D95319",'linewidth',2)
 plot(kappa,theoryres3,'-^','color',"#EDB120",'linewidth',2)
 
-plot(simkappa,simexp1,'--','color',"black",'linewidth',1)
-plot(simkappa,simexp2,'--','color',"black",'linewidth',1)
-plot(simkappa,simexp3,'--','color',"black",'linewidth',1)
+plot(simkappa,simexp1,'-s','MarkerSize',10,...
+    'MarkerEdgeColor','red',...
+    'MarkerFaceColor',[1 .6 .6])
+
+plot(simkappa,simexp2,'-s','MarkerSize',10,...
+    'MarkerEdgeColor','red',...
+    'MarkerFaceColor',[1 .6 .6])
+
+plot(simkappa,simexp3,'-s','MarkerSize',10,...
+    'MarkerEdgeColor','red',...
+    'MarkerFaceColor',[1 .6 .6])
+
+%% plot(simkappa,simexp1,'-s','MarkerSize',10,'MarkerEdgeColor','red','MarkerFaceColor','color',[1 .6 .6])
+%% plot(simkappa,simexp2,'-s','MarkerSize',10,'MarkerEdgeColor','red','MarkerFaceColor','color',[1 .6 .6])
+%% plot(simkappa,simexp3,'-s','MarkerSize',10,'MarkerEdgeColor','red','MarkerFaceColor','color',[1 .6 .6])
 
 
 grid on
@@ -37,7 +49,7 @@ xticks([linspace(1,10,10)])
 
 legend('Theory; k=1 (exponential shadowing)','Theory; k=2 (exponential shadowing)','Theory; k=3 (exponential shadowing)','Interpreter','latex',...
     'FontSize',14,BackgroundAlpha=.5)
-title('$\tau=1$')
+title('$\tau=0.5$')
 
 
 latex2axes(figure1,"Times New Roman",14,"normal")
