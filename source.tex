@@ -116,17 +116,16 @@ risto.wichman@aalto.fi}
 
          
          \section{Analysis}
-         
-         \subsection{Gain process}
-
-         The path loss law is Gaussian, a exponentially decaying function, representing the antenna gain of a narrow-beam LEO satellite. The path loss is a function of the distance $r$ from the origin, 
+         In this section, we present the analysis of the joint probability distribution of the SIR and the ICSC-SIR coverage probabilities. We present the analysis for a Gaussian path loss. It has relevance in narrow-beam satellite communications, which we will come back to in section XXX.
+         \subsection{Path loss process}
+         The path loss is Gaussian, a exponentially decaying function, representing the antenna gain of a narrow-beam LEO satellite. The path loss is a function of the distance $r$ from the origin, 
          \begin{equation}
            G(r) = 2^{-r^2/\varphi^2_{\text{RX}}},
          \end{equation}
-         where $\varphi_{\text{RX}}$ is the width of the $3$ dB gain and $D_{h,\epsilon}=\sin^2(\epsilon)/h$ is a scaling constant. We will come back to the interpetation of these parameters in the LEO satellite context in Section XXX. 
+         where $\varphi_{\text{RX}}$ is the width of the $3$ dB gain and $D_{h,\epsilon}=\sin^2(\epsilon)/h$ is a scaling constant. 
           
 
-         Given a homogeneous PPP $\Phi \subset \R^2$ of density $\lambda$, define the shadowed gain process (GP)
+         Given a homogeneous PPP $\Phi \subset \R^2$ of density $\lambda$,
          \begin{equation}
            \label{eq:gainprocess}
            \mathcal{G} \triangleq \left\{x \in \Phi : H_x G(D_{h,\epsilon}\|x\|) \right\},
@@ -353,7 +352,7 @@ TRAPEZOIDAL METHODS
           With $\epsilon = -7$ dB, we can achieve the same expected SIR $1.16+0.2=1.4$ at $\tilde{\kappa} b= 2$ with $k=1$.  The excpected SIR with $k=1$ is at $\tilde{\kappa} b = 2$, is in the infinite variance zone, which is bad. KATSO trapezoidals.nb. However, with $k=2$ interference cancellation we get the same expected SIR with $\tilde{\kappa}b =2.7$ (täsmällinen $2.68$? yes). In this case the vvariance is  only about $2$, but the average SIR remains the same. This is a greate improvement in the variation in the user experience of the link.  Hence, cancelling the second strongest transmitter, we can make the network denser singificantly improving the user fairness, while maintaining the same performance. 
           
           
-          
+The one-tier defected exponential distribution approximation works if the $\sigma_{\text{LoS}}$ and $\sigma_{\text{NLoS}}$ or not too far apart, like in the Urban scenario. Otherwise (for example, for suburban scenario), we would have to match the moments in NLoS and LoS shadowing tiers separately, leading to a sum of two gamma processes, and the normalized jumps could be characterized by the Poisson-Dirichlet process as well. However, we leave the treatments of such scenario out of the scope of this paper. Also, if the $b$ is not solvable in the region $0<b\leq 1$, the presented model is not applicable as such. This is the case, for example, if the variance in the shadowing is not significant. However, the exponential approximation can produce tight approximations in any case, as noted in [OUR PAPER], especially in the simple coverage region $\theta >=0$ dB.
           
 
           

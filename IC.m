@@ -8,6 +8,16 @@ simexp1 = round(S.simres1,2);
 simexp2 = round(S.simres2,2);
 simexp3 = round(S.simres3,2);
 
+S = importdata("kprobssim90tau1.mat");
+simres4 = S.simres1;
+simres5 = S.simres2;
+simres6 = S.simres3;
+
+S = importdata("kprobssim60tau1.mat");
+simres7 = S.simres1;
+simres8 = S.simres2;
+simres9 = S.simres3;
+
 
 figure1 = figure;
 
@@ -17,28 +27,43 @@ hold(axes1,'on');
 
 
 kappa = linspace(1,10,19);
-%simkappa=linspace(1,10,10);
-simkappa = [1 2 6 10];
+simkappa=linspace(1,10,10);
+%simkappa = [1 2 6 10];
+
+fill([simkappa,fliplr(simkappa)],[simres7',fliplr(simres4')],[0 0.4470 0.7410],'FaceAlpha',0.3,'EdgeColor','none');
+
+fill([simkappa,fliplr(simkappa)],[simres8',fliplr(simres5')],[0.8500 0.3250 0.0980],'FaceAlpha',0.3,'EdgeColor','none');
+
+fill([simkappa,fliplr(simkappa)],[simres9',fliplr(simres6')],[0.9290 0.6940 0.1250],'FaceAlpha',0.3,'EdgeColor','none');
 
 plot(kappa,theoryres1,'-*','color',"#0072BD",'linewidth',2)
 plot(kappa,theoryres2,'-s','color',"#D95319",'linewidth',2)
 plot(kappa,theoryres3,'-^','color',"#EDB120",'linewidth',2)
 
-plot(simkappa,simexp1,'-s','MarkerSize',10,...
-    'MarkerEdgeColor','red',...
-    'MarkerFaceColor',[1 .6 .6])
+plot(simkappa,simexp1,'--','color',"#0072BD",'linewidth',2)
+plot(simkappa,simexp2,'--','color',"#D95319",'linewidth',2)
+plot(simkappa,simexp3,'--','color',"#EDB120",'linewidth',2)
 
-plot(simkappa,simexp2,'-s','MarkerSize',10,...
-    'MarkerEdgeColor','red',...
-    'MarkerFaceColor',[1 .6 .6])
+%% plot(simkappa,simexp1,'-s','MarkerSize',10,...
+%%     'MarkerEdgeColor','red',...
+%%     'MarkerFaceColor',[1 .6 .6])
 
-plot(simkappa,simexp3,'-s','MarkerSize',10,...
-    'MarkerEdgeColor','red',...
-    'MarkerFaceColor',[1 .6 .6])
+%% plot(simkappa,simexp2,'-s','MarkerSize',10,...
+%%     'MarkerEdgeColor','red',...
+%%     'MarkerFaceColor',[1 .6 .6])
+
+%% plot(simkappa,simexp3,'-s','MarkerSize',10,...
+%%     'MarkerEdgeColor','red',...
+%%     'MarkerFaceColor',[1 .6 .6])
 
 %% plot(simkappa,simexp1,'-s','MarkerSize',10,'MarkerEdgeColor','red','MarkerFaceColor','color',[1 .6 .6])
 %% plot(simkappa,simexp2,'-s','MarkerSize',10,'MarkerEdgeColor','red','MarkerFaceColor','color',[1 .6 .6])
 %% plot(simkappa,simexp3,'-s','MarkerSize',10,'MarkerEdgeColor','red','MarkerFaceColor','color',[1 .6 .6])
+
+fill([-10,fliplr(-10)],[1,fliplr(1)],[0 0 0],'FaceAlpha',0.3,'EdgeColor','none');
+fill([-10,fliplr(-10)],[1,fliplr(1)],[1 1 1],'FaceAlpha',0.3,'EdgeColor','none');
+
+
 
 
 grid on
@@ -47,9 +72,10 @@ xlabel('$\tilde{\kappa}\rho_{\epsilon}$','FontSize',14,'Interpreter','latex')
 ylabel('$\mathcal{P}^{(k)}_{{IC}}(\tau,e)$','FontSize',14,'Interpreter','latex')
 xticks([linspace(1,10,10)])
 
-legend('Theory; k=1 (exponential shadowing)','Theory; k=2 (exponential shadowing)','Theory; k=3 (exponential shadowing)','Interpreter','latex',...
+legend('','','','Theory; k=1 (exponential shadowing)','Theory; k=2 (exponential shadowing)','Theory; k=3 (exponential shadowing)','Simulated values (log-normal fading)','Interpreter','latex',...
     'FontSize',14,BackgroundAlpha=.5)
 title('$\tau=1$')
 
 
 latex2axes(figure1,"Times New Roman",14,"normal")
+ 
