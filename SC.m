@@ -3,25 +3,24 @@ theoryres1 = round(S.theoryres1,2);
 theoryres2 = round(S.theoryres2,2);
 theoryres3 = round(S.theoryres3,2);
 
-S = importdata("SCsimexp.mat");
-simexp1 = round(S.simres1,2);
-simexp2 = round(S.simres2,2);
-simexp3 = round(S.simres3,2);
+%% S = importdata("SCsimexp.mat");
+%% simexp1 = round(S.simres1,2);
+%% simexp2 = round(S.simres2,2);
+%% simexp3 = round(S.simres3,2);
 
 S = importdata("SCkprobssim90tau1.mat");
 simres4 = S.simres1;
 simres5 = S.simres2;
 simres6 = S.simres3;
 
-S = importdata("SCkprobssim60tau1.mat");
+S = importdata("SCkprobssim40tau1.mat");
 simres7 = S.simres1;
 simres8 = S.simres2;
 simres9 = S.simres3;
 
-
 figure1 = figure;
 
-% Create axes
+%%Create axes
 axes1 = axes('Parent',figure1);
 hold(axes1,'on');
 
@@ -39,9 +38,12 @@ fill([simkappa,fliplr(simkappa)],[simres9',fliplr(simres6')],[0.9290 0.6940 0.12
 plot(kappa,theoryres1,'-*','color',"#0072BD",'linewidth',2)
 plot(kappa,theoryres2,'-s','color',"#D95319",'linewidth',2)
 plot(kappa,theoryres3,'-^','color',"#EDB120",'linewidth',2)
-plot(simkappa,simexp1,'--','color',"#EDB120",'linewidth',2)
-plot(simkappa,simexp2,'--','color',"#EDB120",'linewidth',2)
-plot(simkappa,simexp3,'--','color',"#EDB120",'linewidth',2)
+%% plot(simkappa,simexp1,'--','color',"#EDB120",'linewidth',2)
+%% plot(simkappa,simexp2,'--','color',"#EDB120",'linewidth',2)
+%% plot(simkappa,simexp3,'--','color',"#EDB120",'linewidth',2)
+%% plot(simkappa,simres4,'--','color',"#EDB120",'linewidth',2)
+%% plot(simkappa,simres5,'--','color',"#EDB120",'linewidth',2)
+%% plot(simkappa,simres6,'--','color',"#EDB120",'linewidth',2)
 
 
 %% plot(simkappa,simexp1,'-s','MarkerSize',10,...
@@ -69,8 +71,20 @@ fill([-10,fliplr(-10)],[1,fliplr(1)],[1 1 1],'FaceAlpha',0.3,'EdgeColor','none')
 grid on
 axis([[1,10],[0,1]])
 xlabel('$\tilde{\kappa}\rho_{\epsilon}$','FontSize',14,'Interpreter','latex')
-ylabel('$\mathcal{P}^{(k)}_{{SC}}(\tau,e)$','FontSize',14,'Interpreter','latex')
+ylabel('$\mathcal{P}^{(k)}_{{\textrm{SC}}}(\tau,e)$','FontSize',14,'Interpreter','latex')
 xticks([linspace(1,10,10)])
+
+% Create textarrow
+annotation(figure1,'textarrow',[0.394736842105263 0.291228070175439],...
+    [0.593333333333333 0.506666666666667],'String',{'$\epsilon= 40^{\circ}$'},'FontSize',12,'Interpreter','latex');
+
+
+% Create textbox
+annotation(figure1,'textbox',...
+    [0.256140350877193 0.44 0.0789473665910855 0.0644444431861242],...
+    'String',{'$90^{\circ}$'},...
+    'LineStyle','none','FontSize',12,'Interpreter','latex');
+
 
 legend('','','','Theory; k=1 (exponential shadowing)','Theory; k=2 (exponential shadowing)','Theory; k=3 (exponential shadowing)','Simulated values (log-normal fading)','Interpreter','latex',...
     'FontSize',14,BackgroundAlpha=.5)
