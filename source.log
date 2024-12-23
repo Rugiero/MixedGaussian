@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.10.9)  22 DEC 2024 23:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.10.9)  23 DEC 2024 17:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -635,7 +635,7 @@ LaTeX Font Info:    Trying to load font information for U+dsrom on input line 3
 44.
 (/usr/share/texlive/texmf-dist/tex/latex/doublestroke/Udsrom.fd
 File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
-)
+) [3]
 No file source.bbl.
 
 ** Conference Paper **
@@ -648,7 +648,9 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[3] (./source.aux)
+[4
+
+] (./source.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -661,13 +663,13 @@ Package rerunfilecheck Info: File `source.out' has not changed.
 (rerunfilecheck)             Checksum: 49BFE7D9A369B545E20F6120BCB57367;2032.
  ) 
 Here is how much of TeX's memory you used:
- 12993 strings out of 476106
- 207162 string characters out of 5793933
- 1962975 words of memory out of 5000000
- 34762 multiletter control sequences out of 15000+600000
- 610671 words of font info for 150 fonts, out of 8000000 for 9000
+ 13007 strings out of 476106
+ 207310 string characters out of 5793933
+ 1963975 words of memory out of 5000000
+ 34771 multiletter control sequences out of 15000+600000
+ 613808 words of font info for 158 fonts, out of 8000000 for 9000
  63 hyphenation exceptions out of 8191
- 75i,15n,79p,1016b,572s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,15n,79p,1525b,449s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr
 /share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/share/t
@@ -691,10 +693,10 @@ blic/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
 /times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on source.pdf (3 pages, 274490 bytes).
+Output written on source.pdf (4 pages, 280382 bytes).
 PDF statistics:
- 244 PDF objects out of 1000 (max. 8388607)
- 178 compressed objects within 2 object streams
- 41 named destinations out of 1000 (max. 500000)
+ 253 PDF objects out of 1000 (max. 8388607)
+ 186 compressed objects within 2 object streams
+ 43 named destinations out of 1000 (max. 500000)
  81 words of extra memory for PDF output out of 10000 (max. 10000000)
 

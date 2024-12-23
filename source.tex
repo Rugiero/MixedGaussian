@@ -143,9 +143,9 @@ risto.wichman@aalto.fi}
               where $\tilde{\kappa}= \kappa/\log(2)$ and
               \begin{equation}
                 \label{eq:kappa}
-                      {\kappa} \triangleq    \pi \lambda   \left(\frac{\varphi_{\textup{RX}}}{D_{h,\epsilon}}\right)^2.
+                      {\kappa} \triangleq    \pi \lambda   \left(\frac{\varphi_{\textup{RX}}}{D_{h,\epsilon}}\right)^2,
               \end{equation}
-              The parameter $\kappa$ has an interpretation as the mean number of UEs inside the $3$ dB footprint of a SBS (see appendix XX).
+              where $D_{h,\epsilon}=\sin^2(\epsilon)/h$. The parameter $\kappa$ has an interpretation as the mean number of UEs inside the $3$ dB footprint of a SBS (see appendix XX).
               \begin{proof}
                 Let $f_H(\cdot)$ be the pdf of $H$. We denote $G^{-1}(\cdot)$ as the generalized inverse $G^{-1}(y) = \inf \{x:G(x)<y\}$. By [CITE],
                 \begin{align*}
@@ -185,7 +185,7 @@ risto.wichman@aalto.fi}
             The complementary CDF (CCDF) is given by the defective distribution function
             \begin{equation}
               \label{eq:defexp}
-              F_{\hat{H}_{\text{exp}}}(t)=e^{-\mu t}\rho_{}.
+              F_{\hat{H}_{\text{exp}}}(t)=e^{-\mu t}\rho_{\epsilon}.
             \end{equation}
             %%where
             %% \begin{align}
@@ -244,26 +244,26 @@ risto.wichman@aalto.fi}
              Under the shadowing approximation $\eqref{eq:defexp}$, the total received power can be simply characterized by the gamma distribution.
           \begin{align}
             \label{eq:lapexp}
-            &\mathcal{L}_{S_{\mathcal{G}}}(s) \approx \exp\left\{-\mathcal{\kappa}\int_0^{\infty}(1-e^{-sr})\frac{F_{\hat{H}}(t)}{r} dr \right\}, \nonumber \\
-            &= \exp\left\{-\mathcal{\kappa}\int_0^{\infty}(1-e^{-sr})\frac{e^{-ra}b}{r} dr \right\}=(1+s/a)^{-b\tilde{\kappa}}, 
+            &\mathcal{L}_{S_{\mathcal{G}}}(s) \approx \exp\left\{-\mathcal{\tilde{\kappa}}\int_0^{\infty}(1-e^{-sr})\frac{F_{\hat{H}}(t)}{r} dr \right\}, \nonumber \\
+            &= \exp\left\{-\mathcal{\tilde{\kappa}}\int_0^{\infty}(1-e^{-sr})\frac{e^{-r\mu}b}{r} dr \right\}=(1+s/\mu)^{-\rho_{\epsilon}\tilde{\kappa}}, 
           \end{align}
           which is the Laplace transform of the gamma distribution with shape parameter $b\tilde{\kappa}$ and scale parameter $1/a$.
 
 
                     
-          Let $(\tau_s, s\geq 0)$ be a \textit{gamma subordinator}, or the \textit{gamma process}. It is a pure-jump increasing Lévy process with the intensity measure $\lambda(r) = e^{-ar}/r$ . Assume $(\tau_s)$ has no drift component, so
+          Let $(\tau_s, s\geq 0)$ be a \textit{gamma subordinator}, or the \textit{gamma process}. It is a pure-jump increasing Lévy process with the intensity measure $\lambda(r) = e^{-\mu r}/r$ . Assume $(\tau_s)$ has no drift component, so
           \begin{equation}
             \label{eq:lapsubord}
-            \mathbb{E}(\exp\{-t \tau_s\}) = \exp\left\{-s \int_0^{\infty}(1-e^{-t r})\frac{e^{-ar}}{r} dr \right\}.
+            \mathbb{E}(\exp\{-t \tau_s\}) = \exp\left\{-s \int_0^{\infty}(1-e^{-s r})\frac{e^{-r\mu}}{r} dr \right\}.
           \end{equation}
-          But \eqref{eq:lapsubord} equals to \eqref{eq:lapexp} for $t=b \kappa$. Let $V_1(\tau_s) \geq V_2(\tau_s)\geq \dots \geq 0 $ denote the jumps of the subordinator $(\tau_s)$ at time $s$. By definition, the sequence
+          But \eqref{eq:lapsubord} equals to \eqref{eq:lapexp} for $s=\tilde{\kappa}\rho_{\epsilon} $. Let $V_1(\tau_s) \geq V_2(\tau_s)\geq \dots \geq 0 $ denote the jumps of the subordinator $(\tau_s)$ at time $s$. By definition, the sequence
           \begin{equation}
             \label{eq:relativesequence}
             \left(\frac{V_1(\tau_{b\kappa})}{\tau_{b\kappa}},\frac{V_2(\tau_{b\kappa})}{\tau_{b\kappa}} \dots \right)
           \end{equation}
-          is the process of the STIR values of the UEs $\{x_1,x_2 \dots\}$. It has the Poisson-Dirichlet distribution PD$(0, b \kappa)$. The $a$ can be arbitrary as it gets cancelled in $\eqref{eq:relativesequence}$.
+          is the process of the STIR values of the UEs $\{x_1,x_2 \dots\}$. It has the Poisson-Dirichlet distribution PD$(0, b \tilde{\kappa})$. Without loss of generality, we can mark $\mu=1$ as the rate parameter gets canceled for each ratio in $\eqref{eq:relativesequence}$.
 
-          \remark{Not all all two-tier log-normal shadowing scenarios can be characterized and approximated with a one-tier manner with the distribution \eqref{eq:defexp}. For example $\rho_{\epsilon}$ might be not within the region $0<\rho_{\epsilon} \leq 1$. This can occur, for example, in case of significant differences in the LoS or NLoS variances in the shadowing, like is the case in the suburban/??? sceneario in the 3GPP specs. We could approximate separately the LoS and NLoS components by the exponential function, leading to two i.i.d. gamma processes of the LoS and NLoS component transmitter. Treating such two separate gamma process's (representing the aggregate STIR) of the two separate shadowing tiers can be challenging, and will be left out of the scope of this paper. Anyhow, the approach presented in the paper works for the urban scenario with the 3GPP specs, because the two-tier log-normal shadowing can be in a reasonable manner approximated by a one-tier defective exponential distribution.}
+          \remark{Not all all two-tier log-normal shadowing scenarios can be characterized and approximated with a one-tier manner with the distribution \eqref{eq:defexp}. For example $\rho_{\epsilon}$ might be not within the region $0<\rho_{\epsilon} \leq 1$. This can occur, for example, in case of significant differences in the LoS or NLoS variances in the shadowing, like is the case in the suburban/??? sceneario in the 3GPP specs. We could approximate separately the LoS and NLoS components by the exponential function, leading to two i.i.d. gamma processes of the LoS and NLoS component transmitter. Treating such two separate gamma process's (representing the aggregate STIR) of the two separate shadowing tiers can be challenging, and will be left out of the scope of this paper. Anyhow, the approach presented in the paper works for the urban scenario with the 3GPP specs, because the two-tier log-normal shadowing can be in a reasonable manner approximated by a one-tier shadowing model using a signle defective exponential distribution.}
 
          %%  In an interference-only channel, $W=0$, the coverage probability \eqref{eq:probofcov} has the analytical expression
 %%           \begin{equation}
@@ -355,10 +355,35 @@ risto.wichman@aalto.fi}
           
           \section{Numerical results and the connection to the satellite communications}
 TRAPEZOIDAL METHODS
-          With $\epsilon = -7$ dB, we can achieve the same expected SIR $1.16+0.2=1.4$ at $\tilde{\kappa} b= 2$ with $k=1$.  The excpected SIR with $k=1$ is at $\tilde{\kappa} b = 2$, is in the infinite variance zone, which is bad. KATSO trapezoidals.nb. However, with $k=2$ interference cancellation we get the same expected SIR with $\tilde{\kappa}b =2.6$.In this case the vvariance is  only about $2.6$, but the average SIR remains the same. With SC the similar average SIR is achieved at $\tilde{\kappa}b = 3.4$ This case the variance is even smaller $2.3$ improvement in the variation in the user experience of the link.  Hence, cancelling the second strongest transmitter, we can make the network denser singificantly improving the user fairness, while maintaining the same performance. 
+With $\epsilon = -7$ dB, we can achieve the same expected SIR $1.16+0.2=1.4$ at $\tilde{\kappa} b= 2$ with $k=1$.  The excpected SIR with $k=1$ is at $\tilde{\kappa} b = 2$, is in the infinite variance zone, which is bad. KATSO trapezoidals.nb. However, with $k=2$ interference cancellation we get the same expected SIR with $\tilde{\kappa}b =2.6$.In this case the vvariance is  only about $2.6$, but the average SIR remains the same. With SC the similar average SIR is achieved at $\tilde{\kappa}b = 3.4$ This case the variance is even smaller $2.3$ improvement in the variation in the user experience of the link.  Hence, cancelling the second strongest transmitter, we can make the network denser singificantly improving the user fairness, while maintaining the same performance.
+
+\begin{table}[h]
+  \begin{center}
+    \caption{The expected SIR without signal cancellation or combination, IC, and SC for $k=2$ with similar means}
+    \label{table:tab1}
+    \begin{tabular}{| c | c | c |c|}
+      \hline
+      & $\mathcal{P}^{(1)}(\tau)$& $\mathcal{P}^{(2)}_{\text{IC}}(\tau)$& $\mathcal{P}^{(2)}_{\text{SC}}(\tau)$\\
+      \hline
+      $\mathbb{E}$&$1.4$ & $1.4$ &$1.4$\\ 
+      \hline
+      $\tilde{\kappa}$& $2/\rho_{\epsilon} $ &$2.6/\rho_{\epsilon}$& $3.4/\rho_{\epsilon}$\\
+      \hline
+      Var& $\infty$ & $2.6$ &$2.3$\\
+      \hline 
+    \end{tabular}
+  \end{center}
+\end{table}
+ 
+Recall that $ \kappa \rho_{\epsilon}=\log(2)\tilde{\kappa} \rho_{\epsilon} $ is the average number of UEs inside the $3$ dB footprints over the SBSs with nonzero shadowed transmitting powers, where $\rho_{\epsilon}$ is a decreasing function of $\epsilon$. We inversely scale the values $\tilde{\kappa}$ with $\rho_{\epsilon}$, resulting in invariant results regarding the theoretical values that depend on the product $\tilde{\kappa} \rho_{\epsilon}$ (recall \eqref{eq:lapsubord} and its follow-up). Scaling can be done without loss of generality because $\tilde{\kappa}/\rho_{\epsilon}$ determines the density of the UEs, altitude, or the antenna gain width directly through \eqref{eq:kappa}, depending on what parameters we want to fix---nevertheless, the expected value and the variance do not change. Table \ref{table:tab1} shows the expected $1$-, IC-, and SC- SIR values while keeping the expected value equal. For $1$-coverage probability, the variance in the SIR is $\infty$, implying that the user experience varies uncontrollably. The table demonstrates how to increase the number of transmitters and reduce the variance significantly by canceling the second-strongest signal through the IC while maintaining equal average SIR. The SC further reduces the variance and allows a larger $\tilde{\kappa}$. Furthermore, through SC, we can serve two transmitters by a single SBS that allows a dense network of UEs, in which each does not have to attempt to connect to a unique serving SBS. 
+
+
+
+
+ We used the successful IC and SC threshold $\theta = -7$ dB, which produces the best results for $k=2$. Decreasing $\theta$ leads to better performance for $k>2$. However, for small $\theta$, the numerical integration gets tedious without seriously focusing on optimizing the numerical integration methods. The expected values $\mathbb{E}(\cdot)$ and the variances Var$(\cdot)$  were calculated by the trapezoidal method by integrating each $\mathcal{P}^{(1)}(y)$, $\mathcal{P}^{(2)}_{\text{IC}}(y)$, and $\mathcal{P}^{(2)}_{\text{SC}}(y)$ over the domain $y \in [0.2, 1000]$ and, for computational efficiency, adding the $0.2 \times 1$ to the final result because the coverage probabilities for $\tau \leq 0.2$ were essentially $1$ in every case. Due to the numerical computational complexity of the integrals, some numerical errors can be present.
+
+
           
-          
-The one-tier defected exponential distribution approximation works if the $\sigma_{\text{LoS}}$ and $\sigma_{\text{NLoS}}$ or not too far apart, like in the Urban scenario. Otherwise (for example, for suburban scenario), we would have to match the moments in NLoS and LoS shadowing tiers separately, leading to a sum of two gamma processes, and the normalized jumps could be characterized by the Poisson-Dirichlet process as well. However, we leave the treatments of such scenario out of the scope of this paper. Also, if the $b$ is not solvable in the region $0<b\leq 1$, the presented model is not applicable as such. This is the case, for example, if the variance in the shadowing is not significant. However, the exponential approximation can produce tight approximations in any case, as noted in [OUR PAPER], especially in the simple coverage region $\theta >=0$ dB.
           
 
           
