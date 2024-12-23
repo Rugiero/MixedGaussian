@@ -230,6 +230,10 @@ risto.wichman@aalto.fi}
             \end{cases}
             \end{equation}
             where $U \sim U(0,1)$ follows the uniform distribution.
+
+            
+
+            
             
             The mean of the lognormal RV is given by $ m_i=\mathbb{E}(H|T=i) = \exp \{\mu_i+\sigma_i^2/2\}$.
             
@@ -247,17 +251,19 @@ risto.wichman@aalto.fi}
 
 
                     
-          Let $(\tau_s, s\geq 0)$ be a \textit{gamma subordinator}, that is, a pure-jump increasing Lévy process with the intensity measure $\lambda(r) = e^{-ar}/r$ . Assume $(\tau_s)$ has no drift component, so
+          Let $(\tau_s, s\geq 0)$ be a \textit{gamma subordinator}, or the \textit{gamma process}. It is a pure-jump increasing Lévy process with the intensity measure $\lambda(r) = e^{-ar}/r$ . Assume $(\tau_s)$ has no drift component, so
           \begin{equation}
             \label{eq:lapsubord}
             \mathbb{E}(\exp\{-t \tau_s\}) = \exp\left\{-s \int_0^{\infty}(1-e^{-t r})\frac{e^{-ar}}{r} dr \right\}.
           \end{equation}
           But \eqref{eq:lapsubord} equals to \eqref{eq:lapexp} for $t=b \kappa$. Let $V_1(\tau_s) \geq V_2(\tau_s)\geq \dots \geq 0 $ denote the jumps of the subordinator $(\tau_s)$ at time $s$. By definition, the sequence
           \begin{equation}
+            \label{eq:relativesequence}
             \left(\frac{V_1(\tau_{b\kappa})}{\tau_{b\kappa}},\frac{V_2(\tau_{b\kappa})}{\tau_{b\kappa}} \dots \right)
           \end{equation}
-          is the process of the STIR values of the UEs $\{x_1,x_2 \dots\}$. It has the Poisson-Dirichlet distribution PD$(0, b \kappa)$.
-                    
+          is the process of the STIR values of the UEs $\{x_1,x_2 \dots\}$. It has the Poisson-Dirichlet distribution PD$(0, b \kappa)$. The $a$ can be arbitrary as it gets cancelled in $\eqref{eq:relativesequence}$.
+
+          \remark{Not all all two-tier log-normal shadowing scenarios can be characterized and approximated with a one-tier manner with the distribution \eqref{eq:defexp}. For example $\rho_{\epsilon}$ might be not within the region $0<\rho_{\epsilon} \leq 1$. This can occur, for example, in case of significant differences in the LoS or NLoS variances in the shadowing, like is the case in the suburban/??? sceneario in the 3GPP specs. We could approximate separately the LoS and NLoS components by the exponential function, leading to two i.i.d. gamma processes of the LoS and NLoS component transmitter. Treating such two separate gamma process's (representing the aggregate STIR) of the two separate shadowing tiers can be challenging, and will be left out of the scope of this paper. Anyhow, the approach presented in the paper works for the urban scenario with the 3GPP specs, because the two-tier log-normal shadowing can be in a reasonable manner approximated by a one-tier defective exponential distribution.}
 
          %%  In an interference-only channel, $W=0$, the coverage probability \eqref{eq:probofcov} has the analytical expression
 %%           \begin{equation}

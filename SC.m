@@ -29,7 +29,7 @@ kappa = linspace(1,10,19);
 simkappa=linspace(1,10,10);
 %simkappa = [1 2 6 10];
 
-fill([simkappa,fliplr(simkappa)],[simres7',fliplr(simres4')],[0 0.4470 0.7410],'FaceAlpha',0.3,'EdgeColor','none');
+fill([simkappa,fliplr(simkappa)],[simres7',fliplr(simres4')],[0 0.4470 0.7410],'FaceAlpha',0.3,'EdgeColor','xnone');
 
 fill([simkappa,fliplr(simkappa)],[simres8',fliplr(simres5')],[0.8500 0.3250 0.0980],'FaceAlpha',0.3,'EdgeColor','none');
 
