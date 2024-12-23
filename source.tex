@@ -359,28 +359,28 @@ With $\epsilon = -7$ dB, we can achieve the same expected SIR $1.16+0.2=1.4$ at 
 
 \begin{table}[h]
   \begin{center}
-    \caption{The expected SIR without signal cancellation or combination, IC, and SC for $k=2$ with similar means}
+    \caption{The expected SIR without IC or SC compared to the IC and SC cases, each case having equal mean but varying variances.}
     \label{table:tab1}
     \begin{tabular}{| c | c | c |c|}
       \hline
-      & $\mathcal{P}^{(1)}(\tau)$& $\mathcal{P}^{(2)}_{\text{IC}}(\tau)$& $\mathcal{P}^{(2)}_{\text{SC}}(\tau)$\\
+      & $\mathcal{P}^{(1)}(\cdot)$& $\mathcal{P}^{(2)}_{\text{IC}}(\cdot)$& $\mathcal{P}^{(2)}_{\text{SC}}(\cdot)$\\
       \hline
-      $\mathbb{E}$&$1.4$ & $1.4$ &$1.4$\\ 
+      $\mathbb{E}(\cdot)$&$1.4$ & $1.4$ &$1.4$\\ 
       \hline
       $\tilde{\kappa}$& $2/\rho_{\epsilon} $ &$2.6/\rho_{\epsilon}$& $3.4/\rho_{\epsilon}$\\
       \hline
-      Var& $\infty$ & $2.6$ &$2.3$\\
+      Var$(\cdot)$& $\infty$ & $2.6$ &$2.3$\\
       \hline 
     \end{tabular}
   \end{center}
 \end{table}
  
-Recall that $ \kappa \rho_{\epsilon}=\log(2)\tilde{\kappa} \rho_{\epsilon} $ is the average number of UEs inside the $3$ dB footprints over the SBSs with nonzero shadowed transmitting powers, where $\rho_{\epsilon}$ is a decreasing function of $\epsilon$. We inversely scale the values $\tilde{\kappa}$ with $\rho_{\epsilon}$, resulting in invariant results regarding the theoretical values that depend on the product $\tilde{\kappa} \rho_{\epsilon}$ (recall \eqref{eq:lapsubord} and its follow-up). Scaling can be done without loss of generality because $\tilde{\kappa}/\rho_{\epsilon}$ determines the density of the UEs, altitude, or the antenna gain width directly through \eqref{eq:kappa}, depending on what parameters we want to fix---nevertheless, the expected value and the variance do not change. Table \ref{table:tab1} shows the expected $1$-, IC-, and SC- SIR values while keeping the expected value equal. For $1$-coverage probability, the variance in the SIR is $\infty$, implying that the user experience varies uncontrollably. The table demonstrates how to increase the number of transmitters and reduce the variance significantly by canceling the second-strongest signal through the IC while maintaining equal average SIR. The SC further reduces the variance and allows a larger $\tilde{\kappa}$. Furthermore, through SC, we can serve two transmitters by a single SBS that allows a dense network of UEs, in which each does not have to attempt to connect to a unique serving SBS. 
+Recall that $ \kappa \rho_{\epsilon}=\log(2)\tilde{\kappa} \rho_{\epsilon} $ is the average number of UEs inside the $3$ dB footprints over the SBSs with nonzero shadowed transmitting powers, where $\rho_{\epsilon}$ is a decreasing function of $\epsilon$. We inversely scale the values $\tilde{\kappa}$ with $\rho_{\epsilon}$, resulting in invariant results regarding the theoretical values that depend on the product $\tilde{\kappa} \rho_{\epsilon}$ (recall \eqref{eq:lapsubord} and its follow-up). Scaling can be done without loss of generality because $\tilde{\kappa}/\rho_{\epsilon}$ determines the density of the UEs, altitude, or the antenna gain width directly through \eqref{eq:kappa}, depending on what parameters we want to fix---nevertheless, the expected value and the variance do not change. Table \ref{table:tab1} shows the expected $\mathcal{P}^{(1)}(\cdot), \mathcal{P}^{(2)}_{\text{IC}}(\cdot) $ and $\mathcal{P}^{(2)}_{\text{SC}}(\cdot)$. Note that the expected values are equal. For $\mathcal{P}^{(1)}(\cdot)$, the variance in the SIR is $\infty$, implying that the user experience varies uncontrollably. The table demonstrates how to increase the number of transmitters and reduce the variance significantly by canceling the second-strongest signal through the IC while maintaining equal average SIR. The SC further reduces the variance and allows a larger $\tilde{\kappa}$. Furthermore, through SC, we can serve two transmitters by a single SBS that allows a dense network of UEs, in which each does not have to attempt to connect to a unique serving SBS. 
 
 
 
 
- We used the successful IC and SC threshold $\theta = -7$ dB, which produces the best results for $k=2$. Decreasing $\theta$ leads to better performance for $k>2$. However, for small $\theta$, numerical integration gets tedious, and one needs to focus on numerical accuracy alongside time optimization. However, for example, the ICSC threshold  $\theta = -10$ does not produce significantly improved results. The expected values $\mathbb{E}(\cdot)$ and the variances Var$(\cdot)$  were calculated by the trapezoidal method by integrating each $\mathcal{P}^{(1)}(y)$, $\mathcal{P}^{(2)}_{\text{IC}}(y)$, and $\mathcal{P}^{(2)}_{\text{SC}}(y)$ over the domain $y \in [0.2, 1000]$ and, for computational efficiency, adding the $0.2 \times 1$ to the final result because the coverage probabilities for $\tau \leq 0.2$ were essentially $1$ in every case. Due to the numerical computational complexity of the integrals, some numerical errors can be present.
+ We used the successful IC and SC threshold $\theta = -7$ dB, which produces the best results for $k=2$. Decreasing $\theta$ leads to better performance for $k>2$. However, for small $\theta$, numerical integration gets tedious, and one needs to focus on numerical accuracy alongside time optimization. However, for example, the ICSC threshold  $\theta = -10$ does not produce significantly improved results. The expected values $\mathbb{E}(\cdot)$ and the variances Var$(\cdot)$  were calculated by the trapezoidal method by integrating each $\mathcal{P}^{(1)}(y)$, $\mathcal{P}^{(2)}_{\text{IC}}(y)$, and $\mathcal{P}^{(2)}_{\text{SC}}(y)$ over the domain $y \in [0.2, 1000]$ with a partition of size $0.1$. Furthermore, $0.2 \times 1$ was added to the final result because the coverage probabilities for $\tau \leq 0.2$ were essentially $1$ in every case. 
 
 
           
