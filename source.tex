@@ -109,8 +109,11 @@
 \end{table}   
 
 
-\section{Analysis}
-In this section, we present the analysis of the joint probability distribution of the SIR and the ICSC-SIR coverage probabilities. We present the analysis for a Gaussian path loss. It has relevance in narrow-beam satellite communications, which we will come back to in section XXX.
+\section{Quantities of interest}
+We consider the ``typical SBS'' with a narrow Gaussian beam. The UEs are located on the plane according to the PPP. The SBS antenna boresigh is directed at $\textit{o} \in (0,0) \in \R^2$. The planar model approximates the spherical model, where the UEs are located on a spherical Earth's surface. We will come back to the spherical model in the numerical results section.
+
+
+
 \subsection{Path loss process}
 The path loss is Gaussian, a exponentially decaying function, representing the antenna gain of a narrow-beam LEO satellite. The path loss is a function of the distance $r$ from the origin, 
 \begin{equation}
@@ -189,8 +192,6 @@ The complementary CDF (CCDF) is given by the defective distribution function
 At the probability $1-\rho$, the signal power maps to $0$: this reflects highly severe shadowing occurrences. 
 
 
-
-
 \subsection{Total interference and its Laplace transform}
 
 The Laplace function of the total of the points in $\mathcal{G}$ is defined as $S_{\mathcal{G}} \triangleq \sum_{x \in \mathcal{G}}x$, i.e., the \textit{total received power} scaled by the spatial path loss $\ell(\hat{d}_{h,\epsilon})$ from all UEs in $\mathcal{G}$ at the typical SBS, is given by
@@ -231,10 +232,39 @@ where $U \sim U(0,1)$ follows the uniform distribution.
 
 The mean of the lognormal RV is given by $ m_i=\mathbb{E}(H|T=i) = \exp \{\mu_i+\sigma_i^2/2\}$.
 
+The joint of the SIR process can by obtained from $\eqref{eq:jointprobability}$ by
+\begin{equation}
+  \label{eq:SIRjointprobability}
+  \mu^{(n)}(t_1,\dots,t_n) = \prod_{j=1}^n\frac{1}{(1+t_j)^2}\mu'^{(n)}\left(\frac{t_1}{1+t_1},\dots,\frac{t_n}{1+t_n}\right).
+\end{equation}
+
+The joint probability density of the vector of $k$ strongest values of the STIR process $(\mathsf{Z}'_{(1)}, \dots, \mathsf{Z}'_{(n)})$ is equal to
+\begin{equation}
+  \label{eq:jointprobability}
+  f'_{(k)}(z'_1,\dots,z'_k)= \sum^{i_{\text{max}}}_{i=0}\frac{(-1)^i}{i!}{\mu'}_k^{(k+i)}(z'_1,\dots,z'_k),
+\end{equation}x
+where $i_{\text{max}}<1/z'_k-k$, is the maximum index of the non-zero terms of the expansion.e
+The $k$-coverage probability that the first $k$ strongest signals reach the threshold $\tau' =\tau/(1+\tau)$ is given by
+\begin{equation}
+  \mathcal{P}^{(k)}(\tau) \triangleq  \int_{\tau'}^1\dots \int_{\tau'}^1 f'_{(k)}({z'_1},\dots,{z'_k})dz'_1 \dots d{z'_k}.
+\end{equation}
+
+Finally, we arrive to the ICSC-SIR probability of coverage.
+\begin{prop}
+  \begin{align}
+    &\mathcal{P}^{(\mathbf{K},k)}(\tau) \nonumber\\
+    &= \sum^{i_{\text{max}}}_{i=0} \int_{\epsilon}^1 \dots \int_{\epsilon}^1\frac{(-1)^i}{i!}\mathds{1}\left(\tau' \sum_{i \in [k] \setminus  \mathbf{K}}z'_i+ \sum_{i\in \mathbf{K}} z'_i>\tau' \right) \nonumber \\
+    &\hspace{0.7cm}\times \mathds{1}(z'_1>\dots>z'_k){\mu'}_k^{(k+i)}(z'_1,\dots,z'_k) d z'_1 \dots z'_k,
+  \end{align}
+  where $\tau' = \tau/(1+\tau)$ and the sum is bounded by $i_{\text{max}}< 1/\epsilon-k$. 
+\end{prop}
 
 
+\subsection{Interference-limited channel}
 
-\subsection{Distribution of the total received power}
+
+ 
+\subsubsection{Distribution of the total received power}
 Under the shadowing approximation $\eqref{eq:defexp}$, the total received power can be simply characterized by the gamma distribution.
 \begin{align}
   \label{eq:lapexp}
@@ -269,25 +299,14 @@ is the process of the STIR values of the UEs $\{x_1,x_2 \dots\}$. It has the Poi
   \end{align}
   whenever $t_1>\dots >t_n$ and $\sum_{i=1}^n t_i <1$, and $0$ otherwise.
 \end{prop}
-To study the the joint distribution of order statistics of the STINR process, we define some auxillary functions. We write for $i\geq 1$
+To study the joint distribution of order statistics of the STINR process, we define some auxillary functions. We write for $i\geq 1$
 \begin{align}
   \label{eq:auxillary}
   &{\mu'}_k^{(k+i)}(z'_1,\dots,z'_k) \nonumber \\
   &= \int_{z'_k}^1 \dots \int_{z'_k}^1 {\mu'}^{(k+i)}(z'_1,\dots,z'_k,\zeta'_1,\dots,\zeta'_i) d\zeta'_1 \dots \zeta'_i
 \end{align}
-if $\sum_{i=1}^k t_i + it_k <0$ and $0$ otherwise.
+if $\sum_{i=1}^k t_i + it_k <0$ and $0$ otherwise. 
 
-
-The joint probability density of the vector of $k$ strongest values of the STIR process $(\mathsf{Z}'_{(1)}, \dots, \mathsf{Z}'_{(n)})$ is equal to
-\begin{equation}
-  \label{eq:jointprobability}
-  f'_{(k)}(z'_1,\dots,z'_k)= \sum^{i_{\text{max}}}_{i=0}\frac{(-1)^i}{i!}{\mu'}_k^{(k+i)}(z'_1,\dots,z'_k),
-\end{equation}x
-where $i_{\text{max}}<1/z'_k-k$, is the maximum index of the non-zero terms of the expansion.e
-The $k$-coverage probability that the first $k$ strongest signals reach the threshold $\tau' =\tau/(1+\tau)$ is given by
-\begin{equation}
-  \mathcal{P}^{(k)}(\tau) \triangleq  \int_{\tau'}^1\dots \int_{\tau'}^1 f'_{(k)}({z'_1},\dots,{z'_k})dz'_1 \dots d{z'_k}.
-\end{equation}
 
 
 The joint pdf of the SIR process can by obtained from $\eqref{eq:jointprobability}$ by
@@ -296,7 +315,11 @@ The joint pdf of the SIR process can by obtained from $\eqref{eq:jointprobabilit
   \mu^{(n)}(t_1,\dots,t_n) = \prod_{j=1}^n\frac{1}{(1+t_j)^2}\mu'^{(n)}\left(\frac{t_1}{1+t_1},\dots,\frac{t_n}{1+t_n}\right).
 \end{equation}
 
+
+
 Combining \eqref{eq:SIRjointprobability}, \eqref{eq:jointprobability} and \eqref{eq:factorialmoment}, we get the PDF for the SIR of the strongest signal for $z\geq 1$:
+
+
 
 \begin{equation}
   f_{(1)}(z) = \frac {b\kappa\left({z + 1} \right)^{-b\tilde{\kappa}}} {z}.
@@ -316,19 +339,52 @@ The mean and the second moment diverge for $\tilde{\kappa}b\leq 1$ and $\tilde{\
 
 
 
-Finally, we arrive to the ICSC-SIR probability of coverage.
+
+
+\subsection{Interference-plus-noise-limited channel}
+
+
+In the interference-plus-noise-limited channel, we derive the partial densities through directly derivating the moment measure.
+
 \begin{prop}
+  The $n$-moment measure of the STINR process is given by
+
+    \begin{align}
+      &M'^{(n)}(t'_1,\dots,t'_n) =\left(\tilde{\kappa} \rho_{\epsilon}\right)^n \nonumber\\
+      &\times \int\limits_{(1,\infty)^n} e^{-W\ell(\hat{d}_{h,\epsilon})\hat{T}_n\sum\limits_{i=1}^nt'_iv_i} \left(1+\hat{T}_n\sum\limits_{i=1}^nt'_iv_i\right)^{-\tilde{\kappa}b} \nonumber\\
+      &\times \frac{\prod\limits_{i=1}^nt'_i}{\sum\limits_{i=1}^nt'_iv_i}  \left[\sum\limits_{j=1}^n\frac{1}{\prod\limits_{i\neq j}\left(t'_i v_i+ t_i'\hat{T}_n\sum\limits_{k=1}^nt'_kv_k \right)} \right] dv_1 \dots dv_n,
+    \end{align}
+    where $\hat{T}_n= 1/(1-\sum_{i=1}^nt'_i)$.
+
+      Let $\mu_M \triangleq \sum_{i=1}^nt'_i/G(D_{h,\epsilon}\|x_i\|)$ and . 
   \begin{align}
-    &\mathcal{P}^{(\mathbf{K},k)}(\tau) \nonumber\\
-    &= \sum^{i_{\text{max}}}_{i=0} \int_{\epsilon}^1 \dots \int_{\epsilon}^1\frac{(-1)^i}{i!}\mathds{1}\left(\tau' \sum_{i \in [k] \setminus  \mathbf{K}}z'_i+ \sum_{i\in \mathbf{K}} z'_i>\tau' \right) \nonumber \\
-    &\hspace{0.7cm}\times \mathds{1}(z'_1>\dots>z'_k){\mu'}_k^{(k+i)}(z'_1,\dots,z'_k) d z'_1 \dots z'_k,
+    &M'^{(n)}(t'_1,\dots,t'_n) =(2 \pi b)^n\nonumber\\
+    & \times\int\limits_{(\R_+)^n} \mathcal{L}_W(a\mu_MT_n)\mathcal{L}_I(a\mu_MT_n)\mathcal{L}_D(a\mu_MT_n)\prod_{i=1}^nr_i dr_i\nonumber \\
+    &=(2 \pi b)^n \int\limits_{(\R_+)^n} \exp\left\{-aW\ell(\hat{d}_{h,\epsilon})T_n\sum\limits_{i=1}^nt'_i2^{\left(\frac{D_{h,\epsilon}r_i}{\varphi_{\text{RX}}}\right)^2}\right\} \nonumber\\
+    &\hspace{0.8cm}\times\left(1+T_n\sum\limits_{i=1}^nt'_i2^{\left(\frac{D_{h,\epsilon}r_i}{\varphi_{\text{RX}}}\right)^2}\right)^{- \tilde{\kappa}b} \frac{\prod\limits_{i=1}^nt'_i2^{\left(\frac{D_{h,\epsilon}r_i}{\varphi_{\text{RX}}}\right)^2}}{\sum\limits_{i=1}^nt'_i2^{\left(\frac{D_{h,\epsilon}r_i}{\varphi_{\text{RX}}}\right)^2}} \nonumber\\
+    &\hspace{0.8cm}\times  \left[\sum\limits_{j=1}^n\frac{1}{\prod\limits_{i\neq j}\left(t'_i 2^{\left(\frac{D_{h,\epsilon}r_i}{\varphi_{\text{RX}}}\right)^2}+a t_i'T_n\sum\limits_{k=1}^nt'_k2^{\left(\frac{D_{h,\epsilon}r_k}{\varphi_{\text{RX}}}\right)^2} \right)} \right] \nonumber\\
+    &\hspace{0.8cm}\times r_1 dr_1 \dots r_n dr_n.
   \end{align}
-  where $\tau' = \tau/(1+\tau)$ and the sum is bounded by $i_{\text{max}}< 1/\epsilon-k$. 
+  With the successive substitutions $\{u_i\}_{i= 1}^n$= $\{  (r_i D_{h,\epsilon}/\varphi_{\text{RX}})^2\}_{i= 1}^n$ and $\{v_i\}_{i= 1}^n$ =$\{ 2^{u_i^2}\}_{i= 1}^n$,
+
 \end{prop}
 
+The partial density $\mu_k'^{(k+i)}(z'_1 \dots z'_k)$ \eqref{eq:auxillary} can be aquired by differating $M'^{(k+i)}(z'_1 \dots z'_k,z'_k\dots z'_k)$ $k$ times
+\begin{align}
+  \label{eq:differatemomentmeasure}
+  &{\mu'}_k^{(k+i)}(z'_1,\dots,z'_k) \nonumber\\
+  &= (-1)^k \frac{M'^{(k+i)}(t'_1\dots t_k',z'_k\dots z'_k)}{\partial t'_1 \dots \partial t'_k}(t'_1=z_1'\dots t'_k=z'_k).
+\end{align}
+
+The differentiation is a tedious task, especially for large $k$. However, it can be by using symbolical tools, for example, Mathematica.
 
 
-\section{Interference-plus-noise-limited channel}
+
+
+
+
+
+
 
 \section{Numerical results and the connection to the satellite communications}
 TRAPEZOIDAL METHODS

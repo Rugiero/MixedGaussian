@@ -7,16 +7,14 @@ function Pside=sidetot(LAMBDA,h,alpha)
     varphi = @(xi) pi/2-xi-asin((cos(xi).*(rE+h)-rE)./d(xi));
     %%   integrand= @(xi) 2*pi*rE^2*lambda*ITUpattern(varphi(xi)).*sin(xi).*(ITUpattern(varphi(xi))<0.1)./d(xi).^alpha;
     %% Pside = integral(integrand,0,Xi);
-
     integrand= @(xi) 2*pi*rE^2*lambda*ITUpattern(varphi(xi)).*sin(xi)./d(xi).^alpha;
     dtheta = @(varphi) (h+rE)*cos(varphi)-sqrt((h+rE)^2*cos(varphi)^2-h*(h+2*rE));
     mainxi = @(varphi) acos((rE^2+(rE+h)^2-dtheta(varphi)^2)/(2*rE*(rE+h)));
-%%    xi1 = mainxi(0.0565053);
+    %%    xi1 = mainxi(0.0565053);
     xi1=0.00957818;
-%    xi1=0;
-    %Pside = [Pside integral(integrand,xi1,1*Xi)];
-    Pside = [Pside integral(integrand,0.1*Xi,1*Xi)];
-    Pside = [Pside integral(integrand,0.1*Xi,1*Xi)];
+				%    xi1=0;
+    Pside = [Pside integral(integrand,xi1,1*Xi)];
+		 %    Pside = [Pside integral(integrand,0.1*Xi,1*Xi)];
   end
 end 
 

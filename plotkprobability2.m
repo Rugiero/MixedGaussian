@@ -129,7 +129,7 @@ fill([simtau,fliplr(simtau)],[simres340',fliplr(simres390')],[0.9290 0.6940 0.12
 
 
 legend('Theory; k=1 (exponential shadowing)','Theory; k=2 (exponential shadowing)','Theory; k=3 (exponential shadowing)','Simulated values (log-normal shadowing)','Interpreter','latex',...
-    'FontSize',14,BackgroundAlpha=.5)
+       'FontSize',14,BackgroundAlpha=.5)
 
 xlabel('$\tau$(dB)','FontSize',14,'Interpreter','latex')
 ylabel('$\mathcal{P}^{(k)}(\tau)$','FontSize',14,'Interpreter','latex')
