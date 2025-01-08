@@ -58,7 +58,7 @@
 \markboth{Journal of \LaTeX\ Class Files,~Vol.~1, No.~2, December~2023}%
 {Shell \MakeLowercase{\textit{et al.}}: A Sample Article Using IEEEtran.cls for IEEE Journals}
 
-\IEEEpubid{0000--0000~\copyright~2023 IEEE}
+\IEEEpubid{}
 % Remember, if you use this you must call \IEEEpubidadjcol in the second
 % column for its text to clear the IEEEpubid mark.
 
@@ -114,22 +114,19 @@ We consider the ``typical SBS'' with a narrow Gaussian beam. The UEs are located
 
 
 
-\subsection{Path loss process}
-The path loss is Gaussian, a exponentially decaying function, representing the antenna gain of a narrow-beam LEO satellite. The path loss is a function of the distance $r$ from the origin, 
+\subsection{Gain process}
+The path loss is Gaussian, a exponentially decaying function, representing the antenna gain of a narrow-beam LEO satellite. The antenna gain loss is a function of the distance $r$ from the origin $\textit{o}\in \R^2$, 
 \begin{equation}
   G(r) = 2^{-r^2/\varphi^2_{\text{RX}}},
 \end{equation}
 where $\varphi_{\text{RX}}$ is the width of the $3$ dB gain and $D_{h,\epsilon}=\sin^2(\epsilon)/h$ is a scaling constant. 
 
-
-Given a homogeneous PPP $\Phi \subset \R^2$ of density $\lambda$,
+Given a homogeneous PPP $\Phi \subset \R^2$ of density $\lambda$ and i.i.d. fading variables $\{H_x\}$, we define the process of the perceived gains at the receiver; the gain process (GP):
 \begin{equation}
   \label{eq:gainprocess}
-  \mathcal{G} \triangleq \left\{x \in \Phi : H_x G(D_{h,\epsilon}\|x\|) \right\},
+  \mathcal{G} \triangleq \left\{ H_x G(D_{h,\epsilon}\|x\|):x \in \Phi  \right\}.
 \end{equation}
-where $\{H_x\}$ are i.i.d. shadowing variables, possibly degenerate, and $\|x\|$ is the Euclidean distance of $x \in \Phi$. We use the value $\varphi_{\text{RX}} = 1.6 \degree$ according to the International Telecommunication Union Recommendations (ITU-R) \cite{ITURS1528}. The GP is a \textit{projection process} and, as such, a nonhomogeneous PPP [CITE].
-
-The density of the GP has the following connection to the fading distribution:
+The GP is a \textit{projection process} and, as such, a nonhomogeneous PPP [CITE]. The density of the GP has the following connection to the fading distribution.
 
 \begin{prop}[Density of the GP]
   Let $F_H(\cdot)$ be the complementary cdf (ccdf) of $H$. The density of $\mathcal{G}$ is given by
@@ -154,95 +151,128 @@ The density of the GP has the following connection to the fading distribution:
     In (a), we use the integration by parts. The result follows by derivating w.r.t. $t$ and taking the minus sign---as long as $\int_t^{\infty} \log(t/h)f_H(h) dh$ converges for all $t>0$.
   \end{proof}
 \end{prop}
-
-The mean and the variance of the total received power are given by
-\begin{align}
-  &\mathbb{E}\left(\sum_{x \in \mathcal{G}} x \right) = \int_{0}^{\infty} t\lambda_{\mathcal{G}}(t) dt = \tilde{\kappa} \int_{0}^{\infty}F_H(t) dt \nonumber \\
-  &=\tilde{\kappa} \mathbb{E}(H), \\\
-  &\text{var}\left(\sum_{x \in \mathcal{G}} x \right) = \int_{0}^{\infty} t^2\lambda_{\mathcal{G}}(t) dt= \tilde{\kappa} \int_0^{\infty}tF_H(t) dt  \nonumber \\
-  & \tilde{\kappa} \frac{\text{var}(H) + \mathbb{E}(H)^2}{2} = \tilde{\kappa}  \mathbb{E}[H^2]/2,
-\end{align}
-respectively. 
-
-Unfortunately, unlike in terrestrial networks with a singular path loss, where the density of the projection process is dependent only on a single moment of $H$, $\lambda_{\mathcal{G}}(t)$ has an explicit pointwise dependence on the ccdf of the fading distribution. 
+In this work, we use the value $\varphi_{\text{RX}} = 1.6 \degree$ according to the International Telecommunication Union Recommendations (ITU-R) \cite{ITURS1528}---furthermore, we fix $h=1200$ km. However, note that $\kappa$ is the essential spatial system parameter, and other parameters only have a minor impact on the simulated values in the spherical model.
 
 
-\subsection{Slow-fading distribution}
-While analytically tractable, the defective exponential distribution can capture the mean and the variance of a more complicated fading distribution with high variance, particularly the lognormal distribution, which is a well-established shadowing model in the LEO networks. The shadowing is defined by the mixed exponential RV
+
+
+The mean and the variance of the \textit{total received power}
 \begin{equation}
-  \hat{H}_x \sim
-  \begin{cases}
-    0, \text{ if } U < 1-\rho,\\
-    \text{Exp}(\mu), \text{ if } U \geq1- \rho,              \label{eq:tier2exponential}
-  \end{cases}
+  \label{eq:totpow}
+  I \triangleq \sum\limits_{u \in \mathcal{G}} u = \sum\limits_{x \in \Phi} H_x G(D_{h,\epsilon}\|x\|)
 \end{equation}
-with $\mu>0$ and $0<\rho\leq1$, and $U \sim U(0,1)$ follows the uniform distribution.
+  are given by
+\begin{align}
+  \label{eq:totmean}
+  &\mathbb{E}\left(I \right) = \int_{0}^{\infty} t\lambda_{\mathcal{G}}(t) dt = \tilde{\kappa} \int_{0}^{\infty}F_H(t) dt \nonumber \\
+  &=\tilde{\kappa} \mathbb{E}(H), \\\
+  \label{eq:totvar}
+  &\text{var}\left(I \right) = \int_{0}^{\infty} t^2\lambda_{\mathcal{G}}(t) dt= \tilde{\kappa} \int_0^{\infty}tF_H(t) dt  \nonumber \\
+  &= \tilde{\kappa} \frac{\text{var}(H) + \mathbb{E}(H)^2}{2} = \tilde{\kappa}  \mathbb{E}[H^2]/2,
+\end{align}
+respectively.
+
+Note that the spatial path loss is of no interest here: because we assume a narrow beam $G(\cdot)$, the relevant UEs are located close to each other; hence, the spatial path loss is only a constant, and $\mathbb{E}(I)$ and $\text{var}(I)$ can be scaled accordingly. Furthermore, the spatial path loss does not affect the SIR. However, it is taken into account in the SINR analysis. Further, the signal powers are incorporated into the noise.
 
 
-The complementary CDF (CCDF) is given by the defective distribution function
+
+
+\subsection{Shadowing}
+Unfortunately, unlike with a singular path loss, when the density of the projection process depends only on a single moment of $H$ regardless of the distribution, $\lambda_{\mathcal{G}}(t)$ has a pointwise dependence on $F_H(t)$. However, for analytical tractability, we can use the defective exponential power fading distribution
 \begin{equation}
   \label{eq:defexp}
-  F_{\hat{H}_{\text{exp}}}(t)=e^{-\mu t}\rho_{\epsilon}.
+  F_{{H}_{\text{exp}}}(t)=\rho_{\epsilon} e^{- t},
 \end{equation}
+where $0<\rho_{\epsilon} \leq 1$ reflects the probability that the shadowed signal power is above $0$. The atomic probability measure $1-\rho_{\epsilon}$ at $0$ reflects the fading occurrences when the signal is blocked entirely. By matching the first two moments (this is equivalent to matching the mean \eqref{eq:totmean} and the variance \eqref{eq:totvar} of the total received power), the defective exponential distribution effectively approximates the log-normal shadowing if the fading is severe with high variance. As implied in the lower index, the constant $\rho_{\epsilon}$ depends on the elevation angle $\epsilon$ because of the varying LoS probability that affects the shadowing distribution.
+
+
+%% \subsection{Slow-fading distribution}
+%% While analytically tractable, the defective exponential distribution can capture the mean and the variance of a more complicated fading distribution with high variance, particularly the lognormal distribution, which is a well-established shadowing model in the LEO networks. The shadowing is defined by the mixed exponential RV
+%% \begin{equation}
+%%   \hat{H}_x \sim
+%%   \begin{cases}
+%%     0, \text{ if } U < 1-\rho,\\
+%%     \text{Exp}(\mu), \text{ if } U \geq1- \rho,              \label{eq:tier2exponential}
+%%   \end{cases}
+%% \end{equation}
+%% with $\mu>0$ and $0<\rho\leq1$, and $U \sim U(0,1)$ follows the uniform distribution.
+
+
 %%where
 %% \begin{align}
 %%   &a=\frac{2 (p_{\text{LoS}}-1) e^{{\mu_{N\text{LoS}}}+\frac{{\sigma_{N\text{LoS}}}^2}{2}}-2 p_{\text{LoS}} e^{{\mu_{\text{LoS}}}+\frac{{\sigma_{\text{LoS}}}^2}{2}}}{(p_{\text{LoS}}-1) e^{2 \left({\mu_{N\text{LoS}}}+{\sigma_{N\text{LoS}}}^2\right)}-p_{\text{LoS}} e^{2 \left({\mu_{\text{LoS}}}+{\sigma_{\text{LoS}}}^2\right)}},\\
 %%   &b=\frac{2 \left(({p_\text{LoS}}-1) e^{{\mu_{\text{N\text{LoS}}}}+\frac{{\sigma_{\text{N\text{LoS}}}}^2}{2}}-{p_\text{LoS}} e^{{\mu_{\text{LoS}}}+\frac{{\sigma_{\text{LoS}}}^2}{2}}\right)^2}{({p_\text{LoS}}-1) e^{2 \left({\mu_{\text{N\text{LoS}}}}+{\sigma_{\text{N\text{LoS}}}}^2\right)}-{p_\text{LoS}} e^{2 \left({\mu_{\text{LoS}}}+{\sigma_{\text{LoS}}}^2\right)}}.              
 %% \end{align} 
-At the probability $1-\rho$, the signal power maps to $0$: this reflects highly severe shadowing occurrences. 
 
 
-\subsection{Total interference and its Laplace transform}
 
-The Laplace function of the total of the points in $\mathcal{G}$ is defined as $S_{\mathcal{G}} \triangleq \sum_{x \in \mathcal{G}}x$, i.e., the \textit{total received power} scaled by the spatial path loss $\ell(\hat{d}_{h,\epsilon})$ from all UEs in $\mathcal{G}$ at the typical SBS, is given by
+\subsection{Laplace transform of the total received power}
 
-\begin{equation}
+With exponential shadowing ${H}_{\text{exp}}$, for Re$(s)>1$,
+
+\begin{align}
   \label{eq:lapdef}
-  \mathcal{L}_{S_{\mathcal{G}}}(s)\triangleq \mathbb{E}\left(e^{-s\sum\limits_{x \in \mathcal{G}}x}\right)= \exp\left\{-\int_0^{\infty}(1-e^{-sr}) \lambda_{\mathcal{G}}(r) dr \right\}.
-\end{equation}
-For independent $\{\mathcal{G}_i\}_{i \in \mathcal{\tau}}$, $\mathcal{L}_{\sum_{i \in \mathcal{T}} \mathcal{G}_i}(s) = \prod_{i \in \mathcal{T}} \mathcal{L}_{\mathcal{G}_i}(s)$
+  &\mathcal{L}_{I}(s)\triangleq \mathbb{E}\left(e^{-sI}\right)= \exp\left\{-\int_0^{\infty}(1-e^{-sr}) \lambda_{\mathcal{G}}(r) dr \right\} \nonumber \\
+  &=\exp\left\{-\tilde{\kappa}\int_0^{\infty}(1-e^{-sr}) F_{{H}_{\text{exp}}}(r) /r dr \right\} \nonumber \\
+  &=\exp\left\{-\tilde{\kappa}\rho_{\epsilon}\int_0^{\infty}(1-e^{-sr}) e^{-r} /r dr \right\} \nonumber \\
+  &=(1+s)^{-\tilde{\kappa}\rho_{\epsilon}},
+\end{align}
+which is the Laplace transform of the gamma distribution with the shape parameter $\tilde{\kappa}\rho_{\epsilon}$. This characterization of $I$ is a key insight in the analysis of the joint SIR distribution: $I$ can be interpreted as a gamma subordinator (gamma process) at time $\tau=\tilde{\kappa} \rho_{\epsilon}$, and the density of the factorial moment measure of the SIR of the first $n$ UEs follows.
 
 
-\subsubsection{Rayleigh fading case}
-
-We are ready to derive a approximation for the probability of coverage of the UE with the srongest signal.
-
-\subsection{Signal-to-interference ratio}
-Define the SIR of the $k$\textit{th} strongest signal at the typical SBS as
+\subsection{SINR and STINR processes and their factorial moment measures}
+Let $N \geq 0$ be the noise power constant. We denote the signal-to-interference-plus-noise ratio (SINR) process of the UEs as
+\begin{align}
+  \label{eq:STIR}
+  \Psi &= \{\mathsf{Z}: \mathsf{Z} \in \Psi\} \triangleq \left\{ \frac{u}{N+I-u} : u \in \mathcal{G}\right\} \\
+  &=\left\{ \frac{H_x G(D_{h,\epsilon}\|x\|)}{N+I-H_x G(D_{h,\epsilon}\|x\|)} : x \in \Phi\right\},
+\end{align}
+where $I$ is defined in \eqref{eq:totpow}. Similarly, the signal-to-total-interference-plus-noise (STINR) process is defined as
+\begin{align}
+  \label{eq:STNIR}
+  \Psi' &= \{\mathsf{Z}': \mathsf{Z}' \in \Psi'\} \triangleq \left\{ \frac{u}{N+I} : u \in \mathcal{G}\right\}.
+\end{align}
+We can always recover on process from another
 \begin{equation}
-  \text{SIR}_k \triangleq \frac{x_k}{\sum\limits_{x \in \mathcal{G} \setminus \{x_0\}}x},
+  \Psi = \left\{ \frac{\mathsf{Z}'}{1- \mathsf{Z}'}: \mathsf{Z}' \in \Psi' \right\}, \hspace{0.3cm} \Psi' = \left\{ \frac{\mathsf{Z}}{1+ \mathsf{Z}}: \mathsf{Z} \in \Psi \right\}.
 \end{equation}
-$k\in\{1,2,\dots\}$.
 
+The factorial moment measure of the SINR process is defined on the sets $(t_1,\infty] \times \dots \times (t_n, \infty]$ with $t_1,\dots,t_n\geq 0$
+    \begin{align}
+      M^{(n)}(t_1,\dots,t_n) &\triangleq M^{(n)}((t_1,\infty],\dots,(t_n,\infty]) \nonumber \\
+          & \triangleq \mathbb{E} \left( \sum^{\text{distinct}}_{\left(\mathsf{Z}_1, \dots, \mathsf{Z}_n \right) \in (\Psi)^{\times n}} \prod_{i=1}^n \mathds{1}(\mathsf{Z}_i >t_i)\right),
+    \end{align}
+    where $\mathds{1}(\cdot)$ is the indicator function. Similarly, for the STINR process,
+    \begin{align}
+          M'^{(n)}(t'_1,\dots,t'_n) &\triangleq M'^{(n)}((t'_1,\infty],\dots,(t'_n,\infty]) \nonumber \\
+              &\triangleq \mathbb{E} \left( \sum^{\text{distinct}}_{\left(\mathsf{Z}'_1, \dots, \mathsf{Z}'_n \right) \in (\Psi')^{\times n}} \prod_{i=1}^n \mathds{1}(\mathsf{Z}'_i >t'_i)\right).
+    \end{align}
+    ``Distinct'' indicates that $\mathsf{Z}_i \neq \mathsf{Z}_j $ for all $i \neq j $, and conseqequently, the density 
+    \begin{align}
+      \label{eq:differatemomentmeasure}
+      &{\mu'}^{(n)}(z'_1,\dots,z'_n) \nonumber\\
+      &= (-1)^n \frac{\partial^n M'^{(n)}(t'_1\dots t_n')}{\partial t'_1 \dots \partial t'_n}(t'_1=z_1'\dots t'_k=z'_n).
+    \end{align}
+    exists also for $n>1$.
 
-\subsection{Gaussian mixture model}
-Let us consider a two-tier $\mathcal{T} = \{\text{LoS},\text{NLoS}\}$ logarithmic Gaussian mixture fading model with the mean and standard deviation $\mu_{i},\sigma_{i}$, $i \in \{\text{LoS},\text{NLoS} \}$, for the line-of-sight and the non-line-of-sight tiers, respectively. Consequently, The power fading RV of a transmitter $x \in \Phi$ is given by
-\begin{equation}
-  H_x \sim
-  \begin{cases}
-    \text{Lognormal}(\mu_{\text{LoS}},\sigma_{\text{LoS}}^2), \text{ if } U<p_{\text{LoS}} \\
-    \text{Lognormal}(\mu_{\text{NLoS}},\sigma_{\text{NLoS}}^2)\text{ if } U \geq p_{\text{NLoS}},              \label{eq:tier2lognormal}
-  \end{cases}
-\end{equation}
-where $U \sim U(0,1)$ follows the uniform distribution.
+    The density of the factorial \textit{n}th moment measure of the SINR process is given by
+    \begin{align}
+      \label{eq:SIRjointprobability}
+      &\mu^{(n)}(z_1,\dots,z_n) \nonumber\\
+      &= \prod_{j=1}^n\frac{1}{(1+z_j)^2}\mu'^{(n)}\left(\frac{z_1}{1+z_1},\dots,\frac{z_n}{1+z_n}\right).
+    \end{align}
 
-
-
-
-
-The mean of the lognormal RV is given by $ m_i=\mathbb{E}(H|T=i) = \exp \{\mu_i+\sigma_i^2/2\}$.
-
-The joint of the SIR process can by obtained from $\eqref{eq:jointprobability}$ by
-\begin{equation}
-  \label{eq:SIRjointprobability}
-  \mu^{(n)}(t_1,\dots,t_n) = \prod_{j=1}^n\frac{1}{(1+t_j)^2}\mu'^{(n)}\left(\frac{t_1}{1+t_1},\dots,\frac{t_n}{1+t_n}\right).
-\end{equation}
+    The task is to determine the density $\mu'^{(n)}$ of the factorial moment measure $M'^{(n)}$. For the interference-only channel, this can be done by characterizing the STIR process with the Poisson-Dirichlet distribution through the observation \eqref{eq:lapdef} that the total received power is gamma distributed. Consequently, the density can be derived without the detour of differentiating $M'^{(n)}$. In the interference-plus-noise-limited channel, the density has to be derived by first deriving the factorial moment measure and differentiating it, which requires a symbolic tool (\textit{e.g.} Mathematica). Further, the resulting expressions are numerically slightly more tedious to evaluate compared to the interference-only channel.
+  
+\subsection{Order statistics of the STINR process}
+In order to study the order statistics of the 
 
 The joint probability density of the vector of $k$ strongest values of the STIR process $(\mathsf{Z}'_{(1)}, \dots, \mathsf{Z}'_{(n)})$ is equal to
 \begin{equation}
   \label{eq:jointprobability}
-  f'_{(k)}(z'_1,\dots,z'_k)= \sum^{i_{\text{max}}}_{i=0}\frac{(-1)^i}{i!}{\mu'}_k^{(k+i)}(z'_1,\dots,z'_k),
-\end{equation}x
+  f'_{(k)}(z'_1,\dots,z'_k)= \sum^{i_{\text{max}}}_{i=0}\frac{(-1)^i}{i!}{\mu'}_k^{(k+i)}(z'_1,\dots,z'_k).
+\end{equation}
+
 where $i_{\text{max}}<1/z'_k-k$, is the maximum index of the non-zero terms of the expansion.e
 The $k$-coverage probability that the first $k$ strongest signals reach the threshold $\tau' =\tau/(1+\tau)$ is given by
 \begin{equation}
@@ -259,19 +289,23 @@ Finally, we arrive to the ICSC-SIR probability of coverage.
   where $\tau' = \tau/(1+\tau)$ and the sum is bounded by $i_{\text{max}}< 1/\epsilon-k$. 
 \end{prop}
 
+\subsection{Interference-only channel}
 
-\subsection{Interference-limited channel}
+\subsection{Interference-plus-noise-limited channel}
+
+
+The (partial) density $\mu_k'^{(k+i)}(z'_1 \dots z'_k)$ \eqref{eq:auxillary}, $i \geq 0$, is aquired by differating $M'^{(k+i)}(z'_1 \dots z'_k,z'_k\dots z'_k)$ $k$ times
+\begin{align}
+  \label{eq:differatemomentmeasure}
+  &{\mu'}_k^{(k+i)}(z'_1,\dots,z'_k) \nonumber\\
+  &= (-1)^k \frac{M'^{(k+i)}(t'_1\dots t_k',z'_k\dots z'_k)}{\partial t'_1 \dots \partial t'_k}(t'_1=z_1'\dots t'_k=z'_k).
+\end{align}
+
 
 
  
 \subsubsection{Distribution of the total received power}
-Under the shadowing approximation $\eqref{eq:defexp}$, the total received power can be simply characterized by the gamma distribution.
-\begin{align}
-  \label{eq:lapexp}
-  &\mathcal{L}_{S_{\mathcal{G}}}(s) \approx \exp\left\{-\mathcal{\tilde{\kappa}}\int_0^{\infty}(1-e^{-sr})\frac{F_{\hat{H}}(t)}{r} dr \right\}, \nonumber \\
-  &= \exp\left\{-\mathcal{\tilde{\kappa}}\int_0^{\infty}(1-e^{-sr})\frac{e^{-r\mu}b}{r} dr \right\}=(1+s/\mu)^{-\rho_{\epsilon}\tilde{\kappa}}, 
-\end{align}
-which is the Laplace transform of the gamma distribution with shape parameter $b\tilde{\kappa}$ and scale parameter $1/a$.
+
 
 
 
@@ -306,8 +340,6 @@ To study the joint distribution of order statistics of the STINR process, we def
   &= \int_{z'_k}^1 \dots \int_{z'_k}^1 {\mu'}^{(k+i)}(z'_1,\dots,z'_k,\zeta'_1,\dots,\zeta'_i) d\zeta'_1 \dots \zeta'_i
 \end{align}
 if $\sum_{i=1}^k t_i + it_k <0$ and $0$ otherwise. 
-
-
 
 The joint pdf of the SIR process can by obtained from $\eqref{eq:jointprobability}$ by
 \begin{equation}
@@ -369,12 +401,6 @@ In the interference-plus-noise-limited channel, we derive the partial densities 
 
 \end{prop}
 
-The partial density $\mu_k'^{(k+i)}(z'_1 \dots z'_k)$ \eqref{eq:auxillary} can be aquired by differating $M'^{(k+i)}(z'_1 \dots z'_k,z'_k\dots z'_k)$ $k$ times
-\begin{align}
-  \label{eq:differatemomentmeasure}
-  &{\mu'}_k^{(k+i)}(z'_1,\dots,z'_k) \nonumber\\
-  &= (-1)^k \frac{M'^{(k+i)}(t'_1\dots t_k',z'_k\dots z'_k)}{\partial t'_1 \dots \partial t'_k}(t'_1=z_1'\dots t'_k=z'_k).
-\end{align}
 
 The differentiation is a tedious task, especially for large $k$. However, it can be by using symbolical tools, for example, Mathematica.
 
@@ -387,6 +413,24 @@ The differentiation is a tedious task, especially for large $k$. However, it can
 
 
 \section{Numerical results and the connection to the satellite communications}
+
+\subsection{Gaussian mixture model}
+Let us consider a two-tier $\mathcal{T} = \{\text{LoS},\text{NLoS}\}$ logarithmic Gaussian mixture fading model with the mean and standard deviation $\mu_{i},\sigma_{i}$, $i \in \{\text{LoS},\text{NLoS} \}$, for the line-of-sight and the non-line-of-sight tiers, respectively. Consequently, The power fading RV of a transmitter $x \in \Phi$ is given by
+\begin{equation}
+  H_x \sim
+  \begin{cases}
+    \text{Lognormal}(\mu_{\text{LoS}},\sigma_{\text{LoS}}^2), \text{ if } U<p_{\text{LoS}} \\
+    \text{Lognormal}(\mu_{\text{NLoS}},\sigma_{\text{NLoS}}^2)\text{ if } U \geq p_{\text{NLoS}},              \label{eq:tier2lognormal}
+  \end{cases}
+\end{equation}
+where $U \sim U(0,1)$ follows the uniform distribution.
+
+
+
+
+
+The mean of the lognormal RV is given by $ m_i=\mathbb{E}(H|T=i) = \exp \{\mu_i+\sigma_i^2/2\}$.
+
 TRAPEZOIDAL METHODS
 With $\epsilon = -7$ dB, we can achieve the same expected SIR $1.16+0.2=1.4$ at $\tilde{\kappa} b= 2$ with $k=1$.  The excpected SIR with $k=1$ is at $\tilde{\kappa} b = 2$, is in the infinite variance zone, which is bad. KATSO trapezoidals.nb. However, with $k=2$ interference cancellation we get the same expected SIR with $\tilde{\kappa}b =2.6$.In this case the vvariance is  only about $2.6$, but the average SIR remains the same. With SC the similar average SIR is achieved at $\tilde{\kappa}b = 3.4$ This case the variance is even smaller $2.3$ improvement in the variation in the user experience of the link.  Hence, cancelling the second strongest transmitter, we can make the network denser singificantly improving the user fairness, while maintaining the same performance.
 
