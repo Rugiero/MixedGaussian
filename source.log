@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.10.9)  9 JAN 2025 02:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.21)  9 JAN 2025 20:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -660,28 +660,31 @@ LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 8
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
 
-LaTeX Warning: Citation `ITURS1528' on page 1 undefined on input line 154.
+LaTeX Warning: Citation `ITURS1528' on page 1 undefined on input line 162.
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-
 dist/fonts/enc/dvips/base/8r.enc}
 
 
 ]
+<plotdensities.pdf, id=92, 389.2944pt x 330.5148pt>
+File: plotdensities.pdf Graphic file (type pdf)
+<use plotdensities.pdf>
+Package pdftex.def Info: plotdensities.pdf  used on input line 198.
+(pdftex.def)             Requested size: 252.0pt x 213.95453pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[2 <./plotdensities.pdf>]
 LaTeX Font Info:    Trying to load font information for U+dsrom on input line 2
-44.
+58.
 
 (/usr/share/texlive/texmf-dist/tex/latex/doublestroke/Udsrom.fd
 File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
-) [2] [3]
-Overfull \hbox (1.33939pt too wide) detected at line 381
-[]
- []
+) [3]
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 381--383
-\OT1/ptm/m/it/10 With the suc-ces-sive sub-sti-tu-tions $\OMS/cmsy/m/n/10 f\OML
-/cmm/m/it/10 u[]\OMS/cmsy/m/n/10 g[]$\OT1/ptm/m/it/10 =
- []
+LaTeX Warning: Reference `table:tab1' on page 4 undefined on input line 450.
 
 [4]
 No file source.bbl.
@@ -700,16 +703,16 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `source.out' has not changed.
-(rerunfilecheck)             Checksum: F83096FCEFB895BBF5A28967F475720E;2980.
+(rerunfilecheck)             Checksum: EA99F46A2572B35535BE157D797217CB;3343.
  ) 
 Here is how much of TeX's memory you used:
- 13829 strings out of 476106
- 221923 string characters out of 5793933
- 1964975 words of memory out of 5000000
- 35573 multiletter control sequences out of 15000+600000
- 605594 words of font info for 132 fonts, out of 8000000 for 9000
- 63 hyphenation exceptions out of 8191
- 75i,17n,79p,1608b,587s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 13836 strings out of 475509
+ 222210 string characters out of 5776664
+ 1973975 words of memory out of 5000000
+ 35616 multiletter control sequences out of 15000+600000
+ 604181 words of font info for 126 fonts, out of 8000000 for 9000
+ 399 hyphenation exceptions out of 8191
+ 75i,17n,79p,1617b,449s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr
 /share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/share/t
@@ -735,10 +738,10 @@ fonts/symbols/msbm7.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/ut
 mb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr
 /share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on source.pdf (5 pages, 308323 bytes).
+Output written on source.pdf (5 pages, 521383 bytes).
 PDF statistics:
- 285 PDF objects out of 1000 (max. 8388607)
- 221 compressed objects within 3 object streams
- 56 named destinations out of 1000 (max. 500000)
- 105 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 298 PDF objects out of 1000 (max. 8388607)
+ 231 compressed objects within 3 object streams
+ 58 named destinations out of 1000 (max. 500000)
+ 118 words of extra memory for PDF output out of 10000 (max. 10000000)
 

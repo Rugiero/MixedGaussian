@@ -78,31 +78,39 @@
 
 \begin{table}
   \begin{center}
-    \begin{tabular}{| c | p{7cm}  |}
+    \begin{tabular}{| c | p{4.5cm}  |p{1.5cm}|}
       \hline
-      \multicolumn{2}{|c|}{Glossary of principal symbols} \\
+      \multicolumn{3}{|c|}{Glossary of principal symbols} \\
       \hline
-      Symbol& Explanation 
+      Symbol& Explanation &Value
       \\ 
       \hline
-      $h$ & Altitude of the SBSs. \\
-      $\epsilon$ & Elevation angle of the SBSs. \\
-      $G[\cdot]$ & The SBS antenna gain.\\
-      $\varphi_{\text{RX}}$ & Width of the SBSs $3$ dB gain. \\
-      $\Theta \subset E $ & Poisson p.p. on the earth's surface $E \subset \R^3$. \\
-      $\Phi \subset \R^2$ & Poisson p.p. on the plane. \\
-      $x_0$ & Nearest point to the origin in $\Phi$.  \\
-      $\lambda$ & Density parameter of $\Phi$ and $\Theta$. \\
-      $\kappa$ & Parameter that reflects the approximate mean number of UEs inside a SBS's $3$ dB footprint;  $\kappa = h^2\pi \lambda \varphi_{\textup{RX}}^2/\sin^4(\epsilon)$. \\
-      ${\tilde{\kappa}}$ &  $\kappa/\log(2)$.\\
-      $g_x$ &   Gamma-distributed random fading gain of a transmitter $x$.     \\
-      $\theta$ & SIR or SINR threshold for a successful transmission.\\
-      $I$ & Interference at the typical SBS in the plane model.\\
-      $S$ & The signal power of the served UE at the typical SBS in the plane model.\\
-      $\mathring{I}$ & Interference at the typical SBS in the spherical model.\\
-      $\mathring{S}$ & The signal power of the served UE at the typical SBS in the spherical model.\\ 
-      $\hat{d}_{h,\epsilon}$ & The distance between the SBS and the center of the footprint in the plane model.\\
-      $d_{0}$ & Normalizing distance.  \\                        
+      $h$ & Altitude of the SBSs.&$1200$ [km] \\
+      $\epsilon$ & Elevation angle of the SBSs.& $(90 \degree,40 \degree)$ \\
+      $G[\cdot]$ & The SBS antenna gain.&\\
+      $\varphi_{\text{RX}}$ & Width of the SBSs $3$ dB gain.& $1.6 \degree$  \\
+      $\Theta \subset E $ & Poisson p.p. on the earth's surface $E \subset \R^3$.& \\
+      $\Phi \subset \R^2$ & Poisson p.p. on the plane. &\\
+      $x_0$ & Nearest point to the origin in $\Phi$.&  \\
+      $\lambda$ & Density parameter of $\Phi$ and $\Theta$.& \\
+      $\kappa$ & Parameter that reflects the approximate mean number of UEs inside a SBS's $3$ dB footprint;  $\kappa = h^2\pi \lambda \varphi_{\textup{RX}}^2/\sin^4(\epsilon)$.& \\
+      ${\tilde{\kappa}}$ &  $\kappa/\log(2)$.&\\
+      $H_{\text{log}}$ & Mixed log-normal shadowing r.v.&     \\
+      $p_{\text{LoS}}$& LoS probability & $(0.99,0.61)$\\
+      $p_{\text{NLoS}}$&  $1-p_{\text{LoS}}$ & $(0.01,0.39)$\\
+      $\mu_{\text{LoS}}$& Shadowing mean of the LoS component & 0 [dB] \\
+      $\mu_{\text{NLoS}}$& Mean of the NLoS component & -26 [dB] \\
+      $\sigma_{\text{LoS}}$& Variance of the LoS component & 4 [dB] \\
+      $\sigma_{\text{NLoS}}$& Variance of the NLoS component & 6 [dB] \\
+      $p_{\text{NLoS}}$&  $1-p_{\text{LoS}}$ & $(0.01,0.39)$\\
+      $H_{\text{exp}}$ & Defective exponential shadowing r.v.    & \\
+      $\theta$ & SIR or SINR threshold for a successful transmission.&\\
+      $I$ & Interference at the typical SBS in the plane model.&\\
+      $S$ & The signal power of the served UE at the typical SBS in the plane model.&\\
+      $\mathring{I}$ & Interference at the typical SBS in the spherical model.&\\
+      $\mathring{S}$ & The signal power of the served UE at the typical SBS in the spherical model.&\\ 
+      $\hat{d}_{h,\epsilon}$ & The distance between the SBS and the center of the footprint in the plane model.&\\
+      $d_{0}$ & Normalizing distance. & \\                        
       \hline
     \end{tabular}
   \end{center}
@@ -185,6 +193,12 @@ Unfortunately, unlike with a singular path loss, when the density of the project
 \end{equation}
 where $0<\rho_{\epsilon} \leq 1$ reflects the probability that the shadowed signal power is above $0$. The atomic probability measure $1-\rho_{\epsilon}$ at $0$ reflects the fading occurrences when the signal is blocked entirely. By matching the first two moments (this is equivalent to matching the mean \eqref{eq:totmean} and the variance \eqref{eq:totvar} of the total received power), the defective exponential distribution effectively approximates the log-normal shadowing if the fading is severe with high variance. As implied in the lower index, the constant $\rho_{\epsilon}$ depends on the elevation angle $\epsilon$ because of the varying LoS probability that affects the shadowing distribution.
 
+         \begin{figure}[h]
+           \centering
+           \includegraphics[width=\linewidth]{plotdensities.pdf}
+           \caption{The density function of the GP for a two-tier mixed log-normal shadowing distribution with the corresponding exponential shadowing acquired by matching the first two moments. The parameters $\rho_{\epsilon} \in \{0.85,0.53\}$ for the elevation angles $\epsilon \in \{90^{\circ},40^{\circ}\}$, respectively. The no-shadowing $H\equiv 1$ is also plotted for comparison.} 
+           \label{fig:plotdensities}
+         \end{figure}
 
 %% \subsection{Slow-fading distribution}
 %% While analytically tractable, the defective exponential distribution can capture the mean and the variance of a more complicated fading distribution with high variance, particularly the lognormal distribution, which is a well-established shadowing model in the LEO networks. The shadowing is defined by the mixed exponential RV
@@ -301,18 +315,6 @@ is the ordered sequence $(\mathsf{Z}'_{(1)},\mathsf{Z}'_{(2)} \dots)$. It has th
 
 
 
-
-
-
-
-
-
-
-
-\begin{remark}
-  Not all all two-tier log-normal shadowing scenarios can be characterized and approximated with a one-tier manner with the distribution \eqref{eq:defexp}. For example $\rho_{\epsilon}$ might be not within the region $0<\rho_{\epsilon} \leq 1$. This can occur, for example, in case of significant differences in the LoS or NLoS variances in the shadowing, like is the case in the suburban/??? sceneario in the 3GPP specs. We could approximate separately the LoS and NLoS components by the exponential function, leading to two i.i.d. gamma processes of the LoS and NLoS component transmitter. Treating such two separate gamma process's (representing the aggregate STIR) of the two separate shadowing tiers can be challenging, and will be left out of the scope of this paper. Anyhow, the approach presented in the paper works for the urban scenario with the 3GPP specs, because the two-tier log-normal shadowing can be in a reasonable manner approximated by a one-tier shadowing model using a signle defective exponential distribution.
-\end{remark}
-
 \begin{prop}
   The density of the nth factorial moment measure of the STIR process at the NB LEO with the Gaussian antenna beam is given by
   \begin{align}
@@ -363,33 +365,24 @@ In the interference-plus-noise-limited channel, we derive the partial densities 
 \begin{prop}
   The $n$-moment measure of the STINR process is given by
 
-    \begin{align}
+  \begin{align}
+    \label{eq:nthmomentmeasureSTINR}
       &M'^{(n)}(t'_1,\dots,t'_n) =\left(\tilde{\kappa} \rho_{\epsilon}\right)^n \nonumber\\
-      &\times \int\limits_{(1,\infty)^n} e^{-W\ell(\hat{d}_{h,\epsilon})\hat{T}_n\sum\limits_{i=1}^nt'_iv_i} \left(1+\hat{T}_n\sum\limits_{i=1}^nt'_iv_i\right)^{-\tilde{\kappa}b} \nonumber\\
+      &\times \int_1^{\infty}\dots\int_1^{\infty} e^{-N\hat{T}_n\sum\limits_{i=1}^nt'_iv_i} \left(1+\hat{T}_n\sum\limits_{i=1}^nt'_iv_i\right)^{-\tilde{\kappa}b} \nonumber\\
       &\times \frac{\prod\limits_{i=1}^nt'_i}{\sum\limits_{i=1}^nt'_iv_i}  \left[\sum\limits_{j=1}^n\frac{1}{\prod\limits_{i\neq j}\left(t'_i v_i+ t_i'\hat{T}_n\sum\limits_{k=1}^nt'_kv_k \right)} \right] dv_1 \dots dv_n,
     \end{align}
     where $\hat{T}_n= 1/(1-\sum_{i=1}^nt'_i)$.
 
-      Let $\mu_M \triangleq \sum_{i=1}^nt'_i/G(D_{h,\epsilon}\|x_i\|)$ and . 
-  \begin{align}
-    &M'^{(n)}(t'_1,\dots,t'_n) =(2 \pi b)^n\nonumber\\
-    & \times\int\limits_{(\R_+)^n} \mathcal{L}_W(a\mu_MT_n)\mathcal{L}_I(a\mu_MT_n)\mathcal{L}_D(a\mu_MT_n)\prod_{i=1}^nr_i dr_i\nonumber \\
-    &=(2 \pi b)^n \int\limits_{(\R_+)^n} \exp\left\{-aW\ell(\hat{d}_{h,\epsilon})T_n\sum\limits_{i=1}^nt'_i2^{\left(\frac{D_{h,\epsilon}r_i}{\varphi_{\text{RX}}}\right)^2}\right\} \nonumber\\
-    &\hspace{0.8cm}\times\left(1+T_n\sum\limits_{i=1}^nt'_i2^{\left(\frac{D_{h,\epsilon}r_i}{\varphi_{\text{RX}}}\right)^2}\right)^{- \tilde{\kappa}b} \frac{\prod\limits_{i=1}^nt'_i2^{\left(\frac{D_{h,\epsilon}r_i}{\varphi_{\text{RX}}}\right)^2}}{\sum\limits_{i=1}^nt'_i2^{\left(\frac{D_{h,\epsilon}r_i}{\varphi_{\text{RX}}}\right)^2}} \nonumber\\
-    &\hspace{0.8cm}\times  \left[\sum\limits_{j=1}^n\frac{1}{\prod\limits_{i\neq j}\left(t'_i 2^{\left(\frac{D_{h,\epsilon}r_i}{\varphi_{\text{RX}}}\right)^2}+a t_i'T_n\sum\limits_{k=1}^nt'_k2^{\left(\frac{D_{h,\epsilon}r_k}{\varphi_{\text{RX}}}\right)^2} \right)} \right] \nonumber\\
-    &\hspace{0.8cm}\times r_1 dr_1 \dots r_n dr_n.
-  \end{align}
-  With the successive substitutions $\{u_i\}_{i= 1}^n$= $\{  (r_i D_{h,\epsilon}/\varphi_{\text{RX}})^2\}_{i= 1}^n$ and $\{v_i\}_{i= 1}^n$ =$\{ 2^{u_i^2}\}_{i= 1}^n$,
 
 \end{prop}
-
+ 
 The partial densities are given by
     \begin{align}
       \label{eq:differatemomentmeasure}
      &{\mu'}_n^{(n+i)}(z'_1,\dots,z'_n)= (-1)^n \frac{\partial^n M'^{(n+i)}(t'_1\dots t_n', z'_n, \dots, z'_n)}{\partial t'_1 \dots \partial t'_n} \nonumber\\
       &\hspace{4cm}|(t'_1=z_1'\dots t'_n=z'_n)
     \end{align}
-The differentiation of \eqref{eq:differatemomentmeasure} is a tedious task, although straightforward. It can be done with symbolic tools such as Mathematica. We omit explicit representations of the differentiated $M^{(n+i)}(\cdot)$.
+The differentiation of \eqref{eq:differatemomentmeasure} is a tedious task, although straightforward. It can be done with symbolic tools such as Mathematica. We omit explicit representations of the differentiated integrands of $M'^{(n+i)}(\cdot)$ in \eqref{eq:nthmomentmeasureSTINR}.
 
 
 
@@ -425,6 +418,8 @@ where $U \sim U(0,1)$ follows the uniform distribution.
 
 
 
+
+
 The mean of the lognormal RV is given by $ m_i=\mathbb{E}(H|T=i) = \exp \{\mu_i+\sigma_i^2/2\}$.
 
 TRAPEZOIDAL METHODS
@@ -451,23 +446,6 @@ With $\epsilon = -7$ dB, we can achieve the same expected SIR $1.16+0.2=1.4$ at 
 %% \end{verbatim}
 
 
-\begin{table}[h]
-  \begin{center}
-    \caption{The expected SIR without IC or SC compared to the IC and SC cases, each case having equal mean but varying variances.}
-    \label{table:tab1}
-    \begin{tabular}{| c | c | c |c|}
-      \hline
-      & dist.: $\mathcal{P}^{(1)}(\cdot)$& $\mathcal{P}^{(2)}_{\text{IC}}(\cdot)$& $\mathcal{P}^{(2)}_{\text{SC}}(\cdot)$\\
-      \hline
-      $\mathbb{E}(\cdot)$&$1.4$ & $1.4$ &$1.4$\\ 
-      \hline
-      $\tilde{\kappa}$& $2/\rho_{\epsilon} $ &$2.6/\rho_{\epsilon}$& $3.4/\rho_{\epsilon}$\\
-      \hline
-      Var$(\cdot)$& $\infty$ & $2.6$ &$2.3$\\
-      \hline 
-    \end{tabular}
-  \end{center}
-\end{table}
 
 Recall that $ \kappa \rho_{\epsilon}=\log(2)\tilde{\kappa} \rho_{\epsilon} $ is the average number of UEs inside the $3$ dB footprints over the SBSs with nonzero shadowed transmitting powers, where $\rho_{\epsilon}$ is a decreasing function of $\epsilon$. We inversely scale the values $\tilde{\kappa}$ with $\rho_{\epsilon}$, resulting in invariant results regarding the theoretical values that depend on the product $\tilde{\kappa} \rho_{\epsilon}$ (recall \eqref{eq:lapsubord} and its follow-up). Scaling can be done without loss of generality because $\tilde{\kappa}/\rho_{\epsilon}$ determines the density of the UEs, altitude, or the antenna gain width directly through \eqref{eq:kappa}, depending on what parameters we want to fix---nevertheless, the expected value and the variance do not change. Table \ref{table:tab1} shows the expected $\mathcal{P}^{(1)}(\cdot), \mathcal{P}^{(2)}_{\text{IC}}(\cdot) $ and $\mathcal{P}^{(2)}_{\text{SC}}(\cdot)$. Note that the expected values are equal. For $\mathcal{P}^{(1)}(\cdot)$, the variance in the SIR is $\infty$, implying that the user experience varies uncontrollably. The table demonstrates how to increase the number of transmitters and reduce the variance significantly by canceling the second-strongest signal through the IC while maintaining equal average SIR. The SC further reduces the variance and allows a larger $\tilde{\kappa}$. Furthermore, through SC, we can serve two transmitters by a single SBS that allows a dense network of UEs, in which each does not have to attempt to connect to a unique serving SBS. 
 
@@ -476,9 +454,28 @@ Recall that $ \kappa \rho_{\epsilon}=\log(2)\tilde{\kappa} \rho_{\epsilon} $ is 
 
 We used the successful IC and SC threshold $\theta = -7$ dB, which produces the best results for $k=2$. Decreasing $\theta$ leads to better performance for $k>2$. However, for small $\theta$, numerical integration gets tedious, and one needs to focus on numerical accuracy alongside time optimization. However, for example, the ICSC threshold  $\theta = -10$ does not produce significantly improved results. The expected values $\mathbb{E}(\cdot)$ and the variances Var$(\cdot)$  were calculated by the trapezoidal method by integrating each $\mathcal{P}^{(1)}(y)$, $\mathcal{P}^{(2)}_{\text{IC}}(y)$, and $\mathcal{P}^{(2)}_{\text{SC}}(y)$ over the domain $y \in [0.2, 1000]$ with a partition of size $0.1$. Furthermore, $0.2 \times 1$ was added to the final result because the coverage probabilities for $\tau \leq 0.2$ were essentially $1$ in every case. 
 
+\appendices
+
+\section{Factorial moment measure of the STINR process}
+Let $\mu_M \triangleq \sum_{i=1}^nt'_i/G(D_{h,\epsilon}\|x_i\|)=\sum_{i=1}^nt'_i/G(D_{h,\epsilon} r_i)$.
+
+\begin{align}
+  &M'^{(n)}(t'_1,\dots,t'_n) =(2 \pi \rho_{\epsilon})^n\nonumber\\
+  & \times\int\limits_{(\R_+)^n} \mathcal{L}_N(\mu_MT_n)\mathcal{L}_I(\mu_MT_n)\mathcal{L}_D(\mu_MT_n) r_1 dr_1 \dots r_n dr_n\nonumber \\
+  &=(2 \pi \rho_{\epsilon} \lambda)^n \int\limits_{(\R_+)^n} \exp\left\{-NT_n\sum\limits_{i=1}^nt'_i2^{\left(\frac{D_{h,\epsilon}r_i}{\varphi_{\text{RX}}}\right)^2}\right\} \nonumber\\
+  &\hspace{0.8cm}\times\left(1+T_n\sum\limits_{i=1}^nt'_i2^{\left(\frac{D_{h,\epsilon}r_i}{\varphi_{\text{RX}}}\right)^2}\right)^{- \tilde{\kappa}b} \frac{\prod\limits_{i=1}^nt'_i2^{\left(\frac{D_{h,\epsilon}r_i}{\varphi_{\text{RX}}}\right)^2}}{\sum\limits_{i=1}^nt'_i2^{\left(\frac{D_{h,\epsilon}r_i}{\varphi_{\text{RX}}}\right)^2}} \nonumber\\
+  &\hspace{0.8cm}\times  \left[\sum\limits_{j=1}^n\frac{1}{\prod\limits_{i\neq j}\left(t'_i 2^{\left(\frac{D_{h,\epsilon}r_i}{\varphi_{\text{RX}}}\right)^2}+ t_i'T_n\sum\limits_{k=1}^nt'_k2^{\left(\frac{D_{h,\epsilon}r_k}{\varphi_{\text{RX}}}\right)^2} \right)} \right] \nonumber\\
+  &\hspace{0.8cm}\times r_1 dr_1 \dots r_n dr_n.
+\end{align}
+The final results follows from the substitutions $\{u_i\}_{i= 1}^n$= $\{r_i D_{h,\epsilon}/\varphi_{\text{RX}}\}_{i= 1}^n$ and $\{v_i\}_{i= 1}^n$ =$\{ 2^{u^2_i}\}_{i= 1}^n$.
 
 
 
+
+
+\begin{remark}
+  Not all all two-tier log-normal shadowing scenarios can be characterized and approximated with a one-tier manner with the distribution \eqref{eq:defexp}. For example $\rho_{\epsilon}$ might be not within the region $0<\rho_{\epsilon} \leq 1$. This can occur, for example, in case of significant differences in the LoS or NLoS variances in the shadowing, like is the case in the suburban/??? sceneario in the 3GPP specs. We could approximate separately the LoS and NLoS components by the exponential function, leading to two i.i.d. gamma processes of the LoS and NLoS component transmitter. Treating such two separate gamma process's (representing the aggregate STIR) of the two separate shadowing tiers can be challenging, and will be left out of the scope of this paper. Anyhow, the approach presented in the paper works for the urban scenario with the 3GPP specs, because the two-tier log-normal shadowing can be in a reasonable manner approximated by a one-tier shadowing model using a signle defective exponential distribution.
+\end{remark}
 
 
 \bibliographystyle{IEEEtran}
