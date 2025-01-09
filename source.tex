@@ -229,7 +229,7 @@ Let $N \geq 0$ be the noise power constant. We denote the signal-to-interference
 \end{align}
 where $I$ is defined in \eqref{eq:totpow}. Similarly, the signal-to-total-interference-plus-noise (STINR) process is defined as
 \begin{align}
-  \label{eq:STNIR}
+  \label{eq:STINR}
   \Psi' &= \{\mathsf{Z}': \mathsf{Z}' \in \Psi'\} \triangleq \left\{ \frac{u}{N+I} : u \in \mathcal{G}\right\}.
 \end{align}
 We can always recover on process from another
@@ -247,25 +247,25 @@ The factorial moment measure of the SINR process is defined on the sets $(t_1,\i
           M'^{(n)}(t'_1,\dots,t'_n) &\triangleq M'^{(n)}((t'_1,\infty],\dots,(t'_n,\infty]) \nonumber \\
               &\triangleq \mathbb{E} \left( \sum^{\text{distinct}}_{\left(\mathsf{Z}'_1, \dots, \mathsf{Z}'_n \right) \in (\Psi')^{\times n}} \prod_{i=1}^n \mathds{1}(\mathsf{Z}'_i >t'_i)\right).
     \end{align}
-    ``Distinct'' indicates that $\mathsf{Z}_i \neq \mathsf{Z}_j $ for all $i \neq j $, and conseqequently, the density 
+    ``Distinct'' indicates that $\mathsf{Z}_i \neq \mathsf{Z}_j $ for all $i \neq j $. The (partial) density is
     \begin{align}
       \label{eq:differatemomentmeasure}
-      &{\mu'}^{(n)}(z'_1,\dots,z'_n) \nonumber\\
-      &= (-1)^n \frac{\partial^n M'^{(n)}(t'_1\dots t_n')}{\partial t'_1 \dots \partial t'_n}(t'_1=z_1'\dots t'_k=z'_n).
+     &{\mu'}_n^{(n+i)}(z'_1,\dots,z'_n)= (-1)^n \frac{\partial^n M'^{(n+i)}(t'_1\dots t_n', z'_n, \dots, z'_n)}{\partial t'_1 \dots \partial t'_n} \nonumber\\
+      &\hspace{4cm}|(t'_1=z_1'\dots t'_k=z'_n).
     \end{align}
-    exists also for $n>1$.
+    If $i > 0$, \eqref{eq:differatemomentmeasure} is called the partial density of $M'^{(n)}(\cdot)$. It will be relevant in the study of order statistics.
 
-    The density of the factorial \textit{n}th moment measure of the SINR process is given by
+    The density of the factorial \textit{n}th moment measure of the SINR process can be extracted as
     \begin{align}
       \label{eq:SIRjointprobability}
       &\mu^{(n)}(z_1,\dots,z_n) \nonumber\\
       &= \prod_{j=1}^n\frac{1}{(1+z_j)^2}\mu'^{(n)}\left(\frac{z_1}{1+z_1},\dots,\frac{z_n}{1+z_n}\right).
     \end{align}
 
-    The task is to determine the density $\mu'^{(n)}$ of the factorial moment measure $M'^{(n)}$. For the interference-only channel, this can be done by characterizing the STIR process with the Poisson-Dirichlet distribution through the observation \eqref{eq:lapdef} that the total received power is gamma distributed. Consequently, the density can be derived without the detour of differentiating $M'^{(n)}$. In the interference-plus-noise-limited channel, the density has to be derived by first deriving the factorial moment measure and differentiating it, which requires a symbolic tool (\textit{e.g.} Mathematica). Further, the resulting expressions are numerically slightly more tedious to evaluate compared to the interference-only channel.
+    
   
 \subsection{Order statistics of the STINR process}
-In order to study the order statistics of the 
+
 
 The joint probability density of the vector of $k$ strongest values of the STIR process $(\mathsf{Z}'_{(1)}, \dots, \mathsf{Z}'_{(n)})$ is equal to
 \begin{equation}
@@ -279,47 +279,35 @@ The $k$-coverage probability that the first $k$ strongest signals reach the thre
   \mathcal{P}^{(k)}(\tau) \triangleq  \int_{\tau'}^1\dots \int_{\tau'}^1 f'_{(k)}({z'_1},\dots,{z'_k})dz'_1 \dots d{z'_k}.
 \end{equation}
 
-Finally, we arrive to the ICSC-SIR probability of coverage.
-\begin{prop}
-  \begin{align}
-    &\mathcal{P}^{(\mathbf{K},k)}(\tau) \nonumber\\
-    &= \sum^{i_{\text{max}}}_{i=0} \int_{\epsilon}^1 \dots \int_{\epsilon}^1\frac{(-1)^i}{i!}\mathds{1}\left(\tau' \sum_{i \in [k] \setminus  \mathbf{K}}z'_i+ \sum_{i\in \mathbf{K}} z'_i>\tau' \right) \nonumber \\
-    &\hspace{0.7cm}\times \mathds{1}(z'_1>\dots>z'_k){\mu'}_k^{(k+i)}(z'_1,\dots,z'_k) d z'_1 \dots z'_k,
-  \end{align}
-  where $\tau' = \tau/(1+\tau)$ and the sum is bounded by $i_{\text{max}}< 1/\epsilon-k$. 
-\end{prop}
-
-\subsection{Interference-only channel}
-
-\subsection{Interference-plus-noise-limited channel}
-
-
-The (partial) density $\mu_k'^{(k+i)}(z'_1 \dots z'_k)$ \eqref{eq:auxillary}, $i \geq 0$, is aquired by differating $M'^{(k+i)}(z'_1 \dots z'_k,z'_k\dots z'_k)$ $k$ times
-\begin{align}
-  \label{eq:differatemomentmeasure}
-  &{\mu'}_k^{(k+i)}(z'_1,\dots,z'_k) \nonumber\\
-  &= (-1)^k \frac{M'^{(k+i)}(t'_1\dots t_k',z'_k\dots z'_k)}{\partial t'_1 \dots \partial t'_k}(t'_1=z_1'\dots t'_k=z'_k).
-\end{align}
+The task is to determine the partial density $\mu_n'^{(n+i)}(\cdot)$ of the factorial moment measure $M'^{(n+i)}(\cdot)$. For the interference-only channel, this can be done by characterizing the STIR process with the Poisson-Dirichlet distribution through the observation \eqref{eq:lapdef} that the total received power is gamma distributed. Consequently, the density can be derived without the detour of differentiating $M'^{(n)}(\cdot)$. In the interference-plus-noise-limited channel, the density has to be derived by first deriving the factorial moment measure and differentiating it, which requires a symbolic tool (\textit{e.g.} Mathematica). Further, the resulting expressions are numerically slightly more tedious to evaluate compared to the interference-only channel.
 
 
 
- 
-\subsubsection{Distribution of the total received power}
+\subsection{Interference-limited channel}
+In this section, we characterize $\mu_n'^{(n+i)}(\cdot)$ of the STIR process, \textit{i.e.}, the STINR process with $N=0$, and the order statistics through the Poisson-Dirichlet distribution PD(0,$\rho_{\epsilon}$). 
 
-
-
-
-Let $(\tau_s, s\geq 0)$ be a \textit{gamma subordinator}, or the \textit{gamma process}. It is a pure-jump increasing Lévy process with the intensity measure $\lambda(r) = e^{-\mu r}/r$ . Assume $(\tau_s)$ has no drift component, so
+Let $(X_{\tau}, \tau\geq 0)$ be a \textit{gamma subordinator}, or the \textit{gamma process}. It is a pure-jump increasing Lévy process with the intensity measure $\lambda(r) = e^{- r}/r$ . Assume that $(X_{\tau})$ has no drift component;
 \begin{equation}
   \label{eq:lapsubord}
-  \mathbb{E}(\exp\{-t \tau_s\}) = \exp\left\{-s \int_0^{\infty}(1-e^{-s r})\frac{e^{-r\mu}}{r} dr \right\}.
+  \mathbb{E}(\exp\{-s X_{\tau}\}) = \exp\left\{-{\tau} \int_0^{\infty}(1-e^{-s r})\frac{e^{-r}}{r} dr \right\}.
 \end{equation}
-But \eqref{eq:lapsubord} equals to \eqref{eq:lapexp} for $s=\tilde{\kappa}\rho_{\epsilon} $. Let $V_1(\tau_s) \geq V_2(\tau_s)\geq \dots \geq 0 $ denote the jumps of the subordinator $(\tau_s)$ at time $s$. By definition, the sequence
+But \eqref{eq:lapsubord} equals to \eqref{eq:lapdef} at $\tau=\tilde{\kappa}\rho_{\epsilon} $. Let $V_1(X_{\tau}) \geq V_2(X_{\tau})\geq \dots \geq 0 $ denote the jumps of the subordinator $(X_{\tau})$ at time $\tau$. Recall the STIR process with $N=0$ \eqref{eq:STINR}. By definition, the sequence
 \begin{equation}
   \label{eq:relativesequence}
-  \left(\frac{V_1(\tau_{b\kappa})}{\tau_{b\kappa}},\frac{V_2(\tau_{b\kappa})}{\tau_{b\kappa}} \dots \right)
+  \left(\frac{V_1(X_{\tilde{\kappa}\rho_{\epsilon}})}{X_{\tilde{\kappa}\rho_{\epsilon}}},\frac{V_2(X_{\tilde{\kappa}\rho_{\epsilon}})}{X_{\tilde{\kappa}\rho_{\epsilon}}} \dots \right)
 \end{equation}
-is the process of the STIR values of the UEs $\{x_1,x_2 \dots\}$. It has the Poisson-Dirichlet distribution PD$(0, b \tilde{\kappa})$. Without loss of generality, we can mark $\mu=1$ as the rate parameter gets canceled for each ratio in $\eqref{eq:relativesequence}$.
+is the ordered sequence $(\mathsf{Z}'_{(1)},\mathsf{Z}'_{(2)} \dots)$. It has the Poisson-Dirichlet distribution PD$(0, \rho_{\epsilon} \tilde{\kappa})$. 
+
+
+
+
+
+
+
+
+
+
+
 
 \begin{remark}
   Not all all two-tier log-normal shadowing scenarios can be characterized and approximated with a one-tier manner with the distribution \eqref{eq:defexp}. For example $\rho_{\epsilon}$ might be not within the region $0<\rho_{\epsilon} \leq 1$. This can occur, for example, in case of significant differences in the LoS or NLoS variances in the shadowing, like is the case in the suburban/??? sceneario in the 3GPP specs. We could approximate separately the LoS and NLoS components by the exponential function, leading to two i.i.d. gamma processes of the LoS and NLoS component transmitter. Treating such two separate gamma process's (representing the aggregate STIR) of the two separate shadowing tiers can be challenging, and will be left out of the scope of this paper. Anyhow, the approach presented in the paper works for the urban scenario with the 3GPP specs, because the two-tier log-normal shadowing can be in a reasonable manner approximated by a one-tier shadowing model using a signle defective exponential distribution.
@@ -341,20 +329,14 @@ To study the joint distribution of order statistics of the STINR process, we def
 \end{align}
 if $\sum_{i=1}^k t_i + it_k <0$ and $0$ otherwise. 
 
-The joint pdf of the SIR process can by obtained from $\eqref{eq:jointprobability}$ by
-\begin{equation}
-  \label{eq:SIRjointprobability}
-  \mu^{(n)}(t_1,\dots,t_n) = \prod_{j=1}^n\frac{1}{(1+t_j)^2}\mu'^{(n)}\left(\frac{t_1}{1+t_1},\dots,\frac{t_n}{1+t_n}\right).
-\end{equation}
 
 
-
-Combining \eqref{eq:SIRjointprobability}, \eqref{eq:jointprobability} and \eqref{eq:factorialmoment}, we get the PDF for the SIR of the strongest signal for $z\geq 1$:
-
+\subsubsection{Density function of the SIR of the strongest signal}
+Combining \eqref{eq:SIRjointprobability}, \eqref{eq:jointprobability}, and \eqref{eq:factorialmoment}, we get a closed form for the pdf of the SIR of the strongest signal in the region $z\geq 1$:
 
 
 \begin{equation}
-  f_{(1)}(z) = \frac {b\kappa\left({z + 1} \right)^{-b\tilde{\kappa}}} {z}.
+  f_{(1)}(z) = \frac {\tilde{\kappa}\rho_{\epsilon}\left({z + 1} \right)^{-\tilde{\kappa}\rho_{\epsilon}}} {z}.
 \end{equation}
 
 
@@ -363,10 +345,10 @@ We may calculate a lower bounds for the first two moments for the SIR:
 
 
 \begin{align}
-  &\mathbb{E}(\text{SIR}_1)  \geq\int_{1}^{\infty}f_{(1)}(z)zdz=\frac{b \tilde{\kappa}  2^{1-b \tilde{\kappa} }}{b \tilde{\kappa} -1}, \tilde{\kappa}b >1, \\
-  &\mathbb{E}(\text{SIR}^2_1) \geq \int_{1}^{\infty}f_{(1)}(z)z^2dz = \frac{(b \tilde{\kappa}) ^2 2^{1-b \tilde{\kappa} }}{(b\tilde{\kappa} - 2)  (b\tilde{\kappa} - 1)},\tilde{\kappa}b >2.
+  &\mathbb{E}(\text{SIR}_1)  \geq\int_{1}^{\infty}f_{(1)}(z)zdz=\frac{\tilde{\kappa}\rho_{\epsilon}2^{1-\tilde{\kappa}\rho_{\epsilon} }}{\tilde{\kappa}\rho_{\epsilon}-1}, \tilde{\kappa}\rho_{\epsilon} >1, \\
+  &\mathbb{E}(\text{SIR}^2_1) \geq \int_{1}^{\infty}f_{(1)}(z)z^2dz = \frac{(\tilde{\kappa}\rho_{\epsilon}) ^2 2^{1-\tilde{\kappa}\rho_{\epsilon} }}{(\tilde{\kappa}\rho_{\epsilon} - 2)  (\tilde{\kappa}\rho_{\epsilon} - 1)}, \tilde{\kappa}\rho_{\epsilon}>2.
 \end{align}
-The mean and the second moment diverge for $\tilde{\kappa}b\leq 1$ and $\tilde{\kappa}b\leq 2$, respectively. This implies that the variance of SIR$_1$ is undefined for $\tilde{\kappa}b \leq 1$ and infinite for $1 <\tilde{\kappa}b \leq 2$. The insight is crucial because it reflects that, at the optimal \textit{average} performance $\tilde{\kappa}b = 1$, the user experience of the link quality varies significantly. Recall \eqref{eq:kappa}: $\tilde{\kappa}b$ depends on the shadowing (small $b$ corresponds to severe shadowing), UE density, antenna gain width, altitude and elevation angle. We will demonstrate that signal cancellation and combination can improve user fairness without degrading the link quality.
+The mean and the second moment diverge for $\tilde{\kappa}b\leq 1$ and $\tilde{\kappa}b\leq 2$, respectively. This implies that the variance of SIR$_1$ is undefined for $\tilde{\kappa}b \leq 1$ and infinite for $1 <\tilde{\kappa}b \leq 2$. The insight reflects that the user experience of the link quality varies significantly in the density region $\tilde{\kappa} \rho_{\epsilon} \leq 2$. We will quantitatively demonstrate that, by increasing $\tilde{\kappa}$, with interference cancellation or signal combination, we may substantially reduce the variance in the SIR (over the SBSs) while maintaining the performance.
 
 
 
@@ -376,7 +358,7 @@ The mean and the second moment diverge for $\tilde{\kappa}b\leq 1$ and $\tilde{\
 \subsection{Interference-plus-noise-limited channel}
 
 
-In the interference-plus-noise-limited channel, we derive the partial densities through directly derivating the moment measure.
+In the interference-plus-noise-limited channel, we derive the partial densities through differentiating the factorial moment measure.
 
 \begin{prop}
   The $n$-moment measure of the STINR process is given by
@@ -401,18 +383,32 @@ In the interference-plus-noise-limited channel, we derive the partial densities 
 
 \end{prop}
 
+The partial densities are given by
+    \begin{align}
+      \label{eq:differatemomentmeasure}
+     &{\mu'}_n^{(n+i)}(z'_1,\dots,z'_n)= (-1)^n \frac{\partial^n M'^{(n+i)}(t'_1\dots t_n', z'_n, \dots, z'_n)}{\partial t'_1 \dots \partial t'_n} \nonumber\\
+      &\hspace{4cm}|(t'_1=z_1'\dots t'_n=z'_n)
+    \end{align}
+The differentiation of \eqref{eq:differatemomentmeasure} is a tedious task, although straightforward. It can be done with symbolic tools such as Mathematica. We omit explicit representations of the differentiated $M^{(n+i)}(\cdot)$.
 
-The differentiation is a tedious task, especially for large $k$. However, it can be by using symbolical tools, for example, Mathematica.
 
 
+\subsection{ICSC-SINR and ICSC-SIR}
 
 
-
-
-
+Finally, we arrive to the ICSC-SIR probability of coverage.
+\begin{prop}
+  \begin{align}
+    &\mathcal{P}^{(\mathbf{K},k)}(\tau) \nonumber\\
+    &= \sum^{i_{\text{max}}}_{i=0} \int_{\epsilon}^1 \dots \int_{\epsilon}^1\frac{(-1)^i}{i!}\mathds{1}\left(\tau' \sum_{i \in [k] \setminus  \mathbf{K}}z'_i+ \sum_{i\in \mathbf{K}} z'_i>\tau' \right) \nonumber \\
+    &\hspace{0.7cm}\times \mathds{1}(z'_1>\dots>z'_k){\mu'}_k^{(k+i)}(z'_1,\dots,z'_k) d z'_1 \dots z'_k,
+  \end{align}
+  where $\tau' = \tau/(1+\tau)$ and the sum is bounded by $i_{\text{max}}< 1/\epsilon-k$. 
+\end{prop}
 
 
 \section{Numerical results and the connection to the satellite communications}
+
 
 \subsection{Gaussian mixture model}
 Let us consider a two-tier $\mathcal{T} = \{\text{LoS},\text{NLoS}\}$ logarithmic Gaussian mixture fading model with the mean and standard deviation $\mu_{i},\sigma_{i}$, $i \in \{\text{LoS},\text{NLoS} \}$, for the line-of-sight and the non-line-of-sight tiers, respectively. Consequently, The power fading RV of a transmitter $x \in \Phi$ is given by
