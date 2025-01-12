@@ -45,8 +45,8 @@ simres340 = S.simres3;
 %simres430 = S.simres4;
 
 
-tau = linspace(-7,4,23);
-simtau=linspace(-7,4,12);
+tau = -7:0.5:35;
+simtau=-7:3:35;
 
 
 figure1 = figure;
@@ -111,7 +111,7 @@ xlabel('$\tau$(dB)','FontSize',14,'Interpreter','latex')
 ylabel('$\mathcal{P}^{(k)}(\tau)$','FontSize',14,'Interpreter','latex')
 %title('$\tilde{\kappa}=3/b_{\epsilon}, \epsilon \in \{90,80,70,60,50,40\}^{\circ}$','FontSize',14,'Interpreter','latex')
 grid on
-axis([[-7,4],[0,1]])
+axis([[-7,35],[0,1]])
 
 title('$\tilde{\kappa}\rho_{\epsilon}= 1$','FontSize',14,'Interpreter','latex')
 
