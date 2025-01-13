@@ -45,8 +45,8 @@ simres340 = S.simres3;
 %simres430 = S.simres4;
 
 
-tau = -7:0.5:35;
-simtau=-7:3:35;
+tau = -7:0.5:20;
+simtau=-7:1:20;
 
 
 figure1 = figure;
@@ -104,59 +104,28 @@ fill([simtau,fliplr(simtau)],[simres340',fliplr(simres390')],[0.9290 0.6940 0.12
 
 
 % Create legend
-legend('Theory; k=1 (exponential shadowing)','Theory; k=2 (exponential shadowing)','Theory; k=3 (exponential shadowing)','Simulated values (log-normal shadowing)','Interpreter','latex',...
-    'FontSize',14,BackgroundAlpha=.5)
+legend('Analysis; $k=1$  \hspace{0.1cm} (defective exponential','Analysis; $k=2$ \hspace{0.1cm} shadowing in the planar model)','Analysis; $k=3$ \hspace{0.1cm}','Simulated values (mixed log-normal shadowing','\hspace{2.65cm} in the spherical model)','Interpreter','latex',...
+    'FontSize',14,BackgroundAlpha=.3)
 
 xlabel('$\tau$(dB)','FontSize',14,'Interpreter','latex')
 ylabel('$\mathcal{P}^{(k)}(\tau)$','FontSize',14,'Interpreter','latex')
 %title('$\tilde{\kappa}=3/b_{\epsilon}, \epsilon \in \{90,80,70,60,50,40\}^{\circ}$','FontSize',14,'Interpreter','latex')
 grid on
-axis([[-7,35],[0,1]])
+axis([[-7,20],[0,1]])
 
 title('$\tilde{\kappa}\rho_{\epsilon}= 1$','FontSize',14,'Interpreter','latex')
 
-% Create textarrow
-annotation(figure1,'textarrow',[0.791228070175439 0.736842105263158],...
-    [0.54 0.466666666666667],'String',{'$\epsilon=40^{\circ}$'},'Interpreter','latex');
-
-% Create textbox
-annotation(figure1,'textbox',...
-    [0.689473684210528 0.394555554573996 0.10438596665584 0.0711111120926707],...
-    'String',{'$90^{\circ}$'},...
-    'LineStyle','none','Interpreter','latex');
-
 
 % Create textarrow
-annotation(figure1,'textarrow',[0.164912280701755 0.192982456140351],...
-    [0.553333333333333 0.584444444444444],'String',{'$\epsilon=40^{\circ}$'},'Interpreter','latex');
+annotation(figure1,'textarrow',[0.416228070175437 0.368421052631579],...
+    [0.540000000000001 0.48],'String',{'$\epsilon=40^{\circ}$'},...
+    'Interpreter','latex');
 
 % Create textbox
 annotation(figure1,'textbox',...
-    [0.191228070175441 0.536777776796218 0.10438596665584 0.0711111120926706],...
+    [0.333834586466167 0.410428570447015 0.10438596665584 0.0711111120926708],...
     'String',{'$90^{\circ}$'},...
-    'LineStyle','none','Interpreter','latex');
-
-%% % Create textarrow
-%% annotation(figure1,'textarrow',[0.133333333333334 0.149122807017544],...
-%%     [0.213333333333333 0.231111111111111],'String',{'$\epsilon=40^{\circ}$'},'Interpreter','latex');
-
-% Create textbox
-annotation(figure1,'textbox',...
-    [0.140350877192985 0.190111110129551 0.10438596665584 0.0711111120926707],...
-    'String',{'$\epsilon=90^{\circ}$'},...
-    'LineStyle','none','Interpreter','latex');
-
-
-
-
-%% % Create text
-%% text('Parent',axes1,'FontSize',14,'Interpreter','latex',...
-%%     'String','$\epsilon=90^{\circ}$',...
-%%     'Position',[-4.4841628959276 0.479452054794521 0]);
-
-%% % Create text
-%% text('Parent',axes1,'FontSize',14,'Interpreter','latex',...
-%%     'String','$\epsilon=40^{\circ}$',...
-%%     'Position',[-2.36651583710407 0.594520547945206 0]);
- latex2axes(figure1,"Times New Roman",14,"normal")
-
+    'LineStyle','none',...
+    'Interpreter','latex',...
+    'FitBoxToText','off');
+latex2axes(figure1,"Times New Roman",14,"normal")

@@ -88,6 +88,7 @@
       $h$ & Altitude of the SBSs.&$1200$ [km] \\
       $\epsilon$ & Elevation angle of the SBSs.& $(90 \degree,40 \degree)$ \\
       $G[\cdot]$ & The SBS antenna gain.&\\
+      $\alpha$ &Power path loss exponent.& $4\\$log-ga
       $\varphi_{\text{RX}}$ & Width of the SBSs $3$ dB gain.& $1.6 \degree$  \\
       $\Theta \subset E $ & Poisson p.p. on the earth's surface $E \subset \R^3$.& \\
       $\Phi \subset \R^2$ & Poisson p.p. on the plane. &\\
@@ -127,7 +128,7 @@ The path loss is Gaussian, a exponentially decaying function, representing the a
 \begin{equation}
   G(r) = 2^{-r^2/\varphi^2_{\text{RX}}},
 \end{equation}
-where $\varphi_{\text{RX}}$ is the width of the $3$ dB gain and $D_{h,\epsilon}=\sin^2(\epsilon)/h$ is a 3scaling constant. 
+where $\varphi_{\text{RX}}$ is the width of the $3$ dB gain and $D_{h,\epsilon}=\sin^2(\epsilon)/h$ is a scaling constant. 
 
 Given a homogeneous PPP $\Phi \subset \R^2$ of density $\lambda$ and i.i.d. fading variables $\{H_x\}$, we define the process of the perceived gains at the receiver; the gain process (GP):
 \begin{equation}

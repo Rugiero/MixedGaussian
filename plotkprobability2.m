@@ -8,13 +8,13 @@ clear all;
 %% simres2exp = S.simres2;
 %% simres3exp = S.simres3;
 
-S = importdata("kprobstheory.mat");
+S = importdata("kprobstheorykappa3.mat");
 theoryres1 = round(S.theoryres1,2);
 theoryres2 = round(S.theoryres2,2);
 theoryres3 = round(S.theoryres3,2);
 %theoryres4 = round(S.theoryres4,2);
 
-S = importdata("kprobssim90.mat");
+S = importdata("kprobssim90kappa3.mat");
 simres190 = S.simres1;
 simres290 = S.simres2;
 simres390 = S.simres3;
@@ -33,7 +33,7 @@ simres390 = S.simres3;
 %%simres470 = S.simres4;
 
 
-S = importdata("kprobssim40.mat");
+S = importdata("kprobssim40kappa3.mat");
 simres140 = S.simres1;
 simres240 = S.simres2;
 simres340 = S.simres3;
@@ -58,9 +58,8 @@ simres340 = S.simres3;
 %% plot(10*log10(x2),1-f2,'--','color','#D95319','linewidth',2)
 %% plot(10*log10(x3),1-f3,'--', 'color','#EDB120','linewidth',2)
 
-
-tau = linspace(-7,4,23);
-simtau=linspace(-7,4,12);
+tau = -7:0.5:10;
+simtau=-7:1:10;
 
 
 %% plot(simtau,simres1exp,'-*','color',"#0072BD",'linewidth',2)
@@ -127,15 +126,14 @@ fill([simtau,fliplr(simtau)],[simres340',fliplr(simres390')],[0.9290 0.6940 0.12
 
 
 
+legend('Analysis; $k=1$','Analysis; $k=2$','Analysis; $k=3$ \hspace{0.1cm}','Simulated values','Interpreter','latex',...
+    'FontSize',14,BackgroundAlpha=.3)
 
-legend('Theory; k=1 (exponential shadowing)','Theory; k=2 (exponential shadowing)','Theory; k=3 (exponential shadowing)','Simulated values (log-normal shadowing)','Interpreter','latex',...
-       'FontSize',14,BackgroundAlpha=.5)
-
-xlabel('$\tau$(dB)','FontSize',14,'Interpreter','latex')
-ylabel('$\mathcal{P}^{(k)}(\tau)$','FontSize',14,'Interpreter','latex')
-title('$\tilde{\kappa}\rho_{\epsilon}= 5$','FontSize',14,'Interpreter','latex')
+xlabel('$\theta$ [dB]','FontSize',14,'Interpreter','latex')
+ylabel('$\mathcal{P}^{(k)}(\theta)$','FontSize',14,'Interpreter','latex')
+title('$\tilde{\kappa}\rho_{\epsilon}= 3$','FontSize',14,'Interpreter','latex')
 grid on
-axis([[-7,4],[0,1]])
+axis([[-7,10],[0,1]])
 
 % Create textarrow
 annotation(figure1,'textarrow',[0.415789473684211 0.354385964912281],...
@@ -148,22 +146,19 @@ annotation(figure1,'textbox',...
     'LineStyle','none','Interpreter','latex');
 
 % Create textarrow
-annotation(figure1,'textarrow',[0.214035087719298 0.168421052631579],...
-    [0.344444444444444 0.304444444444444],'String',{'$\epsilon=40^{\circ}$'},'Interpreter','latex');
+annotation(figure1,'textarrow',[0.415789473684211 0.354385964912281],...
+    [0.454555555555556 0.388888888888889],'String',{'$\epsilon=40^{\circ}$'},...
+    'Interpreter','latex');
 
 % Create textbox
 annotation(figure1,'textbox',...
-    [0.119298245614036 0.243444443462885 0.10438596665584 0.0711111120926707],...
+    [0.314035087719299 0.321222221240663 0.10438596665584 0.0711111120926707],...
     'String',{'$90^{\circ}$'},...
-    'LineStyle','none','Interpreter','latex');
+    'LineStyle','none',...
+    'Interpreter','latex',...
+    'FitBoxToText','off');
 
-
-% Create textbox
-annotation(figure1,'textbox',...
-    [0.136842105263158 0.150111110129551 0.12894737065774 0.0711111120926707],...
-    'String',{'$\epsilon=40^{\circ}$'},...
-    'LineStyle','none','Interpreter','latex');
-
+xticks(-7:2:10);
 
 % Create text
 %% text('Parent',axes1,'FontSize',14,'Interpreter','latex',...
