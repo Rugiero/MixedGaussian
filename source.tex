@@ -251,6 +251,7 @@ We can always recover on process from another
 \begin{equation}
   \Psi = \left\{ \frac{\mathsf{Z}'}{1- \mathsf{Z}'}: \mathsf{Z}' \in \Psi' \right\}, \hspace{0.3cm} \Psi' = \left\{ \frac{\mathsf{Z}}{1+ \mathsf{Z}}: \mathsf{Z} \in \Psi \right\}.
 \end{equation}
+That is, $\Psi' \ni \mathsf{Z}'> \theta'$ is equivalent to $\Psi \ni\mathsf{Z}> \theta$ with $\theta' \triangleq \theta/(1+\theta)$.
 
 The factorial moment measure of the SINR process is defined on the sets $(t_1,\infty] \times \dots \times (t_n, \infty]$ with $t_1,\dots,t_n\geq 0$
     \begin{align}
@@ -268,7 +269,7 @@ The factorial moment measure of the SINR process is defined on the sets $(t_1,\i
      &{\mu'}_n^{(n+i)}(z'_1,\dots,z'_n)= (-1)^n \frac{\partial^n M'^{(n+i)}(t'_1\dots t_n', z'_n, \dots, z'_n)}{\partial t'_1 \dots \partial t'_n} \nonumber\\
       &\hspace{4cm}|(t'_1=z_1'\dots t'_k=z'_n).
     \end{align}
-    If $i > 0$, \eqref{eq:differatemomentmeasure} is called the partial density of $M'^{(n)}(\cdot)$. It will be relevant in the study of order statistics.
+    If $i > 0$, \eqref{eq:differatemomentmeasure} is called the partial density of $M'^{(n)}(\cdot)$. Partial densities are important in the study of order statistics.
 
     The density of the factorial \textit{n}th moment measure of the SINR process can be extracted as
     \begin{align}
@@ -280,6 +281,7 @@ The factorial moment measure of the SINR process is defined on the sets $(t_1,\i
     
   
 \subsection{Order statistics of the STINR process}
+We denote $\mathsf{Z}'_{(1)}>\mathsf{Z}'_{(2)} >\mathsf{Z}'_{(3)} \dots$ the order statistics of the STINR process $\Psi'$, such that $\mathsf{Z}'_{(1)}$ is the larges value in $\Psi'$.
 
 
 The joint probability density of the vector of $k$ strongest values of the STIR process $(\mathsf{Z}'_{(1)}, \dots, \mathsf{Z}'_{(n)})$ is equal to
@@ -294,11 +296,11 @@ The $k$-coverage probability that the first $k$ strongest signals reach the thre
   \mathcal{P}^{(k)}(\tau) \triangleq  \int_{\tau'}^1\dots \int_{\tau'}^1 f'_{(k)}({z'_1},\dots,{z'_k})dz'_1 \dots d{z'_k}.
 \end{equation}
 
-The task is to determine the partial density $\mu_n'^{(n+i)}(\cdot)$ of the factorial moment measure $M'^{(n+i)}(\cdot)$. For the interference-only channel, this can be done by characterizing the STIR process with the Poisson-Dirichlet distribution through the observation \eqref{eq:lapdef} that the total received power is gamma distributed. Consequently, the density can be derived without the detour of differentiating $M'^{(n)}(\cdot)$. In the interference-plus-noise-limited channel, the density has to be derived by first deriving the factorial moment measure and differentiating it, which requires a symbolic tool (\textit{e.g.} Mathematica). Further, the resulting expressions are numerically slightly more tedious to evaluate compared to the interference-only channel.
+The task is to determine the partial density $\mu_n'^{(n+i)}(\cdot)$ of the factorial moment measure $M'^{(n+i)}(\cdot)$. For the interference-only channel, this can be done by characterizing the STIR process with the Poisson-Dirichlet distribution through the observation \eqref{eq:lapdef} that the total received power is gamma distributed. Consequently, the density can be derived without the detour of differentiating $M'^{(n)}(\cdot)$. In the interference-plus-noise-limited channel, we derive $M'^{(n)}(\cdot)$ and differentiate it directly.
 
 
 
-\subsection{Interference-limited channel}
+\subsection{Partial density of the factorial moment measure in the interference-limited channel}
 In this section, we characterize $\mu_n'^{(n+i)}(\cdot)$ of the STIR process, \textit{i.e.}, the STINR process with $N=0$, and the order statistics through the Poisson-Dirichlet distribution PD(0,$\rho_{\epsilon}$). 
 
 Let $(X_{\tau}, \tau\geq 0)$ be a \textit{gamma subordinator}, or the \textit{gamma process}. It is a pure-jump increasing Lévy process with the intensity measure $\lambda(r) = e^{- r}/r$ . Assume that $(X_{\tau})$ has no drift component;
@@ -334,31 +336,12 @@ if $\sum_{i=1}^k t_i + it_k <0$ and $0$ otherwise.
 
 
 
-\subsubsection{Density function of the SIR of the strongest signal}
-Combining \eqref{eq:SIRjointprobability}, \eqref{eq:jointprobability}, and \eqref{eq:factorialmoment}, we get a closed form for the pdf of the SIR of the strongest signal in the region $z\geq 1$:
-
-
-\begin{equation}
-  f_{(1)}(z) = \frac {\tilde{\kappa}\rho_{\epsilon}\left({z + 1} \right)^{-\tilde{\kappa}\rho_{\epsilon}}} {z}.
-\end{equation}
-
-
-We may calculate a lower bounds for the first two moments for the SIR:
-
-
-
-\begin{align}
-  &\mathbb{E}(\text{SIR}_1)  \geq\int_{1}^{\infty}f_{(1)}(z)zdz=\frac{\tilde{\kappa}\rho_{\epsilon}2^{1-\tilde{\kappa}\rho_{\epsilon} }}{\tilde{\kappa}\rho_{\epsilon}-1}, \tilde{\kappa}\rho_{\epsilon} >1, \\
-  &\mathbb{E}(\text{SIR}^2_1) \geq \int_{1}^{\infty}f_{(1)}(z)z^2dz = \frac{(\tilde{\kappa}\rho_{\epsilon}) ^2 2^{1-\tilde{\kappa}\rho_{\epsilon} }}{(\tilde{\kappa}\rho_{\epsilon} - 2)  (\tilde{\kappa}\rho_{\epsilon} - 1)}, \tilde{\kappa}\rho_{\epsilon}>2.
-\end{align}
-The mean and the second moment diverge for $\tilde{\kappa}b\leq 1$ and $\tilde{\kappa}b\leq 2$, respectively. This implies that the variance of SIR$_1$ is undefined for $\tilde{\kappa}b \leq 1$ and infinite for $1 <\tilde{\kappa}b \leq 2$. The insight reflects that the user experience of the link quality varies significantly in the density region $\tilde{\kappa} \rho_{\epsilon} \leq 2$. We will quantitatively demonstrate that, by increasing $\tilde{\kappa}$, with interference cancellation or signal combination, we may substantially reduce the variance in the SIR (over the SBSs) while maintaining the performance.
 
 
 
 
 
-
-\subsection{Interference-plus-noise-limited channel}
+\subsection{Partial density of the factorial moment measure in the interference-plus-noise-limited channel}
 
 
 In the interference-plus-noise-limited channel, we derive the partial densities through differentiating the factorial moment measure.
@@ -383,22 +366,92 @@ The partial densities are given by
      &{\mu'}_n^{(n+i)}(z'_1,\dots,z'_n)= (-1)^n \frac{\partial^n M'^{(n+i)}(t'_1\dots t_n', z'_n, \dots, z'_n)}{\partial t'_1 \dots \partial t'_n} \nonumber\\
       &\hspace{4cm}|(t'_1=z_1'\dots t'_n=z'_n)
     \end{align}
-The differentiation of \eqref{eq:differatemomentmeasure} is a tedious task, although straightforward. It can be done with symbolic tools such as Mathematica. We omit explicit representations of the differentiated integrands of $M'^{(n+i)}(\cdot)$ in \eqref{eq:nthmomentmeasureSTINR}.
+The differentiation of the integrand in \eqref{eq:nthmomentmeasureSTINR} is a tedious task, although straightforward. It can be done with symbolic tools such as Mathematica. We omit explicit representations of the differentiated integrands of $M'^{(n+i)}(\cdot)$.
 
 
 
 \subsection{ICSC-SINR and ICSC-SIR}
 
 
-Finally, we arrive to the ICSC-SIR probability of coverage.
-\begin{prop}
+Let $\{u_1,\dots,u_k \}\subset \mathcal{G}$ be an ordered set of points in the GP, $u_1$ denoting the strongest signal at the SBS. Furthermore, we denote $\mathbf{K} \subset \mathbf{N} \subset \{1,\dots, k\}$. Consider that the strongest $k$ signals are canceled from the interference and the signals indexed by the set $\mathbf{K}$ are combined. We define the SINR of the $n$\textit{th} strongest signal under interference cancellation (IC-SINR) as
+\begin{equation}
+  \text{SINR}_{n,k} =\frac{u_n}{N+I-\sum_{j =1 }^k u_j}.
+\end{equation}
+
+The ICSC-SINR coverage probability can be formulated as
+
+\begin{align}
+  \mathcal{P}^{(n,k)}(\theta) &\triangleq \mathbb{P}\{\text{SINR}_{n,k} > \theta \} \nonumber \\
+  &= \mathbb{P} \left\{ \mathsf{Z}'_{(n)}+\theta'\sum^{j \neq n}_{j\in\{1,\dots,k\}}\mathsf{Z}'_{(j)} +>\theta'\right\}.
+\end{align}
+
+
+In independent interference cancellation (IIC), we cancel and decode all signals independently: the first $k$ signals exceeds the SINR threshold $\theta$ if $\mathsf{Z}'_{(j)} > \tau'$ for all $j \in \{1,\dots,k\}$, with $\tau'=\tau/(1+\tau)$. 
+
+
+We can improve IIC by the successive interference cancellation (SIC). First, we cancel and decode the strongest signal, then decode the second-strongest signal by substract the strongest and second strongest signal from the interference, and so on. The SIC of the $k$ strongest signals a superposition of the following conditions
+\begin{align}
+  \label{eq:SICcond}
+  &\mathsf{Z}'_{(1)} > \tau'\nonumber\\
+  &\mathsf{Z}'_{(2)} + \tau' \mathsf{Z}'_{(1)}> \tau' \nonumber\\
+  &\hspace{1cm}\dots\nonumber \\
+  &\mathsf{Z}'_{(k)} + \tau' \sum_{j=1}^{k-1}\mathsf{Z}'_{(j)}> \tau'.
+\end{align}
+
+The IIC probability is given by
+\begin{align}
+  \label{eq:SICprob}
+    &\mathcal{P}_{\text{SIC}}^{k}(\theta) \nonumber\\
+    &= \sum^{i_{\text{max}}}_{i=0} \int_{0}^1 \dots \int_{0}^1\frac{(-1)^i}{i!}\prod_{n=1}^k\mathds{1}\left( z'_n+ \theta'\sum_{j=1}^{n-1} z'_j>\theta' \right) \nonumber \\
+    &\hspace{0.7cm}\times \mathds{1}(z'_1>\dots>z'_k){\mu'}_k^{(k+i)}(z'_1,\dots,z'_k) d z'_1 \dots z'_k,
+\end{align}
+with the upper summation limit bounded by $i_{\text{max}} < 1/\theta'-1=1/\theta.$ The IIC probability $\mathcal{P}_{\text{IIC}}^{k}(\theta)$ is easy to obtain in a similar manner by dropping the summation term inside the identity function in $\eqref{eq:SICprob}$.
+
+
+Let us continute with the IIC scenario and consider that the signals are independently decoded and substracted from the interference if their SINR exceeds $\tau=\tau'/(1-\tau')$. We define a IC-SINR coverage probability of the strongest signal by
+
+\begin{equation}
+  \mathcal{P}^{(k)}_{\text{IC}}(\theta,\tau) \triangleq \mathbb{P}\begin{Bmatrix} \text{SINR}_{1,k}>\tau & \text{when } \mathsf{Z}_{(k)}>\tau \\
+\mathsf{Z}_{(1)}>\theta & \text{otherwise} \end{Bmatrix}.
+\end{equation}
+For comparison, we consider the difference between the coverage probability without and with the IC. Define the difference
+\begin{equation}
+  \Delta^{(k)}_{\text{IC}}(\theta,\tau) \triangleq \mathcal{P}^{(k)}_{\text{IC}}(\theta,\tau)- \mathcal{P}^{(1,1)}(\theta).
+\end{equation}
+
+Mathematically, the difference is given by
   \begin{align}
-    &\mathcal{P}^{(\mathbf{K},k)}(\tau) \nonumber\\
-    &= \sum^{i_{\text{max}}}_{i=0} \int_{\epsilon}^1 \dots \int_{\epsilon}^1\frac{(-1)^i}{i!}\mathds{1}\left(\tau' \sum_{i \in [k] \setminus  \mathbf{K}}z'_i+ \sum_{i\in \mathbf{K}} z'_i>\tau' \right) \nonumber \\
+    &\Delta^{(k)}_{\text{IC}}(\theta,\tau) \nonumber\\
+    &= \sum^{i_{\text{max}}}_{i=0} \int_{\tau'}^{\theta'} \dots \int_{\tau'}^{\theta'}\frac{(-1)^i}{i!}\mathds{1}\left(z_1+  \theta'\sum_{j=2}^k z'_j>\theta' \right) \nonumber \\
     &\hspace{0.7cm}\times \mathds{1}(z'_1>\dots>z'_k){\mu'}_k^{(k+i)}(z'_1,\dots,z'_k) d z'_1 \dots z'_k,
   \end{align}
-  where $\tau' = \tau/(1+\tau)$ and the sum is bounded by $i_{\text{max}}< 1/\epsilon-k$. 
-\end{prop}
+  where $\tau' = \tau/(1+\tau)$ and the sum is bounded by $i_{\text{max}}< 1/\tau-k$. 
+
+
+
+  \subsubsection{Density function of the SIR of the strongest signal}
+Combining \eqref{eq:SIRjointprobability}, \eqref{eq:jointprobability}, and \eqref{eq:factorialmoment}, we get a closed form for the pdf of the SIR of the strongest signal in the region $z\geq 1$:
+
+
+\begin{equation}
+  \label{eq:SIR1}
+  f_{(1)}(z) = \frac {\tilde{\kappa}\rho_{\epsilon}\left({z + 1} \right)^{-\tilde{\kappa}\rho_{\epsilon}}} {z}.
+\end{equation}
+
+
+We may calculate a lower bounds for the first two moments for the SIR:
+
+
+\begin{align}
+  &\mathbb{E}(\text{SIR}_{\{1\},1})  \geq\int_{1}^{\infty}f_{(1)}(z)zdz=\frac{\tilde{\kappa}\rho_{\epsilon}2^{1-\tilde{\kappa}\rho_{\epsilon} }}{\tilde{\kappa}\rho_{\epsilon}-1}, \tilde{\kappa}\rho_{\epsilon} >1, \\
+  &\mathbb{E}(\text{SIR}^2_{\{1\},1}) \geq \int_{1}^{\infty}f_{(1)}(z)z^2dz = \frac{(\tilde{\kappa}\rho_{\epsilon}) ^2 2^{1-\tilde{\kappa}\rho_{\epsilon} }}{(\tilde{\kappa}\rho_{\epsilon} - 2)  (\tilde{\kappa}\rho_{\epsilon} - 1)}, \tilde{\kappa}\rho_{\epsilon}>2.
+\end{align}
+The mean and the second moment diverge for $\tilde{\kappa}b\leq 1$ and $\tilde{\kappa}b\leq 2$, respectively. This implies that the variance of SIR$_{\{1\},1}$ is undefined for $\tilde{\kappa}b \leq 1$ and infinite for $1 <\tilde{\kappa}b \leq 2$. The insight reflects that the user experience of the link quality varies significantly in the density region $\tilde{\kappa} \rho_{\epsilon} \leq 2$. We will quantitatively demonstrate that, by increasing $\tilde{\kappa}$, with interference cancellation or signal combination, we may substantially reduce the variance in the SIR (over the SBSs) while maintaining the performance.
+
+
+
+
+
 
 
 \section{Numerical results and the connection to the satellite communications}

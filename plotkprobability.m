@@ -8,13 +8,13 @@ clear all;
 %% simres3exp = S.simres3;
 
 
-S = importdata("kprobstheorykappa1.mat");
+S = importdata("kprobstheorykappa2.mat");
 theoryres1 = round(S.theoryres1,2);
 theoryres2 = round(S.theoryres2,2);
 theoryres3 = round(S.theoryres3,2);
 %theoryres4 = S.theoryres4;
 
-S = importdata("kprobssim90kappa1.mat");
+S = importdata("kprobssim90kappa2.mat");
 simres190 = S.simres1;
 simres290 = S.simres2;
 simres390 = S.simres3;
@@ -32,7 +32,7 @@ simres390 = S.simres3;
 %% simres360 = S.simres3;
 
 
-S = importdata("kprobssim40kappa1.mat");
+S = importdata("kprobssim40kappa2.mat");
 simres140 = S.simres1;
 simres240 = S.simres2;
 simres340 = S.simres3;
@@ -45,8 +45,8 @@ simres340 = S.simres3;
 %simres430 = S.simres4;
 
 
-tau = -7:0.5:20;
-simtau=-7:1:20;
+tau=-7:0.5:10;
+simtau=-7:1:10;
 
 
 figure1 = figure;
@@ -104,16 +104,19 @@ fill([simtau,fliplr(simtau)],[simres340',fliplr(simres390')],[0.9290 0.6940 0.12
 
 
 % Create legend
-legend('Analysis; $k=1$  \hspace{0.1cm} (defective exponential','Analysis; $k=2$ \hspace{0.1cm} shadowing in the planar model)','Analysis; $k=3$ \hspace{0.1cm}','Simulated values (mixed log-normal shadowing','\hspace{2.65cm} in the spherical model)','Interpreter','latex',...
+legend('Analysis; $k=1$','Analysis; $k=2$','Analysis; $k=3$ \hspace{0.1cm}','Simulated values','Interpreter','latex',...
     'FontSize',14,BackgroundAlpha=.3)
 
+
 xlabel('$\tau$(dB)','FontSize',14,'Interpreter','latex')
-ylabel('$\mathcal{P}^{(k)}(\tau)$','FontSize',14,'Interpreter','latex')
+ylabel('$\mathcal{P}^{(k)}(\theta)$','FontSize',14,'Interpreter','latex')
 %title('$\tilde{\kappa}=3/b_{\epsilon}, \epsilon \in \{90,80,70,60,50,40\}^{\circ}$','FontSize',14,'Interpreter','latex')
 grid on
-axis([[-7,20],[0,1]])
+axis([[-7,10],[0,1]])
+xticks(-7:2:10);
 
-title('$\tilde{\kappa}\rho_{\epsilon}= 1$','FontSize',14,'Interpreter','latex')
+
+title('$\tilde{\kappa}\rho_{\epsilon}= 2$','FontSize',14,'Interpreter','latex')
 
 
 % Create textarrow
