@@ -65,6 +65,7 @@
 
 \maketitle
 \begin{abstract}
+  This paper presents an in-depth analysis of the joint probability distributions of the Signal-to-Interference Ratio (SIR) and Signal-to-Interference-plus-Noise Ratio (SINR) in a narrow-beam Low Earth Orbit (LEO) satellite uplink system with interference cancellation techniques. The increasing deployment of LEO satellite constellations for global communication necessitates a thorough understanding of interference management and signal quality metrics to ensure reliable and efficient data transmission. We develop a comprehensive analytical framework to model the impact of narrow-beam antennas on both SIR and SINR, accounting for the critical factors influencing signal propagation and interference under LEO dynamics. Additionally, we explore various interference cancellation strategies to enhance system performance. By deriving closed-form expressions and conducting extensive simulations, we quantify the joint probabilities for different system parameters, providing valuable insights into the trade-offs and benefits of interference cancellation in these systems. Our findings offer practical guidelines for optimizing LEO uplink communication strategies, thereby contributing to the advancement of high-capacity and low-latency satellite communication networks. (CHAT GPT)
 \end{abstract}
 
 % Note that keywords are not normally used for peerreview papers.
@@ -74,6 +75,17 @@
 
 
 \section{Introduction}
+
+In recent years, the deployment of Low Earth Orbit (LEO) satellite constellations has gained significant momentum due to their potential to provide global, high-speed, low-latency communication services. As the demand for such capabilities continues to rise, it becomes increasingly crucial to address the challenges associated with managing interference and maintaining robust signal quality within these systems. One of the primary metrics for assessing signal quality in communication systems is the Signal-to-Interference Ratio (SIR) and Signal-to-Interference-plus-Noise Ratio (SINR). These metrics become even more pertinent in LEO uplink scenarios, where multiple users concurrently transmit signals to satellites with limited frequency resources.
+
+The narrow-beam antenna technology, which focuses transmission power into a smaller beamwidth, offers a promising approach to enhance signal quality and reduce interference. However, the dynamic nature of LEO satellites, coupled with the high density of ground terminals, creates complex interference scenarios that necessitate advanced analytical tools and methodologies for effective management. In this context, understanding the joint probability distributions of SIR and SINR becomes essential for designing robust LEO uplink systems.
+
+This paper addresses this critical need by developing a comprehensive analytical framework to model the joint probability distributions of SIR and SINR in a narrow-beam LEO uplink environment. We incorporate various system parameters, such as satellite altitude, beamwidth, user density, and interference sources, to capture the intricate nature of signal propagation and interference in LEO systems. Furthermore, we investigate the effectiveness of different interference cancellation techniques, which are pivotal in mitigating interference and enhancing communication performance.
+
+By deriving closed-form expressions and performing extensive simulations, our study provides valuable insights into the impact of narrow-beam antennas and interference cancellation on the joint probabilities of SIR and SINR. The results of this research not only shed light on the fundamental trade-offs and potential benefits of these technologies but also offer practical guidelines for optimizing LEO uplink communication strategies. Ultimately, this work aims to contribute to the advancement of high-capacity, reliable, and efficient satellite communication networks, paving the way for the continued growth and success of global connectivity solutions.
+
+
+
 
 
 \begin{table}
@@ -251,7 +263,7 @@ We can always recover on process from another
 \begin{equation}
   \Psi = \left\{ \frac{\mathsf{Z}'}{1- \mathsf{Z}'}: \mathsf{Z}' \in \Psi' \right\}, \hspace{0.3cm} \Psi' = \left\{ \frac{\mathsf{Z}}{1+ \mathsf{Z}}: \mathsf{Z} \in \Psi \right\}.
 \end{equation}
-That is, $\Psi' \ni \mathsf{Z}'> \theta'$ is equivalent to $\Psi \ni\mathsf{Z}> \theta$ with $\theta' \triangleq \theta/(1+\theta)$.
+That is, $\Psi' \ni \mathsf{Z}'> \theta'$ is equivalent to $\Psi \ni\mathsf{Z}> \theta$ with $\theta' \triangleq \theta/(1+\theta)$ and $\theta \triangleq \theta'/(1-\theta')$.
 
 The factorial moment measure of the SINR process is defined on the sets $(t_1,\infty] \times \dots \times (t_n, \infty]$ with $t_1,\dots,t_n\geq 0$
     \begin{align}
@@ -284,12 +296,11 @@ The factorial moment measure of the SINR process is defined on the sets $(t_1,\i
 We denote $\mathsf{Z}'_{(1)}>\mathsf{Z}'_{(2)} >\mathsf{Z}'_{(3)} \dots$ the order statistics of the STINR process $\Psi'$, such that $\mathsf{Z}'_{(1)}$ is the larges value in $\Psi'$.
 
 
-The joint probability density of the vector of $k$ strongest values of the STIR process $(\mathsf{Z}'_{(1)}, \dots, \mathsf{Z}'_{(n)})$ is equal to
+The joint probability density of the vector of $k$ strongest values of the STIR process $(\mathsf{Z}'_{(1)}, \dots, \mathsf{Z}'_{(n)})$ is given as a series expansion involving the partial densities
 \begin{equation}
   \label{eq:jointprobability}
-  f'_{(k)}(z'_1,\dots,z'_k)= \sum^{i_{\text{max}}}_{i=0}\frac{(-1)^i}{i!}{\mu'}_k^{(k+i)}(z'_1,\dots,z'_k).
+  f'_{(k)}(z'_1,\dots,z'_k)= \sum^{i_{\text{max}}}_{i=0}\frac{(-1)^i}{i!}{\mu'}_k^{(k+i)}(z'_1,\dots,z'_k),
 \end{equation}
-
 where $i_{\text{max}}<1/z'_k-k$, is the maximum index of the non-zero terms of the expansion.
 
 The $k$-coverage probability that the first $k$ strongest signals reach the threshold $\tau' =\tau/(1+\tau)$ is given by
@@ -298,8 +309,8 @@ The $k$-coverage probability that the first $k$ strongest signals reach the thre
 \end{equation}
 with $\theta'=\theta/(1+\theta)$.
 
-The task is to determine the partial density $\mu_n'^{(n+i)}(\cdot)$ of the factorial moment measure $M'^{(n+i)}(\cdot)$. For the interference-only channel, this can be done by characterizing the STIR process with the Poisson-Dirichlet distribution through the observation \eqref{eq:lapdef} that the total received power is gamma distributed. Consequently, the density can be derived without the detour of differentiating $M'^{(n)}(\cdot)$. In the interference-plus-noise-limited channel, we derive $M'^{(n)}(\cdot)$ and differentiate it directly.
 
+We still need to explicitly determine the expressions for the partial density ${\mu'}_n^{(n+i)}(\cdot)$ of the factorial moment measure $M^{(n)}(\cdot)$. We will tackle this separately for the interference-only channel and the interference-plus-noise-limited channel. For the interference-only channel, the results can be obtained from those of the interference-plus-noise-limited channel by setting the noise to $0$. However, the latter scenario is numerically more demanding.
 
 
 \subsection{Partial density of the factorial moment measure in the interference-limited channel}
@@ -334,7 +345,7 @@ To study the joint distribution of order statistics of the STINR process, we def
   &{\mu'}_k^{(k+i)}(z'_1,\dots,z'_k) \nonumber \\
   &= \int_{z'_k}^1 \dots \int_{z'_k}^1 {\mu'}^{(k+i)}(z'_1,\dots,z'_k,\zeta'_1,\dots,\zeta'_i) d\zeta'_1 \dots \zeta'_i
 \end{align}
-if $\sum_{i=1}^k t_i + it_k <0$ and $0$ otherwise. 
+if $\sum_{i=1}^k z_i + iz_k <0$ and $0$ otherwise. 
 
 
 
@@ -372,53 +383,60 @@ The differentiation of the integrand in \eqref{eq:nthmomentmeasureSTINR} is a te
 
 
 
-\subsection{ICSC-SINR and ICSC-SIR}
+\subsection{SIR and SINR under interference cancellation}
 
 
-Let $\{u_1,\dots,u_k \}\subset \mathcal{G}$ be an ordered set of points in the GP, $u_1$ denoting the strongest signal at the SBS. Furthermore, we denote $\mathbf{K} \subset \mathbf{N} \subset \{1,\dots, k\}$. Consider that the strongest $k$ signals are canceled from the interference and the signals indexed by the set $\mathbf{K}$ are combined. We define the SINR of the $n$\textit{th} strongest signal under interference cancellation (IC-SINR) as
+Let $\{u_1,\dots,u_k \}\subset \mathcal{G}$ be an ordered set of points in the GP, $u_1$ denoting the strongest signal at the SBS. Consider that the strongest $k$ signals are canceled from the interference. We define the SINR of the $n$\textit{th} strongest signal under interference cancellation (IC-SINR) as
 \begin{equation}
-  \text{SINR}_{n,k} =\frac{u_n}{N+I-\sum_{j =1 }^k u_j}.
+  \text{SINR}_{n,k} \triangleq \frac{u_n}{N+I-\sum_{j =1 }^k u_j}.
 \end{equation}
 
-The ICSC-SINR coverage probability can be formulated as
+
+The IC-SINR coverage probability can be formulated as
 
 \begin{align}
   \mathcal{P}^{(n,k)}(\theta) &\triangleq \mathbb{P}\{\text{SINR}_{n,k} > \theta \} \nonumber \\
   &= \mathbb{P} \left\{ \mathsf{Z}'_{(n)}+\theta'\sum^{j \neq n}_{j\in\{1,\dots,k\}}\mathsf{Z}'_{(j)} +>\theta'\right\}.
 \end{align}
 
+For the interference-only channel, $N=0$, $\text{SIR}_{n,k} \triangleq \text{SINR}_{n,k}$
+
+
+
 
 In independent interference cancellation (IIC), we cancel and decode all signals independently: if the first $k$ signals exceed the SINR threshold $\tau$, \textit{i.e.}, $\mathsf{Z}_{(j)} > \tau$ for all $j \in \{1,\dots,k\}$, we can subtract the $k$ strongest signals from the interference. An improvement for the IIC is the successive interference cancellation (SIC). First, we cancel and decode the strongest signal, then decode the second strongest signal by subtracting the strongest and second strongest signal from the interference, and so on. The SIC of the $k$ strongest signals requires a superposition of conditions
-\begin{align}
+\begin{equation}
   \label{eq:SICcond}
-  &\mathsf{Z}'_{(1)} > \tau'\nonumber\\
-  &\mathsf{Z}'_{(2)} + \tau' \mathsf{Z}'_{(1)}> \tau' \nonumber\\
-  &\hspace{1cm}\dots\nonumber \\
-  &\mathsf{Z}'_{(k)} + \tau' \sum_{j=1}^{k-1}\mathsf{Z}'_{(j)}> \tau',
-\end{align}
-$\tau'=\tau/(1+\tau)$.
+  \begin{cases}
+    &\mathsf{Z}'_{(1)} > \tau'\\
+    &\mathsf{Z}'_{(2)} + \tau' \mathsf{Z}'_{(1)}> \tau' \\
+    &\hspace{1cm}\dots \\
+    &\mathsf{Z}'_{(k)} + \tau' \sum_{j=1}^{k-1}\mathsf{Z}'_{(j)}> \tau'
+  \end{cases}
+\end{equation}
 
-Let us consider that the strongest signal is decoded directly if its SINR exceeds $\theta$; otherwise, signal cancellation is attempted. Accordingly, we define a IIC-SINR coverage probability of the strongest signal by
+
+Let us consider that the strongest signal is decoded directly if its SINR exceeds $\theta$; otherwise, signal cancellation is attempted. Accordingly, we define a IIC-SINR$_{(k)}$ coverage probability of the strongest signal with independent signal cancellation of the strongest $k$ signals with the signal separation threshold $\tau=\tau'/(1-\tau')$ 
 
 \begin{equation}
   \mathcal{P}^{(k)}_{\text{IIC}}(\theta,\tau) \triangleq \mathbb{P}\begin{Bmatrix} \text{SINR}_{1,k}>\theta & \text{if } \mathsf{Z}_{(k)}>\tau, \\
 \mathsf{Z}_{(1)}>\theta & \text{otherwise} \end{Bmatrix}.
 \end{equation}
-Similarly, the SIC-SINR coverage probability is defined by
+Similarly, SIC-SINR$_{(k)}$ coverage probability is defined by
 \begin{equation}
   \mathcal{P}^{(k)}_{\text{SIC}}(\theta,\tau) \triangleq \mathbb{P}\begin{Bmatrix} \text{SINR}_{1,k}>\theta & \text{if for all }n\in\{1,\dots,k\}  \\
     & \mathsf{Z}'_{(n)}+\tau'\sum\limits_{j=1}^{n-1}\mathsf{Z}'_{(j)}>\tau',\\
 \mathsf{Z}_{(1)}>\theta & \text{otherwise} \end{Bmatrix}.
 \end{equation}
+Note that $\mathcal{P}^{(k)}_{\text{SIC}}(\theta,\tau)\geq \mathcal{P}^{(k)}_{\text{IIC}}(\theta,\tau) \geq \mathcal{P}^{(1,1)}(\theta)$ for all $0<\tau \leq \theta$. We observed that for $\tau = -7$ dB, the best results for SIC were obtained for $k=4$, whereas in IIC for $k=2$. (Of course, the optimal results would be obtained by not apriori restricting $k$, but always choosing the maximum amount of UEs meeting the cancellation criterion and to be removed from the interferers; however, we omit such a scheme in this work.) 
 
 
-As a metric of the performance improvement, we study the difference between the coverage probability without any interference cancellation and the IIC or SIC. Define the differences
+ As a metric of the performance improvement, we study the difference between the coverage probability without any interference cancellation and the IIC or SIC. 
 \begin{align}
   \Delta^{(k)}_{\text{IIC}}(\theta,\tau) \triangleq \mathcal{P}^{(k)}_{\text{IIC}}(\theta,\tau)- \mathcal{P}^{(1,1)}(\theta),\nonumber\\
   \Delta^{(k)}_{\text{SIC}}(\theta,\tau) \triangleq \mathcal{P}^{(k)}_{\text{SIC}}(\theta,\tau)- \mathcal{P}^{(1,1)}(\theta).
 \end{align}
-
-For the SIC-SINR, the performance increase is given by
+Using the joint probability density function of the STIR process \eqref{eq:jointprobability}, we have for the SIC-SINR
 \begin{align}
   \label{eq:SICprob}
   & \Delta^{(k)}_{\text{SIC}}(\theta,\tau) \nonumber\\
@@ -426,16 +444,14 @@ For the SIC-SINR, the performance increase is given by
  & \hspace{0.5cm}\times \prod_{n=1}^k\mathds{1}\left( z'_n+ \tau'\sum_{j=1}^{n-1} z'_j>\tau' \right)  \mathds{1}\left(z_1+  \theta'\sum_{j=2}^k z'_j>\theta' \right) \nonumber \\
   &\hspace{0.5cm} \times \mathds{1}(z'_1>\dots>z'_k){\mu'}_k^{(k+i)}(z'_1,\dots,z'_k) d z'_1 \dots d z'_k,
 \end{align}
-with the upper summation limit bounded by $i_{\text{max}} < 1/\tau'-1=1/\tau.$ The IIC case $\Delta^{(k)}_{\text{IIC}}(\theta,\tau)$ can be obtained by dropping the summation term inside the left-hand side identity function in $\eqref{eq:SICprob}$ (which essentially lower bounds the integration domain by $\tau'$).
-
-We observed that for $\tau = -7$ dB, the best results for SIC is obtained for $k=4$, whereas in IIC for $k=2$.?!?!
+with the upper summation limit bounded by $i_{\text{max}} < 1/\tau'-1=1/\tau.$ Note the upper bound $\theta'$ of the integral, through which we omit the probability mass of the even $\mathsf{Z}_{(1)}>\theta$. The IIC case $\Delta^{(k)}_{\text{IIC}}(\theta,\tau)$ can be obtained by dropping the summation term inside the left-hand side identity function in $\eqref{eq:SICprob}$ (which essentially lower bounds the integration domain by $\tau'$).
 
 
 
 
 
-  \subsubsection{Density function of the SIR of the strongest signal}
-Combining \eqref{eq:SIRjointprobability}, \eqref{eq:jointprobability}, and \eqref{eq:factorialmoment}, we get a closed form for the pdf of the SIR of the strongest signal in the region $z\geq 1$:
+\subsubsection{Density function of the SIR of the strongest signal}
+Combining \eqref{eq:SIRjointprobability}, \eqref{eq:jointprobability}, and \eqref{eq:factorialmoment}, we get a closed form for the pdf of SIR$_{1,1}$ in the region $z\geq 1$:
 
 
 \begin{equation}
@@ -444,15 +460,16 @@ Combining \eqref{eq:SIRjointprobability}, \eqref{eq:jointprobability}, and \eqre
 \end{equation}
 
 
+
 We may calculate a lower bounds for the first two moments for the SIR:
 
 
 \begin{align}
-  &\mathbb{E}(\text{SIR}_{\{1\},1})  \geq\int_{1}^{\infty}f_{(1)}(z)zdz=\frac{\tilde{\kappa}\rho_{\epsilon}2^{1-\tilde{\kappa}\rho_{\epsilon} }}{\tilde{\kappa}\rho_{\epsilon}-1}, \tilde{\kappa}\rho_{\epsilon} >1, \\
-  &\mathbb{E}(\text{SIR}^2_{\{1\},1}) \geq \int_{1}^{\infty}f_{(1)}(z)z^2dz = \frac{(\tilde{\kappa}\rho_{\epsilon}) ^2 2^{1-\tilde{\kappa}\rho_{\epsilon} }}{(\tilde{\kappa}\rho_{\epsilon} - 2)  (\tilde{\kappa}\rho_{\epsilon} - 1)}, \tilde{\kappa}\rho_{\epsilon}>2.
+  &\mathbb{E}(\text{SIR}_{1,1})  \geq\int_{1}^{\infty}f_{(1)}(z)zdz=\frac{\tilde{\kappa}\rho_{\epsilon}2^{1-\tilde{\kappa}\rho_{\epsilon} }}{\tilde{\kappa}\rho_{\epsilon}-1}, \tilde{\kappa}\rho_{\epsilon} >1, \\
+  &\mathbb{E}(\text{SIR}^2_{1,1}) \geq \int_{1}^{\infty}f_{(1)}(z)z^2dz = \frac{(\tilde{\kappa}\rho_{\epsilon}) ^2 2^{1-\tilde{\kappa}\rho_{\epsilon} }}{(\tilde{\kappa}\rho_{\epsilon} - 2)  (\tilde{\kappa}\rho_{\epsilon} - 1)}, \nonumber\\
+  &\hspace{6.5cm}\tilde{\kappa}\rho_{\epsilon}>2 .
 \end{align}
-The mean and the second moment diverge for $\tilde{\kappa}b\leq 1$ and $\tilde{\kappa}b\leq 2$, respectively. This implies that the variance of SIR$_{\{1\},1}$ is undefined for $\tilde{\kappa}b \leq 1$ and infinite for $1 <\tilde{\kappa}b \leq 2$. The insight reflects that the user experience of the link quality varies significantly in the density region $\tilde{\kappa} \rho_{\epsilon} \leq 2$. We will quantitatively demonstrate that, by increasing $\tilde{\kappa}$, with interference cancellation or signal combination, we may substantially reduce the variance in the SIR (over the SBSs) while maintaining the performance.
-
+The mean and the second moment diverge for $\tilde{\kappa}b\leq 1$ and $\tilde{\kappa}b\leq 2$, respectively. This implies that the variance of the SIR of the strongest signal is undefined for $\tilde{\kappa}b \leq 1$ and infinite for $1 <\tilde{\kappa}b \leq 2$. The insight reflects that the user experience of the link quality varies significantly over the SBSs in the density region $\tilde{\kappa} \rho_{\epsilon} \leq 2$. To achieve a consistent SBS performance, we have to make the network denser than what corresponds to $\tilde{\kappa} \rho_{\epsilon} =2$. Recall $\eqref{eq:kappa}: \kappa = \tilde{\kappa}\log(2)$ reflects the average number of UEs inside a $3$ dB footprint of a SBS.  Additionally, the density is influenced by shadowing characteristics through the parameter  $0<\rho_{\epsilon} \leq 1$. One way to improve user fairness is to through the IC, which can help maintain good average performance while reducing the variance in the SIR at the SBSs.
 
 
 
