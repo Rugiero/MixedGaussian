@@ -42,8 +42,8 @@ simtau=-7:1:10;
 
 %plot(simtau,simresSC40,'--','color',"black",'linewidth',1)
 %plot(simtau,simresIC40,'--','color',"black",'linewidth',1)
-%plot(simtau,simresSC90,'--','color',"black",'linewidth',1)
-%plot(simtau,simresIC90,'--','color',"black",'linewidth',1)
+plot(simtau,simresSC90,'--','color',"black",'linewidth',1)
+plot(simtau,simresIC90,'--','color',"black",'linewidth',1)
 
 
 %% fill([simkappa,fliplr(simkappa)],[simres9',fliplr(simres6')],[0.9290 0.6940 0.1250],'FaceAlpha',0.3,'EdgeColor','none');
@@ -64,7 +64,7 @@ legend('Analysis; IC','Analysis; SC','Simulated values','Interpreter','latex',..
 
 
 grid on
-axis([[-7,10],[0,0.5]])
+axis([[-7,10],[0,0.3]])
 xlabel('$\theta \textrm{ [dB]}$','FontSize',14,'Interpreter','latex')
 ylabel('$\Delta^{(2)}(\theta,\tau)$','FontSize',14,'Interpreter','latex')
 %xticks([-7:2:10])

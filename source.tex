@@ -290,11 +290,13 @@ The joint probability density of the vector of $k$ strongest values of the STIR 
   f'_{(k)}(z'_1,\dots,z'_k)= \sum^{i_{\text{max}}}_{i=0}\frac{(-1)^i}{i!}{\mu'}_k^{(k+i)}(z'_1,\dots,z'_k).
 \end{equation}
 
-where $i_{\text{max}}<1/z'_k-k$, is the maximum index of the non-zero terms of the expansion.e
+where $i_{\text{max}}<1/z'_k-k$, is the maximum index of the non-zero terms of the expansion.
+
 The $k$-coverage probability that the first $k$ strongest signals reach the threshold $\tau' =\tau/(1+\tau)$ is given by
 \begin{equation}
-  \mathcal{P}^{(k)}(\tau) \triangleq  \int_{\tau'}^1\dots \int_{\tau'}^1 f'_{(k)}({z'_1},\dots,{z'_k})dz'_1 \dots d{z'_k}.
+  \mathcal{P}^{(k)}(\theta) \triangleq  \int_{\theta'}^1\dots \int_{\theta'}^1 f'_{(k)}({z'_1},\dots,{z'_k})dz'_1 \dots d{z'_k},
 \end{equation}
+with $\theta'=\theta/(1+\theta)$.
 
 The task is to determine the partial density $\mu_n'^{(n+i)}(\cdot)$ of the factorial moment measure $M'^{(n+i)}(\cdot)$. For the interference-only channel, this can be done by characterizing the STIR process with the Poisson-Dirichlet distribution through the observation \eqref{eq:lapdef} that the total received power is gamma distributed. Consequently, the density can be derived without the detour of differentiating $M'^{(n)}(\cdot)$. In the interference-plus-noise-limited channel, we derive $M'^{(n)}(\cdot)$ and differentiate it directly.
 
@@ -386,46 +388,49 @@ The ICSC-SINR coverage probability can be formulated as
 \end{align}
 
 
-In independent interference cancellation (IIC), we cancel and decode all signals independently: the first $k$ signals exceeds the SINR threshold $\theta$ if $\mathsf{Z}'_{(j)} > \tau'$ for all $j \in \{1,\dots,k\}$, with $\tau'=\tau/(1+\tau)$. 
-
-
-We can improve IIC by the successive interference cancellation (SIC). First, we cancel and decode the strongest signal, then decode the second-strongest signal by substract the strongest and second strongest signal from the interference, and so on. The SIC of the $k$ strongest signals a superposition of the following conditions
+In independent interference cancellation (IIC), we cancel and decode all signals independently: if the first $k$ signals exceed the SINR threshold $\tau$, \textit{i.e.}, $\mathsf{Z}_{(j)} > \tau$ for all $j \in \{1,\dots,k\}$, we can subtract the $k$ strongest signals from the interference. An improvement for the IIC is the successive interference cancellation (SIC). First, we cancel and decode the strongest signal, then decode the second strongest signal by subtracting the strongest and second strongest signal from the interference, and so on. The SIC of the $k$ strongest signals requires a superposition of conditions
 \begin{align}
   \label{eq:SICcond}
   &\mathsf{Z}'_{(1)} > \tau'\nonumber\\
   &\mathsf{Z}'_{(2)} + \tau' \mathsf{Z}'_{(1)}> \tau' \nonumber\\
   &\hspace{1cm}\dots\nonumber \\
-  &\mathsf{Z}'_{(k)} + \tau' \sum_{j=1}^{k-1}\mathsf{Z}'_{(j)}> \tau'.
+  &\mathsf{Z}'_{(k)} + \tau' \sum_{j=1}^{k-1}\mathsf{Z}'_{(j)}> \tau',
 \end{align}
+$\tau'=\tau/(1+\tau)$.
 
-The IIC probability is given by
-\begin{align}
-  \label{eq:SICprob}
-    &\mathcal{P}_{\text{SIC}}^{k}(\theta) \nonumber\\
-    &= \sum^{i_{\text{max}}}_{i=0} \int_{0}^1 \dots \int_{0}^1\frac{(-1)^i}{i!}\prod_{n=1}^k\mathds{1}\left( z'_n+ \theta'\sum_{j=1}^{n-1} z'_j>\theta' \right) \nonumber \\
-    &\hspace{0.7cm}\times \mathds{1}(z'_1>\dots>z'_k){\mu'}_k^{(k+i)}(z'_1,\dots,z'_k) d z'_1 \dots z'_k,
-\end{align}
-with the upper summation limit bounded by $i_{\text{max}} < 1/\theta'-1=1/\theta.$ The IIC probability $\mathcal{P}_{\text{IIC}}^{k}(\theta)$ is easy to obtain in a similar manner by dropping the summation term inside the identity function in $\eqref{eq:SICprob}$.
-
-
-Let us continute with the IIC scenario and consider that the signals are independently decoded and substracted from the interference if their SINR exceeds $\tau=\tau'/(1-\tau')$. We define a IC-SINR coverage probability of the strongest signal by
+Let us consider that the strongest signal is decoded directly if its SINR exceeds $\theta$; otherwise, signal cancellation is attempted. Accordingly, we define a IIC-SINR coverage probability of the strongest signal by
 
 \begin{equation}
-  \mathcal{P}^{(k)}_{\text{IC}}(\theta,\tau) \triangleq \mathbb{P}\begin{Bmatrix} \text{SINR}_{1,k}>\tau & \text{when } \mathsf{Z}_{(k)}>\tau \\
+  \mathcal{P}^{(k)}_{\text{IIC}}(\theta,\tau) \triangleq \mathbb{P}\begin{Bmatrix} \text{SINR}_{1,k}>\theta & \text{if } \mathsf{Z}_{(k)}>\tau, \\
 \mathsf{Z}_{(1)}>\theta & \text{otherwise} \end{Bmatrix}.
 \end{equation}
-For comparison, we consider the difference between the coverage probability without and with the IC. Define the difference
+Similarly, the SIC-SINR coverage probability is defined by
 \begin{equation}
-  \Delta^{(k)}_{\text{IC}}(\theta,\tau) \triangleq \mathcal{P}^{(k)}_{\text{IC}}(\theta,\tau)- \mathcal{P}^{(1,1)}(\theta).
+  \mathcal{P}^{(k)}_{\text{SIC}}(\theta,\tau) \triangleq \mathbb{P}\begin{Bmatrix} \text{SINR}_{1,k}>\theta & \text{if for all }n\in\{1,\dots,k\}  \\
+    & \mathsf{Z}'_{(n)}+\tau'\sum\limits_{j=1}^{n-1}\mathsf{Z}'_{(j)}>\tau',\\
+\mathsf{Z}_{(1)}>\theta & \text{otherwise} \end{Bmatrix}.
 \end{equation}
 
-Mathematically, the difference is given by
-  \begin{align}
-    &\Delta^{(k)}_{\text{IC}}(\theta,\tau) \nonumber\\
-    &= \sum^{i_{\text{max}}}_{i=0} \int_{\tau'}^{\theta'} \dots \int_{\tau'}^{\theta'}\frac{(-1)^i}{i!}\mathds{1}\left(z_1+  \theta'\sum_{j=2}^k z'_j>\theta' \right) \nonumber \\
-    &\hspace{0.7cm}\times \mathds{1}(z'_1>\dots>z'_k){\mu'}_k^{(k+i)}(z'_1,\dots,z'_k) d z'_1 \dots z'_k,
-  \end{align}
-  where $\tau' = \tau/(1+\tau)$ and the sum is bounded by $i_{\text{max}}< 1/\tau-k$. 
+
+As a metric of the performance improvement, we study the difference between the coverage probability without any interference cancellation and the IIC or SIC. Define the differences
+\begin{align}
+  \Delta^{(k)}_{\text{IIC}}(\theta,\tau) \triangleq \mathcal{P}^{(k)}_{\text{IIC}}(\theta,\tau)- \mathcal{P}^{(1,1)}(\theta),\nonumber\\
+  \Delta^{(k)}_{\text{SIC}}(\theta,\tau) \triangleq \mathcal{P}^{(k)}_{\text{SIC}}(\theta,\tau)- \mathcal{P}^{(1,1)}(\theta).
+\end{align}
+
+For the SIC-SINR, the performance increase is given by
+\begin{align}
+  \label{eq:SICprob}
+  & \Delta^{(k)}_{\text{SIC}}(\theta,\tau) \nonumber\\
+  &=\sum^{i_{\text{max}}}_{i=0} \int_{0}^{\theta'} \dots \int_{0}^{\theta'}\frac{(-1)^i}{i!}\nonumber \\
+ & \hspace{0.5cm}\times \prod_{n=1}^k\mathds{1}\left( z'_n+ \tau'\sum_{j=1}^{n-1} z'_j>\tau' \right)  \mathds{1}\left(z_1+  \theta'\sum_{j=2}^k z'_j>\theta' \right) \nonumber \\
+  &\hspace{0.5cm} \times \mathds{1}(z'_1>\dots>z'_k){\mu'}_k^{(k+i)}(z'_1,\dots,z'_k) d z'_1 \dots d z'_k,
+\end{align}
+with the upper summation limit bounded by $i_{\text{max}} < 1/\tau'-1=1/\tau.$ The IIC case $\Delta^{(k)}_{\text{IIC}}(\theta,\tau)$ can be obtained by dropping the summation term inside the left-hand side identity function in $\eqref{eq:SICprob}$ (which essentially lower bounds the integration domain by $\tau'$).
+
+We observed that for $\tau = -7$ dB, the best results for SIC is obtained for $k=4$, whereas in IIC for $k=2$.?!?!
+
+
 
 
 
