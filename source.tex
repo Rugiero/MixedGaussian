@@ -301,13 +301,16 @@ The joint probability density of the vector of $k$ strongest values of the STIR 
   \label{eq:jointprobability}
   f'_{(k)}(z'_1,\dots,z'_k)= \sum^{i_{\text{max}}}_{i=0}\frac{(-1)^i}{i!}{\mu'}_k^{(k+i)}(z'_1,\dots,z'_k),
 \end{equation}
-where $i_{\text{max}}<1/z'_k-k$, is the maximum index of the non-zero terms of the expansion.
+for $z'_1>z'_2>\dots>z'_k$ and $f'_{(k)}(z'_1,\dots,z'_k) =0 $ otherwise. The upper bound for the index $i_{\text{max}}<1/z'_k-k$ is the non-zero terms of the series expansion.
 
 The $k$-coverage probability that the first $k$ strongest signals reach the threshold $\tau' =\tau/(1+\tau)$ is given by
-\begin{equation}
-  \mathcal{P}^{(k)}(\theta) \triangleq  \int_{\theta'}^1\dots \int_{\theta'}^1 f'_{(k)}({z'_1},\dots,{z'_k})dz'_1 \dots d{z'_k},
-\end{equation}
-with $\theta'=\theta/(1+\theta)$.
+\begin{align}
+  \label{eq:kprobability}
+  &\mathcal{P}^{(k)}(\theta) \triangleq  \int_{\theta'}^1\dots \int_{\theta'}^1 f'_{(k)}({z'_1},\dots,{z'_k})dz'_1 \dots d{z'_k}, \nonumber\\
+  &=\sum_{i=0}^{i_{\text{max}}}\frac{(-1)^i}{i!}\int_{\theta'}^1\dots \int_{\theta'}^1 {\mu'}_k^{(k+i)}(z'_1,\dots,z'_k) \nonumber\\
+  &\hspace{3.4cm}\times\mathds{1}(z'_1>\dots>z'_k) dz'_1 \dots d{z'_k}
+\end{align}
+with $\theta'=\theta/(1+\theta)$ and $i_{\text{max}}<1/\theta'-k$.
 
 
 We still need to explicitly determine the expressions for the partial density ${\mu'}_n^{(n+i)}(\cdot)$ of the factorial moment measure $M^{(n)}(\cdot)$. We will tackle this separately for the interference-only channel and the interference-plus-noise-limited channel. For the interference-only channel, the results can be obtained from those of the interference-plus-noise-limited channel by setting the noise to $0$. However, the latter scenario is numerically more demanding.
@@ -386,7 +389,7 @@ The differentiation of the integrand in \eqref{eq:nthmomentmeasureSTINR} is a te
 \subsection{SIR and SINR under interference cancellation}
 
 
-Let $\{u_1,\dots,u_k \}\subset \mathcal{G}$ be an ordered set of points in the GP, $u_1$ denoting the strongest signal at the SBS. Consider that the strongest $k$ signals are canceled from the interference. We define the SINR of the $n$\textit{th} strongest signal under interference cancellation (IC-SINR) as
+Let $\{u_1,\dots,u_k \}\subset \mathcal{G}$ be an ordered set of points in the GP, $u_1$ denoting the strongest signal at the SBS. Consider that the strongest $k$ signals are canceled from the interference. We define the SINR of the strongest signal under interference cancellation (IC-SINR) as
 \begin{equation}
   \text{SINR}_{n,k} \triangleq \frac{u_n}{N+I-\sum_{j =1 }^k u_j}.
 \end{equation}
@@ -395,8 +398,8 @@ Let $\{u_1,\dots,u_k \}\subset \mathcal{G}$ be an ordered set of points in the G
 The IC-SINR coverage probability can be formulated as
 
 \begin{align}
-  \mathcal{P}^{(n,k)}(\theta) &\triangleq \mathbb{P}\{\text{SINR}_{n,k} > \theta \} \nonumber \\
-  &= \mathbb{P} \left\{ \mathsf{Z}'_{(n)}+\theta'\sum^{j \neq n}_{j\in\{1,\dots,k\}}\mathsf{Z}'_{(j)} +>\theta'\right\}.
+  \mathcal{P}_{\text{IC}}^{(n,k)}(\theta) &\triangleq \mathbb{P}\{\text{SINR}_{n,k} > \theta \} \nonumber \\
+  &= \mathbb{P} \left\{ \mathsf{Z}'_{(n)}+\theta'\sum_{j\neq n}\mathsf{Z}'_{(j)} +>\theta'\right\}.
 \end{align}
 
 For the interference-only channel, $N=0$, $\text{SIR}_{n,k} \triangleq \text{SINR}_{n,k}$
@@ -411,32 +414,32 @@ In independent interference cancellation (IIC), we cancel and decode all signals
     &\mathsf{Z}'_{(1)} > \tau'\\
     &\mathsf{Z}'_{(2)} + \tau' \mathsf{Z}'_{(1)}> \tau' \\
     &\hspace{1cm}\dots \\
-    &\mathsf{Z}'_{(k)} + \tau' \sum_{j=1}^{k-1}\mathsf{Z}'_{(j)}> \tau'
+    &\mathsf{Z}'_{(k)} + \tau' \sum_{j=1}^{k-1}\mathsf{Z}'_{(j)}> \tau'.
   \end{cases}
 \end{equation}
 
 
-Let us consider that the strongest signal is decoded directly if its SINR exceeds $\theta$; otherwise, signal cancellation is attempted. Accordingly, we define a IIC-SINR$_{(k)}$ coverage probability of the strongest signal with independent signal cancellation of the strongest $k$ signals with the signal separation threshold $\tau=\tau'/(1-\tau')$ 
+Let us consider that the strongest signal is decoded directly if its SINR exceeds $\theta$; otherwise, signal cancellation is attempted. Accordingly, we define a IIC-SINR$_{k}$ coverage probability of the strongest signal with independent signal cancellation of the strongest $k$ signals with the signal separation threshold $\tau=\tau'/(1-\tau')$ 
 
 \begin{equation}
-  \mathcal{P}^{(k)}_{\text{IIC}}(\theta,\tau) \triangleq \mathbb{P}\begin{Bmatrix} \text{SINR}_{1,k}>\theta & \text{if } \mathsf{Z}_{(k)}>\tau, \\
+  \mathcal{P}^{(k)}_{\text{IIC}}(\theta,\tau) \triangleq \mathbb{P}\begin{Bmatrix} \text{SINR}_{1,k}(\theta)>\theta & \text{if } \mathsf{Z}_{(k)}>\tau, \\
 \mathsf{Z}_{(1)}>\theta & \text{otherwise} \end{Bmatrix}.
 \end{equation}
-Similarly, SIC-SINR$_{(k)}$ coverage probability is defined by
+Similarly, SIC-SINR$_{k}$ coverage probability is defined by
 \begin{equation}
-  \mathcal{P}^{(k)}_{\text{SIC}}(\theta,\tau) \triangleq \mathbb{P}\begin{Bmatrix} \text{SINR}_{1,k}>\theta & \text{if for all }n\in\{1,\dots,k\}  \\
+  \mathcal{P}^{(k)}_{\text{SIC}}(\theta,\tau) \triangleq \mathbb{P}\begin{Bmatrix} \text{SINR}_{1,k}(\theta)>\theta & \text{if for all }n\in\{1,\dots,k\}  \\
     & \mathsf{Z}'_{(n)}+\tau'\sum\limits_{j=1}^{n-1}\mathsf{Z}'_{(j)}>\tau',\\
 \mathsf{Z}_{(1)}>\theta & \text{otherwise} \end{Bmatrix}.
 \end{equation}
-Note that $\mathcal{P}^{(k)}_{\text{SIC}}(\theta,\tau)\geq \mathcal{P}^{(k)}_{\text{IIC}}(\theta,\tau) \geq \mathcal{P}^{(1,1)}(\theta)$ for all $0<\tau \leq \theta$. We observed that for $\tau = -7$ dB, the best results for SIC were obtained for $k=4$, whereas in IIC for $k=2$. (Of course, the optimal results would be obtained by not apriori restricting $k$, but always choosing the maximum amount of UEs meeting the cancellation criterion and to be removed from the interferers; however, we omit such a scheme in this work.) 
+Note that $\mathcal{P}^{(k)}_{\text{SIC}}(\theta,\tau)\geq \mathcal{P}^{(k)}_{\text{IIC}}(\theta,\tau) \geq \mathcal{P}^{(1,1)}(\theta)$ for all $0<\tau \leq \theta$. 
 
 
  As a metric of the performance improvement, we study the difference between the coverage probability without any interference cancellation and the IIC or SIC. 
 \begin{align}
-  \Delta^{(k)}_{\text{IIC}}(\theta,\tau) \triangleq \mathcal{P}^{(k)}_{\text{IIC}}(\theta,\tau)- \mathcal{P}^{(1,1)}(\theta),\nonumber\\
-  \Delta^{(k)}_{\text{SIC}}(\theta,\tau) \triangleq \mathcal{P}^{(k)}_{\text{SIC}}(\theta,\tau)- \mathcal{P}^{(1,1)}(\theta).
+  \Delta^{(k)}_{\text{IIC}}(\theta,\tau) \triangleq \mathcal{P}^{(k)}_{\text{IIC}}(\theta,\tau)- \mathcal{P}^{(1)}(\theta),\nonumber\\
+  \Delta^{(k)}_{\text{SIC}}(\theta,\tau) \triangleq \mathcal{P}^{(k)}_{\text{SIC}}(\theta,\tau)- \mathcal{P}^{(1)}(\theta),
 \end{align}
-Using the joint probability density function of the STIR process \eqref{eq:jointprobability}, we have for the SIC-SINR
+where the $1$-coverage probability  $\mathcal{P}^{(1)}(\theta)$ is given in $\eqref{eq:kprobability}$. Using the joint probability density function of the STIR process \eqref{eq:jointprobability}, we have for the SIC-SINR
 \begin{align}
   \label{eq:SICprob}
   & \Delta^{(k)}_{\text{SIC}}(\theta,\tau) \nonumber\\
@@ -444,7 +447,7 @@ Using the joint probability density function of the STIR process \eqref{eq:joint
  & \hspace{0.5cm}\times \prod_{n=1}^k\mathds{1}\left( z'_n+ \tau'\sum_{j=1}^{n-1} z'_j>\tau' \right)  \mathds{1}\left(z_1+  \theta'\sum_{j=2}^k z'_j>\theta' \right) \nonumber \\
   &\hspace{0.5cm} \times \mathds{1}(z'_1>\dots>z'_k){\mu'}_k^{(k+i)}(z'_1,\dots,z'_k) d z'_1 \dots d z'_k,
 \end{align}
-with the upper summation limit bounded by $i_{\text{max}} < 1/\tau'-1=1/\tau.$ Note the upper bound $\theta'$ of the integral, through which we omit the probability mass of the even $\mathsf{Z}_{(1)}>\theta$. The IIC case $\Delta^{(k)}_{\text{IIC}}(\theta,\tau)$ can be obtained by dropping the summation term inside the left-hand side identity function in $\eqref{eq:SICprob}$ (which only essentially lower bounds the integration domain by $\tau'$).
+with the upper summation limit bounded by $i_{\text{max}} < 1/\tau'-1=1/\tau.$ Note the upper bound $\theta'$ of the integral, through which we omit the probability mass of the even $\mathsf{Z}_{(1)}>\theta$. The SINR-IIC$_{(k)}$ case $\Delta^{(k)}_{\text{IIC}}(\theta,\tau)$ can be obtained by dropping the summation term inside the left-hand side identity function in $\eqref{eq:SICprob}$ (which only essentially lower bounds the integration domain by $\tau'$).
 
 
 
@@ -471,12 +474,34 @@ We may calculate a lower bounds for the first two moments for the SIR:
 \end{align}
 The mean and the second moment diverge for $\tilde{\kappa}b\leq 1$ and $\tilde{\kappa}b\leq 2$, respectively. This implies that the variance of the SIR of the strongest signal is undefined for $\tilde{\kappa}b \leq 1$ and infinite for $1 <\tilde{\kappa}b \leq 2$. The insight reflects that the user experience of the link quality varies significantly over the SBSs in the density region $\tilde{\kappa} \rho_{\epsilon} \leq 2$. To achieve a consistent SBS performance, we have to make the network denser than what corresponds to $\tilde{\kappa} \rho_{\epsilon} =2$. Recall $\eqref{eq:kappa}: \kappa = \tilde{\kappa}\log(2)$ reflects the average number of UEs inside a $3$ dB footprint of a SBS.  Additionally, the density is influenced by shadowing characteristics through the parameter  $0<\rho_{\epsilon} \leq 1$. One way to improve user fairness is to through the IC, which can help maintain good average performance while reducing the variance in the SIR at the SBSs.
 
+\subsubsection{Numerical results regarding the average and variance of the SIR without interference cancellation and using IIC and SIC}
+We observed that for $\tau = -7$ [dB], \textit{ i.e.}, $\tau =10^{-7/10}\approx 0.2$, good choices are $k \in\{2,3\}$ for IIC and SIC, respectively. Hence, we use this signal separation threshold and the corresponding $k$s as a baseline.
+
+For $\rho_{\epsilon} \tilde{\kappa}=2$, the expected SIR of the strongest signal without IC is given by
+\begin{equation}
+  \mathbb{E}(\text{SIR}_{1,1})= \int_{0}^{\infty}\mathcal{P}^{(1)}(y)dy \approx 1.4.
+\end{equation}
+  Recall, tahat the variance var$(\text{SIR}_{1,1})=\infty$, which might not be desirable in terms of user fairness.
+
+  By increasing $\rho_{\epsilon} \tilde{\kappa}$ (modifying $\lambda,h,\epsilon$ or $\varphi_{\text{RX}}$), we can reduce the variance in the SIR while maintaining the performance. For example, $ \mathbb{E}$(IIC-SINR$_{2}) \approx \mathbb{E}$(SIC-SINR$_{3}) \approx 1.4$ for $\rho_{\epsilon} \tilde{\kappa}\in \{2.6,3.8\}$, respectively. In this case, IIC-SINR variance is calculated by
+\begin{align}
+  \text{var(IIC-SINR}_{2})&=\int_{0}^{\infty}y\mathcal{P}_{\text{IIC}}^{(2)}(y,\tau)dy \nonumber \\
+  &\hspace{1cm}-\left(\int_{0}^{\infty}\mathcal{P}_{\text{IIC}}^{(2)}(y,\tau)dy\right)^2  \approx 2.6
+\end{align}
+And similarly, var(SIC-SINR$_{3}) = 2\int_{0}^{\infty}y\mathcal{P}_{\text{SIC}}^{(3)}(y,\tau)dy-$ $\left(\int_{0}^{\infty}\mathcal{P}_{\text{SIC}}^{(3)}(y,\tau)dy\right)^2 \approx 2.9$. Consequently, the standard deviation in both cases is below $2$, which is a remarkable improvement in the consistency of the link quality. Note that the increase of $\tilde{\kappa}$ does not necessarily mean making the SBS constellation more dense: with interference cancellation, a single SBS might be able to serve multiple UEs with satisfactory SIR. However, we only consider the UE with the strongest signal in the IIC and SIC.
+
+The integrations in the IIC and SIC were conducted by trapezoidal method by first evaluating the SINR-IIC and SINR-SIC the CCDF values (coverage probabilities) pointwise for sufficiently many $y$.
+
 
 
 
 
 
 \section{Numerical results and the connection to the satellite communications}
+
+
+
+in the   $\rho_{\epsilon}\tilde{\kappa}=2.6$, $\mathbb{E}(\text{SIC-SINR}_{1,3}) = \int_{0}^1 \mathcal{P}^{(3)}_{\text{SIC}}(y,\tau) dy \approx 2.4$. For $\rho_{\epsilon}\tilde{\kappa}=3.8$, $\mathbb{E}(\text{SIC-SINR}_{1,3}) = \int_{0}^1 \mathcal{P}^{(3)}_{\text{SIC}}(y,\tau) dy \approx 2.4$.
 
 
 \subsection{Gaussian mixture model}

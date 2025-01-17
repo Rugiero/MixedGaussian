@@ -64,14 +64,14 @@ legend('Analysis; IC','Analysis; SC','Simulated values','Interpreter','latex',..
 
 
 grid on
-axis([[-7,10],[0,0.3]])
+axis([[-7,10],[0,0.5]])
 xlabel('$\theta \textrm{ [dB]}$','FontSize',14,'Interpreter','latex')
 ylabel('$\Delta^{(2)}(\theta,\tau)$','FontSize',14,'Interpreter','latex')
 %xticks([-7:2:10])
 
 xticks(-7:2:10);
 
-title('$\tilde{\kappa}\rho_{\epsilon}=2.6$','Interpreter','latex',...
+title('$\tilde{\kappa}\rho_{\epsilon}=4$','Interpreter','latex',...
     'FontSize',14)
 
 
