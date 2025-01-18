@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.21)  17 JAN 2025 22:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.10.9)  18 JAN 2025 03:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -670,7 +670,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 LaTeX Warning: Citation `ITURS1528' on page 2 undefined on input line 175.
 
 [2]
-<plotdensities.pdf, id=104, 389.2944pt x 330.5148pt>
+<plotdensities.pdf, id=100, 389.2944pt x 330.5148pt>
 File: plotdensities.pdf Graphic file (type pdf)
 <use plotdensities.pdf>
 Package pdftex.def Info: plotdensities.pdf  used on input line 211.
@@ -684,6 +684,10 @@ Overfull \hbox (7.33276pt too wide) detected at line 433
 [][][]\OMS/cmsy/m/n/10 P[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ^^R; ^^\\OT1/cmr/m/
 n/10 ) \U/msa/m/n/10 , \U/msb/m/n/10 P [] \OML/cmm/m/it/10 :
  []
+
+
+LaTeX Warning: Reference `eq:kprobability' on page 5 undefined on input line 44
+2.
 
 
 Underfull \hbox (badness 1852) in paragraph at lines 490--492
@@ -712,16 +716,22 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package rerunfilecheck Info: File `source.out' has not changed.
-(rerunfilecheck)             Checksum: 7C4595913CE006A6A06C9B0F0580385C;4780.
+
+Package rerunfilecheck Warning: File `source.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `source.out':
+(rerunfilecheck)             Before: AFFC046D99BCDDD4AED1FF876419D41D;3947
+(rerunfilecheck)             After:  7C4595913CE006A6A06C9B0F0580385C;4780.
  ) 
 Here is how much of TeX's memory you used:
- 13845 strings out of 475509
- 222392 string characters out of 5776664
+ 13844 strings out of 476106
+ 222371 string characters out of 5793933
  1962975 words of memory out of 5000000
- 35620 multiletter control sequences out of 15000+600000
+ 35583 multiletter control sequences out of 15000+600000
  600982 words of font info for 121 fonts, out of 8000000 for 9000
- 399 hyphenation exceptions out of 8191
+ 63 hyphenation exceptions out of 8191
  75i,17n,79p,1617b,549s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/
@@ -747,10 +757,10 @@ lic/amsfonts/symbols/msbm7.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/t
 imes/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on source.pdf (7 pages, 530808 bytes).
+Output written on source.pdf (7 pages, 530651 bytes).
 PDF statistics:
- 327 PDF objects out of 1000 (max. 8388607)
- 251 compressed objects within 3 object streams
+ 320 PDF objects out of 1000 (max. 8388607)
+ 247 compressed objects within 3 object streams
  68 named destinations out of 1000 (max. 500000)
- 126 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 118 words of extra memory for PDF output out of 10000 (max. 10000000)
 
