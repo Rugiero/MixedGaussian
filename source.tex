@@ -193,7 +193,7 @@ The mean and the variance of the \textit{total received power}
 \end{align}
 respectively.
 
-Note that the spatial path loss is of no interest here: because we assume a narrow beam $G(\cdot)$, the relevant UEs are located close to each other; hence, the spatial path loss is only a constant, and $\mathbb{E}(I)$ and $\text{var}(I)$ can be scaled accordingly. Furthermore, the spatial path loss does not affect the SIR. However, it is taken into account in the SINR analysis. Further, the signal powers are incorporated into the noise.
+The spatial path loss is of no interest here: because we assume a narrow beam $G(\cdot)$, the relevant UEs are located close to each other; hence, the spatial path loss is only a constant, and $\mathbb{E}(I)$ and $\text{var}(I)$ can be scaled accordingly. Furthermore, the spatial path loss does not affect the SIR. However, it is taken into account in the SINR analysis. Further, the signal powers are incorporated into the noise.
 
 
 
@@ -263,7 +263,7 @@ We can always recover on process from another
 \begin{equation}
   \Psi = \left\{ \frac{\mathsf{Z}'}{1- \mathsf{Z}'}: \mathsf{Z}' \in \Psi' \right\}, \hspace{0.3cm} \Psi' = \left\{ \frac{\mathsf{Z}}{1+ \mathsf{Z}}: \mathsf{Z} \in \Psi \right\}.
 \end{equation}
-That is, $\Psi' \ni \mathsf{Z}'> \theta'$ is equivalent to $\Psi \ni\mathsf{Z}> \theta$ with $\theta' \triangleq \theta/(1+\theta)$ and $\theta \triangleq \theta'/(1-\theta')$.
+Let $\theta$ denote the SINR threshold of successful transmission. The event $\Psi \ni\mathsf{Z}> \theta$ is equivalent to $\Psi' \ni \mathsf{Z}'> \theta'$  with $\theta' \triangleq \theta/(1+\theta)$ and $\theta \triangleq \theta'/(1-\theta')$.
 
 The factorial moment measure of the SINR process is defined on the sets $(t_1,\infty] \times \dots \times (t_n, \infty]$ with $t_1,\dots,t_n\geq 0$
     \begin{align}
@@ -397,7 +397,7 @@ Let $(u_{(1)},\dots,u_{(k)} )\subset \mathcal{G}$ be an ordered set of points in
 \end{equation}
 
 
-The IC-SINR coverage probability can be formulated in terms of the STINR process:
+The IC-SINR can be formulated in terms of the STINR process:
 
 %% \begin{align}
 %%   \label{eq:IC-SINRcond}
@@ -415,7 +415,7 @@ The IC-SINR coverage probability can be formulated in terms of the STINR process
 \end{align}
 
 
-In (a), we divide both sides by $(1+\theta)$, which leads to the final result recalling that $\theta' = \theta/(1+\theta)$. For the interference-only channel, $N=0$, $\text{SIR}_{n,k} \triangleq \text{SINR}_{n,k}$
+In (a), we divide both sides by $(1+\theta)$, which leads to the final result by the equivalence $\theta' = \theta/(1+\theta)$. For the interference-only channel, $N=0$, $\text{SIR}_{n,k} \triangleq \text{SINR}_{n,k}$
 
 
 
@@ -445,7 +445,7 @@ Similarly, SIC-SINR$_{k}$ coverage probability is defined by
     & \mathsf{Z}'_{(n)}+\tau'\sum\limits_{j=1}^{n-1}\mathsf{Z}'_{(j)}>\tau',\\
 \mathsf{Z}_{(1)}>\theta & \text{otherwise} \end{Bmatrix}.
 \end{equation}
-Note that $\mathcal{P}^{(k)}_{\text{SIC}}(\theta,\tau)\geq \mathcal{P}^{(k)}_{\text{IIC}}(\theta,\tau) \geq \mathcal{P}^{(1,1)}(\theta)$ for all $0<\tau \leq \theta$. 
+We have that $\mathcal{P}^{(k)}_{\text{SIC}}(\theta,\tau)\geq \mathcal{P}^{(k)}_{\text{IIC}}(\theta,\tau) \geq \mathcal{P}^{(1,1)}(\theta)$ for all $0<\tau \leq \theta$. 
 
 
  As a metric of the performance improvement, we study the difference between the coverage probability without any interference cancellation and the IIC or SIC. 
@@ -464,7 +464,7 @@ where the $1$-coverage probability  $\mathcal{P}^{(1)}(\theta)$ is given in $\eq
   \end{align}
   with the upper summation limit bounded by $i_{\text{max}} < 1/\tau'-1=1/\tau.$ 
   \begin{proof}
-    The expression follows from the joint pdf of the order statistics \eqref{eq:jointprobability} and the conditions \eqref{eq:IC-SINRcond} and \eqref{eq:SIC-SINRcond}. Note that we relaxed the upper bound of  $i_{\text{max}}$ to $1/\tau'-1$ (c.f. the upper limit given for \eqref{eq:jointprobability}; $i_{\text{max}} < 1/z'_{(k)}-k‰$ in which the number of the summation terms would be approaching infinity near the $k$\textit{th} dimension lower limit of the integrand.) Luckily, the LHS conditioning restricts the domain of the non-zero terms of the integrand. Namely, we have that $z'_{(n)}+\tau'\sum_{j=1}^{n-1}z'_{(j)}>\tau'$. By simple algebra, $\sum_{j=1}^{n-1}z_{(j)}> 1-z_{(n)}/\tau'$. Recall the condition on the non-zero terms of the density of $M'^{(n+i)}$:  $\sum_{j=1}^n z'_{(j)}+i z'_{(n)} =\sum_{j=1}^{n-1}z'_{(j)} +z'_{(n)}+i z'_{(n)}  \leq 1$. The condition certainly \textit{does not} hold if $1-z_{(n)}/\tau'+ z'_{(n)}+i z'_{(n)}>1$. We arrive at the inequality $z'_{(n)} \left(-1/\tau' + 1 +i \right)>0$. Divide both sides by $z'_{(n)}$, and the general upper bound of $i$ follows.
+    The expression follows from the joint pdf of the order statistics \eqref{eq:jointprobability} and the conditions \eqref{eq:IC-SINRcond} and \eqref{eq:SIC-SINRcond}. We relaxed the upper bound of  $i_{\text{max}}$ to $1/\tau'-1$ (c.f. the upper limit given for \eqref{eq:jointprobability}; $i_{\text{max}} < 1/z'_{(k)}-k‰$ in which the number of the summation terms would be approaching infinity near the $k$\textit{th} dimension lower limit of the integrand.) Luckily, the LHS conditioning restricts the domain of the non-zero terms of the partial density. Namely, we have that $z'_{(n)}+\tau'\sum_{j=1}^{n-1}z'_{(j)}>\tau'$. By simple algebra, $\sum_{j=1}^{n-1}z_{(j)}> 1-z_{(n)}/\tau'$. Recall the condition on the non-zero terms of the density of $M'^{(n+i)}$:  $\sum_{j=1}^n z'_{(j)}+i z'_{(n)} =\sum_{j=1}^{n-1}z'_{(j)} +z'_{(n)}+i z'_{(n)}  \leq 1$. The condition certainly \textit{does not} hold if $1-z_{(n)}/\tau'+ z'_{(n)}+i z'_{(n)}>1$. We arrive at the inequality $z'_{(n)} \left(-1/\tau' + 1 +i \right)>0$. Divide both sides by $z'_{(n)}$, and the general upper bound of $i$ follows.
   \end{proof}
 \end{prop}
 The SINR-IIC$_{(k)}$ case $\Delta^{(k)}_{\text{IIC}}(\theta,\tau)$ can be obtained by dropping the summation term inside the LHS condition in $\eqref{eq:SICprob}$, essentially bounding the lower integration limit to $\tau'$.
