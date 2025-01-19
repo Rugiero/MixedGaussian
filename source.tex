@@ -279,13 +279,15 @@ The factorial moment measure of the SINR process is defined on the sets $(t_1,\i
     \begin{align}
       \label{eq:differatemomentmeasure}
      &{\mu'}_n^{(n+i)}(z'_1,\dots,z'_n)= (-1)^n \frac{\partial^n M'^{(n+i)}(t'_1\dots t_n', z'_n, \dots, z'_n)}{\partial t'_1 \dots \partial t'_n} \nonumber\\
-      &\hspace{4cm}|(t'_1=z_1'\dots t'_k=z'_n).
+      &\hspace{4cm}|(t'_1=z_1'\dots t'_k=z'_n),
     \end{align}
-    If $i > 0$, \eqref{eq:differatemomentmeasure} is called the partial density of $M'^{(n)}(\cdot)$. Partial densities are important in the study of order statistics.
+    for $\sum_{i=1}^k z'_i+iz'_k \leq 1$ and $0$ otherwise.
+
+    If $i > 0$, \eqref{eq:differatemomentmeasure} is called the partial density of $M'^{(n)}$. 
 
     The density of the factorial \textit{n}th moment measure of the SINR process can be extracted as
     \begin{align}
-      \label{eq:SIRjointprobability}
+      \label{eq:densitySINR}
       &\mu^{(n)}(z_1,\dots,z_n) \nonumber\\
       &= \prod_{j=1}^n\frac{1}{(1+z_j)^2}\mu'^{(n)}\left(\frac{z_1}{1+z_1},\dots,\frac{z_n}{1+z_n}\right).
     \end{align}
@@ -296,7 +298,7 @@ The factorial moment measure of the SINR process is defined on the sets $(t_1,\i
 We denote $\mathsf{Z}'_{(1)}>\mathsf{Z}'_{(2)} >\mathsf{Z}'_{(3)} \dots$ the order statistics of the STINR process $\Psi'$, such that $\mathsf{Z}'_{(1)}$ is the larges value in $\Psi'$.
 
 
-The joint probability density of the vector of $k$ strongest values of the STIR process $(\mathsf{Z}'_{(1)}, \dots, \mathsf{Z}'_{(n)})$ is given as a series expansion involving the partial densities
+The joint pdf of the vector of $k$ strongest values of the STIR process $(\mathsf{Z}'_{(1)}, \dots, \mathsf{Z}'_{(n)})$ is given as a series expansion involving the partial densities
 \begin{equation}
   \label{eq:jointprobability}
   f'_{(k)}(z'_1,\dots,z'_k)= \sum^{i_{\text{max}}}_{i=0}\frac{(-1)^i}{i!}{\mu'}_k^{(k+i)}(z'_1,\dots,z'_k),
@@ -313,11 +315,11 @@ The $k$-coverage probability that the first $k$ strongest signals reach the thre
 with $\theta'=\theta/(1+\theta)$ and $i_{\text{max}}<1/\theta'-k$.
 
 
-We still need to explicitly determine the expressions for the partial density ${\mu'}_n^{(n+i)}(\cdot)$ of the factorial moment measure $M^{(n)}(\cdot)$. We will tackle this separately for the interference-only channel and the interference-plus-noise-limited channel. For the interference-only channel, the results can be obtained from those of the interference-plus-noise-limited channel by setting the noise to $0$. However, the latter scenario is numerically more demanding.
+We still need to explicitly determine the expressions for the partial density ${\mu'}_n^{(n+i)}$ of the factorial moment measure $M^{(n)}$. We will tackle this separately for the interference-only channel and the interference-plus-noise-limited channel. For the interference-only channel, the results can be obtained from those of the interference-plus-noise-limited channel by setting the noise to $0$. However, the latter scenario is numerically more demanding.
 
 
 \subsection{Partial density of the factorial moment measure in the interference-limited channel}
-In this section, we characterize $\mu_n'^{(n+i)}(\cdot)$ of the STIR process, \textit{i.e.}, the STINR process with $N=0$, and the order statistics through the Poisson-Dirichlet distribution PD(0,$\rho_{\epsilon}$). 
+In this section, we characterize $\mu_n'^{(n+i)}$ of the STIR process, \textit{i.e.}, the STINR process with $N=0$, and the order statistics through the Poisson-Dirichlet distribution PD(0,$\rho_{\epsilon}$). 
 
 Let $(X_{\tau}, \tau\geq 0)$ be a \textit{gamma subordinator}, or the \textit{gamma process}. It is a pure-jump increasing Lévy process with the intensity measure $\lambda(r) = e^{- r}/r$ . Assume that $(X_{\tau})$ has no drift component;
 \begin{equation}
@@ -335,7 +337,7 @@ is the ordered sequence $(\mathsf{Z}'_{(1)},\mathsf{Z}'_{(2)} \dots)$. It has th
 
 
 \begin{prop}
-  The density of the nth factorial moment measure of the STIR process at the NB LEO with the Gaussian antenna beam is given by
+  The density of the n\textit{th} factorial moment measure of the STIR process at the NB LEO with the Gaussian antenna beam is given by
   \begin{align}
     \label{eq:factorialmoment}
     \mu'^{(n)}(t_1',\dots,t'_n) = (\tilde{\kappa}b)^n\prod_{j=1}^n{t'}_{j}^{-1}\left(1- \sum_{j=1}^nt'_j \right)^{\tilde{\kappa}b-1},       
@@ -346,9 +348,9 @@ To study the joint distribution of order statistics of the STINR process, we def
 \begin{align}
   \label{eq:auxillary}
   &{\mu'}_k^{(k+i)}(z'_1,\dots,z'_k) \nonumber \\
-  &= \int_{z'_k}^1 \dots \int_{z'_k}^1 {\mu'}^{(k+i)}(z'_1,\dots,z'_k,\zeta'_1,\dots,\zeta'_i) d\zeta'_1 \dots \zeta'_i
+  &= \int_{z'_k}^1 \dots \int_{z'_k}^1 {\mu'}^{(k+i)}(z'_1,\dots,z'_k,\zeta'_1,\dots,\zeta'_i) d\zeta'_1 \dots \zeta'_i.
 \end{align}
-if $\sum_{i=1}^k z_i + iz_k <(??)0$ and $0$ otherwise. 
+Recall the condition for the density being non-zero for $\sum_{i=1}^kz'_k+iz_k \leq 1 $.
 
 
 
@@ -382,39 +384,50 @@ The partial densities are given by
      &{\mu'}_n^{(n+i)}(z'_1,\dots,z'_n)= (-1)^n \frac{\partial^n M'^{(n+i)}(t'_1\dots t_n', z'_n, \dots, z'_n)}{\partial t'_1 \dots \partial t'_n} \nonumber\\
       &\hspace{4cm}|(t'_1=z_1'\dots t'_n=z'_n)
     \end{align}
-The differentiation of the integrand in \eqref{eq:nthmomentmeasureSTINR} is a tedious task, although straightforward. It can be done with symbolic tools such as Mathematica. We omit explicit representations of the differentiated integrands of $M'^{(n+i)}(\cdot)$.
+The differentiation of the integrand in \eqref{eq:nthmomentmeasureSTINR} is a tedious task, although straightforward. It can be done with symbolic tools such as Mathematica. We omit explicit representations of the differentiated integrands of $M'^{(n+i)}$.
 
 
 
 \subsection{SIR and SINR under interference cancellation}
 
 
-Let $\{u_1,\dots,u_k \}\subset \mathcal{G}$ be an ordered set of points in the GP, $u_1$ denoting the strongest signal at the SBS. Consider that the strongest $k$ signals are canceled from the interference. We define the SINR of the strongest signal under interference cancellation (IC-SINR) as
+Let $(u_{(1)},\dots,u_{(k)} )\subset \mathcal{G}$ be an ordered set of points in the GP; $u_{(1)}$ denotes the strongest signal at the SBS. In the following, we consider the SINR of the n\textit{th} strongest signal, $n \leq k$, with the strongest $k$ signals canceled from the interference. We define the SINR under the interference cancellation (IC-SINR) as
 \begin{equation}
-  \text{SINR}_{n,k} \triangleq \frac{u_n}{N+I-\sum_{j =1 }^k u_j}.
+  \text{SINR}_{n,k} \triangleq \frac{u_{(n)}}{N+I-\sum_{j =1 }^k u_{(j)}}.
 \end{equation}
 
 
-The IC-SINR coverage probability can be formulated as
+The IC-SINR coverage probability can be formulated in terms of the STINR process:
+
+%% \begin{align}
+%%   \label{eq:IC-SINRcond}
+%%   \mathcal{P}_{\text{IC}}^{(n,k)}(\theta) &\triangleq \mathbb{P}\{\text{SINR}_{n,k} > \theta \} \nonumber \\
+%%   &=\mathbb{P} \left\{ u_{(n)} >\theta\left(N+I-  \sum_{j=1}^ku_{(j)}\right)\right\} \nonumber\\
+%%   &\overset{}{=}\mathbb{P} \left\{(1+\theta) \frac{u_{(n)}}{N+1}+ \theta \frac{\sum^{j\neq n}_{j\in\{1,\dots,k\}} u_{(j)}}{N+I}>\theta \right\} \nonumber \\
+%%   &\overset{(a)}{=} \mathbb{P} \left\{ \mathsf{Z}'_{(n)}+\theta'\sum^{j\neq n}_{j\in\{1,\dots,k\}}\mathsf{Z}'_{(j)} +>\theta'\right\}.
+%% \end{align}
 
 \begin{align}
-  \mathcal{P}_{\text{IC}}^{(n,k)}(\theta) &\triangleq \mathbb{P}\{\text{SINR}_{n,k} > \theta \} \nonumber \\
-  &= \mathbb{P} \left\{ \mathsf{Z}'_{(n)}+\theta'\sum_{j\neq n}\mathsf{Z}'_{(j)} +>\theta'\right\}.
+  \label{eq:IC-SINRcond}
+   & \mathds{1}\{\text{SINR}_{n,k} > \theta \} = \mathds{1} \left\{ u_{(n)} >\theta\left(N+I-  \sum_{j=1}^ku_{(j)}\right)\right\} \nonumber\\
+  &\overset{}{=}\mathds{1} \left\{(1+\theta) \frac{u_{(n)}}{N+1}+ \theta \frac{\sum^{j\neq n}_{j\in\{1,\dots,k\}} u_{(j)}}{N+I}>\theta \right\} \nonumber \\
+  &\overset{(a)}{=} \mathds{1} \left\{ \mathsf{Z}'_{(n)}+\theta'\sum^{j\neq n}_{j\in\{1,\dots,k\}}\mathsf{Z}'_{(j)} +>\theta'\right\}.
 \end{align}
 
-For the interference-only channel, $N=0$, $\text{SIR}_{n,k} \triangleq \text{SINR}_{n,k}$
+
+In (a), we divide both sides by $(1+\theta)$, which leads to the final result recalling that $\theta' = \theta/(1+\theta)$. For the interference-only channel, $N=0$, $\text{SIR}_{n,k} \triangleq \text{SINR}_{n,k}$
 
 
 
 
 In independent interference cancellation (IIC), we cancel and decode all signals independently: if the first $k$ signals exceed the SINR threshold $\tau$, \textit{i.e.}, $\mathsf{Z}_{(j)} > \tau$ for all $j \in \{1,\dots,k\}$, we can subtract the $k$ strongest signals from the interference. An improvement for the IIC is the successive interference cancellation (SIC). First, we cancel and decode the strongest signal, then decode the second strongest signal by subtracting the strongest and second strongest signal from the interference, and so on. The SIC of the $k$ strongest signals requires a superposition of conditions
 \begin{equation}
-  \label{eq:SICcond}
+  \label{eq:SIC-SINRcond}
   \begin{cases}
-    &\mathsf{Z}'_{(1)} > \tau'\\
-    &\mathsf{Z}'_{(2)} + \tau' \mathsf{Z}'_{(1)}> \tau' \\
+    &\mathds{1} \left(\mathsf{Z}'_{(1)} > \tau'\right)\\
+    &\mathds{1}\left( \mathsf{Z}'_{(2)} + \tau' \mathsf{Z}'_{(1)}> \tau'\right) \\
     &\hspace{1cm}\dots \\
-    &\mathsf{Z}'_{(k)} + \tau' \sum_{j=1}^{k-1}\mathsf{Z}'_{(j)}> \tau'.
+    &\mathds{1} \left(\mathsf{Z}'_{(k)} + \tau' \sum_{j=1}^{k-1}\mathsf{Z}'_{(j)}> \tau'\right).
   \end{cases}
 \end{equation}
 
@@ -427,6 +440,7 @@ Let us consider that the strongest signal is decoded directly if its SINR exceed
 \end{equation}
 Similarly, SIC-SINR$_{k}$ coverage probability is defined by
 \begin{equation}
+  \label{eq:SIC-SINRprob}
   \mathcal{P}^{(k)}_{\text{SIC}}(\theta,\tau) \triangleq \mathbb{P}\begin{Bmatrix} \text{SINR}_{1,k}(\theta)>\theta & \text{if for all }n\in\{1,\dots,k\}  \\
     & \mathsf{Z}'_{(n)}+\tau'\sum\limits_{j=1}^{n-1}\mathsf{Z}'_{(j)}>\tau',\\
 \mathsf{Z}_{(1)}>\theta & \text{otherwise} \end{Bmatrix}.
@@ -439,22 +453,26 @@ Note that $\mathcal{P}^{(k)}_{\text{SIC}}(\theta,\tau)\geq \mathcal{P}^{(k)}_{\t
   \Delta^{(k)}_{\text{IIC}}(\theta,\tau) \triangleq \mathcal{P}^{(k)}_{\text{IIC}}(\theta,\tau)- \mathcal{P}^{(1)}(\theta),\nonumber\\
   \Delta^{(k)}_{\text{SIC}}(\theta,\tau) \triangleq \mathcal{P}^{(k)}_{\text{SIC}}(\theta,\tau)- \mathcal{P}^{(1)}(\theta),
 \end{align}
-where the $1$-coverage probability  $\mathcal{P}^{(1)}(\theta)$ is given in $\eqref{eq:kprobability}$. Using the joint probability density function of the STIR process \eqref{eq:jointprobability}, we have for the SIC-SINR
-\begin{align}
-  \label{eq:SICprob}
-  & \Delta^{(k)}_{\text{SIC}}(\theta,\tau) \nonumber\\
-  &=\sum^{i_{\text{max}}}_{i=0} \int_{0}^{\theta'} \dots \int_{0}^{\theta'}\frac{(-1)^i}{i!}\nonumber \\
- & \hspace{0.5cm}\times \prod_{n=1}^k\mathds{1}\left( z'_n+ \tau'\sum_{j=1}^{n-1} z'_j>\tau' \right)  \mathds{1}\left(z_1+  \theta'\sum_{j=2}^k z'_j>\theta' \right) \nonumber \\
-  &\hspace{0.5cm} \times \mathds{1}(z'_1>\dots>z'_k){\mu'}_k^{(k+i)}(z'_1,\dots,z'_k) d z'_1 \dots d z'_k,
-\end{align}
-with the upper summation limit bounded by $i_{\text{max}} < 1/\tau'-1=1/\tau.$ Note the upper bound $\theta'$ of the integral, through which we omit the probability mass of the even $\mathsf{Z}_{(1)}>\theta$. The SINR-IIC$_{(k)}$ case $\Delta^{(k)}_{\text{IIC}}(\theta,\tau)$ can be obtained by dropping the summation term inside the left-hand side indicator function in $\eqref{eq:SICprob}$ (which only essentially lower bounds the integration domain by $\tau'$).
-
-
+where the $1$-coverage probability  $\mathcal{P}^{(1)}(\theta)$ is given in $\eqref{eq:kprobability}$. Using the joint pdf of the STIR process \eqref{eq:jointprobability}, we have for the SIC-SINR
+\begin{prop}
+  \begin{align}
+    \label{eq:SICprob}
+    & \Delta^{(k)}_{\text{SIC}}(\theta,\tau) \nonumber\\
+    &=\sum^{i_{\text{max}}}_{i=0} \int_{0}^{\theta'} \dots \int_{0}^{\theta'}\frac{(-1)^i}{i!}\nonumber \\
+    & \hspace{0.5cm}\times \prod_{n=1}^k\mathds{1}\left( z'_n+ \tau'\sum_{j=1}^{n-1} z'_j>\tau' \right)  \mathds{1}\left(z_1+  \theta'\sum_{j=2}^k z'_j>\theta' \right) \nonumber \\
+    &\hspace{0.5cm} \times \mathds{1}(z'_1>\dots>z'_k){\mu'}_k^{(k+i)}(z'_1,\dots,z'_k) d z'_1 \dots d z'_k,
+  \end{align}
+  with the upper summation limit bounded by $i_{\text{max}} < 1/\tau'-1=1/\tau.$ 
+  \begin{proof}
+    The expression follows from the joint pdf of the order statistics \eqref{eq:jointprobability} and the conditions \eqref{eq:IC-SINRcond} and \eqref{eq:SIC-SINRcond}. Note that we relaxed the upper bound of  $i_{\text{max}}$ to $1/\tau'-1$ (c.f. the upper limit given for \eqref{eq:jointprobability}; $i_{\text{max}} < 1/z'_{(k)}-k‰$ in which the number of the summation terms would be approaching infinity near the $k$\textit{th} dimension lower limit of the integrand.) Luckily, the LHS conditioning restricts the domain of the non-zero terms of the integrand. Namely, we have that $z'_{(n)}+\tau'\sum_{j=1}^{n-1}z'_{(j)}>\tau'$. By simple algebra, $\sum_{j=1}^{n-1}z_{(j)}> 1-z_{(n)}/\tau'$. Recall the condition on the non-zero terms of the density of $M'^{(n+i)}$:  $\sum_{j=1}^n z'_{(j)}+i z'_{(n)} =\sum_{j=1}^{n-1}z'_{(j)} +z'_{(n)}+i z'_{(n)}  \leq 1$. The condition certainly \textit{does not} hold if $1-z_{(n)}/\tau'+ z'_{(n)}+i z'_{(n)}>1$. We arrive at the inequality $z'_{(n)} \left(-1/\tau' + 1 +i \right)>0$. Divide both sides by $z'_{(n)}$, and the general upper bound of $i$ follows.
+  \end{proof}
+\end{prop}
+The SINR-IIC$_{(k)}$ case $\Delta^{(k)}_{\text{IIC}}(\theta,\tau)$ can be obtained by dropping the summation term inside the LHS condition in $\eqref{eq:SICprob}$, essentially bounding the lower integration limit to $\tau'$.
 
 
 
 \subsubsection{Density function of the SIR of the strongest signal}
-Combining \eqref{eq:SIRjointprobability}, \eqref{eq:jointprobability}, and \eqref{eq:factorialmoment}, we get a closed form for the pdf of SIR$_{1,1}$ in the region $z\geq 1$:
+Combining \eqref{eq:densitySINR}, \eqref{eq:jointprobability}, and \eqref{eq:factorialmoment}, we get a closed form for the pdf of SIR$_{1,1}$ in the region $z\geq 1$:
 
 
 \begin{equation}
@@ -488,9 +506,9 @@ For $\rho_{\epsilon} \tilde{\kappa}=2$, the expected SIR of the strongest signal
   \text{var(IIC-SINR}_{2})&=\int_{0}^{\infty}y\mathcal{P}_{\text{IIC}}^{(2)}(y,\tau)dy \nonumber \\
   &\hspace{1cm}-\left(\int_{0}^{\infty}\mathcal{P}_{\text{IIC}}^{(2)}(y,\tau)dy\right)^2  \approx 2.6
 \end{align}
-And similarly, var(SIC-SINR$_{3}) = 2\int_{0}^{\infty}y\mathcal{P}_{\text{SIC}}^{(3)}(y,\tau)dy-$ $\left(\int_{0}^{\infty}\mathcal{P}_{\text{SIC}}^{(3)}(y,\tau)dy\right)^2 \approx 2.9$. Consequently, the standard deviation in both cases is below $2$, which is a remarkable improvement in the consistency of the link quality. Note that the increase of $\tilde{\kappa}$ does not necessarily mean making the SBS constellation more dense: with interference cancellation, a single SBS might be able to serve multiple UEs with satisfactory SIR. However, we only consider the UE with the strongest signal in the IIC and SIC.
+And similarly, var(SIC-SINR$_{3}) = 2\int_{0}^{\infty}y\mathcal{P}_{\text{SIC}}^{(3)}(y,\tau)dy-$ $\left(\int_{0}^{\infty}\mathcal{P}_{\text{SIC}}^{(3)}(y,\tau)dy\right)^2 \approx 2.9$. The standard deviation in both cases is below $2$, which is a remarkable improvement in the consistency of the link quality. Note that the increase of $\tilde{\kappa}$ does not necessarily mean making the SBS constellation more dense: with interference cancellation, a single SBS might be able to serve multiple UEs with satisfactory SIR. However, we only consider the UE with the strongest signal in the IIC and SIC.
 
-The integrations in the IIC and SIC were conducted by trapezoidal method by first evaluating the SINR-IIC and SINR-SIC the CCDF values (coverage probabilities) pointwise for sufficiently many $y$.
+The integrations in the IIC and SIC were conducted by trapezoidal method by first evaluating the SINR-IIC and SINR-SIC the ccdf values (\textit{i.e.} coverage probabilities) pointwise for sufficiently many $y$.
 
 
 
@@ -500,8 +518,6 @@ The integrations in the IIC and SIC were conducted by trapezoidal method by firs
 \section{Numerical results and the connection to the satellite communications}
 
 
-
-in the   $\rho_{\epsilon}\tilde{\kappa}=2.6$, $\mathbb{E}(\text{SIC-SINR}_{1,3}) = \int_{0}^1 \mathcal{P}^{(3)}_{\text{SIC}}(y,\tau) dy \approx 2.4$. For $\rho_{\epsilon}\tilde{\kappa}=3.8$, $\mathbb{E}(\text{SIC-SINR}_{1,3}) = \int_{0}^1 \mathcal{P}^{(3)}_{\text{SIC}}(y,\tau) dy \approx 2.4$.
 
 
 \subsection{Gaussian mixture model}
@@ -523,8 +539,6 @@ where $U \sim U(0,1)$ follows the uniform distribution.
 
 The mean of the lognormal RV is given by $ m_i=\mathbb{E}(H|T=i) = \exp \{\mu_i+\sigma_i^2/2\}$.
 
-TRAPEZOIDAL METHODS
-With $\epsilon = -7$ dB, we can achieve the same expected SIR $1.16+0.2=1.4$ at $\tilde{\kappa} b= 2$ with $k=1$.  The excpected SIR with $k=1$ is at $\tilde{\kappa} b = 2$, is in the infinite variance zone, which is bad. KATSO trapezoidals.nb. However, with $k=2$ interference cancellation we get the same expected SIR with $\tilde{\kappa}b =2.6$.In this case the vvariance is  only about $2.6$, but the average SIR remains the same. With SC the similar average SIR is achieved at $\tilde{\kappa}b = 3.4$ This case the variance is even smaller $2.3$ improvement in the variation in the user experience of the link.  Hence, cancelling the second strongest transmitter, we can make the network denser singificantly improving the user fairness, while maintaining the same performance.
 
 %% \begin{verbatim}
 %% \begin{table}
@@ -546,14 +560,6 @@ With $\epsilon = -7$ dB, we can achieve the same expected SIR $1.16+0.2=1.4$ at 
 %% \end{table}
 %% \end{verbatim}
 
-
-
-Recall that $ \kappa \rho_{\epsilon}=\log(2)\tilde{\kappa} \rho_{\epsilon} $ is the average number of UEs inside the $3$ dB footprints over the SBSs with nonzero shadowed transmitting powers, where $\rho_{\epsilon}$ is a decreasing function of $\epsilon$. We inversely scale the values $\tilde{\kappa}$ with $\rho_{\epsilon}$, resulting in invariant results regarding the theoretical values that depend on the product $\tilde{\kappa} \rho_{\epsilon}$ (recall \eqref{eq:lapsubord} and its follow-up). Scaling can be done without loss of generality because $\tilde{\kappa}/\rho_{\epsilon}$ determines the density of the UEs, altitude, or the antenna gain width directly through \eqref{eq:kappa}, depending on what parameters we want to fix---nevertheless, the expected value and the variance do not change. Table \ref{table:tab1} shows the expected $\mathcal{P}^{(1)}(\cdot), \mathcal{P}^{(2)}_{\text{IC}}(\cdot) $ and $\mathcal{P}^{(2)}_{\text{SC}}(\cdot)$. Note that the expected values are equal. For $\mathcal{P}^{(1)}(\cdot)$, the variance in the SIR is $\infty$, implying that the user experience varies uncontrollably. The table demonstrates how to increase the number of transmitters and reduce the variance significantly by canceling the second-strongest signal through the IC while maintaining equal average SIR. The SC further reduces the variance and allows a larger $\tilde{\kappa}$. Furthermore, through SC, we can serve two transmitters by a single SBS that allows a dense network of UEs, in which each does not have to attempt to connect to a unique serving SBS. 
-
-
-
-
-We used the successful IC and SC threshold $\theta = -7$ dB, which produces the best results for $k=2$. Decreasing $\theta$ leads to better performance for $k>2$. However, for small $\theta$, numerical integration gets tedious, and one needs to focus on numerical accuracy alongside time optimization. However, for example, the ICSC threshold  $\theta = -10$ does not produce significantly improved results. The expected values $\mathbb{E}(\cdot)$ and the variances Var$(\cdot)$  were calculated by the trapezoidal method by integrating each $\mathcal{P}^{(1)}(y)$, $\mathcal{P}^{(2)}_{\text{IC}}(y)$, and $\mathcal{P}^{(2)}_{\text{SC}}(y)$ over the domain $y \in [0.2, 1000]$ with a partition of size $0.1$. Furthermore, $0.2 \times 1$ was added to the final result because the coverage probabilities for $\tau \leq 0.2$ were essentially $1$ in every case. 
 
 \appendices
 

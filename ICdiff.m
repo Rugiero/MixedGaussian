@@ -1,6 +1,6 @@
 S = importdata("ICtheorydiff.mat");
-theoryres1 = round(S.theoryres1,3);
-theoryres2 = round(S.theoryres2,3);
+theoryres1 = round(S.theoryres1,2);
+theoryres2 = round(S.theoryres2,2);
 
 S = importdata("simdiff90.mat");
 simresIC90 = round(S.simresIC,3);
@@ -34,7 +34,7 @@ axes1 = axes('Parent',figure1);
 hold(axes1,'on');
 
 
-tau = -7:0.4:10;
+tau = -7:0.99:10;
 simtau=-7:1:10;
 %simkappa = [1 2 6 10];
 
