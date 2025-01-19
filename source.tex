@@ -244,7 +244,7 @@ With exponential shadowing ${H}_{\text{exp}}$, for Re$(s)>1$,
   &=\exp\left\{-\tilde{\kappa}\rho_{\epsilon}\int_0^{\infty}(1-e^{-sr}) e^{-r} /r dr \right\} \nonumber \\
   &=(1+s)^{-\tilde{\kappa}\rho_{\epsilon}},
 \end{align}
-which is the Laplace transform of the gamma distribution with the shape parameter $\tilde{\kappa}\rho_{\epsilon}$. This characterization of $I$ is a key insight in the analysis of the joint SIR distribution: $I$ can be interpreted as a gamma subordinator (gamma process) at time $\tau=\tilde{\kappa} \rho_{\epsilon}$, and the density of the factorial moment measure of the SIR of the first $n$ UEs follows.
+which is the Laplace transform of the gamma distribution with the shape parameter $\tilde{\kappa}\rho_{\epsilon}$. 
 
 
 \subsection{SINR and STINR processes and their factorial moment measures}
@@ -298,7 +298,7 @@ The factorial moment measure of the SINR process is defined on the sets $(t_1,\i
 We denote $\mathsf{Z}'_{(1)}>\mathsf{Z}'_{(2)} >\mathsf{Z}'_{(3)} \dots$ the order statistics of the STINR process $\Psi'$, such that $\mathsf{Z}'_{(1)}$ is the larges value in $\Psi'$.
 
 
-The joint pdf of the vector of $k$ strongest values of the STIR process $(\mathsf{Z}'_{(1)}, \dots, \mathsf{Z}'_{(n)})$ is given as a series expansion involving the partial densities
+The joint pdf $k$ strongest values of the STIR process $(\mathsf{Z}'_{(1)}, \dots, \mathsf{Z}'_{(n)})$ is given as a series expansion involving the partial densities
 \begin{equation}
   \label{eq:jointprobability}
   f'_{(k)}(z'_1,\dots,z'_k)= \sum^{i_{\text{max}}}_{i=0}\frac{(-1)^i}{i!}{\mu'}_k^{(k+i)}(z'_1,\dots,z'_k),
@@ -453,7 +453,7 @@ We have that $\mathcal{P}^{(k)}_{\text{SIC}}(\theta,\tau)\geq \mathcal{P}^{(k)}_
   \Delta^{(k)}_{\text{IIC}}(\theta,\tau) \triangleq \mathcal{P}^{(k)}_{\text{IIC}}(\theta,\tau)- \mathcal{P}^{(1)}(\theta),\nonumber\\
   \Delta^{(k)}_{\text{SIC}}(\theta,\tau) \triangleq \mathcal{P}^{(k)}_{\text{SIC}}(\theta,\tau)- \mathcal{P}^{(1)}(\theta),
 \end{align}
-where the $1$-coverage probability  $\mathcal{P}^{(1)}(\theta)$ is given in $\eqref{eq:kprobability}$. Using the joint pdf of the STIR process \eqref{eq:jointprobability}, we have for the SIC-SINR
+where the $1$-coverage probability  $\mathcal{P}^{(1)}(\theta)$ is given in $\eqref{eq:kprobability}$. Using the joint pdf of the STIR order statistics process \eqref{eq:jointprobability}, we have for the SIC-SINR
 \begin{prop}
   \begin{align}
     \label{eq:SICprob}
@@ -464,7 +464,7 @@ where the $1$-coverage probability  $\mathcal{P}^{(1)}(\theta)$ is given in $\eq
   \end{align}
   with the upper summation limit bounded by $i_{\text{max}} < 1/\tau'-1=1/\tau.$ 
   \begin{proof}
-    The expression follows from the joint pdf of the order statistics \eqref{eq:jointprobability} and the conditions \eqref{eq:IC-SINRcond} and \eqref{eq:SIC-SINRcond}. We relaxed the upper bound of  $i_{\text{max}}$ to $1/\tau'-1$ (c.f. the upper limit given for \eqref{eq:jointprobability}; $i_{\text{max}} < 1/z'_{(k)}-k‰$ in which the number of the summation terms would be approaching infinity near the $k$\textit{th} dimension lower limit of the integrand.) Luckily, the LHS conditioning of the integrand limits the non-zero terms of the partial density series expansion. Namely, we have that $z'_{(n)}+\tau'\sum_{j=1}^{n-1}z'_{(j)}>\tau'$. By simple algebra, $\sum_{j=1}^{n-1}z_{(j)}> 1-z_{(n)}/\tau'$. Recall the condition on the non-zero terms of the density of $M'^{(n+i)}$:  $\sum_{j=1}^n z'_{(j)}+i z'_{(n)} =\sum_{j=1}^{n-1}z'_{(j)} +z'_{(n)}+i z'_{(n)}  \leq 1$. The condition certainly \textit{does not} hold if $1-z_{(n)}/\tau'+ z'_{(n)}+i z'_{(n)}>1$. We arrive at the inequality $z'_{(n)} \left(-1/\tau' + 1 +i \right)>0$. Divide both sides by $z'_{(n)}$, and the general upper bound of $i$ follows.
+    The expression follows from the joint pdf of the order statistics \eqref{eq:jointprobability} and the conditions \eqref{eq:IC-SINRcond} and \eqref{eq:SIC-SINRcond}. We relaxed the upper bound of  $i_{\text{max}}$ to $1/\tau'-1$ (c.f. the upper limit given for \eqref{eq:jointprobability}; $i_{\text{max}} < 1/z'_{k}-k‰$ in which the number of the summation terms would be approaching infinity near the $k$\textit{th} dimension lower limit of the integrand.) Luckily, the LHS conditioning of the integrand limits the non-zero terms of the partial density series expansion. Namely, we have that $z'_{n}+\tau'\sum_{j=1}^{n-1}z'_{j}>\tau'$. By simple algebra, $\sum_{j=1}^{n-1}z_{j}> 1-z_{n}/\tau'$. Recall the condition on the non-zero terms of the density of $M'^{(n+i)}$:  $\sum_{j=1}^n z'_{j}+i z'_{n} =\sum_{j=1}^{n-1}z'_{j} +z'_{n}+i z'_{n}  \leq 1$. The condition certainly \textit{does not} hold if $1-z_{n}/\tau'+ z'_{n}+i z'_{n}>1$. We arrive at the inequality $z'_{n} \left(-1/\tau' + 1 +i \right)>0$. Divide both sides by $z'_{n}$, and the general upper bound of $i$ follows.
   \end{proof}
 \end{prop}
 The SINR-IIC$_{(k)}$ case $\Delta^{(k)}_{\text{IIC}}(\theta,\tau)$ can be obtained by dropping the summation term inside the LHS condition in $\eqref{eq:SICprob}$, essentially bounding the lower integration limit to $\tau'$.
@@ -501,12 +501,8 @@ For $\rho_{\epsilon} \tilde{\kappa}=2$, the expected SIR of the strongest signal
 \end{equation}
   Recall, tahat the variance var$(\text{SIR}_{1,1})=\infty$, which might not be desirable in terms of user fairness.
 
-  By increasing $\rho_{\epsilon} \tilde{\kappa}$ (modifying $\lambda,h,\epsilon$ or $\varphi_{\text{RX}}$), we can reduce the variance in the SIR while maintaining the performance. For example, $ \mathbb{E}$(IIC-SINR$_{2}) \approx \mathbb{E}$(SIC-SINR$_{3}) \approx 1.4$ for $\rho_{\epsilon} \tilde{\kappa}\in \{2.6,3.8\}$, respectively. In this case, IIC-SINR variance is calculated by
-\begin{align}
-  \text{var(IIC-SINR}_{2})&=\int_{0}^{\infty}y\mathcal{P}_{\text{IIC}}^{(2)}(y,\tau)dy \nonumber \\
-  &\hspace{1cm}-\left(\int_{0}^{\infty}\mathcal{P}_{\text{IIC}}^{(2)}(y,\tau)dy\right)^2  \approx 2.6
-\end{align}
-And similarly, var(SIC-SINR$_{3}) = 2\int_{0}^{\infty}y\mathcal{P}_{\text{SIC}}^{(3)}(y,\tau)dy-$ $\left(\int_{0}^{\infty}\mathcal{P}_{\text{SIC}}^{(3)}(y,\tau)dy\right)^2 \approx 2.9$. The standard deviation in both cases is below $2$, which is a remarkable improvement in the consistency of the link quality. Note that the increase of $\tilde{\kappa}$ does not necessarily mean making the SBS constellation more dense: with interference cancellation, a single SBS might be able to serve multiple UEs with satisfactory SIR. However, we only consider the UE with the strongest signal in the IIC and SIC.
+  By increasing $\rho_{\epsilon} \tilde{\kappa}$ (modifying $\lambda,h,\epsilon$ or $\varphi_{\text{RX}}$), we can reduce the variance in the SIR while maintaining the performance. For example, $ \mathbb{E}$(IIC-SINR$_{2}) \approx \mathbb{E}(\text{SIC-SINR}_{3}) \approx 1.4$ for $\rho_{\epsilon} \tilde{\kappa}\in \{2.6,3.8\}$, respectively. The IIC-SINR variance is calculated by
+  $var(\text{IIC-SINR}_{2})=\int_{0}^{\infty}y\mathcal{P}_{\text{IIC}}^{(2)}(y,\tau)dy -\left(\int_{0}^{\infty}\mathcal{P}_{\text{IIC}}^{(2)}(y,\tau)dy\right)^2  \approx 2.6$ Similarly, var(SIC-SINR$_{3}) = 2\int_{0}^{\infty}y\mathcal{P}_{\text{SIC}}^{(3)}(y,\tau)dy-$ $\left(\int_{0}^{\infty}\mathcal{P}_{\text{SIC}}^{(3)}(y,\tau)dy\right)^2 \approx 2.9$. The standard deviation in both cases is below $2$, which is a remarkable improvement in the consistency of the link quality. Note that the increase of $\tilde{\kappa}$ does not necessarily mean making the SBS constellation more dense: with interference cancellation, a single SBS might be able to serve multiple UEs with satisfactory SIR. However, we only consider the UE with the strongest signal in the IIC and SIC.
 
 The integrations in the IIC and SIC were conducted by trapezoidal method by first evaluating the SINR-IIC and SINR-SIC the ccdf values (\textit{i.e.} coverage probabilities) pointwise for sufficiently many $y$.
 
