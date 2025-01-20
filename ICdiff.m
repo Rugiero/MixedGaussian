@@ -34,7 +34,7 @@ axes1 = axes('Parent',figure1);
 hold(axes1,'on');
 
 
-tau = -7:0.99:10;
+tau = -7:0.5:10;
 simtau=-7:1:10;
 %simkappa = [1 2 6 10];
 
