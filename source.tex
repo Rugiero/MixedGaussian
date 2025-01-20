@@ -172,7 +172,8 @@ Since the variables $\{H_x\}_{x \in \Phi}$ are i.i.d., we can denote the shadowi
       &= -\tilde{\kappa} \int_t^{\infty} \log(t/h)f_H(h) dh\\
       &\overset{(a)}{=} -\tilde{\kappa} \sij{t}{\infty} \log(t/h)F_H(h) - \tilde{\kappa} \int_t^{\infty}\frac{F_H(h)}{h} dh.
     \end{align*}
-    In (a), we use the integration by parts. The result follows by derivating w.r.t. $t$ and taking the minus sign---as long as $\int_t^{\infty} \log(t/h)f_H(h) dh$ converges for all $t>0$.
+    In (a), we use the integration by parts. The result follows by differentiating w.r.t. $t$ and taking the negative sign. Note that a necessary condition for this operation is that $\int_t^{\infty} \log(t/h)f_H(h) \, dh$ converges for all $t > 0$.
+
   \end{proof}
 \end{prop}
 
@@ -182,7 +183,7 @@ We will come back to the interpretation of the variable $\tilde{\kappa}$ in Sect
 We define the total interference, or the total received power, by
 \begin{equation}
   \label{eq:totpow}
-  I \triangleq = \sum\limits_{x \in \Phi} H_x G(D_{h,\epsilon}\|x\|)=\sum\limits_{u \in \mathcal{G}} u.
+  I \triangleq \sum\limits_{x \in \Phi} H_x G(D_{h,\epsilon}\|x\|)=\sum\limits_{u \in \mathcal{G}} u.
 \end{equation}
 The mean and the variance of $I$ are given by
 \begin{align}
@@ -195,7 +196,7 @@ The mean and the variance of $I$ are given by
 \end{align}
 respectively.
 
-The spatial path loss is of no interest in the definition of $I$ because we assume that the spatial path loss is a constant due to the narrow-beam antenna pattern decaying fast to $0$, $G(\cdot)$, which ensures that the relevant UEs are located near one another. Consequently, the spatial path loss can be considered equal for all transmitters. Therefore, if the actual value is desired, $I$ can be scaled by the spatial path loss constant, which we will introduce in Section \ref{sec:numericalresultsandconnectiontoLEO}. Furthermore, given that the spatial path loss is identical for all transmitters, it does not influence the SIR. For the SINR, the noise variable can be scaled appropriately to account for the spatial path loss. Consequently, without loss of generality, we omit the spatial path loss between the SBS and UEs in the analysis.
+The spatial path loss is of no interest in the definition of $I$ because we assume that the spatial path loss is a constant due to the narrow-beam antenna pattern decaying fast to $0$, $G(\cdot)$, which ensures that the relevant UEs are located near one another. Consequently, the spatial path loss can be considered equal for all transmitters. Therefore, if the actual value is desired, $I$ can be scaled by the spatial path loss constant, which we will introduce in Section \ref{sec:numericalresultsandconnectiontoLEO}. Furthermore, given that the spatial path loss is identical for all transmitters, it does not influence the SIR. For the SINR, the noise variable can be scaled appropriately to account for the spatial path loss. Consequently, without loss of generality, we omit the spatial path loss between the SBS and UEs in $I$.
 
 
 
