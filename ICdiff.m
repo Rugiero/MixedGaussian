@@ -1,6 +1,6 @@
 S = importdata("ICtheorydiff.mat");
-theoryres1 = round(S.theoryres1,2);
-theoryres2 = round(S.theoryres2,2);
+theoryres1 = round(S.theoryres1,3);
+theoryres2 = round(S.theoryres2,3);
 
 S = importdata("simdiff90.mat");
 simresIC90 = round(S.simresIC,3);

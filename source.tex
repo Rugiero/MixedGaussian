@@ -530,29 +530,33 @@ The integrations in the IIC and SIC were conducted by trapezoidal method by firs
 
 
 \subsection{Gaussian mixture model}
-Let us consider a two-tier $\mathcal{T} = \{\text{LoS},\text{NLoS}\}$ Gaussian mixture fading model with the mean and standard deviations $\mu_{\text{LoS}}= 0$ dB, $\sigma_{\text{LoS}} = 4$ dB, $\mu_{\text{NLoS}}= -26$ dB, and $\sigma_{\text{NLoS}} = 6$ dB for the line-of-sight and the non-line-of-sight tiers, respectively. Consequently, the power fading r.v. of a transmitter $x \in \Phi$ is given by the mixed distribution xxx :::muuta seuraava::
+
+Consider a two-tier Gaussian mixture fading model, denoted as $\mathcal{T} = \{\text{LoS}, \text{NLoS}\}$, with the mean and standard deviations of $\mu_{\text{LoS}} = 0$ dB, $\sigma_{\text{LoS}} = 4$ dB, $\mu_{\text{NLoS}} = -26$ dB, and $\sigma_{\text{NLoS}} = 6$ dB for the line-of-sight (LoS) and non-line-of-sight (NLoS) tiers, respectively. The power fading r.v. of a transmitter $x \in \Phi$ follows a mixed log-normal distribution:
+
+
+\begin{align}
+  \label{eq:tier2lognormal}
+  &H_{\mathcal{M}\mathcal{L}\mathcal{N}}/\upsilon_{\epsilon} \sim \nonumber\\ & p_{\text{LoS}}\mathcal{L}\mathcal{N}(\rho\mu_{\text{LoS}},(\rho \sigma_{\text{LoS}})^2) +p_{\text{NLoS}}\mathcal{L}\mathcal{N}(\rho\mu_{\text{NLoS}},(\rho \sigma_{\text{NLoS}})^2),
+\end{align}
+with $p_{\text{NLoS}}=p_{\text{LoS}}-1$.
+Considering the natural base in the log-normal distribution, the constant $\rho \triangleq \log(10)/10$ normalizes the parameters $\mu_{\text{LoS}}, \sigma_{\text{LoS}}, \mu_{\text{NLoS}},$ and $\sigma_{\text{NLoS}}$ so that $10 \log_{10}(H_{\mathcal{M}\mathcal{L} \mathcal{N}})$ evaluates to a mixed normal distribution $p_{\text{LoS}} \mathcal{N}(\upsilon_{\epsilon}\mu_{\text{LoS}}, (\upsilon_{\epsilon}\sigma_{\text{LoS}})^2) + p_{\text{NLoS}} \mathcal{N}(\upsilon_{\epsilon} \mu_{\text{NLoS}}, (\upsilon_{\epsilon}\sigma_{\text{NLoS}})^2)$. The normalization constant $\upsilon_{\epsilon}$ is chosen to match the mean of the defective exponential shadowing distribution, ensuring that $\mathbb{E}(H_{\mathcal{M}\mathcal{L}\mathcal{N}}) = \mathbb{E}(H_{\text{Exp}}) = \upsilon_{\epsilon}$. This normalization can be applied without loss of generality in an interference-limited channel. In an interference-plus-noise-limited channel, the scaling is accounted for by adjusting the noise constant by a factor of $1/\upsilon_{\epsilon}$.
+
+
+By equating the first two moment of $H_{\text{Exp}}$ (l.h.s.) $H_{\mathcal{M} \mathcal{L}\mathcal{N}}$ (r.h.s.),
 \begin{equation}
-  H_x/\upsilon_{\epsilon} \sim
+  \label{eq:matchingmoments}
   \begin{cases}
-    \text{Lognormal}(\rho\mu_{\text{LoS}} ,\rho^2 \sigma_{\text{LoS}}^2), \text{ if } U<p_{\text{LoS}} \\
-    \text{Lognormal}(\rho \mu_{\text{NLoS}},\rho^2 \sigma_{\text{NLoS}}^2)\text{ if } U \geq p_{\text{NLoS}},              \label{eq:tier2lognormal}
+    &\nu_{\epsilon} = \upsilon_{\epsilon} \left(p_{\text{LoS}} e^{\mu_{\text{LoS}} + \sigma_{\text{LoS}}^2/2} + p_{\text{NLoS}} e^{\mu_{\text{NLoS}} + \sigma_{\text{NLoS}}^2/2}\right)\\
+    &\nu_{\epsilon}^2= \upsilon_{\epsilon}^2 \left( p_{\text{LoS}} e^{2\mu_{\text{LoS}} + 2\sigma_{\text{LoS}}^2} + p_{\text{NLoS}} e^{2\mu_{\text{NLoS}} + 2\sigma_{\text{NLoS}}^2} \right), 
   \end{cases}
 \end{equation}
-where $U \sim U(0,1)$ follows the uniform distribution.
+we can solve for the parameters
+\begin{align}
+  \label{eq:epsilonandupsilon}
+    &\upsilon_{\epsilon} = \frac{2\left(p_{\text{NLoS}}e^{\mu_{\text{NLoS}}+\sigma^2_{\text{NLoS}}/2}-p_{\text{LoS}}e^{\mu_{\text{LoS}}+\sigma^2_{\text{LoS}}/2}\right)}{p_{\text{NLoS}}e^{2(\mu_{\text{NLoS}}+\sigma_{\text{NLoS}}^2)}-p_{\text{LoS}}e^{2(\mu_{\text{LoS}}+\sigma_{\text{LoS}}^2)}},\\
+    &\nu_{\epsilon}= \frac{ 2\left(p_{\text{NLoS}}e^{\mu_{\text{NLoS}}+\sigma^2_{\text{NLoS}}/2}- p_{\text{LoS}}e^{\mu_{\text{LoS}}+\sigma^2_{\text{LoS}}/2} \right)^2}{p_{\text{LoS}}e^{2(\mu_{\text{LoS}}+\sigma_{\text{LoS}}^2)}-p_{\text{NLoS}}e^{2(\mu_{\text{NLoS}}+\sigma_{\text{NLoS}}^2)}}.
+\end{align}
 
-
-
-The constant $\rho \triangleq \log(10)/10$ normalizes the parameters $\sigma$ and $\mu$ such that $10 \log_{10}(H)$ is expressed as $\mu + \sigma Z$, where $Z$ is a standard normal variable. The constant $\upsilon_{\epsilon}$ scales the mean of the lognormal distribution, ensuring that $\mathbb{E}(\upsilon_{\epsilon} H) = \nu_{\epsilon}$ matches the defective exponential shadowing described in \eqref{eq:defexp}. This normalization can be applied without loss of generality in an interference-limited channel. In an interference-plus-noise-limited channel, the scaling is reflected by scaling the noise constant by $1/\upsilon_{\epsilon}$.
-
-
-
-
-
-
-
-
-
-The mean of the lognormal r.v. is given by $ m_i=\mathbb{E}(H|T=i) = \exp \{\mu_i+\sigma_i^2/2\}$.
 
 
 %% \begin{verbatim}
