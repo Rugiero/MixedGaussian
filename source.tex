@@ -281,13 +281,12 @@ The factorial moment measure of the SINR process is defined on the sets $(t_1,\i
           &M'^{(n)}(t'_1,\dots,t'_n) \triangleq M'^{(n)}((t'_1,\infty],\dots,(t'_n,\infty]) \nonumber \\
               &\triangleq \mathbb{E} \left( \sum^{\text{distinct}}_{\left(\mathsf{Z}'_1, \dots, \mathsf{Z}'_n \right) \in (\Psi')^{\times n}} \prod_{i=1}^n \mathds{1}(\mathsf{Z}'_i >t'_i)\right).
     \end{align}
- The (partial) density of the factorial moment measure of the STINR process is given by the successive partial differentiation of $M'^{(n)}$:
+ The density of the factorial moment measure of the STINR process is given by the successive partial differentiation of $M'^{(n)}$:
     \begin{align}
       \label{eq:differatemomentmeasure}
-     &{\mu'}_n^{(n+i)}(z'_1,\dots,z'_n)= (-1)^n \frac{\partial^n M'^{(n+i)}(t'_1\dots t_n', z'_n, \dots, z'_n)}{\partial t'_1 \dots \partial t'_n} \nonumber\\
-      &\hspace{4cm}|(t'_1=z_1'\dots t'_k=z'_n),
+     &{\mu'}_n^{(n)}(z'_1,\dots,z'_n) \nonumber \\&= (-1)^n \frac{\partial^n M'^{(n)}(t'_1\dots t_n') }{\partial t'_1 \dots \partial t'_n} |(t'_1=z_1'\dots t'_k=z'_n),
     \end{align}
-    for $\sum_{i=1}^k z'_i+iz'_k \leq 1$ and $0$ otherwise. If $i > 0$, \eqref{eq:differatemomentmeasure} is called the partial density of $M'^{(n)}$. 
+    for $\sum_{i=1}^k z'_i\leq 1$ and $0$ otherwise. 
 
     The density of the \textit{n}th factorial moment measure of the SINR process can be extracted from $\mu'^{(n)}$:
     \begin{align}
@@ -323,7 +322,7 @@ We still need to explicitly determine the expressions for the partial density ${
 
 
 \subsection{Partial density of the factorial moment measure in the interference-limited channel}
-In this section, we characterize $\mu_n'^{(n+i)}$ and the order statistics of the STIR process through the Poisson-Dirichlet distribution (PD)  $\text{PD}(0,\upsilon_{\epsilon}$). PDs have their unique characteristics that we don't specify here. A necessary condition is that the descending sequence  $(y_{(1)},y_{(2)},\dots)$ has to admit the condition $\sum_{i=1}^{\infty}y_{(i)}=1$ to have a PD. Clearly, the condition holds for the STINR process \eqref{eq:STINR} for $N=0$, \textit{i.e.}, the STIR process.
+In this section, we characterize $\mu_n'^{(n+i)}$ and the order statistics of the STIR process through the Poisson-Dirichlet distribution (PD)  $\text{PD}(0,\upsilon_{\epsilon}$). PDs have their unique characteristics that we don't specify here. A necessary condition is that the descending sequence  $(y_{(1)},y_{(2)},\dots)$ has to admit the condition $\sum_{i=1}^{\infty}y_{(i)}=1$ to have a PD. Clearly, the condition holds for the STIR ($N=0$) process \eqref{eq:STINR}.
 
 Let $(X_{t}, t \geq 0)$ be a \textit{gamma subordinator}, or the \textit{gamma process}. It is a pure-jump increasing Lévy process with the Lévy measure $\lambda(r) = e^{- r}/r$. Without a drift component, the Laplace transform of the gamma subordinator at time $t$ is given by
 \begin{align}
@@ -355,7 +354,7 @@ To study the joint distribution of order statistics of the STINR process, we def
   &{\mu'}_k^{(k+i)}(z'_1,\dots,z'_k) \nonumber \\
   &= \int_{z'_k}^1 \dots \int_{z'_k}^1 {\mu'}^{(k+i)}(z'_1,\dots,z'_k,\zeta'_1,\dots,\zeta'_i) d\zeta'_1 \dots \zeta'_i.
 \end{align}
-Recall the condition for the density being non-zero for $\sum_{i=1}^kz'_k+iz_k \leq 1 $.
+The density being non-zero for $\sum_{i=1}^kz'_k+iz_k \leq 1 $. We call $\mu_{k}'^{(n)}$, $n>k$, the partial density of $M'^{(k)}$.
 
 
 
@@ -383,14 +382,15 @@ In the interference-plus-noise-limited channel, we derive the partial densities 
 
 \end{prop}
  
-The partial densities are given by
+The partial densities are given by 
     \begin{align}
       \label{eq:differatemomentmeasure2}
      &{\mu'}_n^{(n+i)}(z'_1,\dots,z'_n)= (-1)^n \frac{\partial^n M'^{(n+i)}(t'_1\dots t_n', z'_n, \dots, z'_n)}{\partial t'_1 \dots \partial t'_n} \nonumber\\
-      &\hspace{4cm}|(t'_1=z_1'\dots t'_n=z'_n)
+      &\hspace{4cm}|(t'_1=z_1'\dots t'_n=z'_n).
     \end{align}
-The differentiation of the integrand in \eqref{eq:nthmomentmeasureSTINR} is a tedious task, although straightforward. It can be done with symbolic tools such as Mathematica. We omit explicit representations of the differentiated integrands of $M'^{(n+i)}$.
+    for $\sum_{i=1}^kz'_k+iz_k \leq 1 $ and $0$ otherwise.
 
+    Although the differentiation of the integrand in \eqref{eq:nthmomentmeasureSTINR} is straightforward, it is a tedious task. This differentiation can be facilitated using symbolic tools such as Mathematica. In this work, we omit the explicit representations of the differentiated integrands of $M'^{(n+i)}$.
 
 
 \subsection{SIR and SINR under interference cancellation}
@@ -469,7 +469,7 @@ where the $1$-coverage probability  $\mathcal{P}^{(1)}(\theta)$ is given in $\eq
   \end{align}
   with the upper summation limit bounded by $i_{\text{max}} < 1/\tau'-1=1/\tau.$ 
   \begin{proof}
-    The expression follows from the joint pdf of the order statistics \eqref{eq:jointprobability} by imposing the conditions \eqref{eq:IC-SINRcond} and \eqref{eq:SIC-SINRcond}. We relaxed the upper bound of  $i_{\text{max}}$ to $1/\tau'-1$ (c.f. the upper limit given in \eqref{eq:jointprobability}; $i_{\text{max}} < 1/z'_{k}-k‰$, in which $i_{\text{max}} \rightarrow \infty$ as $z'_k \rightarrow 0$). Luckily, the LHS conditioning of the integrand limits the non-zero terms of the partial density series expansion. Namely, we have that $z'_{n}+\tau'\sum_{j=1}^{n-1}z'_{j}>\tau'$. By simple algebra, $\sum_{j=1}^{n-1}z_{j}> 1-z_{n}/\tau'$. Recall the condition on the non-zero terms of the density of $M'^{(n+i)}$:  $\sum_{j=1}^n z'_{j}+i z'_{n} =\sum_{j=1}^{n-1}z'_{j} +z'_{n}+i z'_{n}  \leq 1$. The condition certainly \textit{does not} hold if $1-z_{n}/\tau'+ z'_{n}+i z'_{n}>1$. We arrive at the inequality $z'_{n} \left(-1/\tau' + 1 +i \right)>0$. Divide both sides by $z'_{n}$, and the general upper bound of $i$ follows straightforwardly.
+    The expression follows from the joint pdf of the order statistics \eqref{eq:jointprobability} by imposing the conditions \eqref{eq:IC-SINRcond} and \eqref{eq:SIC-SINRcond}. We relaxed the upper bound of  $i_{\text{max}}$ to $1/\tau'-1$ (c.f. the upper limit given in \eqref{eq:jointprobability}; $i_{\text{max}} < 1/z'_{k}-k‰$, in which $i_{\text{max}} \rightarrow \infty$ as $z'_k \rightarrow 0$). Luckily, the l.h.s. conditioning of the integrand limits the non-zero terms of the partial density series expansion. Namely, we have that $z'_{n}+\tau'\sum_{j=1}^{n-1}z'_{j}>\tau'$. By simple algebra, $\sum_{j=1}^{n-1}z_{j}> 1-z_{n}/\tau'$. Recall the condition on the non-zero terms of the density of $M'^{(n+i)}$:  $\sum_{j=1}^n z'_{j}+i z'_{n} =\sum_{j=1}^{n-1}z'_{j} +z'_{n}+i z'_{n}  \leq 1$. The condition certainly \textit{does not} hold if $1-z_{n}/\tau'+ z'_{n}+i z'_{n}>1$. We arrive at the inequality $z'_{n} \left(-1/\tau' + 1 +i \right)>0$. Divide both sides by $z'_{n}$, and the general upper bound of $i$ follows.
 
     
 
