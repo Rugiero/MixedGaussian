@@ -131,6 +131,7 @@ By deriving closed-form expressions and performing extensive simulations, our st
 
 
 \section{Quantities of interest}
+\label{sec:analysissec}
 We consider the ``typical SBS'' with a narrow Gaussian beam. The UEs are located on the plane according to the PPP. The SBS antenna boresigh is directed at $\textit{o} \in (0,0) \in \R^2$. The planar model approximates the spherical model, where the UEs are located on a spherical Earth's surface. We will come back to the spherical model in the numerical results section.
 
 
@@ -204,17 +205,17 @@ The spatial path loss is of no interest in the definition of $I$ because we assu
 
 
 \subsection{Shadowing}
-Unfortunately, unlike with a singular path loss, when the density of the projection process depends only on a single moment of $H$ regardless of the distribution, $\lambda_{\mathcal{G}}(t)$ has a pointwise dependence on $F_H(t)$. However, for analytical tractability, we can use the defective exponential power fading distribution
+Unfortunately, unlike with a singular path loss, when the density of the projection process depends only on a single moment of $H$ regardless of its distribution, $\lambda_{\mathcal{G}}(t)$ has a pointwise dependence on $F_H(t)$. For analytical tractability, we use the defective exponential power fading distribution
 \begin{equation}
   \label{eq:defexp}
-  F_{{H}_{\text{exp}}}(t)=\nu_{\epsilon} e^{- t},
+  F_{{H}_{\text{Exp}}}(t)=\upsilon_{\epsilon} e^{- t},
 \end{equation}
-where $0<\nu_{\epsilon} \leq 1$ reflects the probability that the shadowed signal power is above $0$. The atomic probability measure $1-\nu_{\epsilon}$ at $0$ reflects the fading occurrences when the signal is blocked entirely. By matching the first two moments (this is equivalent to matching the mean \eqref{eq:totmean} and the variance \eqref{eq:totvar} of the total received power), the defective exponential distribution effectively approximates the log-normal shadowing if the fading has a high variance having a significant probability that the signal is shadowed almost entirely. As implied in the lower index, the constant $\nu_{\epsilon}$ depends on the elevation angle because the shadowing distribution depends on the elevation angle.
+ which is essentially an exponential mixture distribution, where $0 \leq 1-\upsilon_{\epsilon} <1$ reflects the probability that the shadowed signal is blocked entirely and maps to $0$. As implied in the lower index, the constant $\upsilon_{\epsilon}$ depends on the elevation angle of the SBS. We explain the correspondence to the log-normal fading in Section \ref{sec:numericalresultsandconnectiontoLEO}.
 
          \begin{figure}[h]
            \centering
            \includegraphics[width=\linewidth]{plotdensities.pdf}
-           \caption{The density function of the GP for a two-tier mixed log-normal shadowing distribution with the corresponding exponential shadowing acquired by matching the first two moments. The parameters $\nu_{\epsilon} \in \{0.85,0.53\}$ for the elevation angles $\epsilon \in \{90^{\circ},40^{\circ}\}$, respectively. The no-shadowing $H\equiv 1$ is also plotted for comparison.} 
+           \caption{The density function of the GP for a two-tier mixed log-normal shadowing distribution with the corresponding exponential shadowing acquired by matching the first two moments. The parameters $\upsilon_{\epsilon} \in \{0.85,0.53\}$ for the elevation angles $\epsilon \in \{90^{\circ},40^{\circ}\}$, respectively. The no-shadowing $H\equiv 1$ is also plotted for comparison.} 
            \label{fig:plotdensities}
          \end{figure}
 
@@ -246,17 +247,17 @@ With exponential shadowing ${H}_{\text{exp}}$, for Re$(s)>1$,
   \label{eq:lapdef}
   &\mathcal{L}_{I}(s)\triangleq \mathbb{E}\left(e^{-sI}\right)= \exp\left\{-\int_0^{\infty}(1-e^{-sr}) \lambda_{\mathcal{G}}(r) dr \right\} \nonumber \\
   &=\exp\left\{-\tilde{\kappa}\int_0^{\infty}(1-e^{-sr}) F_{{H}_{\text{exp}}}(r) /r dr \right\} \nonumber \\
-  &=\exp\left\{-\tilde{\kappa}\nu_{\epsilon}\int_0^{\infty}(1-e^{-sr}) e^{-r} /r dr \right\} \nonumber \\
-  &=(1+s)^{-\tilde{\kappa}\nu_{\epsilon}},
+  &=\exp\left\{-\tilde{\kappa}\upsilon_{\epsilon}\int_0^{\infty}(1-e^{-sr}) e^{-r} /r dr \right\} \nonumber \\
+  &=(1+s)^{-\tilde{\kappa}\upsilon_{\epsilon}},
 \end{align}
-which is the Laplace transform of the gamma distribution with the shape parameter $\tilde{\kappa}\nu_{\epsilon}$. 
+which is the Laplace transform of the gamma distribution with the shape parameter $\tilde{\kappa}\upsilon_{\epsilon}$. 
 
 
 \subsection{SINR and STINR processes and their factorial moment measures}
 Let $N \geq 0$ be the noise power constant. We denote the signal-to-interference-plus-noise ratio (SINR) process of the UEs as
 \begin{align}
-  \label{eq:STIR}
-  \Psi &= \{\mathsf{Z}: \mathsf{Z} \in \Psi\} \triangleq \left\{ \frac{u}{N+I-u} : u \in \mathcal{G}\right\} \\
+  \label{eq:SINR}
+  \Psi &= \{\mathsf{Z}: \mathsf{Z} \in \Psi\} \triangleq \left\{ \frac{u}{N+I-u} : u \in \mathcal{G}\right\} \nonumber \\
   &=\left\{ \frac{H_x G(D_{h,\epsilon}\|x\|)}{N+I-H_x G(D_{h,\epsilon}\|x\|)} : x \in \Phi\right\},
 \end{align}
 where $I$ is defined in \eqref{eq:totpow}. Similarly, the signal-to-total-interference-plus-noise (STINR) process is defined as
@@ -272,25 +273,23 @@ Let $\theta$ denote the SINR threshold of successful transmission. The event $\P
 
 The factorial moment measure of the SINR process is defined on the sets $(t_1,\infty] \times \dots \times (t_n, \infty]$ with $t_1,\dots,t_n\geq 0$
     \begin{align}
-      M^{(n)}(t_1,\dots,t_n) &\triangleq M^{(n)}((t_1,\infty],\dots,(t_n,\infty]) \nonumber \\
+      &M^{(n)}(t_1,\dots,t_n) \triangleq M^{(n)}((t_1,\infty],\dots,(t_n,\infty]) \nonumber \\
           & \triangleq \mathbb{E} \left( \sum^{\text{distinct}}_{\left(\mathsf{Z}_1, \dots, \mathsf{Z}_n \right) \in (\Psi)^{\times n}} \prod_{i=1}^n \mathds{1}(\mathsf{Z}_i >t_i)\right),
     \end{align}
-    where $\mathds{1}(\cdot)$ is the indicator function. Similarly, for the STINR process,
+    where $\mathds{1}(\cdot)$ is the indicator function, and ``distinct'' indicates that $\mathsf{Z}_i \neq \mathsf{Z}_j $ for all $i \neq j $. Similarly, for the STINR process,
     \begin{align}
-          M'^{(n)}(t'_1,\dots,t'_n) &\triangleq M'^{(n)}((t'_1,\infty],\dots,(t'_n,\infty]) \nonumber \\
+          &M'^{(n)}(t'_1,\dots,t'_n) \triangleq M'^{(n)}((t'_1,\infty],\dots,(t'_n,\infty]) \nonumber \\
               &\triangleq \mathbb{E} \left( \sum^{\text{distinct}}_{\left(\mathsf{Z}'_1, \dots, \mathsf{Z}'_n \right) \in (\Psi')^{\times n}} \prod_{i=1}^n \mathds{1}(\mathsf{Z}'_i >t'_i)\right).
     \end{align}
-    ``Distinct'' indicates that $\mathsf{Z}_i \neq \mathsf{Z}_j $ for all $i \neq j $. The (partial) density is
+ The (partial) density of the factorial moment measure of the STINR process is given by the successive partial differentiation of $M'^{(n)}$:
     \begin{align}
       \label{eq:differatemomentmeasure}
      &{\mu'}_n^{(n+i)}(z'_1,\dots,z'_n)= (-1)^n \frac{\partial^n M'^{(n+i)}(t'_1\dots t_n', z'_n, \dots, z'_n)}{\partial t'_1 \dots \partial t'_n} \nonumber\\
       &\hspace{4cm}|(t'_1=z_1'\dots t'_k=z'_n),
     \end{align}
-    for $\sum_{i=1}^k z'_i+iz'_k \leq 1$ and $0$ otherwise.
+    for $\sum_{i=1}^k z'_i+iz'_k \leq 1$ and $0$ otherwise. If $i > 0$, \eqref{eq:differatemomentmeasure} is called the partial density of $M'^{(n)}$. 
 
-    If $i > 0$, \eqref{eq:differatemomentmeasure} is called the partial density of $M'^{(n)}$. 
-
-    The density of the factorial \textit{n}th moment measure of the SINR process can be extracted as
+    The density of the \textit{n}th factorial moment measure of the SINR process can be extracted from $\mu'^{(n)}$:
     \begin{align}
       \label{eq:densitySINR}
       &\mu^{(n)}(z_1,\dots,z_n) \nonumber\\
@@ -308,7 +307,7 @@ The joint pdf $k$ strongest values of the STIR process $(\mathsf{Z}'_{(1)}, \dot
   \label{eq:jointprobability}
   f'_{(k)}(z'_1,\dots,z'_k)= \sum^{i_{\text{max}}}_{i=0}\frac{(-1)^i}{i!}{\mu'}_k^{(k+i)}(z'_1,\dots,z'_k),
 \end{equation}
-for $z'_1>z'_2>\dots>z'_k$ and $f'_{(k)}(z'_1,\dots,z'_k) =0 $ otherwise. The upper bound for the index $i_{\text{max}}<1/z'_k-k$ is the non-zero terms of the series expansion.
+for $z'_1>z'_2>\dots>z'_k$ and $f'_{(k)}(z'_1,\dots,z'_k) =0 $ otherwise. The upper bound for the index $i_{\text{max}}<1/z'_k-k$ is the non-zero terms of the series expansion. 
 
 The $k$-coverage probability that the first $k$ strongest signals reach the threshold $\tau' =\tau/(1+\tau)$ is given by
 \begin{align}
@@ -324,7 +323,7 @@ We still need to explicitly determine the expressions for the partial density ${
 
 
 \subsection{Partial density of the factorial moment measure in the interference-limited channel}
-In this section, we characterize $\mu_n'^{(n+i)}$ and the order statistics of the STIR process through the Poisson-Dirichlet distribution (PD)  $\text{PD}(0,\nu_{\epsilon}$). PDs have their unique characteristics that we don't specify here. A necessary condition is that the descending sequence  $(y_{(1)},y_{(2)},\dots)$ has to admit the condition $\sum_{i=1}^{\infty}y_{(i)}=1$ to have a PD. Clearly, the condition holds for the STINR process \eqref{eq:STINR} for $N=0$, \textit{i.e.}, the STIR process.
+In this section, we characterize $\mu_n'^{(n+i)}$ and the order statistics of the STIR process through the Poisson-Dirichlet distribution (PD)  $\text{PD}(0,\upsilon_{\epsilon}$). PDs have their unique characteristics that we don't specify here. A necessary condition is that the descending sequence  $(y_{(1)},y_{(2)},\dots)$ has to admit the condition $\sum_{i=1}^{\infty}y_{(i)}=1$ to have a PD. Clearly, the condition holds for the STINR process \eqref{eq:STINR} for $N=0$, \textit{i.e.}, the STIR process.
 
 Let $(X_{t}, t \geq 0)$ be a \textit{gamma subordinator}, or the \textit{gamma process}. It is a pure-jump increasing Lévy process with the Lévy measure $\lambda(r) = e^{- r}/r$. Without a drift component, the Laplace transform of the gamma subordinator at time $t$ is given by
 \begin{align}
@@ -332,12 +331,12 @@ Let $(X_{t}, t \geq 0)$ be a \textit{gamma subordinator}, or the \textit{gamma p
   \mathbb{E}(\exp\{-s X_{t}\}) &= \exp\left\{-{t} \int_0^{\infty}(1-e^{-s r})\frac{e^{-r}}{r} dr \right\}. \nonumber \\
   &=(1+s)^{-t}.
 \end{align}
-But \eqref{eq:lapsubord} equals \eqref{eq:lapdef} at time $t=\tilde{\kappa}\nu_{\epsilon} $. Hence, the total interference $I$ can be characterized by $X_{\tilde{\kappa} \nu_{\epsilon}}$ (which is again a gamma distributed r.v. of shape parameter $\nu_{\epsilon}\tilde{\kappa}$). Let $V_1(X_{t}) \geq V_2(X_{t})\geq \dots \geq 0 $ denote the jumps of the gamma subordinator at time $t$. Recall the STIR process with $N=0$ \eqref{eq:STINR}. By definition, the sequence
+But \eqref{eq:lapsubord} equals \eqref{eq:lapdef} at time $t=\tilde{\kappa}\upsilon_{\epsilon} $. Hence, the total interference $I$ can be characterized by $X_{\tilde{\kappa} \upsilon_{\epsilon}}$ (which is again a gamma distributed r.v. of shape parameter $\upsilon_{\epsilon}\tilde{\kappa}$). Let $V_1(X_{t}) \geq V_2(X_{t})\geq \dots \geq 0 $ denote the jumps of the gamma subordinator at time $t$. Recall the STIR process with $N=0$ \eqref{eq:STINR}. By definition, the sequence
 \begin{equation}
   \label{eq:relativesequence}
-  \left(\frac{V_1(X_{\tilde{\kappa}\nu_{\epsilon}})}{X_{\tilde{\kappa}\nu_{\epsilon}}},\frac{V_2(X_{\tilde{\kappa}\nu_{\epsilon}})}{X_{\tilde{\kappa}\nu_{\epsilon}}} \dots \right)
+  \left(\frac{V_1(X_{\tilde{\kappa}\upsilon_{\epsilon}})}{X_{\tilde{\kappa}\upsilon_{\epsilon}}},\frac{V_2(X_{\tilde{\kappa}\upsilon_{\epsilon}})}{X_{\tilde{\kappa}\upsilon_{\epsilon}}} \dots \right)
 \end{equation}
-of normalized jumps of the subordinator is the ordered sequence of the STIR values $(\mathsf{Z}'_{(1)},\mathsf{Z}'_{(2)} \dots)$. It has the Poisson-Dirichlet distribution PD$(0, \nu_{\epsilon} \tilde{\kappa})$. 
+of normalized jumps of the subordinator is the ordered sequence of the STIR values $(\mathsf{Z}'_{(1)},\mathsf{Z}'_{(2)} \dots)$. It has the Poisson-Dirichlet distribution PD$(0, \upsilon_{\epsilon} \tilde{\kappa})$. 
 
 
 
@@ -375,7 +374,7 @@ In the interference-plus-noise-limited channel, we derive the partial densities 
 
   \begin{align}
     \label{eq:nthmomentmeasureSTINR}
-      &M'^{(n)}(t'_1,\dots,t'_n) =\left(\tilde{\kappa} \nu_{\epsilon}\right)^n \nonumber\\
+      &M'^{(n)}(t'_1,\dots,t'_n) =\left(\tilde{\kappa} \upsilon_{\epsilon}\right)^n \nonumber\\
       &\times \int_1^{\infty}\dots\int_1^{\infty} e^{-N\hat{T}_n\sum\limits_{i=1}^nt'_iv_i} \left(1+\hat{T}_n\sum\limits_{i=1}^nt'_iv_i\right)^{-\tilde{\kappa}b} \nonumber\\
       &\times \frac{\prod\limits_{i=1}^nt'_i}{\sum\limits_{i=1}^nt'_iv_i}  \left[\sum\limits_{j=1}^n\frac{1}{\prod\limits_{i\neq j}\left(t'_i v_i+ t_i'\hat{T}_n\sum\limits_{k=1}^nt'_kv_k \right)} \right] dv_1 \dots dv_n,
     \end{align}
@@ -386,7 +385,7 @@ In the interference-plus-noise-limited channel, we derive the partial densities 
  
 The partial densities are given by
     \begin{align}
-      \label{eq:differatemomentmeasure}
+      \label{eq:differatemomentmeasure2}
      &{\mu'}_n^{(n+i)}(z'_1,\dots,z'_n)= (-1)^n \frac{\partial^n M'^{(n+i)}(t'_1\dots t_n', z'_n, \dots, z'_n)}{\partial t'_1 \dots \partial t'_n} \nonumber\\
       &\hspace{4cm}|(t'_1=z_1'\dots t'_n=z'_n)
     \end{align}
@@ -487,7 +486,7 @@ Combining \eqref{eq:densitySINR}, \eqref{eq:jointprobability}, and \eqref{eq:fac
 
 \begin{equation}
   \label{eq:SIR1}
-  f_{(1)}(z) = \frac {\tilde{\kappa}\nu_{\epsilon}\left({z + 1} \right)^{-\tilde{\kappa}\nu_{\epsilon}}} {z}.
+  f_{(1)}(z) = \frac {\tilde{\kappa}\upsilon_{\epsilon}\left({z + 1} \right)^{-\tilde{\kappa}\upsilon_{\epsilon}}} {z}.
 \end{equation}
 
 
@@ -496,11 +495,11 @@ We may calculate a lower bounds for the first two moments for the SIR:
 
 
 \begin{align}
-  &\mathbb{E}(\text{SIR}_{1,1})  \geq\int_{1}^{\infty}f_{(1)}(z)zdz=\frac{\tilde{\kappa}\nu_{\epsilon}2^{1-\tilde{\kappa}\nu_{\epsilon} }}{\tilde{\kappa}\nu_{\epsilon}-1}, \tilde{\kappa}\nu_{\epsilon} >1, \\
-  &\mathbb{E}(\text{SIR}^2_{1,1}) \geq \int_{1}^{\infty}f_{(1)}(z)z^2dz = \frac{(\tilde{\kappa}\nu_{\epsilon}) ^2 2^{1-\tilde{\kappa}\nu_{\epsilon} }}{(\tilde{\kappa}\nu_{\epsilon} - 2)  (\tilde{\kappa}\nu_{\epsilon} - 1)}, \nonumber\\
-  &\hspace{6.5cm}\tilde{\kappa}\nu_{\epsilon}>2 .
+  &\mathbb{E}(\text{SIR}_{1,1})  \geq\int_{1}^{\infty}f_{(1)}(z)zdz=\frac{\tilde{\kappa}\upsilon_{\epsilon}2^{1-\tilde{\kappa}\upsilon_{\epsilon} }}{\tilde{\kappa}\upsilon_{\epsilon}-1}, \tilde{\kappa}\upsilon_{\epsilon} >1, \\
+  &\mathbb{E}(\text{SIR}^2_{1,1}) \geq \int_{1}^{\infty}f_{(1)}(z)z^2dz = \frac{(\tilde{\kappa}\upsilon_{\epsilon}) ^2 2^{1-\tilde{\kappa}\upsilon_{\epsilon} }}{(\tilde{\kappa}\upsilon_{\epsilon} - 2)  (\tilde{\kappa}\upsilon_{\epsilon} - 1)}, \nonumber\\
+  &\hspace{6.5cm}\tilde{\kappa}\upsilon_{\epsilon}>2 .
 \end{align}
-The mean and the second moment diverge for $\tilde{\kappa}b\leq 1$ and $\tilde{\kappa}b\leq 2$, respectively. This implies that the variance of the SIR of the strongest signal is undefined for $\tilde{\kappa}b \leq 1$ and infinite for $1 <\tilde{\kappa}b \leq 2$. The insight reflects that the user experience of the link quality varies significantly over the SBSs in the density region $\tilde{\kappa} \nu_{\epsilon} \leq 2$. To achieve a consistent SBS performance, we have to make the network denser than what corresponds to $\tilde{\kappa} \nu_{\epsilon} =2$. Recall $\eqref{eq:kappa}: \kappa = \tilde{\kappa}\log(2)$ reflects the average number of UEs inside a $3$ dB footprint of a SBS.  Additionally, the density is influenced by shadowing characteristics through the parameter  $0<\nu_{\epsilon} \leq 1$. One way to improve user fairness is to through the IC, which can help maintain good average performance while reducing the variance in the SIR at the SBSs.
+The mean and the second moment diverge for $\tilde{\kappa}b\leq 1$ and $\tilde{\kappa}b\leq 2$, respectively. This implies that the variance of the SIR of the strongest signal is undefined for $\tilde{\kappa}b \leq 1$ and infinite for $1 <\tilde{\kappa}b \leq 2$. The insight reflects that the user experience of the link quality varies significantly over the SBSs in the density region $\tilde{\kappa} \upsilon_{\epsilon} \leq 2$. To achieve a consistent SBS performance, we have to make the network denser than what corresponds to $\tilde{\kappa} \upsilon_{\epsilon} =2$. Recall $\eqref{eq:kappa}: \kappa = \tilde{\kappa}\log(2)$ reflects the average number of UEs inside a $3$ dB footprint of a SBS.  Additionally, the density is influenced by shadowing characteristics through the parameter  $0<\upsilon_{\epsilon} \leq 1$. One way to improve user fairness is to through the IC, which can help maintain good average performance while reducing the variance in the SIR at the SBSs.
 
 \subsubsection{Numerical results regarding the average and variance of the SIR without interference cancellation and using IIC and SIC}
 
@@ -508,13 +507,13 @@ The mean and the second moment diverge for $\tilde{\kappa}b\leq 1$ and $\tilde{\
 We observed that setting $\tau = -7$ \text{dB}, equivalent to $\tau = 10^{-7/10} \approx 0.2$, for the IIC and SIC, the respective values $k \in \{2,3\}$, are good choices for the number of canceled signals. In this study, we adopt these values as our baseline. For the IIC, $k = 2$ generally offers the best improvement in coverage probability. For the SIC, $k = 4$ can yield better results than $k = 3$ for small $\theta$. It is crucial to note that using a smaller value of $\tau$ leads to different outcomes, typically increasing the optimal $k$. One challenge associated with the proposed mathematical expressions is that numerical computations become highly intensive as $\tau$ decreases and $k$ increases.
 
 
-For $\nu_{\epsilon} \tilde{\kappa}=2$, the expected SIR of the strongest signal without IC is given by
+For $\upsilon_{\epsilon} \tilde{\kappa}=2$, the expected SIR of the strongest signal without IC is given by
 \begin{equation}
   \mathbb{E}(\text{SIR}_{1,1})= \int_{0}^{\infty}\mathcal{P}^{(1)}(y)dy \approx 1.4.
 \end{equation}
   Recall, tahat the variance var$(\text{SIR}_{1,1})=\infty$, which might not be desirable in terms of user fairness.
 
-  By increasing $\nu_{\epsilon} \tilde{\kappa}$ (modifying $\lambda,h,\epsilon$ or $\varphi_{\text{RX}}$), we can reduce the variance in the SIR while maintaining the performance. For example, $ \mathbb{E}$(IIC-SINR$_{2}) \approx \mathbb{E}(\text{SIC-SINR}_{3}) \approx 1.4$ for $\nu_{\epsilon} \tilde{\kappa}\in \{2.6,3.8\}$, respectively. The IIC-SINR variance is calculated by
+  By increasing $\upsilon_{\epsilon} \tilde{\kappa}$ (modifying $\lambda,h,\epsilon$ or $\varphi_{\text{RX}}$), we can reduce the variance in the SIR while maintaining the performance. For example, $ \mathbb{E}$(IIC-SINR$_{2}) \approx \mathbb{E}(\text{SIC-SINR}_{3}) \approx 1.4$ for $\upsilon_{\epsilon} \tilde{\kappa}\in \{2.6,3.8\}$, respectively. The IIC-SINR variance is calculated by
   $var(\text{IIC-SINR}_{2})=\int_{0}^{\infty}y\mathcal{P}_{\text{IIC}}^{(2)}(y,\tau)dy -\left(\int_{0}^{\infty}\mathcal{P}_{\text{IIC}}^{(2)}(y,\tau)dy\right)^2  \approx 2.6$ Similarly, var(SIC-SINR$_{3}) = 2\int_{0}^{\infty}y\mathcal{P}_{\text{SIC}}^{(3)}(y,\tau)dy-$ $\left(\int_{0}^{\infty}\mathcal{P}_{\text{SIC}}^{(3)}(y,\tau)dy\right)^2 \approx 2.9$. The standard deviation in both cases is below $2$, which is a remarkable improvement in the consistency of the link quality. Note that the increase of $\tilde{\kappa}$ does not necessarily mean making the SBS constellation more dense: with interference cancellation, a single SBS might be able to serve multiple UEs with satisfactory SIR. However, we only consider the UE with the strongest signal in the IIC and SIC.
 
 The integrations in the IIC and SIC were conducted by trapezoidal method by first evaluating the SINR-IIC and SINR-SIC the ccdf values (\textit{i.e.} coverage probabilities) pointwise for sufficiently many $y$.
@@ -525,37 +524,61 @@ The integrations in the IIC and SIC were conducted by trapezoidal method by firs
 
 
 \section{Numerical results and the connection to the satellite communications}
+
 \label{sec:numericalresultsandconnectiontoLEO}
+While the analysis presented in Section \ref{sec:analysissec} fundamentally relies on a planar homogeneous PPP model with Gaussian path loss and functions as a stochastic geometry network model with defective exponential fading, holding intrinsic mathematical interest independent of its specific interpretation as a LEO setting, in this section, we explicitly define the geometrical interpretation of our system model as a narrow-beam LEO uplink. Furthermore, we align the defective exponential fading with log-normal shadowing using parameters representative of an urban scenario. We derive numerical results for the order statistics of both the SIR and the SINR and compare various IC scenarios: SIR-IIC, SIR-SIC, SINR-IIC, and SINR-SIC.
+
+Our findings indicate that employing IC significantly enhances the coverage probability. In a noise-limited channel with moderate noise, we demonstrate that the optimal value for the parameter $\tilde{\kappa} \upsilon_{\epsilon}$ is approximately $\log(2)$, which maximizes the performance of the LEO uplink. Moreover, IC not only reduces the variance in both SIR and SINR (across a uniform distribution of SBSs) but also preserves overall performance. Thus, appropriate interference cancellation can improve user fairness in the network without compromising link quality.
 
 
 
-\subsection{Gaussian mixture model}
+\subsection{Planar model of the narrow-beam LEO uplink}
 
-Consider a two-tier Gaussian mixture fading model, denoted as $\mathcal{T} = \{\text{LoS}, \text{NLoS}\}$, with the mean and standard deviations of $\mu_{\text{LoS}} = 0$ dB, $\sigma_{\text{LoS}} = 4$ dB, $\mu_{\text{NLoS}} = -26$ dB, and $\sigma_{\text{NLoS}} = 6$ dB for the line-of-sight (LoS) and non-line-of-sight (NLoS) tiers, respectively. The power fading r.v. of a transmitter $x \in \Phi$ follows a mixed log-normal distribution:
+As indicated in the analysis in Section \ref{sec:analysissec}, we assume a homogeneous PPP $\Phi \subset \R^2$, Gaussian path loss $G(D_{h,\epsilon}\|x\|)$ representing the signal gains at the SBS, and i.i.d. shadowing $H_x$. The scaling term $D_{h,\epsilon} = \sin^2(\epsilon)/h$ is essentially the first-order coeffecient in the Taylor expansion of the function $\|x\| \mapsto \varphi_x$, where $\varphi_x$ is the is the 
 
+
+
+
+\subsection{Gaussian mixture shadowing model}
+
+Consider a two-tier Gaussian mixture fading model with the following parameters for the LoS and NLoS tiers, respectively: $\mu_{\text{LoS}} = 0$ dB, $\sigma_{\text{LoS}} = 4$ dB, $\mu_{\text{NLoS}} = -26$ dB, and $\sigma_{\text{NLoS}} = 6$ dB. The power fading i.i.d. r.v's of the transmitters follow a mixed log-normal distribution:
 
 \begin{align}
   \label{eq:tier2lognormal}
-  &H_{\mathcal{M}\mathcal{L}\mathcal{N}}/\upsilon_{\epsilon} \sim \nonumber\\ & p_{\text{LoS}}\mathcal{L}\mathcal{N}(\rho\mu_{\text{LoS}},(\rho \sigma_{\text{LoS}})^2) +p_{\text{NLoS}}\mathcal{L}\mathcal{N}(\rho\mu_{\text{NLoS}},(\rho \sigma_{\text{NLoS}})^2),
+  \frac{H_{\mathcal{M}\mathcal{L}\mathcal{N}}}{\Upsilon_{\epsilon}} &\sim p_{\text{LoS}} \mathcal{L}\mathcal{N}(\rho \mu_{\text{LoS}}, (\rho \sigma_{\text{LoS}})^2) \nonumber \\
+  &\quad + p_{\text{NLoS}} \mathcal{L}\mathcal{N}(\rho \mu_{\text{NLoS}}, (\rho \sigma_{\text{NLoS}})^2),
 \end{align}
-with $p_{\text{NLoS}}=p_{\text{LoS}}-1$.
-Considering the natural base in the log-normal distribution, the constant $\rho \triangleq \log(10)/10$ normalizes the parameters $\mu_{\text{LoS}}, \sigma_{\text{LoS}}, \mu_{\text{NLoS}},$ and $\sigma_{\text{NLoS}}$ so that $10 \log_{10}(H_{\mathcal{M}\mathcal{L} \mathcal{N}})$ evaluates to a mixed normal distribution $p_{\text{LoS}} \mathcal{N}(\upsilon_{\epsilon}\mu_{\text{LoS}}, (\upsilon_{\epsilon}\sigma_{\text{LoS}})^2) + p_{\text{NLoS}} \mathcal{N}(\upsilon_{\epsilon} \mu_{\text{NLoS}}, (\upsilon_{\epsilon}\sigma_{\text{NLoS}})^2)$. The normalization constant $\upsilon_{\epsilon}$ is chosen to match the mean of the defective exponential shadowing distribution, ensuring that $\mathbb{E}(H_{\mathcal{M}\mathcal{L}\mathcal{N}}) = \mathbb{E}(H_{\text{Exp}}) = \upsilon_{\epsilon}$. This normalization can be applied without loss of generality in an interference-limited channel. In an interference-plus-noise-limited channel, the scaling is accounted for by adjusting the noise constant by a factor of $1/\upsilon_{\epsilon}$.
+with $p_{\text{NLoS}} = 1 - p_{\text{LoS}}$.
+
+Considering the natural base in the log-normal distribution, the constant $\rho \triangleq \log(10)/10$ normalizes the parameters $\mu_{\text{LoS}}, \sigma_{\text{LoS}}, \mu_{\text{NLoS}},$ and $\sigma_{\text{NLoS}}$ so that $10 \log_{10}(H_{\mathcal{M}\mathcal{L} \mathcal{N}})$ evaluates to a mixed normal r.v. $p_{\text{LoS}} \mathcal{N}(\Upsilon_{\epsilon}\mu_{\text{LoS}}, (\Upsilon_{\epsilon}\sigma_{\text{LoS}})^2) + p_{\text{NLoS}} \mathcal{N}(\Upsilon_{\epsilon} \mu_{\text{NLoS}}, (\Upsilon_{\epsilon}\sigma_{\text{NLoS}})^2)$. The normalization constant $\Upsilon_{\epsilon}$ is chosen to match the mean of the defective exponential shadowing distribution, ensuring that $\mathbb{E}(H_{\mathcal{M}\mathcal{L}\mathcal{N}}) = \mathbb{E}(H_{\text{Exp}}) = \nu_{\epsilon}$. This normalization can be applied without loss of generality in an interference-limited channel. In an interference-plus-noise-limited channel, the scaling is accounted for by adjusting the noise constant by a factor of $1/\Upsilon_{\epsilon}$.
 
 
-By equating the first two moment of $H_{\text{Exp}}$ (l.h.s.) $H_{\mathcal{M} \mathcal{L}\mathcal{N}}$ (r.h.s.),
+
+By equating the first two moments of $H_{\text{Exp}}$ (l.h.s.) $H_{\mathcal{M} \mathcal{L}\mathcal{N}}$ (r.h.s.),
 \begin{equation}
   \label{eq:matchingmoments}
   \begin{cases}
-    &\nu_{\epsilon} = \upsilon_{\epsilon} \left(p_{\text{LoS}} e^{\mu_{\text{LoS}} + \sigma_{\text{LoS}}^2/2} + p_{\text{NLoS}} e^{\mu_{\text{NLoS}} + \sigma_{\text{NLoS}}^2/2}\right)\\
-    &\nu_{\epsilon}^2= \upsilon_{\epsilon}^2 \left( p_{\text{LoS}} e^{2\mu_{\text{LoS}} + 2\sigma_{\text{LoS}}^2} + p_{\text{NLoS}} e^{2\mu_{\text{NLoS}} + 2\sigma_{\text{NLoS}}^2} \right), 
+    &\upsilon_{\epsilon} = \Upsilon_{\epsilon} \left(p_{\text{LoS}} e^{\mu_{\text{LoS}} + \sigma_{\text{LoS}}^2/2} + p_{\text{NLoS}} e^{\mu_{\text{NLoS}} + \sigma_{\text{NLoS}}^2/2}\right)\\
+    &2\upsilon_{\epsilon}= \Upsilon_{\epsilon}^2 \left( p_{\text{LoS}} e^{2(\mu_{\text{LoS}} + \sigma_{\text{LoS}}^2)} + p_{\text{NLoS}} e^{2(\mu_{\text{NLoS}} + \sigma_{\text{NLoS}}^2)} \right), 
   \end{cases}
 \end{equation}
 we can solve for the parameters
 \begin{align}
   \label{eq:epsilonandupsilon}
-    &\upsilon_{\epsilon} = \frac{2\left(p_{\text{NLoS}}e^{\mu_{\text{NLoS}}+\sigma^2_{\text{NLoS}}/2}-p_{\text{LoS}}e^{\mu_{\text{LoS}}+\sigma^2_{\text{LoS}}/2}\right)}{p_{\text{NLoS}}e^{2(\mu_{\text{NLoS}}+\sigma_{\text{NLoS}}^2)}-p_{\text{LoS}}e^{2(\mu_{\text{LoS}}+\sigma_{\text{LoS}}^2)}},\\
-    &\nu_{\epsilon}= \frac{ 2\left(p_{\text{NLoS}}e^{\mu_{\text{NLoS}}+\sigma^2_{\text{NLoS}}/2}- p_{\text{LoS}}e^{\mu_{\text{LoS}}+\sigma^2_{\text{LoS}}/2} \right)^2}{p_{\text{LoS}}e^{2(\mu_{\text{LoS}}+\sigma_{\text{LoS}}^2)}-p_{\text{NLoS}}e^{2(\mu_{\text{NLoS}}+\sigma_{\text{NLoS}}^2)}}.
+  & \upsilon_{\epsilon}= \frac{ 2\left( p_{\text{LoS}}e^{\mu_{\text{LoS}}+\sigma^2_{\text{LoS}}/2}+p_{\text{NLoS}}e^{\mu_{\text{NLoS}}+\sigma^2_{\text{NLoS}}/2} \right)^2}{p_{\text{LoS}}e^{2(\mu_{\text{LoS}}+\sigma_{\text{LoS}}^2)}+p_{\text{NLoS}}e^{2(\mu_{\text{NLoS}}+\sigma_{\text{NLoS}}^2)}}, \\ 
+    &\Upsilon_{\epsilon} = \frac{2\left(p_{\text{LoS}}e^{\mu_{\text{LoS}}+\sigma^2_{\text{LoS}}/2}+p_{\text{NLoS}}e^{\mu_{\text{NLoS}}+\sigma^2_{\text{NLoS}}/2}\right)}{p_{\text{LoS}}e^{2(\mu_{\text{LoS}}+\sigma_{\text{LoS}}^2)}+p_{\text{NLoS}}e^{2(\mu_{\text{NLoS}}+\sigma_{\text{NLoS}}^2)}}.
 \end{align}
+Recall equations \eqref{eq:totmean} and \eqref{eq:totvar}. Matching the first two moments of the fading distributions is equivalent to equating the mean and variance of the total interference $I$.
+
+
+
+Finally, taking into account spatial path loss and the scaling of signal powers, the noise term in \eqref{eq:SINR} and \eqref{eq:STINR} is given by:
+\begin{equation}
+N = \frac{W \ell(\hat{d}_{h\epsilon})}{\Upsilon_{\epsilon}},
+\end{equation}
+where $W \geq 0$ is a dimensionless noise power constant at the SBS.
+
+
 
 
 
@@ -570,7 +593,7 @@ we can solve for the parameters
 %%       \hline
 %%       $\mathbb{E}(\cdot)$&$1.4$ & $1.4$ &$1.4$\\ 
 %%       \hline
-%%       $\tilde{\kappa}$& $2/\nu_{\epsilon} $ &$2.6/\nu_{\epsilon}$& $3.4/\nu_{\epsilon}$\\
+%%       $\tilde{\kappa}$& $2/\upsilon_{\epsilon} $ &$2.6/\upsilon_{\epsilon}$& $3.4/\upsilon_{\epsilon}$\\
 %%       \hline
 %%       Var$(\cdot)$& $\infty$ & $2.6$ &$2.3$\\
 %%       \hline 
@@ -586,9 +609,9 @@ we can solve for the parameters
 Let $\mu_M \triangleq \sum_{i=1}^nt'_i/G(D_{h,\epsilon}\|x_i\|)=\sum_{i=1}^nt'_i/G(D_{h,\epsilon} r_i)$.
 
 \begin{align}
-  &M'^{(n)}(t'_1,\dots,t'_n) =(2 \pi \nu_{\epsilon})^n\nonumber\\
+  &M'^{(n)}(t'_1,\dots,t'_n) =(2 \pi \upsilon_{\epsilon})^n\nonumber\\
   & \times\int\limits_{(\R_+)^n} \mathcal{L}_N(\mu_MT_n)\mathcal{L}_I(\mu_MT_n)\mathcal{L}_D(\mu_MT_n) r_1 dr_1 \dots r_n dr_n\nonumber \\
-  &=(2 \pi \nu_{\epsilon} \lambda)^n \int\limits_{(\R_+)^n} \exp\left\{-NT_n\sum\limits_{i=1}^nt'_i2^{\left(\frac{D_{h,\epsilon}r_i}{\varphi_{\text{RX}}}\right)^2}\right\} \nonumber\\
+  &=(2 \pi \upsilon_{\epsilon} \lambda)^n \int\limits_{(\R_+)^n} \exp\left\{-NT_n\sum\limits_{i=1}^nt'_i2^{\left(\frac{D_{h,\epsilon}r_i}{\varphi_{\text{RX}}}\right)^2}\right\} \nonumber\\
   &\hspace{0.8cm}\times\left(1+T_n\sum\limits_{i=1}^nt'_i2^{\left(\frac{D_{h,\epsilon}r_i}{\varphi_{\text{RX}}}\right)^2}\right)^{- \tilde{\kappa}b} \frac{\prod\limits_{i=1}^nt'_i2^{\left(\frac{D_{h,\epsilon}r_i}{\varphi_{\text{RX}}}\right)^2}}{\sum\limits_{i=1}^nt'_i2^{\left(\frac{D_{h,\epsilon}r_i}{\varphi_{\text{RX}}}\right)^2}} \nonumber\\
   &\hspace{0.8cm}\times  \left[\sum\limits_{j=1}^n\frac{1}{\prod\limits_{i\neq j}\left(t'_i 2^{\left(\frac{D_{h,\epsilon}r_i}{\varphi_{\text{RX}}}\right)^2}+ t_i'T_n\sum\limits_{k=1}^nt'_k2^{\left(\frac{D_{h,\epsilon}r_k}{\varphi_{\text{RX}}}\right)^2} \right)} \right] \nonumber\\
   &\hspace{0.8cm}\times r_1 dr_1 \dots r_n dr_n.
@@ -600,7 +623,7 @@ The final results follows from the substitutions $\{u_i\}_{i= 1}^n$= $\{r_i D_{h
 
 
 \begin{remark}
-  Not all all two-tier log-normal shadowing scenarios can be characterized and approximated with a one-tier manner with the distribution \eqref{eq:defexp}. For example $\nu_{\epsilon}$ might be not within the region $0<\nu_{\epsilon} \leq 1$. This can occur, for example, in case of significant differences in the LoS or NLoS variances in the shadowing, like is the case in the suburban/??? sceneario in the 3GPP specs. We could approximate separately the LoS and NLoS components by the exponential function, leading to two i.i.d. gamma processes of the LoS and NLoS component transmitter. Treating such two separate gamma process's (representing the aggregate STIR) of the two separate shadowing tiers can be challenging, and will be left out of the scope of this paper. Anyhow, the approach presented in the paper works for the urban scenario with the 3GPP specs, because the two-tier log-normal shadowing can be in a reasonable manner approximated by a one-tier shadowing model using a signle defective exponential distribution.
+  Not all all two-tier log-normal shadowing scenarios can be characterized and approximated with a one-tier manner with the distribution \eqref{eq:defexp}. For example $\upsilon_{\epsilon}$ might be not within the region $0<\upsilon_{\epsilon} \leq 1$. This can occur, for example, in case of significant differences in the LoS or NLoS variances in the shadowing, like is the case in the suburban/??? sceneario in the 3GPP specs. We could approximate separately the LoS and NLoS components by the exponential function, leading to two i.i.d. gamma processes of the LoS and NLoS component transmitter. Treating such two separate gamma process's (representing the aggregate STIR) of the two separate shadowing tiers can be challenging, and will be left out of the scope of this paper. Anyhow, the approach presented in the paper works for the urban scenario with the 3GPP specs, because the two-tier log-normal shadowing can be in a reasonable manner approximated by a one-tier shadowing model using a signle defective exponential distribution.
 \end{remark}
 
 
