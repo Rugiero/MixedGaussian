@@ -536,20 +536,19 @@ Our findings indicate that employing IC significantly enhances the coverage prob
 
 \subsection{Planar model of the narrow-beam LEO uplink and spatial path loss}
 
-As indicated in the analysis in Section \ref{sec:analysissec}, we incorporate a flat-earth model. The UEs, \textit{i.e.}, the Earth transmitters radiate omnsidirectionally and form a homogeneous PPP $\Phi \subset \R^2$, Gaussian path loss $G(D_{h,\epsilon}\|x\|)$ representing the signal gains at the SBS, and i.i.d. shadowing $H_x$. The SBS antenna boresight is directed at the origin $\textit{o} \triangleq (0,0)$. please refer to Figure \ref{fig:UEsontheplane} for the geometric interpretation.
+As indicated in the analysis in Section \ref{sec:analysissec}, we incorporate a flat-earth model. The UEs, \textit{i.e.}, the Earth transmitters, radiate omnidirectionally and form a homogeneous PPP $\Phi \subset \R^2$, Gaussian path loss $G(D_{h,\epsilon}\|x\|)$ representing the signal gains at the SBS, and i.i.d. shadowing $H_x$. The SBS antenna boresight is directed at the origin $\textit{o} \triangleq (0,0)$. Please refer to Figure \ref{fig:UEsontheplane} for the geometric interpretation.
 
-The scaling term $D_{h,\epsilon} = \sin^2(\epsilon)/h$ is essentially the first-order coefficient in the Taylor expansion of the function $\|x\| \mapsto \varphi_x$, where $\varphi_x$ is the is the angle between the SBS antenna boresight and  $x \in \Phi$. It is derived in Appendix \ref{app:constantD}.
+The scaling term $D_{h,\epsilon} = \sin^2(\epsilon)/h$ is essentially the first-order coefficient in the Taylor expansion of the function $\|x\| \mapsto \varphi_x$, where $\varphi_x$ is the angle between the SBS antenna boresight and  $x \in \Phi$. It is derived in Appendix \ref{app:constantD}.
 
-Because of the ergodicity of the PPP, we may interpret the model as a snapshot of single realization of the UEs, and the averaging is taken over uniformly distributed SBSs (instead of the ensemble of $\Phi$).
+Because of the ergodicity of the PPP, we may interpret the model as a snapshot of a single realization of the UEs, and the averaging is taken over uniformly distributed SBSs (instead of the ensemble of $\Phi$).
 
-We consider a narrow Gaussian antenna beam, that decays rapidly to $0$, the relevant UEs are close to each other. Hence, the spatial path loss for \textit{all} transmitters is given by
+We consider a narrow Gaussian antenna beam, that decays rapidly to $0$, and the relevant UEs are close to each other. Hence, the spatial path loss for \textit{all} transmitters is given by
 \begin{equation}
   \ell(\hat{d}_{h,\epsilon}) \triangleq  {(\hat{d}_{h,\epsilon}/d_0)}^{\alpha},
 \end{equation}
-where $\alpha \geq 0$ is the power path loss exponent, and $d_0$ is a normalizing distance accounting for any other factors affecting the path loss, such as frequency band of the signals, and casts the path loss to a dimensionless quantity.
+where $\alpha \geq 0$ is the power path loss exponent, and $d_0$ is a normalizing distance accounting for any other factors affecting the path loss, such as the frequency band of the signals, and casts the path loss to a dimensionless quantity.
 
-The distance $\hat{d}_{h,\epsilon} \triangleq h/\sin(\epsilon)$ can be derived through simple geometry. As $u/\ell(\hat{d}_{h,\epsilon})/(I/\ell(\hat{d}_{h,\epsilon})+W) > \theta $ and $u /(I+W \ell(\hat{d}_{h,\epsilon}))> \theta, u \in \mathcal{G},$ are equivalent conditions (for some $W>0$), the spatial path loss is simply incorporated into the noise term $N$ (as introduced in \eqref{eq:SINR} and \eqref{eq:STINR}). Clearly, being a constant, the path loss is only relevant in the interference-plus-noise channel, canceling out if the channel is not noise-limited.
-
+The distance $\hat{d}_{h,\epsilon} \triangleq h/\sin(\epsilon)$ can be derived through simple geometry. As $u/\ell(\hat{d}_{h,\epsilon})/(I/\ell(\hat{d}_{h,\epsilon})+W) > \theta $ and $u /(I+W \ell(\hat{d}_{h,\epsilon}))> \theta, u \in \mathcal{G},$ are equivalent conditions (for some $W>0$), the spatial path loss is simply incorporated into the noise term $N$ (as introduced in \eqref{eq:SINR} and \eqref{eq:STINR}). As a constant, the path loss is only relevant in the interference-plus-noise channel, canceling out if $N=0$.
 \begin{figure}[h]%
   \centering
   \subfloat[\centering  Interpretation of the \textit{planar} system model with the SBSs in adjacent orbits serving an urban area and a realization of the UEs. The altitudes are not to scale.]{{\includegraphics[width=\linewidth]{UEsontheplane.png}}
