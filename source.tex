@@ -395,7 +395,7 @@ The partial densities $\mu_{n}'^{(n+i)}$ are obtained through the direct differe
 
 
 
-Let $(u_{(1)}, \dots, u_{(k)}) \subset \mathcal{G}$ represent an ordered set of points in the GP, where $u_{(1)}$ denotes the strongest signal at the SBS. In the following, we consider the SINR of the $n$-th strongest signal, where $n \leq k$. Additionally, signals with indices in the set $\mathcal{K} \subset \{1, 2, \dots, k\}$ are canceled from the interference. We denote the SINR under the interference cancellation (IC-SINR) as
+Let $(u_{(1)}, \dots, u_{(k)}) \subset \mathcal{G}$ represent an ordered set of points in the GP, where $u_{(1)}$ denotes the strongest signal at the SBS. In the following, we consider the SINR of the $n$-th strongest signal, where $n \leq k$. The signals with indices in the set $\mathcal{K} \subset \{1, 2, \dots, k\}$, $n \in \mathcal{K}$, are canceled from the total interference. We denote the SINR under the interference cancellation (IC-SINR) as
 \begin{equation}
   \text{SINR}_{n,\mathcal{K}} \triangleq \frac{u_{(n)}}{N+I-\sum_{j \in \mathcal{K} } u_{(j)}}.
 \end{equation}
@@ -483,7 +483,7 @@ The SINR-IIC$_{(k)}$ case $\Delta^{(k)}_{\text{IIC}}(\theta,\tau)$ can be obtain
 
 
 \subsubsection{Density function of the SIR of the strongest signal}
-Combining \eqref{eq:densitySINR}, \eqref{eq:jointprobability}, and \eqref{eq:factorialmoment}, we get a closed form for the pdf of SIR$_{1,1}$ in the region $z\geq 1$:
+Combining \eqref{eq:densitySINR}, \eqref{eq:jointprobability}, and \eqref{eq:factorialmoment}, we get a closed form for the SIR pdf of the strongest signal in the region $z\geq 1$:
 
 
 \begin{equation}
