@@ -374,7 +374,7 @@ In the interference-plus-noise-limited channel, we derive the partial densities 
   \begin{align}
     \label{eq:nthmomentmeasureSTINR}
       &M'^{(n)}(t'_1,\dots,t'_n) =\left(\tilde{\kappa} \upsilon_{\epsilon}\right)^n \nonumber\\
-      &\times \int_1^{\infty}\dots\int_1^{\infty} e^{-N\hat{T}_n\sum\limits_{i=1}^nt'_iv_i} \left(1+\hat{T}_n\sum\limits_{i=1}^nt'_iv_i\right)^{-\tilde{\kappa}b} \nonumber\\
+      &\times \int_1^{\infty}\dots\int_1^{\infty} e^{-N\hat{T}_n\sum\limits_{i=1}^nt'_iv_i} \left(1+\hat{T}_n\sum\limits_{i=1}^nt'_iv_i\right)^{-\tilde{\kappa}\upsilon_{\epsilon}} \nonumber\\
       &\times \frac{\prod\limits_{i=1}^nt'_i}{\sum\limits_{i=1}^nt'_iv_i}  \left[\sum\limits_{j=1}^n\frac{1}{\prod\limits_{i\neq j}\left(t'_i v_i+ t_i'\hat{T}_n\sum\limits_{k=1}^nt'_kv_k \right)} \right] dv_1 \dots dv_n,
     \end{align}
     where $\hat{T}_n= 1/(1-\sum_{i=1}^nt'_i)$.
@@ -573,7 +573,7 @@ Consider a two-tier Gaussian mixture fading model with the following parameters 
 \end{align}
 with $p_{\text{NLoS}} = 1 - p_{\text{LoS}}$.
 
-Considering the natural base in the log-normal distribution, the constant $\rho \triangleq \log(10)/10$ normalizes the parameters $\mu_{\text{LoS}}, \sigma_{\text{LoS}}, \mu_{\text{NLoS}},$ and $\sigma_{\text{NLoS}}$ so that $10 \log_{10}(H_{\mathcal{M}\mathcal{L} \mathcal{N}})$ evaluates to a mixed normal r.v. $p_{\text{LoS}} \mathcal{N}(\Upsilon_{\epsilon}\mu_{\text{LoS}}, (\Upsilon_{\epsilon}\sigma_{\text{LoS}})^2) + p_{\text{NLoS}} \mathcal{N}(\Upsilon_{\epsilon} \mu_{\text{NLoS}}, (\Upsilon_{\epsilon}\sigma_{\text{NLoS}})^2)$. The normalization constant $\Upsilon_{\epsilon}$ is chosen to match the mean of the defective exponential shadowing distribution, ensuring that $\mathbb{E}(H_{\mathcal{M}\mathcal{L}\mathcal{N}}) = \mathbb{E}(H_{\text{Exp}}) = \nu_{\epsilon}$. This normalization can be applied without loss of generality in an interference-limited channel. In an interference-plus-noise-limited channel, the scaling is accounted for by adjusting the noise constant by a factor of $1/\Upsilon_{\epsilon}$.
+Considering the natural base of the log-normal distribution, the constant $\rho \triangleq \log(10)/10$ normalizes the parameters $\mu_{\text{LoS}}, \sigma_{\text{LoS}}, \mu_{\text{NLoS}},$ and $\sigma_{\text{NLoS}}$ so that $10 \log_{10}(H_{\mathcal{M}\mathcal{L} \mathcal{N}})$ evaluates to a mixed normal r.v. $p_{\text{LoS}} \mathcal{N}(\Upsilon_{\epsilon}\mu_{\text{LoS}}, (\Upsilon_{\epsilon}\sigma_{\text{LoS}})^2) + p_{\text{NLoS}} \mathcal{N}(\Upsilon_{\epsilon} \mu_{\text{NLoS}}, (\Upsilon_{\epsilon}\sigma_{\text{NLoS}})^2)$. The normalization constant $\Upsilon_{\epsilon}$ is chosen to match the mean of the defective exponential shadowing distribution, ensuring that $\mathbb{E}(H_{\mathcal{M}\mathcal{L}\mathcal{N}}) = \mathbb{E}(H_{\text{Exp}}) = \nu_{\epsilon}$. This normalization can be applied without loss of generality in an interference-limited channel. In an interference-plus-noise-limited channel, the scaling is accounted for by adjusting the noise constant by a factor of $1/\Upsilon_{\epsilon}$.
 
 
 
