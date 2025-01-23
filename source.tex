@@ -393,9 +393,11 @@ The partial densities $\mu_{n}'^{(n+i)}$ are obtained through the direct differe
 \subsection{SIR and SINR under interference cancellation}
 
 
-Let $(u_{(1)},\dots,u_{(k)} )\subset \mathcal{G}$ be an ordered set of points in the GP; $u_{(1)}$ denotes the strongest signal at the SBS. In the following, we consider the SINR of the n\textit{th} strongest signal, $n \leq k$, with the strongest $k$ signals canceled from the interference. We define the SINR under the interference cancellation (IC-SINR) as
+
+
+Let $(u_{(1)}, \dots, u_{(k)}) \subset \mathcal{G}$ represent an ordered set of points in the GP, where $u_{(1)}$ denotes the strongest signal at the SBS. In the following, we consider the SINR of the $n$-th strongest signal, where $n \leq k$. Additionally, signals with indices in the set $\mathcal{K} \subset \{1, 2, \dots, k\}$ are canceled from the interference. We denote the SINR under the interference cancellation (IC-SINR) as
 \begin{equation}
-  \text{SINR}_{n,k} \triangleq \frac{u_{(n)}}{N+I-\sum_{j =1 }^k u_{(j)}}.
+  \text{SINR}_{n,\mathcal{K}} \triangleq \frac{u_{(n)}}{N+I-\sum_{j \in \mathcal{K} } u_{(j)}}.
 \end{equation}
 
 
@@ -411,13 +413,13 @@ The IC-SINR can be formulated in terms of the STINR process:
 
 \begin{align}
   \label{eq:IC-SINRcond}
-   & \mathds{1}\{\text{SINR}_{n,k} > \theta \} = \mathds{1} \left\{ u_{(n)} >\theta\left(N+I-  \sum_{j=1}^ku_{(j)}\right)\right\} \nonumber\\
-  &\overset{}{=}\mathds{1} \left\{(1+\theta) \frac{u_{(n)}}{N+1}+ \theta \frac{\sum^{j\neq n}_{j\in\{1,\dots,k\}} u_{(j)}}{N+I}>\theta \right\} \nonumber \\
-  &\overset{(a)}{=} \mathds{1} \left\{ \mathsf{Z}'_{(n)}+\theta'\sum^{j\neq n}_{j\in\{1,\dots,k\}}\mathsf{Z}'_{(j)} +>\theta'\right\}.
+   & \mathds{1}\{\text{SINR}_{n,\mathcal{K}} > \theta \} = \mathds{1} \left\{ u_{(n)} >\theta\left(N+I-  \sum_{j \in \mathcal{K}} u_{(j)}\right)\right\} \nonumber\\
+  &\overset{}{=}\mathds{1} \left\{(1+\theta) \frac{u_{(n)}}{N+1}+ \theta \frac{\sum^{j\neq n}_{j\in \mathcal{K}} u_{(j)}}{N+I}>\theta \right\} \nonumber \\
+  &\overset{(a)}{=} \mathds{1} \left\{ \mathsf{Z}'_{(n)}+\theta'\sum^{j\neq n}_{j\in \mathcal{K}}\mathsf{Z}'_{(j)} +>\theta'\right\}.
 \end{align}
 
 
-In (a), we divide both sides by $(1+\theta)$, which leads to the final result by the equivalence $\theta' = \theta/(1+\theta)$. In the interference-limited channel, $\text{SIR}_{n,k} \triangleq (\text{SINR}_{n,k}|(N=0))$.
+In (a), we divide both sides by $(1+\theta)$, which leads to the final result by the equivalence $\theta' = \theta/(1+\theta)$. In the interference-limited channel, $\text{SIR}_{n,\mathcal{K}} \triangleq (\text{SINR}_{n,\mathcal{K}}|(N=0))$.
 
 
 
@@ -434,21 +436,23 @@ In independent interference cancellation (IIC), we cancel and decode all signals
 \end{equation}
 
 
-Let us consider that the strongest signal is decoded directly if its SINR exceeds $\theta$; otherwise, signal cancellation is attempted. Accordingly, we define a IIC-SINR$_{k}$ coverage probability of the strongest signal with independent signal cancellation of the strongest $k$ signals with the signal separation threshold $\tau=\tau'/(1-\tau')$ 
+
+Let us consider that the strongest signal is decoded directly if its SINR exceeds $\theta$; otherwise, signal cancellation is attempted. We denote the SINR with independent interference cancellation as \text{IIC-SINR}$_k$, where interference from signals with indices in the set $[k] \triangleq \{1, \dots, k\}$ is canceled if each $(\mathsf{Z}_{(1)}, \dots  \mathsf{Z}_{(k)})$ reaches the signal separation threshold $\tau$. The coverage probability is defined by
+
 
 \begin{equation}
-  \mathcal{P}^{(k)}_{\text{IIC}}(\theta,\tau) \triangleq \mathbb{P}\begin{Bmatrix} \text{SINR}_{1,k}(\theta)>\theta & \text{if } \mathsf{Z}_{(k)}>\tau, \\
+  \mathcal{P}^{(k)}_{\text{IIC}}(\theta,\tau) \triangleq \mathbb{P}\begin{Bmatrix} \text{SINR}_{1,[k]}(\theta)>\theta & \text{if } \mathsf{Z}_{(k)}>\tau, \\
 \mathsf{Z}_{(1)}>\theta & \text{otherwise} \end{Bmatrix}.
 \end{equation}
-Similarly, SIC-SINR$_{k}$ coverage probability is defined by
+Similarly, under the SIC, SIC-SINR$_{k}$ coverage probability is defined by
 \begin{align}
   \label{eq:SIC-SINRprob}
   &\mathcal{P}^{(k)}_{\text{SIC}}(\theta,\tau)  \nonumber\\
-  &\triangleq \mathbb{P}\begin{Bmatrix} \text{SINR}_{1,k}(\theta)>\theta & \text{if for all }n\in\{1,\dots,k\}  \\
+  &\triangleq \mathbb{P}\begin{Bmatrix} \text{SINR}_{1,[k]}(\theta)>\theta & \text{if for all }n\in\{1,\dots,k\}  \\
     & \mathsf{Z}'_{(n)}+\tau'\sum\limits_{j=1}^{n-1}\mathsf{Z}'_{(j)}>\tau',\\
-\mathsf{Z}_{(1)}>\theta & \text{otherwise} \end{Bmatrix}.
+\mathsf{Z}_{(1)}>\theta & \text{otherwise} \end{Bmatrix},
 \end{align}
-We have that $\mathcal{P}^{(k)}_{\text{SIC}}(\theta,\tau)\geq \mathcal{P}^{(k)}_{\text{IIC}}(\theta,\tau) \geq \mathcal{P}^{(1)}(\theta)$ for all $0<\tau < \theta$. 
+with $\tau'=1/(1+\tau')$. We have that $\mathcal{P}^{(k)}_{\text{SIC}}(\theta,\tau)\geq \mathcal{P}^{(k)}_{\text{IIC}}(\theta,\tau) \geq \mathcal{P}^{(1)}(\theta)$ for all $0<\tau < \theta$. 
 
 To quantify performance improvement, we examine the difference in coverage probability between scenarios without interference cancellation and those employing IIC or SIC.
 
@@ -493,8 +497,8 @@ We may calculate a lower bounds for the first two moments for the SIR:
 
 
 \begin{align}
-  &\mathbb{E}(\text{SIR}_{1,1})  \geq\int_{1}^{\infty}f_{(1)}(z)zdz=\frac{\tilde{\kappa}\upsilon_{\epsilon}2^{1-\tilde{\kappa}\upsilon_{\epsilon} }}{\tilde{\kappa}\upsilon_{\epsilon}-1}, \tilde{\kappa}\upsilon_{\epsilon} >1, \\
-  &\mathbb{E}(\text{SIR}^2_{1,1}) \geq \int_{1}^{\infty}f_{(1)}(z)z^2dz = \frac{(\tilde{\kappa}\upsilon_{\epsilon}) ^2 2^{1-\tilde{\kappa}\upsilon_{\epsilon} }}{(\tilde{\kappa}\upsilon_{\epsilon} - 2)  (\tilde{\kappa}\upsilon_{\epsilon} - 1)}, \nonumber\\
+  &\mathbb{E}(\text{SIR}_{1,\{1\}})  \geq\int_{1}^{\infty}f_{(1)}(z)zdz=\frac{\tilde{\kappa}\upsilon_{\epsilon}2^{1-\tilde{\kappa}\upsilon_{\epsilon} }}{\tilde{\kappa}\upsilon_{\epsilon}-1}, \tilde{\kappa}\upsilon_{\epsilon} >1, \\
+  &\mathbb{E}(\text{SIR}^2_{1,\{1\}}) \geq \int_{1}^{\infty}f_{(1)}(z)z^2dz = \frac{(\tilde{\kappa}\upsilon_{\epsilon}) ^2 2^{1-\tilde{\kappa}\upsilon_{\epsilon} }}{(\tilde{\kappa}\upsilon_{\epsilon} - 2)  (\tilde{\kappa}\upsilon_{\epsilon} - 1)}, \nonumber\\
   &\hspace{6.5cm}\tilde{\kappa}\upsilon_{\epsilon}>2 .
 \end{align}
 The mean and the second moment diverge for $\tilde{\kappa}b\leq 1$ and $\tilde{\kappa}b\leq 2$, respectively. This implies that the variance of the SIR of the strongest signal is undefined for $\tilde{\kappa}b \leq 1$ and infinite for $1 <\tilde{\kappa}b \leq 2$. The insight reflects that the user experience of the link quality varies significantly over the SBSs in the density region $\tilde{\kappa} \upsilon_{\epsilon} \leq 2$. To achieve a consistent SBS performance, we have to make the network denser than what corresponds to $\tilde{\kappa} \upsilon_{\epsilon} =2$. Recall $\eqref{eq:kappa}: \kappa = \tilde{\kappa}\log(2)$ reflects the average number of UEs inside a $3$ dB footprint of a SBS.  Additionally, the density is influenced by shadowing characteristics through the parameter  $0<\upsilon_{\epsilon} \leq 1$. One way to improve user fairness is to through the IC, which can help maintain good average performance while reducing the variance in the SIR at the SBSs.
@@ -507,9 +511,9 @@ We observed that setting $\tau = -7$ \text{dB}, equivalent to $\tau = 10^{-7/10}
 
 For $\upsilon_{\epsilon} \tilde{\kappa}=2$, the expected SIR of the strongest signal without IC is given by
 \begin{equation}
-  \mathbb{E}(\text{SIR}_{1,1})= \int_{0}^{\infty}\mathcal{P}^{(1)}(y)dy \approx 1.4.
+  \mathbb{E}(\text{SIR}_{1,\{1\}})= \int_{0}^{\infty}\mathcal{P}^{(1)}(y)dy \approx 1.4.
 \end{equation}
-  Recall, tahat the variance var$(\text{SIR}_{1,1})=\infty$, which might not be desirable in terms of user fairness.
+  Recall, that the variance $\text{var}(\text{SIR}_{1,\{1\}})=\infty$, which might not be desirable in terms of user fairness.
 
   By increasing $\upsilon_{\epsilon} \tilde{\kappa}$ (modifying $\lambda,h,\epsilon$ or $\varphi_{\text{RX}}$), we can reduce the variance in the SIR while maintaining the performance. For example, $ \mathbb{E}$(IIC-SINR$_{2}) \approx \mathbb{E}(\text{SIC-SINR}_{3}) \approx 1.4$ for $\upsilon_{\epsilon} \tilde{\kappa}\in \{2.6,3.8\}$, respectively. The IIC-SINR variance is calculated by
   $var(\text{IIC-SINR}_{2})=\int_{0}^{\infty}y\mathcal{P}_{\text{IIC}}^{(2)}(y,\tau)dy -\left(\int_{0}^{\infty}\mathcal{P}_{\text{IIC}}^{(2)}(y,\tau)dy\right)^2  \approx 2.6$ Similarly, var(SIC-SINR$_{3}) = 2\int_{0}^{\infty}y\mathcal{P}_{\text{SIC}}^{(3)}(y,\tau)dy-$ $\left(\int_{0}^{\infty}\mathcal{P}_{\text{SIC}}^{(3)}(y,\tau)dy\right)^2 \approx 2.9$. The standard deviation in both cases is below $2$, which is a remarkable improvement in the consistency of the link quality. Note that the increase of $\tilde{\kappa}$ does not necessarily mean making the SBS constellation more dense: with interference cancellation, a single SBS might be able to serve multiple UEs with satisfactory SIR. However, we only consider the UE with the strongest signal in the IIC and SIC.
