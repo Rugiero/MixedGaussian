@@ -397,6 +397,7 @@ The partial densities $\mu_{n}'^{(n+i)}$ are obtained through the direct differe
 
 Let $(u_{(1)}, \dots, u_{(k)}) \subset \mathcal{G}$ represent an ordered set of points in the GP, where $u_{(1)}$ denotes the strongest signal at the SBS. In the following, we consider the SINR of the $n$-th strongest signal, where $n \leq k$. The signals with indices in the set $\mathcal{K} \subset \{1, 2, \dots, k\}$, $n \in \mathcal{K}$, are canceled from the total interference. We denote the SINR under the interference cancellation (IC-SINR) as
 \begin{equation}
+  \label{eq:IC-SINR}
   \text{SINR}_{n,\mathcal{K}} \triangleq \frac{u_{(n)}}{N+I-\sum_{j \in \mathcal{K} } u_{(j)}}.
 \end{equation}
 
@@ -533,50 +534,21 @@ While the analysis presented in Section \ref{sec:analysissec} fundamentally reli
 Our findings indicate that employing IC significantly enhances the coverage probability. In a noise-limited channel with moderate noise, we demonstrate that the optimal value for the parameter $\tilde{\kappa} \upsilon_{\epsilon}$ is approximately $\log(2)$, which maximizes the performance of the LEO uplink. Moreover, IC not only reduces the variance in both SIR and SINR (across a uniform distribution of SBSs) but also preserves overall performance. Thus, appropriate interference cancellation can improve user fairness in the network without compromising link quality.
 
 
-
-\subsection{Planar model of the narrow-beam LEO uplink and spatial path loss}
-
-As indicated in the analysis in Section \ref{sec:analysissec}, we incorporate a flat-earth model. The UEs, \textit{i.e.}, the Earth transmitters, radiate omnidirectionally and form a homogeneous PPP $\Phi \subset \R^2$, Gaussian path loss $G(D_{h,\epsilon}\|x\|)$ representing the signal gains at the SBS, and i.i.d. shadowing $H_x$. The SBS antenna boresight is directed at the origin $\textit{o} \triangleq (0,0)$. Please refer to Figure \ref{fig:UEsontheplane} for the geometric interpretation.
-
-The scaling term $D_{h,\epsilon} = \sin^2(\epsilon)/h$ is essentially the first-order coefficient in the Taylor expansion of the function $\|x\| \mapsto \varphi_x$, where $\varphi_x$ is the angle between the SBS antenna boresight and  $x \in \Phi$. It is derived in Appendix \ref{app:constantD}.
-
-Because of the ergodicity of the PPP, we may interpret the model as a snapshot of a single realization of the UEs, and the averaging is taken over uniformly distributed SBSs (instead of the ensemble of $\Phi$).
-
-We consider a narrow Gaussian antenna beam, that decays rapidly to $0$, and the relevant UEs are close to each other. Hence, the spatial path loss for \textit{all} transmitters is given by
-\begin{equation}
-  \ell(\hat{d}_{h,\epsilon}) \triangleq  {(\hat{d}_{h,\epsilon}/d_0)}^{\alpha},
-\end{equation}
-where $\alpha \geq 0$ is the power path loss exponent, and $d_0$ is a normalizing distance accounting for any other factors affecting the path loss, such as the frequency band of the signals, and casts the path loss to a dimensionless quantity.
-
-The distance $\hat{d}_{h,\epsilon} \triangleq h/\sin(\epsilon)$ can be derived through simple geometry. As $u/\ell(\hat{d}_{h,\epsilon})/(I/\ell(\hat{d}_{h,\epsilon})+W) > \theta $ and $u /(I+W \ell(\hat{d}_{h,\epsilon}))> \theta, u \in \mathcal{G},$ are equivalent conditions (for some $W>0$), the spatial path loss is simply incorporated into the noise term $N$ (as introduced in \eqref{eq:SINR} and \eqref{eq:STINR}). As a constant, the path loss is only relevant in the interference-plus-noise channel, canceling out if $N=0$.
-\begin{figure}[h]%
-  \centering
-  \subfloat[\centering  Interpretation of the \textit{planar} system model with the SBSs in adjacent orbits serving an urban area and a realization of the UEs. The altitudes are not to scale.]{{\includegraphics[width=\linewidth]{UEsontheplane.png}}
-    \label{fig:UEsontheplane}%%
-  } 
-  \qquad
-  \subfloat[\centering The typical SBS as seen from the side. The transmitters are projected into line $(0, \infty)$ according to their norm.]{{\includegraphics[width=\linewidth]{drawing.png}}     \label{fig:systemmodel}} %%
-  \caption{The simplified narrow-beam LEO uplink system model. The SBS antenna boresight is oriented towards $\textit{o}$, the focus point of the elliptical footprint. The omnidirectionally transmitting UEs $\{x_i\}$ are located according to the HPPP on the plane. The nearest transmitter, $x_0$, is the served UE.}
-\end{figure}
-
-
-
 \subsection{Gaussian mixture shadowing model}
-
+\label{sex:guassianmixture}
 Consider a two-tier Gaussian mixture fading model with the following parameters for the LoS and NLoS tiers, respectively: $\mu_{\text{LoS}} = 0$ dB, $\sigma_{\text{LoS}} = 4$ dB, $\mu_{\text{NLoS}} = -26$ dB, and $\sigma_{\text{NLoS}} = 6$ dB. The power fading i.i.d. r.v's of the transmitters follow a mixed log-normal distribution:
 
 \begin{align}
   \label{eq:tier2lognormal}
-  \frac{H_{\mathcal{M}\mathcal{L}\mathcal{N}}}{\Upsilon_{\epsilon}} &\sim p_{\text{LoS}} \mathcal{L}\mathcal{N}(\rho \mu_{\text{LoS}}, (\rho \sigma_{\text{LoS}})^2) \nonumber \\
+  H_{\mathcal{M}\mathcal{L}\mathcal{N}} &\sim p_{\text{LoS}} \mathcal{L}\mathcal{N}(\rho \mu_{\text{LoS}}, (\rho \sigma_{\text{LoS}})^2) \nonumber \\
   &\quad + p_{\text{NLoS}} \mathcal{L}\mathcal{N}(\rho \mu_{\text{NLoS}}, (\rho \sigma_{\text{NLoS}})^2),
 \end{align}
 with $p_{\text{NLoS}} = 1 - p_{\text{LoS}}$.
 
-Considering the natural base of the log-normal distribution, the constant $\rho \triangleq \log(10)/10$ normalizes the parameters $\mu_{\text{LoS}}, \sigma_{\text{LoS}}, \mu_{\text{NLoS}},$ and $\sigma_{\text{NLoS}}$ so that $10 \log_{10}(H_{\mathcal{M}\mathcal{L} \mathcal{N}})$ evaluates to a mixed normal r.v. $p_{\text{LoS}} \mathcal{N}(\Upsilon_{\epsilon}\mu_{\text{LoS}}, (\Upsilon_{\epsilon}\sigma_{\text{LoS}})^2) + p_{\text{NLoS}} \mathcal{N}(\Upsilon_{\epsilon} \mu_{\text{NLoS}}, (\Upsilon_{\epsilon}\sigma_{\text{NLoS}})^2)$. The normalization constant $\Upsilon_{\epsilon}$ is chosen to match the mean of the defective exponential shadowing distribution, ensuring that $\mathbb{E}(H_{\mathcal{M}\mathcal{L}\mathcal{N}}) = \mathbb{E}(H_{\text{Exp}}) = \nu_{\epsilon}$. This normalization can be applied without loss of generality in an interference-limited channel. In an interference-plus-noise-limited channel, the scaling is accounted for by adjusting the noise constant by a factor of $1/\Upsilon_{\epsilon}$.
+Considering the natural base of the log-normal distribution, the constant $\rho \triangleq \log(10)/10$ normalizes the parameters $\mu_{\text{LoS}}, \sigma_{\text{LoS}}, \mu_{\text{NLoS}},$ and $\sigma_{\text{NLoS}}$ so that $10 \log_{10}(H_{\mathcal{M}\mathcal{L} \mathcal{N}})$ evaluates to a mixed normal r.v. $p_{\text{LoS}} \mathcal{N}(\mu_{\text{LoS}}, \sigma_{\text{LoS}}^2) + p_{\text{NLoS}} \mathcal{N}(\mu_{\text{NLoS}}, \sigma^2_{\text{NLoS}})$.
 
 
-
-By equating the first two moments of $H_{\text{Exp}}$ (l.h.s.) and $H_{\mathcal{M} \mathcal{L}\mathcal{N}}$ (r.h.s.),
+ Furthermore, we introduce a constant scaling term, $\Upsilon_{\epsilon}$, ensuring that the means of the mixed log-normal distribution and the defected exponential distributions match; $\mathbb{E}(\Upsilon^{}_{\epsilon}H_{\mathcal{M}\mathcal{L}\mathcal{N}})= \mathbb{E}(H_{\text{Exp}}) = \upsilon_{\epsilon}$. The scaling is accounted for by adjusting the noise constant by a factor of $N \sim 1/\Upsilon_{\epsilon}$. Namely, by equating the first two moments of $H_{\text{Exp}}$ (l.h.s.) and $\Upsilon_{\epsilon} H_{\mathcal{M} \mathcal{L}\mathcal{N}}$ (r.h.s.),
 \begin{equation}
   \label{eq:matchingmoments}
   \begin{cases}
@@ -590,8 +562,42 @@ we can solve for the parameters
   & \upsilon_{\epsilon}= \frac{ 2\left( p_{\text{LoS}}e^{\mu_{\text{LoS}}+\sigma^2_{\text{LoS}}/2}+p_{\text{NLoS}}e^{\mu_{\text{NLoS}}+\sigma^2_{\text{NLoS}}/2} \right)^2}{p_{\text{LoS}}e^{2(\mu_{\text{LoS}}+\sigma_{\text{LoS}}^2)}+p_{\text{NLoS}}e^{2(\mu_{\text{NLoS}}+\sigma_{\text{NLoS}}^2)}}, \\ 
     &\Upsilon_{\epsilon} = \frac{2\left(p_{\text{LoS}}e^{\mu_{\text{LoS}}+\sigma^2_{\text{LoS}}/2}+p_{\text{NLoS}}e^{\mu_{\text{NLoS}}+\sigma^2_{\text{NLoS}}/2}\right)}{p_{\text{LoS}}e^{2(\mu_{\text{LoS}}+\sigma_{\text{LoS}}^2)}+p_{\text{NLoS}}e^{2(\mu_{\text{NLoS}}+\sigma_{\text{NLoS}}^2)}}.
 \end{align}
-Recall equations \eqref{eq:totmean} and \eqref{eq:totvar}. Matching the first two moments of the fading distributions is equivalent to equating the mean and variance of the total interference $I$.
+Recall equations \eqref{eq:totmean} and \eqref{eq:totvar}. Matching the first first two moments of the fading distributions $H=H_{\text{Exp}}$ and $H=H_{\mathcal{M}\mathcal{L}\mathcal{G}}$ is equivalent to matching the mean and variance of the corresponding total interferences (before the spatial path loss) $I = \sum_{x \in \mathcal{G}} H_x x$.
 
+
+ Note that without loss of generality, we can set $\Upsilon_{\epsilon}=1$  when studying the SIR, as the scaling of the signal powers cancel.
+
+
+\subsection{Spherical model of the narrow-beam LEO uplink}
+\label{eq:sphericalmodel}
+The base line system model is the spherical model, where the UE are located on the spherical Earths surface according to the PPP $\Theta$ on the Earth surface. The UEs are radiating omnidirectionally.
+
+We define the derved UE in the spherical model as ${u}_0 \triangleq \arg \min \{ u \in \Theta: d_u\}$. The total received power at the typical SBS from the UEs in the PPP $\Theta$ on the Earth's surface above the horizon is defined as
+
+\begin{equation}
+  \label{eq:mathringptot}
+  \mathring{I} \triangleq \mathring{I} + \mathring{S} =    \sum_{u \in \Theta} H_u\ell(u) = \sum_{u \in \Theta}  \frac{H_u G_{u}(\varphi_u)}{(d_u/d_0)^{\alpha}},
+\end{equation}
+$H_{u} \sim H_{\mathcal{M}\mathcal{L}\mathcal{N}}$ are i.i.d. following the mixed log-normal distribution inroduced in Section \ref{sex:guassianmixture}. The path loss powe rexponent $\alpha \geq 0$, and $d_0$ is a normalizing distance accounting for any other factors affecting the path loss, such as the frequency band of the signals, and casts the path loss to a dimensionless quantity. Where $\varphi_u$ is the angle between the SBS antenna boresight and  $u \in \Theta$. Each $H_{\mathcal{M}\mathcal{L}\mathcal{N}}$ is a i.i.d. shadowing variables. The SIR and SINR $\mathring{S}/\mathring{I}$,  $\mathring{S}/(\mathring{I}+N)$, are defined accordingly. 
+
+
+The spherical model succesfully approximates the planar model, and the reader may refer to [???] for a extensive comparison between the planar model and the spherical model in the narrow beam LEO upink. We omit the geometrical details or the implementation details of the spherical model.
+
+\subsection{Planar model of the narrow-beam LEO uplink and the constant spatial path loss}
+
+As indicated in the analysis in Section \ref{sec:analysissec}, we incorporate a flat-earth model. The planar model eqffectively approximates the spherical model \ref{eq:sphericalmodel} with narrow beams. The UEs, \textit{i.e.}, the Earth transmitters, radiate omnidirectionally and form a homogeneous PPP $\Phi \subset \R^2$, Gaussian path loss $G(D_{h,\epsilon}\|x\|)$ representing the signal gains at the SBS, and i.i.d. shadowing $H_x$. The SBS antenna boresight is directed at the origin $\textit{o} \triangleq (0,0)$. Please refer to Figure \ref{fig:UEsontheplane} for the geometric interpretation.
+
+The scaling term $D_{h,\epsilon} = \sin^2(\epsilon)/h$ is essentially the first-order coefficient in the Taylor expansion of the function $\|x\| \mapsto \varphi_x$. It is derived in Appendix \ref{app:constantD}.
+
+Because of the ergodicity of the PPP, we may interpret the model as a snapshot of a single realization of the UEs, and the averaging is taken over uniformly distributed SBSs (instead of the ensemble of $\Phi$).
+
+We consider a narrow Gaussian antenna beam, that decays rapidly to $0$, and the relevant UEs are close to each other. Hence, the spatial path loss for \textit{all} transmitters is given by
+\begin{equation}
+  \ell(\hat{d}_{h,\epsilon}) \triangleq  {(\hat{d}_{h,\epsilon}/d_0)}^{\alpha}.
+\end{equation}
+
+
+The distance $\hat{d}_{h,\epsilon} \triangleq h/\sin(\epsilon)$ can be derived through simple geometry. As $u/\ell(\hat{d}_{h,\epsilon})/(I/\ell(\hat{d}_{h,\epsilon})+W) > \theta $ and $u /(I+W \ell(\hat{d}_{h,\epsilon}))> \theta, u \in \mathcal{G},$ are equivalent conditions (for some $W>0$), the spatial path loss is simply incorporated into the noise term $N$ (as introduced in \eqref{eq:SINR} and \eqref{eq:STINR}). As a constant, the path loss is only relevant in the interference-plus-noise channel, canceling out if $N=0$.
 
 
 Finally, taking into account spatial path loss and the scaling of signal powers, the noise term in \eqref{eq:SINR} and \eqref{eq:STINR} is given by:
@@ -599,6 +605,23 @@ Finally, taking into account spatial path loss and the scaling of signal powers,
 N \triangleq \frac{W \ell(\hat{d}_{h\epsilon})}{\Upsilon_{\epsilon}},
 \end{equation}
 where $W \geq 0$ is a dimensionless noise power constant at the SBS.
+
+
+\begin{figure}[h]%
+  \centering
+  \subfloat[\centering  Interpretation of the \textit{planar} system model with the SBSs in adjacent orbits serving an urban area and a realization of the UEs. The altitudes are not to scale.]{{\includegraphics[width=\linewidth]{UEsontheplane.png}}
+    \label{fig:UEsontheplane}%%
+  } 
+  \qquad
+  \subfloat[\centering The typical SBS as seen from the side. The transmitters are projected into line $(0, \infty)$ according to their norm.]{{\includegraphics[width=\linewidth]{drawing.png}}     \label{fig:systemmodel}} %%
+  \caption{The simplified narrow-beam LEO uplink system model. The SBS antenna boresight is oriented towards $\textit{o}$, the focus point of the elliptical footprint. The omnidirectionally transmitting UEs $\{x_i\}$ are located according to the HPPP on the plane. The nearest transmitter, $x_0$, is the served UE.}
+\end{figure}
+
+
+
+
+
+
 
 
 
