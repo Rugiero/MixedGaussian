@@ -370,7 +370,6 @@ In the interference-plus-noise-limited channel, we derive the partial densities 
 
 \begin{prop}
   The $n$-moment measure of the STINR process is given by
-
   \begin{align}
     \label{eq:nthmomentmeasureSTINR}
       &M'^{(n)}(t'_1,\dots,t'_n) =\left(\tilde{\kappa} \upsilon_{\epsilon}\right)^n \nonumber\\
@@ -565,23 +564,9 @@ we can solve for the parameters
 Recall equations \eqref{eq:totmean} and \eqref{eq:totvar}. Matching the first first two moments of the fading distributions $H=H_{\text{Exp}}$ and $H=H_{\mathcal{M}\mathcal{L}\mathcal{G}}$ is equivalent to matching the mean and variance of the corresponding total interferences (before the spatial path loss) $I = \sum_{x \in \mathcal{G}} H_x x$.
 
 
- Note that without loss of generality, we can set $\Upsilon_{\epsilon}=1$  when studying the SIR, as the scaling of the signal powers cancel.
+ Without loss of generality, we can set $\Upsilon_{\epsilon}=1$  when studying the SIR scenarios, as the scaling of the signal powers cancel for $N=0$.
 
 
-\subsection{Spherical model of the narrow-beam LEO uplink}
-\label{eq:sphericalmodel}
-The base line system model is the spherical model, where the UE are located on the spherical Earths surface according to the PPP $\Theta$ on the Earth surface. The UEs are radiating omnidirectionally.
-
-We define the derved UE in the spherical model as ${u}_0 \triangleq \arg \min \{ u \in \Theta: d_u\}$. The total received power at the typical SBS from the UEs in the PPP $\Theta$ on the Earth's surface above the horizon is defined as
-
-\begin{equation}
-  \label{eq:mathringptot}
-  \mathring{I} \triangleq \mathring{I} + \mathring{S} =    \sum_{u \in \Theta} H_u\ell(u) = \sum_{u \in \Theta}  \frac{H_u G_{u}(\varphi_u)}{(d_u/d_0)^{\alpha}},
-\end{equation}
-$H_{u} \sim H_{\mathcal{M}\mathcal{L}\mathcal{N}}$ are i.i.d. following the mixed log-normal distribution inroduced in Section \ref{sex:guassianmixture}. The path loss powe rexponent $\alpha \geq 0$, and $d_0$ is a normalizing distance accounting for any other factors affecting the path loss, such as the frequency band of the signals, and casts the path loss to a dimensionless quantity. Where $\varphi_u$ is the angle between the SBS antenna boresight and  $u \in \Theta$. Each $H_{\mathcal{M}\mathcal{L}\mathcal{N}}$ is a i.i.d. shadowing variables. The SIR and SINR $\mathring{S}/\mathring{I}$,  $\mathring{S}/(\mathring{I}+N)$, are defined accordingly. 
-
-
-The spherical model succesfully approximates the planar model, and the reader may refer to [???] for a extensive comparison between the planar model and the spherical model in the narrow beam LEO upink. We omit the geometrical details or the implementation details of the spherical model.
 
 \subsection{Planar model of the narrow-beam LEO uplink and the constant spatial path loss}
 
@@ -597,14 +582,16 @@ We consider a narrow Gaussian antenna beam, that decays rapidly to $0$, and the 
 \end{equation}
 
 
-The distance $\hat{d}_{h,\epsilon} \triangleq h/\sin(\epsilon)$ can be derived through simple geometry. As $u/\ell(\hat{d}_{h,\epsilon})/(I/\ell(\hat{d}_{h,\epsilon})+W) > \theta $ and $u /(I+W \ell(\hat{d}_{h,\epsilon}))> \theta, u \in \mathcal{G},$ are equivalent conditions (for some $W>0$), the spatial path loss is simply incorporated into the noise term $N$ (as introduced in \eqref{eq:SINR} and \eqref{eq:STINR}). As a constant, the path loss is only relevant in the interference-plus-noise channel, canceling out if $N=0$.
+The distance $\hat{d}_{h,\epsilon} \triangleq h/\sin(\epsilon)$ can be derived through simple geometry.
+
+Because $\Upsilon_{\epsilon} u/\ell(\hat{d}_{h,\epsilon})/(\Upsilon_{\epsilon}  I/\ell(\hat{d}_{h,\epsilon})+W) > \theta $ and $u /(I+W \ell(\hat{d}_{h,\epsilon})/\Upsilon_{\epsilon})> \theta, u \in \mathcal{G},$ are equivalent conditions (for some $W>0$), the spatial path loss is simply incorporated into the noise term $N$ (as introduced \eqref{eq:SINR} and \eqref{eq:STINR}) along side with with the scaling term $\Upsilon_{\epsilon}$. Clearly, the constants $\ell(\hat{d}_{h,\epsilon})$ and $\Upsilon_{\epsilon}$ are only relevant in the interference-plus-noise channel, canceling out if $N=0$. 
 
 
-Finally, taking into account spatial path loss and the scaling of signal powers, the noise term in \eqref{eq:SINR} and \eqref{eq:STINR} is given by:
+Namely, taking into account spatial path loss and the scaling of signal powers, the noise term in \eqref{eq:SINR} and \eqref{eq:STINR} is given by:
 \begin{equation}
 N \triangleq \frac{W \ell(\hat{d}_{h\epsilon})}{\Upsilon_{\epsilon}},
 \end{equation}
-where $W \geq 0$ is a dimensionless noise power constant at the SBS.
+where $W \geq 0$ is a dimensionless noise power constant at the SBS. As noted, is this work, the only instance for this $N$ to be accounted for is when evaluating the $n$th factorial moment measure of the STINR process; $\eqref{eq:nthmomentmeasureSTINR}$.
 
 
 \begin{figure}[h]%
@@ -622,6 +609,21 @@ where $W \geq 0$ is a dimensionless noise power constant at the SBS.
 
 
 
+
+\subsection{Spherical model of the narrow-beam LEO uplink}
+\label{eq:sphericalmodel}
+The base line system model is the spherical model, where the UE are located on the spherical Earths surface according to the PPP $\Theta$ on the Earth surface. Like in the planar model, the UEs are radiating omnidirectionally and exhibits random shadowing.
+
+The total received power at the typical SBS from the UEs in the PPP $\Theta$ on the Earth's surface above the horizon is defined as
+
+\begin{equation}
+  \label{eq:mathringptot}
+  \mathring{I} \triangleq (\mathring{I}- \mathring{S}) + \mathring{S} =    \sum_{u \in \Theta} H_u\ell(u) = \sum_{u \in \Theta}  \frac{H_u G_{u}(\varphi_u)}{(d_u/d_0)^{\alpha}},
+\end{equation}
+$H_{u} \sim H_{\mathcal{M}\mathcal{L}\mathcal{N}}$ are i.i.d. following the mixed log-normal distribution inroduced in Section \ref{sex:guassianmixture}. The power path lossexponent $\alpha \geq 0$, and $d_0$ is a normalizing distance accounting for any other factors affecting the path loss, such as the frequency band of the signals, and casts the path loss to a dimensionless quantity. Where $\varphi_u$ is the angle between the SBS antenna boresight and  $u \in \Theta$. Each $H_{\mathcal{M}\mathcal{L}\mathcal{N}}$ is a i.i.d. shadowing variables. Defined implicitly in \eqref{eq:mathringptot}, $\mathring{S}$ signal power from the strongest signal and $\mathring{I}-\mathring{S}$ is the total power from the other signals. The SIR and SINR $\mathring{S}/(\mathring{I}-\mathring{S})$,  $\mathring{S}/(\mathring{I}-\mathring{S}+N)$, are defined accordingly. The IC schemes SIR-IC, SIR-SIC, SINR-IC and SINR-SIC are simulated using these definitions. 
+
+
+The spherical model is analytically needlessly complex to work with. For the narrow-beamed antenna gain, such as the Gaussian antenna beam, the planar model introduced in the following section stricingly well approximates the spherical model, especially for the large elevation angles or small SBS altitudes. However, in this work, we exclude the implementation details of the spherical model and refer to [???] for an extensive comparison between the planar model and the spherical model in the narrow beam LEO upink. Also, the presented numerical results are always compared to the spherical model.
 
 
 
