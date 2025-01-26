@@ -564,7 +564,7 @@ to match the moments, we can solve for the parameters
 Recall equations \eqref{eq:totmean} and \eqref{eq:totvar}. Matching the first two moments of fading distributions is equivalent to matching the mean and variance of total interferences using the respective fadings. 
 
 
-Without loss of generality, we can set $\Upsilon_{\epsilon}=1$  when studying the SIR scenarios, as the scaling of the signal powers cancel for $N=0$. In the SINR case, the scaling is accounted for by adjusting the noise constant by a factor of $N \sim 1/\Upsilon_{\epsilon}$. The parameter $0 \leq  1-\upsilon_{\epsilon} < 1$ of the defective exponential distribution (somewhat vaguely) encapsulates the shadowing occurrences, when the signal is blocked almost entirely  to $-\infty$ dB in the mixed log-normal shadowing model. These occurrences are particularly common in low elevation-angles, because of tall buildings and other similar large objects preventing the LoS and blocking the signal.
+Without loss of generality, we can set $\Upsilon_{\epsilon}=1$  when studying the SIR scenarios, as the scaling of the signal powers cancel for $N=0$. In the SINR case, the scaling is accounted for by adjusting the noise constant by a factor of $N \sim 1/\Upsilon_{\epsilon}$. The parameter $0 \leq  1-\upsilon_{\epsilon} < 1$ of the defective exponential distribution encapsulates the shadowing occurrences, when the signal is either blocked by an obstacle or destructively interfered by its multi path components mapping the signal power very close to $-\infty$ dB in the mixed log-normal shadowing model. These occurrences are particularly common in low elevation-angles, because of tall buildings and other similar large objects preventing LoS and hence causing severe signal blockage at the SBS. Note that the signals are not blocked identically to all directions, hence the signal strengths and the order statistics of the SINR and STINR processes depend on the serving SBS location w.r.t. the UEs. (Let us, for example, consider that there is a large building between the SBS$_1$ and UE$_1$. The signal strength of the UE$_1$ may well map to $0$ at SBS$_1$. On the other hand the strongest signal at the SBS$_1$ could be from another UE$_2$. However, on the other side of the building, UE$_1$ might well be the strongest signal at a SBS$_1$ located in the other side of the building, whereas UE$_2$ would cause (?!?!?!) unsignificant interference. In other words, SBS$_1$ and SBS$_2$ would serve different UEs with good performance, even though the distances of the UEs and SBS would be identical.
 
 The UEs with the strongest signals are unlikely to be in a significant blockage, and definitely the strongest signals are never blocked entirely (or destructively interfered!!) (literally by meaning ``entirely'' in the mixed exponential shadowing when the power maps to $0$, and ``almost entirely'' in the mixed log-normal shadowing, when the power is mapped close to $0$). On the other hand, the interfering UEs of the smaller order statistics have larger probability to be blocked by large obstacles and hence exhibiting NLoS behavior and severe shadowing. The portion of signals that are blocked entirely, is reflected, in the densities of the $n$th factorial moment measures \eqref{eq:factorialmoment} and \eqref{eq:nthmomentmeasureSTINR}, where the mean number of UEs inside the $3$ dB footprint of a SBS; ${\kappa}=\tilde{\kappa}\log(2)  $, is scaled by the factor $0 <\upsilon_{\epsilon} \leq 1$; $\upsilon_{\epsilon} \kappa=\upsilon_{\epsilon}\tilde{\kappa} \log(2) $: $\upsilon_{\epsilon}$ corresponding to the fraction of \textit{effective} UEs having a non-zero shadowed signal power at the typical SBS.
 
@@ -577,7 +577,7 @@ Being general, and including insight, we use the effective number of UEs $\upsil
 
 
 \subsection{Planar model of the narrow-beam LEO uplink and the constant spatial path loss}
-
+\label{sec:planarmodel}
 As indicated in the analysis in Section \ref{sec:analysissec}, we incorporate a flat-earth model. The planar model eqffectively approximates the spherical model \ref{eq:sphericalmodel} with narrow beams. The UEs, \textit{i.e.}, the Earth transmitters, radiate omnidirectionally and form a homogeneous PPP $\Phi \subset \R^2$, Gaussian path loss $G(D_{h,\epsilon}\|x\|)$ representing the signal gains at the SBS, and i.i.d. shadowing $H_x$. The SBS antenna boresight is directed at the origin $\textit{o} \triangleq (0,0)$. Please refer to Figure \ref{fig:UEsontheplane} for the geometric interpretation.
 
 The scaling term $D_{h,\epsilon} = \sin^2(\epsilon)/h$ is essentially the first-order coefficient in the Taylor expansion of the function $\|x\| \mapsto \varphi_x$. It is derived in Appendix \ref{app:constantD}.
@@ -586,7 +586,7 @@ Because of the ergodicity of the PPP, we may interpret the model as a snapshot o
 
 We consider a narrow Gaussian antenna beam, that decays rapidly to $0$, and the relevant UEs are close to each other. Hence, the spatial path loss for \textit{all} transmitters is given by
 \begin{equation}
-  \ell(\hat{d}_{h,\epsilon}) \triangleq  {(\hat{d}_{h,\epsilon}/d_0)}^{\alpha}.
+  \ell(\hat{d}_{h,\epsilon}) \triangleq  {(\hat{d}_{h,\epsilon}/d_0)}^{-\alpha}.
 \end{equation}
 
 
@@ -618,20 +618,20 @@ where $W \geq 0$ is a dimensionless noise power constant at the SBS. As noted, i
 
 
 
-\subsection{Spherical model of the narrow-beam LEO uplink}
+\subsection{Monte Carlso simulations of the spherical model}
 \label{eq:sphericalmodel}
-The base line system model is the spherical model, where the UE are located on the spherical Earths surface according to the PPP $\Theta$ on the Earth surface. Like in the planar model, the UEs are radiating omnidirectionally and exhibits random shadowing.
+The base line system model is the spherical model, where the UE are located on the spherical Earths surface according to the PPP $\Theta$. Like in the planar model, the UEs are radiating omnidirectionally at power $P=1$ and are multiplied by i.i.d. random shadowing $H_x$.
 
-The total received power at the typical SBS from the UEs in the PPP $\Theta$ on the Earth's surface above the horizon is defined as
+The total received power at the typical SBS from the UEs in the PPP $\Theta \subset E \subset$ \textit{Earth surface} of density $\lambda$, with $E$ denoting the area above the horizon of the typical SBS (\textit{i.e.} the locations that are visible to the typical SBS) is defined as
 
 \begin{equation}
   \label{eq:mathringptot}
-  \mathring{I} \triangleq (\mathring{I}- \mathring{S}) + \mathring{S} =    \sum_{u \in \Theta} H_u\ell(u) = \sum_{u \in \Theta}  \frac{H_u G_{u}(\varphi_u)}{(d_u/d_0)^{\alpha}},
+  \mathring{I} \triangleq (\mathring{I}- \mathring{S}) + \mathring{S} =    \sum_{x \in \Theta} H_x\ell(d_x) = \sum_{x \in \Theta}  \frac{H_x G_{x}(\varphi_x)}{(d_x/d_0)^{\alpha}},
 \end{equation}
-$H_{u} \sim H_{\mathcal{M}\mathcal{L}\mathcal{N}}$ are i.i.d. following the mixed log-normal distribution inroduced in Section \ref{sex:guassianmixture}. The power path lossexponent $\alpha \geq 0$, and $d_0$ is a normalizing distance accounting for any other factors affecting the path loss, such as the frequency band of the signals, and casts the path loss to a dimensionless quantity. Where $\varphi_u$ is the angle between the SBS antenna boresight and  $u \in \Theta$. Each $H_{\mathcal{M}\mathcal{L}\mathcal{N}}$ is a i.i.d. shadowing variables. Defined implicitly in \eqref{eq:mathringptot}, $\mathring{S}$ signal power from the strongest signal and $\mathring{I}-\mathring{S}$ is the total power from the other signals. The SIR and SINR $\mathring{S}/(\mathring{I}-\mathring{S})$,  $\mathring{S}/(\mathring{I}-\mathring{S}+N)$, are defined accordingly. The IC schemes SIR-IC, SIR-SIC, SINR-IC and SINR-SIC are simulated using these definitions. 
+where $H_{x} \sim H_{\mathcal{M}\mathcal{L}\mathcal{N}}$ are i.i.d. mixed log-normal r.v.'s inroduced in Section \ref{sex:guassianmixture}. The power path loss exponent $\alpha \geq 0$, and $(d_x/d_0)$ is the distance between the UE and the typical SBS, and the normalizing distance $d_0$ accounts for any other factors affecting the path loss, such as the frequency band of the signals, and casts the path loss to a dimensionless quantity. The sub-satellite point of the typical SBS is at $\textit{o}_E$. As with the planar model, $\varphi_x$ is the angle between the SBS antenna boresight and  $u \in \Theta$. However, in contrary to the planar model, this is calculated precicely the spherical model. $\mathring{S}$ is the strongest signal at the SBS and $\mathring{I}-\mathring{S}$ is the interference power from the other signals. The SIR and SINR $\mathring{S}/(\mathring{I}-\mathring{S})$,  $\mathring{S}/(\mathring{I}-\mathring{S}+N)$, are defined accordingly. The IC schemes SIR-IIC, SIR-SIC, SINR-IIC and SINR-SIC are simulated using these definitions through Monte Carlo simulations. 
 
 
-The spherical model is analytically needlessly complex to work with. For the narrow-beamed antenna gain, such as the Gaussian antenna beam, the planar model introduced in the following section stricingly well approximates the spherical model, especially for the large elevation angles or small SBS altitudes. However, in this work, we exclude the implementation details of the spherical model and refer to [???] for an extensive comparison between the planar model and the spherical model in the narrow beam LEO upink. Also, the presented numerical results are always compared to the spherical model.
+The spherical model \eqref{eq:mathringptot} is unnesessarily complex to work analytically. However, for the narrow-beamed antenna gain, such as the Gaussian antenna beam, the planar model introduced in Section \ref{sec:planarmodel} stricingly well approximates the spherical model, like demonstratet in CITE<XXX]. In this work, we exclude the practical implementation details of the spherical model Monte Carlo simulations and refer to [???] for an extensive comparison between the planar model and the spherical model in the narrow beam LEO upink. Also, the presented results derived from the analysis based in the planar model are always compared to the Monte Carlo simulations based in the spherical model formulated in this section.
 
 
 
