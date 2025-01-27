@@ -48,11 +48,13 @@ lnFH1 = @(t) kappa*pLoS*(1-cdf(lnLoS,t/a))./t+kappa*(1-pLoS)*(1-cdf(lnNLoS,t/a))
 expFH1 = @(t) kappa*(exp(-t)/b)./t;
 
 
-%% pLoS=0.968;
-%% a = (2*exp(muNLoS+sigmaNLoS^2/2)*(-1+pLoS)-2*exp(muLoS+sigmaLoS^2/2)*pLoS)/(exp(2*(muNLoS+sigmaNLoS^2))*(-1+pLoS)-exp(2*(muLoS+sigmaLoS^2))*pLoS);
-%% b=(-exp(2*muNLoS+sigmaNLoS^2)*(-1+pLoS)+exp(2*(muLoS+sigmaLoS^2))*pLoS)/(2*(exp(muNLoS+sigmaNLoS^2/2)*(-1+pLoS)-exp(muLoS+sigmaLoS^2/2)*pLoS)^2);
-%% 1/b
-%% expFH2 = @(t) kappa*(exp(-t*a)/b)./t;
+pLoS=0.968;
+a = (2*exp(muNLoS+sigmaNLoS^2/2)*(-1+pLoS)-2*exp(muLoS+sigmaLoS^2/2)*pLoS)/(exp(2*(muNLoS+sigmaNLoS^2))*(-1+pLoS)-exp(2*(muLoS+sigmaLoS^2))*pLoS);
+b=(-exp(2*muNLoS+sigmaNLoS^2)*(-1+pLoS)+exp(2*(muLoS+sigmaLoS^2))*pLoS)/(2*(exp(muNLoS+sigmaNLoS^2/2)*(-1+pLoS)-exp(muLoS+sigmaLoS^2/2)*pLoS)^2);
+1/b
+expFH2 = @(t) kappa*(exp(-t)/b)./t;
+lnFH2 = @(t) kappa*pLoS*(1-cdf(lnLoS,t/a))./t+kappa*(1-pLoS)*(1-cdf(lnNLoS,t/a))./t;
+
 
 
 pLoS=0.613;
@@ -95,12 +97,12 @@ title('Density function of the gain process with $\tilde{\kappa}=1$',...
 
 fill([t,fliplr(t)],[lnFH1(t),fliplr(expFH1(t))],[0 0.4470 0.7410],'FaceAlpha',0.3,'EdgeColor','none');
 
-%fill([t,fliplr(t)],[lnFH2(t),fliplr(expFH2(t))],[0.8500 0.3250 0.0980],'FaceAlpha',0.3,'EdgeColor','none');
+%% fill([t,fliplr(t)],[lnFH2(t),fliplr(expFH2(t))],[0.8500 0.3250 0.0980],'FaceAlpha',0.3,'EdgeColor','none');
 
 fill([t,fliplr(t)],[lnFH3(t),fliplr(expFH3(t))],[0.9290 0.6940 0.1250],'FaceAlpha',0.3,'EdgeColor','none');
 
 axis([[0,max],[0,5]])
-legend('Mixed log-normal shadowing','Exponential shadowing; $\lambda_{\mathcal{G}}(t)=\tilde{\kappa}\rho_{\epsilon}e^{-t}/t$',...
+legend('Mixed log-normal shadowing','Exponential shadowing; $\lambda_{\mathcal{G}}(t)=\tilde{\kappa}\upsilon_{\epsilon}e^{-t}/t$',...
        'No shadowing; $\lambda_{\mathcal{G}}(t)=\tilde{\kappa}/t, t \in(0,1)$',...
     'Interpreter','latex',...
     'FontSize',14)
