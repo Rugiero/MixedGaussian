@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.10.9)  26 JAN 2025 05:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.10.9)  27 JAN 2025 02:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -665,54 +665,63 @@ Underfull \vbox (badness 3780) has occurred while \output is active []
 <plotdensities.pdf, id=117, 389.2944pt x 330.5148pt>
 File: plotdensities.pdf Graphic file (type pdf)
 <use plotdensities.pdf>
-Package pdftex.def Info: plotdensities.pdf  used on input line 217.
+Package pdftex.def Info: plotdensities.pdf  used on input line 219.
 (pdftex.def)             Requested size: 252.0pt x 213.95453pt.
 LaTeX Font Info:    Trying to load font information for U+dsrom on input line 2
-78.
+80.
 
 (/usr/share/texlive/texmf-dist/tex/latex/doublestroke/Udsrom.fd
 File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
-) [3 <./plotdensities.pdf>] [4]
+) [3 <./plotdensities.pdf>]
 
-LaTeX Warning: Command \textperthousand invalid in math mode on input line 474.
+LaTeX Warning: Reference `sec:partialdensitySIR' on page 4 undefined on input l
+ine 396.
+
+[4]
+Overfull \hbox (0.7719pt too wide) detected at line 480
+[]
+ []
+
+
+LaTeX Warning: Command \textperthousand invalid in math mode on input line 483.
 
 
 
-LaTeX Warning: Command \textperthousand invalid in math mode on input line 474.
+LaTeX Warning: Command \textperthousand invalid in math mode on input line 483.
 
 
 Missing character: There is no ‡ in font cmr10!
 [5]
-Underfull \hbox (badness 3039) in paragraph at lines 547--548
+Underfull \hbox (badness 3039) in paragraph at lines 569--570
 \OT1/ptm/m/n/10 eval-u-ates to a mixed nor-mal r.v. $\OML/cmm/m/it/10 p[]\OMS/c
 msy/m/n/10 N\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ^^V[]; ^^[[]\OT1/cmr/m/n/10 ) +
  []
 
 [6]
-<UEsontheplane.png, id=232, 589.402pt x 376.607pt>
+<UEsontheplane.png, id=236, 589.402pt x 376.607pt>
 File: UEsontheplane.png Graphic file (type png)
 <use UEsontheplane.png>
-Package pdftex.def Info: UEsontheplane.png  used on input line 609.
+Package pdftex.def Info: UEsontheplane.png  used on input line 625.
 (pdftex.def)             Requested size: 252.0pt x 161.01839pt.
 LaTeX Font Info:    Trying to load font information for OT1+phv on input line 6
-09.
+25.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
 )
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 609.
-<drawing.png, id=234, 216.0873pt x 147.9126pt>
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 625.
+<drawing.png, id=238, 216.0873pt x 147.9126pt>
 File: drawing.png Graphic file (type png)
 <use drawing.png>
-Package pdftex.def Info: drawing.png  used on input line 611.
+Package pdftex.def Info: drawing.png  used on input line 627.
 (pdftex.def)             Requested size: 252.0pt x 172.50182pt.
 
-Overfull \hbox (3.50006pt too wide) in paragraph at lines 609--612
+Overfull \hbox (3.50006pt too wide) in paragraph at lines 625--628
  [][] 
  []
 
 
-Overfull \hbox (3.50006pt too wide) in paragraph at lines 609--612
+Overfull \hbox (3.50006pt too wide) in paragraph at lines 625--628
  [][] 
  []
 
@@ -720,31 +729,39 @@ Overfull \hbox (3.50006pt too wide) in paragraph at lines 609--612
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [7]
-<triangle.pdf, id=248, 443.97871pt x 285.2256pt>
+<triangle.pdf, id=255, 443.97871pt x 285.2256pt>
 File: triangle.pdf Graphic file (type pdf)
 <use triangle.pdf>
-Package pdftex.def Info: triangle.pdf  used on input line 695.
+Package pdftex.def Info: triangle.pdf  used on input line 711.
 (pdftex.def)             Requested size: 176.39923pt x 113.32222pt.
- [8 <./UESontheplane.png> <./drawing.png> <./triangle.pdf>]
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[8 <./UESontheplane.png> <./drawing.png>]
 No file source.bbl.
 [9
 
-] (./source.aux)
+ <./triangle.pdf>] (./source.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
+
+
+LaTeX Warning: There were undefined references.
+
 Package rerunfilecheck Info: File `source.out' has not changed.
 (rerunfilecheck)             Checksum: 04C12FF0BCB878FBFD0A4EA141C229E3;5826.
  ) 
 Here is how much of TeX's memory you used:
- 13966 strings out of 476106
- 224348 string characters out of 5793933
+ 13969 strings out of 476106
+ 224385 string characters out of 5793933
  1962975 words of memory out of 5000000
- 35682 multiletter control sequences out of 15000+600000
+ 35685 multiletter control sequences out of 15000+600000
  606900 words of font info for 127 fonts, out of 8000000 for 9000
  63 hyphenation exceptions out of 8191
- 75i,17n,79p,1636b,584s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,17n,79p,1300b,585s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/
@@ -771,10 +788,10 @@ o8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/urw/times/utmri8a.pfb>
-Output written on source.pdf (9 pages, 856154 bytes).
+Output written on source.pdf (9 pages, 857518 bytes).
 PDF statistics:
- 415 PDF objects out of 1000 (max. 8388607)
- 319 compressed objects within 4 object streams
+ 423 PDF objects out of 1000 (max. 8388607)
+ 326 compressed objects within 4 object streams
  82 named destinations out of 1000 (max. 500000)
  165 words of extra memory for PDF output out of 10000 (max. 10000000)
 

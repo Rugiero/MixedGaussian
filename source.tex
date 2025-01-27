@@ -164,7 +164,7 @@ Since the variables $\{H_x\}_{x \in \Phi}$ are i.i.d., we can denote the shadowi
     \label{eq:kappa}
           {\kappa} \triangleq    \pi \lambda   \left(\frac{\varphi_{\textup{RX}}}{D_{h,\epsilon}}\right)^2,
   \end{equation}
-  where $D_{h,\epsilon}=\sin^2(\epsilon)/h$. The parameter $\kappa$ has an interpretation as the mean number of UEs inside the $3$ dB footprint of a SBS (see appendix XX).
+  where $D_{h,\epsilon}=\sin^2(\epsilon)/h$. The parameter $\kappa$ has an interpretation as the mean number of UEs inside the $3$ dB footprint of a SBS (see appendix TÄYTÄ).
   \begin{proof}
     Let $f_H(\cdot)$ be the pdf of $H$. We denote $G^{-1}(\cdot)$ as the generalized inverse $G^{-1}(y) = \inf \{x:G(x)<y\}$. By [CITE],
     \begin{align*}
@@ -184,8 +184,10 @@ We will come back to the interpretation of the variable $\tilde{\kappa}$ in Sect
 We define the total interference, or the total received power, by
 \begin{equation}
   \label{eq:totpow}
-  I \triangleq \sum\limits_{x \in \Phi} H_x G(D_{h,\epsilon}\|x\|)=\sum\limits_{x \in \mathcal{G}}x.
+  I \triangleq \sum\limits_{x \in \Phi} H_x G(D_{h,\epsilon}\|x\|)=\sum\limits_{u \in \mathcal{G}}u.
 \end{equation}
+The symbol used to represent the points in the point process (p.p.) can be arbitrary. However, in \eqref{eq:totpow}, we use $u \in \mathcal{G}$ to avoid any potential confusion with $x \in \mathbb{R}^2$.
+
 The mean and the variance of $I$ are given by
 \begin{align}
   \label{eq:totmean}
@@ -321,21 +323,24 @@ We still need to explicitly determine the expressions for the partial density ${
 
 
 \subsection{Partial density of the factorial moment measure in the interference-limited channel}
-\label{sec:partialdensitySIR}
-In this section, we characterize $\mu_n'^{(n+i)}$ and the order statistics of the STIR process through the Poisson-Dirichlet distribution (PD)  $\text{PD}(0,\upsilon_{\epsilon}$). PDs have their unique characteristics that we don't specify here. A necessary condition is that the descending sequence  $(y_{(1)},y_{(2)},\dots)$ has to admit the condition $\sum_{i=1}^{\infty}y_{(i)}=1$ to have a PD. Clearly, the condition holds for the STIR ($N=0$) process \eqref{eq:STINR}.
+In this section, we characterize $\mu_n'^{(n+i)}$ and the order statistics of the STIR process through the Poisson-Dirichlet distribution $\text{PD}(0, \upsilon_{\epsilon})$. The Poisson-Dirichlet distributions have unique properties that we do not describe exhaustively here. A necessary condition for the distribution is that the descending sequence $(y_{(1)}, y_{(2)}, \dots)$ satisfies $\sum_{i=1}^{\infty} y_{(i)} = 1$. This condition holds for the STIR ($N=0$) process; see \eqref{eq:totpow} and \eqref{eq:STINR}. 
 
-Let $(X_{t}, t \geq 0)$ be a \textit{gamma subordinator}, or the \textit{gamma process}. It is a pure-jump increasing Lévy process with the Lévy measure $\lambda(r) = e^{- r}/r$. Without a drift component, the Laplace transform of the gamma subordinator at time $t$ is given by
+
+
+Let $(X_{t}, t \geq 0)$ be a \textit{gamma subordinator}, also known as the \textit{gamma process}. It is an increasing jump process that exhibits an infinite number of jumps within any given time interval. The increment of the process during a time interval follows a gamma distribution. This process is a special case of a Lévy process, characterized by the Lévy measure $\lambda(r) = {e^{-r}}/{r}$.
+
+Let $(X_{t}, t \geq 0)$ be a \textit{gamma subordinator}, or the \textit{gamma process}. It is a increasing jump process with infinite jumps within each time interval. The increments within each time interval are gamma distributed. It is a special case of the Lévy process characterized by the Lévy measure $\lambda(r) = e^{- r}/r$. Without a drift component, the Laplace transform of the gamma subordinator at time $t$ is given by
 \begin{align}
   \label{eq:lapsubord}
   \mathbb{E}(\exp\{-s X_{t}\}) &= \exp\left\{-{t} \int_0^{\infty}(1-e^{-s r})\frac{e^{-r}}{r} dr \right\}. \nonumber \\
   &=(1+s)^{-t}.
 \end{align}
-But \eqref{eq:lapsubord} equals \eqref{eq:lapdef} at time $t=\tilde{\kappa}\upsilon_{\epsilon} $. Hence, the total interference $I$ can be characterized by $X_{\tilde{\kappa} \upsilon_{\epsilon}}$ (which is nothing but a gamma distributed r.v. of shape parameter $\upsilon_{\epsilon}\tilde{\kappa}$). Let $V_1(X_{t}) \geq V_2(X_{t})\geq \dots \geq 0 $ denote the jumps of the gamma subordinator at time $t$. Recall the STINR process with $N=0$ \eqref{eq:STINR}, \textit{i.e.}, the STIR process. By definition, the sequence
+But \eqref{eq:lapsubord} equals \eqref{eq:lapdef} at time $t=\tilde{\kappa}\upsilon_{\epsilon} $. Hence, the total interference $I$ can be characterized by $X_{\tilde{\kappa} \upsilon_{\epsilon}}$, which is again nothing but a gamma distributed r.v. of shape parameter $\tilde{\kappa}\upsilon_{\epsilon}$. Let $V_1(X_{t}) \geq V_2(X_{t})\geq \dots \geq 0 $ denote the jumps of the gamma process at time $t$. We can formulate a random sequence
 \begin{equation}
   \label{eq:relativesequence}
-  \left(\frac{V_1(X_{\tilde{\kappa}\upsilon_{\epsilon}})}{X_{\tilde{\kappa}\upsilon_{\epsilon}}},\frac{V_2(X_{\tilde{\kappa}\upsilon_{\epsilon}})}{X_{\tilde{\kappa}\upsilon_{\epsilon}}} \dots \right)
+  \left(\frac{V_1(X_{\tilde{\kappa}\upsilon_{\epsilon}})}{X_{\tilde{\kappa}\upsilon_{\epsilon}}},\frac{V_2(X_{\tilde{\kappa}\upsilon_{\epsilon}})}{X_{\tilde{\kappa}\upsilon_{\epsilon}}} \dots \right).
 \end{equation}
-of normalized jumps of the subordinator is the ordered sequence of the STIR values $(\mathsf{Z}'_{(1)},\mathsf{Z}'_{(2)} \dots)$. It has the Poisson-Dirichlet distribution PD$(0, \upsilon_{\epsilon} \tilde{\kappa})$. 
+of normalized jumps of the subordinator. Directly from the definition, it is the STIR process $(\mathsf{Z}'_{(1)},\mathsf{Z}'_{(2)} \dots)$. It has the Poisson-Dirichlet distribution PD$(0, \upsilon_{\epsilon} \tilde{\kappa})$. 
 
 
 
@@ -348,13 +353,15 @@ of normalized jumps of the subordinator is the ordered sequence of the STIR valu
   \end{align}
   whenever $t_1>\dots >t_n$ and $\sum_{i=1}^n t_i \leq 1$, and $0$ otherwise.
 \end{prop}
-The partial densities are given for $i\geq 1$
+
+The partial densities can be derived from the density of the $n$th factorial moment measure by integrating $\mu^{(n+i)}$ w.r.t. the last $i$ auxiliary variables (cf. \eqref{eq:differatemomentmeasure}).
+
 \begin{align}
   \label{eq:auxillary}
-  &{\mu'}_k^{(k+i)}(z'_1,\dots,z'_k) \nonumber \\
-  &= \int_{z'_k}^1 \dots \int_{z'_k}^1 {\mu'}^{(k+i)}(z'_1,\dots,z'_k,\zeta'_1,\dots,\zeta'_i) d\zeta'_1 \dots \zeta'_i,
+  &{\mu'}_n^{(n+i)}(z'_1,\dots,z'_n) \nonumber \\
+  &= \int_{z'_n}^1 \dots \int_{z'_n}^1 {\mu'}^{(n+i)}(z'_1,\dots,z'_n,\zeta'_1,\dots,\zeta'_i) d\zeta'_1 \dots d\zeta'_i,
 \end{align}
-the density being non-zero for $\sum_{i=1}^kz'_k+iz_k \leq 1 $. 
+the support of the density being in the region $\sum_{i=1}^nz'_i+iz'_n \leq 1$. 
 
 
 
@@ -394,7 +401,7 @@ The partial densities $\mu_{n}'^{(n+i)}$ are obtained through the direct differe
 
 
 
-Let $(u_{(1)}, \dots, u_{(k)}) \subset \mathcal{G}$ represent an ordered set of points in the GP, where $u_{(1)}$ denotes the strongest signal at the SBS. In the following, we consider the SINR of the $n$-th strongest signal, where $n \leq k$. The signals with indices in the set $\mathcal{K} \subset \{1, 2, \dots, k\}$, $n \in \mathcal{K}$, are canceled from the total interference. We denote the SINR under the interference cancellation (IC-SINR) as
+Let $(u_{(1)}, \dots, u_{(k)}) \subset \mathcal{G}$ represent an ordered set of points in the GP, where $u_{(1)}$ denotes the strongest signal at the SBS. In the following, we consider the SINR of the $n$-th strongest signal, where $n \leq k$. The signals with indices in the set \\$n \ni \mathcal{K} \subset \{1, 2, \dots, k\}$ are canceled from the total interference. We denote the SINR under the interference cancellation (IC-SINR) as
 \begin{equation}
   \label{eq:IC-SINR}
   \text{SINR}_{n,\mathcal{K}} \triangleq \frac{u_{(n)}}{N+I-\sum_{j \in \mathcal{K} } u_{(j)}}.
@@ -414,8 +421,8 @@ The IC-SINR can be formulated in terms of the STINR process:
 \begin{align}
   \label{eq:IC-SINRcond}
    & \mathds{1}\{\text{SINR}_{n,\mathcal{K}} > \theta \} = \mathds{1} \left\{ u_{(n)} >\theta\left(N+I-  \sum_{j \in \mathcal{K}} u_{(j)}\right)\right\} \nonumber\\
-  &\overset{}{=}\mathds{1} \left\{(1+\theta) \frac{u_{(n)}}{N+1}+ \theta \frac{\sum^{j\neq n}_{j\in \mathcal{K}} u_{(j)}}{N+I}>\theta \right\} \nonumber \\
-  &\overset{(a)}{=} \mathds{1} \left\{ \mathsf{Z}'_{(n)}+\theta'\sum^{j\neq n}_{j\in \mathcal{K}}\mathsf{Z}'_{(j)} +>\theta'\right\}.
+  &\overset{}{=}\mathds{1} \left\{(1+\theta) \frac{u_{(n)}}{N+1}+ \theta \frac{\sum\limits^{}_{j\in \mathcal{K} \setminus \{n\}} u_{(j)}}{N+I}>\theta \right\} \nonumber \\
+  &\overset{(a)}{=} \mathds{1} \left\{ \mathsf{Z}'_{(n)}+\theta'\sum^{}_{j\in \mathcal{K} \setminus \{n\}}\mathsf{Z}'_{(j)} +>\theta'\right\}.
 \end{align}
 
 
@@ -437,43 +444,45 @@ In independent interference cancellation (IIC), we cancel and decode all signals
 
 
 
-Let us consider that the strongest signal is decoded directly if its SINR exceeds $\theta$; otherwise, signal cancellation is attempted. We denote the SINR with independent interference cancellation as \text{IIC-SINR}$_k$, where interference from signals with indices in the set $[k] \triangleq \{1, \dots, k\}$ is canceled if each $(\mathsf{Z}_{(1)}, \dots  \mathsf{Z}_{(k)})$ reaches the signal separation threshold $\tau$. The coverage probability is defined by
+Let us consider that the $n$th strongest signal is decoded directly if its SINR exceeds $\theta$; otherwise, signal cancellation is attempted. We denote the SINR with independent interference cancellation as \text{IIC-SINR}$_{n,k}$, where interference from signals with indices in the set $[k] \triangleq \{1, \dots, k\}$ is canceled if each $(\mathsf{Z}_{(1)}, \dots  \mathsf{Z}_{(k)})$, reaches the signal separation threshold $\tau$, for which the sufficient condition is only $\mathsf{Z}_{(k)}>\tau$. The coverage probability is defined by
 
 
 \begin{equation}
-  \mathcal{P}^{(k)}_{\text{IIC}}(\theta,\tau) \triangleq \mathbb{P}\begin{Bmatrix} \text{SINR}_{1,[k]}(\theta)>\theta & \text{if } \mathsf{Z}_{(k)}>\tau, \\
-\mathsf{Z}_{(1)}>\theta & \text{otherwise} \end{Bmatrix}.
+  \label{eq:IIC-SINRprob}
+  \mathcal{P}^{(n,k)}_{\text{IIC}}(\theta,\tau) \triangleq \mathbb{P}\begin{Bmatrix} \text{SINR}_{n,[k]}(\theta)>\theta & \text{if } \mathsf{Z}_{(k)}>\tau \\
+\mathsf{Z}_{(n)}>\theta & \text{otherwise} \end{Bmatrix}.
 \end{equation}
-Similarly, under the SIC, SIC-SINR$_{k}$ coverage probability is defined by
+Similarly, under the SIC, SIC-SINR$_{n,k}$ coverage probability is defined by
 \begin{align}
   \label{eq:SIC-SINRprob}
-  &\mathcal{P}^{(k)}_{\text{SIC}}(\theta,\tau)  \nonumber\\
-  &\triangleq \mathbb{P}\begin{Bmatrix} \text{SINR}_{1,[k]}(\theta)>\theta & \text{if for all }n\in\{1,\dots,k\}  \\
-    & \mathsf{Z}'_{(n)}+\tau'\sum\limits_{j=1}^{n-1}\mathsf{Z}'_{(j)}>\tau',\\
-\mathsf{Z}_{(1)}>\theta & \text{otherwise} \end{Bmatrix},
+  &\mathcal{P}^{(n,k)}_{\text{SIC}}(\theta,\tau)  \nonumber\\
+  &\triangleq \mathbb{P}\begin{Bmatrix} \text{SINR}_{n,[k]}(\theta)>\theta & \text{if for all }m\in\{1,\dots,k\}  \\
+    & \mathsf{Z}'_{(m)}+\tau'\sum\limits_{j =1}^{m-1}\mathsf{Z}'_{(j)}>\tau'\\
+\mathsf{Z}_{(n)}>\theta & \text{otherwise} \end{Bmatrix},
 \end{align}
-with $\tau'=1/(1+\tau')$. We have that $\mathcal{P}^{(k)}_{\text{SIC}}(\theta,\tau)\geq \mathcal{P}^{(k)}_{\text{IIC}}(\theta,\tau) \geq \mathcal{P}^{(1)}(\theta)$ for all $0<\tau < \theta$. 
+with $\tau'=\tau/(1+\tau)$.
 
-To quantify performance improvement, we examine the difference in coverage probability between scenarios without interference cancellation and those employing IIC or SIC.
+We have that $\mathcal{P}^{(k)}_{\text{SIC}}(\theta,\tau)\geq \mathcal{P}^{(k)}_{\text{IIC}}(\theta,\tau) \geq \mathcal{P}^{(1)}(\theta)$ for all $0<\tau < \theta$. To quantify performance improvement, we examine the $1$-coverage probability, which is only the SINR without any IC, to SINR-IIC and SINR-SIC coverage probabilities..
 
 \begin{align}
-  \Delta^{(k)}_{\text{IIC}}(\theta,\tau) \triangleq \mathcal{P}^{(k)}_{\text{IIC}}(\theta,\tau)- \mathcal{P}^{(1)}(\theta),\nonumber\\
-  \Delta^{(k)}_{\text{SIC}}(\theta,\tau) \triangleq \mathcal{P}^{(k)}_{\text{SIC}}(\theta,\tau)- \mathcal{P}^{(1)}(\theta),
+  \label{DeltSICIIC}
+  \Delta^{(n,k)}_{\text{IIC}}(\theta,\tau) \triangleq \mathcal{P}^{(n,k)}_{\text{IIC}}(\theta,\tau)- \mathcal{P}^{(1)}(\theta),\nonumber\\
+  \Delta^{(n,k)}_{\text{SIC}}(\theta,\tau) \triangleq \mathcal{P}^{(n,k)}_{\text{SIC}}(\theta,\tau)- \mathcal{P}^{(1)}(\theta),
 \end{align}
-where the $1$-coverage probability  $\mathcal{P}^{(1)}(\theta)$ is given in $\eqref{eq:kprobability}$. Using the joint pdf of the STIR order statistics process \eqref{eq:jointprobability}, we have for the SIC-SINR
+where the $1$-coverage probability  $\mathcal{P}^{(1)}(\theta)$ is given in $\eqref{eq:kprobability}$. Using the joint pdf of the $k$th STIR order statistics \eqref{eq:jointprobability}, we have for the SIC-SINR
 \begin{prop}
   \begin{align}
     \label{eq:SICprob}
-    & \Delta^{(k)}_{\text{SIC}}(\theta,\tau) \nonumber\\
-    &=\sum^{i_{\text{max}}}_{i=0} \int_{0}^{\theta'} \dots \int_{0}^{\theta'}\frac{(-1)^i}{i!}\nonumber \\
-    & \hspace{0.5cm}\times \prod_{n=1}^k\mathds{1}\left( z'_n+ \tau'\sum_{j=1}^{n-1} z'_j>\tau' \right)  \mathds{1}\left(z_1+  \theta'\sum_{j=2}^k z'_j>\theta' \right) \nonumber \\
-    &\hspace{0.5cm} \times \mathds{1}(z'_1>\dots>z'_k){\mu'}_k^{(k+i)}(z'_1,\dots,z'_k) d z'_1 \dots d z'_k,
+    & \Delta^{(n,k)}_{\text{SIC}}(\theta,\tau) \nonumber\\
+    &=\sum^{i_{\text{max}}}_{i=0} \int_{0}^{\theta'} \dots \int_{0}^{\theta'}\frac{(-1)^i}{i!}\prod_{m=1}^k\nonumber \\
+    &\hspace{0.2cm}\times \mathds{1}\left( z'_m+ \tau'\sum_{j=1}^{m-1} z'_j>\tau' \right)  \mathds{1}\left(z'_n+  \theta'\sum_{j\in [k] \setminus \{n\}} z'_j>\theta' \right) \nonumber \\
+    & \hspace{0.2cm}\times \mathds{1}(z'_1>\dots>z'_k){\mu'}_k^{(k+i)}(z'_1,\dots,z'_k) d z'_1 \dots d z'_k,
   \end{align}
   with the upper summation limit bounded by $i_{\text{max}} < 1/\tau'-1=1/\tau.$ 
   \begin{proof}
-    The expression follows from the joint pdf of the order statistics \eqref{eq:jointprobability} by imposing the conditions \eqref{eq:IC-SINRcond} and \eqref{eq:SIC-SINRcond}. We relaxed the upper bound of  $i_{\text{max}}$ to $1/\tau'-1$ (c.f. the upper limit given in \eqref{eq:jointprobability}; $i_{\text{max}} < 1/z'_{k}-k‰$, in which $i_{\text{max}} \rightarrow \infty$ as $z'_k \rightarrow 0$). Fortunately, the l.h.s. conditioning limits the non-zero domain of the integrand. Namely, we have that $z'_{n}+\tau'\sum_{j=1}^{n-1}z'_{j}>\tau'$. By simple algebra, $\sum_{j=1}^{n-1}z_{j}> 1-z_{n}/\tau'$. Recall the condition on the non-zero terms of the density of $M'^{(n+i)}$:  $\sum_{j=1}^n z'_{j}+i z'_{n} =\sum_{j=1}^{n-1}z'_{j} +z'_{n}+i z'_{n}  \leq 1$. The condition certainly does \textit{not} hold if $1-z_{n}/\tau'+ z'_{n}+i z'_{n}>1$. We arrive at the inequality $z'_{n} \left(-1/\tau' + 1 +i \right)>0$. Divide both sides by $z'_{n}$, and the general upper bound of $i$ follows.
+    The expression follows from the joint pdf of the order statistics \eqref{eq:jointprobability} by imposing the conditions \eqref{eq:IC-SINRcond} and \eqref{eq:SIC-SINRcond}. We have abbreviated the upper bound of $i_{\text{max}}$ to $1/\tau$ from the upper limit given in \eqref{eq:jointprobability}: $i_{\text{max}} < 1/z'_{k}-k‰$, and $i_{\text{max}} \rightarrow \infty$ as $z'_k \rightarrow 0$. Fortunately, the l.h.s. conditioning limits the support of the integrand for small $z'_k$. Namely, we have that $z'_{k}+\tau'\sum_{j=1}^{k-1}z'_{j}>\tau'$. By simple algebra, $\sum_{j=1}^{k-1}z_{j}> 1-z_{k}/\tau'$. Recall the condition on the non-zero terms of the density of $M'^{(k+i)}$:  $\sum_{j=1}^k z'_{j}+i z'_{k} =\sum_{j=1}^{k-1}z'_{j} +z'_{k}+i z'_{k}  \leq 1$. The condition certainly does \textit{not} hold if $1-z_{k}/\tau'+ z'_{k}+i z'_{n}>1$. We arrive at the inequality $z'_{k} \left(-1/\tau' + 1 +i \right)>0$. Divide both sides by $z'_{k}$, and the general upper bound of $i$ follows.
 
-    
+
 
 
   \end{proof}
@@ -493,8 +502,6 @@ Combining \eqref{eq:densitySINR}, \eqref{eq:jointprobability}, and \eqref{eq:fac
 
 
 
-We may calculate a lower bounds for the first two moments for the SIR:
-
 
 \begin{align}
   &\mathbb{E}(\text{SIR}_{1,\{1\}})  \geq\int_{1}^{\infty}f_{(1)}(z)zdz=\frac{\tilde{\kappa}\upsilon_{\epsilon}2^{1-\tilde{\kappa}\upsilon_{\epsilon} }}{\tilde{\kappa}\upsilon_{\epsilon}-1}, \tilde{\kappa}\upsilon_{\epsilon} >1, \\
@@ -506,19 +513,34 @@ The mean and the second moment diverge for $\tilde{\kappa}b\leq 1$ and $\tilde{\
 \subsubsection{Numerical results regarding the average and variance of the SIR without interference cancellation and using IIC and SIC}
 
 
-We observed that setting $\tau = -7$ \text{dB}, equivalent to $\tau = 10^{-7/10} \approx 0.2$, for the IIC and SIC, the respective values $k \in \{2,3\}$, are good choices for the number of canceled signals. In this study, we adopt these values as our baseline. For the IIC, $k = 2$ generally offers the best improvement in coverage probability. For the SIC, $k = 4$ can yield better results than $k = 3$ for small $\theta$. It is crucial to note that using a smaller value of $\tau$ leads to different outcomes, typically increasing the optimal $k$. One challenge associated with the proposed mathematical expressions is that numerical computations become highly intensive as $\tau$ decreases and $k$ increases.
+
+For this section, recall the partial density $\mu_k^{k+1}$ of the STIR process \eqref{eq:auxillary} \eqref{eq:factorialmoment} and \eqref{eq:IIC-SINRprob}-\eqref{eq:SICprob}.
+
+We observed that setting the signal detection threshold $\tau = -7$ \text{dB}, equivalent to $\tau = 10^{-7/10} \approx 0.2$, for the IIC and SIC, the respective values $k = 2$ and $k=3$ are good choices for the number of signals. We adopt these values as our baseline. In this section, we consider the SIR in of the strongest signal, \textit{i.e.}, $n=1$.
+
+For the IIC, $k = 2$ generally gives the best improvement for the coverage probability. However, for the SIC, $k = 4$ can yield better results than $k = 3$, particularly for small $\theta$.  
+
+It is crucial to note that using a smaller value of $\tau$ leads to different outcomes, typically increasing the optimal $k$. One challenge associated with the proposed mathematical expressions is that numerical computations become highly intensive as $\tau$ decreases and $k$ increases.
 
 
 For $\upsilon_{\epsilon} \tilde{\kappa}=2$, the expected SIR of the strongest signal without IC is given by
 \begin{equation}
   \mathbb{E}(\text{SIR}_{1,\{1\}})= \int_{0}^{\infty}\mathcal{P}^{(1)}(y)dy \approx 1.4.
 \end{equation}
-  Recall, that the variance $\text{var}(\text{SIR}_{1,\{1\}})=\infty$, which might not be desirable in terms of user fairness.
+ Recall, that the variance $\text{var}(\text{SIR}_{1,\{1\}})=\infty$, which is not desirable of we want the users treated fairly, which would mean that each SBS would have a consistent SIR.
 
   By increasing $\upsilon_{\epsilon} \tilde{\kappa}$ (modifying $\lambda,h,\epsilon$ or $\varphi_{\text{RX}}$), we can reduce the variance in the SIR while maintaining the performance. For example, $ \mathbb{E}$(IIC-SINR$_{2}) \approx \mathbb{E}(\text{SIC-SINR}_{3}) \approx 1.4$ for $\upsilon_{\epsilon} \tilde{\kappa}\in \{2.6,3.8\}$, respectively. The IIC-SINR variance is calculated by
-  $var(\text{IIC-SINR}_{2})=\int_{0}^{\infty}y\mathcal{P}_{\text{IIC}}^{(2)}(y,\tau)dy -\left(\int_{0}^{\infty}\mathcal{P}_{\text{IIC}}^{(2)}(y,\tau)dy\right)^2  \approx 2.6$ Similarly, var(SIC-SINR$_{3}) = 2\int_{0}^{\infty}y\mathcal{P}_{\text{SIC}}^{(3)}(y,\tau)dy-$ $\left(\int_{0}^{\infty}\mathcal{P}_{\text{SIC}}^{(3)}(y,\tau)dy\right)^2 \approx 2.9$. The standard deviation in both cases is below $2$, which is a remarkable improvement in the consistency of the link quality. Note that the increase of $\tilde{\kappa}$ does not necessarily mean making the SBS constellation more dense: with interference cancellation, a single SBS might be able to serve multiple UEs with satisfactory SIR. However, we only consider the UE with the strongest signal in the IIC and SIC.
+  $\text{Var}(\text{IIC-SINR}_{2})=\int_{0}^{\infty}y\mathcal{P}_{\text{IIC}}^{(2)}(y,\tau)dy -\left(\int_{0}^{\infty}\mathcal{P}_{\text{IIC}}^{(2)}(y,\tau)dy\right)^2  \approx 2.6$ Similarly, $\text{Var(SIC-SINR}_{3}) = 2\int_{0}^{\infty}y\mathcal{P}_{\text{SIC}}^{(3)}(y,\tau)dy-$ $\left(\int_{0}^{\infty}\mathcal{P}_{\text{SIC}}^{(3)}(y,\tau)dy\right)^2 \approx 2.9$. The standard deviation in both cases is below $2$, which is a remarkable improvement in the consistency of the link quality.
 
-The integrations in the IIC and SIC were conducted by trapezoidal method by first evaluating the SINR-IIC and SINR-SIC the ccdf values (\textit{i.e.} coverage probabilities) pointwise for sufficiently many $y$.
+
+
+  Increasing $\tilde{\kappa}$ does not necessarily require more dense SBS constellation to ensure each UE ideally having a serving SBS. On the contrary, with interference cancellation, a single SBS might be able to serve multiple UEs with satisfactory SIR, especially when using SIC. In this work, we study this case for SIR-SIC.
+
+
+
+  The integration of $\mathbb{E}(\text{SIC-SINR}_{3}),\text{Var}(\text{IIC-SINR}_{2})$, and $\text{Var(SIC-SINR}_{3})$ with the native tools of Mathemtiaca seems hopeless. Hence, the integration in the IIC and SIC were conducted by trapezoidal method by first evaluating the SINR-IIC and SINR-SIC the ccdf values (\textit{i.e.} coverage probabilities) pointwise for sufficiently many uniformly spaced $y$, and conducting the approximate integral with the trapezoidal method implemented into a module in Mathematica.  
+
+  
 
 
 
@@ -564,16 +586,9 @@ to match the moments, we can solve for the parameters
 Recall equations \eqref{eq:totmean} and \eqref{eq:totvar}. Matching the first two moments of fading distributions is equivalent to matching the mean and variance of total interferences using the respective fadings. 
 
 
-Without loss of generality, we can set $\Upsilon_{\epsilon}=1$  when studying the SIR scenarios, as the scaling of the signal powers cancel for $N=0$. In the SINR case, the scaling is accounted for by adjusting the noise constant by a factor of $N \sim 1/\Upsilon_{\epsilon}$. The parameter $0 \leq  1-\upsilon_{\epsilon} < 1$ of the defective exponential distribution encapsulates the shadowing occurrences, when the signal is either blocked by an obstacle or destructively interfered by its multi path components mapping the signal power very close to $-\infty$ dB in the mixed log-normal shadowing model. These occurrences are particularly common in low elevation-angles, because of tall buildings and other similar large objects preventing LoS and hence causing severe signal blockage at the SBS. Note that the signals are not blocked identically to all directions, hence the signal strengths and the order statistics of the SINR and STINR processes depend on the serving SBS location w.r.t. the UEs. (Let us, for example, consider that there is a large building between the SBS$_1$ and UE$_1$. The signal strength of the UE$_1$ may well map to $0$ at SBS$_1$. On the other hand the strongest signal at the SBS$_1$ could be from another UE$_2$. However, on the other side of the building, UE$_1$ might well be the strongest signal at a SBS$_1$ located in the other side of the building, whereas UE$_2$ would cause (?!?!?!) unsignificant interference. In other words, SBS$_1$ and SBS$_2$ would serve different UEs with good performance, even though the distances of the UEs and SBS would be identical.
+Without loss of generality, we can set $\Upsilon_{\epsilon}=1$  when studying the SIR scenarios, as the scaling of the signal powers cancel for $N=0$. In the SINR case, the scaling is accounted for by adjusting the noise constant by a factor of $N \sim 1/\Upsilon_{\epsilon}$. The parameter $0 \leq  1-\upsilon_{\epsilon} < 1$ of the defective exponential distribution encapsulates the shadowing occurrences, when the signal is either blocked by an obstacle or destructively interfered by its multi path components mapping the signal power very close to $-\infty$ dB in the mixed log-normal shadowing model. These occurrences are particularly common in low elevation-angles, because of tall buildings and other similar large objects preventing LoS, hence causing severe signal blockage at the SBS. 
 
-The UEs with the strongest signals are unlikely to be in a significant blockage, and definitely the strongest signals are never blocked entirely (or destructively interfered!!) (literally by meaning ``entirely'' in the mixed exponential shadowing when the power maps to $0$, and ``almost entirely'' in the mixed log-normal shadowing, when the power is mapped close to $0$). On the other hand, the interfering UEs of the smaller order statistics have larger probability to be blocked by large obstacles and hence exhibiting NLoS behavior and severe shadowing. The portion of signals that are blocked entirely, is reflected, in the densities of the $n$th factorial moment measures \eqref{eq:factorialmoment} and \eqref{eq:nthmomentmeasureSTINR}, where the mean number of UEs inside the $3$ dB footprint of a SBS; ${\kappa}=\tilde{\kappa}\log(2)  $, is scaled by the factor $0 <\upsilon_{\epsilon} \leq 1$; $\upsilon_{\epsilon} \kappa=\upsilon_{\epsilon}\tilde{\kappa} \log(2) $: $\upsilon_{\epsilon}$ corresponding to the fraction of \textit{effective} UEs having a non-zero shadowed signal power at the typical SBS.
-
-WHAHATT HURR;;;
-Being general, and including insight, we use the effective number of UEs $\upsilon_{\epsilon}\tilde{\kappa} \log(2)$ in the plots instead of the actual number of UES $\upsilon_{\epsilon}\tilde{\kappa} \log(2)$. The simulations are also scaled accordingly.
-
-
-%% Note that we considerer mobile hand-held UEs located in an urban environment, directly contacting the SBS. However, implementing a hybrid network, so that each UE would be linked to the SBSs though a terrestrial fixed BS that could be positioned to a high location with clear view to the SBS, improving the shadowed signal power of the served signal, potentially improving the performance of the link (on the other hand, the total blockages also reduce the interference, which is beneficial for the coverage probability). In this work, we omit such hybrid networks.
-
+The UEs with the strongest signals are unlikely to be in a significant blockage or destructively interfered by the multipaths. On the other hand, the interfering UEs of the weaker signals are more likely to be blocked by large obstacles exhibiting NLoS behavior or affected by destructive interference from the multipaths.
 
 
 \subsection{Planar model of the narrow-beam LEO uplink and the constant spatial path loss}
@@ -601,6 +616,7 @@ N \triangleq \frac{W \ell(\hat{d}_{h\epsilon})}{\Upsilon_{\epsilon}},
 \end{equation}
 where $W \geq 0$ is a dimensionless noise power constant at the SBS. As noted, is this work, the only instance for this $N$ to be accounted for is when evaluating the $n$th factorial moment measure of the STINR process; $\eqref{eq:nthmomentmeasureSTINR}$.
 
+The mean number of UE inside the $3$ dB footprint $\times \log(2)$ multiplied the portion of the non-zero signals; $ \tilde{\kappa} \upsilon_{\epsilon}$, appears in the Laplace transform of $I$ \eqref{eq:lapdef}, the $n$th factorial moment measures \eqref{eq:factorialmoment} and \eqref{eq:nthmomentmeasureSTINR} of the SINR and STINR processes. Recall \eqref{eq:GPdensity}: regardless of $h, \lambda, \text{ or } \varphi_{\text{RX}}$, the essential parameter is the the mean number of the \textit{effective} UEs inside the $3$ dB footprint of a SBS.
 
 \begin{figure}[h]%
   \centering
@@ -631,7 +647,7 @@ The total received power at the typical SBS from the UEs in the PPP $\Theta \sub
 where $H_{x} \sim H_{\mathcal{M}\mathcal{L}\mathcal{N}}$ are i.i.d. mixed log-normal r.v.'s inroduced in Section \ref{sex:guassianmixture}. The power path loss exponent $\alpha \geq 0$, and $(d_x/d_0)$ is the distance between the UE and the typical SBS, and the normalizing distance $d_0$ accounts for any other factors affecting the path loss, such as the frequency band of the signals, and casts the path loss to a dimensionless quantity. The sub-satellite point of the typical SBS is at $\textit{o}_E$. As with the planar model, $\varphi_x$ is the angle between the SBS antenna boresight and  $u \in \Theta$. However, in contrary to the planar model, this is calculated precicely the spherical model. $\mathring{S}$ is the strongest signal at the SBS and $\mathring{I}-\mathring{S}$ is the interference power from the other signals. The SIR and SINR $\mathring{S}/(\mathring{I}-\mathring{S})$,  $\mathring{S}/(\mathring{I}-\mathring{S}+N)$, are defined accordingly. The IC schemes SIR-IIC, SIR-SIC, SINR-IIC and SINR-SIC are simulated using these definitions through Monte Carlo simulations. 
 
 
-The spherical model \eqref{eq:mathringptot} is unnesessarily complex to work analytically. However, for the narrow-beamed antenna gain, such as the Gaussian antenna beam, the planar model introduced in Section \ref{sec:planarmodel} stricingly well approximates the spherical model, like demonstratet in CITE<XXX]. In this work, we exclude the practical implementation details of the spherical model Monte Carlo simulations and refer to [???] for an extensive comparison between the planar model and the spherical model in the narrow beam LEO upink. Also, the presented results derived from the analysis based in the planar model are always compared to the Monte Carlo simulations based in the spherical model formulated in this section.
+The spherical model \eqref{eq:mathringptot} is unnesessarily complex to work analytically. However, for the narrow-beamed antenna gain, such as the Gaussian antenna beam, the planar model introduced in Section \ref{sec:planarmodel} stricingly well approximates the spherical model, like demonstratet in CITE LÄHDE. In this work, we exclude the practical implementation details of the spherical model Monte Carlo simulations and refer to [???] for an extensive comparison between the planar model and the spherical model in the narrow beam LEO upink. Also, the presented results derived from the analysis based in the planar model are always compared to the Monte Carlo simulations based in the spherical model formulated in this section.
 
 
 
