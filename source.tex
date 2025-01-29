@@ -133,20 +133,40 @@ By deriving closed-form expressions and performing extensive simulations, our st
 \section{Quantities of interest}
 \label{sec:analysissec}
 
-Although our study ultimately focuses on a narrow-beam LEO uplink, we initially formulate our analysis using a traditional stochastic geometry model of wireless networks in the plane. This model incorporates a (defective) exponential fading distribution---wherein the terms ``fading'' and ``shadowing'' are used interchangeably in this work---and Gaussian path loss. We interpret this model as representative of a LEO scenario with Gaussian mixture shadowing in Sections \ref{sec:guassianmixture}, \ref{sec:planarmodel}, and \ref{sec:sphericalmodel}. Additionally, we present numerical comparisons between the analytical results and Monte Carlo simulations using a spherical Earth model with Gaussian mixture shadowing.
+Although the study of this paper ultimately centers on a narrow-beam Low Earth Orbit (LEO) uplink, we don't have to restrict our analysis to a specific interpretations of the model.
+
+In simplest, our system model can be viewed as a standard stochastic geometry wireless network model on a plane, characterized by a Gaussian path loss function and an (defective) exponential fading distribution (with the terms "fading" and "shadowing" used interchangeably in this work). The Gaussian (\textit{i.e.}, exponential) spatial path loss function could be a realistic assumption in certain terrestrial models [CITE]. In the uplink scenario, the omnidirectionally radiating users are modeled as the PPP, which because being translation invariant, allows us to study the scenario from a perspective of \textit{the typical point} $\textit{o} \triangleq (0,0)$ representing any point on the plane, and hence we can study a typical base station (BS). The downlink scenario is also possible: the omnidirectional BSs are located according to the PPP $\Phi$, and the typical point $\textit{o}$ represents the typical user, with the serving BS $x \in \Phi$ being the BS with the the strongest signal $H_xG(\|x\|)$, where $H_x$ is a shadowing r.v., and $G(\|x\|)$ is the Gaussian path loss function depending on the Euclidean planar distance $\|x\|$.
+
+In the narrow-beam aerial BS setting, the Gaussian path loss represents the aerial BS antenna pattern. The typical point is related to a typical base station (BS) through its antenna's boresight location on the ground, which is defined as $\textit{o}$. Along side LEO BSs, the aerial BSs can represent other aerial BSs, including drones or airplanes. Furthermore, the BS could even be interpreted as a narrow-beam small-cell BS in a terrestrial network with a relatively large height-dimension (for example relays located in the street corners directing high-frequency signals through the city [CITE]). Both the uplink and downlink configurations are possible also in these scenarios, so that the aerial BS boresight ground locations would follow the PPP in the downlink, and the typical UE is at $\textit{o}$. We validate the aerial BS model interpretation as an narrow-beam LEO BS at altitude $h$ and elevation angle $\epsilon$ in Section \ref{sec:gainprocess} and, more thoughtfully, in Section \ref{sec:planarmodel}.
 
 
-We assume a homogeneous Poisson point process (PPP) $\Phi \subset \mathbb{R}^2$ with density $\lambda$. Due to the translation invariance of the PPP, we can refer to the \textit{typical point}, which statistically represents any point on the plane and is defined as the origin $\textit{o} \triangleq (0,0)$. The typical point represents a base station (BS) in an uplink scenario. However, the points in the PPP could also represent the BSs, transforming the model into a downlink scenario. We evaluate the SIR and SINR at the typical location for the strongest $k \geq 1$ shadowed signals from the transmitters in the PPP. Additionally, we introduce the concept of interference cancellation (IC) in the forms of independent interference cancellation (IIC) and successive interference cancellation (SIC). These methods prove useful in optimizing performance and reducing variance in link quality among the BSs.
 
 
 
-\subsection{Gain process (path loss process)}
-In this section, we only characterize the path loss resulting from the Gaussian antenna gain patterns of the satellite BSs. It is given over the planar distance $r \in [0, \infty)$ as
+
+
+In the analysis [SECTION], we characterize the signal-to-total-interference (STIR) and signal-to-total-interference-plus-noise (STINR) processes and the densities of their $k$th factorial moment measures to evaluate the SIR and SINR using interfererence cancellation (IC) at the typical location for the strongest $k \geq 1$ exponentially shadowed (with a possible non-zero probability measure $1-\upsilon$ at $0$) UE signals in the PPP. Strikingly, the total interference can be characterized by a gamma process; an important implication of this is that the STIR process has a Poisson-Dirichlet distribution PD$(0,\cdot$), which helps to evaluate the density of the $k$th factorial moment measure in a simple and computationally efficient form. (This PD is different from the equivalent model differing only in the path loss function being singular instead of Gaussian, which has the non-zero term in the l.h.s. argument instead of the r.h.s.; PD$(\cdot,0)$. [CITE]) Additionally, within the IC, we introduce the independent interference cancellation (IIC) and successive interference cancellation (SIC) schemes. These methods are shown to optimize performance and reduce variance in link quality among the BSs.
+
+
+
+In Section \ref{sec:numericalresultsandconnectiontoLEO} we interpret the planar model with the exponential fading as representative of a LEO uplink scenario with Gaussian mixture shadowing in an urban environment. In Sections \ref{sec:planarmodel}, we explain the connection of the planar model to the narrow-eam LEO-uplink, and in Section \ref{sec:guassianmixture} we relate the defective exponential distribution to Gaussian mixture shadowing. Finally, in Section \ref{sec:sphericalmodel}, we verify the mathematical results by Monte Carlo simulations, using a spherical Earth model with actual Gaussian mixture shadowing. The mathematical results indicate that---with the simulations confirming the insights---that employing IC in the forms of IIC and SIC improves the perforamnce of the network. We are able to reduce the variance in the SIR and SINR across the LEO BSs while maintaining the performance. For example, in a noise-limited channel with moderate noise, we demonstrate that the optimal value for the parameter $\tilde{\kappa} \upsilon_{}$ is approximately $1$, which maximizes the coverage probability of the strongest signal in the LEO uplink for a given SINR threshold. (Recall that $\kappa=\tilde{\kappa} \log(2)$ is the approximate average number of the UEs, in the $-3$ dB footprints of the LEO BSs, and $0<\upsilon \leq 1$ is the fraction of signals that are not shadowed to $0$ in the defective exponential distribution.) However, this optimal parameter leads to a high variance in the link quality, namely, \text{Var}$(\text{SIR})=\infty$ at $\tilde{\kappa} \upsilon_{}=1$. By using IC, we can increase $\kappa$ and reduce the variance in the SIR and SINR while maintaining the average performance over the network. Also, SIC allows that one LEO BS can be able to serve multiple UEs.
+
+To summarize, there is a trade-off between user fairness and \textit{average} link quality. This problem can be addressed through IC schemes such as IIC an
+d SIC to improve the user fairness while maintaining the average performance.
+
+
+
+
+\subsection{Gain process}
+\label{sec:gainprocess}
+
+In the following, we characterize the path loss resulting from the Gaussian antenna gain patterns of the BSs. The path loss is given over the planar distance $r \in [0, \infty)$ as:
   \begin{equation}
     \label{eq:Gaussianantpat}
-  G(r) = 2^{-(D_{h,\epsilon}r)^2/\varphi_{\text{RX}}^2},
-\end{equation}
-where $\varphi_{\text{RX}}$ denotes the -3 dB antenna gain width. The constant $ D_{h,\epsilon} $ incorporates the satellite altitude and elevation angle, allowing the value $ D_{h,\epsilon}r $ to approximate the angle of an Earth transmitter in a satellite antenna pattern. A comprehensive explanation of this parameter is provided in Section \ref{sec:planarmodel}.
+    G(r) = 2^{-(D_{h,\epsilon}r)^2 / \varphi_{\text{RX}}^2},
+  \end{equation}
+  where $\varphi_{\text{RX}}$ denotes the -3 dB antenna gain width. The constant $D_{h,\epsilon}$ incorporates the BS altitude and elevation angle, with the value $D_{h,\epsilon}r$ approximating the angle relative to the BS antenna boresight for small $r$, which is a sufficient approximation for narrow antenna patterns. A comprehensive explanation of this parameter in the LEO context is provided in Section \ref{sec:planarmodel}. Additionally, while the spatial path loss is characterized for the planar narrow-beam LEO model in Section \ref{sec:planarmodel}, it is irrelevant to the analysis presented in Section \ref{sec:analysissec}.
+
 
 
 
@@ -157,7 +177,7 @@ Given i.i.d. shadowing variables $\{H_x\}_{x \in \Phi}$, we define the process o
 \end{equation}
 where $\|x\|$ is the Euclidean distance from $\textit{o}$. 
 
-The GP is a \textit{projection process} mapping the points from $\mathbb{R}^2$ into $(0,\infty)$ and, as such, forms a nonhomogeneous PPP \cite{CITE}.
+The GP is a \textit{projection process} mapping the points from $\mathbb{R}^2$ into $(0,\infty)$ and, as such, forms a nonhomogeneous PPP [CITE].
 
 
 
@@ -188,7 +208,7 @@ Since the variables $\{H_x\}_{x \in \Phi}$ are i.i.d., we can denote the shadowi
 
  
 
-The parameter $\kappa$ in $\lambda_{\mathcal{G}}(t)$ can be interpreted as approximately the average number of Earth transmitters within the -3 dB footprint of a satellite BS (see Section \ref{sec:planarmodel}). It scales with the density parameter $\lambda$ of $\Phi$ with the relationship $\kappa \sim \lambda$.
+The parameter $\kappa$ in $\lambda_{\mathcal{G}}(t)$ can be interpreted as the approximate average number of UEs within the $-3$ dB footprint of a satellite BS (see Section \ref{sec:planarmodel}). It scales linearly w.r.t. the density parameter $\lambda$ of $\Phi$.
 
 The total interference, or total received power, is defined as the sum of the GP at the typical location:
 \begin{equation}
@@ -571,7 +591,6 @@ For $\upsilon_{} \tilde{\kappa}=2$, the expected SIR of the strongest signal wit
 \label{sec:numericalresultsandconnectiontoLEO}
 While the analysis presented in Section \ref{sec:analysissec} fundamentally relies on a planar homogeneous PPP model with Gaussian path loss and functions as a stochastic geometry network model with defective exponential fading, holding intrinsic mathematical interest independent of its specific interpretation as a LEO setting, in this section, we explicitly define the geometrical interpretation of our system model as a narrow-beam LEO uplink. Furthermore, we align the defective exponential fading with log-normal shadowing using parameters representative of an urban scenario. We represent numerical results for the order statistics of both the SIR and the SINR and compare various IC scenarios: SIR-IIC, SIR-SIC, SINR-IIC, and SINR-SIC.
 
-Our findings indicate that employing IC significantly enhances the coverage probability. In a noise-limited channel with moderate noise, we demonstrate that the optimal value for the parameter $\tilde{\kappa} \upsilon_{}$ is approximately $\log(2)$, which maximizes the performance of the LEO uplink. Moreover, IC not only reduces the variance in both SIR and SINR (across a uniform distribution of satellite BSs) but also preserves overall performance. Thus, appropriate interference cancellation can improve user fairness in the network without compromising link quality.
 
 
 \subsection{Gaussian mixture shadowing model}
