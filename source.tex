@@ -132,65 +132,73 @@ By deriving closed-form expressions and performing extensive simulations, our st
 
 \section{Quantities of interest}
 \label{sec:analysissec}
-We consider the ``typical SBS'' with a narrow Gaussian beam. The UEs are located on the plane according to the PPP. The SBS antenna boresigh is directed at $\textit{o} \in (0,0) \in \R^2$. The planar model approximates the spherical model, where the UEs are located on a spherical Earth's surface. We will come back to the spherical model in the numerical results section.
+
+Although our study ultimately focuses on a narrow-beam LEO uplink, we initially formulate our analysis using a traditional stochastic geometry model of wireless networks in the plane. This model incorporates a (defective) exponential fading distribution---wherein the terms ``fading'' and ``shadowing'' are used interchangeably in this work---and Gaussian path loss. We interpret this model as representative of a LEO scenario with Gaussian mixture shadowing in Sections \ref{sec:guassianmixture}, \ref{sec:planarmodel}, and \ref{sec:sphericalmodel}. Additionally, we present numerical comparisons between the analytical results and Monte Carlo simulations using a spherical Earth model with Gaussian mixture shadowing.
+
+
+We assume a homogeneous Poisson point process (PPP) $\Phi \subset \mathbb{R}^2$ with density $\lambda$. Due to the translation invariance of the PPP, we can refer to the \textit{typical point}, which statistically represents any point on the plane and is defined as the origin $\textit{o} \triangleq (0,0)$. The typical point represents a base station (BS) in an uplink scenario. However, the points in the PPP could also represent the BSs, transforming the model into a downlink scenario. We evaluate the SIR and SINR at the typical location for the strongest $k \geq 1$ shadowed signals from the transmitters in the PPP. Additionally, we introduce the concept of interference cancellation (IC) in the forms of independent interference cancellation (IIC) and successive interference cancellation (SIC). These methods prove useful in optimizing performance and reducing variance in link quality among the BSs.
 
 
 
-\subsection{Gain process}
-
-
-
-The antenna gain loss depends on the distance $r$ from the origin $\textit{o} \in \mathbb{R}^2$ and is given by:
-
-\begin{equation}
-  G(r) = 2^{-r^2/\varphi_{\text{RX}}^2},
+\subsection{Gain process (path loss process)}
+In this section, we only need to characterize the path loss resulting from the Gaussian antenna gain patterns of the satellite BSs. It is given over the planar distance $r \in [0, \infty)$ as
+  \begin{equation}
+    \label{eq:Gaussianantpat}
+  G(r) = 2^{-(D_{h,\epsilon}r)^2/\varphi_{\text{RX}}^2},
 \end{equation}
-where $\varphi_{\text{RX}}$ is the width of the $-3$ dB gain of an SBS, and $D_{h,\epsilon}$ is a scaling constant that depends on the altitude $h$ and elevation angle $\epsilon$ of the SBSs. The relevance of these parameters to the narrow-beam LEO satellite model is further discussed in Section \ref{sec:planarmodel}.
+where $\varphi_{\text{RX}}$ denotes the -3 dB antenna gain width. The constant $ D_{h,\epsilon} $ incorporates the satellite altitude and elevation angle, allowing the value $ D_{h,\epsilon}r $ to approximate the angle of an Earth transmitter in a satellite antenna pattern. A comprehensive explanation of this parameter is provided in Section \ref{sec:planarmodel}.
 
-Given a homogeneous PPP $\Phi \subset \R^2$ of density $\lambda$ and i.i.d. fading variables $\{H_x\}_{x\in\Phi}$, we define the process of the perceived gains at the receiver; the gain process (GP):
+
+
+Given i.i.d. shadowing variables $\{H_x\}_{x \in \Phi}$, we define the process of the received signal powers at the typical location, referred to as the gain process (GP), by
 \begin{equation}
   \label{eq:gainprocess}
-  \mathcal{G} \triangleq \left\{ H_x G(D_{h,\epsilon}\|x\|):x \in \Phi  \right\}.
+  \mathcal{G} \triangleq \left\{ H_x G(\|x\|) : x \in \Phi \right\},
 \end{equation}
-The GP is a \textit{projection process} and, as such, a nonhomogeneous PPP [CITE]. The density of the GP has the following connection to the fading distribution.
+where $\|x\|$ is the Euclidean distance from $\textit{o}$. 
+
+The GP is a \textit{projection process} mapping the points from $\mathbb{R}^2$ into $(0,\infty)$ and, as such, forms a nonhomogeneous PPP \cite{CITE}.
+
+
 
 Since the variables $\{H_x\}_{x \in \Phi}$ are i.i.d., we can denote the shadowing variable simply as $H$ without the subscript.
-
-
 \begin{prop}[Density of the GP]
-  Let $F_H(\cdot)$ be the complementary cdf (ccdf) of $H$. The density of $\mathcal{G}$ is given by
+  Let $F_H(\cdot)$ be the (possibly degenerate) complementary cumulative distribution function (ccdf) of a fading variable $H$. The density function of $\mathcal{G}$ is given by
   \begin{equation}
     \label{eq:GPdensity}
-    \lambda_{\mathcal{G}}(t)= \tilde{\kappa}F_H(t)/t, \text{ \text{for} }t>0,
+    \lambda_{\mathcal{G}}(t) = \tilde{\kappa} {F_H(t)}/{t}, \quad t \in (0, \infty),
   \end{equation}
-  where $\tilde{\kappa}= \kappa/\log(2)$ and
+  where $\tilde{\kappa} = {\kappa}/{\log(2)}$ and
   \begin{equation}
     \label{eq:kappa}
-          {\kappa} \triangleq    \pi \lambda   \left(\frac{\varphi_{\textup{RX}}}{D_{h,\epsilon}}\right)^2.
+    \kappa \triangleq \pi \lambda \left(\frac{\varphi_{\text{RX}}}{D_{h,\epsilon}}\right)^2.
   \end{equation}
-
+  
   \begin{proof}
-    Let $f_H(\cdot)$ be the pdf of $H$. We denote $G^{-1}(\cdot)$ as the generalized inverse $G^{-1}(y) = \inf \{x:G(x)<y\}$. By [CITE],
+    Let $f_H(\cdot)$ be the probability density function (pdf) of $H$. Denote $G^{-1}(\cdot)$ as the generalized inverse of $G$, defined as $G^{-1}(y) = \inf \{x : G(x) < y\}$. According to [CITE],
     \begin{align*}
-      &\int_t^{\infty}\lambda_{\mathcal{G}}(y)dy \overset{}{=} \pi \lambda \mathbb{E}\left[ \left(\frac{G^{-1}(t/H)}{D_{h,\epsilon}}\right)^2 \right] \\
-      &=\pi \lambda \int_t^{\infty} \left(-\frac{\varphi_{\text{RX}}\sqrt{-\log(t/h)}}{D_{h,\epsilon} \sqrt{\log(2)}}\right)^2f_H(h) dh  \\
-      &= -\tilde{\kappa} \int_t^{\infty} \log(t/h)f_H(h) dh\\
-      &\overset{(a)}{=} -\tilde{\kappa} \sij{t}{\infty} \log(t/h)F_H(h) - \tilde{\kappa} \int_t^{\infty}\frac{F_H(h)}{h} dh.
+      \int_t^{\infty} \lambda_{\mathcal{G}}(y) \, dy &= \pi \lambda \mathbb{E}\left[ \left({G^{-1}(t/H)}{}\right)^2 \right] \\
+      &= \pi \lambda \int_t^{\infty} \left(-\frac{\varphi_{\text{RX}} \sqrt{-\log(t/h)}}{D_{h,\epsilon} \sqrt{\log(2)}}\right)^2 f_H(h) \, dh \\
+      &= -\tilde{\kappa} \int_t^{\infty} \log(t/h) f_H(h) \, dh \\
+      &\overset{(a)}{=} -\tilde{\kappa} \left[ \left. \log(t/h) F_H(h) \right|_t^{\infty} + \int_t^{\infty} \frac{F_H(h)}{h} \, dh \right].
     \end{align*}
-    In (a), we use the integration by parts. The result follows by differentiating w.r.t. $t$ and taking the negative sign. Note that a necessary condition for this operation is that $\int_t^{\infty} \log(t/h)f_H(h) \, dh$ converges for all $t > 0$.
-
+    In (a), we use integration by parts. The result follows by differentiating with respect to $t$ and applying the negative sign. Note that a necessary condition for this procedure is that $\int_t^{\infty} \log(t/h) f_H(h) \, dh$ converges for all $t > 0$.
   \end{proof}
 \end{prop}
 
-We will come back to the interpretation of the variable $\tilde{\kappa}$ in Section \ref{sec:numericalresultsandconnectiontoLEO}, where we explain the interpretation of the GP as approximate gains in a SBS in a LEO uplink with narrow-beamed SBSs.
+ 
 
+The parameter $\kappa$ in $\lambda_{\mathcal{G}}(t)$ can be interpreted as approximately the average number of Earth transmitters within the -3 dB footprint of a satellite BS (see Section \ref{sec:planarmodel}). It scales with the density parameter $\lambda$ of $\Phi$ with the relationship $\kappa \sim \lambda$.
 
-We define the total interference, or the total received power, by
+The total interference, or total received power, is defined as the sum of the GP at the typical location:
 \begin{equation}
   \label{eq:totpow}
-  I \triangleq \sum\limits_{x \in \Phi} H_x G(D_{h,\epsilon}\|x\|)=\sum\limits_{u \in \mathcal{G}}u.
+  I \triangleq \sum_{x \in \Phi} H_x G(\|x\|) = \sum_{u \in \mathcal{G}} u.
 \end{equation}
-The symbol used to represent the points in the point process (p.p.) can be arbitrary. However, in \eqref{eq:totpow}, we use $u \in \mathcal{G}$ to avoid any potential confusion with $x \in \mathbb{R}^2$.
+There is no requirement for the symbols representing the points in the point process (p.p.) to differ on the l.h.s. and r.h.s. summation notations. However, we use $u \in \mathcal{G}$ to represent the signal strength at the typical location. This is done to avoid confusion with $x \in \Phi$, which represents a spatial location.
+
+
+
 
 The mean and the variance of $I$ are given by
 \begin{align}
@@ -203,20 +211,23 @@ The mean and the variance of $I$ are given by
 \end{align}
 respectively.
 
-The spatial path loss is of no interest in the definition of $I$ because we assume that the spatial path loss is a constant due to the narrow-beam antenna pattern decaying fast to $0$, $G(\cdot)$, which ensures that the relevant UEs are located near one another (see Section \ref{sec:numericalresultsandconnectiontoLEO}). Furthermore, given that the spatial path loss is identical for all transmitters, it does not influence the SIR. For the SINR, the noise variable can be scaled appropriately to account for the spatial path loss appropriately. Along these lines, we omit the spatial path loss between the SBS and UEs in $I$.
+%% The spatial path loss is of no interest in the definition of $I$ because we assume that the spatial path loss is a constant due to the narrow-beam antenna pattern decaying fast to $0$, $G(\cdot)$, which ensures that the relevant UEs are located near one another (see Section \ref{sec:numericalresultsandconnectiontoLEO}). Hence, given that the spatial path loss is identical for all transmitters, it does not influence the SIR. For the SINR, the noise variable can be scaled appropriately to account for the spatial path loss appropriately. 
 
 
 
 
 
 
-\subsection{Shadowing}
-Unfortunately, unlike with a singular path loss, when the density of the projection process depends only on a single moment of $H$ regardless of its distribution, $\lambda_{\mathcal{G}}(t)$ has a pointwise dependence on $F_H(t)$. For analytical tractability, we use the defective exponential power fading distribution
+\subsection{Defective exponential shadowing distribution}
+
+For analytical tractability, we introduce a \textit{defective} exponential power fading distribution for the UEs, given by:
 \begin{equation}
   \label{eq:defexp}
-  F_{{H}_{\text{Exp}}}(t)=\upsilon_{} e^{- t},
+  F_{{H}_{\text{Exp}}}(t) = \upsilon e^{-t},
 \end{equation}
- which is essentially an exponential mixture distribution, where $0 \leq 1-\upsilon_{} <1$ reflects the probability that the shadowed signal is blocked entirely and maps to $0$. We explain the correspondence of $\upsilon$ to the log-normal fading in Section \ref{sec:numericalresultsandconnectiontoLEO}.
+which essentially represents an exponential mixture distribution. Namely, $0 \leq 1-\upsilon < 1$ denotes the probability that the shadowed signal is completely blocked or destructively interfered and takes the value of zero.
+
+The parameter $\upsilon = \upsilon(\epsilon)$ varies according to the shadowing distribution variables, which depend on the elevation angles of the satellites. Further details regarding the relationship between $\upsilon$ and the log-normal mixture shadowing are provided in Section \ref{sec:numericalresultsandconnectiontoLEO}.
 
          \begin{figure}[h]
            \centering
@@ -535,14 +546,14 @@ For $\upsilon_{} \tilde{\kappa}=2$, the expected SIR of the strongest signal wit
 \begin{equation}
   \mathbb{E}(\text{SIR}_{1,\{1\}})= \int_{0}^{\infty}\mathcal{P}^{(1)}(y)dy \approx 1.4.
 \end{equation}
- Recall, that the variance $\text{Var}(\text{SIR}_{1,\{1\}})=\infty$, which is not desirable of we want the users treated fairly, which would mean that each SBS would have a consistent SIR.
+ Recall, that the variance $\text{Var}(\text{SIR}_{1,\{1\}})=\infty$, which is not desirable of we want the users treated fairly, which would mean that each satellite would have a consistent SIR.
 
   By increasing $\upsilon_{} \tilde{\kappa}$ (modifying $\lambda,h,\epsilon$ or $\varphi_{\text{RX}}$), we can reduce the variance in the SIR while maintaining the performance. For example, $ \mathbb{E}$(IIC-SINR$_{2}) \approx \mathbb{E}(\text{SIC-SINR}_{3}) \approx 1.4$ for $\upsilon_{} \tilde{\kappa}\in \{2.6,3.8\}$, respectively. The IIC-SINR variance is calculated by
   $\text{Var}(\text{IIC-SINR}_{2})=\int_{0}^{\infty}y\mathcal{P}_{\text{IIC}}^{(2)}(y,\tau)dy -\left(\int_{0}^{\infty}\mathcal{P}_{\text{IIC}}^{(2)}(y,\tau)dy\right)^2  \approx 2.6$ Similarly, $\text{Var(SIC-SINR}_{3}) = 2\int_{0}^{\infty}y\mathcal{P}_{\text{SIC}}^{(3)}(y,\tau)dy-$ $\left(\int_{0}^{\infty}\mathcal{P}_{\text{SIC}}^{(3)}(y,\tau)dy\right)^2 \approx 2.9$. The standard deviation in both cases is below $2$, which is a remarkable improvement in the consistency of the link quality.
 
 
 
-  Increasing $\tilde{\kappa}$ does not necessarily require more dense SBS constellation to ensure each UE ideally having a serving SBS. On the contrary, with interference cancellation, a single SBS might be able to serve multiple UEs with satisfactory SIR, especially when using SIC. In this work, we study this case for SIR-SIC.
+  Increasing $\tilde{\kappa}$ does not necessarily require more dense satellite constellation to ensure each UE ideally having a serving BS. On the contrary, with interference cancellation, a single satellite might be able to serve multiple UEs with satisfactory SIR, especially when using SIC. In this work, we study this case for SIR-SIC.
 
 
 
@@ -560,7 +571,7 @@ For $\upsilon_{} \tilde{\kappa}=2$, the expected SIR of the strongest signal wit
 \label{sec:numericalresultsandconnectiontoLEO}
 While the analysis presented in Section \ref{sec:analysissec} fundamentally relies on a planar homogeneous PPP model with Gaussian path loss and functions as a stochastic geometry network model with defective exponential fading, holding intrinsic mathematical interest independent of its specific interpretation as a LEO setting, in this section, we explicitly define the geometrical interpretation of our system model as a narrow-beam LEO uplink. Furthermore, we align the defective exponential fading with log-normal shadowing using parameters representative of an urban scenario. We represent numerical results for the order statistics of both the SIR and the SINR and compare various IC scenarios: SIR-IIC, SIR-SIC, SINR-IIC, and SINR-SIC.
 
-Our findings indicate that employing IC significantly enhances the coverage probability. In a noise-limited channel with moderate noise, we demonstrate that the optimal value for the parameter $\tilde{\kappa} \upsilon_{}$ is approximately $\log(2)$, which maximizes the performance of the LEO uplink. Moreover, IC not only reduces the variance in both SIR and SINR (across a uniform distribution of SBSs) but also preserves overall performance. Thus, appropriate interference cancellation can improve user fairness in the network without compromising link quality.
+Our findings indicate that employing IC significantly enhances the coverage probability. In a noise-limited channel with moderate noise, we demonstrate that the optimal value for the parameter $\tilde{\kappa} \upsilon_{}$ is approximately $\log(2)$, which maximizes the performance of the LEO uplink. Moreover, IC not only reduces the variance in both SIR and SINR (across a uniform distribution of satellite BSs) but also preserves overall performance. Thus, appropriate interference cancellation can improve user fairness in the network without compromising link quality.
 
 
 \subsection{Gaussian mixture shadowing model}
@@ -604,9 +615,7 @@ The parameter $0 \leq 1-\upsilon < 1$ of the defective exponential distribution 
 \label{sec:planarmodel}
 
 
-As indicated in Section \ref{sec:analysissec}, we employ an infinite flat-earth model. This planar approximation effectively represents the spherical model described in Section \ref{eq:sphericalmodel}, particularly when considering the narrow Gaussian antenna beams $G(\cdot)$ at the SBSs. The UEs, acting as Earth transmitters, radiate omnidirectionally and are modeled as a homogeneous PPP $\Phi \subset \mathbb{R}^2$. The signals emitted by the UEs are subject to shadowing, which is modeled by i.i.d. exponential random variables $H_{\text{Exp}}$ with a non-zero probability measure at $0$, as described by the distribution function in \eqref{eq:defexp}. The SBS antenna boresight is directed towards the origin, denoted as $\textit{o} \triangleq (0,0)$. Figure \ref{fig:UEsontheplane} provides a geometric visualization of the planar LEO model.
-
-
+As indicated in Section \ref{sec:analysissec}, we employ an infinite flat-earth model.  This planar approximation effectively represents the spherical model described in Section \ref{sec:sphericalmodel}, particularly when considering the narrow Gaussian antenna beams $G(\cdot)$ at the satellite BSs. The UEs, acting as Earth transmitters, radiate omnidirectionally and are modeled as a homogeneous PPP $\Phi \subset \mathbb{R}^2$. The signals emitted by the UEs are subject to shadowing, which is modeled by i.i.d. exponential mixture r.v.'s $H_{\text{Exp}}$ with a non-zero probability measure at $0$, as described in the distribution function in \eqref{eq:defexp}. The typical satellite BS antenna boresight is directed towards the origin $\textit{o}$. Hence, the typical satellite BS projected to the plane is located at $\textit{o}$ only if the elevation angle $\epsilon=90 \degree$. Figure \ref{fig:UEsontheplane} provides a geometric visualization of the planar LEO model.
 
 
 
@@ -621,52 +630,56 @@ Although the Gaussian function is an idealized antenna pattern, it accurately mo
   \label{fig:antennapats}
 \end{figure}
 
-Due to the ergodicity of the PPP, the model can be interpreted as a snapshot of a single realization of $\Phi$, with the averaging being performed over uniformly distributed SBSs rather than the ensemble of $\Phi$. For example, the coverage probabilities describe the fraction of SBSs that reach the threshold $\theta$.
+Due to the ergodicity of the PPP, the model can be interpreted as a snapshot of a single realization of $\Phi$, with the averaging being performed over uniformly distributed satellite BSs rather than the ensemble of $\Phi$. For example, the coverage probabilities describe the fraction of satellites that reach the threshold $\theta$.
 
 
-The scaling term $D_{h,\epsilon} = {\sin^2(\epsilon)}/{h}$, where $\epsilon$ is the elevation angle of the satellite and $h$ is the altitude, that appears in the Gaussian antenna pattern path loss function $\|x\| \mapsto G(D_{h,\epsilon}\|x\|)$ in \eqref{eq:gainprocess}, is the first-order coefficient in the Taylor expansion of the function $\|x\| \mapsto \varphi_x$, where $\varphi_x$ is the angle between $x \in \Phi$ and the SBS in the planar model. In other words, $\varphi_x \approx D_{h,\epsilon}\|x\|$, which provides a tight approximation for narrow antenna beams. The derivation of this term is provided in Appendix \ref{app:constantD}.
-
-
-The parameter $\kappa=\tilde{\kappa} \log(2)$ in the density function \eqref{eq:GPdensity} of $\mathcal{G}$ can be interpreted as the approximate average number of UEs within the $-3$ dB footprint of a SBS. This interpretation is derived by solving $D_{h,\epsilon}\|x_{\text{RX}}\| = \varphi_{\text{RX}}$ for the distance $\|x_{\text{RX}}\|$ to the edge of the $-3$ dB footprint, and then applying the area formula for a circle along with Campbell's theorem.
-
-
-The constant $\tilde{\kappa} \upsilon_{}$, which encompasses the average number of UEs within a SBS $-3$ dB footprint $\kappa= \tilde{\kappa}\log(2)$, as well as the fraction of non-zero signals $\upsilon_{}$, appears as the only system parameter in the Laplace transform of $I$ \eqref{eq:lapdef} and the factorial moment measures of the STIR and STINR processes in \eqref{eq:factorialmoment} and \eqref{eq:nthmomentmeasureSTINR}, respectively. In other words, although $\tilde{\kappa}$ is connected to $h$, $\lambda$, $\varphi_{\text{RX}}$, and $\epsilon$, it is the sole spatial system parameter which independently determines the performance metrics alongside the shadowing-related parameter $\upsilon$.
+The scaling term $D_{h,\epsilon} \triangleq {\sin^2(\epsilon)}/{h}$, where $\epsilon$ is the elevation angle of the satellites and $h$ is the altitude, appears in the Gaussian path loss function $G(\cdot)$ in \eqref{eq:Gaussianantpat}. It represents the first-order coefficient in the Taylor expansion of the function $\|x\| \mapsto \varphi_x$, where $\varphi_x$ is the angle of the transmitter \( x \in \Phi \) w.r.t. the typical satellite BS antenna pattern boresight. Therefore, $\varphi_x$ can be approximated as $\varphi_x \approx D_{h,\epsilon} \|x\|$. It provides a considerably tight approximation for example for $\varphi_x=\varphi_{\text{RX}}=1.6 \degree$ (note that radians have to be used in the equations). However, the accuracy deteriorates for larger angles. Consequently, this work focuses exclusively on narrow antennas. The detailed derivation of this term is provided in Appendix \ref{app:constantD}.
 
 
 
 
 
 
+The parameter $\kappa=\tilde{\kappa} \log(2)$ in the density function \eqref{eq:GPdensity} of $\mathcal{G}$ can be interpreted as the approximate average number of UEs within the $-3$ dB footprint of a satellite. This interpretation is derived by solving $D_{h,\epsilon}\|x_{\text{RX}}\| = \varphi_{\text{RX}}$ for the distance $\|x_{\text{RX}}\|$ to the edge of the $-3$ dB footprint, and then applying the area formula for a circle along with Campbell's theorem.
+
+
+The constant $\tilde{\kappa} \upsilon_{}$, which encompasses the average number of UEs within a satellite $-3$ dB footprint $\kappa= \tilde{\kappa}\log(2)$, as well as the fraction of non-zero signals $\upsilon_{}$, appears as the only system parameter in the Laplace transform of $I$ \eqref{eq:lapdef} and the factorial moment measures of the STIR and STINR processes in \eqref{eq:factorialmoment} and \eqref{eq:nthmomentmeasureSTINR}, respectively. In other words, although $\tilde{\kappa}$ is connected to $h$, $\lambda$, $\varphi_{\text{RX}}$, and $\epsilon$, it is the sole spatial system parameter which independently determines the performance metrics alongside the shadowing-related parameter $\upsilon$.
 
 
 
-As previously mentioned, we consider a narrow Gaussian antenna beam that rapidly decays to zero. Consequently, the relevant UEs are located in close proximity to one another. The spatial path loss law for \textit{all transmitters} is given by
+
+
+
+
+
+
+As previously mentioned, we consider a narrow Gaussian antenna beam that rapidly decays to zero. Consequently, the relevant UEs are located in close proximity to one another. The spatial path loss law for \textit{all transmitters} at the typical satellite BS is given by
 \begin{equation}
   \label{eq:pathlosslaw}
   \ell(\hat{d}_{h,\epsilon}) \triangleq \left( {\hat{d}_{h,\epsilon}}/{d_0} \right)^{\alpha},
 \end{equation}
-where $\hat{d}_{h,\epsilon} \triangleq {h}/{\sin(\epsilon)}$ is the distance between the origin $\textit{o}$ and the SBS. The distance depends on the altitude $h$ and the elevation angle $\epsilon$ and can be derived using simple geometry, as illustrated in Figure \ref{fig:systemmodel}. The power path loss exponent $\alpha \geq 0$. Additionally, the normalizing distance $d_0$ accounts for other factors influencing the path loss, such as the frequency band of the signals, and ensures that the path loss is dimensionless.
+where $\hat{d}_{h,\epsilon} \triangleq {h}/{\sin(\epsilon)}$ is the distance between the origin $\textit{o}$ and the satellite BS (in $3$ dimensions). The distance depends on the altitude $h$ and the elevation angle $\epsilon$ and can be derived using simple geometry, as illustrated in Figure \ref{fig:systemmodel}. The power path loss exponent $\alpha \geq 0$. Additionally, the normalizing distance $d_0$ accounts for other factors influencing the path loss, such as the frequency band of the signals, and ensures that the path loss is dimensionless.
 
-Let $W\geq0$ be a dimensionless constant noise power at the SBS. Given that the conditions $$\frac{\Upsilon_{}u/\ell(\hat{d}_{h,\epsilon})}{\Upsilon_{}I/\ell(\hat{d}_{h,\epsilon}) + W}>\theta \text{ and } \frac{u}{I + W\ell(\hat{d}_{h,\epsilon})/\Upsilon_{}}> \theta,$$ for $u \in \mathcal{G}$, are equivalent, the spatial path loss can be incorporated into the noise term \begin{equation}N=W\ell(\hat{d}_{h,\epsilon})/\Upsilon_{}\end{equation} alongside the power scaling term $\Upsilon_{}$ introduced in Section \ref{sec:guassianmixture}---$N$ being introduced in \eqref{eq:SINR} and \eqref{eq:STINR} for the SINR and STINR processes, respectively. The constants $\ell(\hat{d}_{h,\epsilon})$ and $\Upsilon_{}$ are only relevant in the interference-plus-noise limited channel and can be disregarded for $W=N=0$.
+Let $W\geq0$ be a dimensionless constant noise power at the satellite BS. Given that the conditions $$\frac{\Upsilon_{}u/\ell(\hat{d}_{h,\epsilon})}{\Upsilon_{}I/\ell(\hat{d}_{h,\epsilon}) + W}>\theta \text{ and } \frac{u}{I + W\ell(\hat{d}_{h,\epsilon})/\Upsilon_{}}> \theta,$$ for $u \in \mathcal{G}$, are equivalent, the spatial path loss can be incorporated into the noise term \begin{equation}N=W\ell(\hat{d}_{h,\epsilon})/\Upsilon_{}\end{equation} alongside the power scaling term $\Upsilon_{}$ introduced in Section \ref{sec:guassianmixture}---$N$ being introduced in \eqref{eq:SINR} and \eqref{eq:STINR} for the SINR and STINR processes, respectively. The constants $\ell(\hat{d}_{h,\epsilon})$ and $\Upsilon_{}$ are only relevant in the interference-plus-noise limited channel and can be disregarded for $W=N=0$.
 
 
 
 \textbf{To summarize Sections \ref{sec:guassianmixture} and \ref{sec:planarmodel}:} Adjusting $N$ and $\upsilon$ are the only requirements to interpret the analysis in Section \ref{sec:analysissec} as a narrow Gaussian beam LEO setting with Gaussian mixture shadowing:
 
 \begin{enumerate}
-    \item Set the noise value $N = {W \ell(\hat{d}_{h,\epsilon})}/{\Upsilon}$, for a noise power at the SBS $W \geq 0$, according to \eqref{eq:Upsilon} and \eqref{eq:pathlosslaw}.
+    \item Set the noise value $N = {W \ell(\hat{d}_{h,\epsilon})}/{\Upsilon}$, for a noise power at the satellite $W \geq 0$, according to \eqref{eq:Upsilon} and \eqref{eq:pathlosslaw}.
     \item Set $\upsilon \in (0,1]$ in $F_{\text{Exp}}(t) = \upsilon e^{-t}$ according to \eqref{eq:upsilon}.
 \end{enumerate}
 
 
 \begin{figure}[h]%
   \centering
-  \subfloat[\centering  Interpretation of the \textit{planar} system model with the SBSs in adjacent orbits serving an urban area and a realization of the UEs. The altitudes are not to scale.]{{\includegraphics[width=\linewidth]{UEsontheplane.png}}
+  \subfloat[\centering  Interpretation of the \textit{planar} system model with the satellites in adjacent orbits serving an urban area and a realization of the UEs. The altitudes are not to scale.]{{\includegraphics[width=\linewidth]{UEsontheplane.png}}
     \label{fig:UEsontheplane}%%
   } 
   \qquad
-  \subfloat[\centering The typical SBS as seen from the side. The transmitters are projected into line $(0, \infty)$ according to their norm.]{{\includegraphics[width=\linewidth]{drawing.png}}     \label{fig:systemmodel}} %%
-  \caption{The simplified narrow-beam LEO uplink system model. The SBS antenna boresight is oriented towards $\textit{o}$, the focus point of the elliptical footprint. The omnidirectionally transmitting UEs $\{x_i\}$ are located according to the HPPP on the plane. The nearest transmitter, $x_0$, is the served UE.}
+  \subfloat[\centering The typical satellite BS as seen from the side. The transmitters are projected into line $(0, \infty)$ according to their norm.]{{\includegraphics[width=\linewidth]{drawing.png}}     \label{fig:systemmodel}} %%
+  \caption{The simplified narrow-beam LEO uplink system model. The satellite antenna boresight is oriented towards $\textit{o}$, the focus point of the elliptical footprint. The omnidirectionally transmitting UEs $\{x_i\}$ are located according to the HPPP on the plane. The nearest transmitter, $x_0$, is the served UE.}
 \end{figure}
 
 
@@ -676,10 +689,10 @@ Let $W\geq0$ be a dimensionless constant noise power at the SBS. Given that the 
 
 
 \subsection{Monte Carlso simulations of the spherical model}
-\label{eq:sphericalmodel}
+\label{sec:sphericalmodel}
 The base line system model is the spherical model, where the UE are located on the spherical Earths surface according to the PPP $\Theta$. Like in the planar model, the UEs are radiating omnidirectionally at power $P=1$ and are multiplied by i.i.d. random shadowing $H_x$.
 
-The total received power at the typical SBS from the UEs in the PPP $\Theta \subset E \subset$ \textit{Earth surface} of density $\lambda$, with $E$ denoting the area above the horizon of the typical SBS (\textit{i.e.} the locations that are visible to the typical SBS) is defined as
+The total received power at the typical satellite BS from the UEs in the PPP $\Theta \subset E \subset$ \textit{Earth surface} of density $\lambda$, with $E$ denoting the area above the horizon of the typical BS (\textit{i.e.} the locations that are visible to the typical satellite) is defined as
 
 \begin{equation}
   \label{eq:mathringptot}
