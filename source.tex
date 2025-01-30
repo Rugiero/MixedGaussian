@@ -48,7 +48,7 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{Stochastic geometry analysis of a narrow-beam LEO uplink with Gaussianmixture shadowing}
+\title{Studying the SIR and SINR processes at the typical LEO Base Station in Poisson Networks Using The Factorial Moment Measures}
 \author{IEEE Publication Technology,~\IEEEmembership{Staff,~IEEE,}
         % <-this % stops a space
 \thanks{This paper was produced by the IEEE Publication Technology Group. They are in Piscataway, NJ.}% <-this % stops a space
@@ -65,24 +65,31 @@
 
 \maketitle
 \begin{abstract}
-  This paper presents an in-depth analysis of the joint probability distributions of the Signal-to-Interference Ratio (SIR) and Signal-to-Interference-plus-Noise Ratio (SINR) in a narrow-beam Low Earth Orbit (LEO) satellite uplink system with interference cancellation techniques. The increasing deployment of LEO satellite constellations for global communication necessitates a thorough understanding of interference management and signal quality metrics to ensure reliable and efficient data transmission. We develop a comprehensive analytical framework to model the impact of narrow-beam antennas on both SIR and SINR, accounting for the critical factors influencing signal propagation and interference under LEO dynamics. Additionally, we explore various interference cancellation strategies to enhance system performance. By deriving closed-form expressions and conducting extensive simulations, we quantify the joint probabilities for different system parameters, providing valuable insights into the trade-offs and benefits of interference cancellation in these systems. Our findings offer practical guidelines for optimizing LEO uplink communication strategies, thereby contributing to the advancement of high-capacity and low-latency satellite communication networks. (CHAT GPT)
+
+  Based on a stationary Poisson point process (PPP) on the plane, a Gaussian (squared exponential) path loss function and a defective exponential fading distribution, we approximate a narrow-beam Low Earth Orbit (LEO) uplink with a two-tier Gaussian mixture shadowing. We examine the process formed by the signal-to-interference ratios (SIR) and signal-to-interference-plus-noise ratios (SINR) of the first $k$ user equipments with the strongest signals at the typical LEO base station by deriving the joint pdf of the order statistics; characterized by the factorial moment measures of the SIR and SINR processes. Strikingly, we are able to describe the density of the factorial moment measure of the SIR process through a gamma process, resulting in a Poisson-Dirichlet distribution. This approach provides simpler mathematical expressions for the SIR order statistics. Furthermore, using the joint pdfs of the SIR and SINR order statistics, we examine the SIR and SINR under different signal cancellation scenarios. The derived analytical insights and mathematical representations offer a concise framework to evaluate the performance of LEO systems. We present multiple numerical results and validate the theoretical results with simulations based on a realistic model utilizing PPP on the Earth surface and Gaussian mixture shadowing. Importantly, we demonstrate that interference cancellation can reduce the variance in SIR and SINR across LEO base stations while maintaining overall system performance.
+
+
 \end{abstract}
 
 % Note that keywords are not normally used for peerreview papers.
 \begin{IEEEkeywords}
-  LEO, SIR meta distribution, Nakagami fading
+  
 \end{IEEEkeywords}
 
 
 \section{Introduction}
+The steady rise of aerial communication networks, including LEO networks, owing to the planning and deployment of dense LEO networks to handle increased user-data as well as the expansion of the terrestrial frequency bands to those that are so far assigned only for the satellite communications, drives a need for new analytical tools to study and locate the essential properties of the networks. The signal-to-interference-plus-noise ratio SINR (or without the noise simply SIR) is a key metric, determinining the performance of the satellite link. A derivation of the SINR is, for example, spectral efficiency. The SINR is a function of propagation effects, which incorporates the distance-dependent path loss, fast-fading, slow-fading (shadowing), and a variety of atmospheric scattering and absorbion effects, etc. Altough not optimal, the analytic models, such as stochastic geometry models, often compromizes between analytical tractability and realism in the signal propagation model. Another cmmon simplification is to use the Poisson point process (PPP)---being the most tractable in the stochastic geometry analysis. Furthermore, as the points in the PPP are independently located, it can be a highly realistic model in scenarios such as in modeling the random locations of mobile user equipments (UEs), as the mobile phone user are more or less located independently from one another (as opposed to base stations (BSs), including LEO BSs, that are often more regularly located). However, the PPP works as a approximation also with many regular configurations. [CITE] The PPP has also a special role in the theory of point processes: any subsequentive independent random replacement of any point process (p.p.) will lead to the PPP. Furthermore, random multipath propagation effects can make a arbitrary p.p. to seem Poisson. [CITE]. However, often these simplifications don't detract from the statistical system-level insights the models introduce in simpler and more general terms compared to sophisticated scenario-specific simulations. The simple insights derived from the analytical models are important in comprehending the LEO networks and ultimately lead to more optimal allocation of simulation resources.
 
-In recent years, the deployment of Low Earth Orbit (LEO) satellite constellations has gained significant momentum due to their potential to provide global, high-speed, low-latency communication services. As the demand for such capabilities continues to rise, it becomes increasingly crucial to address the challenges associated with managing interference and maintaining robust signal quality within these systems. One of the primary metrics for assessing signal quality in communication systems is the Signal-to-Interference Ratio (SIR) and Signal-to-Interference-plus-Noise Ratio (SINR). These metrics become even more pertinent in LEO uplink scenarios, where multiple users concurrently transmit signals to satellites with limited frequency resources.
+As motivation for the existence of interference in a LEO uplink, we refer to [CITE]. The study indicates that numerous implementation details are possible. Because of the large footprints, a single LEO BS is likely to serve multiple UEs within its cell. This can result in intracell interference along side intercell interference. In this work, we demonstrate how a interference cancellaton (IC) scheme, particularly successive interference cancellation (SIC) could allow serving multiple UEs even if they are nonorthogonally encoded.
 
-The narrow-beam antenna technology, which focuses transmission power into a smaller beamwidth, offers a promising approach to enhance signal quality and reduce interference. However, the dynamic nature of LEO satellites, coupled with the high density of ground terminals, creates complex interference scenarios that necessitate advanced analytical tools and methodologies for effective management. In this context, understanding the joint probability distributions of SIR and SINR becomes essential for designing robust LEO uplink systems.
+This work does not contain novel mathematics, as similar stochastic geometry analysis has been conducted for terrestrial networks, and we will mostly omit the detailed descriptuions of the mathematical derivations. However, the factorial moment measures in our planar system model with a Gaussian path loss function and with exponential fading r.v. having a possible non-zero probability of having a value $0$ (the fading distribution referred to as \textit{defective}) includes many unique characteristics, such as the characterization of the signal-to-total-interference (STIR) as a gamma process. This characterization leads to the characterization of the STIR process of the UEs as a Poisson-Dirichlet process $\text{PD}(0,\cdot)$ as opposed to $\text{PD}(\cdot,0)$, which is the characterization in the presented models with a singular path-loss function.
 
-This paper addresses this critical need by developing a comprehensive analytical framework to model the joint probability distributions of SIR and SINR in a narrow-beam LEO uplink environment. We incorporate various system parameters, such as satellite altitude, beamwidth, user density, and interference sources, to capture the intricate nature of signal propagation and interference in LEO systems. Furthermore, we investigate the effectiveness of different interference cancellation techniques, which are pivotal in mitigating interference and enhancing communication performance.
+The squared exponential, \textit{i.e.}, the Gaussian path loss have applications in terrestrial networks posing rapid signal attentuation, such as millimeter wave cellular networks in dense urban environments. Hence, our analysis wider significance than that of the aerial communications. [CITE] MUUTA UUDESTAAN
 
-By deriving closed-form expressions and performing extensive simulations, our study provides valuable insights into the impact of narrow-beam antennas and interference cancellation on the joint probabilities of SIR and SINR. The results of this research not only shed light on the fundamental trade-offs and potential benefits of these technologies but also offer practical guidelines for optimizing LEO uplink communication strategies. Ultimately, this work aims to contribute to the advancement of high-capacity, reliable, and efficient satellite communication networks, paving the way for the continued growth and success of global connectivity solutions.
+ However, in this work, we interpret the results in a narrow-beam LEO context. We validate the flat-Earth assumption and the simplified fading model, imposed in order to derive the mathematical results, by Monte Carlo simulating the realistic LEO network using spherical Earth model and Gaussian mixture shadowing.
+
+
+
 
 
 
@@ -157,18 +164,20 @@ d SIC to improve the user fairness while maintaining the average performance.
 
 
 
-\subsection{Gain process}
+\subsection{Gain process (path loss process)}
 \label{sec:gainprocess}
 
-In the following, we characterize the path loss resulting from the Gaussian antenna gain patterns of the BSs. The path loss is given over the planar distance $r \in [0, \infty)$ as:
+The path loss is given over the planar distance $r \in [0, \infty)$ as a Gaussian function:
   \begin{equation}
     \label{eq:Gaussianantpat}
     G(r) = 2^{-(D_{h,\epsilon}r)^2 / \varphi_{\text{RX}}^2},
   \end{equation}
-  where $\varphi_{\text{RX}}$ denotes the -3 dB antenna gain width. The constant $D_{h,\epsilon}$ incorporates the BS altitude and elevation angle, with the value $D_{h,\epsilon}r$ approximating the angle relative to the BS antenna boresight for small $r$, which is a sufficient approximation for narrow antenna patterns. A comprehensive explanation of this parameter in the LEO context is provided in Section \ref{sec:planarmodel}. Additionally, while the spatial path loss is characterized for the planar narrow-beam LEO model in Section \ref{sec:planarmodel}, it is irrelevant to the analysis presented in Section \ref{sec:analysissec}.
+  where $\varphi_{\text{RX}}$ denotes the -3 dB antenna gain width. In the aerial context, the constant $D_{h,\epsilon}$ incorporates the BS altitude and elevation angle, with the value $D_{h,\epsilon}r$ approximating the angle relative to the aerial BS antenna boresight for small $r$, which is a sufficient approximation for narrow antenna patterns. A comprehensive explanation of this parameter in the LEO context is provided in Section \ref{sec:planarmodel}. Additionally, we introduce a spatial path loss for the LEO setting.
 
 
-
+  \begin{remark}[Terrestrial millimeter communication]
+    The Gaussian, \textit{i.e.}, the squared exponential spatial path loss function have applications in terrestrial networks that pose rapid signal attenuation, such as millimeter wave cellular networks in dense urban environments. Hence, the analysis presented in the paper has wider significance than that of the aerial communications and can be directly applied to such planar Poisson networks. [CITE]
+  \end{remark}
 
 Given i.i.d. shadowing variables $\{H_x\}_{x \in \Phi}$, we define the process of the received signal powers at the typical location, referred to as the gain process (GP), by
 \begin{equation}
@@ -238,9 +247,8 @@ respectively.
 
 
 
-\subsection{Defective exponential shadowing distribution}
-
-For analytical tractability, we introduce a \textit{defective} exponential power fading distribution for the UEs, given by:
+\subsection{Defective exponential fading distribution}
+To address the signal attentuation caused by multipath fading, we introduce a \textit{defective} exponential power fading distribution for the UEs, given by:
 \begin{equation}
   \label{eq:defexp}
   F_{{H}_{\text{Exp}}}(t) = \upsilon e^{-t},
