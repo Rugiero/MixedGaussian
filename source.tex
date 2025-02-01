@@ -66,7 +66,7 @@
 \maketitle
 \begin{abstract}
 
-  Based on a stationary Poisson point process (PPP) on the plane, a Gaussian (squared exponential) path loss, and a defective exponential fading distribution function, we approximate a narrow-beam Low Earth Orbit (LEO) uplink with a two-tier Gaussian mixture shadowing. We examine the process formed by the signal-to-interference ratios (SIRs) and signal-to-interference-plus-noise ratios (SINRs) of the ordered first $k$ user equipments with the strongest signals at the typical LEO base station by deriving the joint pdfs of the $k$th order statistics; characterized by the $k$th factorial moment measures. Strikingly, we are able to describe the total interference by a gamma process, resulting in a Poisson-Dirichlet distribution and a convenient mathematical expression for the pdf of the SIR order statistics. Furthermore, using the joint pdfs of the SIR and SINR order statistics, we examine the SIR and SINR under different signal cancellation scenarios. The derived analytical insights and mathematical representations offer a concise framework to evaluate performance metrics of LEO systems. We present multiple numerical results and validate the theoretical values with simulations based on a realistic model utilizing PPP on the Earth surface and Gaussian mixture shadowing. Importantly, we demonstrate that interference cancellation can reduce the variance in SIR and SINR over an uniform constellation of LEO base stations while maintaining overall system performance.
+  Based on a stationary Poisson point process (PPP) on the plane, a Gaussian (squared exponential) path loss, and a defective exponential fading distribution function, we approximate a narrow-beam Low Earth Orbit (LEO) uplink with a two-tier Gaussian mixture shadowing. We examine the process formed by the signal-to-interference ratios (SIRs) and signal-to-interference-plus-noise ratios (SINRs) of the ordered first $k$ user equipments with the strongest signals at the typical LEO base station (BS) by deriving the joint pdfs of the $k$th order statistics; characterized by the $k$th factorial moment measures. Strikingly, we are able to describe the total interference by a gamma process, resulting in a Poisson-Dirichlet distribution and a convenient mathematical expression for the pdf of the SIR order statistics. Furthermore, using the joint pdfs of the SIR and SINR order statistics, we examine the SIR and SINR under different signal cancellation scenarios. The analysis and mathematical expressions offer insights and a framework to conviently study the SIR and SINR of all transmitters and interference cancellation in LEO systems for different settings. We present multiple numerical results and validate the theoretical values with simulations based on a realistic system model utilizing PPP on the Earth surface and Gaussian mixture shadowing. Importantly, we demonstrate that interference cancellation can reduce the variance in the user experience of the link quality while maintaining the average performance over LEO BSs in a uniform constellation (\textit{i.e.}, improve user fairness).
 
 
 \end{abstract}
@@ -164,19 +164,28 @@ d SIC to improve the user fairness while maintaining the average performance.
 
 
 
-\subsection{Gain process (path loss process)}
+\subsection{Poisson process on the plane}
 \label{sec:gainprocess}
+
+The planar Poisson network model required to derive the factorial moment measures of the SIR and SINR processes, is independent of its interpretation as a LEO network (or any other aerial network). Hence, to make things not more complicated than necessary, and for the sake of generality, in this section, we merely consider a planar Poisson network model of UEs and BSs equipped with a squared exponential, \textit{i.e.}, Gaussian, path loss function and a defective Rayleigh fading distribution function. We briefly explain many parameters connection to the LEO system. However, the complete interpretation as a narrow-beam LEO uplink and the moment matching of the exponential-like shadowing to the Gaussian mixed shadowing  is formulated  in $\ref{sec:planarmodel}$.
+
+Considering a uplink, the UEs follow a homogeneous PPP $\Phi \subset \R^2$ of density $\lambda$. The BSs form an independent homogeneous p.p. possibly with different density than the UEs. Because of the translation invariancy of the PPP, all location are statistically equivalent, and we consider the typical BS to be located at the typical point $\textit{o}$.
+
+
+
 
 The path loss is given over the planar distance $r \in [0, \infty)$ as a Gaussian function:
   \begin{equation}
     \label{eq:Gaussianantpat}
-    G(r) = 2^{-(D_{h,\epsilon}r)^2 / \varphi_{\text{RX}}^2},
+    G(r) = 2^{-(D_{h,\epsilon}r)^2 / \varphi_{\text{RX}}^2}.
   \end{equation}
-  where $\varphi_{\text{RX}}$ denotes the -3 dB antenna gain width. In the aerial context, the constant $D_{h,\epsilon}$ incorporates the BS altitude and elevation angle, with the value $D_{h,\epsilon}r$ approximating the angle relative to the aerial BS antenna boresight for small $r$, which is a sufficient approximation for narrow antenna patterns. A comprehensive explanation of this parameter in the LEO context is provided in Section \ref{sec:planarmodel}. Additionally, we introduce a spatial path loss for the LEO setting.
+  The angle $\varphi_{\text{RX}}$ denotes the $-3$ dB antenna gain width. Furthermore,, the scaling constant $D_{h,\epsilon}$ multiplied by the distance $r$ to the closest focus pont of the elliptical fooptrint; $D_{h,\epsilon}r$, approximates the angle of a UE in the (narrow-beam) LEO BS Gaussian antenna gain. %% This is a sufficient approximation for small $r$, for example, for UEs within the main lobe in case of narrow beams characterozed by small $\varphi_{\text{RX}}^2$. Otherwise, because of the fast decay of the Gaussian path loss, the power from the UES with large $r$ practically vanishes.
+
+  At the typical location, $r=\|x\|$, where $\| x\|$ is the Euclidean distance between the typical BS at \textit{o} and the UE $x\in \Phi$.
 
 
   \begin{remark}[Terrestrial millimeter communication]
-    The Gaussian, \textit{i.e.}, the squared exponential spatial path loss function have applications in terrestrial networks that pose rapid signal attenuation, such as millimeter wave cellular networks in dense urban environments. Hence, the analysis presented in the paper has wider significance than that of the aerial communications and can be directly applied to such planar Poisson network models. [CITE]
+    The Gaussian, \textit{i.e.}, the squared exponential spatial path loss function have applications in terrestrial networks that pose rapid signal attenuation, such as millimeter wave cellular networks in dense urban environments. Hence, the analysis presented in the paper can be applied to such planar Poisson network models. Notably, the power term $r^2$ is particularly tractable for the second power---as is the case in Gaussian function.
   \end{remark}
 
 Given i.i.d. shadowing variables $\{H_x\}_{x \in \Phi}$, we define the process of the received signal powers at the typical location, referred to as the gain process (GP), by
@@ -219,12 +228,12 @@ Since the variables $\{H_x\}_{x \in \Phi}$ are i.i.d., we can denote the shadowi
 
 The parameter $\kappa$ in $\lambda_{\mathcal{G}}(t)$ can be interpreted as the approximate average number of UEs within the $-3$ dB footprint of a satellite BS (see Section \ref{sec:planarmodel}). It scales linearly w.r.t. the density parameter $\lambda$ of $\Phi$.
 
-The total interference, or total received power, is defined as the sum of the GP at the typical location:
+The total interference, or total received power, is defined as the sum of the GP at the typical location 
 \begin{equation}
   \label{eq:totpow}
   I \triangleq \sum_{x \in \Phi} H_x G(\|x\|) = \sum_{u \in \mathcal{G}} u.
 \end{equation}
-There is no requirement for the symbols representing the points in the point process (p.p.) to differ on the l.h.s. and r.h.s. summation notations. However, we use $u \in \mathcal{G}$ to represent the signal strength at the typical location. This is done to avoid confusion with $x \in \Phi$, which represents a spatial location.
+There is no requirement for the symbols representing the points in the point process (p.p.) to differ on the l.h.s. and r.h.s. summation notations. However, we use $u \in \mathcal{G}$ to represent the signal strength at $\textit{o}$ at the BS to clearly separate it from $x$, which represents a spatial location.
 
 
 
@@ -260,7 +269,7 @@ The parameter $\upsilon = \upsilon(\epsilon)$ varies according to the shadowing 
          \begin{figure}[h]
            \centering
            \includegraphics[width=\linewidth]{plotdensities.pdf}
-           \caption{The density function of the GP for a two-tier log-normal mixure shadowing distribution with the corresponding exponential shadowing acquired by matching the first two moments. The parameters $\upsilon_{} \in \{0.85,0.53\}$ for the elevation angles $\epsilon \in \{90^{\circ},40^{\circ}\}$, respectively. The no-shadowing $H\equiv 1$ is also plotted for comparison.} 
+           \caption{The density function of the GP for a two-tier log-normal mixure shadowing distribution with the defective exponential distribution with the first and second moments matched. The parameters $\upsilon_{} \in \{0.85,0.53\}$ for the elevation angles $\epsilon \in \{90^{\circ},40^{\circ}\}$, respectively. The no-shadowing $H\equiv 1$ is also plotted for comparison.} 
            \label{fig:plotdensities}
          \end{figure}
 
@@ -642,7 +651,7 @@ The parameter $0 \leq 1-\upsilon < 1$ of the defective exponential distribution 
 \label{sec:planarmodel}
 
 
-As indicated in Section \ref{sec:analysissec}, we employ an infinite flat-earth model.  This planar approximation effectively represents the spherical model described in Section \ref{sec:sphericalmodel}, particularly when considering the narrow Gaussian antenna beams $G(\cdot)$ at the satellite BSs. The UEs, acting as Earth transmitters, radiate omnidirectionally and are modeled as a homogeneous PPP $\Phi \subset \mathbb{R}^2$. The signals emitted by the UEs are subject to shadowing, which is modeled by i.i.d. exponential mixture r.v.'s $H_{\text{Exp}}$ with a non-zero probability measure at $0$, as described in the distribution function in \eqref{eq:defexp}. The typical satellite BS antenna boresight is directed towards the origin $\textit{o}$. Hence, the typical satellite BS projected to the plane is located at $\textit{o}$ only if the elevation angle $\epsilon=90 \degree$. Figure \ref{fig:UEsontheplane} provides a geometric visualization of the planar LEO model.
+As indicated in Section \ref{sec:analysissec}, we employ an infinite flat-earth model.  This planar approximation effectively represents the spherical model described in Section \ref{sec:sphericalmodel}, particularly when considering the narrow Gaussian antenna beams $G(\cdot)$ at the satellite BSs. The UEs, acting as Earth transmitters, radiate omnidirectionally and are modeled as a homogeneous PPP $\Phi \subset \mathbb{R}^2$. The signals emitted by the UEs are subject to shadowing, which is modeled by i.i.d. exponential mixture r.v.'s $H_{\text{Exp}}$ with a non-zero probability measure at $0$, as described in the distribution function in \eqref{eq:defexp}. The typical satellite BS antenna boresight is directed towards the typical point; origin $\textit{o}$ (which is the closest focus point to the LEO BS in its elliptical footprint, \textit{i.e.}, the antenna boresight location on the Earth surface,  Hence, the typical LEO BS projected into the plane is located at $\textit{o}$ only if the elevation angle $\epsilon=90 \degree$. Figure \ref{fig:UEsontheplane} provides a geometric visualization of the planar LEO model.
 
 
 
@@ -725,7 +734,7 @@ The total received power at the typical satellite BS from the UEs in the PPP $\T
   \label{eq:mathringptot}
   \mathring{I} \triangleq (\mathring{I}- \mathring{S}) + \mathring{S} =    \sum_{x \in \Theta} H_x\ell(d_x) = \sum_{x \in \Theta}  \frac{H_x G(\varphi_x)}{(d_x/d_0)^{\alpha}},
 \end{equation}
-where $H_{x} \sim H_{\mathcal{M}\mathcal{L}\mathcal{N}}$ are i.i.d. log-normal mixture r.v.'s inroduced in Section \ref{sec:guassianmixture}. The power path loss exponent $\alpha \geq 0$, and $(d_x/d_0)$ is the distance between the UE and the typical SBS, and the normalizing distance $d_0$ accounts for any other factors affecting the path loss, such as the frequency band of the signals, and casts the path loss to a dimensionless quantity. The sub-satellite point of the typical SBS is at $\textit{o}_E$. As with the planar model, $\varphi_x$ is the angle between the SBS antenna boresight and  $u \in \Theta$. However, in contrary to the planar model, this is calculated precicely the spherical model. $\mathring{S}$ is the strongest signal at the SBS and $\mathring{I}-\mathring{S}$ is the interference power from the other signals. The SIR and SINR $\mathring{S}/(\mathring{I}-\mathring{S})$,  $\mathring{S}/(\mathring{I}-\mathring{S}+N)$, are defined accordingly. The IC schemes SIR-IIC, SIR-SIC, SINR-IIC and SINR-SIC are simulated using these definitions through Monte Carlo simulations. 
+where $H_{x} \sim H_{\mathcal{M}\mathcal{L}\mathcal{N}}$ are i.i.d. log-normal mixture r.v.'s inroduced in Section \ref{sec:guassianmixture}. The power path loss exponent $\alpha \geq 0$, and $(d_x/d_0)$ is the distance between the UE and the typical SBS, and the normalizing distance $d_0$ accounts for any other factors affecting the path loss, such as the frequency band of the signals, and casts the path loss to a dimensionless quantity.  As with the planar model, $\varphi_x$ is the angle between the LEO SBS antenna boresight and  $u \in \Theta$. However, in contrary to the planar model, this is calculated precicely the spherical model. $\mathring{S}$ is the strongest signal at the SBS and $\mathring{I}-\mathring{S}$ is the interference power from the other signals. The SIR and SINR $\mathring{S}/(\mathring{I}-\mathring{S})$,  $\mathring{S}/(\mathring{I}-\mathring{S}+N)$, are defined accordingly. The IC schemes SIR-IIC, SIR-SIC, SINR-IIC and SINR-SIC are simulated using these definitions through Monte Carlo simulations. 
 
 
 The spherical model \eqref{eq:mathringptot} is unnesessarily complex to work analytically. However, for the narrow-beamed antenna gain, such as the Gaussian antenna beam, the planar model introduced in Section \ref{sec:planarmodel} stricingly well approximates the spherical model, like demonstratet in CITE LÄHDE. In this work, we exclude the practical implementation details of the spherical model Monte Carlo simulations and refer to [???] for an extensive comparison between the planar model and the spherical model in the narrow beam LEO upink. Also, the presented results derived from the analysis based in the planar model are always compared to the Monte Carlo simulations based in the spherical model formulated in this section.
