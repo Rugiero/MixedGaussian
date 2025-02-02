@@ -169,23 +169,22 @@ d SIC to improve the user fairness while maintaining the average performance.
 
 The planar Poisson network model required to derive the factorial moment measures of the SIR and SINR processes, is independent of its interpretation as a LEO network (or any other aerial network). Hence, to make things not more complicated than necessary, and for the sake of generality, in this section, we merely consider a planar Poisson network model of UEs and BSs equipped with a squared exponential, \textit{i.e.}, Gaussian, path loss function and a defective Rayleigh fading distribution function. We briefly explain many parameters connection to the LEO system. However, the complete interpretation as a narrow-beam LEO uplink and the moment matching of the exponential-like shadowing to the Gaussian mixed shadowing  is formulated  in $\ref{sec:planarmodel}$.
 
-Considering a uplink, the UEs follow a homogeneous PPP $\Phi \subset \R^2$ of density $\lambda$. The BSs form an independent homogeneous p.p. possibly with different density than the UEs. Because of the translation invariancy of the PPP, all location are statistically equivalent, and we consider the typical BS to be located at the typical point $\textit{o}$.
+Considering a uplink, the UEs follow a homogeneous PPP $\Phi \subset \R^2$ of density $\lambda$. The BSs form an independent homogeneous p.p. possibly with different density than the UEs. Because of the translation invariancy of the PPP, all location are statistically equivalent, and we define the typical point to the origin $\textit{o}$, that represents the typical BS receiver location.
 
 
 
-
-The path loss is given over the planar distance $r \in [0, \infty)$ as a Gaussian function:
+The path loss is given over the planar distance $r \in [0, \infty)$ as a Gaussian function
   \begin{equation}
     \label{eq:Gaussianantpat}
     G(r) = 2^{-(D_{h,\epsilon}r)^2 / \varphi_{\text{RX}}^2}.
   \end{equation}
-  The angle $\varphi_{\text{RX}}$ denotes the $-3$ dB antenna gain width. Furthermore,, the scaling constant $D_{h,\epsilon}$ multiplied by the distance $r$ to the closest focus pont of the elliptical fooptrint; $D_{h,\epsilon}r$, approximates the angle of a UE in the (narrow-beam) LEO BS Gaussian antenna gain. %% This is a sufficient approximation for small $r$, for example, for UEs within the main lobe in case of narrow beams characterozed by small $\varphi_{\text{RX}}^2$. Otherwise, because of the fast decay of the Gaussian path loss, the power from the UES with large $r$ practically vanishes.
+  The angle $\varphi_{\text{RX}}$ denotes the $-3$ dB antenna gain width. Furthermore, the scaling constant $D_{h,\epsilon}$ depend on the altitude $h$ and elevation angle $\epsilon$ of the LEO BS. The constant multiplied by the distance $r$ of a UE to the closest LEO BS maximum receiving gain (boresight) location on the Earth surface, which is a focus point closest to the LEO BS in its elliptical fooptrint: Namely, the value $D_{h,\epsilon}r$, approximates the angle of the UE in the LEO satellite antenna for small $r$, which is sufficient for narrow beams. %% This is a sufficient approximation for small $r$, for example, for UEs within the main lobe in case of narrow beams characterozed by small $\varphi_{\text{RX}}^2$. Otherwise, because of the fast decay of the Gaussian path loss, the power from the UES with large $r$ practically vanishes.
 
-  At the typical location, $r=\|x\|$, where $\| x\|$ is the Euclidean distance between the typical BS at \textit{o} and the UE $x\in \Phi$.
+  At the typical location, $r=\|x\|$, where $\| x\|$ is the Euclidean distance between the typical point \textit{o} and a UE $x\in \Phi$.
 
 
   \begin{remark}[Terrestrial millimeter communication]
-    The Gaussian, \textit{i.e.}, the squared exponential spatial path loss function have applications in terrestrial networks that pose rapid signal attenuation, such as millimeter wave cellular networks in dense urban environments. Hence, the analysis presented in the paper can be applied to such planar Poisson network models. Notably, the power term $r^2$ is particularly tractable for the second power---as is the case in Gaussian function.
+    The Gaussian, \textit{i.e.}, the squared exponential (along with other exponential functions) spatial path loss function have applications in terrestrial networks that pose rapid signal attenuation, such as millimeter wave cellular networks in dense urban environments for the NLoS signals [CITE]. Hence, the analysis presented in the paper can be applied to such planar Poisson network models. To the best of our knowledge, similar exploration of the factorial measures has not been conducted with the exponential path loss.  Notably, the squared power term $r^2$, as in the Gaussian function, is particularly tractable compared to other powers. 
   \end{remark}
 
 Given i.i.d. shadowing variables $\{H_x\}_{x \in \Phi}$, we define the process of the received signal powers at the typical location, referred to as the gain process (GP), by
@@ -228,12 +227,12 @@ Since the variables $\{H_x\}_{x \in \Phi}$ are i.i.d., we can denote the shadowi
 
 The parameter $\kappa$ in $\lambda_{\mathcal{G}}(t)$ can be interpreted as the approximate average number of UEs within the $-3$ dB footprint of a satellite BS (see Section \ref{sec:planarmodel}). It scales linearly w.r.t. the density parameter $\lambda$ of $\Phi$.
 
-The total interference, or total received power, is defined as the sum of the GP at the typical location 
+The total interference, or total received power, is defined as the sum of the GP at the typical location $\textit{o}$ 
 \begin{equation}
   \label{eq:totpow}
   I \triangleq \sum_{x \in \Phi} H_x G(\|x\|) = \sum_{u \in \mathcal{G}} u.
 \end{equation}
-There is no requirement for the symbols representing the points in the point process (p.p.) to differ on the l.h.s. and r.h.s. summation notations. However, we use $u \in \mathcal{G}$ to represent the signal strength at $\textit{o}$ at the BS to clearly separate it from $x$, which represents a spatial location.
+There is no requirement for the symbols representing the points in the point process (p.p.) to differ on the l.h.s. and r.h.s. summation notations. However, we use $u \in \mathcal{G}$ to represent the signal strength at the typical point to clearly separate it from $x$, which represents a spatial location.
 
 
 
