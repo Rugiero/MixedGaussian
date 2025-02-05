@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.10.9)  1 FEB 2025 20:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.10.9)  4 FEB 2025 03:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -664,88 +664,93 @@ Overfull \hbox (1.22964pt too wide) detected at line 221
  []
 
 [3]
-<plotdensities.pdf, id=126, 389.2944pt x 330.5148pt>
+<plotdensities.pdf, id=132, 389.2944pt x 330.5148pt>
 File: plotdensities.pdf Graphic file (type pdf)
 <use plotdensities.pdf>
-Package pdftex.def Info: plotdensities.pdf  used on input line 270.
+Package pdftex.def Info: plotdensities.pdf  used on input line 279.
 (pdftex.def)             Requested size: 252.0pt x 213.95453pt.
+ [4 <./plotdensities.pdf>]
 LaTeX Font Info:    Trying to load font information for U+dsrom on input line 3
-31.
- (/usr/share/texlive/texmf-dist/tex/latex/doublestroke/Udsrom.fd
+40.
+
+(/usr/share/texlive/texmf-dist/tex/latex/doublestroke/Udsrom.fd
 File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
-) [4 <./plotdensities.pdf>] [5]
-Overfull \hbox (0.7719pt too wide) detected at line 535
+) [5] [6]
+Overfull \hbox (0.7719pt too wide) detected at line 544
 []
  []
 
-[6]
 
-LaTeX Warning: Command \textperthousand invalid in math mode on input line 538.
-
+LaTeX Warning: Command \textperthousand invalid in math mode on input line 547.
 
 
-LaTeX Warning: Command \textperthousand invalid in math mode on input line 538.
+
+LaTeX Warning: Command \textperthousand invalid in math mode on input line 547.
 
 
 Missing character: There is no ‡ in font cmr10!
 [7]
-Underfull \hbox (badness 3009) in paragraph at lines 620--622
+Underfull \hbox (badness 3009) in paragraph at lines 629--631
 \OT1/ptm/m/n/10 and $\OT1/cmr/m/n/10 10 [][](\OML/cmm/m/it/10 H[]\OMS/cmsy/m/n/
 10 j[]\OT1/cmr/m/n/10 )$\OT1/ptm/m/n/10 , eval-u-ate to Gaus-sian r.v.'s
  []
 
-<antennapats.pdf, id=237, 385.92181pt x 229.0959pt>
+<antennapats.pdf, id=243, 385.92181pt x 229.0959pt>
 File: antennapats.pdf Graphic file (type pdf)
 <use antennapats.pdf>
-Package pdftex.def Info: antennapats.pdf  used on input line 661.
+Package pdftex.def Info: antennapats.pdf  used on input line 670.
 (pdftex.def)             Requested size: 252.0pt x 149.59921pt.
 
-LaTeX Warning: Citation `ITURS1528' on page 8 undefined on input line 664.
+LaTeX Warning: Citation `ITURS1528' on page 8 undefined on input line 673.
 
 
-LaTeX Warning: Citation `ITURS1528' on page 8 undefined on input line 664.
+LaTeX Warning: Citation `ITURS1528' on page 8 undefined on input line 673.
 
-[8 <./antennapats.pdf>]
-<UEsontheplane.png, id=271, 589.402pt x 376.607pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[8]
+<UEsontheplane.png, id=270, 589.402pt x 376.607pt>
 File: UEsontheplane.png Graphic file (type png)
 <use UEsontheplane.png>
-Package pdftex.def Info: UEsontheplane.png  used on input line 714.
+Package pdftex.def Info: UEsontheplane.png  used on input line 723.
 (pdftex.def)             Requested size: 252.0pt x 161.01839pt.
 LaTeX Font Info:    Trying to load font information for OT1+phv on input line 7
-14.
-
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1phv.fd
+23.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
 )
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 714.
-<drawing.png, id=273, 216.0873pt x 147.9126pt>
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 723.
+<drawing.png, id=272, 216.0873pt x 147.9126pt>
 File: drawing.png Graphic file (type png)
 <use drawing.png>
-Package pdftex.def Info: drawing.png  used on input line 716.
+Package pdftex.def Info: drawing.png  used on input line 725.
 (pdftex.def)             Requested size: 252.0pt x 172.50182pt.
 
-Overfull \hbox (3.50006pt too wide) in paragraph at lines 714--717
+Overfull \hbox (3.50006pt too wide) in paragraph at lines 723--726
  [][] 
  []
 
 
-Overfull \hbox (3.50006pt too wide) in paragraph at lines 714--717
+Overfull \hbox (3.50006pt too wide) in paragraph at lines 723--726
  [][] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[9 <./UESontheplane.png> <./drawing.png>]
-<triangle.pdf, id=294, 443.97871pt x 285.2256pt>
+[9 <./antennapats.pdf>]
+<triangle.pdf, id=295, 443.97871pt x 285.2256pt>
 File: triangle.pdf Graphic file (type pdf)
 <use triangle.pdf>
-Package pdftex.def Info: triangle.pdf  used on input line 800.
+Package pdftex.def Info: triangle.pdf  used on input line 809.
 (pdftex.def)             Requested size: 176.39923pt x 113.32222pt.
-
+ [10 <./UESontheplane.png> <./drawing.png> <./triangle.pdf>]
 No file source.bbl.
-[10 <./triangle.pdf>] (./source.aux)
+[11
+
+] (./source.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -755,11 +760,11 @@ L3 programming layer <2024-01-22>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `source.out' has not changed.
-(rerunfilecheck)             Checksum: 21F48DD9F2B6AD82D1DFF8F73FFEDE60;5990.
+(rerunfilecheck)             Checksum: FB2604FAB146BFA5C8BA189BD473231B;5821.
  ) 
 Here is how much of TeX's memory you used:
- 13999 strings out of 476106
- 224851 string characters out of 5793933
+ 14000 strings out of 476106
+ 224858 string characters out of 5793933
  1960975 words of memory out of 5000000
  35707 multiletter control sequences out of 15000+600000
  608759 words of font info for 134 fonts, out of 8000000 for 9000
@@ -792,10 +797,10 @@ fonts/symbols/msbm7.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic
 xlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 urw/times/utmri8a.pfb>
-Output written on source.pdf (10 pages, 988913 bytes).
+Output written on source.pdf (11 pages, 992638 bytes).
 PDF statistics:
- 456 PDF objects out of 1000 (max. 8388607)
- 356 compressed objects within 4 object streams
- 86 named destinations out of 1000 (max. 500000)
+ 465 PDF objects out of 1000 (max. 8388607)
+ 365 compressed objects within 4 object streams
+ 87 named destinations out of 1000 (max. 500000)
  170 words of extra memory for PDF output out of 10000 (max. 10000000)
 

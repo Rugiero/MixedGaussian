@@ -255,16 +255,25 @@ respectively.
 
 
 
-\subsection{Defective exponential fading distribution}
-To address the signal attentuation caused by multipath fading, we introduce a \textit{defective} exponential power fading distribution for the UEs, given by:
+\subsection{Shadowing}
+To address the signal attentuation caused by multipath slow-fading, we introduce an \textit{defective} exponential power fading distribution for the UEs with the distribution function
 \begin{equation}
   \label{eq:defexp}
-  F_{{H}_{\text{Exp}}}(t) = \upsilon e^{-t},
+  F_{{H}_{\text{Exp}}}(t) = \upsilon e^{-t}, t>0.
 \end{equation}
-which essentially represents an exponential mixture distribution. Namely, $0 \leq 1-\upsilon < 1$ denotes the probability that the shadowed signal is completely blocked or destructively interfered and takes the value of zero.
+Essentially, this is a mixture distribution. Namely, $0 \leq 1-\upsilon < 1$ denotes the probability that the shadowed signal is entirely attenuated and takes the value of zero, and otherwise follows the exponential distribution. This behavior can be a characteristic, for example, in an urban environment with large buildings attenuating, particularly, the NLoS signals very close to zero. The parameter $\upsilon = \upsilon(\epsilon)$ depends on the elevation angle of the satellite. By matching the first two moments, we use \eqref{eq:defexp} to approximate a log-normal mixture shadowing for LEO satellites directed at an urban environment [CITE]. In Section \ref{sec:numericalresultsandconnectiontoLEO}, we introduce another parameter $\Upsilon$ to the exponent---however, we make the normalization here to streamline the analysis.
 
-The parameter $\upsilon = \upsilon(\epsilon)$ varies according to the shadowing distribution variables, which depend on the elevation angles of the satellites. Further details regarding the relationship between $\upsilon$ and the log-normal mixture shadowing are provided in Section \ref{sec:numericalresultsandconnectiontoLEO}.
 
+
+Recall, the signals has an additional random Poisson factor that scarmbles the process of the signal powers at the BS; the GP. While the differences in the shadowing distributions can be notable, the crude (but analytically tractable) defective exponential shadowing model can be feasible in matching the density of the GP (given in \eqref{eq:GPdensity} for an arbitrary distribution) to the GP with the lognormal mixture ccdf $F_H(\cdot)$. Recall, matching the first two moments of the fading distributions matches the mean and the variance of the total interference (recall \eqref{eq:totmean} and \eqref{eq:totvar}).
+
+Figure \ref{fig:plotdensities} depicts the densities of the GPs with the defective exponential and Gaussian mixture shadowing scenarios for the elevation angles $\epsilon \in \{90 \degree, 40 \degree \}$ (also the no-shadowing is included). The densities seem to match well.
+
+Importantly, the  $0 < \upsilon \leq 1$ is not solvable (by matching the first two moments) for all log-normal distribution parameters. This is the case, for example, for a distribution with a small variance. Hence, the analysis, if interpreted as a LEO link with the log-normal shadowing, is applicable only for limited shadowing scenarios---broadly said, the variance of the shadowing has to be large enough. The variables $0<\upsilon \leq 1$ and $\Upsilon>0$ are solvable for almost every scenario in [CITE] (certainly for each urban measurement), and if it is not, $\upsilon$ is close $1$.
+
+In contrary, as a widely utilized striking property, for a singular path loss function of form $A\|\cdot\|^{-\eta}, \eta,A>0$, the density of the faded projection process is simply a scaling by the projection process density without fading by a single moment $1/\mathbb{E}(H^{\eta})$ of any fading r.v. $H$ with the finite moment. Unfortunately, this is not the case with the Gaussian decay function $G(\cdot)$, because $\lambda_{\mathcal{G}}(\cdot)$ is pointwise dependent on $F_{H}(\cdot)$.
+
+ Further details regarding the relationship between $\upsilon$ and the log-normal mixture shadowing are provided in Section \ref{sec:numericalresultsandconnectiontoLEO} . 
          \begin{figure}[h]
            \centering
            \includegraphics[width=\linewidth]{plotdensities.pdf}
