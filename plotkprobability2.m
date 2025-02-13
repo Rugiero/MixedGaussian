@@ -126,12 +126,12 @@ fill([simtau,fliplr(simtau)],[simres340',fliplr(simres390')],[0.9290 0.6940 0.12
 
 
 
-legend('Analysis; $k=1$','Analysis; $k=2$','Analysis; $k=3$ \hspace{0.1cm}','Simulated values','Interpreter','latex',...
+legend('Analysis; $k=1$','Analysis; $k=2$','Analysis; $k=3$ \hspace{0.1cm}','Simulated values:','Gaussian mixture shadowing','and spherical Earth model','Interpreter','latex',...
     'FontSize',14,BackgroundAlpha=.3)
 
 xlabel('$\theta$ [dB]','FontSize',14,'Interpreter','latex')
 ylabel('$\mathcal{P}^{(k)}(\theta)$','FontSize',14,'Interpreter','latex')
-title('$\tilde{\kappa}\rho_{\epsilon}= 2.6$','FontSize',14,'Interpreter','latex')
+title('${\kappa}\upsilon= 1.8$','FontSize',14,'Interpreter','latex')
 grid on
 axis([[-7,10],[0,1]])
 

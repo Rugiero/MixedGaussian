@@ -97,35 +97,40 @@ The squared exponential, \textit{i.e.}, the Gaussian path loss have applications
 
 \begin{table}
   \begin{center}
-    \begin{tabular}{|p{0.99cm}|p{4.5cm}|p{1.8cm}|}
+    \begin{tabular}{| c | p{4.5cm}  |p{1.5cm}|}
       \hline
       \multicolumn{3}{|c|}{Glossary of principal symbols} \\
       \hline
-      Symbol& Explanation &Values ($=$ or $\in$)
+      Symbol& Explanation &Value
       \\ 
       \hline
-      $h$ & Altitude of the SBSs. &$1200$ [km]  \\
+      $h$ & Altitude of the SBSs.&$1200$ [km] \\
+      $\epsilon$ & Elevation angle of the SBSs.& $(90 \degree,40 \degree)$ \\
       $G[\cdot]$ & The SBS antenna gain.&\\
       $\alpha$ &Power path loss exponent.& $4$\\
-      $\varphi_{\text{RX}}$ & Half-width of the satellite BS $-3$ dB antenna gain pattern.&$0.028 \text{ [rad] }$\hfill \break $(=1.6 \degree)$  \\
-      $\Theta \subset \R^3 $ & Homogeneous PPP on the sphere Earth.& \\
-      $\Phi \subset \R^2$ & Homogeneous PPP on the plane. &\\
-      $\epsilon$&  Satellite BS elevation angle w.r.t. the focus point $\textit{o}$ of the footprint. & $\left(\frac{\pi}{2},\frac{2\pi}{9}\right)\text{ [rad]}$ $(=(90 \degree,40 \degree))$ \\
-      $\lambda$ & The density of $\Phi$ and $\Theta$, \textit{i.e.}, the mean number of UEs inside an unit area. & $(1.66,8.81)$  $\times 10^{-4}$ [/km$^2$] \\
-      $\kappa$  & $\text{Average (mean) number of }  \text{UEs inside}$ the satellite BS $-3 \text{ dB footprints};$ \hfill \break $\kappa =\kappa(\lambda,\epsilon) = \pi \lambda (h\varphi_{\textup{RX}}$ $/\sin^2(\epsilon))^2.$& $\{(2.1,3.4),$ $(3.1,5)\}$  \\
-      ${\tilde{\kappa}}$ &  $\kappa/\log(2)$.& \\
-      $p_{\text{LoS}}$& LoS probability; $p_{\text{LoS}} = p_{\text{LoS}}(\epsilon)$. & $(0.99,0.61)$\\
-      $p_{\text{NLoS}}$& NLoS probability; $1-p_{\text{LoS}}$. & \\
-      $\mu_{\text{LoS}}$& Mean of the LoS component of the Gaussian mixture shadow fading model. & $0$ [dB] \\
-      $\mu_{\text{NLoS}}$& Mean of the NLoS component. & $-26$ [dB] \\
-      $\sigma^2_{\text{LoS}}$& Variance of the LoS component. & $4^2$ [dB] \\
-      $\sigma^2_{\text{NLoS}}$& Variance of the NLoS component. & $6^2$ [dB] \\
-      $H_{\mathcal{M}\mathcal{L}\mathcal{N}}$ & A r.v. distributed according to a two-tier $\{\text{LoS}, \text{NLoS}\}$ log-normal mixture distribution representing the power gain in the Gaussian mixture fading model.&   \\
-      $H_{\text{Exp}}$ & Random shadow fading power gain with a defective exponential cdf defined by the parameter $0<\upsilon \leq 1$. The r.v. approximates the log-normal mixture fading by moment matching.&  \\
-      $\upsilon$ & $\mathbb{P}(H_{\text{Exp}}>0)$ $=1-\mathbb{P}(H_{\text{Exp}}=0)$; $\upsilon = \upsilon(p_{\text{LoS}}(\epsilon))$. &$(0.85,0.53)$ \\
-      $\kappa \upsilon$ & The mean number of effective UEs inside the $-3$ dB footprints. \textbf{The parameter determines the theoretical SIR performance.} The two example values correspond to the two given example regions of $\kappa$ for each $\epsilon$.&$ \{1.8,2.6\}$ \\
-      $\theta$ & SIR threshold of a successful transmission.&\\
-      $\tau$ & SIR threshold of a successful interference cancellation.& $0.2 \text{ }(-7\text{ dB})$\\  
+      $\varphi_{\text{RX}}$ & Width of the SBSs $3$ dB gain.& $1.6 \degree$  \\
+      $\Theta \subset E $ & Poisson p.p. on the earth's surface $E \subset \R^3$.& \\
+      $\Phi \subset \R^2$ & Poisson p.p. on the plane. &\\
+      $x_0$ & Nearest point to the origin in $\Phi$.&  \\
+      $\lambda$ & Density parameter of $\Phi$ and $\Theta$.& \\
+      $\kappa$ & Parameter that reflects the approximate mean number of UEs inside a SBS's $3$ dB footprint;  $\kappa = h^2\pi \lambda \varphi_{\textup{RX}}^2/\sin^4(\epsilon)$.& \\
+      ${\tilde{\kappa}}$ &  $\kappa/\log(2)$.&\\
+      $H_{\text{log}}$ & Log-normal shadowing mixture r.v.&     \\
+      $p_{\text{LoS}}$& LoS probability & $(0.99,0.61)$\\
+      $p_{\text{NLoS}}$&  $1-p_{\text{LoS}}$ & $(0.01,0.39)$\\
+      $\mu_{\text{LoS}}$& Shadowing mean of the LoS component & 0 [dB] \\
+      $\mu_{\text{NLoS}}$& Mean of the NLoS component & -26 [dB] \\
+      $\sigma_{\text{LoS}}$& Variance of the LoS component & 4 [dB] \\
+      $\sigma_{\text{NLoS}}$& Variance of the NLoS component & 6 [dB] \\
+      $p_{\text{NLoS}}$&  $1-p_{\text{LoS}}$ & $(0.01,0.39)$\\
+      $H_{\text{exp}}$ & Defective exponential shadowing r.v.    & \\
+      $\theta$ & SIR or SINR threshold for a successful transmission.&\\
+      $I$ & Interference at the typical SBS in the plane model.&\\
+      $S$ & The signal power of the served UE at the typical SBS in the plane model.&\\
+      $\mathring{I}$ & Interference at the typical SBS in the spherical model.&\\
+      $\mathring{S}$ & The signal power of the served UE at the typical SBS in the spherical model.&\\ 
+      $\hat{d}_{h,\epsilon}$ & The distance between the SBS and the center of the footprint in the plane model.&\\
+      $d_{0}$ & Normalizing distance. & \\                        
       \hline
     \end{tabular}
   \end{center}
@@ -500,7 +505,7 @@ In independent interference cancellation (IIC), we cancel and decode all signals
 
 
 
-Let us consider that the $n$th strongest signal is decoded directly if its SINR exceeds $\theta$; otherwise, signal cancellation is attempted. We denote the SINR with independent interference cancellation as \text{IIC-SINR}$_{n,k}$, where interference from signals with indices in the set $[k] \triangleq \{1, \dots, k\}$ is canceled if each $(\mathsf{Z}_{(1)}, \dots  \mathsf{Z}_{(k)})$, reaches the signal separation threshold $\tau$, for which the sufficient condition is $\mathsf{Z}_{(k)}>\tau$. The coverage probability is defined by
+Let us consider that the $n$th strongest signal is decoded directly if its SINR exceeds $\theta$; otherwise, signal cancellation is attempted. We denote the SINR with independent interference cancellation as \text{IIC-SINR}$_{n,k}$, where interference from signals with indices in the set $[k] \triangleq \{1, \dots, k\}$ is canceled if each $(\mathsf{Z}_{(1)}, \dots  \mathsf{Z}_{(k)})$, reaches the signal separation threshold $\tau$, for which the sufficient condition is only $\mathsf{Z}_{(k)}>\tau$. The coverage probability is defined by
 
 
 \begin{equation}
@@ -568,13 +573,6 @@ The mean and the second moment diverge for $\tilde{\kappa}b\leq 1$ and $\tilde{\
 
 \subsubsection{Numerical results regarding the average and variance of the SIR without interference cancellation and using IIC and SIC}
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=\linewidth]{kprobabilities.pdf}
-  \caption{The $k$-probabilities for $k \in \{1,2,3\}$ for $\kappa v=1.8$ (recall, $\kappa v$ corresponds to the average number of \textit{effective} UEs inside the SBS $3$ dB footprints). For the simulated values, the two-tier Gaussian mixture shadowing in the elevation angles $\epsilon \in (90 \degree, 40 \degree)$ correspond to $\upsilon_{} \in (0.85,0.53)$. Further, ${\kappa} \in (2.12,3.42)$ (recall, each $\kappa$ corresponds to the average number of \textit{any} UEs inside the SBS $3$ dB footprints) are chosen to match $\kappa v =1.8$ for the respective $\upsilon$.
-} 
-  \label{fig:antennapats}
-\end{figure}
 
 
 For this section, recall the partial density $\mu_k^{k+1}$ of the STIR process \eqref{eq:auxillary} \eqref{eq:factorialmoment} and \eqref{eq:IIC-SINRprob}-\eqref{eq:SICprob}.
@@ -620,13 +618,13 @@ While the analysis presented in Section \ref{sec:analysissec} fundamentally reli
 \subsection{Gaussian mixture shadowing model}
 \label{sec:guassianmixture}
 
-Consider a two-tier $\{\text{LoS},\text{NLoS}\}$ (line-of-sight and non-line-of-sight) Gaussian mixture shadow fading model with the parameters $\mu_{\text{LoS}} = 0$ dB, $\sigma_{\text{LoS}} = 4$ dB, $\mu_{\text{NLoS}} = -26$ dB, and $\sigma_{\text{NLoS}} = 6$ dB. Under the model, assuming i.i.d. power shadow fading for all UEs, the typical shadowed transmit power $H_{\mathcal{M}\mathcal{L}\mathcal{N}}$ follows a log-normal mixture distribution;
+Consider a two-tier Gaussian mixture fading model with the following parameters for the LoS and NLoS tiers, respectively: $\mu_{\text{LoS}} = 0$ dB, $\sigma_{\text{LoS}} = 4$ dB, $\mu_{\text{NLoS}} = -26$ dB, and $\sigma_{\text{NLoS}} = 6$ dB. Under this fading model, the i.i.d. shadowing r.v.'s of the transmitters follow a log-normal mixture distribution;
 \begin{align}
   \label{eq:tier2lognormal}
   H_{\mathcal{M}\mathcal{L}\mathcal{N}} &\sim p_{\text{LoS}} \mathcal{L}\mathcal{N}(\rho \mu_{\text{LoS}}, (\rho \sigma_{\text{LoS}})^2) \nonumber \\
   &\quad + p_{\text{NLoS}} \mathcal{L}\mathcal{N}(\rho \mu_{\text{NLoS}}, (\rho \sigma_{\text{NLoS}})^2),
 \end{align}
-with $p_{\text{NLoS}}= 1 - p_{\text{LoS}}$. Considering a natural base for the log-normal distribution, the constant $\rho \triangleq \log(10)/10$ normalizes the parameters $\mu_{\text{LoS}}, \sigma_{\text{LoS}}, \mu_{\text{NLoS}},$ and $\sigma_{\text{NLoS}}$, ensuring that the conditioned r.v.'s $10 \log_{10}(H_{\mathcal{MLN}}|\text{LoS})$ and $10 \log_{10}(H_{\mathcal{MLN}}|\text{NLoS})$ evaluate to r.v.'s following the normal distributions $\mathcal{N}(\mu_{\text{LoS}}, \sigma_{\text{LoS}}^2)$ and $\mathcal{N}(\mu_{\text{NLoS}}, \sigma_{\text{NLoS}}^2)$, respectively.
+with $p_{\text{NLoS}} = 1 - p_{\text{LoS}}$. Considering the natural base of the log-normal distribution, the constant $\rho \triangleq \log(10)/10$ normalizes the parameters $\mu_{\text{LoS}}, \sigma_{\text{LoS}}, \mu_{\text{NLoS}},$ and $\sigma_{\text{NLoS}}$, ensuring that the r.v.'s, conditioned on the shadowing tiers and expressed in decibels of the power ratio, $10 \log_{10}(H_{\mathcal{MLN}}|\text{LoS})$ and $10 \log_{10}(H_{\mathcal{MLN}}|\text{NLoS})$, evaluate to Gaussian r.v.'s $\mathcal{N}(\mu_{\text{LoS}}, \sigma_{\text{LoS}}^2)$ and $\mathcal{N}(\mu_{\text{NLoS}}, \sigma_{\text{NLoS}}^2)$, respectively.
 
 
 
@@ -648,9 +646,9 @@ Recall the exponential shadowing distribution \eqref{eq:defexp} used in the anal
 Recall equations \eqref{eq:totmean} and \eqref{eq:totvar}. Matching the first two moments of any fading distributions is equivalent to matching the mean and variance of the total interference using the corresponding fading distributions.
 
 
-Without loss of generality, we can set $\Upsilon = 1$ when studying SIR scenarios, since the scaling cancel (without noise).
+Without loss of generality, we can set $\Upsilon = 1$ when studying SIR scenarios, as the scaling of the signal powers cancels out when $N = 0$. In the case of SINR, the scaling is accounted for by adjusting the noise constant by a factor of $N \sim 1/\Upsilon$. We will revisit this topic in the next section.
 
-%% The parameter $0 \leq 1-\upsilon < 1$ of the defective exponential distribution encapsulates the occurrences of severe shadowing, where the signal is either blocked by an obstacle or destructively interfered by its multipath components to such an extent that the signal power approaches $-\infty$ dB in the Gaussian mixture shadowing model. Severe shadowing occurrences are particularly common at low elevation angles due to the presence of tall buildings and other large objects that prevent a clear line-of-sight (LoS), thus causing significant signal blockage.
+The parameter $0 \leq 1-\upsilon < 1$ of the defective exponential distribution encapsulates the occurrences of severe shadowing, where the signal is either blocked by an obstacle or destructively interfered by its multipath components to such an extent that the signal power approaches $-\infty$ dB in the Gaussian mixture shadowing model. Severe shadowing occurrences are particularly common at low elevation angles due to the presence of tall buildings and other large objects that prevent a clear line-of-sight (LoS), thus causing significant signal blockage.
 
 
 

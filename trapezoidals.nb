@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     78329,       1743]
-NotebookOptionsPosition[     71005,       1654]
-NotebookOutlinePosition[     71406,       1670]
-CellTagsIndexPosition[     71363,       1667]
+NotebookDataLength[     42319,        963]
+NotebookOptionsPosition[     40450,        933]
+NotebookOutlinePosition[     40849,        949]
+CellTagsIndexPosition[     40806,        946]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -50,7 +50,7 @@ Cell[BoxData[
         RowBox[{"dx", "/", "2"}], ")"}], "*", "sum"}]}]}], "]"}]}], 
   "\[IndentingNewLine]"}]], "Input",
  CellLabel->
-  "In[857]:=",ExpressionUUID->"841095ea-e8ff-4a44-a593-ef8388517744"],
+  "In[1243]:=",ExpressionUUID->"841095ea-e8ff-4a44-a593-ef8388517744"],
 
 Cell[BoxData[{
  RowBox[{"m1", "=", 
@@ -452,24 +452,25 @@ Cell[BoxData[" "], "Input",
   3.9461330030647697`*^9},ExpressionUUID->"c8b4f572-025c-4aa7-ad6f-\
 cd442cff7752"],
 
-Cell[CellGroupData[{
-
 Cell[BoxData[
  RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{
    RowBox[{"m", "=", 
     RowBox[{"TrapezoidalIntegration", "[", 
      RowBox[{"table", ",", "delta"}], "]"}]}], "\[IndentingNewLine]", 
-   RowBox[{"m1", "=", 
-    RowBox[{"TrapezoidalIntegration", "[", 
-     RowBox[{"table1", ",", "delta"}], "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"m1", "=", 
+     RowBox[{"TrapezoidalIntegration", "[", 
+      RowBox[{"table1", ",", "delta"}], "]"}]}], "*)"}], 
+   "\[IndentingNewLine]", 
    RowBox[{"m2", "=", 
     RowBox[{"TrapezoidalIntegration", "[", 
      RowBox[{"table2", ",", "delta"}], "]"}]}], "\[IndentingNewLine]", 
-   RowBox[{"m3", "=", 
-    RowBox[{"TrapezoidalIntegration", "[", 
-     RowBox[{"table3", ",", "delta"}], "]"}]}], "\[IndentingNewLine]", 
-   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"m3", "=", 
+     RowBox[{"TrapezoidalIntegration", "[", 
+      RowBox[{"table3", ",", "delta"}], "]"}]}], "*)"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
    RowBox[{"var", "=", 
     RowBox[{
      RowBox[{"2", "*", 
@@ -480,15 +481,16 @@ Cell[BoxData[
       RowBox[{"TrapezoidalIntegration", "[", 
        RowBox[{"table", ",", "delta"}], "]"}], "^", "2"}]}]}], 
    "\[IndentingNewLine]", 
-   RowBox[{"var1", "=", 
-    RowBox[{
-     RowBox[{"2", "*", 
-      RowBox[{"TrapezoidalIntegration", "[", 
-       RowBox[{
-        RowBox[{"table1", "*", "\[Tau]"}], ",", "delta"}], "]"}]}], "-", 
+   RowBox[{"(*", 
+    RowBox[{"var1", "=", 
      RowBox[{
-      RowBox[{"TrapezoidalIntegration", "[", 
-       RowBox[{"table1", ",", "delta"}], "]"}], "^", "2"}]}]}], 
+      RowBox[{"2", "*", 
+       RowBox[{"TrapezoidalIntegration", "[", 
+        RowBox[{
+         RowBox[{"table1", "*", "\[Tau]"}], ",", "delta"}], "]"}]}], "-", 
+      RowBox[{
+       RowBox[{"TrapezoidalIntegration", "[", 
+        RowBox[{"table1", ",", "delta"}], "]"}], "^", "2"}]}]}], "*)"}], 
    "\[IndentingNewLine]", 
    RowBox[{"var2", "=", 
     RowBox[{
@@ -500,61 +502,22 @@ Cell[BoxData[
       RowBox[{"TrapezoidalIntegration", "[", 
        RowBox[{"table2", ",", "delta"}], "]"}], "^", "2"}]}]}], 
    "\[IndentingNewLine]", 
-   RowBox[{"var3", "=", 
-    RowBox[{
-     RowBox[{"2", "*", 
-      RowBox[{"TrapezoidalIntegration", "[", 
-       RowBox[{
-        RowBox[{"table3", "*", "\[Tau]"}], ",", "delta"}], "]"}]}], "-", 
+   RowBox[{"(*", 
+    RowBox[{"var3", "=", 
      RowBox[{
-      RowBox[{"TrapezoidalIntegration", "[", 
-       RowBox[{"table3", ",", "delta"}], "]"}], "^", "2"}]}]}]}]}]], "Input",
+      RowBox[{"2", "*", 
+       RowBox[{"TrapezoidalIntegration", "[", 
+        RowBox[{
+         RowBox[{"table3", "*", "\[Tau]"}], ",", "delta"}], "]"}]}], "-", 
+      RowBox[{
+       RowBox[{"TrapezoidalIntegration", "[", 
+        RowBox[{"table3", ",", "delta"}], "]"}], "^", "2"}]}]}], 
+    "*)"}]}]}]], "Input",
  CellChangeTimes->{{3.945948286064129*^9, 3.9459482865333347`*^9}, {
    3.946114764437201*^9, 3.94611479206967*^9}, 3.946117552122023*^9, {
-   3.9461221778842983`*^9, 3.946122215493824*^9}},
- CellLabel->
-  "In[881]:=",ExpressionUUID->"b47da379-013d-43ea-b2f3-5bf2232b4ff4"],
-
-Cell[BoxData["0.8188786759272884`"], "Output",
- CellChangeTimes->{3.9464837970537786`*^9},
- CellLabel->
-  "Out[881]=",ExpressionUUID->"05edbddd-105b-404b-9927-a7a1b3dce57a"],
-
-Cell[BoxData["0.8188786759272884`"], "Output",
- CellChangeTimes->{3.946483797054628*^9},
- CellLabel->
-  "Out[882]=",ExpressionUUID->"c7e49f4d-f36b-445c-8c50-16eef1ea12c1"],
-
-Cell[BoxData["1.3108636878960804`"], "Output",
- CellChangeTimes->{3.9464837970550537`*^9},
- CellLabel->
-  "Out[883]=",ExpressionUUID->"cc316048-cc04-447c-a523-7b678cadc15a"],
-
-Cell[BoxData["1.2482658591616378`"], "Output",
- CellChangeTimes->{3.946483797055533*^9},
- CellLabel->
-  "Out[884]=",ExpressionUUID->"2fc0325c-fb98-4471-bbb8-75472260f261"],
-
-Cell[BoxData["0.4718953659025361`"], "Output",
- CellChangeTimes->{3.946483797055955*^9},
- CellLabel->
-  "Out[885]=",ExpressionUUID->"d11eb7d6-6a0a-43d0-810d-0ae31971ebc7"],
-
-Cell[BoxData["0.4718953659025361`"], "Output",
- CellChangeTimes->{3.9464837970563917`*^9},
- CellLabel->
-  "Out[886]=",ExpressionUUID->"fa503fd6-5c0d-43a7-a7c2-6893f8e3c385"],
-
-Cell[BoxData["2.6224373144637356`"], "Output",
- CellChangeTimes->{3.946483797056779*^9},
- CellLabel->
-  "Out[887]=",ExpressionUUID->"dec43c24-e4cb-4da8-a4be-50dec4a49375"],
-
-Cell[BoxData["1.6600606214251834`"], "Output",
- CellChangeTimes->{3.946483797057229*^9},
- CellLabel->
-  "Out[888]=",ExpressionUUID->"00b95d8c-2df9-4af0-9ec7-906bf6e6b369"]
-}, Open  ]],
+   3.9461221778842983`*^9, 3.946122215493824*^9}, {3.9484539177052813`*^9, 
+   3.948453931317698*^9}},ExpressionUUID->"b47da379-013d-43ea-b2f3-\
+5bf2232b4ff4"],
 
 Cell[BoxData[
  RowBox[{"\[IndentingNewLine]", "0.8188786759272884`"}]], "Input",
@@ -614,8 +577,6 @@ Cell[BoxData[
   3.94646976875068*^9}},ExpressionUUID->"a0db77bf-3870-44ee-8113-\
 d72195943306"],
 
-Cell[CellGroupData[{
-
 Cell[BoxData[
  RowBox[{
   RowBox[{"(*", 
@@ -638,7 +599,7 @@ Cell[BoxData[
      RowBox[{"Table", "[", 
       RowBox[{"t", ",", 
        RowBox[{"{", 
-        RowBox[{"t", ",", "min", ",", "100", ",", "delta"}], "}"}]}], "]"}]}],
+        RowBox[{"t", ",", "min", ",", "400", ",", "delta"}], "}"}]}], "]"}]}],
      ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"p\[Tau]s", "=", 
@@ -648,9 +609,7 @@ Cell[BoxData[
    RowBox[{
     RowBox[{"stable", "=", 
      RowBox[{"Table", "[", 
-      RowBox[{
-       RowBox[{"1", "-", 
-        RowBox[{"t", "/", "7."}]}], ",", 
+      RowBox[{"1", ",", 
        RowBox[{"{", 
         RowBox[{"t", ",", "0", ",", 
          RowBox[{"min", "-", "delta"}], ",", "delta"}], "}"}]}], "]"}]}], 
@@ -721,72 +680,72 @@ Cell[BoxData[
     RowBox[{"table", "=", 
      RowBox[{"Flatten", "[", "table", "]"}]}], ";"}], "\[IndentingNewLine]", 
    "\[IndentingNewLine]", "\[IndentingNewLine]", 
-   RowBox[{
-    RowBox[{"AbsoluteTiming", "[", 
-     RowBox[{"table1", "=", "\[IndentingNewLine]", 
-      RowBox[{"{", 
-       RowBox[{"stable", ",", 
-        RowBox[{"ParallelTable", "[", 
-         RowBox[{
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"AbsoluteTiming", "[", 
+      RowBox[{"table1", "=", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{"stable", ",", 
+         RowBox[{"ParallelTable", "[", 
           RowBox[{
-           RowBox[{"Sum", "[", 
-            RowBox[{
-             RowBox[{"NIntegrate", "[", 
-              RowBox[{
-               RowBox[{"kprobintegrand", "[", 
-                RowBox[{
-                 RowBox[{"{", "z1", "}"}], ",", "i"}], "]"}], ",", 
-               RowBox[{"{", 
-                RowBox[{"z1", ",", "p\[Tau]", ",", "1"}], "}"}], ",", 
-               RowBox[{"Method", "->", 
+           RowBox[{
+            RowBox[{"Sum", "[", 
+             RowBox[{
+              RowBox[{"NIntegrate", "[", 
+               RowBox[{
+                RowBox[{"kprobintegrand", "[", 
+                 RowBox[{
+                  RowBox[{"{", "z1", "}"}], ",", "i"}], "]"}], ",", 
                 RowBox[{"{", 
-                 RowBox[{"Automatic", ",", 
-                  RowBox[{"\"\<SymbolicProcessing\>\"", "->", "0"}]}], 
-                 "}"}]}], ",", 
-               RowBox[{"MinRecursion", "->", "1"}], ",", 
-               RowBox[{"AccuracyGoal", "->", "1"}], ",", 
-               RowBox[{"PrecisionGoal", "->", "1"}]}], "]"}], ",", 
-             RowBox[{"{", 
-              RowBox[{"i", ",", "0", ",", 
-               RowBox[{"Ceiling", "[", 
-                RowBox[{
-                 RowBox[{"1", "/", "p\[Tau]"}], "-", "1", "-", "1"}], "]"}]}],
-               "}"}]}], "]"}], "+", 
-           RowBox[{"Sum", "[", 
-            RowBox[{
-             RowBox[{"NIntegrate", "[", 
-              RowBox[{
-               RowBox[{"SICintegrand", "[", 
-                RowBox[{
+                 RowBox[{"z1", ",", "p\[Tau]", ",", "1"}], "}"}], ",", 
+                RowBox[{"Method", "->", 
                  RowBox[{"{", 
-                  RowBox[{"z1", ",", "z2"}], "}"}], ",", "i"}], "]"}], ",", 
-               RowBox[{"{", 
-                RowBox[{"z1", ",", "p\[Epsilon]", ",", "p\[Tau]"}], "}"}], 
-               ",", 
-               RowBox[{"{", 
-                RowBox[{"z2", ",", "p\[Epsilon]", ",", "p\[Tau]"}], "}"}], 
-               ",", 
-               RowBox[{"Method", "->", 
+                  RowBox[{"Automatic", ",", 
+                   RowBox[{"\"\<SymbolicProcessing\>\"", "->", "0"}]}], 
+                  "}"}]}], ",", 
+                RowBox[{"MinRecursion", "->", "1"}], ",", 
+                RowBox[{"AccuracyGoal", "->", "1"}], ",", 
+                RowBox[{"PrecisionGoal", "->", "1"}]}], "]"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"i", ",", "0", ",", 
+                RowBox[{"Ceiling", "[", 
+                 RowBox[{
+                  RowBox[{"1", "/", "p\[Tau]"}], "-", "1", "-", "1"}], 
+                 "]"}]}], "}"}]}], "]"}], "+", 
+            RowBox[{"Sum", "[", 
+             RowBox[{
+              RowBox[{"NIntegrate", "[", 
+               RowBox[{
+                RowBox[{"SICintegrand", "[", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"z1", ",", "z2"}], "}"}], ",", "i"}], "]"}], ",", 
                 RowBox[{"{", 
-                 RowBox[{"Automatic", ",", 
-                  RowBox[{"\"\<SymbolicProcessing\>\"", "->", "0"}]}], 
-                 "}"}]}], ",", 
-               RowBox[{"MinRecursion", "->", "2"}], ",", 
-               RowBox[{"AccuracyGoal", "->", "1"}], ",", 
-               RowBox[{"PrecisionGoal", "->", "1"}]}], "]"}], ",", 
-             RowBox[{"{", 
-              RowBox[{"i", ",", "0", ",", 
-               RowBox[{"Ceiling", "[", 
-                RowBox[{
-                 RowBox[{"1", "/", "p\[Epsilon]"}], "-", "2"}], "]"}]}], 
-              "}"}]}], "]"}]}], ",", 
-          RowBox[{"{", 
-           RowBox[{"p\[Tau]", ",", "p\[Tau]s"}], "}"}]}], "]"}]}], "}"}]}], 
-     "]"}], ";"}], "\[IndentingNewLine]", 
-   RowBox[{
-    RowBox[{"table1", "=", 
-     RowBox[{"Flatten", "[", "table1", "]"}]}], ";"}], "\[IndentingNewLine]", 
-   "\[IndentingNewLine]", 
+                 RowBox[{"z1", ",", "p\[Epsilon]", ",", "p\[Tau]"}], "}"}], 
+                ",", 
+                RowBox[{"{", 
+                 RowBox[{"z2", ",", "p\[Epsilon]", ",", "p\[Tau]"}], "}"}], 
+                ",", 
+                RowBox[{"Method", "->", 
+                 RowBox[{"{", 
+                  RowBox[{"Automatic", ",", 
+                   RowBox[{"\"\<SymbolicProcessing\>\"", "->", "0"}]}], 
+                  "}"}]}], ",", 
+                RowBox[{"MinRecursion", "->", "2"}], ",", 
+                RowBox[{"AccuracyGoal", "->", "1"}], ",", 
+                RowBox[{"PrecisionGoal", "->", "1"}]}], "]"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"i", ",", "0", ",", 
+                RowBox[{"Ceiling", "[", 
+                 RowBox[{
+                  RowBox[{"1", "/", "p\[Epsilon]"}], "-", "2"}], "]"}]}], 
+               "}"}]}], "]"}]}], ",", 
+           RowBox[{"{", 
+            RowBox[{"p\[Tau]", ",", "p\[Tau]s"}], "}"}]}], "]"}]}], "}"}]}], 
+      "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"table1", "=", 
+      RowBox[{"Flatten", "[", "table1", "]"}]}], ";"}], "*)"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"AbsoluteTiming", "[", 
      RowBox[{"table2", "=", "\[IndentingNewLine]", 
@@ -839,8 +798,8 @@ Cell[BoxData[
                   RowBox[{"\"\<SymbolicProcessing\>\"", "->", "0"}]}], 
                  "}"}]}], ",", 
                RowBox[{"MinRecursion", "->", "2"}], ",", 
-               RowBox[{"AccuracyGoal", "->", "2"}], ",", 
-               RowBox[{"PrecisionGoal", "->", "2"}]}], "]"}], ",", 
+               RowBox[{"AccuracyGoal", "->", "1"}], ",", 
+               RowBox[{"PrecisionGoal", "->", "1"}]}], "]"}], ",", 
              RowBox[{"{", 
               RowBox[{"i", ",", "0", ",", 
                RowBox[{"Ceiling", "[", 
@@ -854,75 +813,75 @@ Cell[BoxData[
     RowBox[{"table2", "=", 
      RowBox[{"Flatten", "[", "table2", "]"}]}], ";"}], "\[IndentingNewLine]", 
    "\[IndentingNewLine]", 
-   RowBox[{
-    RowBox[{"AbsoluteTiming", "[", 
-     RowBox[{"table3", "=", "\[IndentingNewLine]", 
-      RowBox[{"{", 
-       RowBox[{"stable", ",", 
-        RowBox[{"ParallelTable", "[", 
-         RowBox[{
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"AbsoluteTiming", "[", 
+      RowBox[{"table3", "=", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{"stable", ",", 
+         RowBox[{"ParallelTable", "[", 
           RowBox[{
-           RowBox[{"Sum", "[", 
-            RowBox[{
-             RowBox[{"NIntegrate", "[", 
-              RowBox[{
-               RowBox[{"kprobintegrand", "[", 
-                RowBox[{
-                 RowBox[{"{", "z1", "}"}], ",", "i"}], "]"}], ",", 
-               RowBox[{"{", 
-                RowBox[{"z1", ",", "p\[Tau]", ",", "1"}], "}"}], ",", 
-               RowBox[{"Method", "->", 
+           RowBox[{
+            RowBox[{"Sum", "[", 
+             RowBox[{
+              RowBox[{"NIntegrate", "[", 
+               RowBox[{
+                RowBox[{"kprobintegrand", "[", 
+                 RowBox[{
+                  RowBox[{"{", "z1", "}"}], ",", "i"}], "]"}], ",", 
                 RowBox[{"{", 
-                 RowBox[{"Automatic", ",", 
-                  RowBox[{"\"\<SymbolicProcessing\>\"", "->", "0"}]}], 
-                 "}"}]}], ",", 
-               RowBox[{"MinRecursion", "->", "1"}], ",", 
-               RowBox[{"AccuracyGoal", "->", "1"}], ",", 
-               RowBox[{"PrecisionGoal", "->", "1"}]}], "]"}], ",", 
-             RowBox[{"{", 
-              RowBox[{"i", ",", "0", ",", 
-               RowBox[{"Ceiling", "[", 
-                RowBox[{
-                 RowBox[{"1", "/", "p\[Tau]"}], "-", "1", "-", "1"}], "]"}]}],
-               "}"}]}], "]"}], "+", 
-           RowBox[{"Sum", "[", 
-            RowBox[{
-             RowBox[{"NIntegrate", "[", 
-              RowBox[{
-               RowBox[{"SICintegrand", "[", 
-                RowBox[{
+                 RowBox[{"z1", ",", "p\[Tau]", ",", "1"}], "}"}], ",", 
+                RowBox[{"Method", "->", 
                  RowBox[{"{", 
-                  RowBox[{"z1", ",", "z2", ",", "z3", ",", "z4"}], "}"}], ",",
-                  "i"}], "]"}], ",", 
-               RowBox[{"{", 
-                RowBox[{"z1", ",", "0", ",", "p\[Tau]"}], "}"}], ",", 
-               RowBox[{"{", 
-                RowBox[{"z2", ",", "0", ",", "p\[Tau]"}], "}"}], ",", 
-               RowBox[{"{", 
-                RowBox[{"z3", ",", "0", ",", "p\[Tau]"}], "}"}], ",", 
-               RowBox[{"{", 
-                RowBox[{"z4", ",", "0", ",", "p\[Tau]"}], "}"}], ",", 
-               RowBox[{"Method", "->", 
+                  RowBox[{"Automatic", ",", 
+                   RowBox[{"\"\<SymbolicProcessing\>\"", "->", "0"}]}], 
+                  "}"}]}], ",", 
+                RowBox[{"MinRecursion", "->", "1"}], ",", 
+                RowBox[{"AccuracyGoal", "->", "1"}], ",", 
+                RowBox[{"PrecisionGoal", "->", "1"}]}], "]"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"i", ",", "0", ",", 
+                RowBox[{"Ceiling", "[", 
+                 RowBox[{
+                  RowBox[{"1", "/", "p\[Tau]"}], "-", "1", "-", "1"}], 
+                 "]"}]}], "}"}]}], "]"}], "+", 
+            RowBox[{"Sum", "[", 
+             RowBox[{
+              RowBox[{"NIntegrate", "[", 
+               RowBox[{
+                RowBox[{"SICintegrand", "[", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"z1", ",", "z2", ",", "z3", ",", "z4"}], "}"}], 
+                  ",", "i"}], "]"}], ",", 
                 RowBox[{"{", 
-                 RowBox[{"Automatic", ",", 
-                  RowBox[{"\"\<SymbolicProcessing\>\"", "->", "0"}]}], 
-                 "}"}]}], ",", 
-               RowBox[{"MinRecursion", "->", "2"}], ",", 
-               RowBox[{"AccuracyGoal", "->", "2"}], ",", 
-               RowBox[{"PrecisionGoal", "->", "2"}]}], "]"}], ",", 
-             RowBox[{"{", 
-              RowBox[{"i", ",", "0", ",", 
-               RowBox[{"Ceiling", "[", 
-                RowBox[{
-                 RowBox[{"1", "/", "p\[Epsilon]"}], "-", "2"}], "]"}]}], 
-              "}"}]}], "]"}]}], ",", 
-          RowBox[{"{", 
-           RowBox[{"p\[Tau]", ",", "p\[Tau]s"}], "}"}]}], "]"}]}], "}"}]}], 
-     "]"}], ";"}], "\[IndentingNewLine]", 
-   RowBox[{
-    RowBox[{"table3", "=", 
-     RowBox[{"Flatten", "[", "table3", "]"}]}], ";"}], "\[IndentingNewLine]", 
-   "\[IndentingNewLine]", 
+                 RowBox[{"z1", ",", "0", ",", "p\[Tau]"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"z2", ",", "0", ",", "p\[Tau]"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"z3", ",", "0", ",", "p\[Tau]"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"z4", ",", "0", ",", "p\[Tau]"}], "}"}], ",", 
+                RowBox[{"Method", "->", 
+                 RowBox[{"{", 
+                  RowBox[{"Automatic", ",", 
+                   RowBox[{"\"\<SymbolicProcessing\>\"", "->", "0"}]}], 
+                  "}"}]}], ",", 
+                RowBox[{"MinRecursion", "->", "2"}], ",", 
+                RowBox[{"AccuracyGoal", "->", "2"}], ",", 
+                RowBox[{"PrecisionGoal", "->", "2"}]}], "]"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"i", ",", "0", ",", 
+                RowBox[{"Ceiling", "[", 
+                 RowBox[{
+                  RowBox[{"1", "/", "p\[Epsilon]"}], "-", "2"}], "]"}]}], 
+               "}"}]}], "]"}]}], ",", 
+           RowBox[{"{", 
+            RowBox[{"p\[Tau]", ",", "p\[Tau]s"}], "}"}]}], "]"}]}], "}"}]}], 
+      "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"table3", "=", 
+      RowBox[{"Flatten", "[", "table3", "]"}]}], ";"}], "*)"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"\[Tau]", "=", 
      RowBox[{"{", 
@@ -963,697 +922,17 @@ Cell[BoxData[
    3.946123101790381*^9, 3.946123104841651*^9}, 3.946123349055777*^9, {
    3.946123823569863*^9, 3.946123823649161*^9}, {3.946125154579238*^9, 
    3.946125154929346*^9}, {3.946128897004038*^9, 3.946128897257894*^9}, {
-   3.9464688699017773`*^9, 3.9464688701530046`*^9}, {3.946469776359089*^9, 
-   3.9464697812657833`*^9}},
+   3.9464688699017773`*^9, 3.9464688701530037`*^9}, {3.946469776359089*^9, 
+   3.9464697812657833`*^9}, {3.948435868475868*^9, 3.9484358867749453`*^9}, {
+   3.948436350753543*^9, 3.9484364024146423`*^9}, {3.948436438848507*^9, 
+   3.9484364406879177`*^9}, {3.948437661211803*^9, 3.948437668229355*^9}, {
+   3.948453089923544*^9, 3.948453091599351*^9}, {3.94845313296531*^9, 
+   3.948453133107671*^9}},
  CellLabel->
-  "In[866]:=",ExpressionUUID->"0b72f7e8-4b8d-413f-90ae-1d0a742a18a7"],
-
-Cell[BoxData[
- TemplateBox[{
-  "NIntegrate", "slwcon", 
-   "\"Numerical integration converging too slowly; suspect one of the \
-following: singularity, value of the integration is 0, highly oscillatory \
-integrand, or WorkingPrecision too small.\"", None, 875, 458, 
-   27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.946469859385477*^9},
- CellLabel->
-  "(kernel 3)",ExpressionUUID->"356a0572-3f27-4814-97f2-b2f1196a3728"],
-
-Cell[BoxData[
- TemplateBox[{
-  "NIntegrate", "slwcon", 
-   "\"Numerical integration converging too slowly; suspect one of the \
-following: singularity, value of the integration is 0, highly oscillatory \
-integrand, or WorkingPrecision too small.\"", None, 875, 459, 
-   27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.946469859713719*^9},
- CellLabel->
-  "(kernel 2)",ExpressionUUID->"f06d5aaf-bee2-4a92-b4f9-c782595db099"],
-
-Cell[BoxData[
- TemplateBox[{
-  "NIntegrate", "slwcon", 
-   "\"Numerical integration converging too slowly; suspect one of the \
-following: singularity, value of the integration is 0, highly oscillatory \
-integrand, or WorkingPrecision too small.\"", None, 875, 460, 
-   27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.946469864248033*^9},
- CellLabel->
-  "(kernel 4)",ExpressionUUID->"4c0ca594-cb49-49e0-9e0f-62801da930a4"],
-
-Cell[BoxData[
- TemplateBox[{
-  "NIntegrate", "slwcon", 
-   "\"Numerical integration converging too slowly; suspect one of the \
-following: singularity, value of the integration is 0, highly oscillatory \
-integrand, or WorkingPrecision too small.\"", None, 875, 461, 
-   27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.946469867915365*^9},
- CellLabel->
-  "(kernel 4)",ExpressionUUID->"40cb6c52-55ad-4a4e-ae3d-dd68efaf82d1"],
-
-Cell[BoxData[
- TemplateBox[{
-  "NIntegrate", "slwcon", 
-   "\"Numerical integration converging too slowly; suspect one of the \
-following: singularity, value of the integration is 0, highly oscillatory \
-integrand, or WorkingPrecision too small.\"", None, 875, 462, 
-   27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.946469870742326*^9},
- CellLabel->
-  "(kernel 4)",ExpressionUUID->"a4411e2b-a4ce-45c0-afb2-07ee0f94d49a"],
-
-Cell[BoxData[
- TemplateBox[{
-  "General", "stop", 
-   "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"NIntegrate\\\", \
-\\\"::\\\", \\\"slwcon\\\"}], \\\"MessageName\\\"]\\) will be suppressed \
-during this calculation.\"", None, 875, 463, 27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.9464698707834377`*^9},
- CellLabel->
-  "(kernel 4)",ExpressionUUID->"50513bda-b9b8-4b63-968e-c05274d73087"],
-
-Cell[BoxData[
- TemplateBox[{
-  "NIntegrate", "slwcon", 
-   "\"Numerical integration converging too slowly; suspect one of the \
-following: singularity, value of the integration is 0, highly oscillatory \
-integrand, or WorkingPrecision too small.\"", None, 875, 464, 
-   27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.9464698710136557`*^9},
- CellLabel->
-  "(kernel 1)",ExpressionUUID->"103d54a2-3784-495e-972d-fc1a3588ebe1"],
-
-Cell[BoxData[
- TemplateBox[{
-  "NIntegrate", "slwcon", 
-   "\"Numerical integration converging too slowly; suspect one of the \
-following: singularity, value of the integration is 0, highly oscillatory \
-integrand, or WorkingPrecision too small.\"", None, 875, 465, 
-   27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.946469884015759*^9},
- CellLabel->
-  "(kernel 2)",ExpressionUUID->"490ccfeb-1d18-4c8d-b42b-6fba5ca51693"],
-
-Cell[BoxData[
- TemplateBox[{
-  "NIntegrate", "eincr", 
-   "\"The global error of the strategy GlobalAdaptive has increased more than \
-\\!\\(\\*RowBox[{\\\"2000\\\"}]\\) times. The global error is expected to \
-decrease monotonically after a number of integrand evaluations. Suspect one \
-of the following: the working precision is insufficient for the specified \
-precision goal; the integrand is highly oscillatory or it is not a \
-(piecewise) smooth function; or the true value of the integral is 0. \
-Increasing the value of the GlobalAdaptive option MaxErrorIncreases might \
-lead to a convergent numerical integration. NIntegrate obtained \
-\\!\\(\\*RowBox[{\\\"0.4091623327637802`\\\"}]\\) and \
-\\!\\(\\*RowBox[{\\\"0.015234327723416721`\\\"}]\\) for the integral and \
-error estimates.\"", None, 875, 466, 27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.946469889736*^9},
- CellLabel->
-  "(kernel 1)",ExpressionUUID->"bbb6dd41-fa7f-4c49-a7be-e3412d96fdf4"],
-
-Cell[BoxData[
- TemplateBox[{
-  "NIntegrate", "slwcon", 
-   "\"Numerical integration converging too slowly; suspect one of the \
-following: singularity, value of the integration is 0, highly oscillatory \
-integrand, or WorkingPrecision too small.\"", None, 875, 467, 
-   27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.94646989077029*^9},
- CellLabel->
-  "(kernel 1)",ExpressionUUID->"4e2bc153-7dfd-45fd-96f2-b1fce594265f"],
-
-Cell[BoxData[
- TemplateBox[{
-  "NIntegrate", "slwcon", 
-   "\"Numerical integration converging too slowly; suspect one of the \
-following: singularity, value of the integration is 0, highly oscillatory \
-integrand, or WorkingPrecision too small.\"", None, 875, 468, 
-   27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.946469890813541*^9},
- CellLabel->
-  "(kernel 3)",ExpressionUUID->"e502be31-7aa5-4802-9507-10de55fa7b4c"],
-
-Cell[BoxData[
- TemplateBox[{
-  "NIntegrate", "slwcon", 
-   "\"Numerical integration converging too slowly; suspect one of the \
-following: singularity, value of the integration is 0, highly oscillatory \
-integrand, or WorkingPrecision too small.\"", None, 875, 469, 
-   27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.946469904685624*^9},
- CellLabel->
-  "(kernel 3)",ExpressionUUID->"74306974-7ef8-45de-b55d-6e14bdfc4152"],
-
-Cell[BoxData[
- TemplateBox[{
-  "General", "stop", 
-   "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"NIntegrate\\\", \
-\\\"::\\\", \\\"slwcon\\\"}], \\\"MessageName\\\"]\\) will be suppressed \
-during this calculation.\"", None, 875, 470, 27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.946469904728056*^9},
- CellLabel->
-  "(kernel 3)",ExpressionUUID->"f95dd47a-a6b2-451b-90a4-d791e96328f8"],
-
-Cell[BoxData[
- TemplateBox[{
-  "NIntegrate", "slwcon", 
-   "\"Numerical integration converging too slowly; suspect one of the \
-following: singularity, value of the integration is 0, highly oscillatory \
-integrand, or WorkingPrecision too small.\"", None, 875, 471, 
-   27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.946469957681861*^9},
- CellLabel->
-  "(kernel 2)",ExpressionUUID->"9725fac3-fbe0-4a7a-9a54-cb9aba019a89"],
-
-Cell[BoxData[
- TemplateBox[{
-  "General", "stop", 
-   "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"NIntegrate\\\", \
-\\\"::\\\", \\\"slwcon\\\"}], \\\"MessageName\\\"]\\) will be suppressed \
-during this calculation.\"", None, 875, 472, 27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.946469957709799*^9},
- CellLabel->
-  "(kernel 2)",ExpressionUUID->"6f612a5f-eb9e-4b62-b85c-09e66bfbfee8"],
-
-Cell[BoxData[
- TemplateBox[{
-  "NIntegrate", "eincr", 
-   "\"The global error of the strategy GlobalAdaptive has increased more than \
-\\!\\(\\*RowBox[{\\\"2000\\\"}]\\) times. The global error is expected to \
-decrease monotonically after a number of integrand evaluations. Suspect one \
-of the following: the working precision is insufficient for the specified \
-precision goal; the integrand is highly oscillatory or it is not a \
-(piecewise) smooth function; or the true value of the integral is 0. \
-Increasing the value of the GlobalAdaptive option MaxErrorIncreases might \
-lead to a convergent numerical integration. NIntegrate obtained \
-\\!\\(\\*RowBox[{\\\"0.4011110212906195`\\\"}]\\) and \
-\\!\\(\\*RowBox[{\\\"0.010249391904309907`\\\"}]\\) for the integral and \
-error estimates.\"", None, 875, 473, 27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.946469964425222*^9},
- CellLabel->
-  "(kernel 2)",ExpressionUUID->"743f84a0-ea27-4d68-ba02-dca08d39a2da"],
-
-Cell[BoxData[
- TemplateBox[{
-  "NIntegrate", "eincr", 
-   "\"The global error of the strategy GlobalAdaptive has increased more than \
-\\!\\(\\*RowBox[{\\\"2000\\\"}]\\) times. The global error is expected to \
-decrease monotonically after a number of integrand evaluations. Suspect one \
-of the following: the working precision is insufficient for the specified \
-precision goal; the integrand is highly oscillatory or it is not a \
-(piecewise) smooth function; or the true value of the integral is 0. \
-Increasing the value of the GlobalAdaptive option MaxErrorIncreases might \
-lead to a convergent numerical integration. NIntegrate obtained \
-\\!\\(\\*RowBox[{\\\"-\\\", \\\"0.35235826742056314`\\\"}]\\) and \
-\\!\\(\\*RowBox[{\\\"0.018444227096938326`\\\"}]\\) for the integral and \
-error estimates.\"", None, 875, 474, 27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.94646997631593*^9},
- CellLabel->
-  "(kernel 1)",ExpressionUUID->"be3dd7c3-7871-463e-b75c-01f52f0b6386"],
-
-Cell[BoxData[
- TemplateBox[{
-  "NIntegrate", "slwcon", 
-   "\"Numerical integration converging too slowly; suspect one of the \
-following: singularity, value of the integration is 0, highly oscillatory \
-integrand, or WorkingPrecision too small.\"", None, 875, 475, 
-   27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.94646998295398*^9},
- CellLabel->
-  "(kernel 1)",ExpressionUUID->"3306e12b-a620-4a4f-8083-157060567e4c"],
-
-Cell[BoxData[
- TemplateBox[{
-  "General", "stop", 
-   "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"NIntegrate\\\", \
-\\\"::\\\", \\\"slwcon\\\"}], \\\"MessageName\\\"]\\) will be suppressed \
-during this calculation.\"", None, 875, 476, 27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.946469982982328*^9},
- CellLabel->
-  "(kernel 1)",ExpressionUUID->"7748ba8d-e7d3-47f1-8e14-a5f627fc5171"],
-
-Cell[BoxData[
- TemplateBox[{
-  "NIntegrate", "eincr", 
-   "\"The global error of the strategy GlobalAdaptive has increased more than \
-\\!\\(\\*RowBox[{\\\"2000\\\"}]\\) times. The global error is expected to \
-decrease monotonically after a number of integrand evaluations. Suspect one \
-of the following: the working precision is insufficient for the specified \
-precision goal; the integrand is highly oscillatory or it is not a \
-(piecewise) smooth function; or the true value of the integral is 0. \
-Increasing the value of the GlobalAdaptive option MaxErrorIncreases might \
-lead to a convergent numerical integration. NIntegrate obtained \
-\\!\\(\\*RowBox[{\\\"0.8162534206001703`\\\"}]\\) and \
-\\!\\(\\*RowBox[{\\\"0.015966493279939053`\\\"}]\\) for the integral and \
-error estimates.\"", None, 875, 477, 27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.946470083291728*^9},
- CellLabel->
-  "(kernel 1)",ExpressionUUID->"76b87b77-a6d7-47e1-bc84-271acc2a0a07"],
-
-Cell[BoxData[
- TemplateBox[{
-  "General", "stop", 
-   "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"NIntegrate\\\", \
-\\\"::\\\", \\\"eincr\\\"}], \\\"MessageName\\\"]\\) will be suppressed \
-during this calculation.\"", None, 875, 478, 27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.946470083320204*^9},
- CellLabel->
-  "(kernel 1)",ExpressionUUID->"0f6aa2c2-bcdf-4639-9d2c-d935afa01ad2"],
-
-Cell[BoxData[
- TemplateBox[{
-  "NIntegrate", "slwcon", 
-   "\"Numerical integration converging too slowly; suspect one of the \
-following: singularity, value of the integration is 0, highly oscillatory \
-integrand, or WorkingPrecision too small.\"", None, 877, 479, 
-   27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.94647129851378*^9},
- CellLabel->
-  "(kernel 2)",ExpressionUUID->"98ebffae-5fe8-40be-bc85-80c1867b0f38"],
-
-Cell[BoxData[
- TemplateBox[{
-  "NIntegrate", "slwcon", 
-   "\"Numerical integration converging too slowly; suspect one of the \
-following: singularity, value of the integration is 0, highly oscillatory \
-integrand, or WorkingPrecision too small.\"", None, 877, 480, 
-   27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.946471298893656*^9},
- CellLabel->
-  "(kernel 3)",ExpressionUUID->"91423042-dd36-4f5e-91cd-44139ffc4be5"],
-
-Cell[BoxData[
- TemplateBox[{
-  "NIntegrate", "slwcon", 
-   "\"Numerical integration converging too slowly; suspect one of the \
-following: singularity, value of the integration is 0, highly oscillatory \
-integrand, or WorkingPrecision too small.\"", None, 877, 481, 
-   27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.946471299833646*^9},
- CellLabel->
-  "(kernel 4)",ExpressionUUID->"01249eaa-fc25-4490-b310-25adc448924a"],
-
-Cell[BoxData[
- TemplateBox[{
-  "NIntegrate", "slwcon", 
-   "\"Numerical integration converging too slowly; suspect one of the \
-following: singularity, value of the integration is 0, highly oscillatory \
-integrand, or WorkingPrecision too small.\"", None, 877, 482, 
-   27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.946471300610045*^9},
- CellLabel->
-  "(kernel 1)",ExpressionUUID->"7a35feed-1327-411e-bf7d-1b2c6f24dac0"],
-
-Cell[BoxData[
- TemplateBox[{
-  "NIntegrate", "eincr", 
-   "\"The global error of the strategy GlobalAdaptive has increased more than \
-\\!\\(\\*RowBox[{\\\"2000\\\"}]\\) times. The global error is expected to \
-decrease monotonically after a number of integrand evaluations. Suspect one \
-of the following: the working precision is insufficient for the specified \
-precision goal; the integrand is highly oscillatory or it is not a \
-(piecewise) smooth function; or the true value of the integral is 0. \
-Increasing the value of the GlobalAdaptive option MaxErrorIncreases might \
-lead to a convergent numerical integration. NIntegrate obtained \
-\\!\\(\\*RowBox[{\\\"0.08988560753627858`\\\"}]\\) and \
-\\!\\(\\*RowBox[{\\\"0.01157214816833621`\\\"}]\\) for the integral and error \
-estimates.\"", None, 877, 483, 27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.946471310627776*^9},
- CellLabel->
-  "(kernel 1)",ExpressionUUID->"8f3454bb-7eab-4f05-b200-ccedc63ff782"],
-
-Cell[BoxData[
- TemplateBox[{
-  "NIntegrate", "slwcon", 
-   "\"Numerical integration converging too slowly; suspect one of the \
-following: singularity, value of the integration is 0, highly oscillatory \
-integrand, or WorkingPrecision too small.\"", None, 877, 484, 
-   27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.946471312895772*^9},
- CellLabel->
-  "(kernel 1)",ExpressionUUID->"e4e6c9e6-e438-4df9-8395-53da08d481fd"],
-
-Cell[BoxData[
- TemplateBox[{
-  "NIntegrate", "eincr", 
-   "\"The global error of the strategy GlobalAdaptive has increased more than \
-\\!\\(\\*RowBox[{\\\"2000\\\"}]\\) times. The global error is expected to \
-decrease monotonically after a number of integrand evaluations. Suspect one \
-of the following: the working precision is insufficient for the specified \
-precision goal; the integrand is highly oscillatory or it is not a \
-(piecewise) smooth function; or the true value of the integral is 0. \
-Increasing the value of the GlobalAdaptive option MaxErrorIncreases might \
-lead to a convergent numerical integration. NIntegrate obtained \
-\\!\\(\\*RowBox[{\\\"0.5534079687756539`\\\"}]\\) and \
-\\!\\(\\*RowBox[{\\\"0.029863683335521977`\\\"}]\\) for the integral and \
-error estimates.\"", None, 877, 485, 27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.946471325613536*^9},
- CellLabel->
-  "(kernel 2)",ExpressionUUID->"e989e498-0953-4e28-86ab-9f09998dae8e"],
-
-Cell[BoxData[
- TemplateBox[{
-  "NIntegrate", "eincr", 
-   "\"The global error of the strategy GlobalAdaptive has increased more than \
-\\!\\(\\*RowBox[{\\\"2000\\\"}]\\) times. The global error is expected to \
-decrease monotonically after a number of integrand evaluations. Suspect one \
-of the following: the working precision is insufficient for the specified \
-precision goal; the integrand is highly oscillatory or it is not a \
-(piecewise) smooth function; or the true value of the integral is 0. \
-Increasing the value of the GlobalAdaptive option MaxErrorIncreases might \
-lead to a convergent numerical integration. NIntegrate obtained \
-\\!\\(\\*RowBox[{\\\"-\\\", \\\"0.07545428105521958`\\\"}]\\) and \
-\\!\\(\\*RowBox[{\\\"0.012275442545184487`\\\"}]\\) for the integral and \
-error estimates.\"", None, 877, 486, 27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.946471345746533*^9},
- CellLabel->
-  "(kernel 1)",ExpressionUUID->"33e72113-c474-441b-8e01-3a5ee7a0e14d"],
-
-Cell[BoxData[
- TemplateBox[{
-  "NIntegrate", "slwcon", 
-   "\"Numerical integration converging too slowly; suspect one of the \
-following: singularity, value of the integration is 0, highly oscillatory \
-integrand, or WorkingPrecision too small.\"", None, 877, 487, 
-   27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.946471348829115*^9},
- CellLabel->
-  "(kernel 1)",ExpressionUUID->"80318ff0-a5b0-4b97-b314-feea41a8a0a9"],
-
-Cell[BoxData[
- TemplateBox[{
-  "General", "stop", 
-   "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"NIntegrate\\\", \
-\\\"::\\\", \\\"slwcon\\\"}], \\\"MessageName\\\"]\\) will be suppressed \
-during this calculation.\"", None, 877, 488, 27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.946471348870799*^9},
- CellLabel->
-  "(kernel 1)",ExpressionUUID->"7ca41bd2-8d81-49c9-a02d-dcb8db709308"],
-
-Cell[BoxData[
- TemplateBox[{
-  "NIntegrate", "slwcon", 
-   "\"Numerical integration converging too slowly; suspect one of the \
-following: singularity, value of the integration is 0, highly oscillatory \
-integrand, or WorkingPrecision too small.\"", None, 877, 489, 
-   27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.946471354037586*^9},
- CellLabel->
-  "(kernel 3)",ExpressionUUID->"efe25a58-88ab-497c-9029-e642a6d5cb09"],
-
-Cell[BoxData[
- TemplateBox[{
-  "NIntegrate", "eincr", 
-   "\"The global error of the strategy GlobalAdaptive has increased more than \
-\\!\\(\\*RowBox[{\\\"2000\\\"}]\\) times. The global error is expected to \
-decrease monotonically after a number of integrand evaluations. Suspect one \
-of the following: the working precision is insufficient for the specified \
-precision goal; the integrand is highly oscillatory or it is not a \
-(piecewise) smooth function; or the true value of the integral is 0. \
-Increasing the value of the GlobalAdaptive option MaxErrorIncreases might \
-lead to a convergent numerical integration. NIntegrate obtained \
-\\!\\(\\*RowBox[{\\\"0.2660989934295859`\\\"}]\\) and \
-\\!\\(\\*RowBox[{\\\"0.018309123330341567`\\\"}]\\) for the integral and \
-error estimates.\"", None, 877, 490, 27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.946471361143177*^9},
- CellLabel->
-  "(kernel 1)",ExpressionUUID->"a3ea4622-7932-4d71-a4a5-627e02b6a4c8"],
-
-Cell[BoxData[
- TemplateBox[{
-  "General", "stop", 
-   "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"NIntegrate\\\", \
-\\\"::\\\", \\\"eincr\\\"}], \\\"MessageName\\\"]\\) will be suppressed \
-during this calculation.\"", None, 877, 491, 27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.946471361185322*^9},
- CellLabel->
-  "(kernel 1)",ExpressionUUID->"f8a5cbb2-21a8-48cb-a9eb-1a350d16f1cb"],
-
-Cell[BoxData[
- TemplateBox[{
-  "NIntegrate", "slwcon", 
-   "\"Numerical integration converging too slowly; suspect one of the \
-following: singularity, value of the integration is 0, highly oscillatory \
-integrand, or WorkingPrecision too small.\"", None, 877, 492, 
-   27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.946471381540399*^9},
- CellLabel->
-  "(kernel 2)",ExpressionUUID->"e71febb3-2f63-4075-b046-1372419274a3"],
-
-Cell[BoxData[
- TemplateBox[{
-  "NIntegrate", "slwcon", 
-   "\"Numerical integration converging too slowly; suspect one of the \
-following: singularity, value of the integration is 0, highly oscillatory \
-integrand, or WorkingPrecision too small.\"", None, 877, 493, 
-   27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.946471411828248*^9},
- CellLabel->
-  "(kernel 3)",ExpressionUUID->"ef284f91-5f45-45f8-85b9-332a8f26aa94"],
-
-Cell[BoxData[
- TemplateBox[{
-  "General", "stop", 
-   "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"NIntegrate\\\", \
-\\\"::\\\", \\\"slwcon\\\"}], \\\"MessageName\\\"]\\) will be suppressed \
-during this calculation.\"", None, 877, 494, 27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.9464714118717623`*^9},
- CellLabel->
-  "(kernel 3)",ExpressionUUID->"92748be1-58a1-466b-b06b-b73eec91f6ca"],
-
-Cell[BoxData[
- TemplateBox[{
-  "NIntegrate", "eincr", 
-   "\"The global error of the strategy GlobalAdaptive has increased more than \
-\\!\\(\\*RowBox[{\\\"2000\\\"}]\\) times. The global error is expected to \
-decrease monotonically after a number of integrand evaluations. Suspect one \
-of the following: the working precision is insufficient for the specified \
-precision goal; the integrand is highly oscillatory or it is not a \
-(piecewise) smooth function; or the true value of the integral is 0. \
-Increasing the value of the GlobalAdaptive option MaxErrorIncreases might \
-lead to a convergent numerical integration. NIntegrate obtained \
-\\!\\(\\*RowBox[{\\\"0.1503016706157688`\\\"}]\\) and \
-\\!\\(\\*RowBox[{\\\"0.011416969363014765`\\\"}]\\) for the integral and \
-error estimates.\"", None, 877, 495, 27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.9464714466820908`*^9},
- CellLabel->
-  "(kernel 3)",ExpressionUUID->"907ac501-3b3b-4149-ad85-647fa182f088"],
-
-Cell[BoxData[
- TemplateBox[{
-  "NIntegrate", "eincr", 
-   "\"The global error of the strategy GlobalAdaptive has increased more than \
-\\!\\(\\*RowBox[{\\\"2000\\\"}]\\) times. The global error is expected to \
-decrease monotonically after a number of integrand evaluations. Suspect one \
-of the following: the working precision is insufficient for the specified \
-precision goal; the integrand is highly oscillatory or it is not a \
-(piecewise) smooth function; or the true value of the integral is 0. \
-Increasing the value of the GlobalAdaptive option MaxErrorIncreases might \
-lead to a convergent numerical integration. NIntegrate obtained \
-\\!\\(\\*RowBox[{\\\"0.143170000665914`\\\"}]\\) and \
-\\!\\(\\*RowBox[{\\\"0.012058391408683122`\\\"}]\\) for the integral and \
-error estimates.\"", None, 877, 496, 27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.946471531836*^9},
- CellLabel->
-  "(kernel 3)",ExpressionUUID->"0ba7c9df-e137-4e07-899b-69fc2f7d84f5"],
-
-Cell[BoxData[
- TemplateBox[{
-  "NIntegrate", "eincr", 
-   "\"The global error of the strategy GlobalAdaptive has increased more than \
-\\!\\(\\*RowBox[{\\\"2000\\\"}]\\) times. The global error is expected to \
-decrease monotonically after a number of integrand evaluations. Suspect one \
-of the following: the working precision is insufficient for the specified \
-precision goal; the integrand is highly oscillatory or it is not a \
-(piecewise) smooth function; or the true value of the integral is 0. \
-Increasing the value of the GlobalAdaptive option MaxErrorIncreases might \
-lead to a convergent numerical integration. NIntegrate obtained \
-\\!\\(\\*RowBox[{\\\"0.1363025312434328`\\\"}]\\) and \
-\\!\\(\\*RowBox[{\\\"0.012162456718144558`\\\"}]\\) for the integral and \
-error estimates.\"", None, 877, 497, 27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.94647162061147*^9},
- CellLabel->
-  "(kernel 3)",ExpressionUUID->"0159e170-407a-48ba-b626-8a0ed32a0fe0"],
-
-Cell[BoxData[
- TemplateBox[{
-  "General", "stop", 
-   "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"NIntegrate\\\", \
-\\\"::\\\", \\\"eincr\\\"}], \\\"MessageName\\\"]\\) will be suppressed \
-during this calculation.\"", None, 877, 498, 27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.946471620653331*^9},
- CellLabel->
-  "(kernel 3)",ExpressionUUID->"6af85b2a-40a7-488e-9f86-d4e4602342aa"],
-
-Cell[BoxData[
- TemplateBox[{
-  "NIntegrate", "eincr", 
-   "\"The global error of the strategy GlobalAdaptive has increased more than \
-\\!\\(\\*RowBox[{\\\"2000\\\"}]\\) times. The global error is expected to \
-decrease monotonically after a number of integrand evaluations. Suspect one \
-of the following: the working precision is insufficient for the specified \
-precision goal; the integrand is highly oscillatory or it is not a \
-(piecewise) smooth function; or the true value of the integral is 0. \
-Increasing the value of the GlobalAdaptive option MaxErrorIncreases might \
-lead to a convergent numerical integration. NIntegrate obtained \
-\\!\\(\\*RowBox[{\\\"-\\\", \\\"0.32227875183033267`\\\"}]\\) and \
-\\!\\(\\*RowBox[{\\\"0.023612177750974333`\\\"}]\\) for the integral and \
-error estimates.\"", None, 877, 499, 27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.946471871301853*^9},
- CellLabel->
-  "(kernel 2)",ExpressionUUID->"8f8db642-b582-47c5-831b-6d5d7e7c9b80"],
-
-Cell[BoxData[
- TemplateBox[{
-  "NIntegrate", "slwcon", 
-   "\"Numerical integration converging too slowly; suspect one of the \
-following: singularity, value of the integration is 0, highly oscillatory \
-integrand, or WorkingPrecision too small.\"", None, 877, 500, 
-   27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.94647271460257*^9},
- CellLabel->
-  "(kernel 2)",ExpressionUUID->"23b67147-6a23-4540-8bbc-382eedbb5741"],
-
-Cell[BoxData[
- TemplateBox[{
-  "General", "stop", 
-   "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"NIntegrate\\\", \
-\\\"::\\\", \\\"slwcon\\\"}], \\\"MessageName\\\"]\\) will be suppressed \
-during this calculation.\"", None, 877, 501, 27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.946472714634123*^9},
- CellLabel->
-  "(kernel 2)",ExpressionUUID->"e5175caa-e519-4648-a93f-05bdd88571d0"],
-
-Cell[BoxData[
- TemplateBox[{
-  "NIntegrate", "eincr", 
-   "\"The global error of the strategy GlobalAdaptive has increased more than \
-\\!\\(\\*RowBox[{\\\"2000\\\"}]\\) times. The global error is expected to \
-decrease monotonically after a number of integrand evaluations. Suspect one \
-of the following: the working precision is insufficient for the specified \
-precision goal; the integrand is highly oscillatory or it is not a \
-(piecewise) smooth function; or the true value of the integral is 0. \
-Increasing the value of the GlobalAdaptive option MaxErrorIncreases might \
-lead to a convergent numerical integration. NIntegrate obtained \
-\\!\\(\\*RowBox[{\\\"0.5261733602616048`\\\"}]\\) and \
-\\!\\(\\*RowBox[{\\\"0.0244595991925663`\\\"}]\\) for the integral and error \
-estimates.\"", None, 877, 502, 27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.946472728335853*^9},
- CellLabel->
-  "(kernel 2)",ExpressionUUID->"8c1a0593-44d0-4cfb-aceb-f5d2c0dff8f2"],
-
-Cell[BoxData[
- TemplateBox[{
-  "General", "stop", 
-   "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"NIntegrate\\\", \
-\\\"::\\\", \\\"eincr\\\"}], \\\"MessageName\\\"]\\) will be suppressed \
-during this calculation.\"", None, 877, 503, 27416995705950380226, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellChangeTimes->{3.94647272836382*^9},
- CellLabel->
-  "(kernel 2)",ExpressionUUID->"5e0cfb53-19d4-48b2-ae57-47dea62789a9"],
-
-Cell[BoxData["$Aborted"], "Output",
- CellChangeTimes->{3.94648378935461*^9},
- CellLabel->
-  "Out[877]=",ExpressionUUID->"eaa98996-9435-4f11-bc23-3b6708851ca2"]
-}, Open  ]]
+  "In[1232]:=",ExpressionUUID->"0b72f7e8-4b8d-413f-90ae-1d0a742a18a7"]
 },
 WindowSize->{614.25, 669},
-WindowMargins->{{-921.75, Automatic}, {Automatic, 0}},
+WindowMargins->{{-1536, Automatic}, {Automatic, 0}},
 FrontEndVersion->"14.0 for Linux x86 (64-bit) (December 12, 2023)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"692f80f2-4140-4ea8-867c-b11a84e8fece"
@@ -1669,82 +948,23 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 1086, 32, 139, "Input",ExpressionUUID->"841095ea-e8ff-4a44-a593-ef8388517744"],
-Cell[1647, 54, 2699, 59, 230, "Input",ExpressionUUID->"b1ee6303-df19-4b84-bcc3-8c8a9f781d4b"],
-Cell[4349, 115, 221, 4, 50, "Input",ExpressionUUID->"aa059d93-b9c3-4e37-9d61-b01cedb0ba8a"],
-Cell[4573, 121, 15780, 326, 931, "Input",ExpressionUUID->"ba68314b-d776-4989-a414-5168d8d4b5b8"],
-Cell[20356, 449, 131, 3, 29, "Input",ExpressionUUID->"c8b4f572-025c-4aa7-ad6f-cd442cff7752"],
-Cell[CellGroupData[{
-Cell[20512, 456, 2318, 59, 310, "Input",ExpressionUUID->"b47da379-013d-43ea-b2f3-5bf2232b4ff4"],
-Cell[22833, 517, 173, 3, 33, "Output",ExpressionUUID->"05edbddd-105b-404b-9927-a7a1b3dce57a"],
-Cell[23009, 522, 171, 3, 33, "Output",ExpressionUUID->"c7e49f4d-f36b-445c-8c50-16eef1ea12c1"],
-Cell[23183, 527, 173, 3, 33, "Output",ExpressionUUID->"cc316048-cc04-447c-a523-7b678cadc15a"],
-Cell[23359, 532, 171, 3, 33, "Output",ExpressionUUID->"2fc0325c-fb98-4471-bbb8-75472260f261"],
-Cell[23533, 537, 171, 3, 33, "Output",ExpressionUUID->"d11eb7d6-6a0a-43d0-810d-0ae31971ebc7"],
-Cell[23707, 542, 173, 3, 33, "Output",ExpressionUUID->"fa503fd6-5c0d-43a7-a7c2-6893f8e3c385"],
-Cell[23883, 547, 171, 3, 33, "Output",ExpressionUUID->"dec43c24-e4cb-4da8-a4be-50dec4a49375"],
-Cell[24057, 552, 171, 3, 33, "Output",ExpressionUUID->"00b95d8c-2df9-4af0-9ec7-906bf6e6b369"]
-}, Open  ]],
-Cell[24243, 558, 207, 4, 50, "Input",ExpressionUUID->"60e34697-efcf-498e-8b32-1d1f1ec4c299"],
-Cell[24453, 564, 208, 4, 50, "Input",ExpressionUUID->"97cbbe3b-cb1f-4091-91c2-ff90865aeff4"],
-Cell[24664, 570, 154, 3, 29, "Input",ExpressionUUID->"49bc18cf-f0b7-46d6-adaa-3664d899a427"],
-Cell[24821, 575, 204, 4, 50, "Input",ExpressionUUID->"87b866dd-c6bf-4354-9c29-512183927270"],
-Cell[25028, 581, 208, 4, 50, "Input",ExpressionUUID->"ed555518-58cb-4ce5-9bbd-8cefb8dd4910"],
-Cell[25239, 587, 208, 4, 50, "Input",ExpressionUUID->"159999c8-6b4e-49da-a3bd-a26fe82914f4"],
-Cell[25450, 593, 152, 3, 29, "Input",ExpressionUUID->"00114dea-4d26-4594-a7b2-64b1bbbcd5e6"],
-Cell[25605, 598, 206, 4, 50, "Input",ExpressionUUID->"b31e5a85-4716-4d5b-96ca-d42f84e50f5f"],
-Cell[25814, 604, 208, 4, 50, "Input",ExpressionUUID->"34935277-01db-4bd1-89dc-7b23dfcf79c9"],
-Cell[26025, 610, 205, 4, 50, "Input",ExpressionUUID->"a0db77bf-3870-44ee-8113-d72195943306"],
-Cell[CellGroupData[{
-Cell[26255, 618, 15082, 350, 1252, "Input",ExpressionUUID->"0b72f7e8-4b8d-413f-90ae-1d0a742a18a7"],
-Cell[41340, 970, 490, 11, 62, "Message",ExpressionUUID->"356a0572-3f27-4814-97f2-b2f1196a3728"],
-Cell[41833, 983, 490, 11, 62, "Message",ExpressionUUID->"f06d5aaf-bee2-4a92-b4f9-c782595db099"],
-Cell[42326, 996, 490, 11, 62, "Message",ExpressionUUID->"4c0ca594-cb49-49e0-9e0f-62801da930a4"],
-Cell[42819, 1009, 490, 11, 62, "Message",ExpressionUUID->"40cb6c52-55ad-4a4e-ae3d-dd68efaf82d1"],
-Cell[43312, 1022, 490, 11, 62, "Message",ExpressionUUID->"a4411e2b-a4ce-45c0-afb2-07ee0f94d49a"],
-Cell[43805, 1035, 465, 10, 23, "Message",ExpressionUUID->"50513bda-b9b8-4b63-968e-c05274d73087"],
-Cell[44273, 1047, 492, 11, 62, "Message",ExpressionUUID->"103d54a2-3784-495e-972d-fc1a3588ebe1"],
-Cell[44768, 1060, 490, 11, 62, "Message",ExpressionUUID->"490ccfeb-1d18-4c8d-b42b-6fba5ca51693"],
-Cell[45261, 1073, 1032, 18, 158, "Message",ExpressionUUID->"bbb6dd41-fa7f-4c49-a7be-e3412d96fdf4"],
-Cell[46296, 1093, 489, 11, 62, "Message",ExpressionUUID->"4e2bc153-7dfd-45fd-96f2-b1fce594265f"],
-Cell[46788, 1106, 490, 11, 62, "Message",ExpressionUUID->"e502be31-7aa5-4802-9507-10de55fa7b4c"],
-Cell[47281, 1119, 490, 11, 62, "Message",ExpressionUUID->"74306974-7ef8-45de-b55d-6e14bdfc4152"],
-Cell[47774, 1132, 463, 10, 23, "Message",ExpressionUUID->"f95dd47a-a6b2-451b-90a4-d791e96328f8"],
-Cell[48240, 1144, 490, 11, 62, "Message",ExpressionUUID->"9725fac3-fbe0-4a7a-9a54-cb9aba019a89"],
-Cell[48733, 1157, 463, 10, 23, "Message",ExpressionUUID->"6f612a5f-eb9e-4b62-b85c-09e66bfbfee8"],
-Cell[49199, 1169, 1035, 18, 158, "Message",ExpressionUUID->"743f84a0-ea27-4d68-ba02-dca08d39a2da"],
-Cell[50237, 1189, 1046, 18, 158, "Message",ExpressionUUID->"be3dd7c3-7871-463e-b75c-01f52f0b6386"],
-Cell[51286, 1209, 489, 11, 62, "Message",ExpressionUUID->"3306e12b-a620-4a4f-8083-157060567e4c"],
-Cell[51778, 1222, 463, 10, 23, "Message",ExpressionUUID->"7748ba8d-e7d3-47f1-8e14-a5f627fc5171"],
-Cell[52244, 1234, 1035, 18, 158, "Message",ExpressionUUID->"76b87b77-a6d7-47e1-bc84-271acc2a0a07"],
-Cell[53282, 1254, 462, 10, 23, "Message",ExpressionUUID->"0f6aa2c2-bcdf-4639-9d2c-d935afa01ad2"],
-Cell[53747, 1266, 489, 11, 62, "Message",ExpressionUUID->"98ebffae-5fe8-40be-bc85-80c1867b0f38"],
-Cell[54239, 1279, 490, 11, 62, "Message",ExpressionUUID->"91423042-dd36-4f5e-91cd-44139ffc4be5"],
-Cell[54732, 1292, 490, 11, 62, "Message",ExpressionUUID->"01249eaa-fc25-4490-b310-25adc448924a"],
-Cell[55225, 1305, 490, 11, 62, "Message",ExpressionUUID->"7a35feed-1327-411e-bf7d-1b2c6f24dac0"],
-Cell[55718, 1318, 1035, 18, 158, "Message",ExpressionUUID->"8f3454bb-7eab-4f05-b200-ccedc63ff782"],
-Cell[56756, 1338, 490, 11, 62, "Message",ExpressionUUID->"e4e6c9e6-e438-4df9-8395-53da08d481fd"],
-Cell[57249, 1351, 1035, 18, 158, "Message",ExpressionUUID->"e989e498-0953-4e28-86ab-9f09998dae8e"],
-Cell[58287, 1371, 1047, 18, 158, "Message",ExpressionUUID->"33e72113-c474-441b-8e01-3a5ee7a0e14d"],
-Cell[59337, 1391, 490, 11, 62, "Message",ExpressionUUID->"80318ff0-a5b0-4b97-b314-feea41a8a0a9"],
-Cell[59830, 1404, 463, 10, 23, "Message",ExpressionUUID->"7ca41bd2-8d81-49c9-a02d-dcb8db709308"],
-Cell[60296, 1416, 490, 11, 62, "Message",ExpressionUUID->"efe25a58-88ab-497c-9029-e642a6d5cb09"],
-Cell[60789, 1429, 1035, 18, 158, "Message",ExpressionUUID->"a3ea4622-7932-4d71-a4a5-627e02b6a4c8"],
-Cell[61827, 1449, 462, 10, 23, "Message",ExpressionUUID->"f8a5cbb2-21a8-48cb-a9eb-1a350d16f1cb"],
-Cell[62292, 1461, 490, 11, 62, "Message",ExpressionUUID->"e71febb3-2f63-4075-b046-1372419274a3"],
-Cell[62785, 1474, 490, 11, 62, "Message",ExpressionUUID->"ef284f91-5f45-45f8-85b9-332a8f26aa94"],
-Cell[63278, 1487, 465, 10, 23, "Message",ExpressionUUID->"92748be1-58a1-466b-b06b-b73eec91f6ca"],
-Cell[63746, 1499, 1037, 18, 158, "Message",ExpressionUUID->"907ac501-3b3b-4149-ad85-647fa182f088"],
-Cell[64786, 1519, 1031, 18, 158, "Message",ExpressionUUID->"0ba7c9df-e137-4e07-899b-69fc2f7d84f5"],
-Cell[65820, 1539, 1034, 18, 158, "Message",ExpressionUUID->"0159e170-407a-48ba-b626-8a0ed32a0fe0"],
-Cell[66857, 1559, 462, 10, 23, "Message",ExpressionUUID->"6af85b2a-40a7-488e-9f86-d4e4602342aa"],
-Cell[67322, 1571, 1047, 18, 158, "Message",ExpressionUUID->"8f8db642-b582-47c5-831b-6d5d7e7c9b80"],
-Cell[68372, 1591, 489, 11, 62, "Message",ExpressionUUID->"23b67147-6a23-4540-8bbc-382eedbb5741"],
-Cell[68864, 1604, 463, 10, 23, "Message",ExpressionUUID->"e5175caa-e519-4648-a93f-05bdd88571d0"],
-Cell[69330, 1616, 1033, 18, 158, "Message",ExpressionUUID->"8c1a0593-44d0-4cfb-aceb-f5d2c0dff8f2"],
-Cell[70366, 1636, 461, 10, 23, "Message",ExpressionUUID->"5e0cfb53-19d4-48b2-ae57-47dea62789a9"],
-Cell[70830, 1648, 159, 3, 33, "Output",ExpressionUUID->"eaa98996-9435-4f11-bc23-3b6708851ca2"]
-}, Open  ]]
+Cell[558, 20, 1087, 32, 139, "Input",ExpressionUUID->"841095ea-e8ff-4a44-a593-ef8388517744"],
+Cell[1648, 54, 2699, 59, 230, "Input",ExpressionUUID->"b1ee6303-df19-4b84-bcc3-8c8a9f781d4b"],
+Cell[4350, 115, 221, 4, 50, "Input",ExpressionUUID->"aa059d93-b9c3-4e37-9d61-b01cedb0ba8a"],
+Cell[4574, 121, 15780, 326, 931, "Input",ExpressionUUID->"ba68314b-d776-4989-a414-5168d8d4b5b8"],
+Cell[20357, 449, 131, 3, 29, "Input",ExpressionUUID->"c8b4f572-025c-4aa7-ad6f-cd442cff7752"],
+Cell[20491, 454, 2481, 65, 310, "Input",ExpressionUUID->"b47da379-013d-43ea-b2f3-5bf2232b4ff4"],
+Cell[22975, 521, 207, 4, 50, "Input",ExpressionUUID->"60e34697-efcf-498e-8b32-1d1f1ec4c299"],
+Cell[23185, 527, 208, 4, 50, "Input",ExpressionUUID->"97cbbe3b-cb1f-4091-91c2-ff90865aeff4"],
+Cell[23396, 533, 154, 3, 29, "Input",ExpressionUUID->"49bc18cf-f0b7-46d6-adaa-3664d899a427"],
+Cell[23553, 538, 204, 4, 50, "Input",ExpressionUUID->"87b866dd-c6bf-4354-9c29-512183927270"],
+Cell[23760, 544, 208, 4, 50, "Input",ExpressionUUID->"ed555518-58cb-4ce5-9bbd-8cefb8dd4910"],
+Cell[23971, 550, 208, 4, 50, "Input",ExpressionUUID->"159999c8-6b4e-49da-a3bd-a26fe82914f4"],
+Cell[24182, 556, 152, 3, 29, "Input",ExpressionUUID->"00114dea-4d26-4594-a7b2-64b1bbbcd5e6"],
+Cell[24337, 561, 206, 4, 50, "Input",ExpressionUUID->"b31e5a85-4716-4d5b-96ca-d42f84e50f5f"],
+Cell[24546, 567, 208, 4, 50, "Input",ExpressionUUID->"34935277-01db-4bd1-89dc-7b23dfcf79c9"],
+Cell[24757, 573, 205, 4, 50, "Input",ExpressionUUID->"a0db77bf-3870-44ee-8113-d72195943306"],
+Cell[24965, 579, 15481, 352, 1232, "Input",ExpressionUUID->"0b72f7e8-4b8d-413f-90ae-1d0a742a18a7"]
 }
 ]
 *)
