@@ -97,35 +97,35 @@ The squared exponential, \textit{i.e.}, the Gaussian path loss have applications
 
 \begin{table}
   \begin{center}
-    \begin{tabular}{|p{0.99cm}|p{4.5cm}|p{1.75cm}|}
+    \begin{tabular}{|c|p{4.5cm}|p{1.9cm}|}
       \hline
-      \multicolumn{3}{|c|}{Glossary of principal symbols and the values of the numerical results} \\
+      \multicolumn{3}{|c|}{Glossary of principal symbols with numerical values used in the results} \\
       \hline
-      Symbol& Explanation &$\text{Values in [SI]+}$  $\text{useful (non-SI)}$  
+      Symbol& Explanation &Units: SI or [non-SI]
       \\ 
       \hline
-      $h$ & Altitude of the SBSs. &$1200$ [km]  \\
-      $G[\cdot]$ & The SBS antenna gain.& $[1,0)$\\
+      $h$ & Altitude of the SBSs. &$1200$ km  \\
+      $G[\cdot]$ & The SBS antenna gain.& \\
       $\alpha$ &Power path loss exponent.& $4$\\
-      $\varphi_{\text{RX}}$ & Half-width of the satellite BS $-3$ dB antenna gain pattern.&$0.028 \text{ [rad] }$\hfill \break or $1.6$ $(\degree)$  \\
+      $\varphi_{\text{RX}}$ & Half-width of the satellite BS $-3$ dB antenna gain pattern.&$0.028 \text{ rad}\break =1.6\degree$   \\
       $\Theta \subset \R^3 $ & Homogeneous PPP on the sphere Earth.& \\
       $\Phi \subset \R^2$ & Homogeneous PPP on the plane. &\\
-      $\lambda$ & The density of $\Phi$ and $\Theta$, \textit{i.e.}, the mean number of UEs inside an unit area. & $(1.66,8.81)$  $\times 10^{-4}$ [/km$^2$] \\
-      $\epsilon$&  Satellite BS elevation angles w.r.t. the focus point $\textit{o}$ of the footprint.&\footnotesize{$\left(\frac{\pi}{2},\frac{2\pi}{9}\right)$}\footnotesize{ [rad]}\hfill \break \footnotesize{ or $(90,40)$ $(\degree)$} \\
+      $\lambda$ & The density of $\Phi$ and $\Theta$, \textit{i.e.}, the mean number of UEs inside an unit area.&$(1.66,8.81)\break\times10^{-4}\text{/km}^2$\\
+      $\epsilon$&  Satellite BS elevation angles w.r.t. the focus point $\textit{o}$ of the footprint.&$\left({\pi}/{2},{2\pi}/{9}\right)\text{ rad}\break=(90\degree,40\degree)$\\
       $\kappa$  & $\text{Average (mean) number of }  \text{UEs inside}$ the satellite BS $-3 \text{ dB footprints};$ \hfill \break $\kappa =\kappa(\lambda,\epsilon) = \pi \lambda (h\varphi_{\textup{RX}}$ $/\sin^2(\epsilon))^2.$& $\{(2.1,3.4),$\hfill \break  $\hspace{1cm} (3.1,5)\}$  \\
       ${\tilde{\kappa}}$ &  $\kappa/\log(2)$.& \\
       $p_{\text{LoS}}$& LoS probability; $p_{\text{LoS}} = p_{\text{LoS}}(\epsilon)$. & $(0.99,0.61)$\\
       $p_{\text{NLoS}}$& NLoS probability; $1-p_{\text{LoS}}$. & \\
-      $\mu_{\text{LoS}}$& Mean of the LoS component of the Gaussian mixture shadow fading model. & $0$ (dB) \\
-      $\mu_{\text{NLoS}}$& Mean of the NLoS component. & $-26$ (dB) \\
-      $\sigma^2_{\text{LoS}}$& Variance of the LoS component. & $4^2$ (dB) \\
-      $\sigma^2_{\text{NLoS}}$& Variance of the NLoS component. & $6^2$ (dB) \\
+      $\mu_{\text{LoS}}$& Mean of the LoS component of the Gaussian mixture shadow fading model. & $0$ [dB] \\
+      $\mu_{\text{NLoS}}$& Mean of the NLoS component. & $-26$ [dB] \\
+      $\sigma^2_{\text{LoS}}$& Variance of the LoS component. & $4^2$ [dB] \\
+      $\sigma^2_{\text{NLoS}}$& Variance of the NLoS component. & $6^2$ [dB] \\
       $H_{\mathcal{M}\mathcal{L}\mathcal{N}}$ & A r.v. distributed according to a two-tier $\{\text{LoS}, \text{NLoS}\}$ log-normal mixture distribution representing the power gain in the Gaussian mixture fading model.&   \\
-      $H_{\text{Exp}}$ & Random shadow fading power gain with a defective exponential cdf defined by the parameter $0<\upsilon \leq 1$. The r.v. approximates the log-normal mixture fading by moment matching.&  \\
+      $H_{\text{Exp}}$ & Random shadow fading power gain with a defective exponential cdf defined by the parameter $0<\upsilon \leq 1$. The r.v. approximates the log-normal mixture fading by moment matching.&\\
       $\upsilon$ & $\mathbb{P}(H_{\text{Exp}}>0)$ $=1-\mathbb{P}(H_{\text{Exp}}=0)$; $\upsilon = \upsilon(p_{\text{LoS}}(\epsilon))$. &$(0.85,0.53)$ \\
       $\kappa \upsilon$ & The mean number of effective UEs inside the $-3$ dB footprints. \textbf{The parameter determines the theoretical SIR performance.} The two example values correspond to the two given example regions of $\kappa$ for each $\epsilon$.&$ \{1.8,2.6\}$ \\
       $\theta$ & SIR threshold of a successful transmission.&\\
-      $\tau$ & SIR threshold of a successful interference cancellation.& $0.2 \text{ or} -7\text{ (dB)}$\\  
+      $\tau$ & SIR threshold of a successful interference cancellation.& $0.2$\hfill \break $\text{or} -7\text{ [dB]}$\\  
       \hline
     \end{tabular}
   \end{center}
