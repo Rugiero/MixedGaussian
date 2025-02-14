@@ -98,21 +98,24 @@ The squared exponential, \textit{i.e.}, the Gaussian path loss have applications
 \begin{table}
   \begin{center}
     \begin{tabular}{|c|p{4.5cm}|p{1.9cm}|}
+      
+      \multicolumn{3}{c}{\textbf{Principal symbols and parameter values in the numerical results}} \\
       \hline
-      \multicolumn{3}{|c|}{Glossary of principal symbols with numerical values used in the results} \\
+      \multicolumn{3}{|c|}{\scriptsize{For a dimensional number, we distinguish between the system of units and}} \\
+      \multicolumn{3}{|c|}{\scriptsize{ denote ``SI'' and ``[non-SI].'' It is advised to use SI units in the equations.}} \\ 
       \hline
-      Symbol& Explanation &Units: SI or [non-SI]
+      Symbol& Explanation &Values and units
       \\ 
-      \hline
-      $h$ & Altitude of the SBSs. &$1200$ km  \\
-      $G[\cdot]$ & The SBS antenna gain.& \\
+      \hline 
+      $h$ & Receiving satellite BS altitudes. &$1200$ km  \\
+      $G[\cdot]$ &Gaussian antenna gain of a BS.&$\R_+ \rightarrow (0,1)$ \\
       $\alpha$ &Power path loss exponent.& $4$\\
-      $\varphi_{\text{RX}}$ & Half-width of the satellite BS $-3$ dB antenna gain pattern.&$0.028 \text{ rad}\break =1.6\degree$   \\
-      $\Theta \subset \R^3 $ & Homogeneous PPP on the sphere Earth.& \\
-      $\Phi \subset \R^2$ & Homogeneous PPP on the plane. &\\
+      $\varphi_{\text{RX}}$ & Half-width of a satellite BS $-3$ dB antenna gain.&$0.028 \text{ rad}\break =1.6[\degree]$ \\
+      $\Phi\subset \R^2$ &Homogeneous PPP on planar Earth. & $\{(x_i,y_i)\}$\\
+      $\Theta \subset \R^3 $ & Homogeneous PPP on spherical Earth. $[-\pi,\pi]\times[-1,1]\cap\Phi\ni(x_i,y_i)\mapsto(\rEarth.x_i,\arcsin y_i)\triangleq(\rEarth,\theta_i,\varphi_i)$, where $\rEarth$ is the mean radius of Earth. &$\{(\rEarth,\theta_i,\varphi_i)\}\break\subset\{6378\}$ km $\hfill \break\times[-\pi,\pi]$ rad $\break\times[-\frac{\pi}{2},\frac{\pi}{2}]$ rad. \\      
       $\lambda$ & The density of $\Phi$ and $\Theta$, \textit{i.e.}, the mean number of UEs inside an unit area.&$(1.66,8.81)\break\times10^{-4}\text{/km}^2$\\
-      $\epsilon$&  Satellite BS elevation angles w.r.t. the focus point $\textit{o}$ of the footprint.&$\left({\pi}/{2},{2\pi}/{9}\right)\text{ rad}\break=(90\degree,40\degree)$\\
-      $\kappa$  & $\text{Average (mean) number of }  \text{UEs inside}$ the satellite BS $-3 \text{ dB footprints};$ \hfill \break $\kappa =\kappa(\lambda,\epsilon) = \pi \lambda (h\varphi_{\textup{RX}}$ $/\sin^2(\epsilon))^2.$& $\{(2.1,3.4),$\hfill \break  $\hspace{1cm} (3.1,5)\}$  \\
+      $\epsilon$&Satellite BS elevation angles w.r.t. the focus point $\textit{o}$ of the footprint.&$\left({\pi}/{2},{2\pi}/{9}\right)\text{ rad}\break=(90,40)[\degree]$\\
+      $\kappa$  & $\text{Average (mean) number of }  \text{UEs inside}$ the satellite BS $-3 \text{ dB footprints};$ \hfill \break $\kappa =\kappa(\lambda,\epsilon) = \pi \lambda (h\varphi_{\textup{RX}}$ $/\sin^2(\epsilon))^2.$& \\
       ${\tilde{\kappa}}$ &  $\kappa/\log(2)$.& \\
       $p_{\text{LoS}}$& LoS probability; $p_{\text{LoS}} = p_{\text{LoS}}(\epsilon)$. & $(0.99,0.61)$\\
       $p_{\text{NLoS}}$& NLoS probability; $1-p_{\text{LoS}}$. & \\
@@ -120,12 +123,12 @@ The squared exponential, \textit{i.e.}, the Gaussian path loss have applications
       $\mu_{\text{NLoS}}$& Mean of the NLoS component. & $-26$ [dB] \\
       $\sigma^2_{\text{LoS}}$& Variance of the LoS component. & $4^2$ [dB] \\
       $\sigma^2_{\text{NLoS}}$& Variance of the NLoS component. & $6^2$ [dB] \\
-      $H_{\mathcal{M}\mathcal{L}\mathcal{N}}$ & A r.v. distributed according to a two-tier $\{\text{LoS}, \text{NLoS}\}$ log-normal mixture distribution representing the power gain in the Gaussian mixture fading model.&   \\
-      $H_{\text{Exp}}$ & Random shadow fading power gain with a defective exponential cdf defined by the parameter $0<\upsilon \leq 1$. The r.v. approximates the log-normal mixture fading by moment matching.&\\
-      $\upsilon$ & $\mathbb{P}(H_{\text{Exp}}>0)$ $=1-\mathbb{P}(H_{\text{Exp}}=0)$; $\upsilon = \upsilon(p_{\text{LoS}}(\epsilon))$. &$(0.85,0.53)$ \\
-      $\kappa \upsilon$ & The mean number of effective UEs inside the $-3$ dB footprints. \textbf{The parameter determines the theoretical SIR performance.} The two example values correspond to the two given example regions of $\kappa$ for each $\epsilon$.&$ \{1.8,2.6\}$ \\
+      $H_{\mathcal{M}\mathcal{L}\mathcal{N}}$ & A r.v. distributed according to a two-tier $\{\text{LoS}, \text{NLoS}\}$ log-normal mixture distribution representing the power fading.&   \\
+      $H_{\text{Exp}}$ & A simple approximation of (mean normalized) $H_{\mathcal{M}\mathcal{L}\mathcal{N}}$. It has a defective exponential cdf entirely characterized by the atomic prob. measure at $0$; $1-\upsilon$.&\\
+      $\upsilon$ & $\mathbb{P}(H_{\text{Exp}}>0)$ $=1-\mathbb{P}(H_{\text{Exp}}=0)$; $\upsilon = \upsilon(p_{\text{LoS}}(\epsilon))=v(\epsilon)$. &$(0.85,0.53)$ \\
+      $\kappa \upsilon$ & The mean number of effective UEs inside the $-3$ dB footprints. \textbf{The parameter determines the theoretical SIR performance.}&$ \{1.8,2.6\}$ \\
       $\theta$ & SIR threshold of a successful transmission.&\\
-      $\tau$ & SIR threshold of a successful interference cancellation.& $0.2$\hfill \break $\text{or} -7\text{ [dB]}$\\  
+      $\tau$ & SIR threshold of a successful interference cancellation.& $-7\text{ [dB]}$\\  
       \hline
     \end{tabular}
   \end{center}
