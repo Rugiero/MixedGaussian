@@ -98,9 +98,8 @@ The squared exponential, \textit{i.e.}, the Gaussian path loss have applications
 \begin{table}
   \begin{center}
     \begin{tabular}{|c|p{4.5cm}|p{1.9cm}|}
-      
-      \multicolumn{3}{c}{\textbf{Principal symbols and parameter values in the numerical results}} \\
-      \hline
+      \multicolumn{3}{c}{\textbf{Principal symbols the values and units in the numerical results}} \\
+      \toprule
       \multicolumn{3}{|c|}{\scriptsize{For a dimensional number, we distinguish between the system of units and}} \\
       \multicolumn{3}{|c|}{\scriptsize{ denote ``SI'' and ``[non-SI].'' It is advised to use SI units in the equations.}} \\ 
       \hline
@@ -111,11 +110,11 @@ The squared exponential, \textit{i.e.}, the Gaussian path loss have applications
       $G[\cdot]$ &Gaussian antenna gain of a BS.&$\R_+ \rightarrow (0,1)$ \\
       $\alpha$ &Power path loss exponent.& $4$\\
       $\varphi_{\text{RX}}$ & Half-width of a satellite BS $-3$ dB antenna gain.&$0.028 \text{ rad}\break =1.6[\degree]$ \\
-      $\Phi\subset \R^2$ &Homogeneous PPP on planar Earth. & $\{(x_i,y_i)\}$\\
-      $\Theta \subset \R^3 $ & Homogeneous PPP on spherical Earth. $[-\pi,\pi]\times[-1,1]\cap\Phi\ni(x_i,y_i)\mapsto(\rEarth.x_i,\arcsin y_i)\triangleq(\rEarth,\theta_i,\varphi_i)$, where $\rEarth$ is the mean radius of Earth. &$\{(\rEarth,\theta_i,\varphi_i)\}\break\subset\{6378\}$ km $\hfill \break\times[-\pi,\pi]$ rad $\break\times[-\frac{\pi}{2},\frac{\pi}{2}]$ rad. \\      
+      $\Phi\subset \R^2$ &Homogeneous PPP on planar Earth. & $\{(x_i,y_i)\}$ km\\
+      $\Theta \subset \R^3 $ & Homogeneous PPP on spherical Earth surface of average radius $\rEarth=6378$. &$\{(\rEarth,\phi_i,\varphi_i)\}$\break (km, rad, rad) \\
       $\lambda$ & The density of $\Phi$ and $\Theta$, \textit{i.e.}, the mean number of UEs inside an unit area.&$(1.66,8.81)\break\times10^{-4}\text{/km}^2$\\
       $\epsilon$&Satellite BS elevation angles w.r.t. the focus point $\textit{o}$ of the footprint.&$\left({\pi}/{2},{2\pi}/{9}\right)\text{ rad}\break=(90,40)[\degree]$\\
-      $\kappa$  & $\text{Average (mean) number of }  \text{UEs inside}$ the satellite BS $-3 \text{ dB footprints};$ \hfill \break $\kappa =\kappa(\lambda,\epsilon) = \pi \lambda (h\varphi_{\textup{RX}}$ $/\sin^2(\epsilon))^2.$& \\
+      $\kappa$  & Average number of  the satellite BS $-3 \text{ dB footprints};$ \hfill \break $\kappa =\kappa(\lambda,\epsilon) = \pi \lambda (h\varphi_{\textup{RX}}$ $/\sin^2(\epsilon))^2.$& \\
       ${\tilde{\kappa}}$ &  $\kappa/\log(2)$.& \\
       $p_{\text{LoS}}$& LoS probability; $p_{\text{LoS}} = p_{\text{LoS}}(\epsilon)$. & $(0.99,0.61)$\\
       $p_{\text{NLoS}}$& NLoS probability; $1-p_{\text{LoS}}$. & \\
@@ -736,7 +735,14 @@ Let $W\geq0$ be a dimensionless constant noise power at the satellite BS. Given 
 
 \subsection{Monte Carlso simulations of the spherical model}
 \label{sec:sphericalmodel}
-The base line system model is the spherical model, where the UE are located on the spherical Earths surface according to the PPP $\Theta$. Like in the planar model, the UEs are radiating omnidirectionally at power $P=1$ and are multiplied by i.i.d. random shadowing $H_x$.
+The accirate system model is the spherical model, where the UE are located on the spherical Earths surface according to a homogeneous PPP $\Theta$ of density $\lambda$. This p.p. can be constructed from $\Phi$ by the area preserving mapping and scaling the points $x \in \Phi$.
+\begin{align}
+  &\Phi_R\triangleq[-\pi,\pi]\times[-1,1]\cap\Phi\ni x/\rEarth=(x_1,x_i)/\rEarth\mapsto \nonumber\\
+  &(\rEarth,x_1,\arcsin x_2)\in \Theta \triangleq\{(\rEarth,\theta_{x_1},\varphi_{x_2})\}_{(x_1,x_2) \in \Phi_R},  \nonumber \\
+  &\text{ where } \rEarth\text{ is the mean radius of Earth and } \nonumber\\
+ &\{\phi_{x_1}, \varphi_{x_2}\}_{(x_1,x_2) \in \Phi} \subset [-\pi,\pi] \times [-\pi/2,\pi/2]\text{ are angles}.
+\end{align}
+The UEs are radiating omnidirectionally at power $P=1$ and are multiplied by i.i.d. random shadowing $H_x$.
 
 The total received power at the typical satellite BS from the UEs in the PPP $\Theta \subset E \subset$ \textit{Earth surface} of density $\lambda$, with $E$ denoting the area above the horizon of the typical BS (\textit{i.e.} the locations that are visible to the typical satellite) is defined as
 
