@@ -48,7 +48,7 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{Studying the SIR and SINR processes at the typical LEO Base Station in Poisson Networks Using The Factorial Moment Measures}
+\title{Studying the SIR process at the typical LEO Base Station in Poisson Networks Using The Factorial Moment Measures}
 \author{IEEE Publication Technology,~\IEEEmembership{Staff,~IEEE,}
         % <-this % stops a space
 \thanks{This paper was produced by the IEEE Publication Technology Group. They are in Piscataway, NJ.}% <-this % stops a space
@@ -80,11 +80,6 @@
 \section{Introduction}
 The steady rise of aerial communication networks, including LEO networks, owing to the planning and deployment of dense LEO networks to handle increased user-data as well as the expansion of the terrestrial frequency bands to those that are so far assigned only for the satellite communications, drives a need for new analytical tools to study and locate the essential properties of the networks. The signal-to-interference-plus-noise ratio SINR (or without the noise simply SIR) is a key metric, determinining the performance of the satellite link. A derivation of the SINR is, for example, spectral efficiency. The SINR is a function of propagation effects, which incorporates the distance-dependent path loss, fast-fading, slow-fading (shadowing), and a variety of atmospheric scattering and absorbion effects, etc. Altough not optimal, the analytic models, such as stochastic geometry models, often compromizes between analytical tractability and realism in the signal propagation model. Another cmmon simplification is to use the Poisson point process (PPP)---being the most tractable in the stochastic geometry analysis. Furthermore, as the points in the PPP are independently located, it can be a highly realistic model in scenarios such as in modeling the random locations of mobile user equipments (UEs), as the mobile phone user are more or less located independently from one another (as opposed to base stations (BSs), including LEO BSs, that are often more regularly located). However, the PPP works as a approximation also with many regular configurations. [CITE] The PPP has also a special role in the theory of point processes: any subsequentive independent random replacement of any point process (p.p.) will lead to the PPP. Furthermore, random multipath propagation effects can make a arbitrary p.p. to seem Poisson. [CITE]. However, often these simplifications don't detract from the statistical system-level insights the models introduce in simpler and more general terms compared to sophisticated scenario-specific simulations. The simple insights derived from the analytical models are important in comprehending the LEO networks and ultimately lead to more optimal allocation of simulation resources.
 
-As motivation for the existence of interference in a LEO uplink, we refer to [CITE]. The study indicates that numerous implementation details are possible. Because of the large footprints, a single LEO BS is likely to serve multiple UEs within its cell. This can result in intracell interference along side intercell interference. In this work, we demonstrate how a interference cancellaton (IC) scheme, particularly successive interference cancellation (SIC) could allow serving multiple UEs even if they are nonorthogonally encoded.
-
-This work does not contain novel mathematics, as similar stochastic geometry analysis has been conducted for terrestrial networks, and we will mostly omit the detailed descriptuions of the mathematical derivations. However, the factorial moment measures in our planar system model with a Gaussian path loss function and with exponential fading r.v. having a possible non-zero probability of having a value $0$ (the fading distribution referred to as \textit{defective}) includes many unique characteristics, such as the characterization of the signal-to-total-interference (STIR) as a gamma process. This characterization leads to the characterization of the STIR process of the UEs as a Poisson-Dirichlet process $\text{PD}(0,\cdot)$ as opposed to $\text{PD}(\cdot,0)$, which is the characterization in the presented models with a singular path-loss function.
-
-The squared exponential, \textit{i.e.}, the Gaussian path loss have applications in terrestrial networks posing rapid signal attentuation, such as millimeter wave cellular networks in dense urban environments. Hence, our analysis wider significance than that of the aerial communications. [CITE] MUUTA UUDESTAAN
 
  However, in this work, we interpret the results in a narrow-beam LEO context. We validate the flat-Earth assumption and the simplified fading model, imposed in order to derive the mathematical results, by Monte Carlo simulating the realistic LEO network using spherical Earth model and Gaussian mixture shadowing.
 
@@ -106,67 +101,60 @@ The squared exponential, \textit{i.e.}, the Gaussian path loss have applications
       Symbol& Explanation &Values and units
       \\ 
       \hline 
-      $h$ & Receiving satellite BS altitudes. &$1200$ km  \\
-      $G[\cdot]$ &Gaussian antenna gain of a BS.&$\R_+ \rightarrow (0,1)$ \\
+      $h$ & Receiving LEO BS altitudes. &$1200$ km  \\
+%      $G[\cdot]$ &Gaussian antenna gain of a BS.&$\R_+ \rightarrow (0,1)$ \\
       $\alpha$ &Power path loss exponent.& $4$\\
-      $\varphi_{\text{RX}}$ & Half-width of a satellite BS $-3$ dB antenna gain.&$0.028 \text{ rad}\break =1.6[\degree]$ \\
-      $\Phi\subset \R^2$ &Homogeneous PPP on planar Earth. & $\{(x_i,y_i)\}$ km\\
-      $\Theta \subset \R^3 $ & Homogeneous PPP on spherical Earth surface of average radius $\rEarth=6378$. &$\{(\rEarth,\phi_i,\varphi_i)\}$\break (km, rad, rad) \\
-      $\lambda$ & The density of $\Phi$ and $\Theta$, \textit{i.e.}, the mean number of UEs inside an unit area.&$(1.66,8.81)\break\times10^{-4}\text{/km}^2$\\
-      $\epsilon$&Satellite BS elevation angles w.r.t. the focus point $\textit{o}$ of the footprint.&$\left({\pi}/{2},{2\pi}/{9}\right)\text{ rad}\break=(90,40)[\degree]$\\
-      $\kappa$  & Average number of  the satellite BS $-3 \text{ dB footprints};$ \hfill \break $\kappa =\kappa(\lambda,\epsilon) = \pi \lambda (h\varphi_{\textup{RX}}$ $/\sin^2(\epsilon))^2.$& \\
-      ${\tilde{\kappa}}$ &  $\kappa/\log(2)$.& \\
+      $\varphi_{\text{RX}}$ & Half-width of a LEO BS $-3$ dB antenna gain.&$0.028 \text{ rad}\break =1.6[\degree]$ \\
+      %% $\Phi\subset \R^2$ &Homogeneous PPP on planar Earth. & $\{(x_i,y_i)\}$ km\\
+      %% $\Theta \subset \R^3 $ & Homogeneous PPP on spherical Earth surface of average radius $\rEarth=6378$. &$\{(\rEarth,\phi_i,\varphi_i)\}$\break (km, rad, rad) \\
+      $\lambda$ & The density of $\Phi$ and $\Theta$, \textit{i.e.}, the mean number of UEs inside an unit area.&$(1.66,8.81)\break10^{-4}\text{/km}^2$\\
+      $\epsilon$& The typical LEO BS elevation angle w.r.t $\textit{o}$.&$\left({\pi}/{2},{2\pi}/{9}\right)\text{ rad}\break=(90,40)[\degree]$\\
+      %% $\kappa$  & Average number of  the LEO BS $-3 \text{ dB footprints};$& \\
+      %% ${\tilde{\kappa}}$ &  $\kappa/\log(2)$.& \\
       $p_{\text{LoS}}$& LoS probability; $p_{\text{LoS}} = p_{\text{LoS}}(\epsilon)$. & $(0.99,0.61)$\\
-      $p_{\text{NLoS}}$& NLoS probability; $1-p_{\text{LoS}}$. & \\
+%      $p_{\text{NLoS}}$& NLoS probability; $1-p_{\text{LoS}}$. & \\
       $\mu_{\text{LoS}}$& Mean of the LoS component of the Gaussian mixture shadow fading model. & $0$ [dB] \\
       $\mu_{\text{NLoS}}$& Mean of the NLoS component. & $-26$ [dB] \\
       $\sigma^2_{\text{LoS}}$& Variance of the LoS component. & $4^2$ [dB] \\
       $\sigma^2_{\text{NLoS}}$& Variance of the NLoS component. & $6^2$ [dB] \\
-      $H_{\mathcal{M}\mathcal{L}\mathcal{N}}$ & A r.v. distributed according to a two-tier $\{\text{LoS}, \text{NLoS}\}$ log-normal mixture distribution representing the power fading.&   \\
-      $H_{\text{Exp}}$ & A simple approximation of (mean normalized) $H_{\mathcal{M}\mathcal{L}\mathcal{N}}$. It has a defective exponential cdf entirely characterized by the atomic prob. measure at $0$; $1-\upsilon$.&\\
-      $\upsilon$ & $\mathbb{P}(H_{\text{Exp}}>0)$ $=1-\mathbb{P}(H_{\text{Exp}}=0)$; $\upsilon = \upsilon(p_{\text{LoS}}(\epsilon))=v(\epsilon)$. &$(0.85,0.53)$ \\
-      $\kappa \upsilon$ & The mean number of effective UEs inside the $-3$ dB footprints. \textbf{The parameter determines the theoretical SIR performance.}&$ \{1.8,2.6\}$ \\
-      $\theta$ & SIR threshold of a successful transmission.&\\
-      $\tau$ & SIR threshold of a successful interference cancellation.& $-7\text{ [dB]}$\\  
+      %% $H_{\mathcal{M}\mathcal{L}\mathcal{N}}$ & A r.v. distributed according to a two-tier $\{\text{LoS}, \text{NLoS}\}$ log-normal mixture distribution representing the power fading.&   \\
+      %% $H_{\text{Exp}}$ & A simple approximation of (mean normalized) $H_{\mathcal{M}\mathcal{L}\mathcal{N}}$. It has a defective exponential cdf entirely characterized by the atomic prob. measure at $0$; $1-\upsilon$.&\\
+      %% $\upsilon$ & $\mathbb{P}(H_{\text{Exp}}>0)$ $=1-\mathbb{P}(H_{\text{Exp}}=0)$; $\upsilon = \upsilon(p_{\text{LoS}}(\epsilon))=v(\epsilon)$. &$(0.85,0.53)$ \\
+      %% $\kappa \upsilon$ & The mean number of effective UEs inside the $-3$ dB footprints. \textbf{The parameter determines the theoretical SIR performance.}&$ \{1.8,2.6\}$ \\
+      $\kappa \upsilon$& Average number of effective UEs inside a $-3$ dB footprint.& 2.6 \\
+      $\theta$ & SIR threshold of a successful transmission.&$(0.2,10)$  \break \hfill =$(-7,10)$ [dB]   \\
+      $\tau$ & SIR threshold of a successful interference cancellation.& $0.2$ \hfill \break $=-7\text{ [dB]}$\\  
       \hline
     \end{tabular}
   \end{center}
 \end{table}   
 
 
-\section{Quantities of interest}
+\section{System model}
+
+\begin{figure}[h]%
+  \centering
+  \subfloat[\centering  Interpretation of the \textit{planar} system model with the satellites in adjacent orbits serving an urban area and a realization of the UEs. The altitudes are not to scale.]{{\includegraphics[width=\linewidth]{UEsontheplane.png}}
+    \label{fig:UEsontheplane}%%
+  } 
+  \qquad
+  \subfloat[\centering The typical LEO BS as seen from the side. The transmitters are projected into line $(0, \infty)$ according to their norm.]{{\includegraphics[width=\linewidth]{drawing.png}}     \label{fig:systemmodel}} %%
+  \caption{The simplified narrow-beam LEO uplink system model. The satellite antenna boresight is oriented towards $\textit{o}$, the focus point of the elliptical footprint. The omnidirectionally transmitting UEs $\{x_i\}$ are located according to the HPPP on the plane. The nearest transmitter, $x_0$, is the served UE.}
+\end{figure}
+
+
+
+
 \label{sec:analysissec}
 
-Although the study of this paper ultimately centers on a narrow-beam Low Earth Orbit (LEO) uplink, we don't have to restrict our analysis to a specific interpretations of the model.
-
-In simplest, our system model can be viewed as a standard stochastic geometry wireless network model on a plane, characterized by a Gaussian path loss function and an (defective) exponential fading distribution (with the terms "fading" and "shadowing" used interchangeably in this work). The Gaussian (\textit{i.e.}, exponential) spatial path loss function could be a realistic assumption in certain terrestrial models [CITE]. In the uplink scenario, the omnidirectionally radiating users are modeled as the PPP, which because being translation invariant, allows us to study the scenario from a perspective of \textit{the typical point} $\textit{o} \triangleq (0,0)$ representing any point on the plane, and hence we can study a typical base station (BS). The downlink scenario is also possible: the omnidirectional BSs are located according to the PPP $\Phi$, and the typical point $\textit{o}$ represents the typical user, with the serving BS $x \in \Phi$ being the BS with the the strongest signal $H_xG(\|x\|)$, where $H_x$ is a shadowing r.v., and $G(\|x\|)$ is the Gaussian path loss function depending on the Euclidean planar distance $\|x\|$.
-
-In the narrow-beam aerial BS setting, the Gaussian path loss represents the aerial BS antenna pattern. The typical point is related to a typical base station (BS) through its antenna's boresight location on the ground, which is defined as $\textit{o}$. Along side LEO BSs, the aerial BSs can represent other aerial BSs, including drones or airplanes. Furthermore, the BS could even be interpreted as a narrow-beam small-cell BS in a terrestrial network with a relatively large height-dimension (for example relays located in the street corners directing high-frequency signals through the city [CITE]). Both the uplink and downlink configurations are possible also in these scenarios, so that the aerial BS boresight ground locations would follow the PPP in the downlink, and the typical UE is at $\textit{o}$. We validate the aerial BS model interpretation as an narrow-beam LEO BS at altitude $h$ and elevation angle $\epsilon$ in Section \ref{sec:gainprocess} and, more thoughtfully, in Section \ref{sec:planarmodel}.
-
-
-
-
-
-
-
-In the analysis [SECTION], we characterize the signal-to-total-interference (STIR) and signal-to-total-interference-plus-noise (STINR) processes and the densities of their $k$th factorial moment measures to evaluate the SIR and SINR using interfererence cancellation (IC) at the typical location for the strongest $k \geq 1$ exponentially shadowed (with a possible non-zero probability measure $1-\upsilon$ at $0$) UE signals in the PPP. Strikingly, the total interference can be characterized by a gamma process; an important implication of this is that the STIR process has a Poisson-Dirichlet distribution PD$(0,\cdot$), which helps to evaluate the density of the $k$th factorial moment measure in a simple and computationally efficient form. (This PD is different from the equivalent model differing only in the path loss function being singular instead of Gaussian, which has the non-zero term in the l.h.s. argument instead of the r.h.s.; PD$(\cdot,0)$. [CITE]) Additionally, within the IC, we introduce the independent interference cancellation (IIC) and successive interference cancellation (SIC) schemes. These methods are shown to optimize performance and reduce variance in link quality among the BSs.
-
-
-
-In Section \ref{sec:numericalresultsandconnectiontoLEO} we interpret the planar model with the exponential fading as representative of a LEO uplink scenario with Gaussian mixture shadowing in an urban environment. In Sections \ref{sec:planarmodel}, we explain the connection of the planar model to the narrow-eam LEO-uplink, and in Section \ref{sec:guassianmixture} we relate the defective exponential distribution to Gaussian mixture shadowing. Finally, in Section \ref{sec:sphericalmodel}, we verify the mathematical results by Monte Carlo simulations, using a spherical Earth model with actual Gaussian mixture shadowing. The mathematical results indicate that---with the simulations confirming the insights---that employing IC in the forms of IIC and SIC improves the perforamnce of the network. We are able to reduce the variance in the SIR and SINR across the LEO BSs while maintaining the performance. For example, in a noise-limited channel with moderate noise, we demonstrate that the optimal value for the parameter $\tilde{\kappa} \upsilon_{}$ is approximately $1$, which maximizes the coverage probability of the strongest signal in the LEO uplink for a given SINR threshold. (Recall that $\kappa=\tilde{\kappa} \log(2)$ is the approximate average number of the UEs, in the $-3$ dB footprints of the LEO BSs, and $0<\upsilon \leq 1$ is the fraction of signals that are not shadowed to $0$ in the defective exponential distribution.) However, this optimal parameter leads to a high variance in the link quality, namely, \text{Var}$(\text{SIR})=\infty$ at $\tilde{\kappa} \upsilon_{}=1$. By using IC, we can increase $\kappa$ and reduce the variance in the SIR and SINR while maintaining the average performance over the network. Also, SIC allows that one LEO BS can be able to serve multiple UEs.
-
-To summarize, there is a trade-off between user fairness and \textit{average} link quality. This problem can be addressed through IC schemes such as IIC and SIC to improve the user fairness while maintaining the average performance.
 
 
 
 \subsection{Poisson process on the plane}
 \label{sec:gainprocess}
 
-The planar Poisson network model required to derive the factorial moment measures of the SIR and SINR processes, is independent of its interpretation as a LEO network (or any other aerial network). Hence, to make things not more complicated than necessary, and for the sake of generality, in this section, we merely consider a planar Poisson network model of UEs and BSs equipped with a squared exponential, \textit{i.e.}, Gaussian, path loss function and a defective Rayleigh fading distribution function. We briefly explain many parameters connection to the LEO system. However, the complete interpretation as a narrow-beam LEO uplink and the moment matching of the exponential-like shadowing to the Gaussian mixed shadowing  is formulated  in $\ref{sec:planarmodel}$.
 
-Considering a uplink, the UEs follow a homogeneous PPP $\Phi \subset \R^2$ of density $\lambda$. The BSs form an independent homogeneous p.p. possibly with different density than the UEs. Because of the translation invariancy of the PPP, all location are statistically equivalent, and we define the typical point to the origin $\textit{o}$, that represents the typical BS receiver location.
-
-
+Considering a uplink, the UEs follow a homogeneous PPP $\Phi \subset \R^2$ of density $\lambda$. The BSs form an independent homogeneous p.p. possibly with different density than the UEs. Because of the translation invariancy of the PPP, all location are statistically equivalent, and we define the origin $\textit{o}$ to represents the typical LEO BS footprint focus pointxxx.
 
 The path loss is given over the planar distance $r \in [0, \infty)$ as a Gaussian function
   \begin{equation}
@@ -175,13 +163,77 @@ The path loss is given over the planar distance $r \in [0, \infty)$ as a Gaussia
   \end{equation}
   The angle $\varphi_{\text{RX}}$ denotes the $-3$ dB antenna gain width. Furthermore, the scaling constant $D_{h,\epsilon}$ depend on the altitude $h$ and elevation angle $\epsilon$ of the LEO BS. The constant multiplied by the distance $r$ of a UE to the closest LEO BS maximum receiving gain (boresight) location on the Earth surface, which is a focus point closest to the LEO BS in its elliptical fooptrint: Namely, the value $D_{h,\epsilon}r$, approximates the angle of the UE in the LEO satellite antenna for small $r$, which is sufficient for narrow beams. %% This is a sufficient approximation for small $r$, for example, for UEs within the main lobe in case of narrow beams characterozed by small $\varphi_{\text{RX}}^2$. Otherwise, because of the fast decay of the Gaussian path loss, the power from the UES with large $r$ practically vanishes.
 
-  At the typical location, $r=\|x\|$, where $\| x\|$ is the Euclidean distance between the typical point \textit{o} and a UE $x\in \Phi$.
+
+  %% \begin{remark}[Terrestrial millimeter communication]
+  %%   The Gaussian, \textit{i.e.}, the squared exponential (along with other exponential functions) spatial path loss function have applications in terrestrial networks that pose rapid signal attenuation, such as millimeter wave cellular networks in dense urban environments for the NLoS signals [CITE]. Hence, the analysis presented in the paper can be applied to such planar Poisson network models. To the best of our knowledge, similar exploration of the factorial measures has not been conducted with the exponential path loss.  Notably, the squared power term $r^2$, as in the Gaussian function, is particularly tractable compared to other powers. 
+  %% \end{remark}
+\subsection{Shadowing}
+
+\subsubsection{Gaussian mixture shadowing model}
+\label{sec:guassianmixture}
+
+Consider a two-tier $\{\text{LoS},\text{NLoS}\}$ (line-of-sight and non-line-of-sight) Gaussian mixture shadow fading model with the parameters $\mu_{\text{LoS}} = 0$ dB, $\sigma_{\text{LoS}} = 4$ dB, $\mu_{\text{NLoS}} = -26$ dB, and $\sigma_{\text{NLoS}} = 6$ dB. Under the model, assuming i.i.d. power shadow fading for all UEs, the typical shadowed transmit power $H_{\mathcal{M}\mathcal{L}\mathcal{N}}$ follows a log-normal mixture distribution;
+\begin{align}
+  \label{eq:tier2lognormal}
+  H_{\mathcal{M}\mathcal{L}\mathcal{N}} &\sim p_{\text{LoS}} \mathcal{L}\mathcal{N}(\rho \mu_{\text{LoS}}, (\rho \sigma_{\text{LoS}})^2) \nonumber \\
+  &\quad + p_{\text{NLoS}} \mathcal{L}\mathcal{N}(\rho \mu_{\text{NLoS}}, (\rho \sigma_{\text{NLoS}})^2),
+\end{align}
+with $p_{\text{NLoS}}= 1 - p_{\text{LoS}}$. Considering a natural base for the log-normal distribution, the constant $\rho \triangleq \log(10)/10$ normalizes the parameters $\mu_{\text{LoS}}, \sigma_{\text{LoS}}, \mu_{\text{NLoS}},$ and $\sigma_{\text{NLoS}}$, ensuring that the conditioned r.v.'s $10 \log_{10}(H_{\mathcal{MLN}}|\text{LoS})$ and $10 \log_{10}(H_{\mathcal{MLN}}|\text{NLoS})$ evaluate to r.v.'s following the normal distributions $\mathcal{N}(\mu_{\text{LoS}}, \sigma_{\text{LoS}}^2)$ and $\mathcal{N}(\mu_{\text{NLoS}}, \sigma_{\text{NLoS}}^2)$, respectively.
 
 
-  \begin{remark}[Terrestrial millimeter communication]
-    The Gaussian, \textit{i.e.}, the squared exponential (along with other exponential functions) spatial path loss function have applications in terrestrial networks that pose rapid signal attenuation, such as millimeter wave cellular networks in dense urban environments for the NLoS signals [CITE]. Hence, the analysis presented in the paper can be applied to such planar Poisson network models. To the best of our knowledge, similar exploration of the factorial measures has not been conducted with the exponential path loss.  Notably, the squared power term $r^2$, as in the Gaussian function, is particularly tractable compared to other powers. 
-  \end{remark}
 
+\subsubsection{Defective exponential shadowing distribution}
+As a trade-off between analytical tractability and realism, we introduce a \textit{defective} exponential power fading distribution for the UEs with the distribution function
+\begin{equation}
+  \label{eq:defexp}
+  F_{{H}_{\text{Exp}}}(t) = \upsilon e^{-t}, t>0.
+\end{equation}
+Essentially, this is a mixture distribution. Namely, $0 \leq 1-\upsilon < 1$ denotes the probability that the shadowed signal is entirely attenuated and takes the value of zero, and otherwise follows the exponential distribution. 
+
+
+ We introduce a scaling term, $\Upsilon$, to ensure that the means of the log-normal mixture distribution and the defective exponential distribution match: $\mathbb{E}(\Upsilon H_{\mathcal{MLN}}) = \mathbb{E}(H_{\text{Exp}}) = \upsilon$. By equating the first two moments of $H_{\text{Exp}}$ (l.h.s.) and $\Upsilon_{} H_{\mathcal{M} \mathcal{L}\mathcal{N}}$ (r.h.s.)
+\begin{equation}
+  \label{eq:matchingmoments}
+  \begin{cases}
+    &\upsilon_{} = \Upsilon_{} \left(p_{\text{LoS}} e^{\mu_{\text{LoS}} + \sigma_{\text{LoS}}^2/2} + p_{\text{NLoS}} e^{\mu_{\text{NLoS}} + \sigma_{\text{NLoS}}^2/2}\right)\\
+    &2\upsilon_{}= \Upsilon_{}^2 \left( p_{\text{LoS}} e^{2(\mu_{\text{LoS}} + \sigma_{\text{LoS}}^2)} + p_{\text{NLoS}} e^{2(\mu_{\text{NLoS}} + \sigma_{\text{NLoS}}^2)} \right), 
+  \end{cases}
+\end{equation}
+ we can solve for the parameter $\upsilon= \upsilon_{}(\epsilon)$:
+\begin{align}
+  \label{eq:upsilon}
+  & \upsilon_{}=\upsilon(\epsilon) =\frac{ 2\left( p_{\text{LoS}}e^{\mu_{\text{LoS}}+\sigma^2_{\text{LoS}}/2}+p_{\text{NLoS}}e^{\mu_{\text{NLoS}}+\sigma^2_{\text{NLoS}}/2} \right)^2}{p_{\text{LoS}}e^{2(\mu_{\text{LoS}}+\sigma_{\text{LoS}}^2)}+p_{\text{NLoS}}e^{2(\mu_{\text{NLoS}}+\sigma_{\text{NLoS}}^2)}}.
+    %% \label{eq:Upsilon}
+    %% &\Upsilon_{} = \frac{2\left(p_{\text{LoS}}e^{\mu_{\text{LoS}}+\sigma^2_{\text{LoS}}/2}+p_{\text{NLoS}}e^{\mu_{\text{NLoS}}+\sigma^2_{\text{NLoS}}/2}\right)}{p_{\text{LoS}}e^{2(\mu_{\text{LoS}}+\sigma_{\text{LoS}}^2)}+p_{\text{NLoS}}e^{2(\mu_{\text{NLoS}}+\sigma_{\text{NLoS}}^2)}}.
+\end{align}
+The parameter $\upsilon$ depends on the elevation angle since $\epsilon$ determines the shadow fading parameters. After solving $\upsilon$, without loss of generality, we can set $\Upsilon = 1$ in the interference-limited scenarios since the scaling cancel. 
+
+
+Figure \ref{fig:plotdensities} depicts the densities of the GPs with the defective exponential and Gaussian mixture shadowing scenarios for two different average number of effective UEs $\kappa \upsilon $ inside the $3$ dB footprints, corresponding to $\tilde{\kappa}=  \{1.8,2.6\}/(\log(2)\upsilon(\epsilon))$. No significant dependence on the elevation angle was observed.
+
+\begin{remark}
+  The variable $0 < \upsilon \leq 1$ is not generally solvable for all log-normal distributions (by matching the first two moments). Broadly said, the variance of the shadowing has to be large enough. However, the variables $0<\upsilon \leq 1$ is solvable for almost every shadowing scenario in [CITE], particularly for the urban sceneario.
+\end{remark}
+
+
+\subsection{The spherical Earth model in the Monte Carlo simulations }
+
+\label{sec:sphericalmodel}
+The planar model approximates the spherical system model, where the UE are located on the spherical Earth surface according to a homogeneous PPP $\Theta$ of density $\lambda$. This p.p. can be constructed from $\Phi \subset \R^2$ by the a preserving mapping. Namely, for $(x_1,x_2) \in [-\pi,\pi]\times[-1,1]\cap\Phi/\rEarth$, the mapping 
+\begin{align}
+  &(x_1,x_2)\mapsto (\rEarth,x_1,\sin^{-1}(x_2))=(\rEarth,\theta_{x_1},\varphi_{x_2}) \in \Theta
+\end{align}
+ produces the HPPP of density $\lambda$ on the sphere of radius $\rEarth$ in terms of spherical coordinates.
+
+The total received power at the typical LEO BS from the UEs in the PPP $\Theta \cap E $ of density $\lambda$, with $E$ denoting the area above the horizon of the typical LEO BS is defined as
+\begin{equation}
+  \label{eq:mathringptot}
+  \mathring{I} \triangleq  \sum_{x \in \cap E } H_x\ell(d_x) = \sum_{x \in \Theta \cap E }  \frac{{H_{\mathcal{M}\mathcal{L}\mathcal{N}}}_x G(\varphi_x)}{(d_x/d_0)^{\alpha}},
+\end{equation}
+All simulated values use the spherical model with the values $\varphi_x$ and $d_x$ being exact. 
+
+
+         
 Given i.i.d. shadowing variables $\{H_x\}_{x \in \Phi}$, we define the process of the received signal powers at the typical location, referred to as the gain process (GP), by
 \begin{equation}
   \label{eq:gainprocess}
@@ -200,16 +252,13 @@ Since the variables $\{H_x\}_{x \in \Phi}$ are i.i.d., we can denote the shadowi
     \label{eq:GPdensity}
     \lambda_{\mathcal{G}}(t) = \tilde{\kappa} {F_H(t)}/{t}, \quad t \in (0, \infty),
   \end{equation}
-  where $\tilde{\kappa} = {\kappa}/{\log(2)}$ and
-  \begin{equation}
-    \label{eq:kappa}
-    \kappa \triangleq \pi \lambda \left(\frac{\varphi_{\text{RX}}}{D_{h,\epsilon}}\right)^2.
-  \end{equation}
+  where $\tilde{\kappa} = {\kappa}/{\log(2)}$ and $\kappa \triangleq \pi \lambda \left({\varphi_{\text{RX}}}/{D_{h,\epsilon}}\right)^2$ is approximately the average number of UEs inside a $-3$ dB footprint.
+
   
   \begin{proof}
     Let $f_H(\cdot)$ be the probability density function (pdf) of $H$. Denote $G^{-1}(\cdot)$ as the generalized inverse of $G$, defined as $G^{-1}(y) = \inf \{x : G(x) < y\}$. According to [CITE],
     \begin{align*}
-      \int_t^{\infty} \lambda_{\mathcal{G}}(y) \, dy &= \pi \lambda \mathbb{E}\left[ \left({G^{-1}(t/H)}{}\right)^2 \right] \\
+      &\int_t^{\infty} \lambda_{\mathcal{G}}(y) \, dy = \pi \lambda \mathbb{E}\left[ \left({G^{-1}(t/H)}{}\right)^2 \right] \\
       &= \pi \lambda \int_t^{\infty} \left(-\frac{\varphi_{\text{RX}} \sqrt{-\log(t/h)}}{D_{h,\epsilon} \sqrt{\log(2)}}\right)^2 f_H(h) \, dh \\
       &= -\tilde{\kappa} \int_t^{\infty} \log(t/h) f_H(h) \, dh \\
       &\overset{(a)}{=} -\tilde{\kappa} \left[ \left. \log(t/h) F_H(h) \right|_t^{\infty} + \int_t^{\infty} \frac{F_H(h)}{h} \, dh \right].
@@ -219,28 +268,35 @@ Since the variables $\{H_x\}_{x \in \Phi}$ are i.i.d., we can denote the shadowi
 \end{prop}
 
 
-The parameter $\kappa$ in $\lambda_{\mathcal{G}}(t)$ can be interpreted as the approximate average number of UEs within the $-3$ dB footprint of a satellite BS (see Section \ref{sec:planarmodel}). It scales linearly w.r.t. the density parameter $\lambda$ of $\Phi$.
+
+         \begin{figure}[h]
+           \centering
+           \includegraphics[width=\linewidth]{plotdensities.pdf}
+           \caption{The density function of the GP with the mixture log-normal and defective exponential power shadowing models $H_{\mathcal{MLN}}$ and $H_{\text{Exp}}$, respectively. The values $\kappa \upsilon \in \{1.8,2.6\}$ were used. } 
+           \label{fig:plotdensities}
+         \end{figure}
+
+
 
 The total interference, or total received power, is defined as the sum of the GP at the typical location $\textit{o}$ 
 \begin{equation}
   \label{eq:totpow}
-  I \triangleq \sum_{x \in \Phi} H_x G(\|x\|) = \sum_{u \in \mathcal{G}} u.
+  I \triangleq \sum_{x \in \Phi} H_x G(\|x\|) = \sum_{x \in \mathcal{G}} x.
 \end{equation}
-There is no requirement for the symbols representing the points in the point process (p.p.) to differ on the l.h.s. and r.h.s. summation notations. However, we use $u \in \mathcal{G}$ to represent the signal strength at the typical point to clearly separate it from $x$, which represents a spatial location.
 
 
-
-
-The mean and the variance of $I$ are given by
+The mean and the variance of $I$ are respectively given by
 \begin{align}
   \label{eq:totmean}
-  &\mathbb{E}\left(I \right) = \int_{0}^{\infty} t\lambda_{\mathcal{G}}(t) dt = \tilde{\kappa} \int_{0}^{\infty}F_H(t) dt \nonumber \\
-  &=\tilde{\kappa} \mathbb{E}(H), \\\
+  &\mathbb{E}\left(I \right) = \int_{0}^{\infty} t\lambda_{\mathcal{G}}(t) dt = \tilde{\kappa} \int_{0}^{\infty}F_H(t) dt =\tilde{\kappa} \mathbb{E}(H),
+\end{align}
+and
+\begin{align}
   \label{eq:totvar}
   &\text{Var}\left(I \right) = \int_{0}^{\infty} t^2\lambda_{\mathcal{G}}(t) dt= \tilde{\kappa} \int_0^{\infty}tF_H(t) dt  \nonumber \\
-  &= \tilde{\kappa} \frac{\text{Var}(H) + \mathbb{E}(H)^2}{2} = \tilde{\kappa}  \mathbb{E}[H^2]/2,
+  &= \tilde{\kappa} \frac{\text{Var}(H) + \mathbb{E}(H)^2}{2} = \tilde{\kappa}  \mathbb{E}[H^2]/2.
 \end{align}
-respectively.
+
 
 %% The spatial path loss is of no interest in the definition of $I$ because we assume that the spatial path loss is a constant due to the narrow-beam antenna pattern decaying fast to $0$, $G(\cdot)$, which ensures that the relevant UEs are located near one another (see Section \ref{sec:numericalresultsandconnectiontoLEO}). Hence, given that the spatial path loss is identical for all transmitters, it does not influence the SIR. For the SINR, the noise variable can be scaled appropriately to account for the spatial path loss appropriately. 
 
@@ -249,31 +305,6 @@ respectively.
 
 
 
-\subsection{Shadowing}
-To address the signal attentuation caused by multipath slow-fading, we introduce an \textit{defective} exponential power fading distribution for the UEs with the distribution function
-\begin{equation}
-  \label{eq:defexp}
-  F_{{H}_{\text{Exp}}}(t) = \upsilon e^{-t}, t>0.
-\end{equation}
-Essentially, this is a mixture distribution. Namely, $0 \leq 1-\upsilon < 1$ denotes the probability that the shadowed signal is entirely attenuated and takes the value of zero, and otherwise follows the exponential distribution. This behavior can be a characteristic, for example, in an urban environment with large buildings attenuating, particularly, the NLoS signals very close to zero. The parameter $\upsilon = \upsilon(\epsilon)$ depends on the elevation angle of the satellite. By matching the first two moments, we use \eqref{eq:defexp} to approximate a log-normal mixture shadowing for LEO satellites directed at an urban environment [CITE]. In Section \ref{sec:numericalresultsandconnectiontoLEO}, we introduce another parameter $\Upsilon$ to the exponent---however, we make the normalization here to streamline the analysis.
-
-
-
-Recall, the signals has an additional random Poisson factor that scarmbles the process of the signal powers at the BS; the GP. While the differences in the shadowing distributions can be notable, the crude (but analytically tractable) defective exponential shadowing model can be feasible in matching the density of the GP (given in \eqref{eq:GPdensity} for an arbitrary distribution) to the GP with the lognormal mixture ccdf $F_H(\cdot)$. Recall, matching the first two moments of the fading distributions matches the mean and the variance of the total interference (recall \eqref{eq:totmean} and \eqref{eq:totvar}).
-
-Figure \ref{fig:plotdensities} depicts the densities of the GPs with the defective exponential and Gaussian mixture shadowing scenarios for the elevation angles $\epsilon \in \{90 \degree, 40 \degree \}$ (also the no-shadowing is included). The densities seem to match well.
-
-Importantly, the  $0 < \upsilon \leq 1$ is not solvable (by matching the first two moments) for all log-normal distribution parameters. This is the case, for example, for a distribution with a small variance. Hence, the analysis, if interpreted as a LEO link with the log-normal shadowing, is applicable only for limited shadowing scenarios---broadly said, the variance of the shadowing has to be large enough. The variables $0<\upsilon \leq 1$ and $\Upsilon>0$ are solvable for almost every scenario in [CITE] (certainly for each urban measurement), and if it is not, $\upsilon$ is close $1$.
-
-In contrary, as a widely utilized striking property, for a singular path loss function of form $A\|\cdot\|^{-\eta}, \eta,A>0$, the density of the faded projection process is simply a scaling by the projection process density without fading by a single moment $1/\mathbb{E}(H^{\eta})$ of any fading r.v. $H$ with the finite moment. Unfortunately, this is not the case with the Gaussian decay function $G(\cdot)$, because $\lambda_{\mathcal{G}}(\cdot)$ is pointwise dependent on $F_{H}(\cdot)$.
-
- Further details regarding the relationship between $\upsilon$ and the log-normal mixture shadowing are provided in Section \ref{sec:numericalresultsandconnectiontoLEO} . 
-         \begin{figure}[h]
-           \centering
-           \includegraphics[width=\linewidth]{plotdensities.pdf}
-           \caption{The density function of the GP for a two-tier log-normal mixure shadowing distribution with the defective exponential distribution with the first and second moments matched. The parameters $\upsilon_{} \in \{0.85,0.53\}$ for the elevation angles $\epsilon \in \{90^{\circ},40^{\circ}\}$, respectively. The no-shadowing $H\equiv 1$ is also plotted for comparison.} 
-           \label{fig:plotdensities}
-         \end{figure}
 
 %% \subsection{Slow-fading distribution}
 %% While analytically tractable, the defective exponential distribution can capture the mean and the variance of a more complicated fading distribution with high variance, particularly the lognormal distribution, which is a well-established shadowing model in the LEO networks. The shadowing is defined by the mixed exponential RV
@@ -303,57 +334,53 @@ With exponential shadowing ${H}_{\text{exp}}$, for Re$(s)>1$,
   \label{eq:lapdef}
   &\mathcal{L}_{I}(s)\triangleq \mathbb{E}\left(e^{-sI}\right)= \exp\left\{-\int_0^{\infty}(1-e^{-sr}) \lambda_{\mathcal{G}}(r) dr \right\} \nonumber \\
   &=\exp\left\{-\tilde{\kappa}\int_0^{\infty}(1-e^{-sr}) F_{{H}_{\text{exp}}}(r) /r dr \right\} \nonumber \\
-  &=\exp\left\{-\tilde{\kappa}\upsilon_{}\int_0^{\infty}(1-e^{-sr}) e^{-r} /r dr \right\} \nonumber \\
-  &=(1+s)^{-\tilde{\kappa}\upsilon_{}},
+  &=\exp\left\{-\tilde{\kappa}\upsilon_{}\int_0^{\infty}(1-e^{-sr}) e^{-r} /r dr \right\} =(1+s)^{-\tilde{\kappa}\upsilon_{}},
 \end{align}
 which is the Laplace transform of the gamma distribution with the shape parameter $\tilde{\kappa}\upsilon_{}$. 
 
 
-\subsection{SINR and STINR processes and their factorial moment measures}
-Let $N \geq 0$ be the noise power constant. We denote the signal-to-interference-plus-noise ratio (SINR) process of the UEs as
+
+\subsection{STIR process its factorial moment measures}
+ We denote the signal-to-interference-plus-noise ratio (SIR) process of the UEs as
 \begin{align}
   \label{eq:SINR}
-  \Psi &= \{\mathsf{Z}: \mathsf{Z} \in \Psi\} \triangleq \left\{ \frac{u}{N+I-u} : u \in \mathcal{G}\right\} \nonumber \\
-  &=\left\{ \frac{H_x G(D_{h,\epsilon}\|x\|)}{N+I-H_x G(D_{h,\epsilon}\|x\|)} : x \in \Phi\right\},
+  \Psi &= \{\mathsf{Z}: \mathsf{Z} \in \Psi\} \triangleq \left\{ \frac{u}{I-u} : u \in \mathcal{G}\right\} \nonumber \\
+  &=\left\{ \frac{H_x G(D_{h,\epsilon}\|x\|)}{I-H_x G(D_{h,\epsilon}\|x\|)} : x \in \Phi\right\},
 \end{align}
-where $I$ is defined in \eqref{eq:totpow}. Similarly, the signal-to-total-interference-plus-noise (STINR) process is defined as
+where $I$ is defined in \eqref{eq:totpow}. Similarly, the signal-to-total-interference ratio (STIR) process is defined as
 \begin{align}
   \label{eq:STINR}
-  \Psi' &= \{\mathsf{Z}': \mathsf{Z}' \in \Psi'\} \triangleq \left\{ \frac{u}{N+I} : u \in \mathcal{G}\right\}.
+  \Psi' &= \{\mathsf{Z}': \mathsf{Z}' \in \Psi'\} \triangleq \left\{ \frac{u}{I} : u \in \mathcal{G}\right\}.
 \end{align}
 We can always recover on process from another
 \begin{equation}
   \Psi = \left\{ \frac{\mathsf{Z}'}{1- \mathsf{Z}'}: \mathsf{Z}' \in \Psi' \right\}, \hspace{0.3cm} \Psi' = \left\{ \frac{\mathsf{Z}}{1+ \mathsf{Z}}: \mathsf{Z} \in \Psi \right\}.
 \end{equation}
-Let $\theta$ denote the SINR threshold of successful transmission. The event $\Psi \ni\mathsf{Z}> \theta$ is equivalent to $\Psi' \ni \mathsf{Z}'> \theta'$  with $\theta' \triangleq \theta/(1+\theta)$ and $\theta \triangleq \theta'/(1-\theta')$.
+Let $\theta$ denote the SIR threshold of successful transmission. The event $\Psi \ni\mathsf{Z}> \theta$ is equivalent to $\Psi' \ni \mathsf{Z}'> \theta'$  with $\theta' \triangleq \theta/(1+\theta)$ and $\theta \triangleq \theta'/(1-\theta')$.
 
-The factorial moment measure of the SINR process is defined on the sets $(t_1,\infty] \times \dots \times (t_n, \infty]$ with $t_1,\dots,t_n\geq 0$
-    \begin{align}
-      &M^{(n)}(t_1,\dots,t_n) \triangleq M^{(n)}((t_1,\infty],\dots,(t_n,\infty]) \nonumber \\
-          & \triangleq \mathbb{E} \left( \sum^{\text{distinct}}_{\left(\mathsf{Z}_1, \dots, \mathsf{Z}_n \right) \in (\Psi)^{\times n}} \prod_{i=1}^n \mathds{1}(\mathsf{Z}_i >t_i)\right),
-    \end{align}
-    where $\mathds{1}(\cdot)$ is the indicator function, and ``distinct'' indicates that $\mathsf{Z}_i \neq \mathsf{Z}_j $ for all $i \neq j $. Similarly, for the STINR process,
+ The factorial moment measure of the STIR process is defined by,
     \begin{align}
           &M'^{(n)}(t'_1,\dots,t'_n) \triangleq M'^{(n)}((t'_1,\infty],\dots,(t'_n,\infty]) \nonumber \\
-              &\triangleq \mathbb{E} \left( \sum^{\text{distinct}}_{\left(\mathsf{Z}'_1, \dots, \mathsf{Z}'_n \right) \in (\Psi')^{\times n}} \prod_{i=1}^n \mathds{1}(\mathsf{Z}'_i >t'_i)\right).
+              &\triangleq \mathbb{E} \left( \sum^{\text{distinct}}_{\left(\mathsf{Z}'_1, \dots, \mathsf{Z}'_n \right) \in (\Psi')^{\times n}} \prod_{i=1}^n \mathds{1}(\mathsf{Z}'_i >t'_i)\right),
     \end{align}
- The (partial) density of the factorial moment measure of the STINR process is given by the successive partial differentiation of $M'^{(n)}$:
+    and similarly for the SIR process.
+ The (partial) density of the factorial moment measure of the STIR process is given by the successive partial differentiation of $M'^{(n)}$:
     \begin{align}
       \label{eq:differatemomentmeasure}
      &{\mu'}_n^{(n+i)}(z'_1,\dots,z'_n,\overbrace{z'_n,\dots,z'_n}^{\#i}) \nonumber \\&= (-1)^n \frac{\partial^n M'^{(n)}(t'_1\dots t_n',z'_n \dots z'_n) }{\partial t'_1 \dots \partial t'_n} |(t'_1=z_1'\dots t'_n=z'_n),
     \end{align}
     for $\sum_{i=1}^n z'_i + i z'_n\leq 1$ and $0$ otherwise.  If $i >0$, $\eqref{eq:differatemomentmeasure}$ is the \textit{partial density} of the $n$th factorial moment measure.
 
-    The density of the $n$th factorial moment measure of the SINR process can be extracted from $\mu'^{(n)}$:
+    The density of the $n$th factorial moment measure of the SIR process can be extracted from $\mu'^{(n)}$:
     \begin{align}
       \label{eq:densitySINR}
-      &\mu^{(n)}(z_1,\dots,z_n) \nonumber\\
-      &= \prod_{j=1}^n\frac{1}{(1+z_j)^2}\mu'^{(n)}\left(\frac{z_1}{1+z_1},\dots,\frac{z_n}{1+z_n}\right).
+      &\mu^{(n)}(z_1,\dots,z_n)&\\
+      &= \prod_{j=1}^n\frac{1}{(1+z_j)^2}\mu'^{(n)}\left(\frac{z_1}{1+z_1},\dots,\frac{z_n}{1+z_n}\right)
     \end{align}
 
     
   
-\subsection{Order statistics of the STINR process}
+\subsection{Order statistics of the STIR process}
 We denote $\mathsf{Z}'_{(1)}>\mathsf{Z}'_{(2)} >\mathsf{Z}'_{(3)} \dots$ the order statistics of the STINR process $\Psi'$, such that $\mathsf{Z}'_{(1)}$ is the larges value in $\Psi'$.
 
 
@@ -367,49 +394,24 @@ for $z'_1>z'_2>\dots>z'_k$ and $f'_{(k)}(z'_1,\dots,z'_k) =0 $ otherwise. The up
 The $k$-coverage probability that the first $k$ strongest signals reach the threshold $\theta$ is given by
 \begin{align}
   \label{eq:kprobability}
-  &\mathcal{P}^{(k)}(\theta) \triangleq  \int_{\theta'}^1\dots \int_{\theta'}^1 f'_{(k)}({z'_1},\dots,{z'_k})dz'_1 \dots d{z'_k}, \nonumber\\
-  &=\sum_{i=0}^{i_{\text{max}}}\frac{(-1)^i}{i!}\int_{\theta'}^1\dots \int_{\theta'}^1 {\mu'}_k^{(k+i)}(z'_1,\dots,z'_k) \nonumber\\
-  &\hspace{3.4cm}\times\mathds{1}(z'_1>\dots>z'_k) dz'_1 \dots d{z'_k}
+  &\mathcal{P}^{(k)}(\theta) \triangleq  \int_{\theta'}^1\dots \int_{\theta'}^1 f'_{(k)}({z'_1},\dots,{z'_k})dz'_1 \dots d{z'_k}, 
 \end{align}
 with $\theta'=\theta/(1+\theta)$ and $i_{\text{max}}<1/\theta'-k$.
 
-We still need to explicitly determine the expressions for the partial density ${\mu'}_n^{(n+i)}$ of the factorial moment measure $M^{(n)}$. We will address this separately for the interference-limited (interference-only) channel and the interference-plus-noise-limited channel.
-
-
-\subsection{Partial density of the factorial moment measure in the interference-limited channel}
 
 \label{sec:partialdensitySIR}
 
 
-In this section, we characterize $\mu_n'^{(n+i)}$ and the order statistics of the STIR process through the Poisson-Dirichlet distribution $\text{PD}(0, \upsilon_{})$. The Poisson-Dirichlet distributions have unique properties that we do not describe exhaustively here. A necessary condition for the distribution is that the descending sequence $(y_{(1)}, y_{(2)}, \dots)$ satisfies $\sum_{i=1}^{\infty} y_{(i)} = 1$. This condition holds for the STIR ($N=0$) process; see \eqref{eq:totpow} and \eqref{eq:STINR}. 
-
-
-
-Let $(X_{t}, t \geq 0)$ be a \textit{gamma subordinator}, also known as the \textit{gamma process}. It is an increasing jump process that exhibits an infinite number of jumps within any given time interval. The increment of the process during a time interval follows a gamma distribution. This process is a special case of a Lévy process, characterized by the Lévy measure $\lambda(r) = {e^{-r}}/{r}$.
-
-Let $(X_{t}, t \geq 0)$ be a \textit{gamma subordinator}, or the \textit{gamma process}. It is a increasing jump process with infinite jumps within each time interval. The increments within each time interval are gamma distributed. It is a special case of the Lévy process characterized by the Lévy measure $\lambda(r) = e^{- r}/r$. Without a drift component, the Laplace transform of the gamma subordinator at time $t$ is given by
-\begin{align}
-  \label{eq:lapsubord}
-  \mathbb{E}(\exp\{-s X_{t}\}) &= \exp\left\{-{t} \int_0^{\infty}(1-e^{-s r})\frac{e^{-r}}{r} dr \right\}. \nonumber \\
-  &=(1+s)^{-t}.
-\end{align}
-But \eqref{eq:lapsubord} equals \eqref{eq:lapdef} at time $t=\tilde{\kappa}\upsilon_{} $. Hence, the total interference $I$ can be characterized by $X_{\tilde{\kappa} \upsilon_{}}$, which is again nothing but a gamma distributed r.v. of shape parameter $\tilde{\kappa}\upsilon_{}$. Let $V_1(X_{t}) \geq V_2(X_{t})\geq \dots \geq 0 $ denote the jumps of the gamma process at time $t$. We can formulate a random sequence
-\begin{equation}
-  \label{eq:relativesequence}
-  \left(\frac{V_1(X_{\tilde{\kappa}\upsilon_{}})}{X_{\tilde{\kappa}\upsilon_{}}},\frac{V_2(X_{\tilde{\kappa}\upsilon_{}})}{X_{\tilde{\kappa}\upsilon_{}}} \dots \right).
-\end{equation}
-of normalized jumps of the subordinator. Directly from the definition, it is the STIR process $(\mathsf{Z}'_{(1)},\mathsf{Z}'_{(2)} \dots)$. It has the Poisson-Dirichlet distribution PD$(0, \upsilon_{} \tilde{\kappa})$. 
-
-
-
-
 \begin{prop}
-  The density of the n\textit{th} factorial moment measure of the STIR process at the narrow-beam LEO with the Gaussian antenna beam is given by
+  The density of the n\textit{th} factorial moment measure of the STIR process at a LEO BS with a narrow Gaussian antenna beam is given by
   \begin{align}
     \label{eq:factorialmoment}
     \mu'^{(n)}(t_1',\dots,t'_n) = (\tilde{\kappa}\upsilon_{})^n\prod_{j=1}^n{t'}_{j}^{-1}\left(1- \sum_{j=1}^nt'_j \right)^{\tilde{\kappa}\upsilon_{}-1},       
   \end{align}
   whenever $t_1>\dots >t_n$ and $\sum_{i=1}^n t_i \leq 1$, and $0$ otherwise.
+  \begin{proof}
+    The total interference follows a gamma proces, hence the STIR process can be characterized by a Poisson-Dirichlet distribution PD$(0,\tilde{\kappa}\upsilon)$ that has the corresponding density.
+  \end{proof}
 \end{prop}
 
 The partial densities can be derived from the density of the $n$th factorial moment measure by integrating $\mu^{(n+i)}$ w.r.t. the last $i$ auxiliary variables (cf. \eqref{eq:differatemomentmeasure}).
@@ -424,49 +426,19 @@ the support of the density being in the region $\sum_{i=1}^nz'_i+iz'_n \leq 1$.
 
 
 
-
-
-
-
-\subsection{Partial density of the factorial moment measure in the interference-plus-noise-limited channel}
-
-
-In the interference-plus-noise-limited channel, we derive the partial densities through differentiating the factorial moment measure.
-
-\begin{prop}
-  The $n$-moment measure of the STINR process is given by
-  \begin{align}
-    \label{eq:nthmomentmeasureSTINR}
-      &M'^{(n)}(t'_1,\dots,t'_n) =\left(\tilde{\kappa} \upsilon_{}\right)^n \nonumber\\
-      &\times \int_1^{\infty}\dots\int_1^{\infty} e^{-N\hat{T}_n\sum\limits_{i=1}^nt'_iv_i} \left(1+\hat{T}_n\sum\limits_{i=1}^nt'_iv_i\right)^{-\tilde{\kappa}\upsilon_{}} \nonumber\\
-      &\times \frac{\prod\limits_{i=1}^nt'_i}{\sum\limits_{i=1}^nt'_iv_i}  \left[\sum\limits_{j=1}^n\frac{1}{\prod\limits_{i\neq j}\left(t'_i v_i+ t_i'\hat{T}_n\sum\limits_{k=1}^nt'_kv_k \right)} \right] dv_1 \dots dv_n,
-    \end{align}
-    where $\hat{T}_n= 1/(1-\sum_{i=1}^nt'_i)$.
-
-    \begin{proof}
-      The derivation is provided in Appendix \ref{app:factorialmomentmeasureoftheSTINR}.
-    \end{proof}
-
-\end{prop}
- 
-
-
-The partial densities $\mu_{n}'^{(n+i)}$ are obtained through the direct differentiation of $M'^{(n)}$, as shown in \eqref{eq:differatemomentmeasure}. While the differentiation of the integrand in \eqref{eq:nthmomentmeasureSTINR} is feasible and straightforward, it is a tedious task. This process can be performed using symbolic tools such as Mathematica. In this work, we omit the explicit representations of the differentiated integrands. The interference-only case can also be obtained in the manner presented in this section by setting $N=0$; however, the density given in Section \ref{sec:partialdensitySIR} is significantly less computationally intensive.
-
-
-\subsection{SIR and SINR under interference cancellation}
-
-
-
-
-Let $(u_{(1)}, \dots, u_{(k)}) \subset \mathcal{G}$ represent an ordered set of points in the GP, where $u_{(1)}$ denotes the strongest signal at the SBS. In the following, we consider the SINR of the $n$-th strongest signal, where $n \leq k$. The signals with indices in the set \\$n \ni \mathcal{K} \subset \{1, 2, \dots, k\}$ are canceled from the total interference. We denote the SINR under the interference cancellation (IC-SINR) as
+\subsection{SIR under interference cancellation
+}
+Let $(u_{(1)}, \dots, u_{(k)}) \subset \mathcal{G}$ represent an ordered set of points in the GP, where $u_{(1)}$ denotes the strongest signal at the LEO BS. In the following, we consider the SIR of the $n$-th strongest signal, $n \leq k$. The signals with indices in the set \\$n \ni \mathcal{K} \subset \{1, 2, \dots, k\}$ are canceled from the total interference. We denote the SIR under the interference cancellation (IC) as
 \begin{equation}
   \label{eq:IC-SINR}
-  \text{SINR}_{n,\mathcal{K}} \triangleq \frac{u_{(n)}}{N+I-\sum_{j \in \mathcal{K} } u_{(j)}}.
+  \text{SIR}=\text{SIR}_{n,\mathcal{K}} \triangleq \frac{u_{(n)}}{I-\sum_{j \in \mathcal{K} } u_{(j)}}.
+\end{equation}
+Under IC, we have the following identity
+\begin{equation}
+   \mathbb{P}(\text{SIR}_{n,\mathcal{K}} > \theta) = \mathbb{P}\left(\mathsf{Z}'_{(n)}+\theta'\sum_{j\in\mathcal{K}\setminus \{n\}}\mathsf{Z}'_{(j)} > \theta'\right).
 \end{equation}
 
 
-The IC-SINR can be formulated in terms of the STINR process:
 
 %% \begin{align}
 %%   \label{eq:IC-SINRcond}
@@ -476,78 +448,32 @@ The IC-SINR can be formulated in terms of the STINR process:
 %%   &\overset{(a)}{=} \mathbb{P} \left\{ \mathsf{Z}'_{(n)}+\theta'\sum^{j\neq n}_{j\in\{1,\dots,k\}}\mathsf{Z}'_{(j)} +>\theta'\right\}.
 %% \end{align}
 
-\begin{align}
-  \label{eq:IC-SINRcond}
-   & \mathds{1}\{\text{SINR}_{n,\mathcal{K}} > \theta \} = \mathds{1} \left\{ u_{(n)} >\theta\left(N+I-  \sum_{j \in \mathcal{K}} u_{(j)}\right)\right\} \nonumber\\
-  &\overset{}{=}\mathds{1} \left\{(1+\theta) \frac{u_{(n)}}{N+1}+ \theta \frac{\sum\limits^{}_{j\in \mathcal{K} \setminus \{n\}} u_{(j)}}{N+I}>\theta \right\} \nonumber \\
-  &\overset{(a)}{=} \mathds{1} \left\{ \mathsf{Z}'_{(n)}+\theta'\sum^{}_{j\in \mathcal{K} \setminus \{n\}}\mathsf{Z}'_{(j)} +>\theta'\right\}.
-\end{align}
 
+In the successive interference cancellation (SIC) scheme, the connection of the signal is established if it exceeds the threshold $\theta$, and otherwise the SIC of the first $k$ signals is attempted. In the SIC, if the SIR of the strongest signal reach $\tau$, we cancel it from the interference in the SIR of the second strongest signal. Further, if the second strongest signal SIR reach $\tau$, we cancel it from the interference in the SIR of the third strongest signal, and so on. Formally, the SIC requires a superposition of the conditions $\{\mathsf{Z}'_{(m)} + \tau' \sum_{j=1}^{m-1}\mathsf{Z}'_{(j)}> \tau'\}_m$ for all $m \in \{1,\dots,k\}$, where $\tau' = \tau/(1+\tau)$.
 
-In (a), we divide both sides by $(1+\theta)$, which leads to the final result by the equivalence $\theta' = \theta/(1+\theta)$. In the interference-limited channel, $\text{SIR}_{n,\mathcal{K}} \triangleq (\text{SINR}_{n,\mathcal{K}}|(N=0))$.
-
-
-
-
-In independent interference cancellation (IIC), we cancel and decode all signals independently: if the first $k$ signals exceed the SINR threshold $\tau$, \textit{i.e.}, $\mathsf{Z}_{(j)} > \tau$ for all $j \in \{1,\dots,k\}$, we can subtract the $k$ strongest signals from the interference. An improvement for the IIC is the successive interference cancellation (SIC). First, we cancel and decode the strongest signal, then decode the second strongest signal by subtracting the strongest and second strongest signal from the interference, and so on. The SIC of the $k$ strongest signals requires a superposition of conditions
-\begin{equation}
-  \label{eq:SIC-SINRcond}
-  \begin{cases}
-    &\mathsf{Z}'_{(1)} > \tau'\\
-    & \mathsf{Z}'_{(2)} + \tau' \mathsf{Z}'_{(1)}> \tau' \\
-    &\hspace{1cm}\dots \\
-    &\mathsf{Z}'_{(k)} + \tau' \sum_{j=1}^{k-1}\mathsf{Z}'_{(j)}> \tau'.
-  \end{cases}
-\end{equation}
-
-
-
-Let us consider that the $n$th strongest signal is decoded directly if its SINR exceeds $\theta$; otherwise, signal cancellation is attempted. We denote the SINR with independent interference cancellation as \text{IIC-SINR}$_{n,k}$, where interference from signals with indices in the set $[k] \triangleq \{1, \dots, k\}$ is canceled if each $(\mathsf{Z}_{(1)}, \dots  \mathsf{Z}_{(k)})$, reaches the signal separation threshold $\tau$, for which the sufficient condition is $\mathsf{Z}_{(k)}>\tau$. The coverage probability is defined by
-
-
-\begin{equation}
-  \label{eq:IIC-SINRprob}
-  \mathcal{P}^{(n,k)}_{\text{IIC}}(\theta,\tau) \triangleq \mathbb{P}\begin{Bmatrix} \text{SINR}_{n,[k]}(\theta)>\theta & \text{if } \mathsf{Z}_{(k)}>\tau \\
-\mathsf{Z}_{(n)}>\theta & \text{otherwise} \end{Bmatrix}.
-\end{equation}
-Similarly, under the SIC, SIC-SINR$_{n,k}$ coverage probability is defined by
-\begin{align}
-  \label{eq:SIC-SINRprob}
-  &\mathcal{P}^{(n,k)}_{\text{SIC}}(\theta,\tau)  \nonumber\\
-  &\triangleq \mathbb{P}\begin{Bmatrix} \text{SINR}_{n,[k]}(\theta)>\theta & \text{if for all }m\in\{1,\dots,k\}  \\
-    & \mathsf{Z}'_{(m)}+\tau'\sum\limits_{j =1}^{m-1}\mathsf{Z}'_{(j)}>\tau'\\
-\mathsf{Z}_{(n)}>\theta & \text{otherwise} \end{Bmatrix},
-\end{align}
-with $\tau'=\tau/(1+\tau)$.
-
-We have that $\mathcal{P}^{(k)}_{\text{SIC}}(\theta,\tau)\geq \mathcal{P}^{(k)}_{\text{IIC}}(\theta,\tau) \geq \mathcal{P}^{(1)}(\theta)$ for all $0<\tau < \theta$. To quantify performance improvement, we examine the $1$-coverage probability, which is only the SINR without any IC, to SINR-IIC and SINR-SIC coverage probabilities..
-
+We study the performance improvement of the SIC-SIR compared to the SIR without any IC.
 \begin{align}
   \label{DeltSICIIC}
-  \Delta^{(n,k)}_{\text{IIC}}(\theta,\tau) \triangleq \mathcal{P}^{(n,k)}_{\text{IIC}}(\theta,\tau)- \mathcal{P}^{(1)}(\theta),\nonumber\\
+  %% \Delta^{(n,k)}_{\text{IIC}}(\theta,\tau) \triangleq \mathcal{P}^{(n,k)}_{\text{IIC}}(\theta,\tau)- \mathcal{P}^{(1)}(\theta),\nonumber\\
   \Delta^{(n,k)}_{\text{SIC}}(\theta,\tau) \triangleq \mathcal{P}^{(n,k)}_{\text{SIC}}(\theta,\tau)- \mathcal{P}^{(1)}(\theta),
 \end{align}
-where the $1$-coverage probability  $\mathcal{P}^{(1)}(\theta)$ is given in $\eqref{eq:kprobability}$. Using the joint pdf of the $k$th STIR order statistics \eqref{eq:jointprobability}, we have for the SIC-SINR
+where the $1$-coverage probability  $\mathcal{P}^{(1)}(\theta)$ is given in $\eqref{eq:kprobability}$. Using the joint pdf of the $k$th STIR order statistics \eqref{eq:jointprobability}, we have for the SIC-SIR
 \begin{prop}
   \begin{align}
     \label{eq:SICprob}
-    & \Delta^{(n,k)}_{\text{SIC}}(\theta,\tau) \nonumber\\
-    &=\sum^{i_{\text{max}}}_{i=0} \int_{0}^{\theta'} \dots \int_{0}^{\theta'}\frac{(-1)^i}{i!}\prod_{m=1}^k\nonumber \\
-    &\hspace{0.2cm}\times \mathds{1}\left( z'_m+ \tau'\sum_{j=1}^{m-1} z'_j>\tau' \right)  \mathds{1}\left(z'_n+  \theta'\sum_{j\in [k] \setminus \{n\}} z'_j>\theta' \right) \nonumber \\
+    & \Delta^{(n,k)}_{\text{SIC}}(\theta,\tau) =\sum^{i_{\text{max}}}_{i=0} \int_{0}^{\theta'} \dots \int_{0}^{\theta'}\frac{(-1)^i}{i!}\prod_{m=1}^k\nonumber \\
+    &\hspace{0.2cm} \mathds{1}\left( z'_m+ \tau'\sum_{j=1}^{m-1} z'_j>\tau' \right)  \mathds{1}\left(z'_n+  \theta'\sum_{j\in [k] \setminus \{n\}} z'_j>\theta' \right) \nonumber \\
     & \hspace{0.2cm}\times \mathds{1}(z'_1>\dots>z'_k){\mu'}_k^{(k+i)}(z'_1,\dots,z'_k) d z'_1 \dots d z'_k,
   \end{align}
   with the upper summation limit bounded by $i_{\text{max}} < 1/\tau'-1=1/\tau.$ 
-  \begin{proof}
-    The expression follows from the joint pdf of the order statistics \eqref{eq:jointprobability} by imposing the conditions \eqref{eq:IC-SINRcond} and \eqref{eq:SIC-SINRcond}. We have abbreviated the upper bound of $i_{\text{max}}$ to $1/\tau$ from the upper limit given in \eqref{eq:jointprobability}: $i_{\text{max}} < 1/z'_{k}-k‰$, and $i_{\text{max}} \rightarrow \infty$ as $z'_k \rightarrow 0$. Fortunately, the l.h.s. conditioning limits the support of the integrand for small $z'_k$. Namely, we have that $z'_{k}+\tau'\sum_{j=1}^{k-1}z'_{j}>\tau'$. By simple algebra, $\sum_{j=1}^{k-1}z_{j}> 1-z_{k}/\tau'$. Recall the condition on the non-zero terms of the density of $M'^{(k+i)}$:  $\sum_{j=1}^k z'_{j}+i z'_{k} =\sum_{j=1}^{k-1}z'_{j} +z'_{k}+i z'_{k}  \leq 1$. The condition certainly does \textit{not} hold if $1-z_{k}/\tau'+ z'_{k}+i z'_{n}>1$. We arrive at the inequality $z'_{k} \left(-1/\tau' + 1 +i \right)>0$. Divide both sides by $z'_{k}$, and the general upper bound of $i$ follows.
+  %% \begin{proof}
+  %%   The expression follows from the joint pdf of the order statistics \eqref{eq:jointprobability} by imposing the conditions \eqref{eq:IC-SINRcond} and \eqref{eq:SIC-SINRcond}. We have abbreviated the upper bound of $i_{\text{max}}$ to $1/\tau$ from the upper limit given in \eqref{eq:jointprobability}: $i_{\text{max}} < 1/z'_{k}-k‰$, and $i_{\text{max}} \rightarrow \infty$ as $z'_k \rightarrow 0$. Fortunately, the l.h.s. conditioning limits the support of the integrand for small $z'_k$. Namely, we have that $z'_{k}+\tau'\sum_{j=1}^{k-1}z'_{j}>\tau'$. By simple algebra, $\sum_{j=1}^{k-1}z_{j}> 1-z_{k}/\tau'$. Recall the condition on the non-zero terms of the density of $M'^{(k+i)}$:  $\sum_{j=1}^k z'_{j}+i z'_{k} =\sum_{j=1}^{k-1}z'_{j} +z'_{k}+i z'_{k}  \leq 1$. The condition certainly does \textit{not} hold if $1-z_{k}/\tau'+ z'_{k}+i z'_{n}>1$. We arrive at the inequality $z'_{k} \left(-1/\tau' + 1 +i \right)>0$. Divide both sides by $z'_{k}$, and the general upper bound of $i$ follows.
 
 
 
 
-  \end{proof}
+  %% \end{proof}
 \end{prop}
-The SINR-IIC$_{(k)}$ case $\Delta^{(k)}_{\text{IIC}}(\theta,\tau)$ can be obtained by dropping the summation term inside the LHS condition in $\eqref{eq:SICprob}$, essentially bounding the lower integration limit to $\tau'$.
-
-
 
 \subsubsection{Density function of the SIR of the strongest signal}
 Combining \eqref{eq:densitySINR}, \eqref{eq:jointprobability}, and \eqref{eq:factorialmoment}, we get a closed form for the SIR pdf of the strongest signal in the region $z\geq 1$:
@@ -555,205 +481,32 @@ Combining \eqref{eq:densitySINR}, \eqref{eq:jointprobability}, and \eqref{eq:fac
 
 \begin{equation}
   \label{eq:SIR1}
-  f_{(1)}(z) = \frac {\tilde{\kappa}\upsilon_{}\left({z + 1} \right)^{-\tilde{\kappa}\upsilon_{}}} {z}.
+  f_{(1)}(z) =  {\tilde{\kappa}\upsilon_{}\left({z + 1} \right)^{-\tilde{\kappa}\upsilon_{}}}/{z}.
 \end{equation}
+%% \begin{align}
+%%   &\mathbb{E}(\text{SIR}_{1,\{1\}})  \geq\int_{1}^{\infty}f_{(1)}(z)zdz=\frac{\tilde{\kappa}\upsilon_{}2^{1-\tilde{\kappa}\upsilon_{} }}{\tilde{\kappa}\upsilon_{}-1}, \tilde{\kappa}\upsilon_{} >1, \\
+%%   &\mathbb{E}(\text{SIR}^2_{1,\{1\}}) \geq \int_{1}^{\infty}f_{(1)}(z)z^2dz = \frac{(\tilde{\kappa}\upsilon_{}) ^2 2^{1-\tilde{\kappa}\upsilon_{} }}{(\tilde{\kappa}\upsilon_{} - 2)  (\tilde{\kappa}\upsilon_{} - 1)}, \nonumber\\
+%%   &\hspace{6.5cm}\tilde{\kappa}\upsilon_{}>2 .
+%% \end{align}
+Furtheermore, one can evaluate in closed form the mean $\mathbb{E}(\text{SIR}_{1,\{1\}})  \geq\int_{1}^{\infty}f_{(1)}(z)zdz=2^{1-\tilde{\kappa}v}\tilde{\kappa}v/(\tilde{\kappa}\upsilon-1)$ and similarly the second moment $\mathbb{E}(\text{SIR}_{1,\{1\}})  \geq 2^{1-\tilde{\kappa}v}\tilde{\kappa}^2v^2/((\tilde{\kappa}\upsilon-1)(\tilde{\kappa}\upsilon-2))$, which diverge for $\tilde{\kappa}\upsilon\leq 1$ and $\tilde{\kappa}\upsilon\leq 2$, respectively. This implies that the variance of the SIR of the strongest signal is undefined for $\tilde{\kappa}b \leq 1$ and infinite for $1 <\tilde{\kappa}\upsilon \leq 2$. Infinite variance is not desirable, if we want to maintain consistent user experience.
+
+
+At the infinite-variance point $\tilde{\kappa}\upsilon =2$, we can numerically calculate the expected SIR: $\mathbb{E}(\text{SIR}) \approx 1.4$. However, to avoid the large variation in the LEO BS performance, we can utilize the SIC and increase $\upsilon_{} \tilde{\kappa}$. Namely, $\mathbb{E}(\text{SIC-SIR}) \approx 1.4$ for $\tilde{\kappa}\upsilon_{} = 3.8$, or equivalently, on average ${\kappa}\upsilon_{}=2.6$ effective UEs inside a $-3$ dB footprint. For ${\kappa}\upsilon_{}=2.6$, the variance $\text{Var(SIC-SIR)} = 2\int_{0}^{\infty}y\mathcal{P}_{\text{SIC}}^{(3)}(y,\tau)dy-$ $\left(\int_{0}^{\infty}\mathcal{P}_{\text{SIC}}^{(3)}(y,\tau)dy\right)^2 \approx 2.9$, which is a clear improvement in the consistency of the link while maintaining the link quality. We used $k=3$ transmitters in the SIC.
 
 
 
-
-\begin{align}
-  &\mathbb{E}(\text{SIR}_{1,\{1\}})  \geq\int_{1}^{\infty}f_{(1)}(z)zdz=\frac{\tilde{\kappa}\upsilon_{}2^{1-\tilde{\kappa}\upsilon_{} }}{\tilde{\kappa}\upsilon_{}-1}, \tilde{\kappa}\upsilon_{} >1, \\
-  &\mathbb{E}(\text{SIR}^2_{1,\{1\}}) \geq \int_{1}^{\infty}f_{(1)}(z)z^2dz = \frac{(\tilde{\kappa}\upsilon_{}) ^2 2^{1-\tilde{\kappa}\upsilon_{} }}{(\tilde{\kappa}\upsilon_{} - 2)  (\tilde{\kappa}\upsilon_{} - 1)}, \nonumber\\
-  &\hspace{6.5cm}\tilde{\kappa}\upsilon_{}>2 .
-\end{align}
-The mean and the second moment diverge for $\tilde{\kappa}b\leq 1$ and $\tilde{\kappa}b\leq 2$, respectively. This implies that the variance of the SIR of the strongest signal is undefined for $\tilde{\kappa}b \leq 1$ and infinite for $1 <\tilde{\kappa}b \leq 2$. The insight reflects that the user experience of the link quality varies significantly over the SBSs in the density region $\tilde{\kappa} \upsilon_{} \leq 2$. To achieve a consistent SBS performance, we have to make the network denser than what corresponds to $\tilde{\kappa} \upsilon_{} =2$. Recall $\eqref{eq:kappa}: \kappa = \tilde{\kappa}\log(2)$ reflects the average number of UEs inside a $3$ dB footprint of a SBS.  Additionally, the density is influenced by shadowing characteristics through the parameter  $0<\upsilon_{} \leq 1$. One way to improve user fairness is to through the IC, which can help maintain good average performance while reducing the variance in the SIR at the SBSs.
-
-\subsubsection{Numerical results regarding the average and variance of the SIR without interference cancellation and using IIC and SIC}
-
+  
 \begin{figure}[h]
   \centering
   \includegraphics[width=\linewidth]{kprobabilities.pdf}
-  \caption{The $k$-probabilities for $k \in \{1,2,3\}$ for $\kappa v=1.8$ (recall, $\kappa v$ corresponds to the average number of \textit{effective} UEs inside the SBS $3$ dB footprints). For the simulated values, the two-tier Gaussian mixture shadowing in the elevation angles $\epsilon \in (90 \degree, 40 \degree)$ correspond to $\upsilon_{} \in (0.85,0.53)$. Further, ${\kappa} \in (2.12,3.42)$ (recall, each $\kappa$ corresponds to the average number of \textit{any} UEs inside the SBS $3$ dB footprints) are chosen to match $\kappa v =1.8$ for the respective $\upsilon$.
+  \caption{The $k$-probabilities for $k \in \{1,2,3\}$ for $\kappa v=1.8$ (recall, $\kappa v$ corresponds to the average number of \textit{effective} UEs inside the SBS $3$ dB footprints). For the simulated values, the two-tier Gaussian mixture shadowing for $\kappa \upsilon_{} \in (1.8,2.6)$.
 } 
   \label{fig:antennapats}
 \end{figure}
 
 
-For this section, recall the partial density $\mu_k^{k+1}$ of the STIR process \eqref{eq:auxillary} \eqref{eq:factorialmoment} and \eqref{eq:IIC-SINRprob}-\eqref{eq:SICprob}.
 
-We observed that setting the signal detection threshold $\tau = -7$ \text{dB}, equivalent to $\tau = 10^{-7/10} \approx 0.2$, for the IIC and SIC, the respective values $k = 2$ and $k=3$ are good choices for the number of signals. We adopt these values as our baseline. In this section, we consider the SIR in of the strongest signal, \textit{i.e.}, $n=1$.
 
-For the IIC, $k = 2$ generally gives the best improvement for the coverage probability. However, for the SIC, $k = 4$ can yield better results than $k = 3$, particularly for small $\theta$.  
-
-It is crucial to note that using a smaller value of $\tau$ leads to different outcomes, typically increasing the optimal $k$. One challenge associated with the proposed mathematical expressions is that numerical computations become highly intensive as $\tau$ decreases and $k$ increases.
-
-
-For $\upsilon_{} \tilde{\kappa}=2$, the expected SIR of the strongest signal without IC is given by
-\begin{equation}
-  \mathbb{E}(\text{SIR}_{1,\{1\}})= \int_{0}^{\infty}\mathcal{P}^{(1)}(y)dy \approx 1.4.
-\end{equation}
- Recall, that the variance $\text{Var}(\text{SIR}_{1,\{1\}})=\infty$, which is not desirable of we want the users treated fairly, which would mean that each satellite would have a consistent SIR.
-
-  By increasing $\upsilon_{} \tilde{\kappa}$ (modifying $\lambda,h,\epsilon$ or $\varphi_{\text{RX}}$), we can reduce the variance in the SIR while maintaining the performance. For example, $ \mathbb{E}$(IIC-SINR$_{2}) \approx \mathbb{E}(\text{SIC-SINR}_{3}) \approx 1.4$ for $\upsilon_{} \tilde{\kappa}\in \{2.6,3.8\}$, respectively. The IIC-SINR variance is calculated by
-  $\text{Var}(\text{IIC-SINR}_{2})=\int_{0}^{\infty}y\mathcal{P}_{\text{IIC}}^{(2)}(y,\tau)dy -\left(\int_{0}^{\infty}\mathcal{P}_{\text{IIC}}^{(2)}(y,\tau)dy\right)^2  \approx 2.6$ Similarly, $\text{Var(SIC-SINR}_{3}) = 2\int_{0}^{\infty}y\mathcal{P}_{\text{SIC}}^{(3)}(y,\tau)dy-$ $\left(\int_{0}^{\infty}\mathcal{P}_{\text{SIC}}^{(3)}(y,\tau)dy\right)^2 \approx 2.9$. The standard deviation in both cases is below $2$, which is a remarkable improvement in the consistency of the link quality.
-
-
-
-  Increasing $\tilde{\kappa}$ does not necessarily require more dense satellite constellation to ensure each UE ideally having a serving BS. On the contrary, with interference cancellation, a single satellite might be able to serve multiple UEs with satisfactory SIR, especially when using SIC. In this work, we study this case for SIR-SIC.
-
-
-
-  The integration of $\mathbb{E}(\text{SIC-SINR}_{3}),\text{Var}(\text{IIC-SINR}_{2})$, and $\text{Var(SIC-SINR}_{3})$ with the native tools of Mathemtiaca seems hopeless. Hence, the integration in the IIC and SIC were conducted by trapezoidal method by first evaluating the SINR-IIC and SINR-SIC the ccdf values (\textit{i.e.} coverage probabilities) pointwise for sufficiently many uniformly spaced $y$, and conducting the approximate integral with the trapezoidal method implemented into a module in Mathematica.  
-
-  
-
-
-
-
-
-
-\section{Numerical results and the connection to the satellite communications}
-
-\label{sec:numericalresultsandconnectiontoLEO}
-While the analysis presented in Section \ref{sec:analysissec} fundamentally relies on a planar homogeneous PPP model with Gaussian path loss and functions as a stochastic geometry network model with defective exponential fading, holding intrinsic mathematical interest independent of its specific interpretation as a LEO setting, in this section, we explicitly define the geometrical interpretation of our system model as a narrow-beam LEO uplink. Furthermore, we align the defective exponential fading with log-normal shadowing using parameters representative of an urban scenario. We represent numerical results for the order statistics of both the SIR and the SINR and compare various IC scenarios: SIR-IIC, SIR-SIC, SINR-IIC, and SINR-SIC.
-
-
-
-\subsection{Gaussian mixture shadowing model}
-\label{sec:guassianmixture}
-
-Consider a two-tier $\{\text{LoS},\text{NLoS}\}$ (line-of-sight and non-line-of-sight) Gaussian mixture shadow fading model with the parameters $\mu_{\text{LoS}} = 0$ dB, $\sigma_{\text{LoS}} = 4$ dB, $\mu_{\text{NLoS}} = -26$ dB, and $\sigma_{\text{NLoS}} = 6$ dB. Under the model, assuming i.i.d. power shadow fading for all UEs, the typical shadowed transmit power $H_{\mathcal{M}\mathcal{L}\mathcal{N}}$ follows a log-normal mixture distribution;
-\begin{align}
-  \label{eq:tier2lognormal}
-  H_{\mathcal{M}\mathcal{L}\mathcal{N}} &\sim p_{\text{LoS}} \mathcal{L}\mathcal{N}(\rho \mu_{\text{LoS}}, (\rho \sigma_{\text{LoS}})^2) \nonumber \\
-  &\quad + p_{\text{NLoS}} \mathcal{L}\mathcal{N}(\rho \mu_{\text{NLoS}}, (\rho \sigma_{\text{NLoS}})^2),
-\end{align}
-with $p_{\text{NLoS}}= 1 - p_{\text{LoS}}$. Considering a natural base for the log-normal distribution, the constant $\rho \triangleq \log(10)/10$ normalizes the parameters $\mu_{\text{LoS}}, \sigma_{\text{LoS}}, \mu_{\text{NLoS}},$ and $\sigma_{\text{NLoS}}$, ensuring that the conditioned r.v.'s $10 \log_{10}(H_{\mathcal{MLN}}|\text{LoS})$ and $10 \log_{10}(H_{\mathcal{MLN}}|\text{NLoS})$ evaluate to r.v.'s following the normal distributions $\mathcal{N}(\mu_{\text{LoS}}, \sigma_{\text{LoS}}^2)$ and $\mathcal{N}(\mu_{\text{NLoS}}, \sigma_{\text{NLoS}}^2)$, respectively.
-
-
-
-Recall the exponential shadowing distribution \eqref{eq:defexp} used in the analysis. We introduce a scaling term, $\Upsilon$, to ensure that the means of the log-normal mixture distribution and the defective exponential distribution match: $\mathbb{E}(\Upsilon H_{\mathcal{MLN}}) = \mathbb{E}(H_{\text{Exp}}) = \upsilon$. By equating the first two moments of $H_{\text{Exp}}$ (l.h.s.) and $\Upsilon_{} H_{\mathcal{M} \mathcal{L}\mathcal{N}}$ (r.h.s.)
-\begin{equation}
-  \label{eq:matchingmoments}
-  \begin{cases}
-    &\upsilon_{} = \Upsilon_{} \left(p_{\text{LoS}} e^{\mu_{\text{LoS}} + \sigma_{\text{LoS}}^2/2} + p_{\text{NLoS}} e^{\mu_{\text{NLoS}} + \sigma_{\text{NLoS}}^2/2}\right)\\
-    &2\upsilon_{}= \Upsilon_{}^2 \left( p_{\text{LoS}} e^{2(\mu_{\text{LoS}} + \sigma_{\text{LoS}}^2)} + p_{\text{NLoS}} e^{2(\mu_{\text{NLoS}} + \sigma_{\text{NLoS}}^2)} \right), 
-  \end{cases}
-\end{equation}
- we can solve for the parameters
-\begin{align}
-  \label{eq:upsilon}
-  & \upsilon_{}= \frac{ 2\left( p_{\text{LoS}}e^{\mu_{\text{LoS}}+\sigma^2_{\text{LoS}}/2}+p_{\text{NLoS}}e^{\mu_{\text{NLoS}}+\sigma^2_{\text{NLoS}}/2} \right)^2}{p_{\text{LoS}}e^{2(\mu_{\text{LoS}}+\sigma_{\text{LoS}}^2)}+p_{\text{NLoS}}e^{2(\mu_{\text{NLoS}}+\sigma_{\text{NLoS}}^2)}}, \\
-    \label{eq:Upsilon}
-    &\Upsilon_{} = \frac{2\left(p_{\text{LoS}}e^{\mu_{\text{LoS}}+\sigma^2_{\text{LoS}}/2}+p_{\text{NLoS}}e^{\mu_{\text{NLoS}}+\sigma^2_{\text{NLoS}}/2}\right)}{p_{\text{LoS}}e^{2(\mu_{\text{LoS}}+\sigma_{\text{LoS}}^2)}+p_{\text{NLoS}}e^{2(\mu_{\text{NLoS}}+\sigma_{\text{NLoS}}^2)}}.
-\end{align}
-Recall equations \eqref{eq:totmean} and \eqref{eq:totvar}. Matching the first two moments of any fading distributions is equivalent to matching the mean and variance of the total interference using the corresponding fading distributions.
-
-
-Without loss of generality, we can set $\Upsilon = 1$ when studying SIR scenarios, since the scaling cancel (without noise).
-
-%% The parameter $0 \leq 1-\upsilon < 1$ of the defective exponential distribution encapsulates the occurrences of severe shadowing, where the signal is either blocked by an obstacle or destructively interfered by its multipath components to such an extent that the signal power approaches $-\infty$ dB in the Gaussian mixture shadowing model. Severe shadowing occurrences are particularly common at low elevation angles due to the presence of tall buildings and other large objects that prevent a clear line-of-sight (LoS), thus causing significant signal blockage.
-
-
-
-\subsection{Interpretation as a planar model of a narrow-beam LEO uplink}
-\label{sec:planarmodel}
-
-
-As indicated in Section \ref{sec:analysissec}, we employ an infinite flat-earth model.  This planar approximation effectively represents the spherical model described in Section \ref{sec:sphericalmodel}, particularly when considering the narrow Gaussian antenna beams $G(\cdot)$ at the satellite BSs. The UEs, acting as Earth transmitters, radiate omnidirectionally and are modeled as a homogeneous PPP $\Phi \subset \mathbb{R}^2$. The signals emitted by the UEs are subject to shadowing, which is modeled by i.i.d. exponential mixture r.v.'s $H_{\text{Exp}}$ with a non-zero probability measure at $0$, as described in the distribution function in \eqref{eq:defexp}. The typical satellite BS antenna boresight is directed towards the typical point; origin $\textit{o}$ (which is the closest focus point to the LEO BS in its elliptical footprint, \textit{i.e.}, the antenna boresight location on the Earth surface,  Hence, the typical LEO BS projected into the plane is located at $\textit{o}$ only if the elevation angle $\epsilon=90 \degree$. Figure \ref{fig:UEsontheplane} provides a geometric visualization of the planar LEO model.
-
-
-
-Although the Gaussian function is an idealized antenna pattern, it accurately models the main lobe ($-10$ dB lobe) of several antenna patterns, for example, the ITU-R LEO reference radiation pattern, as shown in Figure \ref{fig:antennapats}.
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=\linewidth]{antennapats.pdf}
-  \caption{Comparison between the Gaussian and \cite[ITU-R LEO reference radiation patterns]{ITURS1528}. The gain of the Gaussian antenna in the main lobe ($-10$ dB lobe) is almost identical to the ITU-R main lobe. However, there is a slight difference towards the edges of the main lobe. 
-    %Sidelobes have significant differences. 
-    The fast-decaying Gaussian beam essentially corresponds to the main lobe component.} 
-  \label{fig:antennapats}
-\end{figure}
-
-Due to the ergodicity of the PPP, the model can be interpreted as a snapshot of a single realization of $\Phi$, with the averaging being performed over uniformly distributed satellite BSs rather than the ensemble of $\Phi$. For example, the coverage probabilities describe the fraction of satellites that reach the threshold $\theta$.
-
-
-The scaling term $D_{h,\epsilon} \triangleq {\sin^2(\epsilon)}/{h}$, where $\epsilon$ is the elevation angle of the satellites and $h$ is the altitude, appears in the Gaussian path loss function $G(\cdot)$ in \eqref{eq:Gaussianantpat}. It represents the first-order coefficient in the Taylor expansion of the function $\|x\| \mapsto \varphi_x$, where $\varphi_x$ is the angle of the transmitter \( x \in \Phi \) w.r.t. the typical satellite BS antenna pattern boresight. Therefore, $\varphi_x$ can be approximated as $\varphi_x \approx D_{h,\epsilon} \|x\|$. It provides a considerably tight approximation for example for $\varphi_x=\varphi_{\text{RX}}=1.6 \degree$ (note that radians have to be used in the equations). However, the accuracy deteriorates for larger angles. Consequently, this work focuses exclusively on narrow antennas. The detailed derivation of this term is provided in Appendix \ref{app:constantD}.
-
-
-
-
-
-
-The parameter $\kappa=\tilde{\kappa} \log(2)$ in the density function \eqref{eq:GPdensity} of $\mathcal{G}$ can be interpreted as the approximate average number of UEs within the $-3$ dB footprint of a satellite. This interpretation is derived by solving $D_{h,\epsilon}\|x_{\text{RX}}\| = \varphi_{\text{RX}}$ for the distance $\|x_{\text{RX}}\|$ to the edge of the $-3$ dB footprint, and then applying the area formula for a circle along with Campbell's theorem.
-
-
-The constant $\tilde{\kappa} \upsilon_{}$, which encompasses the average number of UEs within a satellite $-3$ dB footprint $\kappa= \tilde{\kappa}\log(2)$, as well as the fraction of non-zero signals $\upsilon_{}$, appears as the only system parameter in the Laplace transform of $I$ \eqref{eq:lapdef} and the factorial moment measures of the STIR and STINR processes in \eqref{eq:factorialmoment} and \eqref{eq:nthmomentmeasureSTINR}, respectively. In other words, although $\tilde{\kappa}$ is connected to $h$, $\lambda$, $\varphi_{\text{RX}}$, and $\epsilon$, it is the sole spatial system parameter which independently determines the performance metrics alongside the shadowing-related parameter $\upsilon$.
-
-
-
-
-
-
-
-
-
-As previously mentioned, we consider a narrow Gaussian antenna beam that rapidly decays to zero. Consequently, the relevant UEs are located in close proximity to one another. The spatial path loss law for \textit{all transmitters} at the typical satellite BS is given by
-\begin{equation}
-  \label{eq:pathlosslaw}
-  \ell(\hat{d}_{h,\epsilon}) \triangleq \left( {\hat{d}_{h,\epsilon}}/{d_0} \right)^{\alpha},
-\end{equation}
-where $\hat{d}_{h,\epsilon} \triangleq {h}/{\sin(\epsilon)}$ is the distance between the origin $\textit{o}$ and the satellite BS (in $3$ dimensions). The distance depends on the altitude $h$ and the elevation angle $\epsilon$ and can be derived using simple geometry, as illustrated in Figure \ref{fig:systemmodel}. The power path loss exponent $\alpha \geq 0$. Additionally, the normalizing distance $d_0$ accounts for other factors influencing the path loss, such as the frequency band of the signals, and ensures that the path loss is dimensionless.
-
-Let $W\geq0$ be a dimensionless constant noise power at the satellite BS. Given that the conditions $$\frac{\Upsilon_{}u/\ell(\hat{d}_{h,\epsilon})}{\Upsilon_{}I/\ell(\hat{d}_{h,\epsilon}) + W}>\theta \text{ and } \frac{u}{I + W\ell(\hat{d}_{h,\epsilon})/\Upsilon_{}}> \theta,$$ for $u \in \mathcal{G}$, are equivalent, the spatial path loss can be incorporated into the noise term \begin{equation}N=W\ell(\hat{d}_{h,\epsilon})/\Upsilon_{}\end{equation} alongside the power scaling term $\Upsilon_{}$ introduced in Section \ref{sec:guassianmixture}---$N$ being introduced in \eqref{eq:SINR} and \eqref{eq:STINR} for the SINR and STINR processes, respectively. The constants $\ell(\hat{d}_{h,\epsilon})$ and $\Upsilon_{}$ are only relevant in the interference-plus-noise limited channel and can be disregarded for $W=N=0$.
-
-
-
-\textbf{To summarize Sections \ref{sec:guassianmixture} and \ref{sec:planarmodel}:} Adjusting $N$ and $\upsilon$ are the only requirements to interpret the analysis in Section \ref{sec:analysissec} as a narrow Gaussian beam LEO setting with Gaussian mixture shadowing:
-
-\begin{enumerate}
-    \item Set the noise value $N = {W \ell(\hat{d}_{h,\epsilon})}/{\Upsilon}$, for a noise power at the satellite $W \geq 0$, according to \eqref{eq:Upsilon} and \eqref{eq:pathlosslaw}.
-    \item Set $\upsilon \in (0,1]$ in $F_{\text{Exp}}(t) = \upsilon e^{-t}$ according to \eqref{eq:upsilon}.
-\end{enumerate}
-
-
-\begin{figure}[h]%
-  \centering
-  \subfloat[\centering  Interpretation of the \textit{planar} system model with the satellites in adjacent orbits serving an urban area and a realization of the UEs. The altitudes are not to scale.]{{\includegraphics[width=\linewidth]{UEsontheplane.png}}
-    \label{fig:UEsontheplane}%%
-  } 
-  \qquad
-  \subfloat[\centering The typical satellite BS as seen from the side. The transmitters are projected into line $(0, \infty)$ according to their norm.]{{\includegraphics[width=\linewidth]{drawing.png}}     \label{fig:systemmodel}} %%
-  \caption{The simplified narrow-beam LEO uplink system model. The satellite antenna boresight is oriented towards $\textit{o}$, the focus point of the elliptical footprint. The omnidirectionally transmitting UEs $\{x_i\}$ are located according to the HPPP on the plane. The nearest transmitter, $x_0$, is the served UE.}
-\end{figure}
-
-
-
-
-
-
-
-\subsection{Monte Carlso simulations of the spherical model}
-\label{sec:sphericalmodel}
-The accirate system model is the spherical model, where the UE are located on the spherical Earths surface according to a homogeneous PPP $\Theta$ of density $\lambda$. This p.p. can be constructed from $\Phi$ by the area preserving mapping and scaling the points $x \in \Phi$.
-\begin{align}
-  &\Phi_R\triangleq[-\pi,\pi]\times[-1,1]\cap\Phi\ni x/\rEarth=(x_1,x_i)/\rEarth\mapsto \nonumber\\
-  &(\rEarth,x_1,\arcsin x_2)\in \Theta \triangleq\{(\rEarth,\theta_{x_1},\varphi_{x_2})\}_{(x_1,x_2) \in \Phi_R},  \nonumber \\
-  &\text{ where } \rEarth\text{ is the mean radius of Earth and } \nonumber\\
- &\{\phi_{x_1}, \varphi_{x_2}\}_{(x_1,x_2) \in \Phi} \subset [-\pi,\pi] \times [-\pi/2,\pi/2]\text{ are angles}.
-\end{align}
-The UEs are radiating omnidirectionally at power $P=1$ and are multiplied by i.i.d. random shadowing $H_x$.
-
-The total received power at the typical satellite BS from the UEs in the PPP $\Theta \subset E \subset$ \textit{Earth surface} of density $\lambda$, with $E$ denoting the area above the horizon of the typical BS (\textit{i.e.} the locations that are visible to the typical satellite) is defined as
-
-\begin{equation}
-  \label{eq:mathringptot}
-  \mathring{I} \triangleq (\mathring{I}- \mathring{S}) + \mathring{S} =    \sum_{x \in \Theta} H_x\ell(d_x) = \sum_{x \in \Theta}  \frac{H_x G(\varphi_x)}{(d_x/d_0)^{\alpha}},
-\end{equation}
-where $H_{x} \sim H_{\mathcal{M}\mathcal{L}\mathcal{N}}$ are i.i.d. log-normal mixture r.v.'s inroduced in Section \ref{sec:guassianmixture}. The power path loss exponent $\alpha \geq 0$, and $(d_x/d_0)$ is the distance between the UE and the typical SBS, and the normalizing distance $d_0$ accounts for any other factors affecting the path loss, such as the frequency band of the signals, and casts the path loss to a dimensionless quantity.  As with the planar model, $\varphi_x$ is the angle between the LEO SBS antenna boresight and  $u \in \Theta$. However, in contrary to the planar model, this is calculated precicely the spherical model. $\mathring{S}$ is the strongest signal at the SBS and $\mathring{I}-\mathring{S}$ is the interference power from the other signals. The SIR and SINR $\mathring{S}/(\mathring{I}-\mathring{S})$,  $\mathring{S}/(\mathring{I}-\mathring{S}+N)$, are defined accordingly. The IC schemes SIR-IIC, SIR-SIC, SINR-IIC and SINR-SIC are simulated using these definitions through Monte Carlo simulations. 
-
-
-The spherical model \eqref{eq:mathringptot} is unnesessarily complex to work analytically. However, for the narrow-beamed antenna gain, such as the Gaussian antenna beam, the planar model introduced in Section \ref{sec:planarmodel} stricingly well approximates the spherical model, like demonstratet in CITE LÄHDE. In this work, we exclude the practical implementation details of the spherical model Monte Carlo simulations and refer to [???] for an extensive comparison between the planar model and the spherical model in the narrow beam LEO upink. Also, the presented results derived from the analysis based in the planar model are always compared to the Monte Carlo simulations based in the spherical model formulated in this section.
 
 
 
@@ -782,19 +535,6 @@ The spherical model \eqref{eq:mathringptot} is unnesessarily complex to work ana
 
 \appendices
 
-\section{Factorial moment measure of the STINR process}
-\label{app:factorialmomentmeasureoftheSTINR}
-Let $\mu_M \triangleq \sum_{i=1}^nt'_i/G(D_{h,\epsilon}\|x_i\|)=\sum_{i=1}^nt'_i/G(D_{h,\epsilon} r_i)$.
-
-\begin{align}
-  &M'^{(n)}(t'_1,\dots,t'_n) =(2 \pi \upsilon_{})^n\nonumber\\
-  & \times\int\limits_{(\R_+)^n} \mathcal{L}_N(\mu_MT_n)\mathcal{L}_I(\mu_MT_n)\mathcal{L}_D(\mu_MT_n) r_1 dr_1 \dots r_n dr_n\nonumber \\
-  &=(2 \pi \upsilon_{} \lambda)^n \int\limits_{(\R_+)^n} \exp\left\{-NT_n\sum\limits_{i=1}^nt'_i2^{\left(\frac{D_{h,\epsilon}r_i}{\varphi_{\text{RX}}}\right)^2}\right\} \nonumber\\
-  &\hspace{0.8cm}\times\left(1+T_n\sum\limits_{i=1}^nt'_i2^{\left(\frac{D_{h,\epsilon}r_i}{\varphi_{\text{RX}}}\right)^2}\right)^{- \tilde{\kappa}b} \frac{\prod\limits_{i=1}^nt'_i2^{\left(\frac{D_{h,\epsilon}r_i}{\varphi_{\text{RX}}}\right)^2}}{\sum\limits_{i=1}^nt'_i2^{\left(\frac{D_{h,\epsilon}r_i}{\varphi_{\text{RX}}}\right)^2}} \nonumber\\
-  &\hspace{0.8cm}\times  \left[\sum\limits_{j=1}^n\frac{1}{\prod\limits_{i\neq j}\left(t'_i 2^{\left(\frac{D_{h,\epsilon}r_i}{\varphi_{\text{RX}}}\right)^2}+ t_i'T_n\sum\limits_{k=1}^nt'_k2^{\left(\frac{D_{h,\epsilon}r_k}{\varphi_{\text{RX}}}\right)^2} \right)} \right] \nonumber\\
-  &\hspace{0.8cm}\times r_1 dr_1 \dots r_n dr_n.
-\end{align}
-The final results follows from the substitutions $\{u_i\}_{i= 1}^n$= $\{r_i D_{h,\epsilon}/\varphi_{\text{RX}}\}_{i= 1}^n$ and $\{v_i\}_{i= 1}^n$ =$\{ 2^{u^2_i}\}_{i= 1}^n$.
 
 
 
@@ -822,9 +562,6 @@ where (a) follows from Pythagoras's theorem, and (b) is standard trigonometry.
 
 
 
-\begin{remark}
-  Not all all two-tier log-normal shadowing scenarios can be characterized and approximated with a one-tier manner with the distribution \eqref{eq:defexp}. For example $\upsilon_{}$ might be not within the region $0<\upsilon_{} \leq 1$. This can occur, for example, in case of significant differences in the LoS or NLoS variances in the shadowing, like is the case in the suburban/??? sceneario in the 3GPP specs. We could approximate separately the LoS and NLoS components by the exponential function, leading to two i.i.d. gamma processes of the LoS and NLoS component transmitter. Treating such two separate gamma process's (representing the aggregate STIR) of the two separate shadowing tiers can be challenging, and will be left out of the scope of this paper. Anyhow, the approach presented in the paper works for the urban scenario with the 3GPP specs, because the two-tier log-normal shadowing can be in a reasonable manner approximated by a one-tier shadowing model using a signle defective exponential distribution.
-\end{remark}
 
 
 \bibliographystyle{IEEEtran}

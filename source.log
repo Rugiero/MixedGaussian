@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.10.9)  17 FEB 2025 01:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.10.9)  18 FEB 2025 04:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -571,11 +571,7 @@ File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
 LaTeX Warning: Unused global option(s):
     [lettersize].
 
-(./source.aux
-
-LaTeX Warning: Label `fig:antennapats' multiply defined.
-
-)
+(./source.aux)
 \openout1 = `source.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 49.
@@ -658,184 +654,155 @@ LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 6
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texm
-f-dist/fonts/enc/dvips/base/8r.enc}
-
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 112--113
+)
+Underfull \hbox (badness 10000) in paragraph at lines 107--110
 []|$\OT1/cmr/m/n/8 0\OML/cmm/m/it/8 :\OT1/cmr/m/n/8 028[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 114--115
-[]|$\OMS/cmsy/m/n/8 f\OT1/cmr/m/n/8 (\OML/cmm/m/it/8 R[]; ^^^[]; '[]\OT1/cmr/m/
-n/8 )\OMS/cmsy/m/n/8 g$
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 115--116
+Underfull \hbox (badness 10000) in paragraph at lines 110--111
 []|$\OT1/cmr/m/n/8 (1\OML/cmm/m/it/8 :\OT1/cmr/m/n/8 66\OML/cmm/m/it/8 ; \OT1/c
 mr/m/n/8 8\OML/cmm/m/it/8 :\OT1/cmr/m/n/8 81)
  []
 
 
-Overfull \hbox (2.34819pt too wide) in paragraph at lines 116--117
+Overfull \hbox (2.34819pt too wide) in paragraph at lines 111--114
 []|$[] []
  []
 
 
-Underfull \hbox (badness 6252) in paragraph at lines 121--121
+Underfull \hbox (badness 6252) in paragraph at lines 116--116
 []|\OT1/ptm/m/n/8 Mean of the LoS com-po-nent of
  []
 
-[2]
-Overfull \hbox (1.22964pt too wide) detected at line 216
-[]
+
+Underfull \hbox (badness 10000) in paragraph at lines 125--126
+[]|$\OT1/cmr/m/n/8 (0\OML/cmm/m/it/8 :\OT1/cmr/m/n/8 2\OML/cmm/m/it/8 ; \OT1/cm
+r/m/n/8 10)$ 
  []
 
-[3]
-<plotdensities.pdf, id=132, 389.2944pt x 330.5148pt>
-File: plotdensities.pdf Graphic file (type pdf)
-<use plotdensities.pdf>
-Package pdftex.def Info: plotdensities.pdf  used on input line 273.
-(pdftex.def)             Requested size: 252.0pt x 213.95453pt.
- [4 <./plotdensities.pdf>]
-LaTeX Font Info:    Trying to load font information for U+dsrom on input line 3
-34.
-
-(/usr/share/texlive/texmf-dist/tex/latex/doublestroke/Udsrom.fd
-File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
-) [5] [6]
-Overfull \hbox (0.7719pt too wide) detected at line 538
-[]
- []
-
-
-LaTeX Warning: Command \textperthousand invalid in math mode on input line 541.
-
-
-
-LaTeX Warning: Command \textperthousand invalid in math mode on input line 541.
-
-
-Missing character: There is no ‡ in font cmr10!
-<kprobabilities.pdf, id=217, 385.19911pt x 331.9602pt>
-File: kprobabilities.pdf Graphic file (type pdf)
-<use kprobabilities.pdf>
-Package pdftex.def Info: kprobabilities.pdf  used on input line 575.
-(pdftex.def)             Requested size: 252.0pt x 217.17465pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[7] [8 <./kprobabilities.pdf>]
-<antennapats.pdf, id=261, 385.92181pt x 229.0959pt>
-File: antennapats.pdf Graphic file (type pdf)
-<use antennapats.pdf>
-Package pdftex.def Info: antennapats.pdf  used on input line 671.
-(pdftex.def)             Requested size: 252.0pt x 149.59921pt.
-
-
-LaTeX Warning: Citation `ITURS1528' on page 9 undefined on input line 674.
-
-
-LaTeX Warning: Citation `ITURS1528' on page 9 undefined on input line 674.
-
-<UEsontheplane.png, id=278, 589.402pt x 376.607pt>
+<UEsontheplane.png, id=56, 589.402pt x 376.607pt>
 File: UEsontheplane.png Graphic file (type png)
 <use UEsontheplane.png>
-Package pdftex.def Info: UEsontheplane.png  used on input line 724.
+Package pdftex.def Info: UEsontheplane.png  used on input line 139.
 (pdftex.def)             Requested size: 252.0pt x 161.01839pt.
-LaTeX Font Info:    Trying to load font information for OT1+phv on input line 7
-24.
+LaTeX Font Info:    Trying to load font information for OT1+phv on input line 1
+39.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
 )
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 724.
-<drawing.png, id=280, 216.0873pt x 147.9126pt>
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 139.
+<drawing.png, id=58, 216.0873pt x 147.9126pt>
 File: drawing.png Graphic file (type png)
 <use drawing.png>
-Package pdftex.def Info: drawing.png  used on input line 726.
+Package pdftex.def Info: drawing.png  used on input line 141.
 (pdftex.def)             Requested size: 252.0pt x 172.50182pt.
 
-Overfull \hbox (3.50006pt too wide) in paragraph at lines 724--727
+Overfull \hbox (3.50006pt too wide) in paragraph at lines 139--142
  [][] 
  []
 
 
-Overfull \hbox (3.50006pt too wide) in paragraph at lines 724--727
+Overfull \hbox (3.50006pt too wide) in paragraph at lines 139--142
  [][] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[9 <./antennapats.pdf>] [10 <./UESontheplane.png> <./drawing.png>]
-<triangle.pdf, id=318, 443.97871pt x 285.2256pt>
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-
+dist/fonts/enc/dvips/base/8r.enc}
+
+
+] [2 <./UESontheplane.png> <./drawing.png>]
+<plotdensities.pdf, id=103, 396.0396pt x 327.86491pt>
+File: plotdensities.pdf Graphic file (type pdf)
+<use plotdensities.pdf>
+Package pdftex.def Info: plotdensities.pdf  used on input line 274.
+(pdftex.def)             Requested size: 252.0pt x 208.62215pt.
+
+[3 <./plotdensities.pdf>]
+LaTeX Font Info:    Trying to load font information for U+dsrom on input line 3
+65.
+
+(/usr/share/texlive/texmf-dist/tex/latex/doublestroke/Udsrom.fd
+File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
+) [4]
+<kprobabilities.pdf, id=161, 385.19911pt x 331.9602pt>
+File: kprobabilities.pdf Graphic file (type pdf)
+<use kprobabilities.pdf>
+Package pdftex.def Info: kprobabilities.pdf  used on input line 501.
+(pdftex.def)             Requested size: 252.0pt x 217.17465pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<triangle.pdf, id=163, 443.97871pt x 285.2256pt>
 File: triangle.pdf Graphic file (type pdf)
 <use triangle.pdf>
-Package pdftex.def Info: triangle.pdf  used on input line 817.
+Package pdftex.def Info: triangle.pdf  used on input line 557.
 (pdftex.def)             Requested size: 176.39923pt x 113.32222pt.
-
 No file source.bbl.
-[11
+[5 <./kprobabilities.pdf> <./triangle.pdf
 
- <./triangle.pdf>] (./source.aux)
+pdfTeX warning: pdflatex (file ./triangle.pdf): PDF inclusion: multiple pdfs wi
+th page group included in a single page
+>] (./source.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
 
 
-LaTeX Warning: There were undefined references.
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 
-LaTeX Warning: There were multiply-defined labels.
+Package rerunfilecheck Warning: File `source.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
 
-Package rerunfilecheck Info: File `source.out' has not changed.
-(rerunfilecheck)             Checksum: FB2604FAB146BFA5C8BA189BD473231B;5821.
+Package rerunfilecheck Info: Checksums for `source.out':
+(rerunfilecheck)             Before: D1583597F0DFAB911AC4E137FEE56187;3056
+(rerunfilecheck)             After:  C8B1FF26E1B3AA09F33BC3ED2B9BF173;3056.
  ) 
 Here is how much of TeX's memory you used:
- 14012 strings out of 476106
- 225112 string characters out of 5793933
- 1960975 words of memory out of 5000000
- 35715 multiletter control sequences out of 15000+600000
+ 13950 strings out of 476106
+ 224102 string characters out of 5793933
+ 1963975 words of memory out of 5000000
+ 35682 multiletter control sequences out of 15000+600000
  611550 words of font info for 137 fonts, out of 8000000 for 9000
  63 hyphenation exceptions out of 8191
- 75i,17n,79p,2256b,585s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,15n,79p,2256b,586s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/doub
-lestroke/dsrom10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/s
-ymbols/msbm7.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/font
-s/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/tim
-es/utmri8a.pfb>
-Output written on source.pdf (11 pages, 1209107 bytes).
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/doublestroke/dsrom10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helv
+etic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/urw/times/utmri8a.pfb>
+Output written on source.pdf (5 pages, 969383 bytes).
 PDF statistics:
- 481 PDF objects out of 1000 (max. 8388607)
- 375 compressed objects within 4 object streams
- 89 named destinations out of 1000 (max. 500000)
- 175 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 319 PDF objects out of 1000 (max. 8388607)
+ 235 compressed objects within 3 object streams
+ 60 named destinations out of 1000 (max. 500000)
+ 130 words of extra memory for PDF output out of 10000 (max. 10000000)
 
