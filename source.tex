@@ -95,8 +95,8 @@ The steady rise of aerial communication networks, including LEO networks, owing 
     \begin{tabular}{|c|p{4.5cm}|p{1.9cm}|}
       \multicolumn{3}{c}{\textbf{Principal symbols the values and units in the numerical results}} \\
       \toprule
-      \multicolumn{3}{|c|}{\scriptsize{For a dimensional number, we distinguish between the system of units and}} \\
-      \multicolumn{3}{|c|}{\scriptsize{ denote ``SI'' and ``[non-SI].'' It is advised to use SI units in the equations.}} \\ 
+      \multicolumn{3}{|c|}{\scriptsize{By $\propto$, we denote the proportionality to a variable. For a dimensional number, we}} \\
+      \multicolumn{3}{|c|}{\scriptsize{distinguish between the system of units by denoting denote ``SI'' and ``[non-SI].'' }} \\ 
       \hline
       Symbol& Explanation &Values and units
       \\ 
@@ -111,7 +111,7 @@ The steady rise of aerial communication networks, including LEO networks, owing 
       $\epsilon$& The typical LEO BS elevation angle w.r.t $\textit{o}$.&$\left({\pi}/{2},{2\pi}/{9}\right)\text{ rad}\break=(90,40)[\degree]$\\
       %% $\kappa$  & Average number of  the LEO BS $-3 \text{ dB footprints};$& \\
       %% ${\tilde{\kappa}}$ &  $\kappa/\log(2)$.& \\
-      $p_{\text{LoS}}$& LoS probability; $p_{\text{LoS}} = p_{\text{LoS}}(\epsilon)$. & $(0.99,0.61)$\\
+      $p_{\text{LoS}}$& LoS probability; $p_{\text{LoS}} \propto \sin(\epsilon)$. & $(0.99,0.61)$\\
 %      $p_{\text{NLoS}}$& NLoS probability; $1-p_{\text{LoS}}$. & \\
       $\mu_{\text{LoS}}$& Mean of the LoS component of the Gaussian mixture shadow fading model. & $0$ [dB] \\
       $\mu_{\text{NLoS}}$& Mean of the NLoS component. & $-26$ [dB] \\
@@ -121,7 +121,9 @@ The steady rise of aerial communication networks, including LEO networks, owing 
       %% $H_{\text{Exp}}$ & A simple approximation of (mean normalized) $H_{\mathcal{M}\mathcal{L}\mathcal{N}}$. It has a defective exponential cdf entirely characterized by the atomic prob. measure at $0$; $1-\upsilon$.&\\
       %% $\upsilon$ & $\mathbb{P}(H_{\text{Exp}}>0)$ $=1-\mathbb{P}(H_{\text{Exp}}=0)$; $\upsilon = \upsilon(p_{\text{LoS}}(\epsilon))=v(\epsilon)$. &$(0.85,0.53)$ \\
       %% $\kappa \upsilon$ & The mean number of effective UEs inside the $-3$ dB footprints. \textbf{The parameter determines the theoretical SIR performance.}&$ \{1.8,2.6\}$ \\
-      $\kappa \upsilon$& Average number of effective UEs inside a $-3$ dB footprint.& 2.6 \\
+      $\kappa$& Average number of UEs inside a $-3$ dB footprint; $\kappa \propto \lambda, \kappa \propto 1/\sin^4(\epsilon)$.& 2.6 \\
+      $\upsilon$&Fraction of effective UEs; $\upsilon \propto \sin(\epsilon)$. & \\      
+      $\kappa \upsilon$& Average number of effective UEs inside a $-3$ dB footprint $\kappa \upsilon \propto 1/\sin^3(\epsilon)$.& $()$ \\
       $\theta$ & SIR threshold of a successful transmission.&$(0.2,10)$  \break \hfill =$(-7,10)$ [dB]   \\
       $\tau$ & SIR threshold of a successful interference cancellation.& $0.2$ \hfill \break $=-7\text{ [dB]}$\\  
       \hline
@@ -154,7 +156,7 @@ The steady rise of aerial communication networks, including LEO networks, owing 
 \label{sec:gainprocess}
 
 
-Considering a uplink, the UEs follow a homogeneous PPP $\Phi \subset \R^2$ of density $\lambda$. The BSs form an independent homogeneous p.p. possibly with different density than the UEs. Because of the translation invariancy of the PPP, all location are statistically equivalent, and we define the origin $\textit{o}$ to represents the typical LEO BS footprint focus pointxxx.
+Considering a uplink, the UEs follow a homogeneous PPP $\Phi \subset \R^2$ of density $\lambda$. The BSs form an independent homogeneous p.p. possibly with different density than the UEs. Because of the translation invariancy of the PPP, all location are statistically equivalent, and we define the origin $\textit{o}$ to represents the typical LEO BS footprint focus point.
 
 The path loss is given over the planar distance $r \in [0, \infty)$ as a Gaussian function
   \begin{equation}
@@ -252,7 +254,7 @@ Since the variables $\{H_x\}_{x \in \Phi}$ are i.i.d., we can denote the shadowi
     \label{eq:GPdensity}
     \lambda_{\mathcal{G}}(t) = \tilde{\kappa} {F_H(t)}/{t}, \quad t \in (0, \infty),
   \end{equation}
-  where $\tilde{\kappa} = {\kappa}/{\log(2)}$ and $\kappa \triangleq \pi \lambda \left({\varphi_{\text{RX}}}/{D_{h,\epsilon}}\right)^2$ is approximately the average number of UEs inside a $-3$ dB footprint.
+  where $\tilde{\kappa} = {\kappa}/{\log(2)}$ and $\kappa \triangleq \pi \lambda \left({\varphi_{\text{RX}}}h/{\sin^2(\epsilon)}\right)^2$ is approximately the average number of UEs inside a $-3$ dB footprint.
 
   
   \begin{proof}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.10.9)  18 FEB 2025 04:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.21)  18 FEB 2025 23:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -676,7 +676,7 @@ Underfull \hbox (badness 6252) in paragraph at lines 116--116
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 125--126
+Underfull \hbox (badness 10000) in paragraph at lines 127--128
 []|$\OT1/cmr/m/n/8 (0\OML/cmm/m/it/8 :\OT1/cmr/m/n/8 2\OML/cmm/m/it/8 ; \OT1/cm
 r/m/n/8 10)$ 
  []
@@ -684,27 +684,27 @@ r/m/n/8 10)$
 <UEsontheplane.png, id=56, 589.402pt x 376.607pt>
 File: UEsontheplane.png Graphic file (type png)
 <use UEsontheplane.png>
-Package pdftex.def Info: UEsontheplane.png  used on input line 139.
+Package pdftex.def Info: UEsontheplane.png  used on input line 141.
 (pdftex.def)             Requested size: 252.0pt x 161.01839pt.
 LaTeX Font Info:    Trying to load font information for OT1+phv on input line 1
-39.
+41.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
 )
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 139.
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 141.
 <drawing.png, id=58, 216.0873pt x 147.9126pt>
 File: drawing.png Graphic file (type png)
 <use drawing.png>
-Package pdftex.def Info: drawing.png  used on input line 141.
+Package pdftex.def Info: drawing.png  used on input line 143.
 (pdftex.def)             Requested size: 252.0pt x 172.50182pt.
 
-Overfull \hbox (3.50006pt too wide) in paragraph at lines 139--142
+Overfull \hbox (3.50006pt too wide) in paragraph at lines 141--144
  [][] 
  []
 
 
-Overfull \hbox (3.50006pt too wide) in paragraph at lines 139--142
+Overfull \hbox (3.50006pt too wide) in paragraph at lines 141--144
  [][] 
  []
 
@@ -719,12 +719,12 @@ dist/fonts/enc/dvips/base/8r.enc}
 <plotdensities.pdf, id=103, 396.0396pt x 327.86491pt>
 File: plotdensities.pdf Graphic file (type pdf)
 <use plotdensities.pdf>
-Package pdftex.def Info: plotdensities.pdf  used on input line 274.
+Package pdftex.def Info: plotdensities.pdf  used on input line 276.
 (pdftex.def)             Requested size: 252.0pt x 208.62215pt.
 
 [3 <./plotdensities.pdf>]
 LaTeX Font Info:    Trying to load font information for U+dsrom on input line 3
-65.
+67.
 
 (/usr/share/texlive/texmf-dist/tex/latex/doublestroke/Udsrom.fd
 File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
@@ -732,7 +732,7 @@ File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
 <kprobabilities.pdf, id=161, 385.19911pt x 331.9602pt>
 File: kprobabilities.pdf Graphic file (type pdf)
 <use kprobabilities.pdf>
-Package pdftex.def Info: kprobabilities.pdf  used on input line 501.
+Package pdftex.def Info: kprobabilities.pdf  used on input line 503.
 (pdftex.def)             Requested size: 252.0pt x 217.17465pt.
 
 
@@ -741,7 +741,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <triangle.pdf, id=163, 443.97871pt x 285.2256pt>
 File: triangle.pdf Graphic file (type pdf)
 <use triangle.pdf>
-Package pdftex.def Info: triangle.pdf  used on input line 557.
+Package pdftex.def Info: triangle.pdf  used on input line 559.
 (pdftex.def)             Requested size: 176.39923pt x 113.32222pt.
 No file source.bbl.
 [5 <./kprobabilities.pdf> <./triangle.pdf
@@ -753,26 +753,16 @@ th page group included in a single page
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `source.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `source.out':
-(rerunfilecheck)             Before: D1583597F0DFAB911AC4E137FEE56187;3056
-(rerunfilecheck)             After:  C8B1FF26E1B3AA09F33BC3ED2B9BF173;3056.
+Package rerunfilecheck Info: File `source.out' has not changed.
+(rerunfilecheck)             Checksum: C8B1FF26E1B3AA09F33BC3ED2B9BF173;3056.
  ) 
 Here is how much of TeX's memory you used:
- 13950 strings out of 476106
- 224102 string characters out of 5793933
+ 13950 strings out of 475509
+ 224102 string characters out of 5776664
  1963975 words of memory out of 5000000
- 35682 multiletter control sequences out of 15000+600000
+ 35718 multiletter control sequences out of 15000+600000
  611550 words of font info for 137 fonts, out of 8000000 for 9000
- 63 hyphenation exceptions out of 8191
+ 399 hyphenation exceptions out of 8191
  75i,15n,79p,2256b,586s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/shar
@@ -799,7 +789,7 @@ etic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a
 e/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/ty
 pe1/urw/times/utmri8a.pfb>
-Output written on source.pdf (5 pages, 969383 bytes).
+Output written on source.pdf (5 pages, 970897 bytes).
 PDF statistics:
  319 PDF objects out of 1000 (max. 8388607)
  235 compressed objects within 3 object streams
