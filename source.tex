@@ -95,8 +95,8 @@ The steady rise of aerial communication networks, including LEO networks, owing 
     \begin{tabular}{|c|p{4.5cm}|p{1.9cm}|}
       \multicolumn{3}{c}{\textbf{Principal symbols the values and units in the numerical results}} \\
       \toprule
-      \multicolumn{3}{|c|}{\scriptsize{By $\propto$, we denote the proportionality to a variable. For a dimensional number, we}} \\
-      \multicolumn{3}{|c|}{\scriptsize{distinguish between the system of units by denoting denote ``SI'' and ``[non-SI].'' }} \\ 
+      \multicolumn{3}{|c|}{\scriptsize{We denote (approximate) proportionality ``$\propto$'' or equality ``$=$'' to a variable.}} \\
+      \multicolumn{3}{|c|}{\scriptsize{For a dimensional number, we denote the units ``SI'' and ``[non-SI].'' }} \\ 
       \hline
       Symbol& Explanation &Values and units
       \\ 
@@ -104,10 +104,9 @@ The steady rise of aerial communication networks, including LEO networks, owing 
       $h$ & Receiving LEO BS altitudes. &$1200$ km  \\
 %      $G[\cdot]$ &Gaussian antenna gain of a BS.&$\R_+ \rightarrow (0,1)$ \\
       $\alpha$ &Power path loss exponent.& $4$\\
-      $\varphi_{\text{RX}}$ & Half-width of a LEO BS $-3$ dB antenna gain.&$0.028 \text{ rad}\break =1.6[\degree]$ \\
       %% $\Phi\subset \R^2$ &Homogeneous PPP on planar Earth. & $\{(x_i,y_i)\}$ km\\
       %% $\Theta \subset \R^3 $ & Homogeneous PPP on spherical Earth surface of average radius $\rEarth=6378$. &$\{(\rEarth,\phi_i,\varphi_i)\}$\break (km, rad, rad) \\
-      $\lambda$ & The density of $\Phi$ and $\Theta$, \textit{i.e.}, the mean number of UEs inside an unit area.&$(1.66,8.81)\break10^{-4}\text{/km}^2$\\
+      $\lambda$ & The density of $\Phi$ and $\Theta$, \textit{i.e.}, the mean number of UEs inside an unit area.&$\{4.6,8.8\}\break10^{-4}\text{/km}^2$\\
       $\epsilon$& The typical LEO BS elevation angle w.r.t $\textit{o}$.&$\left({\pi}/{2},{2\pi}/{9}\right)\text{ rad}\break=(90,40)[\degree]$\\
       %% $\kappa$  & Average number of  the LEO BS $-3 \text{ dB footprints};$& \\
       %% ${\tilde{\kappa}}$ &  $\kappa/\log(2)$.& \\
@@ -121,11 +120,12 @@ The steady rise of aerial communication networks, including LEO networks, owing 
       %% $H_{\text{Exp}}$ & A simple approximation of (mean normalized) $H_{\mathcal{M}\mathcal{L}\mathcal{N}}$. It has a defective exponential cdf entirely characterized by the atomic prob. measure at $0$; $1-\upsilon$.&\\
       %% $\upsilon$ & $\mathbb{P}(H_{\text{Exp}}>0)$ $=1-\mathbb{P}(H_{\text{Exp}}=0)$; $\upsilon = \upsilon(p_{\text{LoS}}(\epsilon))=v(\epsilon)$. &$(0.85,0.53)$ \\
       %% $\kappa \upsilon$ & The mean number of effective UEs inside the $-3$ dB footprints. \textbf{The parameter determines the theoretical SIR performance.}&$ \{1.8,2.6\}$ \\
-      $\kappa$& Average number of UEs inside a $-3$ dB footprint; $\kappa \propto \lambda, \kappa \propto 1/\sin^4(\epsilon)$.& 2.6 \\
-      $\upsilon$&Fraction of effective UEs; $\upsilon \propto \sin(\epsilon)$. & \\      
-      $\kappa \upsilon$& Average number of effective UEs inside a $-3$ dB footprint $\kappa \upsilon \propto 1/\sin^3(\epsilon)$.& $()$ \\
-      $\theta$ & SIR threshold of a successful transmission.&$(0.2,10)$  \break \hfill =$(-7,10)$ [dB]   \\
-      $\tau$ & SIR threshold of a successful interference cancellation.& $0.2$ \hfill \break $=-7\text{ [dB]}$\\  
+      $\varphi_{\text{RX}}$ & Half-width of a LEO BS $-3$ dB antenna gain. $\varphi_{\text{RX}} = 0.028 \sin^{3/2}(\epsilon).$&$(.014,.028) \text{ rad}\hfill\break (0.8,1.6)[\degree]$ \\      
+      $\kappa$& Average number of UEs inside a $-3$ dB footprint; $\kappa \propto \lambda, \kappa \propto 1/\sin(\epsilon)$.& 2.6 \\
+      $\upsilon$&Fraction of effective UEs; $\hfill \break\upsilon \propto p_{\text{LoS}} \propto\sin(\epsilon),  \upsilon \propto \lambda$. & \\      
+      $\kappa \upsilon$& Average number of effective UEs inside a $-3$ dB footprint; $\kappa \upsilon \propto \lambda $ .& $\{1.4,2.6 \}$ \\
+      $\theta$ & SIR threshold of a successful transmission.&$(0.2,10)$  \break \hfill $(-7,10)$ [dB]   \\
+      $\tau$ & SIR threshold of a successful interference cancellation.& $0.2$, $-7\text{ [dB]}$\\  
       \hline
     \end{tabular}
   \end{center}
