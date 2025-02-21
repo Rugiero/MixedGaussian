@@ -1,4 +1,4 @@
-S = importdata("SCtheory.mat");
+S = importdata("SICtheory.mat");
 theoryres1 = round(S.theoryres1,2);
 theoryres2 = round(S.theoryres2,2);
 theoryres3 = round(S.theoryres3,2);
@@ -8,12 +8,12 @@ theoryres3 = round(S.theoryres3,2);
 %% simexp2 = round(S.simres2,2);
 %% simexp3 = round(S.simres3,2);
 
-S = importdata("SCkprobssim90tau1.mat");
+S = importdata("SICprobssim90kxupsilon2.mat");
 simres4 = S.simres1;
 simres5 = S.simres2;
 simres6 = S.simres3;
 
-S = importdata("SCkprobssim40tau1.mat");
+S = importdata("SICkprobssim40kxupsilon3.8.mat");
 simres7 = S.simres1;
 simres8 = S.simres2;
 simres9 = S.simres3;
