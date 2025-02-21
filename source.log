@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.21)  20 FEB 2025 19:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.21)  21 FEB 2025 16:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -676,7 +676,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 127--128
 r/m/n/8 10)$ 
  []
 
-<UEsontheplane.png, id=56, 589.402pt x 376.607pt>
+<UEsontheplane.png, id=52, 589.402pt x 376.607pt>
 File: UEsontheplane.png Graphic file (type png)
 <use UEsontheplane.png>
 Package pdftex.def Info: UEsontheplane.png  used on input line 141.
@@ -688,7 +688,7 @@ File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
 )
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10> not available
 (Font)              Font shape `OT1/phv/m/sl' tried instead on input line 141.
-<drawing.png, id=58, 216.0873pt x 147.9126pt>
+<drawing.png, id=54, 216.0873pt x 147.9126pt>
 File: drawing.png Graphic file (type png)
 <use drawing.png>
 Package pdftex.def Info: drawing.png  used on input line 143.
@@ -711,7 +711,7 @@ dist/fonts/enc/dvips/base/8r.enc}
 
 
 ] [2 <./UESontheplane.png> <./drawing.png>]
-<plotdensities.pdf, id=104, 396.0396pt x 327.86491pt>
+<plotdensities.pdf, id=100, 396.0396pt x 327.86491pt>
 File: plotdensities.pdf Graphic file (type pdf)
 <use plotdensities.pdf>
 Package pdftex.def Info: plotdensities.pdf  used on input line 276.
@@ -724,19 +724,28 @@ LaTeX Font Info:    Trying to load font information for U+dsrom on input line 3
 (/usr/share/texlive/texmf-dist/tex/latex/doublestroke/Udsrom.fd
 File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
 ) [4]
-<kprobabilities.pdf, id=162, 385.19911pt x 331.9602pt>
+Underfull \hbox (badness 10000) in paragraph at lines 485--487
+\OT1/ptm/m/n/10 Similarly for the sec-ond mo-ment, $\U/msb/m/n/10 E\OT1/cmr/m/n
+/10 ([][]) \OMS/cmsy/m/n/10 ^^U
+ []
+
+
+Underfull \hbox (badness 4621) in paragraph at lines 485--487
+[]\OML/cmm/m/it/10 =[];$ \OT1/ptm/m/n/10 which is di-ver-gent for
+ []
+
+<kprobabilities.pdf, id=159, 385.19911pt x 331.9602pt>
 File: kprobabilities.pdf Graphic file (type pdf)
 <use kprobabilities.pdf>
-Package pdftex.def Info: kprobabilities.pdf  used on input line 503.
+Package pdftex.def Info: kprobabilities.pdf  used on input line 494.
 (pdftex.def)             Requested size: 252.0pt x 217.17465pt.
-
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<triangle.pdf, id=164, 443.97871pt x 285.2256pt>
+<triangle.pdf, id=161, 443.97871pt x 285.2256pt>
 File: triangle.pdf Graphic file (type pdf)
 <use triangle.pdf>
-Package pdftex.def Info: triangle.pdf  used on input line 559.
+Package pdftex.def Info: triangle.pdf  used on input line 550.
 (pdftex.def)             Requested size: 176.39923pt x 113.32222pt.
 No file source.bbl.
 [5 <./kprobabilities.pdf> <./triangle.pdf
@@ -749,13 +758,13 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
 Package rerunfilecheck Info: File `source.out' has not changed.
-(rerunfilecheck)             Checksum: C8B1FF26E1B3AA09F33BC3ED2B9BF173;3056.
+(rerunfilecheck)             Checksum: 90964735604E078CA9EF2EA2950B1F9C;2709.
  ) 
 Here is how much of TeX's memory you used:
- 13950 strings out of 475509
- 224102 string characters out of 5776664
+ 13948 strings out of 475509
+ 224062 string characters out of 5776664
  1963975 words of memory out of 5000000
- 35718 multiletter control sequences out of 15000+600000
+ 35717 multiletter control sequences out of 15000+600000
  611550 words of font info for 137 fonts, out of 8000000 for 9000
  399 hyphenation exceptions out of 8191
  75i,15n,79p,2256b,586s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -785,10 +794,10 @@ usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
 /times/utmri8a.pfb>
-Output written on source.pdf (5 pages, 979341 bytes).
+Output written on source.pdf (5 pages, 978471 bytes).
 PDF statistics:
- 324 PDF objects out of 1000 (max. 8388607)
- 238 compressed objects within 3 object streams
- 60 named destinations out of 1000 (max. 500000)
- 130 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 322 PDF objects out of 1000 (max. 8388607)
+ 236 compressed objects within 3 object streams
+ 59 named destinations out of 1000 (max. 500000)
+ 122 words of extra memory for PDF output out of 10000 (max. 10000000)
 

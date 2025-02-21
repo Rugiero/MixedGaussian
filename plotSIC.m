@@ -8,13 +8,13 @@ clear all;
 %% simres2exp = S.simres2;
 %% simres3exp = S.simres3;
 
-S = importdata("kprobstheorykappa1.mat");
-theoryres1 = round(S.theoryres1,2);
-theoryres2 = round(S.theoryres2,2);
-theoryres3 = round(S.theoryres3,2);
+S = importdata("SICtheory.mat");
+theoryres1 = round(S.theoryres1,3);
+theoryres2 = round(S.theoryres2,3);
+theoryres3 = round(S.theoryres3,3);
 %theoryres4 = round(S.theoryres4,2);
 
-S = importdata("kprobssim90kappa3.8.mat");
+S = importdata("SICsim.mat");
 simres190 = S.simres1;
 simres290 = S.simres2;
 simres390 = S.simres3;
@@ -86,9 +86,9 @@ plot(tau,theoryres3,'-^','color',"#EDB120",'linewidth',2)
 %% plot(simtau,simres3exp,'--','color',"black",'linewidth',1)
 
 
-%plot(simtau,simres190,'--','color',"black",'linewidth',1)
-%plot(simtau,simres290,'--','color',"black",'linewidth',1)
-%plot(simtau,simres390,'--','color',"black",'linewidth',1)
+plot(simtau,simres190,'--','color',"black",'linewidth',1)
+plot(simtau,simres290,'--','color',"black",'linewidth',1)
+plot(simtau,simres390,'--','color',"black",'linewidth',1)
 %plot(simtau,simres490,'--','color',"black",'linewidth',1)
 
 %% plot(simtau,simres170,'--','color',"black",'linewidth',1)
@@ -131,7 +131,7 @@ legend('Analysis; $k=1$','Analysis; $k=2$','Analysis; $k=3$ \hspace{0.1cm}','Sim
 
 xlabel('$\theta$ [dB]','FontSize',14,'Interpreter','latex')
 ylabel('$\mathcal{P}^{(k)}(\theta)$','FontSize',14,'Interpreter','latex')
-title('${\kappa}\upsilon= 2.6 \log(2)$','FontSize',14,'Interpreter','latex')
+title('${\kappa}\upsilon= 2$','FontSize',14,'Interpreter','latex')
 grid on
 axis([[-7,10],[0,1]])
 
