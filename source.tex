@@ -434,9 +434,9 @@ Let $(u_{(1)}, \dots, u_{(k)}) \subset \mathcal{G}$ represent an ordered set of 
   \label{eq:IC-SINR}
   \text{SIR}_{n,\mathcal{K}} \triangleq \frac{u_{(n)}}{I-\sum_{j \in [k]} u_{(j)}}.
 \end{equation}
-Under IC, we have the following identity
+Under IC, we have the following identity in terms of the STIR process
 \begin{equation}
-   \mathbb{P}(\text{SIR}_{n,\mathcal{K}} > \theta) = \mathbb{P}\left(\mathsf{Z}'_{(n)}+\theta'\sum_{j\in \mathcal{K}\setminus \{n\}}\mathsf{Z}'_{(j)} > \theta'\right).
+   \mathbb{P}(\text{SIR}_{n,[k]} > \theta) = \mathbb{P}\left(\mathsf{Z}'_{(n)}+\theta'\sum_{j\in [k] \setminus \{n\}}\mathsf{Z}'_{(j)} > \theta'\right).
 \end{equation}
 
 
@@ -449,25 +449,22 @@ Under IC, we have the following identity
 %%   &\overset{(a)}{=} \mathbb{P} \left\{ \mathsf{Z}'_{(n)}+\theta'\sum^{j\neq n}_{j\in\{1,\dots,k\}}\mathsf{Z}'_{(j)} +>\theta'\right\}.
 %% \end{align}
 
+We consider the SIR under successive signal cancellation (SIC-SIR). A necessary condition for a successfully transmission from the $n$\textit{th} strongest UE to the LEO BS is that the preceding $n$ signals are successively decoded and removed from the interference; formally, $\{\mathsf{Z}_m'+\tau'\sum_{j=1}^{m-1}\mathsf{Z}_j'>\tau'\}$ for all $m \in \{1 \dots n\}$. The signal detection threshold is denoted as $ \tau = \tau'/(1-\tau') \leq \theta$. When the first $n$ signals are successfully removed from the interference, the $n$\textit{th} UE is in coverage if SIR$_{n,[n]}>\theta$. Otherwise, we adapt an opportunistic, or adaptive, SIR-SIC scheme. Namely, the BS continues the interference cancellation $\{\text{SIR}_{n,[n+1]}>\tau,\text{SIR}_{n,[n+2]}>\tau \dots\}$ until the SIR exceeds $\theta$, or the served UE enters an outage if the SIR drops below $\tau$, or the maximum number of canceled signals, $K$, is reached.
 
-Using successive interference cancellation (SIC) scheme, the connection of the $n$\textit{th} srongest signal is established if SIR$_{n,\{n\}}> \theta$, and otherwise the SIC of the strongest $k$ signals is attempted. In SIC, the first signal is canceled from the total interference if the SIR reach some (small) threshold $\tau < \theta$. Further, if the SIR of the second strongest signal reaches $\tau$ with the first signal canceled, the second signal is canceled from the interference in the SIR of the third srongest signal, and so on.  Define $[m] \triangleq \{1,\dots,m\}$. Formally, the SIC requires a superposition of the conditions $\{\text{SIR}_{m,[m]}>\tau\}$ for all $m \in \{1,\dots,k\}$. We denote corresponding the SIR with SIC as SIR-SIC$_{n,k}$.
-
-We study the performance improvement of the SIC-SIR compared to the SIR without any IC.
-\begin{equation}
-  \label{DeltSICIIC}
-  %% \Delta^{(n,k)}_{\text{IIC}}(\theta,\tau) \triangleq \mathcal{P}^{(n,k)}_{\text{IIC}}(\theta,\tau)- \mathcal{P}^{(1)}(\theta),\nonumber\\
-  \Delta^{(n,k)}_{\text{SIC}}(\theta,\tau) \triangleq \mathcal{P}^{(n,k)}_{\text{SIC}}(\theta,\tau)- \mathcal{P}^{(n)}(\theta),
-\end{equation}
-where the $1$-coverage probability  $\mathcal{P}^{(1)}(\theta)$ is given in $\eqref{eq:kprobability}$. Using the joint pdf of the $k$th STIR order statistics \eqref{eq:jointprobability}, we have for the SIC-SIR
 \begin{prop}
+  Consider the adaptive SIC with at most $K$ canceled signals, the coverage probability of the UE with n\textit{th} strongest signal is given by
+  \begin{align}
+    &\mathcal{P}^{(n,K)}_{\textup{AD-SIC}}(\theta,\tau) \triangleq \sum_{k=n}^K\Delta^{(n,k)}_{\textup{SIC}}(\theta,\tau),
+  \end{align}
+  where
   \begin{align}
     \label{eq:SICprob}
-    & \mathcal{P}^{(n,k)}_{\text{SIC}}(\theta,\tau) =\sum^{i_{\text{max}}}_{i=0} \int_{0}^{1} \dots \int_{0}^{1}\frac{(-1)^i}{i!}\prod_{m=1}^k\nonumber \\
-    &\times \mathds{1}\left( z'_m+ \tau'\sum_{j=1}^{m-1} z'_j>\tau' \right)  \mathds{1}\left(z'_n+  \theta'\sum_{j\in [k] \setminus \{n\}} z'_j>\theta' \right) \nonumber \\
-    & \times \mathds{1}\left( \left(z'_n+ \theta'\sum_{j \in [k-1] \setminus \{n\}} z'_j<\theta'\right) \text{ \textup{or} } (k-1 < n) \right)  \nonumber \\
+    & \Delta^{(n,k)}_{\textup{SIC}}(\theta,\tau) \triangleq \sum^{i_{\text{max}}}_{i=0}\frac{(-1)^i}{i!} \int_{0}^{1} \dots \int_{0}^{1}\prod_{m=1}^k  \nonumber \\
+    &\hspace{0.5cm}\mathds{1}\left( z'_m+ \tau'\sum_{j=1}^{m-1} z'_j>\tau' \right)  \mathds{1}\left(z'_n+  \theta'\sum_{j\in [k] \setminus \{n\}} z'_j>\theta' \right) \nonumber \\
+    &\times \left(\mathds{1}(k>n)\mathds{1}\left(z'_n+ \theta'\sum_{j \in [k-1] \setminus \{n\}} z'_j<\theta' \right) + \mathds{1}(k=n) \right) \nonumber\\
     & \times \mathds{1}(z'_1>\dots>z'_k){\mu'}_k^{(k+i)}(z'_1,\dots,z'_k) d z'_1 \dots d z'_k,
   \end{align}
-  with the upper summation limit bounded by $i_{\text{max}} < 1/\tau'-1=1/\tau$. The $n$-probability $\mathcal{P}^{(n)}(\theta)$ is given in \eqref{eq:kprobability}.
+  with the upper summation limit bounded by $i_{\text{max}} < 1/\tau'-1=1/\tau$.
   %% \begin{proof}
   %%   The expression follows from the joint pdf of the order statistics \eqref{eq:jointprobability} by imposing the conditions \eqref{eq:IC-SINRcond} and \eqref{eq:SIC-SINRcond}. We have abbreviated the upper bound of $i_{\text{max}}$ to $1/\tau$ from the upper limit given in \eqref{eq:jointprobability}: $i_{\text{max}} < 1/z'_{k}-k‰$, and $i_{\text{max}} \rightarrow \infty$ as $z'_k \rightarrow 0$. Fortunately, the l.h.s. conditioning limits the support of the integrand for small $z'_k$. Namely, we have that $z'_{k}+\tau'\sum_{j=1}^{k-1}z'_{j}>\tau'$. By simple algebra, $\sum_{j=1}^{k-1}z_{j}> 1-z_{k}/\tau'$. Recall the condition on the non-zero terms of the density of $M'^{(k+i)}$:  $\sum_{j=1}^k z'_{j}+i z'_{k} =\sum_{j=1}^{k-1}z'_{j} +z'_{k}+i z'_{k}  \leq 1$. The condition certainly does \textit{not} hold if $1-z_{k}/\tau'+ z'_{k}+i z'_{n}>1$. We arrive at the inequality $z'_{k} \left(-1/\tau' + 1 +i \right)>0$. Divide both sides by $z'_{k}$, and the general upper bound of $i$ follows.
 
@@ -481,9 +478,11 @@ where the $1$-coverage probability  $\mathcal{P}^{(1)}(\theta)$ is given in $\eq
 Combining \eqref{eq:densitySINR}, \eqref{eq:jointprobability}, and \eqref{eq:factorialmoment}, we get a closed form for the SIR pdf of the strongest signal in the region $z\geq 1$: $f_{(1)}(z) =  {\tilde{\kappa}\upsilon_{}\left({z + 1} \right)^{-\tilde{\kappa}\upsilon_{}}}/{z}$. An upper bound for the second moment is given by
 \begin{equation}
   \label{eq:SIR1}
-\mathbb{E}(\text{SIR}_{1,\{1\}})  \geq \int_{1}^{\infty}f_{(1)}(z)z^2 = \frac{2^{1-\tilde{\kappa}v}\tilde{\kappa}v}{(\tilde{\kappa}\upsilon-1)},\tilde{\kappa}\upsilon>1.
+\mathbb{E}(\text{SIR}^2_{1,\{1\}}) \geq \int_{1}^{\infty}f_{(1)}(z) z^2 = \frac{2^{1-\tilde{\kappa}v}(\tilde{\kappa}v)^2}{(\tilde{\kappa}\upsilon-1)(\tilde{\kappa}\upsilon-2)},
 \end{equation}
-Similarly for the second moment, $\mathbb{E}(\text{SIR}^2_{1,\{1\}}) \geq {2^{1-\tilde{\kappa}v}(\tilde{\kappa}v)^2}/{((\tilde{\kappa}\upsilon-1)(\tilde{\kappa}\upsilon-2))},$ which is divergent for $\tilde{\kappa}\upsilon \leq 2$, \textit{i.e.}, for less than $2\log(2)$ effective UEs inside a $-3$ dB footprint on average. Despite of high average SIR, the infinite variance for $\tilde{\kappa}\upsilon \leq 2$ is unacceptable if we desire a consistent link quality. However, SIR-SIC can achieve similar performance while radically decreasing the variance. Furthermore, a single LEO BS may be able to serve multiple UEs during a period of use. Table shows 
+which converges for $\tilde{\kappa}\upsilon > 2$. Similarly for the second moment, $\mathbb{E}(\text{SIR}_{1,\{1\}})  = {2^{1-\tilde{\kappa}v}\tilde{\kappa}v}/{(\tilde{\kappa}\upsilon-1)},\tilde{\kappa}\upsilon>1$ which, \textit{i.e.}, for less than $2\log(2)$ effective UEs inside a $-3$ dB footprint on average. Despite of high average SIR, the infinite variance for $\tilde{\kappa}\upsilon \leq 2$ is unacceptable if we desire a consistent link quality. However, SIR-SIC can achieve similar performance while decreasing the variance. Furthermore, using signal cancellation the typical LEO BS can have better connection to the other UEs, not only the strongest. Furthermore, following from the order $\mathsf{Z}'_1 > \mathsf{Z}'_2 >\dots $, if $\mathsf{Z}'_1$ has a finite variance, then all other STIR values have also. This holds also for the sums of the variables, and hence for the AD-SIC.
+
+Upper
 
 
 
@@ -498,7 +497,7 @@ Similarly for the second moment, $\mathbb{E}(\text{SIR}^2_{1,\{1\}}) \geq {2^{1-
 \end{figure}
 
 
-
+In figures \ref{kprobabilities.pdf} we plot the probabilities for $\tilde{\kappa}\upsilon=2$ and  $\tilde{\kappa}\upsilon=7/2=3.5$.
 
 
 
