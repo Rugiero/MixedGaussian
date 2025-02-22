@@ -8,16 +8,16 @@ clear all;
 %% simres2exp = S.simres2;
 %% simres3exp = S.simres3;
 
-S = importdata("kprobstheorykappa1.mat");
+S = importdata("kprobstheory2.mat");
 theoryres1 = round(S.theoryres1,2);
 theoryres2 = round(S.theoryres2,2);
 theoryres3 = round(S.theoryres3,2);
 %theoryres4 = round(S.theoryres4,2);
 
-S = importdata("kprobssim90kappa3.8.mat");
-simres190 = S.simres1;
-simres290 = S.simres2;
-simres390 = S.simres3;
+%S = importdata("kprobssim90kappa3.8.mat");
+%simres190 = S.simres1;
+%simres290 = S.simres2;
+%simres390 = S.simres3;
 %simres490 = S.simres4;
 
 %% S = importdata("kprobssim70.mat");
@@ -33,10 +33,10 @@ simres390 = S.simres3;
 %%simres470 = S.simres4;
 
 
-S = importdata("kprobssim40kappa3.8.mat");
-simres140 = S.simres1;
-simres240 = S.simres2;
-simres340 = S.simres3;
+%S = importdata("kprobssim40kappa3.8.mat");
+%simres140 = S.simres1;
+%simres240 = S.simres2;
+%simres340 = S.simres3;
 %simres440 = S.simres4;
 
 %% S = importdata("kprobssim30.mat");
@@ -131,7 +131,7 @@ legend('Analysis; $k=1$','Analysis; $k=2$','Analysis; $k=3$ \hspace{0.1cm}','Sim
 
 xlabel('$\theta$ [dB]','FontSize',14,'Interpreter','latex')
 ylabel('$\mathcal{P}^{(k)}(\theta)$','FontSize',14,'Interpreter','latex')
-title('${\kappa}\upsilon= 2.6 \log(2)$','FontSize',14,'Interpreter','latex')
+title('${\kappa}\upsilon= 2\log(2)$','FontSize',14,'Interpreter','latex')
 grid on
 axis([[-7,10],[0,1]])
 

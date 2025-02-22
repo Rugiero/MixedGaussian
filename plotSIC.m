@@ -14,10 +14,10 @@ theoryres2 = round(S.theoryres2,3);
 theoryres3 = round(S.theoryres3,3);
 %theoryres4 = round(S.theoryres4,2);
 
-S = importdata("SICsim.mat");
-simres190 = S.simres1;
-simres290 = S.simres2;
-simres390 = S.simres3;
+%S = importdata("SICsim.mat");
+%simres190 = S.simres1;
+%simres290 = S.simres2;
+%simres390 = S.simres3;
 %simres490 = S.simres4;
 
 %% S = importdata("kprobssim70.mat");
@@ -33,10 +33,10 @@ simres390 = S.simres3;
 %%simres470 = S.simres4;
 
 
-S = importdata("kprobssim40kappa3.8.mat");
-simres140 = S.simres1;
-simres240 = S.simres2;
-simres340 = S.simres3;
+%S = importdata("kprobssim40kappa3.8.mat");
+%simres140 = S.simres1;
+%simres240 = S.simres2;
+%simres340 = S.simres3;
 %simres440 = S.simres4;
 
 %% S = importdata("kprobssim30.mat");
@@ -58,7 +58,7 @@ simres340 = S.simres3;
 %% plot(10*log10(x2),1-f2,'--','color','#D95319','linewidth',2)
 %% plot(10*log10(x3),1-f3,'--', 'color','#EDB120','linewidth',2)
 
-tau = -7:0.5:10;
+tau = -7:1:10;
 simtau=-7:1:10;
 
 
@@ -86,9 +86,9 @@ plot(tau,theoryres3,'-^','color',"#EDB120",'linewidth',2)
 %% plot(simtau,simres3exp,'--','color',"black",'linewidth',1)
 
 
-plot(simtau,simres190,'--','color',"black",'linewidth',1)
-plot(simtau,simres290,'--','color',"black",'linewidth',1)
-plot(simtau,simres390,'--','color',"black",'linewidth',1)
+%plot(simtau,simres190,'--','color',"black",'linewidth',1)
+%plot(simtau,simres290,'--','color',"black",'linewidth',1)
+%plot(simtau,simres390,'--','color',"black",'linewidth',1)
 %plot(simtau,simres490,'--','color',"black",'linewidth',1)
 
 %% plot(simtau,simres170,'--','color',"black",'linewidth',1)
@@ -131,7 +131,7 @@ legend('Analysis; $k=1$','Analysis; $k=2$','Analysis; $k=3$ \hspace{0.1cm}','Sim
 
 xlabel('$\theta$ [dB]','FontSize',14,'Interpreter','latex')
 ylabel('$\mathcal{P}^{(k)}(\theta)$','FontSize',14,'Interpreter','latex')
-title('${\kappa}\upsilon= 2$','FontSize',14,'Interpreter','latex')
+title('${\kappa}\upsilon= 4 \log(2)$','FontSize',14,'Interpreter','latex')
 grid on
 axis([[-7,10],[0,1]])
 

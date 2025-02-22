@@ -48,7 +48,7 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{Studying the SIR process at the typical LEO Base Station in Poisson Networks Using The Factorial Moment Measures}
+\title{Factorial moment measure of the SIR and Successive Interference Cancellation in a Narrow-Beam LEO Uplink}
 \author{IEEE Publication Technology,~\IEEEmembership{Staff,~IEEE,}
         % <-this % stops a space
 \thanks{This paper was produced by the IEEE Publication Technology Group. They are in Piscataway, NJ.}% <-this % stops a space
@@ -208,7 +208,7 @@ Essentially, this is a mixture distribution. Namely, $0 \leq 1-\upsilon < 1$ den
     %% \label{eq:Upsilon}
     %% &\Upsilon_{} = \frac{2\left(p_{\text{LoS}}e^{\mu_{\text{LoS}}+\sigma^2_{\text{LoS}}/2}+p_{\text{NLoS}}e^{\mu_{\text{NLoS}}+\sigma^2_{\text{NLoS}}/2}\right)}{p_{\text{LoS}}e^{2(\mu_{\text{LoS}}+\sigma_{\text{LoS}}^2)}+p_{\text{NLoS}}e^{2(\mu_{\text{NLoS}}+\sigma_{\text{NLoS}}^2)}}.
 \end{align}
-The parameter $\upsilon$ depends on the elevation angle since $\epsilon$ determines the shadow fading parameters. After solving $\upsilon$, without loss of generality, we can set $\Upsilon = 1$ in the interference-limited scenarios since the scaling cancel. 
+The parameter $\upsilon$ depends on the elevation angle since $\epsilon$ determines the shadow fading parameters. Parameter $\Upsilon$ is not relevant in the interference-limited scenario because the scaling of the signal powers cancel.
 
 
 Figure \ref{fig:plotdensities} depicts the densities of the GPs with the defective exponential and Gaussian mixture shadowing scenarios for two different average number of effective UEs $\kappa \upsilon $ inside the $3$ dB footprints, corresponding to $\tilde{\kappa}=  \{1.8,2.6\}/(\log(2)\upsilon(\epsilon))$. No significant dependence on the elevation angle was observed.
@@ -464,8 +464,8 @@ where the $1$-coverage probability  $\mathcal{P}^{(1)}(\theta)$ is given in $\eq
     \label{eq:SICprob}
     & \mathcal{P}^{(n,k)}_{\text{SIC}}(\theta,\tau) =\sum^{i_{\text{max}}}_{i=0} \int_{0}^{1} \dots \int_{0}^{1}\frac{(-1)^i}{i!}\prod_{m=1}^k\nonumber \\
     &\times \mathds{1}\left( z'_m+ \tau'\sum_{j=1}^{m-1} z'_j>\tau' \right)  \mathds{1}\left(z'_n+  \theta'\sum_{j\in [k] \setminus \{n\}} z'_j>\theta' \right) \nonumber \\
-    & \times \mathds{1}(\theta'>z'_n)\mathds{1}(z'_1>\dots>z'_k) \nonumber \\
-    & \times {\mu'}_k^{(k+i)}(z'_1,\dots,z'_k) d z'_1 \dots d z'_k+\mathcal{P}^{(n)}(\theta),
+    & \times \mathds{1}\left( \left(z'_n+ \theta'\sum_{j \in [k-1] \setminus \{n\}} z'_j<\theta'\right) \text{ \textup{or} } (k-1 < n) \right)  \nonumber \\
+    & \times \mathds{1}(z'_1>\dots>z'_k){\mu'}_k^{(k+i)}(z'_1,\dots,z'_k) d z'_1 \dots d z'_k,
   \end{align}
   with the upper summation limit bounded by $i_{\text{max}} < 1/\tau'-1=1/\tau$. The $n$-probability $\mathcal{P}^{(n)}(\theta)$ is given in \eqref{eq:kprobability}.
   %% \begin{proof}
