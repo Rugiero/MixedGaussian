@@ -9,9 +9,9 @@ clear all;
 %% simres3exp = S.simres3;
 
 S = importdata("SICtheory.mat");
-theoryres1 = round(S.theoryres1,3);
-theoryres2 = round(S.theoryres2,3);
-theoryres3 = round(S.theoryres3,3);
+theoryres1 = round(S.theoryres1,2);
+theoryres2 = round(S.theoryres2,2);
+theoryres3 = round(S.theoryres3,2);
 %theoryres4 = round(S.theoryres4,2);
 
 %S = importdata("SICsim.mat");
@@ -126,7 +126,7 @@ fill([-10,fliplr(-10)],[1,fliplr(1)],[1 1 1],'FaceAlpha',0.2,'EdgeColor','none')
 
 
 
-legend('Analysis; $k=1$','Analysis; $k=2$','Analysis; $k=3$ \hspace{0.1cm}','Simulated values:','Gaussian mixture shadowing','and spherical Earth model','Interpreter','latex',...
+legend('Analysis; $k=1$','Analysis; $k=2$','Analysis; $k=3$ \hspace{0.1cm}','Simulated values','latex',...
     'FontSize',14,BackgroundAlpha=.3)
 
 xlabel('$\theta$ [dB]','FontSize',14,'Interpreter','latex')
