@@ -449,12 +449,12 @@ Under IC, we have the following identity in terms of the STIR process
 %%   &\overset{(a)}{=} \mathbb{P} \left\{ \mathsf{Z}'_{(n)}+\theta'\sum^{j\neq n}_{j\in\{1,\dots,k\}}\mathsf{Z}'_{(j)} +>\theta'\right\}.
 %% \end{align}
 
-We consider the SIR under successive signal cancellation (SIC-SIR). A necessary condition for a successfully transmission from the $n$\textit{th} strongest UE to the LEO BS is that the preceding $n$ signals are successively decoded and removed from the interference; formally, $\{\mathsf{Z}_m'+\tau'\sum_{j=1}^{m-1}\mathsf{Z}_j'>\tau'\}$ for all $m \in \{1 \dots n\}$. The signal detection threshold is denoted as $ \tau = \tau'/(1-\tau') \leq \theta$. When the first $n$ signals are successfully removed from the interference, the $n$\textit{th} UE is in coverage if SIR$_{n,[n]}>\theta$. Otherwise, we adapt an opportunistic, or adaptive, SIR-SIC scheme. Namely, the BS continues the interference cancellation $\{\text{SIR}_{n,[n+1]}>\tau,\text{SIR}_{n,[n+2]}>\tau \dots\}$ until the SIR exceeds $\theta$, or the served UE enters an outage if the SIR drops below $\tau$, or the maximum number of canceled signals, $K$, is reached.
+We consider the SIR under successive signal cancellation (SIC-SIR). The SIC-SIR at the n\textit{th} strongest UE with at most $K+n$ canceled signals, we denote the r.v. as SIR-SIC$_{n,K}$. A necessary condition for a successfully transmission from the $n$\textit{th} UE to the LEO BS is that the preceding $n$ signals are successively decoded and removed from the interference. Formally, $\{\mathsf{Z}_m'+\tau'\sum_{j=1}^{m-1}\mathsf{Z}_j'>\tau'\}$ for all $m \in \{1 \dots n\}$. The signal detection threshold is denoted as $ \tau = \tau'/(1-\tau') \leq \theta$. When the first $n$ signals are successfully removed from the interference, the $n$\textit{th} UE is in coverage if SIR$_{n,[n]}>\theta$. If it is not, we adapt an opportunistic, or adaptive, SIR-SIC scheme. Namely, the BS continues the interference cancellation $\{\text{SIR}_{n,[n]} \dots \text{SIR}_{n,[k]}  \}_{n\leq k \leq K}$ until SIR$_{n,[k]}>\theta$, or the served UE enters an outage if $\text{SIR}_{n,[n]} <\tau$, or the maximum number of canceled signals, $K=k-n$, is reached. It is not possible boundlessly improve SIC-SIR$_{n,K}$ as $K \rightarrow \infty$ because, in practical applications, $\mathbb{P}(\text{SIR-SIC}_{n,K}>\theta)$ does not improve after some $K$.
 
 \begin{prop}
-  Consider the adaptive SIC with at most $K$ canceled signals, the coverage probability of the UE with n\textit{th} strongest signal is given by
+  Consider the adaptive SIC with at most $n+K$ canceled signals. The coverage probability of the UE with n\textit{th} strongest signal is given by
   \begin{align}
-    &\mathcal{P}^{(n,K)}_{\textup{AD-SIC}}(\theta,\tau) \triangleq \sum_{k=n}^K\Delta^{(n,k)}_{\textup{SIC}}(\theta,\tau),
+    &\mathcal{P}^{(n,K)}_{\textup{AD-SIC}}(\theta,\tau) \triangleq \sum_{k=n}^{K}\Delta^{(n,k)}_{\textup{SIC}}(\theta,\tau),
   \end{align}
   where
   \begin{align}
@@ -465,17 +465,13 @@ We consider the SIR under successive signal cancellation (SIC-SIR). A necessary 
     & \times \mathds{1}(z'_1>\dots>z'_k){\mu'}_k^{(k+i)}(z'_1,\dots,z'_k) d z'_1 \dots d z'_k,
   \end{align}
   with the upper summation limit bounded by $i_{\text{max}} < 1/\tau'-1=1/\tau$.
-  %% \begin{proof}
-  %%   The expression follows from the joint pdf of the order statistics \eqref{eq:jointprobability} by imposing the conditions \eqref{eq:IC-SINRcond} and \eqref{eq:SIC-SINRcond}. We have abbreviated the upper bound of $i_{\text{max}}$ to $1/\tau$ from the upper limit given in \eqref{eq:jointprobability}: $i_{\text{max}} < 1/z'_{k}-k‰$, and $i_{\text{max}} \rightarrow \infty$ as $z'_k \rightarrow 0$. Fortunately, the l.h.s. conditioning limits the support of the integrand for small $z'_k$. Namely, we have that $z'_{k}+\tau'\sum_{j=1}^{k-1}z'_{j}>\tau'$. By simple algebra, $\sum_{j=1}^{k-1}z_{j}> 1-z_{k}/\tau'$. Recall the condition on the non-zero terms of the density of $M'^{(k+i)}$:  $\sum_{j=1}^k z'_{j}+i z'_{k} =\sum_{j=1}^{k-1}z'_{j} +z'_{k}+i z'_{k}  \leq 1$. The condition certainly does \textit{not} hold if $1-z_{k}/\tau'+ z'_{k}+i z'_{n}>1$. We arrive at the inequality $z'_{k} \left(-1/\tau' + 1 +i \right)>0$. Divide both sides by $z'_{k}$, and the general upper bound of $i$ follows.
-
-
-
-
-  %% \end{proof}
+  \begin{proof}
+    The expression follows from the joint pdf of the order statistics \eqref{eq:jointprobability} by imposing the conditions \eqref{eq:IC-SINRcond} and \eqref{eq:SIC-SINRcond}. We have abbreviated the upper bound of $i_{\text{max}}$ to $1/\tau$ from the upper limit given in \eqref{eq:jointprobability}: $i_{\text{max}} < 1/z'_{k}-k‰$, and $i_{\text{max}} \rightarrow \infty$ as $z'_k \rightarrow 0$. Fortunately, the l.h.s. conditioning limits the support of the integrand for small $z'_k$. Namely, a necessary condition is $z'_{k}+\tau'\sum_{j=1}^{k-1}z'_{j}>\tau'$. By simple algebra, $\sum_{j=1}^{k-1}z_{j}> 1-z_{k}/\tau'$. Recall the condition on the non-zero terms of the density of $M'^{(k+i)}$:  $\sum_{j=1}^k z'_{j}+i z'_{k} =\sum_{j=1}^{k-1}z'_{j} +z'_{k}+i z'_{k}  \leq 1$. The condition certainly does \textit{not} hold if $1-z_{k}/\tau'+ z'_{k}+i z'_{k}>1$. We arrive at the inequality $z'_{k} \left(-1/\tau' + 1 +i \right)>0$. Divide both sides by $z'_{k}$, and the general upper bound of $i$ follows.
+  \end{proof}
 \end{prop}
 
 
-Combining \eqref{eq:densitySINR}, \eqref{eq:jointprobability}, and \eqref{eq:factorialmoment}, we get a closed form for the SIR pdf of the strongest signal in the region $z\geq 1$: $f_{(1)}(z) =  {\tilde{\kappa}\upsilon_{}\left({z + 1} \right)^{-\tilde{\kappa}\upsilon_{}}}/{z}$. An upper bound for the second moment is given by
+Combining \eqref{eq:densitySINR}, \eqref{eq:jointprobability}, and \eqref{eq:factorialmoment}, we get a closed form for the SIR pdf of the strongest signal in the \textit{simple coverage region} $z\geq 1$; $f_{(1)}(z) =  {\tilde{\kappa}\upsilon_{}\left({z + 1} \right)^{-\tilde{\kappa}\upsilon_{}}}/{z}$. An upper bound for the second moment is given by
 \begin{equation}
   \label{eq:SIR1}
 \mathbb{E}(\text{SIR}^2_{1,\{1\}}) \geq \int_{1}^{\infty}f_{(1)}(z) z^2 = \frac{2^{1-\tilde{\kappa}v}(\tilde{\kappa}v)^2}{(\tilde{\kappa}\upsilon-1)(\tilde{\kappa}\upsilon-2)},
