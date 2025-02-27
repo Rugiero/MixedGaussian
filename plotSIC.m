@@ -58,7 +58,7 @@ theoryres3 = round(S.theoryres3,2);
 %% plot(10*log10(x2),1-f2,'--','color','#D95319','linewidth',2)
 %% plot(10*log10(x3),1-f3,'--', 'color','#EDB120','linewidth',2)
 
-tau = -7:1:10;
+tau = -7:1:7;
 simtau=-7:1:10;
 
 
@@ -126,7 +126,7 @@ fill([-10,fliplr(-10)],[1,fliplr(1)],[1 1 1],'FaceAlpha',0.2,'EdgeColor','none')
 
 
 
-legend('Analysis; $k=1$','Analysis; $k=2$','Analysis; $k=3$ \hspace{0.1cm}','Simulated values','latex',...
+legend('Analysis; $k=1$','Analysis; $k=2$','Analysis; $k=3$','Simulated values','Interpreter','latex',...
     'FontSize',14,BackgroundAlpha=.3)
 
 xlabel('$\theta$ [dB]','FontSize',14,'Interpreter','latex')
