@@ -9,15 +9,15 @@ clear all;
 %% simres3exp = S.simres3;
 
 S = importdata("SICtheory.mat");
-theoryres1 = round(S.theoryres1,2);
-theoryres2 = round(S.theoryres2,2);
-theoryres3 = round(S.theoryres3,2);
+theoryres1 = round(S.theoryres1,3);
+theoryres2 = round(S.theoryres2,3);
+theoryres3 = round(S.theoryres3,3);
 %theoryres4 = round(S.theoryres4,2);
 
-%S = importdata("SICsim.mat");
-%simres190 = S.simres1;
-%simres290 = S.simres2;
-%simres390 = S.simres3;
+S = importdata("SICsim90.mat");
+simres190 = round(S.simres1,3);
+simres290 = round(S.simres2,3);
+simres390 = round(S.simres3,3);
 %simres490 = S.simres4;
 
 %% S = importdata("kprobssim70.mat");
@@ -33,10 +33,10 @@ theoryres3 = round(S.theoryres3,2);
 %%simres470 = S.simres4;
 
 
-%S = importdata("kprobssim40kappa3.8.mat");
-%simres140 = S.simres1;
-%simres240 = S.simres2;
-%simres340 = S.simres3;
+S = importdata("SICsim30.mat");
+simres140 = round(S.simres1,3);
+simres240 = round(S.simres2,3);
+simres340 = round(S.simres3,3);
 %simres440 = S.simres4;
 
 %% S = importdata("kprobssim30.mat");
@@ -58,7 +58,7 @@ theoryres3 = round(S.theoryres3,2);
 %% plot(10*log10(x2),1-f2,'--','color','#D95319','linewidth',2)
 %% plot(10*log10(x3),1-f3,'--', 'color','#EDB120','linewidth',2)
 
-tau = -6:1:6;
+tau = -7:1:10;
 simtau=-7:1:10;
 
 
@@ -114,40 +114,40 @@ plot(tau,theoryres3,'-^','color',"#EDB120",'linewidth',2)
 fill([-10,fliplr(-10)],[1,fliplr(1)],[0 0 0],'FaceAlpha',0.2,'EdgeColor','none');
 fill([-10,fliplr(-10)],[1,fliplr(1)],[1 1 1],'FaceAlpha',0.2,'EdgeColor','none');
 fill([-10,fliplr(-10)],[1,fliplr(1)],[1 1 1],'FaceAlpha',0.2,'EdgeColor','none');
+fill([-10,fliplr(-10)],[1,fliplr(1)],[1 1 1],'FaceAlpha',0.2,'EdgeColor','none');
 
+fill([simtau,fliplr(simtau)],[simres140',fliplr(simres190')],[0 0.4470 0.7410],'FaceAlpha',0.2,'EdgeColor','none');
 
-%% fill([simtau,fliplr(simtau)],[simres140',fliplr(simres190')],[0 0.4470 0.7410],'FaceAlpha',0.2,'EdgeColor','none');
+fill([simtau,fliplr(simtau)],[simres240',fliplr(simres290')],[0.8500 0.3250 0.0980],'FaceAlpha',0.2,'EdgeColor','none');
 
-%% fill([simtau,fliplr(simtau)],[simres240',fliplr(simres290')],[0.8500 0.3250 0.0980],'FaceAlpha',0.2,'EdgeColor','none');
-
-%% fill([simtau,fliplr(simtau)],[simres340',fliplr(simres390')],[0.9290 0.6940 0.1250],'FaceAlpha',0.2,'EdgeColor','none');
+fill([simtau,fliplr(simtau)],[simres340',fliplr(simres390')],[0.9290 0.6940 0.1250],'FaceAlpha',0.2,'EdgeColor','none');
 
 %%fill([simtau,fliplr(simtau)],[simres440',fliplr(simres490')],[0.9290 0.6940 0.1250],'FaceAlpha',0.3,'EdgeColor','none');
 
 
-
-legend('Analysis; $k=1$','Analysis; $k=2$','Analysis; $k=3$','Simulated values','Interpreter','latex',...
+legend('Analysis; $n=1$','Analysis; $n=2$','Analysis; $n=3$','Simulated values;', '(spherical model,','Gaussian mixture)','shadowing)','Interpreter','latex',...
     'FontSize',14,BackgroundAlpha=.3)
 
 xlabel('$\theta$ [dB]','FontSize',14,'Interpreter','latex')
-ylabel('$\mathcal{P}^{(k)}(\theta)$','FontSize',14,'Interpreter','latex')
-title('${\kappa}\upsilon= 4 \log(2)$','FontSize',14,'Interpreter','latex')
+ylabel('$\mathcal{P}_{\textrm{ASIC}}^{(n,K)}(\theta,\tau)$','FontSize',14,'Interpreter','latex')
+title('Adaptive SIC-SIR; ${\kappa}\upsilon= 4 \log(2)$','FontSize',14,'Interpreter','latex')
 grid on
 axis([[-7,10],[0,1]])
 
+% Create textarrow
+annotation(figure1,'textarrow',[0.436842105263158 0.382456140350878],...
+    [0.533333333333333 0.482222222222223],'String',{'$\epsilon=30^{\circ}$'},...
+    'Interpreter','latex',...
+    'FontSize',14);
+
 % Create textbox
 annotation(figure1,'textbox',...
-    [0.28 0.396777776796219 0.10438596665584 0.0711111120926707],...
+    [0.34140350877193 0.421222221240663 0.10438596665584 0.0711111120926707],...
     'String',{'$90^{\circ}$'},...
-    'FontSize',14,'LineStyle','none',...
+    'LineStyle','none',...
     'Interpreter','latex',...
+    'FontSize',14,...
     'FitBoxToText','off');
-
-% Create textarrow
-annotation(figure1,'textarrow',[0.407017543859649 0.343859649122808],...
-    [0.513333333333333 0.455555555555556],'String',{'$\epsilon=40^{\circ}$'},...
-   'FontSize',14,'Interpreter','latex');
-
 
 xticks(-7:2:10);
 

@@ -58,7 +58,7 @@ theoryres3 = round(S.theoryres3,2);
 %% plot(10*log10(x2),1-f2,'--','color','#D95319','linewidth',2)
 %% plot(10*log10(x3),1-f3,'--', 'color','#EDB120','linewidth',2)
 
-tau = -7:0.5:10;
+tau = -7:1:10;
 simtau=-7:1:10;
 
 

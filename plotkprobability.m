@@ -8,16 +8,17 @@ clear all;
 %% simres3exp = S.simres3;
 
 
-S = importdata("kprobstheorykappa2.mat");
-theoryres1 = round(S.theoryres1,2);
-theoryres2 = round(S.theoryres2,2);
-theoryres3 = round(S.theoryres3,2);
+S = importdata("kprobstheory2.mat");
+theoryres1 = round(S.theoryres1,3);
+theoryres2 = round(S.theoryres2,3);
+theoryres3 = round(S.theoryres3,3);
+theoryres1(1)=1;
 %theoryres4 = S.theoryres4;
 
 S = importdata("kprobssim90kappa2.mat");
-simres190 = S.simres1;
-simres290 = S.simres2;
-simres390 = S.simres3;
+simres190 = round(S.simres1,3);
+simres290 = round(S.simres2,3);
+simres390 = round(S.simres3,3);
 %simres490 = S.simres4;
 
 %% S = importdata("kprobssim70.mat");
@@ -32,10 +33,10 @@ simres390 = S.simres3;
 %% simres360 = S.simres3;
 
 
-S = importdata("kprobssim40kappa2.mat");
-simres140 = S.simres1;
-simres240 = S.simres2;
-simres340 = S.simres3;
+S = importdata("kprobssim30kappa2.mat");
+simres140 = round(S.simres1,3);
+simres240 = round(S.simres2,3);
+simres340 = round(S.simres3,3);
 %simres440 = S.simres4;
 
 %% S = importdata("kprobssim30kappa1.mat");
@@ -45,7 +46,7 @@ simres340 = S.simres3;
 %simres430 = S.simres4;
 
 
-tau=-7:0.5:10;
+tau=-7:1:10;
 simtau=-7:1:10;
 
 
@@ -92,43 +93,54 @@ plot(tau,theoryres3,'-^','color',"#EDB120",'linewidth',2)
 %plot(simtau,simres440,'--','color',"black",'linewidth',1)
 
 
-fill([-10,fliplr(-10)],[1,fliplr(1)],[0 0 0],'FaceAlpha',0.3,'EdgeColor','none');
-fill([-10,fliplr(-10)],[1,fliplr(1)],[1 1 1],'FaceAlpha',0.3,'EdgeColor','none');
+fill([-10,fliplr(-10)],[1,fliplr(1)],[0 0 0],'FaceAlpha',0.2,'EdgeColor','none');
+fill([-10,fliplr(-10)],[1,fliplr(1)],[1 1 1],'FaceAlpha',0.2,'EdgeColor','none');
 
-fill([simtau,fliplr(simtau)],[simres140',fliplr(simres190')],[0 0.4470 0.7410],'FaceAlpha',0.3,'EdgeColor','none');
+fill([-10,fliplr(-10)],[1,fliplr(1)],[1 1 1],'FaceAlpha',0.2,'EdgeColor','none');
+fill([-10,fliplr(-10)],[1,fliplr(1)],[1 1 1],'FaceAlpha',0.2,'EdgeColor','none');
 
-fill([simtau,fliplr(simtau)],[simres240',fliplr(simres290')],[0.8500 0.3250 0.0980],'FaceAlpha',0.3,'EdgeColor','none');
+fill([simtau,fliplr(simtau)],[simres140',fliplr(simres190')],[0 0.4470 0.7410],'FaceAlpha',0.2,'EdgeColor','none');
 
-fill([simtau,fliplr(simtau)],[simres340',fliplr(simres390')],[0.9290 0.6940 0.1250],'FaceAlpha',0.3,'EdgeColor','none');
+fill([simtau,fliplr(simtau)],[simres240',fliplr(simres290')],[0.8500 0.3250 0.0980],'FaceAlpha',0.2,'EdgeColor','none');
+
+fill([simtau,fliplr(simtau)],[simres340',fliplr(simres390')],[0.9290 0.6940 0.1250],'FaceAlpha',0.2,'EdgeColor','none');
 
 
 
-% Create legend
-legend('Analysis; $k=1$','Analysis; $k=2$','Analysis; $k=3$ \hspace{0.1cm}','Simulated values','Interpreter','latex',...
+
+				% Create legend
+
+legend('Analysis; $n=1$','Analysis; $n=2$','Analysis; $n=3$','Simulated values;', '(spherical model,','Gaussian mixture)','shadowing)','Interpreter','latex',...
     'FontSize',14,BackgroundAlpha=.3)
 
 
 xlabel('$\tau$(dB)','FontSize',14,'Interpreter','latex')
-ylabel('$\mathcal{P}^{(k)}(\theta)$','FontSize',14,'Interpreter','latex')
+ylabel('$\mathcal{P}^{(n)}(\theta)$','FontSize',14,'Interpreter','latex')
 %title('$\tilde{\kappa}=3/b_{\epsilon}, \epsilon \in \{90,80,70,60,50,40\}^{\circ}$','FontSize',14,'Interpreter','latex')
 grid on
 axis([[-7,10],[0,1]])
 xticks(-7:2:10);
 
 
-title('$\tilde{\kappa}\rho_{\epsilon}= 2$','FontSize',14,'Interpreter','latex')
+title('$n$-probability; ${\kappa}\upsilon= 2 \log(2)$','FontSize',14,'Interpreter','latex')
+
+
 
 
 % Create textarrow
-annotation(figure1,'textarrow',[0.416228070175437 0.368421052631579],...
-    [0.540000000000001 0.48],'String',{'$\epsilon=40^{\circ}$'},...
-    'Interpreter','latex');
+annotation(figure1,'textarrow',[0.421052631578948 0.366666666666668],...
+    [0.544444444444444 0.493333333333334],'String',{'$\epsilon=30^{\circ}$'},...
+    'Interpreter','latex',...
+    'FontSize',14);
 
 % Create textbox
 annotation(figure1,'textbox',...
-    [0.333834586466167 0.410428570447015 0.10438596665584 0.0711111120926708],...
+    [0.322105263157895 0.425666665685107 0.10438596665584 0.0711111120926708],...
     'String',{'$90^{\circ}$'},...
     'LineStyle','none',...
     'Interpreter','latex',...
+    'FontSize',14,...
     'FitBoxToText','off');
+
+
 latex2axes(figure1,"Times New Roman",14,"normal")
