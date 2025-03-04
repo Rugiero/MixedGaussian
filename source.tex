@@ -3,7 +3,7 @@
 \usepackage{algorithmic}
 \usepackage{algorithm}
 \usepackage{array}
-\usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+\usepackage[caption=false,font=footnotesize]{subfig}
 \usepackage{textcomp}
 \usepackage{stfloats}
 \usepackage{url}
@@ -30,7 +30,7 @@
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{dsfont}
-
+\captionsetup[figure]{font=footnotesize}
 
 \newcommand{\rEarth}{R_{\oplus}}
 \newcommand{\viiva}{\mathop{\Bigg/}}
@@ -160,7 +160,34 @@ The path loss is given over the planar distance $r \in [0, \infty)$ as a Gaussia
   %% \begin{remark}[Terrestrial millimeter communication]
   %%   The Gaussian, \textit{i.e.}, the squared exponential (along with other exponential functions) spatial path loss function have applications in terrestrial networks that pose rapid signal attenuation, such as millimeter wave cellular networks in dense urban environments for the NLoS signals [CITE]. Hence, the analysis presented in the paper can be applied to such planar Poisson network models. To the best of our knowledge, similar exploration of the factorial measures has not been conducted with the exponential path loss.  Notably, the squared power term $r^2$, as in the Gaussian function, is particularly tractable compared to other powers. 
   %% \end{remark}
-\subsection{Shadowing}
+
+  
+  \subsection{Shadowing}
+
+         %%    \begin{figure}[h]%
+         %%   \centering
+         %%   \subfloat[\centering The average total received power for the path loss exponent $\gamma =2$ as a function of altitude $h$.%is approximately independent of the altitude. 
+         %%   ]{{\includegraphics[width=\linewidth]{gamma2means.pdf}}
+         %%     \label{fig:gamma2means}%%
+         %%   } 
+         %%   \qquad
+         %%   \subfloat[\centering The average total received power for the path loss exponent $\gamma =4$ as a function of elevation angle $\epsilon$.
+         %%   %is approximately independent of the elevation angle. 
+         %%   ]{{\includegraphics[width=\linewidth]{gamma4means.pdf}}     \label{fig:gamma4means}} %%
+         %%   \caption{Comparison of the expected total received power based on the simulated spherical model and the theoretical planar model. 
+         %%   %The theory and the simulated spherical model values are compared. 
+         %%   The parameters $\varphi_{\text{RX}} = 1.6 \degree, P =1, \lambda =1/\text{km}^2,\gamma \in \{2,4\}, h \in [200,2000] \text{ km}, \epsilon \in  [35\degree,90\degree] $ are used.}
+         %% \end{figure}
+
+          \begin{figure}[!t]%
+           \centering
+           \subfloat[ dsfas  ]{{\includegraphics[width=\linewidth]{plotdensities.pdf}}
+             \label{fig:densities}}
+           \hfil
+           \subfloat[]{{\includegraphics[width=\linewidth]{upsilonvsepsilon.pdf}}     \label{fig:upsilonvsepsilon}} %%
+           \caption{fsfs}
+         \end{figure}
+
 
 \subsubsection{Gaussian mixture shadowing model}
 \label{sec:guassianmixture}
