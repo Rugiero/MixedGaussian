@@ -34,11 +34,11 @@ lnNLoS = makedist('Lognormal','mu',muNLoS,'sigma',sigmaNLoS)
 %pLoS=exp(-beta*cot(deg2rad(elevation1)));
 
 pLoS=0.992;
-
+%pLoS=0.613
 a = (2*exp(muNLoS+sigmaNLoS^2/2)*(-1+pLoS)-2*exp(muLoS+sigmaLoS^2/2)*pLoS)/(exp(2*(muNLoS+sigmaNLoS^2))*(-1+pLoS)-exp(2*(muLoS+sigmaLoS^2))*pLoS);
 b=(-exp(2*muNLoS+sigmaNLoS^2)*(-1+pLoS)+exp(2*(muLoS+sigmaLoS^2))*pLoS)/(2*(exp(muNLoS+sigmaNLoS^2/2)*(-1+pLoS)-exp(muLoS+sigmaLoS^2/2)*pLoS)^2);
 1/b
-kappa=2;
+kappa=2/(1/b);
 %a=1/2*exp(muNLoS+3*sigmaNLoS^2/2);
 lnFH1 = @(t) kappa*pLoS*(1-cdf(lnLoS,t/a))./t+kappa*(1-pLoS)*(1-cdf(lnNLoS,t/a))./t;
 %%pLoS=exp(-beta*cot(deg2rad(elevation2)));
@@ -53,7 +53,7 @@ expFH1 = @(t) (1/b).*kappa*(exp(-t))./t;
 pLoS=0.992;
 a = (2*exp(muNLoS+sigmaNLoS^2/2)*(-1+pLoS)-2*exp(muLoS+sigmaLoS^2/2)*pLoS)/(exp(2*(muNLoS+sigmaNLoS^2))*(-1+pLoS)-exp(2*(muLoS+sigmaLoS^2))*pLoS);
 b=(-exp(2*muNLoS+sigmaNLoS^2)*(-1+pLoS)+exp(2*(muLoS+sigmaLoS^2))*pLoS)/(2*(exp(muNLoS+sigmaNLoS^2/2)*(-1+pLoS)-exp(muLoS+sigmaLoS^2/2)*pLoS)^2);
-kappa=4;
+kappa=4/(1/b);
 expFH2 = @(t) (1./b).*kappa*(exp(-t))./t;
 lnFH2 = @(t) kappa*pLoS*(1-cdf(lnLoS,t/a))./t+kappa*(1-pLoS)*(1-cdf(lnNLoS,t/a))./t;
 
@@ -96,26 +96,32 @@ plot(t,lnFH2(t),'color','#D95319','linewidth',2)
 %plot(t,lnFH3(t),'color','#A2142F','linewidth',2)
 %plot(t,lnFH4(t),'color','#A2142F','linewidth',2)
 
- plot(t,expFH1(t),'--','color','#0072BD','linewidth',2)
- plot(t,expFH2(t),'--','color','#D95319','linewidth',2)
+plot(t,expFH1(t),'--','color','#0072BD','linewidth',2)
+plot(t,expFH2(t),'--','color','#D95319','linewidth',2)
 % plot(t,expFH3(t),'--', 'color','#A2142F','linewidth',2)
 % plot(t,expFH4(t),'--', 'color','#A2142F','linewidth',2)
 
+
+grid on
+ax = gca;
+ax.FontSize = 14;
+
 pbaspect([2 1 1])
+axis([[0,2],[0,8]])
 
 ylabel('$\lambda_{\mathcal{G}}(t)$','FontSize',14,'Interpreter','latex','Rotation',0)
 xlabel('t','FontSize',14,'Interpreter','latex')
 % Create title
-title('Density of the GP; $\epsilon = 90^{\circ}$',...
+title('Density of the GP',...
       'Interpreter','latex');
 
-fill([t,fliplr(t)],[lnFH1(t),fliplr(expFH1(t))],[0 0.4470 0.7410],'FaceAlpha',0.3,'EdgeColor','none');
+%% fill([t,fliplr(t)],[lnFH1(t),fliplr(expFH1(t))],[0 0.4470 0.7410],'FaceAlpha',0.3,'EdgeColor','none');
 
- fill([t,fliplr(t)],[lnFH2(t),fliplr(expFH2(t))],[0.8500 0.3250 0.0980],'FaceAlpha',0.3,'EdgeColor','none');
+%%  fill([t,fliplr(t)],[lnFH2(t),fliplr(expFH2(t))],[0.8500 0.3250 0.0980],'FaceAlpha',0.3,'EdgeColor','none');
 
 %fill([t,fliplr(t)],[lnFH3(t),fliplr(expFH3(t))],[0.9290 0.6940 0.1250],'FaceAlpha',0.3,'EdgeColor','none');
 
-axis([[0,max],[0,10]])
+
 legend('Gaussian mixture shadowing','Defective exponential shadowing',...
     'Interpreter','latex',...
     'FontSize',14)
@@ -145,9 +151,5 @@ text('Parent',axes1,'FontSize',14,'Interpreter','latex',...
 %%      [0.21 0.127571429777722 0.0508928561583162 0.0642857130794298],...
 %%      'String',{','},...
 %%      'LineStyle','none');
-
-grid on
-ax = gca;
-ax.FontSize = 14;
 
 latex2axes(figure1,"Times New Roman",14,"normal")

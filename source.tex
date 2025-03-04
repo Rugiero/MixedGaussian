@@ -48,7 +48,7 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{Factorial moment measure of the SIR and Successive Interference Cancellation in a Narrow-Beam LEO Uplink}
+\title{Factorial Moment Measure of the SIR and Interference Cancellation in a Narrow-Beam LEO Uplink}
 \author{IEEE Publication Technology,~\IEEEmembership{Staff,~IEEE,}
         % <-this % stops a space
 \thanks{This paper was produced by the IEEE Publication Technology Group. They are in Piscataway, NJ.}% <-this % stops a space
@@ -65,9 +65,7 @@
 
 \maketitle
 \begin{abstract}
-
-  Based on a stationary Poisson point process (PPP) on the plane, a Gaussian (squared exponential) path loss, and a defective exponential fading distribution function, we approximate a narrow-beam Low Earth Orbit (LEO) uplink with a two-tier Gaussian mixture shadowing. We examine the process formed by the signal-to-interference ratios (SIRs) and signal-to-interference-plus-noise ratios (SINRs) of the ordered first $k$ user equipments with the strongest signals at the typical LEO base station (BS) by deriving the joint pdfs of the $k$th order statistics; characterized by the $k$th factorial moment measures. Strikingly, we are able to describe the total interference by a gamma process, resulting in a Poisson-Dirichlet distribution and a convenient mathematical expression for the pdf of the SIR order statistics. Furthermore, using the joint pdfs of the SIR and SINR order statistics, we examine the SIR and SINR under different signal cancellation scenarios. The analysis and mathematical expressions offer insights and a framework to conviently study the SIR and SINR of all transmitters and interference cancellation in LEO systems for different settings. We present multiple numerical results and validate the theoretical values with simulations based on a realistic system model utilizing PPP on the Earth surface and Gaussian mixture shadowing. Importantly, we demonstrate that interference cancellation can reduce the variance in the user experience of the link quality while maintaining the average performance over LEO BSs in a uniform constellation (\textit{i.e.}, improve user fairness).
-
+  We study the factorial moment measure of the signal-to-interference ratio (SIR) at the typical narrow-beam Low Earth Orbit base station (LEO BS) serving an urban area---shadow fading modeled with a Gaussian mixture model. In the analysis, we use a planar system model and approximate the shadowing by a defective exponential distribution. In the approximate system model, the signal-to-total interference (STIR) process is a gamma process, and hence the STIR process at the LEO BSs follow a Poisson-Dirichlet distribution $\text{PD}(0,\cdot)$, of which factorial moment measure is well-known. We study the coverage probability of the user equipments (UEs) with the three strongest signals with and without adaptive successive interference cancellation (ASIC). We show that with ASIC, we can reduce the variance of the SIR of the strongest UEs while maintaining a good performance. Furthermore, the performance of the other UEs increase significantly. The results are validated by Monte Carlo simulations with a spherical Earth model and the exact Gaussian mixture distribution.
 
 \end{abstract}
 
@@ -78,15 +76,8 @@
 
 
 \section{Introduction}
-The steady rise of aerial communication networks, including LEO networks, owing to the planning and deployment of dense LEO networks to handle increased user-data as well as the expansion of the terrestrial frequency bands to those that are so far assigned only for the satellite communications, drives a need for new analytical tools to study and locate the essential properties of the networks. The signal-to-interference-plus-noise ratio SINR (or without the noise simply SIR) is a key metric, determinining the performance of the satellite link. A derivation of the SINR is, for example, spectral efficiency. The SINR is a function of propagation effects, which incorporates the distance-dependent path loss, fast-fading, slow-fading (shadowing), and a variety of atmospheric scattering and absorbion effects, etc. Altough not optimal, the analytic models, such as stochastic geometry models, often compromizes between analytical tractability and realism in the signal propagation model. Another cmmon simplification is to use the Poisson point process (PPP)---being the most tractable in the stochastic geometry analysis. Furthermore, as the points in the PPP are independently located, it can be a highly realistic model in scenarios such as in modeling the random locations of mobile user equipments (UEs), as the mobile phone user are more or less located independently from one another (as opposed to base stations (BSs), including LEO BSs, that are often more regularly located). However, the PPP works as a approximation also with many regular configurations. [CITE] The PPP has also a special role in the theory of point processes: any subsequentive independent random replacement of any point process (p.p.) will lead to the PPP. Furthermore, random multipath propagation effects can make a arbitrary p.p. to seem Poisson. [CITE]. However, often these simplifications don't detract from the statistical system-level insights the models introduce in simpler and more general terms compared to sophisticated scenario-specific simulations. The simple insights derived from the analytical models are important in comprehending the LEO networks and ultimately lead to more optimal allocation of simulation resources.
 
-
- However, in this work, we interpret the results in a narrow-beam LEO context. We validate the flat-Earth assumption and the simplified fading model, imposed in order to derive the mathematical results, by Monte Carlo simulating the realistic LEO network using spherical Earth model and Gaussian mixture shadowing.
-
-
-
-
-
+While the stochastic geometry modeling of Low Earth Orbit (LEO) networks has been extensively studied, the factorial moment measure of the signal-to-interference ratio (SIR), that allows the study of the joint probability distribution, and ultimately, for example, the examining the performance metrics under interference cancellation, is yet to be explored. We utilize the narrow-beam system model from [CITE], and study the SIR process in the narrow-beam typical LEO base station (BS) through the signal-to-total-interference (STIR) process. Strikingly, the STIR process is a gamma process, and hence the density of the factorial moment measure of the STIR process is a Poisson-Dirichlet process PD$(0,\cdot)$, of which factorial moment measure is well-known. We derive the joint pdf of the SIR and study the performance metrics of the three strongest signals at the typical LEO BS without interference cancellation and with an adaptive successive interference cancellation (ASIC) scheme.  In [CITE], it was noted that the optimal system parameters, corresponding to mean $\log(2)$ user equipments (UEs) inside a LEO BS $-3$ dB footprint, leads to a high variation in the SIR over the LEO BSs. In this work, we show that ASIC can reduce the variance of the UE with the strongest signal while while maintaining the performance. Furthermore, the coverage probability of the other UEs significantly improves allowing serving of multiple UEs by the typical LEO BS.
 
 
 
@@ -101,7 +92,7 @@ The steady rise of aerial communication networks, including LEO networks, owing 
       Symbol& Explanation &Values and units
       \\ 
       \hline 
-      $h$ & Receiving LEO BS altitudes. &$1200$ km  \\
+      $h$ & Receiving LEO BS altitudes. &$1000$ km  \\
 %      $G[\cdot]$ &Gaussian antenna gain of a BS.&$\R_+ \rightarrow (0,1)$ \\
       $\alpha$ &Power path loss exponent.& $4$\\
       %% $\Phi\subset \R^2$ &Homogeneous PPP on planar Earth. & $\{(x_i,y_i)\}$ km\\
@@ -156,7 +147,7 @@ The steady rise of aerial communication networks, including LEO networks, owing 
 \label{sec:gainprocess}
 
 
-Considering a uplink, the UEs follow a homogeneous PPP $\Phi \subset \R^2$ of density $\lambda$. The BSs form an independent homogeneous p.p. possibly with different density than the UEs. Because of the translation invariancy of the PPP, all location are statistically equivalent, and we define the origin $\textit{o}$ to represents the typical LEO BS footprint focus point.
+Considering a uplink, the UEs follow a homogeneous PPP $\Phi \subset \R^2$ of density $\lambda$. The LEO BSs form an homogeneous p.p. possibly with different density than the UEs. Because of the translation invariancy of the PPP, all location are statistically equivalent, and we define the origin $\textit{o}$ to represents the typical LEO BS footprint focus point.
 
 The path loss is given over the planar distance $r \in [0, \infty)$ as a Gaussian function
   \begin{equation}
@@ -216,23 +207,6 @@ Figure \ref{fig:plotdensities} depicts the densities of the GPs with the defecti
 \begin{remark}
   The variable $0 < \upsilon \leq 1$ is not generally solvable for all log-normal distributions (by matching the first two moments). Broadly said, the variance of the shadowing has to be large enough. However, the variables $0<\upsilon \leq 1$ is solvable for almost every shadowing scenario in [CITE], particularly for the urban sceneario.
 \end{remark}
-
-
-\subsection{The spherical Earth model in the Monte Carlo simulations }
-
-\label{sec:sphericalmodel}
-The planar model approximates the spherical system model, where the UE are located on the spherical Earth surface according to a homogeneous PPP $\Theta$ of density $\lambda$. This p.p. can be constructed from $\Phi \subset \R^2$ by the a preserving mapping. Namely, for $(x_1,x_2) \in [-\pi,\pi]\times[-1,1]\cap\Phi/\rEarth$, the mapping 
-\begin{align}
-  &(x_1,x_2)\mapsto (\rEarth,x_1,\sin^{-1}(x_2))=(\rEarth,\theta_{x_1},\varphi_{x_2}) \in \Theta
-\end{align}
- produces the HPPP of density $\lambda$ on the sphere of radius $\rEarth$ in terms of spherical coordinates.
-
-The total received power at the typical LEO BS from the UEs in the PPP $\Theta \cap E $ of density $\lambda$, with $E$ denoting the area above the horizon of the typical LEO BS is defined as
-\begin{equation}
-  \label{eq:mathringptot}
-  \mathring{I} \triangleq  \sum_{x \in \cap E } H_x\ell(d_x) = \sum_{x \in \Theta \cap E }  \frac{{H_{\mathcal{M}\mathcal{L}\mathcal{N}}}_x G(\varphi_x)}{(d_x/d_0)^{\alpha}},
-\end{equation}
-All simulated values use the spherical model with the values $\varphi_x$ and $d_x$ being exact. 
 
 
          
@@ -339,6 +313,22 @@ With exponential shadowing ${H}_{\text{exp}}$, for Re$(s)>1$,
   &=\exp\left\{-\tilde{\kappa}\upsilon_{}\int_0^{\infty}(1-e^{-sr}) e^{-r} /r dr \right\} =(1+s)^{-\tilde{\kappa}\upsilon_{}},
 \end{align}
 which is the Laplace transform of the gamma distribution with the shape parameter $\tilde{\kappa}\upsilon_{}$. 
+
+\subsection{The spherical Earth model in the Monte Carlo simulations }
+
+\label{sec:sphericalmodel}
+The planar model approximates the spherical system model, where the UE are located on the spherical Earth surface according to a homogeneous PPP $\Theta$ of density $\lambda$. This p.p. can be constructed from $\Phi \subset \R^2$ by the a preserving mapping. Namely, for $(x_1,x_2) \in [-\pi,\pi]\times[-1,1]\cap\Phi/\rEarth$, the mapping 
+\begin{align}
+  &(x_1,x_2)\mapsto (\rEarth,x_1,\sin^{-1}(x_2))=(\rEarth,\theta_{x_1},\varphi_{x_2}) \in \Theta
+\end{align}
+ produces the HPPP of density $\lambda$ on the sphere of radius $\rEarth$ in terms of spherical coordinates.
+
+The total received power at the typical LEO BS from the UEs in the PPP $\Theta \cap E $ of density $\lambda$, with $E$ denoting the area above the horizon of the typical LEO BS is defined as
+\begin{equation}
+  \label{eq:mathringptot}
+  \mathring{I} \triangleq  \sum_{x \in \cap E } H_x\ell(d_x) = \sum_{x \in \Theta \cap E }  \frac{{H_{\mathcal{M}\mathcal{L}\mathcal{N}}}_x G(\varphi_x)}{(d_x/d_0)^{\alpha}},
+\end{equation}
+All simulated values use the spherical model with the values $\varphi_x$ and $d_x$ being exact. 
 
 
 
@@ -542,25 +532,6 @@ In figures \ref{kprobabilities.pdf} we plot the probabilities for $\tilde{\kappa
 
 
 \section{Scaling constant}
-
-
-\label{app:constantD}
-See Figure \ref{fig:triangle}. We have that $\zeta_{z}= \tan^{-1}(z/h)$. The derivative of $\varphi_x$  around $\textit{o}$ is given approximately by
-\begin{align}
-  &\frac{d}{d \| x\|}\varphi_{x} =\frac{d}{dz}\zeta_{z}  = \frac{d\tan^{-1}(z/h)}{dz} = \frac{h}{h^2 + z^2}   \nonumber\\
-  %%              \end{align}
-  %%            \begin{align}
-  &\overset{(a)}{\approx} \frac{h}{h^2 -h^2 + \hat{d}^2_{h,\epsilon}}  \overset{(b)}{=}\frac{h}{ h^2/\sin^2(\epsilon)} = \frac{\sin^2(\epsilon)}{h} = D_{h,\epsilon},
-  %%               & ,
-\end{align}
-where (a) follows from Pythagoras's theorem, and (b) is standard trigonometry.
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.7\linewidth]{triangle.pdf}
-  \caption{Geometric interpretation of the variables in Appendix \ref{app:constantD} }
-  \label{fig:triangle}
-\end{figure}
 
 
 

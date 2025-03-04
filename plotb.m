@@ -2,7 +2,7 @@ S = importdata("bandpLoS.mat");
 bs=flip(S.bs);
 bs=bs';
 pLoS=flip(S.pLoS)';
-elevations=linspace(90,40,6);
+elevations=linspace(90,30,7);
 
 figure1 = figure;
 
