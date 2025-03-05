@@ -82,6 +82,7 @@ While the stochastic geometry modeling of Low Earth Orbit (LEO) networks has bee
 
 
 \begin{table}
+  \label{table:parameters}
   \begin{center}
     \begin{tabular}{|c|p{4.5cm}|p{1.9cm}|}
       \multicolumn{3}{c}{\textbf{Principal symbols the values and units in the numerical results}} \\
@@ -255,7 +256,11 @@ Since the variables $\{H_x\}_{x \in \Phi}$ are i.i.d., we can denote the shadowi
     \label{eq:GPdensity}
     \lambda_{\mathcal{G}}(t) = \tilde{\kappa} {F_H(t)}/{t}, \quad t \in (0, \infty),
   \end{equation}
-  where $\tilde{\kappa} = {\kappa}/{\log(2)}$ and $\kappa \triangleq \pi \lambda \left({\varphi_{\text{RX}}}h/{\sin^2(\epsilon)}\right)^2$ is approximately the average number of UEs inside a $-3$ dB footprint.
+  where $\tilde{\kappa} = {\kappa}/{\log(2)}$ and
+  \begin{equation}\kappa \triangleq \pi \lambda \left({\varphi_{\text{RX}}}h/{\sin^2(\epsilon)}\right)^2
+    \label{eq:kappa}
+  \end{equation}
+  is approximately the average number of UEs inside a $-3$ dB footprint.
 
   
   \begin{proof}
@@ -435,21 +440,27 @@ The partial densities can be derived from the density of the $n$th factorial mom
 the support of the density being in the region $\sum_{i=1}^nz'_i+iz'_n \leq 1$. 
 
 
+\subsection{Upper and lower bounds of the first two moments of the SIR of the strongest signal}
+Combining \eqref{eq:densitySINR}, \eqref{eq:jointprobability}, and \eqref{eq:factorialmoment}, we get a closed form for the SIR pdf of the strongest signal in the \textit{simple coverage region} $z\geq 1$; $f_{(1)}(z) =  {\tilde{\kappa}\upsilon_{}\left({z + 1} \right)^{-\tilde{\kappa}\upsilon_{}}}/{z}$. If we consider that the smallest values are consentrated at $1$, the mean is bounded by
+\begin{align}
+  \label{eq:SIR1}
+  &1-\int_1^{\infty}f_{(1)}(z)dz+\int_{1}^{\infty}f_{(1)}(z) z dz
+  = \nonumber \\
+  &1-\, _2F_1(\tilde{\kappa} \upsilon,\tilde{\kappa} \upsilon;\tilde{\kappa} \upsilon+1;-1)+\frac{2^{1-\tilde{\kappa}v}\tilde{\kappa}v}{(\tilde{\kappa}\upsilon-1)} \nonumber \\
+&\geq \mathbb{E}(\text{SIR}_{1,\{1\}})  \geq \frac{2^{1-\tilde{\kappa}v}\tilde{\kappa}v}{(\tilde{\kappa}\upsilon-1)}, \text{ } \tilde{\kappa} \upsilon >1.
+\end{align}
+Similarly, the second moment is bounded by
+\begin{align}
+  \label{eq:SIR2}
+  &1-\, _2F_1(\tilde{\kappa}\upsilon,\tilde{\kappa}\upsilon;\tilde{\kappa}\upsilon+1;-1) + \frac{2^{1-\tilde{\kappa}v}(\tilde{\kappa}v)^2}{(\tilde{\kappa}\upsilon-1)(\tilde{\kappa}\upsilon-2)} \nonumber \\
+&\geq \mathbb{E}(\text{SIR}^2_{1,\{1\}}) \geq \int_{1}^{\infty}f_{(1)}(z) z^2 dz = \frac{2^{1-\tilde{\kappa}v}(\tilde{\kappa}v)^2}{(\tilde{\kappa}\upsilon-1)(\tilde{\kappa}\upsilon-2)},
+\end{align}
+which converges for $\tilde{\kappa}\upsilon > 2$, \textit{i.e.}, for less than $2\log(2)$ effective UEs inside a $-3$ dB footprint on average the second moment (and the variance) are infinite. Despite the strong average SIR, the infinite variance for $\tilde{\kappa}\upsilon \leq 2$ is is not desirable if we want a consistent user experience of the link quality.
+
+
 
 
 \subsection{SIR under interference cancellation}
-
-Combining \eqref{eq:densitySINR}, \eqref{eq:jointprobability}, and \eqref{eq:factorialmoment}, we get a closed form for the SIR pdf of the strongest signal in the \textit{simple coverage region} $z\geq 1$; $f_{(1)}(z) =  {\tilde{\kappa}\upsilon_{}\left({z + 1} \right)^{-\tilde{\kappa}\upsilon_{}}}/{z}$. An upper bound for the second moment is given by
-\begin{equation}
-  \label{eq:SIR1}
-\mathbb{E}(\text{SIR}^2_{1,\{1\}}) \geq \int_{1}^{\infty}f_{(1)}(z) z^2 = \frac{2^{1-\tilde{\kappa}v}(\tilde{\kappa}v)^2}{(\tilde{\kappa}\upsilon-1)(\tilde{\kappa}\upsilon-2)},
-\end{equation}
-which converges for $\tilde{\kappa}\upsilon > 2$. Similarly for the second moment, $\mathbb{E}(\text{SIR}_{1,\{1\}})  = {2^{1-\tilde{\kappa}v}\tilde{\kappa}v}/{(\tilde{\kappa}\upsilon-1)},\tilde{\kappa}\upsilon>1$ which, \textit{i.e.}, for less than $2\log(2)$ effective UEs inside a $-3$ dB footprint on average. Despite of high average SIR, the infinite variance for $\tilde{\kappa}\upsilon \leq 2$ is unacceptable if we desire a consistent link quality. However, SIR-ASIC achieve similar performance while decreasing the variance by doubling $\kappa \upsilon$. Furthermore, using signal cancellation the typical LEO BS can have better connection to the UEs with weaker signals than the strongest UE. Following from the order $\mathsf{Z}'_1 > \mathsf{Z}'_2 >\dots $, if $\mathsf{Z}'_1$ has a finite variance, $\mathsf{Z}_n$ have finite variances also under interference cancellation.
-
-
-
-
-
 
 Let $(u_{(1)}, \dots, u_{(k)}) \subset \mathcal{G}$ represent an ordered set of points in the GP, where $u_{(1)}$ denotes the strongest signal at the LEO BS. The signals with indices in the set $ \mathcal{K} \ni n,$  are canceled from the total interference. We denote the SIR under the interference cancellation (IC) as
 \begin{equation}
@@ -461,6 +472,7 @@ Under IC, we have the following identity in terms of the STIR process
    \mathbb{P}(\text{SIR}_{n,[k]} > \theta) = \mathbb{P}\left(\mathsf{Z}'_{(n)}+\theta'\sum_{j\in [k] \setminus \{n\}}\mathsf{Z}'_{(j)} > \theta'\right).
 \end{equation}
 
+Following from the order statistics $\mathsf{Z}'_{(1)} > \mathsf{Z}'_{(2)} >\dots $, if $\mathsf{Z}_{(1)}$ has a finite variance, $\mathsf{Z}_{(n)}$ has a finite variances also under interference cancellation.
 
 
 %% \begin{align}
@@ -489,9 +501,9 @@ We consider the SIR under adaptive successive signal cancellation (ASIC-SIR). Th
 
 
 \begin{prop}
-  Consider the adaptive SIC-SIR with at most $n+K$ canceled signals. The coverage probability of the UE with n\textit{th} strongest signal is given by
+  Consider the adaptive successive interference cancellation with at most $n+K$ canceled signals. The coverage probability of the UE with n\textit{th} strongest signal is given by
   \begin{align}
-    &\mathcal{P}^{(n,K)}_{\textup{AD-SIC}}(\theta,\tau) \triangleq \sum_{k=n}^{K}\Delta^{(n,k)}_{\textup{SIC}}(\theta,\tau),
+    &\mathcal{P}^{(n,K)}_{\textup{ASIC}}(\theta,\tau) \triangleq \sum_{k=n}^{K}\Delta^{(n,k)}_{\textup{SIC}}(\theta,\tau),
   \end{align}
   where
   \begin{align}
@@ -511,20 +523,31 @@ We consider the SIR under adaptive successive signal cancellation (ASIC-SIR). Th
 
 
 
-
+\section{Numerical results and conclucions}
+  
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{nprobability.pdf}
+  \caption{The $n$-probabilities for $n \in \{1,2,3\}$ for $\kappa v=2 \log(2)$ (the average number of effective UEs inside a $-3$ dB footprint). 
+} 
+  \label{fig:nprobability}
+\end{figure}
 
 
   
 \begin{figure}[h]
   \centering
-  \includegraphics[width=\linewidth]{kprobabilities.pdf}
-  \caption{The $k$-probabilities for $k \in \{1,2,3\}$ for $\kappa v=1.8$ (recall, $\kappa v$ corresponds to the average number of \textit{effective} UEs inside the SBS $3$ dB footprints). For the simulated values, the two-tier Gaussian mixture shadowing for $\kappa \upsilon_{} \in (1.8,2.6)$.
-} 
-  \label{fig:antennapats}
+  \includegraphics[width=\linewidth]{ASICSIR.pdf}
+  \caption{The ASIC-SIR with double the number of average number of effective UEs inside a $-3$ dB footprint compared to Figure \ref{fig:nprobability}; $\kappa \upsilon = 4 \log(2)$. } 
+  \label{fig:ASICSIR}
 \end{figure}
 
 
-In figures \ref{kprobabilities.pdf} we plot the probabilities for $\tilde{\kappa}\upsilon=2$ and  $\tilde{\kappa}\upsilon=7/2=3.5$.
+In figures \ref{fig:nprobability} and \ref{fig:ASICSIR} we plot the $n$-probabilities \eqref{eq:kprobability} and ASIC-SIR for $\tilde{\kappa}\upsilon=2$ and  $\tilde{\kappa}\upsilon=4$, respectively. We use the values presented in Table \ref{table:parameters} in the simulations. However, the curcial system parameter is $\tilde{\kappa}\upsilon$. Hence, for example, instead of scaling $\lambda$, we could adjust the width of the antenna pattern for the elevation angles to match the average number of effective UEs according to \eqref{eq:upsilon} and \eqref{eq:kappa}.
+
+The figures show that ASIC-SIR can achieve similar coverage probabilities for the strongest UE in the region $\theta \in (-7,10)$ dB  while by doubling the average effective number of UEs inside a $-3$ dB footprint, $\kappa \upsilon$. Using \eqref{eq:SIR1} and \eqref{eq:SIR2}, we can calculate a upper bound for the variance of the SIR of the strongest signal for $\tilde{\kappa} \upsilon = 4$: var$(\text{SIR}_{1,\{1\}})\leq 1.2$, which is a clear improvement compared to the infinite variance for $\tilde{\kappa} \upsilon = 2$.
+
+
 
 
 

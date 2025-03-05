@@ -109,12 +109,11 @@ fill([simtau,fliplr(simtau)],[simres340',fliplr(simres390')],[0.9290 0.6940 0.12
 
 
 				% Create legend
-
-legend('Analysis; $n=1$','Analysis; $n=2$','Analysis; $n=3$','Simulated values;', '(spherical model,','Gaussian mixture)','shadowing)','Interpreter','latex',...
+legend('Analysis; $n=1$','Analysis; $n=2$','Analysis; $n=3$','Simulated values', '(spherical model,','accurate Gaussian)','mixture shadowing)','Interpreter','latex',...
     'FontSize',14,BackgroundAlpha=.3)
 
 
-xlabel('$\tau$(dB)','FontSize',14,'Interpreter','latex')
+xlabel('$\theta$ [dB]','FontSize',14,'Interpreter','latex')
 ylabel('$\mathcal{P}^{(n)}(\theta)$','FontSize',14,'Interpreter','latex')
 %title('$\tilde{\kappa}=3/b_{\epsilon}, \epsilon \in \{90,80,70,60,50,40\}^{\circ}$','FontSize',14,'Interpreter','latex')
 grid on

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.10.9)  5 MAR 2025 02:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.21)  5 MAR 2025 19:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -655,44 +655,44 @@ LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 6
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-Underfull \hbox (badness 10000) in paragraph at lines 100--101
+Underfull \hbox (badness 10000) in paragraph at lines 101--102
 []|$\OMS/cmsy/m/n/8 f\OT1/cmr/m/n/8 4\OML/cmm/m/it/8 :\OT1/cmr/m/n/8 6\OML/cmm/
 m/it/8 ; \OT1/cmr/m/n/8 8\OML/cmm/m/it/8 :\OT1/cmr/m/n/8 8\OMS/cmsy/m/n/8 g
  []
 
 
-Overfull \hbox (2.34819pt too wide) in paragraph at lines 101--104
+Overfull \hbox (2.34819pt too wide) in paragraph at lines 102--105
 []|$[] []
  []
 
 
-Underfull \hbox (badness 6252) in paragraph at lines 106--106
+Underfull \hbox (badness 6252) in paragraph at lines 107--107
 []|\OT1/ptm/m/n/8 Mean of the LoS com-po-nent of
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 118--119
+Underfull \hbox (badness 10000) in paragraph at lines 119--120
 []|$\OT1/cmr/m/n/8 (0\OML/cmm/m/it/8 :\OT1/cmr/m/n/8 2\OML/cmm/m/it/8 ; \OT1/cm
 r/m/n/8 10)$ 
  []
 
-<UEsontheplane.png, id=52, 589.402pt x 376.607pt>
+<UEsontheplane.png, id=60, 589.402pt x 376.607pt>
 File: UEsontheplane.png Graphic file (type png)
 <use UEsontheplane.png>
-Package pdftex.def Info: UEsontheplane.png  used on input line 132.
+Package pdftex.def Info: UEsontheplane.png  used on input line 133.
 (pdftex.def)             Requested size: 252.0pt x 161.01839pt.
-<drawing.png, id=54, 216.0873pt x 147.9126pt>
+<drawing.png, id=62, 216.0873pt x 147.9126pt>
 File: drawing.png Graphic file (type png)
 <use drawing.png>
-Package pdftex.def Info: drawing.png  used on input line 134.
+Package pdftex.def Info: drawing.png  used on input line 135.
 (pdftex.def)             Requested size: 252.0pt x 172.50182pt.
 
-Overfull \hbox (3.50006pt too wide) in paragraph at lines 132--135
+Overfull \hbox (3.50006pt too wide) in paragraph at lines 133--136
  [][] 
  []
 
 
-Overfull \hbox (3.50006pt too wide) in paragraph at lines 132--135
+Overfull \hbox (3.50006pt too wide) in paragraph at lines 133--136
  [][] 
  []
 
@@ -704,23 +704,23 @@ dist/fonts/enc/dvips/base/8r.enc}
 
 
 ]
-<plotdensities.pdf, id=84, 381.34471pt x 219.219pt>
+<plotdensities.pdf, id=92, 381.34471pt x 219.219pt>
 File: plotdensities.pdf Graphic file (type pdf)
 <use plotdensities.pdf>
-Package pdftex.def Info: plotdensities.pdf  used on input line 185.
+Package pdftex.def Info: plotdensities.pdf  used on input line 186.
 (pdftex.def)             Requested size: 252.0pt x 144.86226pt.
-<upsilonvsepsilon.pdf, id=85, 361.83182pt x 222.35071pt>
+<upsilonvsepsilon.pdf, id=93, 361.83182pt x 222.35071pt>
 File: upsilonvsepsilon.pdf Graphic file (type pdf)
 <use upsilonvsepsilon.pdf>
-Package pdftex.def Info: upsilonvsepsilon.pdf  used on input line 187.
+Package pdftex.def Info: upsilonvsepsilon.pdf  used on input line 188.
 (pdftex.def)             Requested size: 252.0pt x 154.8573pt.
 
-Overfull \hbox (3.50006pt too wide) in paragraph at lines 185--188
+Overfull \hbox (3.50006pt too wide) in paragraph at lines 186--189
  [][] 
  []
 
 
-Overfull \hbox (3.50006pt too wide) in paragraph at lines 185--188
+Overfull \hbox (3.50006pt too wide) in paragraph at lines 186--189
  [][] 
  []
 
@@ -731,26 +731,48 @@ pdfTeX warning: pdflatex (file ./upsilonvsepsilon.pdf): PDF inclusion: multiple
  pdfs with page group included in a single page
 >] [3]
 LaTeX Font Info:    Trying to load font information for U+dsrom on input line 3
-77.
+82.
  (/usr/share/texlive/texmf-dist/tex/latex/doublestroke/Udsrom.fd
 File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
 )
 [4]
-Overfull \hbox (1.6364pt too wide) detected at line 503
+Overfull \hbox (1.6364pt too wide) detected at line 515
 []
  []
 
-<kprobabilities.pdf, id=163, 385.19911pt x 331.9602pt>
-File: kprobabilities.pdf Graphic file (type pdf)
-<use kprobabilities.pdf>
-Package pdftex.def Info: kprobabilities.pdf  used on input line 520.
-(pdftex.def)             Requested size: 252.0pt x 217.17465pt.
+<nprobability.pdf, id=171, 385.19911pt x 332.9238pt>
+File: nprobability.pdf Graphic file (type pdf)
+<use nprobability.pdf>
+Package pdftex.def Info: nprobability.pdf  used on input line 530.
+(pdftex.def)             Requested size: 252.0pt x 217.80505pt.
 
-LaTeX Warning: Reference `kprobabilities.pdf' on page 5 undefined on input line
- 527.
+LaTeX Warning: `h' float specifier changed to `ht'.
 
+<ASICSIR.pdf, id=172, 389.2944pt x 332.9238pt>
+File: ASICSIR.pdf Graphic file (type pdf)
+<use ASICSIR.pdf>
+Package pdftex.def Info: ASICSIR.pdf  used on input line 540.
+(pdftex.def)             Requested size: 252.0pt x 215.51398pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Package caption Warning: \label without proper reference on input line 85.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `table:parameters' on page 5 undefined on input line 5
+46.
+
+[5 <./nprobability.pdf> <./ASICSIR.pdf
+
+pdfTeX warning: pdflatex (file ./ASICSIR.pdf): PDF inclusion: multiple pdfs wit
+h page group included in a single page
+>]
 No file source.bbl.
-[5 <./kprobabilities.pdf>] (./source.aux)
+[6
+
+] (./source.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -760,15 +782,15 @@ L3 programming layer <2024-01-22>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `source.out' has not changed.
-(rerunfilecheck)             Checksum: 35DF9869E4C3DE1BF15533BBA02848BA;2701.
+(rerunfilecheck)             Checksum: 52A5547A9268649774360E938083F660;3432.
  ) 
 Here is how much of TeX's memory you used:
- 13895 strings out of 476106
- 223433 string characters out of 5793933
- 1963975 words of memory out of 5000000
- 35635 multiletter control sequences out of 15000+600000
+ 13913 strings out of 475509
+ 223697 string characters out of 5776664
+ 1964975 words of memory out of 5000000
+ 35683 multiletter control sequences out of 15000+600000
  609215 words of font info for 138 fonts, out of 8000000 for 9000
- 63 hyphenation exceptions out of 8191
+ 399 hyphenation exceptions out of 8191
  75i,15n,79p,1494b,510s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/shar
@@ -796,10 +818,10 @@ m10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam
 re/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/urw/times/utmri8a.pfb>
-Output written on source.pdf (5 pages, 991970 bytes).
+Output written on source.pdf (6 pages, 1240830 bytes).
 PDF statistics:
- 311 PDF objects out of 1000 (max. 8388607)
- 230 compressed objects within 3 object streams
- 59 named destinations out of 1000 (max. 500000)
- 122 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 344 PDF objects out of 1000 (max. 8388607)
+ 258 compressed objects within 3 object streams
+ 65 named destinations out of 1000 (max. 500000)
+ 143 words of extra memory for PDF output out of 10000 (max. 10000000)
 
