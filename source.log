@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.10.9)  5 MAR 2025 00:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.10.9)  5 MAR 2025 02:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -724,55 +724,30 @@ Overfull \hbox (3.50006pt too wide) in paragraph at lines 185--188
  [][] 
  []
 
-
-Underfull \vbox (badness 1389) has occurred while \output is active []
-
- [2 <./UESontheplane.png> <./drawing.png> <./plotdensities.pdf> <./upsilonvseps
-ilon.pdf
+[2 <./UESontheplane.png> <./drawing.png> <./plotdensities.pdf> <./upsilonvsepsi
+lon.pdf
 
 pdfTeX warning: pdflatex (file ./upsilonvsepsilon.pdf): PDF inclusion: multiple
  pdfs with page group included in a single page
->]
-File: plotdensities.pdf Graphic file (type pdf)
-<use plotdensities.pdf>
-Package pdftex.def Info: plotdensities.pdf  used on input line 277.
-(pdftex.def)             Requested size: 252.0pt x 144.86226pt.
- [3]
+>] [3]
 LaTeX Font Info:    Trying to load font information for U+dsrom on input line 3
-84.
+77.
  (/usr/share/texlive/texmf-dist/tex/latex/doublestroke/Udsrom.fd
 File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
 )
 [4]
-Overfull \hbox (1.6364pt too wide) detected at line 498
+Overfull \hbox (1.6364pt too wide) detected at line 503
 []
  []
 
-
-LaTeX Warning: Reference `eq:IC-SINRcond' on page 5 undefined on input line 501
-.
-
-
-LaTeX Warning: Reference `eq:SIC-SINRcond' on page 5 undefined on input line 50
-1.
-
-
-LaTeX Warning: Command \textperthousand invalid in math mode on input line 501.
-
-
-
-LaTeX Warning: Command \textperthousand invalid in math mode on input line 501.
-
-
-Missing character: There is no ‡ in font cmr10!
-<kprobabilities.pdf, id=165, 385.19911pt x 331.9602pt>
+<kprobabilities.pdf, id=163, 385.19911pt x 331.9602pt>
 File: kprobabilities.pdf Graphic file (type pdf)
 <use kprobabilities.pdf>
-Package pdftex.def Info: kprobabilities.pdf  used on input line 521.
+Package pdftex.def Info: kprobabilities.pdf  used on input line 520.
 (pdftex.def)             Requested size: 252.0pt x 217.17465pt.
 
 LaTeX Warning: Reference `kprobabilities.pdf' on page 5 undefined on input line
- 528.
+ 527.
 
 No file source.bbl.
 [5 <./kprobabilities.pdf>] (./source.aux)
@@ -785,16 +760,16 @@ L3 programming layer <2024-01-22>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `source.out' has not changed.
-(rerunfilecheck)             Checksum: 334E93FF5EEAF0AEA284A478980D3DEE;2709.
+(rerunfilecheck)             Checksum: 35DF9869E4C3DE1BF15533BBA02848BA;2701.
  ) 
 Here is how much of TeX's memory you used:
- 13900 strings out of 476106
- 223520 string characters out of 5793933
+ 13895 strings out of 476106
+ 223433 string characters out of 5793933
  1963975 words of memory out of 5000000
- 35639 multiletter control sequences out of 15000+600000
+ 35635 multiletter control sequences out of 15000+600000
  609215 words of font info for 138 fonts, out of 8000000 for 9000
  63 hyphenation exceptions out of 8191
- 75i,15n,79p,1494b,497s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,15n,79p,1494b,510s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texli
@@ -821,10 +796,10 @@ m10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam
 re/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/urw/times/utmri8a.pfb>
-Output written on source.pdf (5 pages, 994625 bytes).
+Output written on source.pdf (5 pages, 991970 bytes).
 PDF statistics:
- 316 PDF objects out of 1000 (max. 8388607)
- 234 compressed objects within 3 object streams
- 60 named destinations out of 1000 (max. 500000)
+ 311 PDF objects out of 1000 (max. 8388607)
+ 230 compressed objects within 3 object streams
+ 59 named destinations out of 1000 (max. 500000)
  122 words of extra memory for PDF output out of 10000 (max. 10000000)
 

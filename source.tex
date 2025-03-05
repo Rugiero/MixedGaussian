@@ -181,11 +181,11 @@ The path loss is given over the planar distance $r \in [0, \infty)$ as a Gaussia
 
           \begin{figure}[!t]%
            \centering
-           \subfloat[ dsfas  ]{{\includegraphics[width=\linewidth]{plotdensities.pdf}}
+           \subfloat[The density of the GP for $\kappa \upsilon \in \{2 \log(2), 4 \log(2)\}$ using $\epsilon = \pi/2$. Interestingly, the elevation angle did not have visible effect on the density in the Gaussian mixture model. ]{{\includegraphics[width=\linewidth]{plotdensities.pdf}}
              \label{fig:densities}}
            \hfil
-           \subfloat[]{{\includegraphics[width=\linewidth]{upsilonvsepsilon.pdf}}     \label{fig:upsilonvsepsilon}} %%
-           \caption{fsfs}
+           \subfloat[The dependence of the shadowing parameters $p_{\text{LoS}}$ and $\upsilon$ on the elevation angle. The parameters are approximately proportional to the sine function. ]{{\includegraphics[width=\linewidth]{upsilonvsepsilon.pdf}}     \label{fig:upsilonvsepsilon}} %%
+           \caption{The density of the GP and shadowing parameters in the Gaussian mixture and defective exponential shadowing models.}
          \end{figure}
 
 
@@ -208,7 +208,7 @@ As a trade-off between analytical tractability and realism, we introduce a \text
   \label{eq:defexp}
   F_{{H}_{\text{Exp}}}(t) = \upsilon e^{-t}, t>0.
 \end{equation}
-Essentially, this is a mixture distribution. Namely, $0 \leq 1-\upsilon < 1$ denotes the probability that the shadowed signal is entirely attenuated and takes the value of zero, and otherwise follows the exponential distribution. 
+Essentially, this is a mixture distribution. Namely, $0 \leq 1-\upsilon < 1$ denotes the probability that the shadowed signal is entirely attenuated and takes the value of zero and otherwise the power follows the exponential distribution. 
 
 
  We introduce a scaling term, $\Upsilon$, to ensure that the means of the log-normal mixture distribution and the defective exponential distribution match: $\mathbb{E}(\Upsilon H_{\mathcal{MLN}}) = \mathbb{E}(H_{\text{Exp}}) = \upsilon$. By equating the first two moments of $H_{\text{Exp}}$ (l.h.s.) and $\Upsilon_{} H_{\mathcal{M} \mathcal{L}\mathcal{N}}$ (r.h.s.)
@@ -226,10 +226,10 @@ Essentially, this is a mixture distribution. Namely, $0 \leq 1-\upsilon < 1$ den
     %% \label{eq:Upsilon}
     %% &\Upsilon_{} = \frac{2\left(p_{\text{LoS}}e^{\mu_{\text{LoS}}+\sigma^2_{\text{LoS}}/2}+p_{\text{NLoS}}e^{\mu_{\text{NLoS}}+\sigma^2_{\text{NLoS}}/2}\right)}{p_{\text{LoS}}e^{2(\mu_{\text{LoS}}+\sigma_{\text{LoS}}^2)}+p_{\text{NLoS}}e^{2(\mu_{\text{NLoS}}+\sigma_{\text{NLoS}}^2)}}.
 \end{align}
-The parameter $\upsilon$ depends on the elevation angle since $\epsilon$ determines the shadow fading parameters. Parameter $\Upsilon$ is not relevant in the interference-limited scenario because the scaling of the signal powers cancel.
+The parameter $\upsilon$ depends on the elevation angle since it determines the shadow fading parameters. Parameter $\Upsilon$ is not relevant in the interference-limited scenario because the scaling of the signal powers cancel.
 
 
-Figure \ref{fig:plotdensities} depicts the densities of the GPs with the defective exponential and Gaussian mixture shadowing scenarios for two different average number of effective UEs $\kappa \upsilon $ inside the $3$ dB footprints, corresponding to $\tilde{\kappa}=  \{1.8,2.6\}/(\log(2)\upsilon(\epsilon))$. No significant dependence on the elevation angle was observed.
+
 
 \begin{remark}
   The variable $0 < \upsilon \leq 1$ is not generally solvable for all log-normal distributions (by matching the first two moments). Broadly said, the variance of the shadowing has to be large enough. However, the variables $0<\upsilon \leq 1$ is solvable for almost every shadowing scenario in [CITE], particularly for the urban sceneario.
@@ -249,7 +249,7 @@ The GP is a \textit{projection process} mapping the points from $\mathbb{R}^2$ i
 
 
 Since the variables $\{H_x\}_{x \in \Phi}$ are i.i.d., we can denote the shadowing variable simply as $H$ without the subscript.
-\begin{prop}[Density of the GP]
+\begin{prop}[Density of the GP]\
   Let $F_H(\cdot)$ be the (possibly degenerate) complementary cumulative distribution function (ccdf) of a fading variable $H$. The density function of $\mathcal{G}$ is given by
   \begin{equation}
     \label{eq:GPdensity}
@@ -271,13 +271,6 @@ Since the variables $\{H_x\}_{x \in \Phi}$ are i.i.d., we can denote the shadowi
 \end{prop}
 
 
-
-         \begin{figure}[h]
-           \centering
-           \includegraphics[width=\linewidth]{plotdensities.pdf}
-           \caption{The density function of the GP with the mixture log-normal and defective exponential power shadowing models $H_{\mathcal{MLN}}$ and $H_{\text{Exp}}$, respectively. The values $\kappa \upsilon \in \{1.8,2.6\}$ were used. } 
-           \label{fig:plotdensities}
-         \end{figure}
 
 
 
@@ -444,8 +437,20 @@ the support of the density being in the region $\sum_{i=1}^nz'_i+iz'_n \leq 1$.
 
 
 
-\subsection{SIR under interference cancellation
-}
+\subsection{SIR under interference cancellation}
+
+Combining \eqref{eq:densitySINR}, \eqref{eq:jointprobability}, and \eqref{eq:factorialmoment}, we get a closed form for the SIR pdf of the strongest signal in the \textit{simple coverage region} $z\geq 1$; $f_{(1)}(z) =  {\tilde{\kappa}\upsilon_{}\left({z + 1} \right)^{-\tilde{\kappa}\upsilon_{}}}/{z}$. An upper bound for the second moment is given by
+\begin{equation}
+  \label{eq:SIR1}
+\mathbb{E}(\text{SIR}^2_{1,\{1\}}) \geq \int_{1}^{\infty}f_{(1)}(z) z^2 = \frac{2^{1-\tilde{\kappa}v}(\tilde{\kappa}v)^2}{(\tilde{\kappa}\upsilon-1)(\tilde{\kappa}\upsilon-2)},
+\end{equation}
+which converges for $\tilde{\kappa}\upsilon > 2$. Similarly for the second moment, $\mathbb{E}(\text{SIR}_{1,\{1\}})  = {2^{1-\tilde{\kappa}v}\tilde{\kappa}v}/{(\tilde{\kappa}\upsilon-1)},\tilde{\kappa}\upsilon>1$ which, \textit{i.e.}, for less than $2\log(2)$ effective UEs inside a $-3$ dB footprint on average. Despite of high average SIR, the infinite variance for $\tilde{\kappa}\upsilon \leq 2$ is unacceptable if we desire a consistent link quality. However, SIR-ASIC achieve similar performance while decreasing the variance by doubling $\kappa \upsilon$. Furthermore, using signal cancellation the typical LEO BS can have better connection to the UEs with weaker signals than the strongest UE. Following from the order $\mathsf{Z}'_1 > \mathsf{Z}'_2 >\dots $, if $\mathsf{Z}'_1$ has a finite variance, $\mathsf{Z}_n$ have finite variances also under interference cancellation.
+
+
+
+
+
+
 Let $(u_{(1)}, \dots, u_{(k)}) \subset \mathcal{G}$ represent an ordered set of points in the GP, where $u_{(1)}$ denotes the strongest signal at the LEO BS. The signals with indices in the set $ \mathcal{K} \ni n,$  are canceled from the total interference. We denote the SIR under the interference cancellation (IC) as
 \begin{equation}
   \label{eq:IC-SINR}
@@ -466,7 +471,7 @@ Under IC, we have the following identity in terms of the STIR process
 %%   &\overset{(a)}{=} \mathbb{P} \left\{ \mathsf{Z}'_{(n)}+\theta'\sum^{j\neq n}_{j\in\{1,\dots,k\}}\mathsf{Z}'_{(j)} +>\theta'\right\}.
 %% \end{align}
 
-We consider the SIR under successive signal cancellation (SIC-SIR). The SIR-SIC at the n\textit{th} strongest UE with at most $K+n$ canceled signals, we denote the r.v. as SIR-SIC$_{n,K}$. A necessary condition for a successfully transmission from the $n$\textit{th} UE to the LEO BS is that the preceding $n$ signals are successively decoded and removed from the interference. Formally, $\{\mathsf{Z}_m'+\tau'\sum_{j=1}^{m-1}\mathsf{Z}_j'>\tau'\}$ for all $m \in \{1 \dots n\}$. The signal detection threshold is denoted as $ \tau = \tau'/(1-\tau') \leq \theta$. When the first $n$ signals are successfully removed from the interference, the $n$\textit{th} UE is in coverage if SIR$_{n,[n]}>\theta$. If it is not, we adapt the SIR-SIC scheme. %% Namely, the BS continues the interference cancellation $\{\text{SIR}_{n,[n]} \dots \text{SIR}_{n,[k]}  \}_{n\leq k \leq K}$ until SIR$_{n,[k]}>\theta$, or the served UE enters an outage if $\text{SIR}_{n,[n]} <\tau$, or the maximum number of canceled signals, $K=k-n$, is reached. It is not possible boundlessly improve SIC-SIR$_{n,K}$ as $K \rightarrow \infty$ because, in practical applications, $\mathbb{P}(\text{SIR-SIC}_{n,K}>\theta)$ does not improve after some $K$.
+We consider the SIR under adaptive successive signal cancellation (ASIC-SIR). The ASIC-SIR at the n\textit{th} strongest UE with at most $K+n$ canceled signals, we denote the r.v. as SIR-SIC$_{n,K}$. A necessary condition for a successfully transmission from the $n$\textit{th} UE to the LEO BS is that the preceding $n$ signals are successively decoded and removed from the interference. Formally, $\{\mathsf{Z}_m'+\tau'\sum_{j=1}^{m-1}\mathsf{Z}_j'>\tau'\}$ for all $m \in \{1 \dots n\}$. The signal detection threshold is denoted as $ \tau = \tau'/(1-\tau') \leq \theta$. When the first $n$ signals are successfully removed from the interference, the $n$\textit{th} UE is in coverage if SIR$_{n,[n]}>\theta$. If it is not, the IC is employed. %% Namely, the BS continues the interference cancellation $\{\text{SIR}_{n,[n]} \dots \text{SIR}_{n,[k]}  \}_{n\leq k \leq K}$ until SIR$_{n,[k]}>\theta$, or the served UE enters an outage if $\text{SIR}_{n,[n]} <\tau$, or the maximum number of canceled signals, $K=k-n$, is reached. It is not possible boundlessly improve SIC-SIR$_{n,K}$ as $K \rightarrow \infty$ because, in practical applications, $\mathbb{P}(\text{SIR-SIC}_{n,K}>\theta)$ does not improve after some $K$.
 
 %% \begin{prop}
 %%   Consider the SIC-SIR with at most $n+k$ canceled signals. The coverage probability of the UE with n\textit{th} strongest signal is given by
@@ -498,19 +503,13 @@ We consider the SIR under successive signal cancellation (SIC-SIR). The SIR-SIC 
   \end{align}
   with the upper summation limit bounded by $i_{\text{max}} < 1/\tau'-1=1/\tau$.
   \begin{proof}
-    The expression follows from the joint pdf of the order statistics \eqref{eq:jointprobability} by imposing the conditions \eqref{eq:IC-SINRcond} and \eqref{eq:SIC-SINRcond}. We have abbreviated the upper bound of $i_{\text{max}}$ to $1/\tau$ from the upper limit given in \eqref{eq:jointprobability}: $i_{\text{max}} < 1/z'_{k}-k‰$, and $i_{\text{max}} \rightarrow \infty$ as $z'_k \rightarrow 0$. Fortunately, the l.h.s. conditioning limits the support of the integrand for small $z'_k$. Namely, a necessary condition is $z'_{k}+\tau'\sum_{j=1}^{k-1}z'_{j}>\tau'$. By simple algebra, $\sum_{j=1}^{k-1}z_{j}> 1-z_{k}/\tau'$. Recall the condition on the non-zero terms of the density of $M'^{(k+i)}$:  $\sum_{j=1}^k z'_{j}+i z'_{k} =\sum_{j=1}^{k-1}z'_{j} +z'_{k}+i z'_{k}  \leq 1$. The condition certainly does \textit{not} hold if $1-z_{k}/\tau'+ z'_{k}+i z'_{k}>1$. We arrive at the inequality $z'_{k} \left(-1/\tau' + 1 +i \right)>0$. Divide both sides by $z'_{k}$, and the general upper bound of $i$ follows.
+    %% The expression follows from the joint pdf of the order statistics \eqref{eq:jointprobability} by imposing the conditions \eqref{eq:IC-SINRcond} and \eqref{eq:SIC-SINRcond}. We have abbreviated the upper bound of $i_{\text{max}}$ to $1/\tau$ from the upper limit given in \eqref{eq:jointprobability}: $i_{\text{max}} < 1/z'_{k}-k‰$, and $i_{\text{max}} \rightarrow \infty$ as $z'_k \rightarrow 0$. Fortunately, the l.h.s. conditioning limits the support of the integrand for small $z'_k$. Namely, a necessary condition is $z'_{k}+\tau'\sum_{j=1}^{k-1}z'_{j}>\tau'$. By simple algebra, $\sum_{j=1}^{k-1}z_{j}> 1-z_{k}/\tau'$. Recall the condition on the non-zero terms of the density of $M'^{(k+i)}$:  $\sum_{j=1}^k z'_{j}+i z'_{k} =\sum_{j=1}^{k-1}z'_{j} +z'_{k}+i z'_{k}  \leq 1$. The condition certainly does \textit{not} hold if $1-z_{k}/\tau'+ z'_{k}+i z'_{k}>1$. We arrive at the inequality $z'_{k} \left(-1/\tau' + 1 +i \right)>0$. Divide both sides by $z'_{k}$, and the general upper bound of $i$ follows.
+    We refer to [CITE].
   \end{proof}
 \end{prop}
 
 
-Combining \eqref{eq:densitySINR}, \eqref{eq:jointprobability}, and \eqref{eq:factorialmoment}, we get a closed form for the SIR pdf of the strongest signal in the \textit{simple coverage region} $z\geq 1$; $f_{(1)}(z) =  {\tilde{\kappa}\upsilon_{}\left({z + 1} \right)^{-\tilde{\kappa}\upsilon_{}}}/{z}$. An upper bound for the second moment is given by
-\begin{equation}
-  \label{eq:SIR1}
-\mathbb{E}(\text{SIR}^2_{1,\{1\}}) \geq \int_{1}^{\infty}f_{(1)}(z) z^2 = \frac{2^{1-\tilde{\kappa}v}(\tilde{\kappa}v)^2}{(\tilde{\kappa}\upsilon-1)(\tilde{\kappa}\upsilon-2)},
-\end{equation}
-which converges for $\tilde{\kappa}\upsilon > 2$. Similarly for the second moment, $\mathbb{E}(\text{SIR}_{1,\{1\}})  = {2^{1-\tilde{\kappa}v}\tilde{\kappa}v}/{(\tilde{\kappa}\upsilon-1)},\tilde{\kappa}\upsilon>1$ which, \textit{i.e.}, for less than $2\log(2)$ effective UEs inside a $-3$ dB footprint on average. Despite of high average SIR, the infinite variance for $\tilde{\kappa}\upsilon \leq 2$ is unacceptable if we desire a consistent link quality. However, SIR-SIC can achieve similar performance while decreasing the variance. Furthermore, using signal cancellation the typical LEO BS can have better connection to the other UEs, not only the strongest. Furthermore, following from the order $\mathsf{Z}'_1 > \mathsf{Z}'_2 >\dots $, if $\mathsf{Z}'_1$ has a finite variance, then all other STIR values have also. This holds also for the sums of the variables, and hence for the AD-SIC.
 
-Upper
 
 
 
