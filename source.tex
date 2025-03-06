@@ -503,7 +503,7 @@ with $\theta'=\theta/(1+\theta)$ and $i_{\text{max}}<1/\theta'-k$.
 
 
 \subsection{SIR under interference cancellation}
-The second moment of the SIR of the strongest signal is bounded by
+Combining \eqref{eq:densitySINR}, \eqref{eq:jointprobability}, and \eqref{eq:factorialmoment}, we get a closed form for the SIR pdf of the strongest signal in the \textit{simple coverage region} $z\geq 1$; $f_{(1)}(z) =  {\tilde{\kappa}\upsilon_{}\left({z + 1} \right)^{-\tilde{\kappa}\upsilon_{}}}/{z}$. The second moment of the SIR of the strongest signal is bounded by
 \begin{align}
   \label{eq:SIR2}
   %% &1-\, _2F_1(\tilde{\kappa}\upsilon,\tilde{\kappa}\upsilon;\tilde{\kappa}\upsilon+1;-1) + \frac{2^{1-\tilde{\kappa}v}(\tilde{\kappa}v)^2}{(\tilde{\kappa}\upsilon-1)(\tilde{\kappa}\upsilon-2)} \nonumber \\
@@ -596,7 +596,7 @@ FInally, we consider the SIR under adaptive successive signal cancellation (ASIC
 
 In figures \ref{fig:nprobability} and \ref{fig:ASICSIR} we plot the $n$-probabilities \eqref{eq:kprobability} and ASIC-SIR for $\tilde{\kappa}\upsilon=2$ and  $\tilde{\kappa}\upsilon=4$, respectively. We use the values presented in Table \ref{table:parameters} in the simulations. However, the curcial system parameter is $\tilde{\kappa}\upsilon$. Hence, for example, instead of scaling $\lambda$, we could adjust the width of the antenna pattern for the elevation angles to match, according to \eqref{eq:upsilon} and \eqref{eq:kappa}, the average number of effective UEs for the corresponding $\tilde{\kappa} \upsilon$.
 
-The figures show that ASIC-SIR can achieve similar coverage probabilities for the strongest UE in the region $\theta \in (-7,10)$ dB  while by doubling the average effective number of UEs inside a $-3$ dB footprint, $\kappa \upsilon$. Using \eqref{eq:SIR1} and \eqref{eq:SIR2}, we can calculate a upper bound for the variance of the SIR of the strongest signal for $\tilde{\kappa} \upsilon = 4$: var$(\text{SIR}_{1,\{1\}})\leq 1.2$, which is a clear improvement compared to the infinite variance for $\tilde{\kappa} \upsilon = 2$.
+The figures show that ASIC-SIR can achieve similar coverage probabilities for the strongest UE in the region $\theta \in (-7,10)$ dB  while by doubling the average effective number of UEs inside a $-3$ dB footprint, $\kappa \upsilon$. Similar to \eqref{eq:SIR2}, we can calculate a upper bound for the variance of the SIR of the strongest signal for $\tilde{\kappa} \upsilon = 4$: var$(\text{SIR}_{1,\{1\}})\leq 1.2$, which is a clear improvement compared to the infinite variance for $\tilde{\kappa} \upsilon = 2$.
 
 
 
