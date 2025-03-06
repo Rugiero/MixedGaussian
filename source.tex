@@ -389,18 +389,18 @@ which is the Laplace transform of the gamma distribution with the shape paramete
 %% \end{equation}
 %% Let $\theta$ denote the SIR threshold of successful transmission. The event $\Psi \ni\mathsf{Z}> \theta$ is equivalent to $\Psi' \ni \mathsf{Z}'> \theta'$  with $\theta' \triangleq \theta/(1+\theta)$ and $\theta \triangleq \theta'/(1-\theta')$.
 
-%%  The factorial moment measure of the STIR process is defined by,
-%%     \begin{align}
-%%           &M'^{(n)}(t'_1,\dots,t'_n) \triangleq M'^{(n)}((t'_1,\infty],\dots,(t'_n,\infty]) \nonumber \\
-%%               &\triangleq \mathbb{E} \left( \sum^{\text{distinct}}_{\left(\mathsf{Z}'_1, \dots, \mathsf{Z}'_n \right) \in (\Psi')^{\times n}} \prod_{i=1}^n \mathds{1}(\mathsf{Z}'_i >t'_i)\right),
-%%     \end{align}
-%%     and similarly for the SIR process.
-%%  The (partial) density of the factorial moment measure of the STIR process is given by the successive partial differentiation of $M'^{(n)}$:
-%%     \begin{align}
-%%       \label{eq:differatemomentmeasure}
-%%      &{\mu'}_n^{(n+i)}(z'_1,\dots,z'_n,\overbrace{z'_n,\dots,z'_n}^{\#i}) \nonumber \\&= (-1)^n \frac{\partial^n M'^{(n)}(t'_1\dots t_n',z'_n \dots z'_n) }{\partial t'_1 \dots \partial t'_n} |(t'_1=z_1'\dots t'_n=z'_n),
-%%     \end{align}
-%%     for $\sum_{i=1}^n z'_i + i z'_n<1$ and $0$ otherwise.  If $i >0$, $\eqref{eq:differatemomentmeasure}$ is the \textit{partial density} of the $n$th factorial moment measure.
+ %% The factorial moment measure of the STIR process is defined by,
+ %%    \begin{align}
+ %%          &M'^{(n)}(t'_1,\dots,t'_n) \triangleq M'^{(n)}((t'_1,\infty],\dots,(t'_n,\infty]) \nonumber \\
+ %%              &\triangleq \mathbb{E} \left( \sum^{\text{distinct}}_{\left(\mathsf{Z}'_1, \dots, \mathsf{Z}'_n \right) \in (\Psi')^{\times n}} \prod_{i=1}^n \mathds{1}(\mathsf{Z}'_i >t'_i)\right),
+ %%    \end{align}
+ %%    and similarly for the SIR process.
+ %% The (partial) density of the factorial moment measure of the STIR process is given by the successive partial differentiation of $M'^{(n)}$:
+ %%    \begin{align}
+ %%      \label{eq:differatemomentmeasure}
+ %%     &{\mu'}_n^{(n+i)}(z'_1,\dots,z'_n,\overbrace{z'_n,\dots,z'_n}^{\#i}) \nonumber \\&= (-1)^n \frac{\partial^n M'^{(n)}(t'_1\dots t_n',z'_n \dots z'_n) }{\partial t'_1 \dots \partial t'_n} |(t'_1=z_1'\dots t'_n=z'_n),
+ %%    \end{align}
+ %%    for $\sum_{i=1}^n z'_i + i z'_n<1$ and $0$ otherwise.  If $i >0$, $\eqref{eq:differatemomentmeasure}$ is the \textit{partial density} of the $n$th factorial moment measure.
 
 %%     The density of the $n$th factorial moment measure of the SIR process can be extracted from $\mu'^{(n)}$:
 %%     \begin{align}
@@ -446,14 +446,14 @@ We denote $\mathsf{Z}'_{(1)}>\mathsf{Z}'_{(2)} >\mathsf{Z}'_{(3)} \dots$ the ord
   \end{proof}
 \end{prop}
 
-The partial densities can be derived from the density of the $n$th factorial moment measure by integrating $\mu^{(n+i)}$ w.r.t. the last $i$ auxiliary variables (cf. \eqref{eq:differatemomentmeasure}).
+The partial densities can be derived from the density of the $n$th factorial moment measure as
 
 \begin{align}
   \label{eq:auxillary}
   &{\mu'}_n^{(n+i)}(z'_1,\dots,z'_n) \nonumber \\
   &= \int_{z'_n}^1 \dots \int_{z'_n}^1 {\mu'}^{(n+i)}(z'_1,\dots,z'_n,\zeta'_1,\dots,\zeta'_i) d\zeta'_1 \dots d\zeta'_i,
 \end{align}
-the support of the density being in the region $\sum_{i=1}^nz'_i+iz'_n < 1$. 
+the support of the density being in the region $\sum_{i=1}^nz'_i+iz'_n \leq 1$. 
 
 
 The joint pdf $k$ strongest values of the STIR process $(\mathsf{Z}'_{(1)}, \dots, \mathsf{Z}'_{(n)})$ is given as a series expansion involving the partial densities
@@ -566,8 +566,8 @@ FInally, we consider the SIR under adaptive successive signal cancellation (ASIC
   \end{align}
   with the upper summation limit bounded by $i_{\text{max}} < 1/\tau'-1=1/\tau$.
   \begin{proof}
-    %% The expression follows from the joint pdf of the order statistics \eqref{eq:jointprobability} by imposing the conditions \eqref{eq:IC-SINRcond} and \eqref{eq:SIC-SINRcond}. We have abbreviated the upper bound of $i_{\text{max}}$ to $1/\tau$ from the upper limit given in \eqref{eq:jointprobability}: $i_{\text{max}} < 1/z'_{k}-k‰$, and $i_{\text{max}} \rightarrow \infty$ as $z'_k \rightarrow 0$. Fortunately, the l.h.s. conditioning limits the support of the integrand for small $z'_k$. Namely, a necessary condition is $z'_{k}+\tau'\sum_{j=1}^{k-1}z'_{j}>\tau'$. By simple algebra, $\sum_{j=1}^{k-1}z_{j}> 1-z_{k}/\tau'$. Recall the condition on the non-zero terms of the density of $M'^{(k+i)}$:  $\sum_{j=1}^k z'_{j}+i z'_{k} =\sum_{j=1}^{k-1}z'_{j} +z'_{k}+i z'_{k}  \leq 1$. The condition certainly does \textit{not} hold if $1-z_{k}/\tau'+ z'_{k}+i z'_{k}>1$. We arrive at the inequality $z'_{k} \left(-1/\tau' + 1 +i \right)>0$. Divide both sides by $z'_{k}$, and the general upper bound of $i$ follows.
-    We refer to [CITE].
+    The expression follows from the joint pdf of the order statistics \eqref{eq:jointprobability}. Furthermore, the upper l.h.s. conditioning  allows the relaxation of $i_{\text{max}}$. Namely, a necessary condition is $z'_{k}+\tau'\sum_{j=1}^{k-1}z'_{j}>\tau'$. By simple algebra, $\sum_{j=1}^{k-1}z_{j}> 1-z_{k}/\tau'$. Recall the condition on the non-zero terms of $\mu'^{(k+i)}$:  $\sum_{j=1}^k z'_{j}+i z'_{k} =\sum_{j=1}^{k-1}z'_{j} +z'_{k}+i z'_{k}  \leq 1$. The condition certainly does \textit{not} hold if $1-z_{k}/\tau'+ z'_{k}+i z'_{k}>1$. We arrive at the inequality $z'_{k} \left(-1/\tau' + 1 +i \right)>0$. Divide both sides by $z'_{k}>0$, and the general upper bound of $i$ follows.
+%    We refer to [CITE].
   \end{proof}
 \end{prop}
 
