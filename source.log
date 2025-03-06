@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.21)  6 MAR 2025 16:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.21)  6 MAR 2025 17:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -704,12 +704,12 @@ dist/fonts/enc/dvips/base/8r.enc}
 
 
 ] [2 <./UESontheplane.png> <./drawing.png>]
-<plotdensities.pdf, id=121, 381.34471pt x 219.219pt>
+<plotdensities.pdf, id=124, 381.34471pt x 219.219pt>
 File: plotdensities.pdf Graphic file (type pdf)
 <use plotdensities.pdf>
 Package pdftex.def Info: plotdensities.pdf  used on input line 318.
 (pdftex.def)             Requested size: 252.0pt x 144.86226pt.
-<upsilonvsepsilon.pdf, id=122, 361.83182pt x 222.35071pt>
+<upsilonvsepsilon.pdf, id=125, 361.83182pt x 222.35071pt>
 File: upsilonvsepsilon.pdf Graphic file (type pdf)
 <use upsilonvsepsilon.pdf>
 Package pdftex.def Info: upsilonvsepsilon.pdf  used on input line 320.
@@ -743,12 +743,12 @@ Overfull \hbox (1.6364pt too wide) detected at line 566
  []
 
 [4]
-<nprobability.pdf, id=178, 385.19911pt x 332.9238pt>
+<nprobability.pdf, id=181, 385.19911pt x 332.9238pt>
 File: nprobability.pdf Graphic file (type pdf)
 <use nprobability.pdf>
 Package pdftex.def Info: nprobability.pdf  used on input line 581.
 (pdftex.def)             Requested size: 252.0pt x 217.80505pt.
-<ASICSIR.pdf, id=179, 389.2944pt x 332.9238pt>
+<ASICSIR.pdf, id=182, 389.2944pt x 332.9238pt>
 File: ASICSIR.pdf Graphic file (type pdf)
 <use ASICSIR.pdf>
 Package pdftex.def Info: ASICSIR.pdf  used on input line 591.
@@ -777,10 +777,10 @@ Package rerunfilecheck Info: File `source.out' has not changed.
 (rerunfilecheck)             Checksum: 66E6BC931E9004B49D73BE486D147A62;2880.
  ) 
 Here is how much of TeX's memory you used:
- 13930 strings out of 475509
- 224000 string characters out of 5776664
+ 13932 strings out of 475509
+ 224023 string characters out of 5776664
  1964975 words of memory out of 5000000
- 35697 multiletter control sequences out of 15000+600000
+ 35698 multiletter control sequences out of 15000+600000
  609186 words of font info for 138 fonts, out of 8000000 for 9000
  399 hyphenation exceptions out of 8191
  75i,15n,79p,1573b,583s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -809,10 +809,10 @@ s/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></
 usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/urw/times/utmri8a.pfb>
-Output written on source.pdf (5 pages, 1229569 bytes).
+Output written on source.pdf (5 pages, 1229961 bytes).
 PDF statistics:
- 339 PDF objects out of 1000 (max. 8388607)
- 258 compressed objects within 3 object streams
- 65 named destinations out of 1000 (max. 500000)
+ 342 PDF objects out of 1000 (max. 8388607)
+ 261 compressed objects within 3 object streams
+ 66 named destinations out of 1000 (max. 500000)
  143 words of extra memory for PDF output out of 10000 (max. 10000000)
 
