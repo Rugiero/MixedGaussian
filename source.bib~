@@ -1,0 +1,1442 @@
+@techreport{TR38.821,
+	author = {3GPP},
+	institution = {3GPP},
+	title = {Solutions for {NR} to support Non-Terrestrial Networks ({NTN}), {TR} 38.821},
+	year = {2023}
+}
+
+@techreport{TR38.811,
+	author = {3GPP},
+	institution = {3GPP},
+	title = {Study on New Radio ({NR}) to support non-terrestrial networks (Release 15), {TR} 38.811},
+	year = {2020}
+}
+
+
+@book{theoryofpoint,
+  author = "Daley, D.J. and Vere-Jones, D.",
+  title = "An introduction to the theory of point processes",
+  publisher = "Springer",
+  year = "2003",
+  pages = "39",
+  volume = "1",
+  language = "en",
+  address = "New York",
+  booktitle = "Elementary Theory and Methods"
+}
+@book{theoryofpoint2,
+author = {Daley, D. J. and Vere-Jones, D.},
+address = {New York},
+booktitle = {An introduction to the theory of point processes. 2, General theory and structure },
+edition = {2nd ed.},
+isbn = {978-0-387-21337-8},
+keywords = {todennäköisyyslaskenta},
+language = {eng},
+publisher = {Springer},
+title = {An introduction to the theory of point processes. 2},
+year = {2008},
+}
+
+@book{HAL1,
+  author = "François Baccelli, Bartlomiej Blaszczyszyn",
+  publisher = "NoW Publishers",
+  title = "Stochastic Geometry and Wireless Networks",
+  volume = "1",
+  year  = "2009",
+  language = "en",
+  url = "https://hal.inria.fr/inria-00403039v4",
+  booktitle = "Theory"
+}
+@book{HAL2,
+  author = "Baccelli, F. and Blaszczyszyn, B.",
+  publisher = "NoW Publishers",
+  year = "2009",
+  title = "Stochastic Geometry and Wireless Networks",
+  volume = "2",
+  url = "https://hal.inria.fr/inria-00403040v4",
+  language = "en",
+  booktitle = "Applications"
+}
+
+@book{Bremaud,
+  author = "Bremaud, P.",
+  title = "Mathematical Principles of Signal Processing",
+  publisher = "Springer",
+  year = "2002",
+  pages = "125,128",
+  language = "en",
+  address = "New York" 
+}
+@article{EULER,
+  author = "Abate, J. and Whitt, W.",
+  title = "Numerical Inversion of Laplace Transforms of Probability Distributions",
+  volume = "7",
+  pages = "36–43",
+  year = "1995",
+  language = "en",
+  journal = "ORSA Journal on Computing",
+  number = "1"
+}
+@standard{ITUrec,
+  title = "Analytical method for determining the statistics of interference between non-geostationary-satellite orbit FSS systems and other non-geostationary-satellite orbit FSS systems or geostationary-satellite orbit FSS networks",
+  organization = "International Telecommunication Union",
+  number=  "Rec ITU-R S.1529",
+  year = "2001",
+  language = "en"
+}
+@misc{ITUrec2,
+  title = "Reference radiation patterns for fixed wireless system antennas for use in coordination studies and interference assessment in the frequency range from 100 MHz to 86 GHz, Rec ITU-R F.699-8",
+  publisher = "International Telecommunications Union",
+  year = "2018",
+  language = "en"
+}
+
+@techreport{ITUP.681-11,
+  author        = "International Telecommunication Union Recommendation",
+  title         = "Propagation data required for the design
+systems in the land mobile-satellite service",
+  institution   = "International Telecommunications Union",
+  url       = "https://www.itu.int/dms_pubrec/itu-r/rec/p/R-REC-P.681-11-201908-I!!PDF-E.pdf",
+  number        = "Rec. ITU-R P.681-11",
+  year          = "2019"
+}
+
+
+
+@book{Doetsch,
+  author = "Doetsch, G.",
+  title = "Introduction to the theory and application of the Laplace transform",
+  publisher = "Springer",
+  pages = "12",
+  year = "1974",
+  language = "en",
+  address = "Berlin"
+}
+@article{tractable,
+  author = "Andrews, J.G. and Baccelli, F. and Ganti, R.K.",
+  title = "A Tractable Approach to Coverage and Rate in Cellular Networks",
+  volume = "59",
+  pages = "3122–3134",
+  year = "2011",
+  language = "en",
+  journal = "IEEE Transactions on Communications",
+  number = "11"
+}
+@article{newyork,
+  author = "Lee, C.H. and Shih, C.Y. and Chen, Y.S.",
+  title = "Stochastic geometry based models for modeling cellular networks in urban areas",
+  volume = "19",
+  pages = "1063–1072",
+  year = "2013",
+  doi = "10.1007/s11276-012-0518-0",
+  language = "en",
+  journal = "Wireless Networks"
+}
+
+@INPROCEEDINGS{multidownlink,
+
+  author={Sellathurai, Mathini and Vuppala, Satyanarayana and Ratnarajah, Tharmalingam},
+
+  booktitle={2016 50th Asilomar Conference on Signals, Systems and Computers}, 
+
+  title={User selection for multi-beam satellite channels: A stochastic geometry perspective}, 
+
+  year={2016},
+
+  volume={},
+
+  number={},
+
+  pages={487-491},
+
+  doi={10.1109/ACSSC.2016.7869087}
+}
+
+
+@ARTICLE{downlinkcoverage,
+
+  author={Okati, Niloofar and Riihonen, Taneli and Korpi, Dani and Angervuori, Ilari and Wichman, Risto},
+
+  journal={IEEE Transactions on Communications}, 
+
+  title={Downlink Coverage and Rate Analysis of Low Earth Orbit Satellite Constellations Using Stochastic Geometry}, 
+
+  year={2020},
+
+  volume={68},
+
+  number={8},
+
+  pages={5120-5134},
+
+  doi={10.1109/TCOMM.2020.2990993}}
+
+@INPROCEEDINGS{megaconstellations,
+
+  author={Okati, Niloofar and Riihonen, Taneli},
+
+  booktitle={2020 IEEE 31st Annual International Symposium on Personal, Indoor and Mobile Radio Communications}, 
+
+  title={Stochastic Analysis of Satellite Broadband by Mega-Constellations with Inclined {LEO}s}, 
+
+  year={2020},
+
+  volume={},
+
+  number={},
+
+  pages={1-6},
+
+  doi={10.1109/PIMRC48278.2020.9217379}}
+
+
+@book{engineeringmathematics,
+  author = "Singh, R. and Bhatt, M.",
+  title = "Engineering mathematics",
+  publisher = "Tata McGraw Hill Education Private Ltd",
+  year = "2010",
+  language = "en",
+  address = "New Delhi"
+}
+
+@ARTICLE{ultradense,
+
+  author={Di, Boya and Song, Lingyang and Li, Yonghui and Poor, H. Vincent},
+
+  journal={IEEE Wireless Communications}, 
+
+  title={Ultra-Dense {LEO}: Integration of Satellite Access Networks into {5G} and Beyond}, 
+
+  year={2019},
+
+  volume={26},
+
+  number={2},
+
+  pages={62-69},
+
+  doi={10.1109/MWC.2019.1800301}}
+
+
+@techreport{spacex,
+  author = "Mihai Albulet",
+  title = "Space{X} {V}-Band non-Geostationary Satellite System",
+  institution = "Space Exploration Technologies Corp. ",
+    number        = "SAT-LOA-20170301-00027",
+    url= "https://fcc.report/IBFS/SAT-LOA-20170301-00027/1190019.pdf",
+  year = "2017",
+  language = "en"
+}
+@techreport{CMinequalities,
+  author = "Wang, Xinyun and Haenggi, Martin",
+  title = "The {Chebyshev}-{Markov} inequalities",
+  institution = "University of Notre Dame",
+  url = "https://www3.nd.edu/~mhaenggi/pubs/techreport_cm22.pdf",
+  number= "cm22",
+  year = "2022",
+  language = "en",
+  note="Accessed: 2024-09-2"}
+  
+@book{stochasticgeometryanditsapplications,
+abstract = {"The previous edition of this book has served as the key reference in its field for over 20 years and is regarded as the best treatment of the subject of stochastic geometry. Extensively updated, this mew edition includes new sections on analytical and numerically tractable results and applications of Voronoi tessellations; introduces models such as Laguerre and iterated tessellations; and presents theoretical results. Statistics for planar point processes are introduced, and the text also includes a new section on random geometrical graphs and random networks"--},
+author = {Stoyan, Dietrich. and Chiu, Sung Nok. and Kendall, W. S. and Mecke, Joseph.},
+address = {Chichester},
+booktitle = {Stochastic Geometry and its Applications},
+edition = {3rd ed.},
+isbn = {9780470664810},
+keywords = {Stochastic geometry},
+language = {eng},
+publisher = {Wiley},
+series = {Wiley series in probability and statistics},
+title = {Stochastic geometry and its applications },
+year = {2013},
+}
+
+@INPROCEEDINGS{2d1,
+
+  author={Hajj, Maarouf Al and Wang, Shanshan and Doncker, Philippe de and Oestges, Claude and Wiart, Joe},
+
+  booktitle={2020 XXXIIIrd General Assembly and Scientific Symposium of the International Union of Radio Science}, 
+
+  title={A Statistical Estimation of 5G Massive MIMO’s Exposure using Stochastic Geometry}, 
+
+  year={2020},
+
+  volume={},
+
+  number={},
+
+  pages={1-3},
+
+  doi={10.23919/URSIGASS49373.2020.9232290}}
+
+
+@ARTICLE{2d2,
+
+  author={Randrianantenaina, Itsikiantsoa and ElSawy, Hesham and Dahrouj, Hayssam and Kaneko, Megumi and Alouini, Mohamed-Slim},
+
+  journal={IEEE Transactions on Wireless Communications}, 
+
+  title={Uplink Power Control and Ergodic Rate Characterization in FD Cellular Networks: A Stochastic Geometry Approach}, 
+
+  year={2019},
+
+  volume={18},
+
+  number={4},
+
+  pages={2093-2110},
+
+  doi={10.1109/TWC.2019.2898655}}
+
+@ARTICLE{2d3,
+
+  author={Munari, Andrea and Simić, Ljiljana and Petrova, Marina},
+
+  journal={IEEE Communications Letters}, 
+
+  title={Stochastic Geometry Interference Analysis of Radar Network Performance}, 
+
+  year={2018},
+
+  volume={22},
+
+  number={11},
+
+  pages={2362-2365},
+
+  doi={10.1109/LCOMM.2018.2869742}}
+
+
+@ARTICLE{19,
+
+  author={Vatalaro, F. and Corazza, G.E. and Caini, C. and Ferrarelli, C.},
+
+  journal={IEEE Journal on Selected Areas in Communications}, 
+
+  title={Analysis of {LEO}, {MEO}, and {GEO} global mobile satellite systems in the presence of interference and fading}, 
+
+  year={1995},
+
+  volume={13},
+
+  number={2},
+
+  pages={291-300},
+
+  doi={10.1109/49.345873}}
+
+
+@INPROCEEDINGS{9347980,
+
+  author={Yastrebova, Anastasia and Angervuori, Ilari and Okati, Niloofar and Vehkaperä, Mikko and Höyhtyä, Marko and Wichman, Risto and Riihonen, Taneli},
+
+  booktitle={GLOBECOM 2020 - 2020 IEEE Global Communications Conference}, 
+
+  title={Theoretical and Simulation-based Analysis of Terrestrial Interference to {LEO} Satellite Uplinks}, 
+
+  year={2020},
+
+  volume={},
+
+  number={},
+
+  pages={1-6},
+
+  keywords={Satellites;Low earth orbit satellites;Stochastic processes;Interference;Tools;Mathematical model;Uplink},
+
+  doi={10.1109/GLOBECOM42002.2020.9347980}}
+
+@ARTICLE{shadowingparameters,
+
+  author={Lutz, E. and Cygan, D. and Dippold, M. and Dolainsky, F. and Papke, W.},
+
+  journal={IEEE Transactions on Vehicular Technology}, 
+
+  title={The land mobile satellite communication channel-recording, statistics, and channel model}, 
+
+  year={1991},
+
+  volume={40},
+
+  number={2},
+
+  pages={375-386},
+
+  doi={10.1109/25.289418}}
+
+
+@ARTICLE{fromtheory,
+
+  author={Huo, Yiming and Dong, Xiaodai and Xu, Wei},
+
+  journal={IEEE Access}, 
+
+  title={{5G} Cellular User Equipment: From Theory to Practical Hardware Design}, 
+
+  year={2017},
+
+  volume={5},
+
+  number={},
+
+  pages={13992-14010},
+
+  doi={10.1109/ACCESS.2017.2727550}}
+
+@techreport{spacexantenna,
+  author  = "Space{X}",
+  institution  = "Federal Communications Commission ",
+  title = "Supplemental Information Regarding Earth Stations",
+  number = "1522-EX-ST-2021",
+  url = "https://fcc.report/ELS/Space-Exploration-Technologies-Corp/1522-EX-ST-2021/282476",
+  year = "2021",
+  language = "en" 
+}
+@techreport{class2power,
+  author = "Federal Communications Commission",
+  title = "REPORT AND ORDER AND FURTHER NOTICE OF PROPOSED RULEMAKING",
+  institution = "Federal Communications Commission",
+  year = "2016",
+  numbe = "FCC 16-89",
+  url = "https://apps.fcc.gov/edocs_public/attachmatch/FCC-16-89A1.pdf",
+  language = "en"
+}
+
+@ARTICLE{modelinguplink,
+
+  author={Homssi, Bassel Al and Al-Hourani, Akram},
+
+  journal={IEEE Communications Letters}, 
+
+  title={Modeling Uplink Coverage Performance in Hybrid Satellite-Terrestrial Networks}, 
+
+  year={2021},
+
+  volume={25},
+
+  number={10},
+
+  pages={3239-3243},
+
+  doi={10.1109/LCOMM.2021.3103942}}
+
+
+@ARTICLE{inversegaussian,
+  author = "Díaz-Francés, Eloísa and Rubio, Francisco J",
+  title = "On the existence of a normal approximation to the distribution of the ratio of two independent normal random variables",
+  journal = "Statistical Papers",
+  year = "2013",
+  url = "https://doi.org/10.1007/s00362-012-0429-2",
+  language = "en",
+  doi = "10.1007/s00362-012-0429-2"
+}
+
+@ARTICLE{unpublished,
+  author = " Angervuori, Ilari and Okati, Niloofar and Riihonen, Taneli and Wichman, Risto",
+  title = "Uplink Interference Characterization and Coverage Analysis of Modern {LEO} and {VLEO} Networks: A Stochastic Geometry Approach",
+  year = "2022",
+  note = "submitted for publication",
+  journal = "IEEE Transactions on Communications",
+  language = "en",
+}
+
+@ARTICLE{5560889,
+
+  author={Gulati, Kapil and Evans, Brian L. and Andrews, Jeffrey G. and Tinsley, Keith R.},
+
+  journal={IEEE Transactions on Signal Processing}, 
+
+  title={Statistics of Co-Channel Interference in a Field of {P}oisson and {P}oisson-{P}oisson Clustered Interferers}, 
+
+  year={2010},
+
+  volume={58},
+
+  number={12},
+
+  pages={6207-6222},
+
+  doi={10.1109/TSP.2010.2072922}}
+
+@ARTICLE{1145707,
+
+  author={Xueshi Yang and Petropulu, A.P.},
+
+  journal={IEEE Transactions on Signal Processing}, 
+
+  title={Co-channel interference modeling and analysis in a {P}oisson field of interferers in wireless communications}, 
+
+  year={2003},
+
+  volume={51},
+
+  number={1},
+
+  pages={64-76},
+
+  doi={10.1109/TSP.2002.806591}}
+
+@ARTICLE{678475,
+
+  author={Ilow, J. and Hatzinakos, D.},
+
+  journal={IEEE Transactions on Signal Processing}, 
+
+  title={Analytic alpha-stable noise modeling in a Poisson field of interferers or scatterers}, 
+
+  year={1998},
+
+  volume={46},
+
+  number={6},
+
+  pages={1601-1611},
+
+  doi={10.1109/78.678475}}
+
+
+
+@book{samorodnitsky2017stable,
+  title={Stable Non-{G}aussian Random Processes: Stochastic Models with Infinite Variance: Stochastic Modeling},
+  author={Samorodnitsky, Gennady and Taqqu, Murad S},
+  year={2017},
+  publisher={Routledge}
+}
+
+@ARTICLE{4091042,
+
+  author={Middleton, David},
+
+  journal={IEEE Transactions on Electromagnetic Compatibility}, 
+
+  title={Statistical-Physical Models of Electromagnetic Interference}, 
+
+  year={1977},
+
+  volume={EMC-19},
+
+  number={3},
+
+  pages={106-127},
+
+  doi={10.1109/TEMC.1977.303527}}
+
+@ARTICLE{6515339,
+
+  author={Heath, Robert W. and Kountouris, Marios and Bai, Tianyang},
+
+  journal={IEEE Transactions on Signal Processing}, 
+
+  title={Modeling Heterogeneous Network Interference Using {Poisson} Point Processes}, 
+
+  year={2013},
+
+  volume={61},
+
+  number={16},
+
+  pages={4114-4126},
+
+  doi={10.1109/TSP.2013.2262679}}
+
+
+@INPROCEEDINGS{5495962,
+
+  author={Gulati, Kapil and Evans, Brian L. and Tinsley, Keith R.},
+
+  booktitle={2010 IEEE International Conference on Acoustics, Speech and Signal Processing}, 
+
+  title={Statistical modeling of co-channel interference in a field of {Poisson} distributed interferers}, 
+
+  year={2010},
+
+  volume={},
+
+  number={},
+
+  pages={3490-3493},
+
+  doi={10.1109/ICASSP.2010.5495962}}
+
+
+@INPROCEEDINGS{5425785,
+
+  author={Madhusudhanan, Prasanna and Restrepo, Juan G. and Liu, Youjian and Brown, Timothy X.},
+
+  booktitle={GLOBECOM 2009 - 2009 IEEE Global Telecommunications Conference}, 
+
+  title={Carrier to Interference Ratio Analysis for the Shotgun Cellular System}, 
+
+  year={2009},
+
+  volume={},
+
+  number={},
+
+  pages={1-6},
+
+  doi={10.1109/GLOCOM.2009.5425785}}
+
+@ARTICLE{8632762,
+
+  author={Babich, Fulvio and Comisso, Massimiliano and Cuttin, Alessandro and Marchese, Mario and Patrone, Fabio},
+
+  journal={IEEE Transactions on Mobile Computing}, 
+
+  title={Nanosatellite-{5G} Integration in the Millimeter Wave Domain: A Full Top-Down Approach}, 
+
+  year={2020},
+
+  volume={19},
+
+  number={2},
+
+  pages={390-404},
+
+  doi={10.1109/TMC.2019.2897091}}
+
+
+@INPROCEEDINGS{7601470,
+
+  author={Artiga, Xavier and Nunez-Martinez, Jose and Perez-Neira, Ana and Vela, Gorka Juan Lendrino and Garcia, Juan Mario Fare and Ziaragkas, Georgios},
+
+  booktitle={2016 8th Advanced Satellite Multimedia Systems Conference and the 14th Signal Processing for Space Communications Workshop (ASMS/SPSC)}, 
+
+  title={Terrestrial-satellite integration in dynamic 5G backhaul networks}, 
+
+  year={2016},
+
+  volume={},
+
+  number={},
+
+  pages={1-6},
+
+  doi={10.1109/ASMS-SPSC.2016.7601470}}
+
+@ARTICLE{7896555,
+
+  author={Kim, Seungmo and Visotsky, Eugene and Moorut, Prakash and Bechta, Kamil and Ghosh, Amitava and Dietrich, Carl},
+
+  journal={IEEE Journal on Selected Areas in Communications}, 
+
+  title={Coexistence of {5G} With the Incumbents in the 28 and 70 GHz Bands}, 
+
+  year={2017},
+
+  volume={35},
+
+  number={6},
+
+  pages={1254-1268},
+
+  doi={10.1109/JSAC.2017.2687238}}
+
+
+
+@standard{2019PropagationDR,
+  title = "Propagation data required for the design systems in the land mobile-satellite service",
+  organization = "International Telecommunication Union",
+  number=  "TU-R P.681-11",
+  year = "2019",
+  language = "en"
+}
+
+@book{middleton1976statistical,
+  title={Statistical-physical Models of Man-made and Natural Radio Noise: Part II, First Order Probability Models of the Envelope and Phase},
+  author={Middleton, D.},
+  series={OT report},
+  url={https://books.google.fi/books?id=CUxAJfIGp4EC},
+  year={1976},
+  publisher={U.S. Department of Commerce}
+}
+
+
+@INPROCEEDINGS{globecom2022,
+
+  author={Ilari Angervuori and R Wichman},
+
+  booktitle={2022 IEEE Globecom Workshops (GC Wkshps): Workshop on Cellular {UAV} and Satellite Communications, Rio de Janeiro, Brazil}, 
+
+  title={A Closed-Form Approximation of the {SIR} Distribution in a {LEO} Uplink Channel}, 
+
+  year={2022},
+
+  volume={},
+
+  number={},
+
+  pages={},
+
+  doi={}
+  }
+
+
+@ARTICLE{9520123,
+
+  author={Zhang, Xiaokai and Zhang, Bangning and An, Kang and Zheng, Gan and Chatzinotas, Symeon and Guo, Daoxing},
+
+  journal={IEEE Transactions on Wireless Communications}, 
+
+  title={Stochastic Geometry-Based Analysis of Cache-Enabled Hybrid Satellite-Aerial-Terrestrial Networks With Non-Orthogonal Multiple Access}, 
+
+  year={2022},
+
+  volume={21},
+
+  number={2},
+
+  pages={1272-1287},
+
+  doi={10.1109/TWC.2021.3103499}}
+
+@INPROCEEDINGS{9814585,
+
+  author={Okati, Niloofar and Riihonen, Taneli},
+
+  booktitle={2022 IEEE International Conference on Communications Workshops (ICC Workshops)}, 
+
+  title={Downlink and Uplink Low Earth Orbit Satellite Backhaul for Airborne Networks}, 
+
+  year={2022},
+
+  volume={},
+
+  number={},
+
+  pages={550-555},
+
+  doi={10.1109/ICCWorkshops53468.2022.9814585}}
+
+@techreport{spacex2,
+  author = "Mihai Albulet",
+  title = "SpaceX non-Geostationary Satellite System",
+  institution = "Space Exploration Technologies Corp. ",
+  year = "2018",
+  language = "en"
+}
+
+@book{alma99690264406526,
+author = {Feller, William.},
+address = {New York},
+booktitle = {An introduction to probability theory and its applications. Volume 2.},
+edition = {2. ed.},
+isbn = {0-471-25709-5},
+keywords = {Todennäköisyyslaskenta},
+language = {eng},
+publisher = {Wiley \& Sons},
+title = {An introduction to probability theory and its applications. Volume 2. },
+year = {1971},
+}
+
+@techreport{snyder:1987,
+  abstract = {After decades of using only one map projection, the Polyconic, for
+	its mapping program, the U.S. Geological Survey (USGS) now uses several
+	of the more common projections for its published maps. For larger
+	scale maps, including topographic quadrangles and the State Base
+	Map Series, conformal projections such as the Transverse Mercator
+	and the Lambert Conformal Conic are used. Equal-area and equidistant
+	projections appear in the National Atlas. Other projections, such
+	as the Miller Cylindrical and the Van der Grinten, are chosen occasionally
+	for convenience, sometimes making use of existing base maps prepared
+	by others. Some projections treat the Earth only as a sphere, others
+	as either ellipsoid or sphere. The USGS has also conceived and designed
+	several new projections, including the Space Oblique Mercator, the
+	first map projection designed to permit mapping of the Earth continuously
+	from a satellite with low distortion. The mapping of extraterrestrial
+	bodies has resulted in the use of standard projections in completely
+	new settings. Several other projections which have not been used
+	by the USGS are frequently of interest to the cartographic public.
+	With increased computerization, it is important to realize that rectangular
+	coordinates for all these projections may be mathematically calculated
+	with formulas which would have seemed too complicated in the past,
+	but which now may be programmed routinely, especially if aided by
+	numerical examples. A discussion of appearance, usage, and history
+	is given together with both forward and inverse equations for each
+	projection involved.},
+  added-at = {2012-09-01T13:08:21.000+0200},
+  author = {Snyder, John P.},
+  biburl = {https://www.bibsonomy.org/bibtex/203fe7368ccb532be00f00d1b29ac92a1/nilsma},
+  institution = {U. S. Geological Survey},
+  interhash = {cf295d8e8ae83b5a1dc5c78a13627b20},
+  intrahash = {03fe7368ccb532be00f00d1b29ac92a1},
+  keywords = {},
+  number = 1395,
+  publisher = {U.S. G.P.O. : For sale by the Supt. of Docs.},
+  series = {U. S. G. S. Professional Paper},
+  timestamp = {2021-02-09T13:56:20.000+0100},
+  title = {Map projections -- A working manual},
+  url = {http://pubs.er.usgs.gov/usgspubs/pp/pp1395},
+  year = 1987
+}
+
+
+@techreport{ITURS1528,
+  author        = {{International Telecommunication Union}},
+  title         = {{Satellite antenna radiation patterns for non-geostationary orbit satellite antennas operating in the fixed-satellite service below 30 GHz}},
+  year          = {2001},
+  institution   = {ITU-R},
+  type          = {Recommendation},
+  number        = {S.1528},
+  url = {https://www.itu.int/dms_pubrec/itu-r/rec/s/R-REC-S.1528-0-200106-I!!PDF-E.pdf}
+}
+
+
+
+@article{00255572,
+author={Jameson,G. J. O.},
+year={2016},
+month={07},
+title={The incomplete gamma functions},
+journal={The Mathematical Gazette},
+volume={100},
+number={548},
+pages={298-306},
+note={Copyright - Copyright © Mathematical Association 2016; Last updated - 2017-03-04},
+abstract={Recall the integral definition of the gamma function: for a > 0. By splitting this integral at a point x = or >, slanted] 0, we obtain the two incomplete gamma functions: (1) (2) ...](a, x)is sometimes called the complementary incomplete gamma function. These functions were first investigated by Prym in 1877, and...](a, x) has also been called Prym's function. Not many books give these functions much space. Massive compilations of results about them can be seen stated without proof in 1, chapter 9] and 2, chapter 8]. Here we offer a small selection of these results, with proofs and some discussion of context. We hope to convince some readers that the functions are interesting enough to merit attention in their own right.},
+keywords={Mathematics},
+isbn={00255572},
+language={English},
+url={https://www.proquest.com/scholarly-journals/incomplete-gamma-functions/docview/1796350300/se-2},
+}
+
+@book{alma999355561206526,
+address = {Place of publication not identified},
+isbn = {1-59124-217-7},
+keywords = {Mathematics},
+language = {eng},
+publisher = {U S Department of Commerce},
+title = {Handbook of mathematical functions with formulas, graphs, and mathematical tables},
+year = {1972},
+}
+
+
+@book{alma998070634406526,
+abstract = {"Covering point process theory, random geometric graphs and coverage processes, this rigorous introduction to stochastic geometry will enable you to obtain powerful, general estimates and bounds of wireless network performance and make good design choices for future wireless architectures and protocols that efficiently manage interference effects. Practical engineering applications are integrated with mathematical theory, with an understanding of probability the only prerequisite. At the same time, stochastic geometry is connected to percolation theory and the theory of random geometric graphs and accompanied by a brief introduction to the R statistical computing language. Combining theory and hands-on analytical techniques with practical examples and exercises, this is a comprehensive guide to the spatial stochastic models essential for modelling and analysis of wireless network performance"--},
+author = {Haenggi, Martin.},
+address = {Cambridge},
+booktitle = {Stochastic geometry for wireless networks},
+isbn = {9781139782470},
+keywords = {Wireless communication systems -- Mathematics},
+language = {eng},
+publisher = {Cambridge University Press},
+title = {Stochastic geometry for wireless networks },
+year = {2013},
+}
+
+@article{NET-015,
+url = {http://dx.doi.org/10.1561/1300000015},
+year = {2009},
+volume = {3},
+journal = {Foundations and Trends® in Networking},
+title = {Interference in Large Wireless Networks},
+doi = {10.1561/1300000015},
+issn = {1554-057X},
+number = {2},
+pages = {127-248},
+author = {Martin Haenggi and Radha Krishna Ganti}
+}
+
+
+@book{alma998193414406526,
+abstract = {Achieve faster and more efficient network design and optimization with this comprehensive guide. Some of the most prominent researchers in the field explain the very latest analytic techniques and results from stochastic geometry for modelling the signal-to-interference-plus-noise ratio (SINR) distribution in heterogeneous cellular networks. This book will help readers to understand the effects of combining different system deployment parameters on key performance indicators such as coverage and capacity, enabling the efficient allocation of simulation resources. In addition to covering results for network models based on the Poisson point process, this book presents recent results for when non-Poisson base station configurations appear Poisson, due to random propagation effects such as fading and shadowing, as well as non-Poisson models for base station configurations, with a focus on determinantal point processes and tractable approximation methods. Theoretical results are illustrated with practical Long-Term Evolution (LTE) applications and compared with real-world deployment results.},
+publisher = {Cambridge University Press},
+isbn = {1107162580},
+year = {2018},
+title = {Stochastic Geometry Analysis of Cellular Networks},
+copyright = {Cambridge University Press 2018},
+language = {eng},
+author = {Błaszczyszyn, Bartłomiej and Haenggi, Martin and Keeler, Paul and Mukherjee, Sayandev},
+keywords = {Stochastic geometry ; Stochastic models ; Wireless communication systems},
+}
+
+@ARTICLE{9918046,
+  author={Jia, Haoge and Jiang, Chunxiao and Kuang, Linling and Lu, Jianhua},
+  journal={IEEE Transactions on Vehicular Technology}, 
+  title={An Analytic Approach for Modeling Uplink Performance of Mega Constellations}, 
+  year={2023},
+  volume={72},
+  number={2},
+  pages={2258-2268},
+  doi={10.1109/TVT.2022.3214275}}
+
+@ARTICLE{9389803,
+
+  author={Haenggi, Martin},
+
+  journal={IEEE Communications Letters}, 
+
+  title={Meta Distributions—Part 1: Definition and Examples}, 
+
+  year={2021},
+
+  volume={25},
+
+  number={7},
+
+  pages={2089-2093},
+
+  doi={10.1109/LCOMM.2021.3069662}}
+
+
+@ARTICLE{7345601,
+
+  author={Haenggi, Martin},
+
+  journal={IEEE Transactions on Wireless Communications}, 
+
+  title={The Meta Distribution of the {SIR} in {P}oisson Bipolar and Cellular Networks}, 
+
+  year={2016},
+
+  volume={15},
+
+  number={4},
+
+  pages={2577-2589},
+
+  doi={10.1109/TWC.2015.2504983}}
+
+@ARTICLE{6516885,
+  author={Novlan, Thomas D. and Dhillon, Harpreet S. and Andrews, Jeffrey G.},
+  journal={IEEE Transactions on Wireless Communications}, 
+  title={Analytical Modeling of Uplink Cellular Networks}, 
+  year={2013},
+  volume={12},
+  number={6},
+  pages={2669-2679},
+  doi={10.1109/TWC.2013.050613.120325}}
+
+
+@ARTICLE{9007512,
+
+  author={Tang, Xiaoxuan and Xu, Xiaodong and Haenggi, Martin},
+
+  journal={IEEE Transactions on Communications}, 
+
+  title={Meta Distribution of the {SIR} in Moving Networks}, 
+
+  year={2020},
+
+  volume={68},
+
+  number={6},
+
+  pages={3614-3626},
+
+  doi={10.1109/TCOMM.2020.2975996}}
+
+
+@INPROCEEDINGS{7506756,
+
+  author={Popescu, Otilia and Harris, Jason S. and Popescu, Dimitrie C.},
+
+  booktitle={SoutheastCon 2016}, 
+
+  title={Designing the communication sub-system for nanosatellite CubeSat missions: Operational and implementation perspectives}, 
+
+  year={2016},
+
+  volume={},
+
+  number={},
+
+  pages={1-5},
+
+  doi={10.1109/SECON.2016.7506756}}
+
+
+
+
+
+@ARTICLE{8168355,
+
+  author={Wang, Yuanjie and Haenggi, Martin and Tan, Zhenhui},
+
+  journal={IEEE Transactions on Communications}, 
+
+  title={The Meta Distribution of the {SIR} for Cellular Networks With Power Control}, 
+
+  year={2018},
+
+  volume={66},
+
+  number={4},
+
+  pages={1745-1757},
+
+  doi={10.1109/TCOMM.2017.2780218}}
+
+
+@ARTICLE{8594631,
+
+  author={Wang, Yuanjie and Haenggi, Martin and Tan, Zhenhui},
+
+  journal={IEEE Transactions on Communications}, 
+
+  title={{SIR} Meta Distribution of  $K$ -Tier Downlink Heterogeneous Cellular Networks With Cell Range Expansion}, 
+
+  year={2019},
+
+  volume={67},
+
+  number={4},
+
+  pages={3069-3081},
+
+  doi={10.1109/TCOMM.2018.2890247}}
+
+@book{FossSergey2013AItH,
+author = {Foss, Sergey and Korshunov, Dmitry and Zachary, Stan},
+keywords = {Complex Systems ; Distribution (Probability theory) ; Mathematics ; Mathematics and Statistics ; Probabilities & applied mathematics ; Probability Theory and Stochastic Processes ; Statistical Physics and Dynamical Systems ; Statistics for Business Management Economics Finance Insurance},
+series = {Springer Series in Operations Research and Financial Engineering},
+issn = {1431-8598},
+abstract = {Heavy-tailed probability distributions are an important component in the modeling of many stochastic systems. They are frequently used to accurately model inputs and outputs of computer and data networks and service facilities such as call centers. They are an essential for describing risk processes in finance and also for insurance premia pricing, and such distributions occur naturally in models of epidemiological spread. The class includes distributions with power law tails such as the Pareto, as well as the lognormal and certain Weibull distributions.One of the highlights of this new edition is that it includes problems at the end of each chapter. Chapter 5 is also updated to include interesting applications to queueing theory, risk, and branching processes. New results are presented in a simple, coherent and systematic way.Graduate students as well as modelers in the fields of finance, insurance, network science and environmental studies will find this book to be an essential reference.},
+publisher = {Springer Nature},
+isbn = {9781461471011},
+year = {2013},
+title = {An Introduction to Heavy-Tailed and Subexponential Distributions},
+edition = {2},
+copyright = {Springer Science + Business Media New York 2013},
+language = {eng},
+address = {New York, NY},
+}
+
+
+@ARTICLE{10230268,
+
+  author={Matracia, Maurilio and Kishk, Mustafa A. and Alouini, Mohamed-Slim},
+
+  journal={IEEE Vehicular Technology Magazine}, 
+
+  title={Aerial Base Stations for Global Connectivity: Is It a Feasible and Reliable Solution?}, 
+
+  year={2023},
+
+  volume={18},
+
+  number={4},
+
+  pages={94-101},
+
+  doi={10.1109/MVT.2023.3301228}}
+
+
+@ARTICLE{7811844,
+
+  author={Jia, Min and Gu, Xuemai and Guo, Qing and Xiang, Wei and Zhang, Naitong},
+
+  journal={IEEE Wireless Communications}, 
+
+  title={Broadband Hybrid Satellite-Terrestrial Communication Systems Based on Cognitive Radio toward {5G}}, 
+
+  year={2016},
+
+  volume={23},
+
+  number={6},
+
+  pages={96-106},
+
+  doi={10.1109/MWC.2016.1500108WC}}
+
+
+@article{CressieNoel1981TMFa,
+author = {Cressie, Noel and Davis, Anne S. and Folks, J. Leroy and II, George E. Policello},
+keywords = {Discrete mathematics ; Function (mathematics) ; Integer (computer science) ; Laplace transf},
+issn = {0003-1305},
+abstract = {Abstract It does not appear to be widely known that the moment-generating function},
+journal = {The American Statistician},
+pages = {148},
+volume = {35},
+publisher = {JSTOR},
+number = {3},
+year = {1981},
+title = {The Moment-Generating Function and Negative Integer Moments},
+language = {eng},
+}
+
+@ARTICLE{9443633,
+
+  author={Lin, Hongxin and Zhang, Cheng and Huang, Yongming and Zhao, Rui and Yang, Luxi},
+
+  journal={IEEE Wireless Communications Letters}, 
+
+  title={Fine-Grained Analysis on Downlink {LEO} Satellite-Terrestrial mmWave Relay Networks}, 
+
+  year={2021},
+
+  volume={10},
+
+  number={9},
+
+  pages={1871-1875},
+
+  keywords={Relays;Signal to noise ratio;Interference;Satellites;Low earth orbit satellites;Rayleigh channels;Downlink;LEO satellite communication;stochastic geometry;meta distribution;millimeter-wave;decode-and-forward relay},
+
+  doi={10.1109/LWC.2021.3084626}}
+
+
+@ARTICLE{9755277,
+
+  author={Wang, Ruibo and Kishk, Mustafa A. and Alouini, Mohamed-Slim},
+
+  journal={IEEE Communications Magazine}, 
+
+  title={Ultra-Dense {LEO} Satellite-Based Communication Systems: A Novel Modeling Technique}, 
+
+  year={2022},
+
+  volume={60},
+
+  number={4},
+
+  pages={25-31},
+
+  keywords={Logic gates;Analytical models;Satellites;Low earth orbit satellites;Stochastic processes;Channel models;Low latency communication;Systems analysis and design},
+
+  doi={10.1109/MCOM.001.2100800}}
+
+@INPROCEEDINGS{9838778,
+
+  author={Chan, Chiu Chun and Al Homssi, Bassel and Al-Hourani, Akram},
+
+  booktitle={ICC 2022 - IEEE International Conference on Communications}, 
+
+  title={A Stochastic Geometry Approach for Analyzing Uplink Performance for {I}o{T}-over-Satellite}, 
+
+  year={2022},
+
+  volume={},
+
+  number={},
+
+  pages={2363-2368},
+
+  keywords={Performance evaluation;Wireless communication;Geometry;Analytical models;Satellite constellations;Satellites;Stochastic processes;Satellite-to-ground;stochastic geometry;IoT;Internet-of-Space-things;uplink satellite},
+
+  doi={10.1109/ICC45855.2022.9838778}}
+
+
+@ARTICLE{9684552,
+
+  author={Al Homssi, Bassel and Al-Hourani, Akram},
+
+  journal={IEEE Wireless Communications Letters}, 
+
+  title={Optimal Beamwidth and Altitude for Maximal Uplink Coverage in Satellite Networks}, 
+
+  year={2022},
+
+  volume={11},
+
+  number={4},
+
+  pages={771-775},
+
+  keywords={Satellites;Interference;Uplink;Satellite broadcasting;Satellite constellations;Satellite antennas;Optimization;Stochastic geometry;dense satellite constellation;uplink communication;low earth orbit;optimization},
+
+  doi={10.1109/LWC.2022.3143498}}
+
+
+@ARTICLE{10107750,
+
+  author={Sun, Yanshi and Ding, Zhiguo},
+
+  journal={IEEE Networking Letters}, 
+
+  title={A Fine Grained Stochastic Geometry-Based Analysis on {LEO} Satellite Communication Systems}, 
+
+  year={2023},
+
+  volume={5},
+
+  number={4},
+
+  pages={237-240},
+
+  keywords={Satellites;Low earth orbit satellites;Stochastic processes;Earth;Reliability;Geometry;Metamodeling;Geometry;Low earth orbit (LEO) satellite;stochastic geometry;user fairness;meta distribution},
+
+  doi={10.1109/LNET.2023.3269818}}
+
+
+@ARTICLE{9511625,
+
+  author={Jia, Haoge and Ni, Zuyao and Jiang, Chunxiao and Kuang, Linling and Lu, Jianhua},
+
+  journal={{IEEE} Internet of Things Journal}, 
+
+  title={Uplink Interference and Performance Analysis for Megasatellite Constellation}, 
+
+  year={2022},
+
+  volume={9},
+
+  number={6},
+
+  pages={4318-4329},
+
+  keywords={Satellites;Interference;Internet of Things;Uplink;Analytical models;Satellite constellations;Satellite antennas;Ergodic capacity;frequency reuse;intraconstellation interference;megaconstellation},
+
+  doi={10.1109/JIOT.2021.3104095}}
+
+
+@INPROCEEDINGS{10233476,
+
+  author={Hu, Xu and Lin, Bin and Wang, Ping and Lu, Xiao and Wei, Haichao and Qi, Shuang},
+
+  booktitle={2023 {IEEE}/{CIC} International Conference on Communications in China ({ICCC})}, 
+
+  title={Modeling and Analysis of End-to-End {LEO} Satellite-Aided Shore-to-Ship Communications}, 
+
+  year={2023},
+
+  volume={},
+
+  number={},
+
+  pages={1-6},
+
+  keywords={Geometry;Space vehicles;Analytical models;Satellites;Laplace equations;Low earth orbit satellites;Rician channels;Low Earth orbit satellites;shore-to-ship communications;stochastic geometry;end-to-end transmission success probability},
+
+  doi={10.1109/ICCC57788.2023.10233476}}
+
+@ARTICLE{9893104,
+
+  author={Höyhtyä, Marko and Boumard, Sandrine and Yastrebova, Anastasia and Järvensivu, Pertti and Kiviranta, Markku and Anttonen, Antti},
+
+  journal={{IEEE} Access}, 
+
+  title={Sustainable Satellite Communications in the {6G} Era: A European View for Multilayer Systems and Space Safety}, 
+
+  year={2022},
+
+  volume={10},
+
+  number={},
+
+  pages={99973-100005},
+
+  keywords={Space vehicles;6G mobile communication;Sustainable development;Safety;Satellite broadcasting;Low earth orbit satellites;Europe;Radio spectrum management;Spaceborne radar;Aerospace engineering;Aerospace engineering;low earth orbit satellites;radio spectrum management;spaceborne radar},
+
+  doi={10.1109/ACCESS.2022.3206862}}
+
+
+@INPROCEEDINGS{10419519,
+
+  author={Li, Congying and Fang, Zixi and Wang, Yikai and Sun, Chenhua},
+
+  booktitle={2023 IEEE 23rd International Conference on Communication Technology (ICCT)}, 
+
+  title={An Approach for Interference Modeling and Analysis of Low Orbit Satellite Internet}, 
+
+  year={2023},
+
+  volume={},
+
+  number={},
+
+  pages={1178-1184},
+
+  keywords={Analytical models;Satellites;Interference;Orbits;Large scale integration;Numerical models;Uplink;LEO satellite internet;satellite communications;interference;stochastic geometry},
+
+  doi={10.1109/ICCT59356.2023.10419519}}
+
+
+@ARTICLE{809692,
+
+  author={Tjhung, T.T. and Chai, C.C.},
+
+  journal={IEEE Transactions on Communications}, 
+
+  title={Fade statistics in Nakagami-lognormal channels}, 
+
+  year={1999},
+
+  volume={47},
+
+  number={12},
+
+  pages={1769-1772},
+
+  keywords={Statistics;Land mobile radio;Shadow mapping;Rayleigh channels;Signal processing;Fading;Satellite broadcasting;Error correction;Wireless communication;Computer vision},
+
+  doi={10.1109/26.809692}}
+
+
+@ARTICLE{1198102,
+
+  author={Abdi, A. and Lau, W.C. and Alouini, M.-S. and Kaveh, M.},
+
+  journal={IEEE Transactions on Wireless Communications}, 
+
+  title={A new simple model for land mobile satellite channels: first- and second-order statistics}, 
+
+  year={2003},
+
+  volume={2},
+
+  number={3},
+
+  pages={519-528},
+
+  keywords={Satellites;Statistics;Statistical distributions;Power system modeling;Nakagami distribution;Mathematical model;Probability density function;Power generation;Predictive models;Performance analysis},
+
+  doi={10.1109/TWC.2003.811182}}
+
+
+@techreport{110,
+author = {David Wood},
+title = {The Computation of Polylogarithms},
+month = {June},
+year = {1992},
+pages = {182-196},
+keywords = {determinacy analysis, Craig interpolants},
+note = {},
+doi = {},
+url = {http://www.cs.kent.ac.uk/pubs/1992/110},
+    address = {University of Kent, Canterbury, UK},
+    hensa_abstractfilename = {pub/misc/ukc.reports/comp.sci/abstracts/15-92},
+    hensa_ftpaddress = {unix.hensa.ac.uk},
+    hensa_reportfilename = {pub/misc/ukc.reports/comp.sci/reports/15-92.ps.Z},
+    institution = {University of Kent, Computing Laboratory},
+    number = {15-92*},
+}
+
+@INPROCEEDINGS{800292,
+
+  author={Mehrnia, A. and Hashemi, H.},
+
+  booktitle={Gateway to 21st Century Communications Village. VTC 1999-Fall. IEEE VTS 50th Vehicular Technology Conference (Cat. No.99CH36324)}, 
+
+  title={Mobile satellite propagation channel. Part 1-a comparative evaluation of current models}, 
+
+  year={1999},
+
+  volume={5},
+
+  number={},
+
+  pages={2775-2779 vol.5},
+
+  keywords={Satellites;Rayleigh scattering;Rayleigh channels;Fading;Wireless communication;Light scattering;Mobile computing;Performance evaluation;Computer simulation;Communication industry},
+
+  doi={10.1109/VETECF.1999.800292}}
+
+@article{fastandaccuratearticle,
+author = {Navas-Palencia, Guillermo},
+year = {2018},
+month = {02},
+pages = {},
+title = {Fast and accurate algorithm for the generalized exponential integral ${E}_v(x)$ for positive real order},
+volume = {77},
+journal = {Numerical Algorithms},
+doi = {10.1007/s11075-017-0331-z}
+}
+
+@misc{simalysis,
+  author = {Martin Haenggi},
+  title = {Simalysis: Symbiosis of Simulation and Analysis},
+  year = {2020},
+  month = {October},
+  day = {15},
+  howpublished = {\url{https://stogblog.net/2020/10/15/simalysis-symbiosis-of-simulation-and-analysis/}},
+  note = {Accessed: 2024-07-12}
+}
+
+
+
+@misc{3F2identity,
+  author = "Candab, Cagatay",
+  title = "A Simple Proof of ${_3F_2}(1,1,1;2,2;\rho)=\text{dilog}(1-\rho)/\rho$",
+  institution = "Department of Electrical and Electronics Engin., METU, Ankara, Turkey",
+  url = "https://users.metu.edu.tr/ccandan/pub_dir/hyper_rel.pdf",
+  year = "2012",
+  language = "en",
+  note = {Accessed: 2024-09-18}
+}
+
+@article{Alzer1997OnSI,
+  title={On some inequalities for the incomplete gamma function},
+  author={Horst Alzer},
+  journal={Math. Comput.},
+  year={1997},
+  volume={66},
+  pages={771-778},
+  url={https://api.semanticscholar.org/CorpusID:16808088}
+}
+
+@ARTICLE{9257490,
+
+  author={Al-Hourani, Akram and Guvenc, Ismail},
+
+  journal={IEEE Communications Letters}, 
+
+  title={On Modeling Satellite-to-Ground Path-Loss in Urban Environments}, 
+
+  year={2021},
+
+  volume={25},
+
+  number={3},
+
+  pages={696-700},
+
+  keywords={Atmospheric modeling;Satellites;Satellite broadcasting;Standards;Nonlinear optics;ITU;Absorption;Satellite-to-ground;IoT-over-satellite;land mobile-satellite;GNSS;GPS;path-loss modeling;stochastic geometry},
+
+  doi={10.1109/LCOMM.2020.3037351}}
+
+
+@ARTICLE{10463093,
+
+  author={Talgat, Anna and Kishk, Mustafa A. and Alouini, Mohamed-Slim},
+
+  journal={IEEE Transactions on Aerospace and Electronic Systems}, 
+
+  title={Stochastic Geometry-Based Uplink Performance Analysis of {I}o{T} Over {LEO} Satellite Communication}, 
+
+  year={2024},
+
+  volume={60},
+
+  number={4},
+
+  pages={4198-4213},
+
+  keywords={Internet of Things;Satellites;Low earth orbit satellites;Interference;Uplink;Earth;Analytical models;Binomial point process (BPP);Internet of Things (IoT) device;low Earth orbit (LEO) satellite constellation;Poisson cluster process (PCP);Poisson point process (PPP);uplink},
+
+  doi={10.1109/TAES.2024.3374718}}
+
+
+@ARTICLE{10539251,
+
+  author={Talgat, Anna and Kishk, Mustafa A. and Alouini, Mohamed-Slim},
+
+  journal={IEEE Internet of Things Journal}, 
+
+  title={Maximizing Uplink Data Transmission of {LEO}-Satellite-Based Wireless-Powered {I}o{T}}, 
+
+  year={2024},
+
+  volume={11},
+
+  number={17},
+
+  pages={28975-28987},
+
+  keywords={Internet of Things;Uplink;Energy harvesting;Low earth orbit satellites;Satellites;Lead;Performance evaluation;Energy harvesting;Internet of Things (IoT) device;low Earth orbit (LEO) satellite;power beacon (PB);stochastic geometry (SG);uplink communication},
+
+  doi={10.1109/JIOT.2024.3405661}}
+
+@book{understadingssatellitecoms,
+  author = "Shuai Wang and Jinpeng Song and Xiaqing Miao and Gaofeng Pan",
+  title = "Understanding Satellite Communications: The Stochastic Geometry Perspective",
+  publisher = "Springer",
+  year = "2024",
+  language = "en",
+  edition = "1",
+  isbn = {978-981-97-7102-8},
+  address = "Singapore",
+  doi={https://doi.org/10.1007/978-981-97-7102-8}
+}
