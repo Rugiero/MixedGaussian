@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.21)  6 MAR 2025 19:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.10.9)  7 MAR 2025 00:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -776,12 +776,12 @@ Package rerunfilecheck Info: File `source.out' has not changed.
 (rerunfilecheck)             Checksum: 66E6BC931E9004B49D73BE486D147A62;2880.
  ) 
 Here is how much of TeX's memory you used:
- 13930 strings out of 475509
- 224077 string characters out of 5776664
+ 13930 strings out of 476106
+ 224077 string characters out of 5793933
  1962975 words of memory out of 5000000
- 35696 multiletter control sequences out of 15000+600000
+ 35660 multiletter control sequences out of 15000+600000
  608108 words of font info for 137 fonts, out of 8000000 for 9000
- 399 hyphenation exceptions out of 8191
+ 63 hyphenation exceptions out of 8191
  75i,15n,79p,1623b,596s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/shar
