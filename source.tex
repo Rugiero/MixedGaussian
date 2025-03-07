@@ -95,11 +95,11 @@ While the factorial moment measure of the signal-to-interference (SIR)  and inte
       $\alpha$ &Power path loss exponent.& $4$\\
       %% $\Phi\subset \R^2$ &Homogeneous PPP on planar Earth. & $\{(x_i,y_i)\}$ km\\
       %% $\Theta \subset \R^3 $ & Homogeneous PPP on spherical Earth surface of average radius $\rEarth=6378$. &$\{(\rEarth,\phi_i,\varphi_i)\}$\break (km, rad, rad) \\
-      $\lambda$ & The density of $\Phi$ and $\Theta$, \textit{i.e.}, the mean number of UEs inside an unit area.&$\{4.6,8.8\}\break10^{-4}\text{/km}^2$\\
-      $\epsilon$& The typical LEO BS elevation angle w.r.t $\textit{o}$.&$\left({\pi}/{2},{2\pi}/{9}\right)\text{ rad}\break=(90,40)[\degree]$\\
+      $\lambda$ & The density of $\Phi$ and $\Theta$, \textit{i.e.}, the mean number of UEs inside an unit area.&$\{0.83,13.3\} \break 10^{-4}\text{/km}^2$\\
+      $\epsilon$& The typical LEO BS elevation angle w.r.t $\textit{o}$.&$\left({\pi}/{2},{\pi}/{6}\right)\text{ rad}\break=(90,30)[\degree]$\\
       %% $\kappa$  & Average number of  the LEO BS $-3 \text{ dB footprints};$& \\
       %% ${\tilde{\kappa}}$ &  $\kappa/\log(2)$.& \\
-      $p_{\text{LoS}}$& LoS probability; $p_{\text{LoS}} \propto \sin(\epsilon)$. & $(0.99,0.61)$\\
+      $p_{\text{LoS}}$& LoS probability; $p_{\text{LoS}} \propto \sin(\epsilon)$. & $(0.992,0.493)$\\
 %      $p_{\text{NLoS}}$& NLoS probability; $1-p_{\text{LoS}}$. & \\
       $\mu_{\text{LoS}}$& Mean of the LoS component of the Gaussian mixture shadow fading model. & $0$ [dB] \\
       $\mu_{\text{NLoS}}$& Mean of the NLoS component. & $-26$ [dB] \\
@@ -109,14 +109,14 @@ While the factorial moment measure of the signal-to-interference (SIR)  and inte
       %% $H_{\text{Exp}}$ & A simple approximation of (mean normalized) $H_{\mathcal{M}\mathcal{L}\mathcal{N}}$. It has a defective exponential cdf entirely characterized by the atomic prob. measure at $0$; $1-\upsilon$.&\\
       %% $\upsilon$ & $\mathbb{P}(H_{\text{Exp}}>0)$ $=1-\mathbb{P}(H_{\text{Exp}}=0)$; $\upsilon = \upsilon(p_{\text{LoS}}(\epsilon))=v(\epsilon)$. &$(0.85,0.53)$ \\
       %% $\kappa \upsilon$ & The mean number of effective UEs inside the $-3$ dB footprints. \textbf{The parameter determines the theoretical SIR performance.}&$ \{1.8,2.6\}$ \\
-      $\varphi_{\text{RX}}$ & Half-width of a LEO BS $-3$ dB antenna gain. $\varphi_{\text{RX}} = 0.028 \sin^{3/2}(\epsilon).$&$(.014,.028) \text{ rad}\hfill\break (0.8,1.6)[\degree]$ \\      
-      $\kappa$& Average number of UEs inside a $-3$ dB footprint; $\kappa \propto \lambda, \kappa \propto 1/\sin(\epsilon)$.& 2.6 \\
-      $\upsilon$&Fraction of effective UEs; $\hfill \break\upsilon \propto p_{\text{LoS}} \propto\sin(\epsilon),  \upsilon \propto \lambda$. & \\      
-      $\kappa \upsilon$& Average number of effective UEs inside a $-3$ dB footprint; $\kappa \upsilon \propto \lambda $ .& $\{1.4,2.6 \}$ \\
-      $\theta$ & SIR threshold of a successful transmission.&$(0.2,10)$  \break \hfill $(-7,10)$ [dB]   \\
-      $\tau$ & SIR threshold of a successful interference cancellation.& $0.2$, $-7\text{ [dB]}$\\
-      $K$ & Maximum number of interference cancellation cycles in the ASIC\\
-      \hline
+      $\varphi_{\text{RX}}$ & Half-width of the $-3$ dB antenna gain.&$0.028= 1.6 [\degree] \hfill $ \\      
+      $\kappa$& Average number of UEs inside a $-3$ dB footprint; $\kappa =\pi \lambda \left({\varphi_{\text{RX}}}h/{\sin^2(\epsilon)}\right)^2$.& $(1.63,6.51)$ \\
+      $\upsilon$&Fraction of effective UEs; $\upsilon \propto \sin(\epsilon)$. &$(0.85,0.426)$ \\      
+      $\kappa \upsilon$& Average number of effective UEs inside a $-3$ dB footprint.& $\{2,4\}\times \log(2)$ \\
+      $\theta$ & SIR threshold of a uccessful transmission.&$(0.2,10)=\hfill$  \break  $(-7,10) \text{ [dB]}$ \\
+      $\tau$ & SIR threshold of a successful interference cancellation.& $0.2=\hfill$\break $-7\text{ [dB]}$\\
+     % $K$ & Maximum number of interference cancellation cycles in the ASIC\\
+     \bottomrule
     \end{tabular}
   \end{center}
 \end{table}   
@@ -223,7 +223,7 @@ The parameter $\upsilon=\upsilon(\epsilon)$ depends on the elevation angle since
 
 
 \begin{remark}
-  The variable $0 < \upsilon \leq 1$ is not generally solvable for all log-normal distributions (by matching the first two moments). Broadly said, the variance of the shadowing has to be large enough. However, the variables $0<\upsilon \leq 1$ is solvable for almost every shadowing scenario in \cite{TR38.811}, and particularly for the urban sceneario.
+  The variable $0 < \upsilon \leq 1$ is not generally solvable for all log-normal distributions (by matching the first two moments). Broadly said, the variance of the shadowing has to be large enough. However, the variables $0<\upsilon \leq 1$ is solvable for almost every shadowing scenario in \cite{TR38.811}, and particularly for the urban scenario.
 \end{remark}
 
 \subsection{The spherical Earth model in the Monte Carlo simulations }
