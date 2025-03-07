@@ -33,8 +33,8 @@ lnNLoS = makedist('Lognormal','mu',muNLoS,'sigma',sigmaNLoS)
 
 %pLoS=exp(-beta*cot(deg2rad(elevation1)));
 
-pLoS=0.992;
-%pLoS=0.613
+%pLoS=0.992;
+pLoS=0.613
 a = (2*exp(muNLoS+sigmaNLoS^2/2)*(-1+pLoS)-2*exp(muLoS+sigmaLoS^2/2)*pLoS)/(exp(2*(muNLoS+sigmaNLoS^2))*(-1+pLoS)-exp(2*(muLoS+sigmaLoS^2))*pLoS);
 b=(-exp(2*muNLoS+sigmaNLoS^2)*(-1+pLoS)+exp(2*(muLoS+sigmaLoS^2))*pLoS)/(2*(exp(muNLoS+sigmaNLoS^2/2)*(-1+pLoS)-exp(muLoS+sigmaLoS^2/2)*pLoS)^2);
 1/b
