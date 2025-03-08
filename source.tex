@@ -48,7 +48,7 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{Factorial Moment Measure of the SIR and Interference Cancellation in a Narrow-Beam LEO Uplink}
+\title{Order Statistics of the SIR and Interference Cancellation in a Narrow-Beam LEO Uplink}
 \author{IEEE Publication Technology,~\IEEEmembership{Staff,~IEEE,}
         % <-this % stops a space
 \thanks{This paper was produced by the IEEE Publication Technology Group. They are in Piscataway, NJ.}% <-this % stops a space
@@ -266,7 +266,7 @@ Since the variables $\{H_x\}_{x \in \Phi}$ are i.i.d., we can denote the shadowi
     \lambda_{\mathcal{G}}(t) = \tilde{\kappa} {F_H(t)}/{t}, \quad t \in (0, \infty),
   \end{equation}
   where $\tilde{\kappa} = {\kappa}/{\log(2)}$ and
-  \begin{equation}\kappa \triangleq \pi \lambda \left({\varphi_{\text{RX}}}h/{\sin^2(\epsilon)}\right)^2
+  \begin{equation}\kappa \triangleq \pi \lambda \left(\frac{\varphi_{\text{RX}}h}{\sin^2(\epsilon)}\right)^2
     \label{eq:kappa}
   \end{equation}
   is approximately the average number of UEs inside a $-3$ dB footprint.
@@ -281,6 +281,8 @@ Since the variables $\{H_x\}_{x \in \Phi}$ are i.i.d., we can denote the shadowi
       &\overset{(a)}{=} -\tilde{\kappa} \left[ \left. \log(t/h) F_H(h) \right|_t^{\infty} + \int_t^{\infty} \frac{F_H(h)}{h} \, dh \right].
     \end{align*}
     In (a), we use integration by parts. The result follows by differentiating with respect to $t$ and applying the negative sign. Note that a necessary condition for this procedure is that $\int_t^{\infty} \log(t/h) f_H(h) \, dh$ converges for all $t > 0$.
+    
+    Please refer to \cite{10909705}, for thorough explanation of the interpretation of $\kappa$.
   \end{proof}
 \end{prop}
 
@@ -447,7 +449,7 @@ We denote $\mathsf{Z}'_{(1)}>\mathsf{Z}'_{(2)} >\mathsf{Z}'_{(3)} \dots$ the ord
   \end{proof}
 \end{prop}
 
-The partial densities can be derived from the density of the $n$th factorial moment measure as
+The partial densities can be derived from the density of the $n$th factorial moment measure as \cite[Lisää yhtälö]{7305791}
 
 \begin{align}
   \label{eq:auxillary}
@@ -457,7 +459,7 @@ The partial densities can be derived from the density of the $n$th factorial mom
 the support of the density being in the region $\sum_{i=1}^nz'_i+iz'_n \leq 1$. 
 
 
-The joint pdf $k$ strongest values of the STIR process $(\mathsf{Z}'_{(1)}, \dots, \mathsf{Z}'_{(n)})$ is given as a series expansion involving the partial densities
+The joint pdf of the $k$ strongest values of the STIR process $(\mathsf{Z}'_{(1)}, \dots, \mathsf{Z}'_{(n)})$ is given as a series expansion involving the partial densities \cite[Lisää yhtälö]{7305791}
 \begin{equation}
   \label{eq:jointprobability}
   f'_{(k)}(z'_1,\dots,z'_k)= \sum^{i_{\text{max}}}_{i=0}\frac{(-1)^i}{i!}{\mu'}_k^{(k+i)}(z'_1,\dots,z'_k),
@@ -475,7 +477,7 @@ with $\theta'=\theta/(1+\theta)$ and $i_{\text{max}}<1/\theta'-k$.
 
 
 
-    The density of the $n$th factorial moment measure of the SIR process can be extracted from $\mu'^{(n)}$:
+    The density of the $n$th factorial moment measure of the SIR process can be extracted from $\mu'^{(n)}$ \cite[Lisää yhtälö]{7305791}:
     \begin{align}
       \label{eq:densitySINR}
       &\mu^{(n)}(z_1,\dots,z_n)&  \nonumber\\
@@ -572,7 +574,7 @@ Finally, we consider the SIR under the adaptive successive signal cancellation (
   \end{align}
   with the upper summation limit bounded by $i_{\text{max}} < 1/\tau'-1=1/\tau$.
   \begin{proof}
-    The expression follows from the joint pdf of the order statistics \eqref{eq:jointprobability}. Furthermore, the upper l.h.s. conditioning  allows the relaxation of $i_{\text{max}}$. Namely, a necessary condition is $z'_{k}+\tau'\sum_{j=1}^{k-1}z'_{j}>\tau'$. By simple algebra, $\sum_{j=1}^{k-1}z_{j}> 1-z_{k}/\tau'$. Recall the condition on the non-zero terms of $\mu'^{(k+i)}$:  $\sum_{j=1}^k z'_{j}+i z'_{k} =\sum_{j=1}^{k-1}z'_{j} +z'_{k}+i z'_{k}  \leq 1$. The condition certainly does \textit{not} hold if $1-z_{k}/\tau'+ z'_{k}+i z'_{k}>1$. We arrive at the inequality $z'_{k} \left(-1/\tau' + 1 +i \right)>0$. Divide both sides by $z'_{k}>0$, and the general upper bound of $i$ follows.
+    The expression follows using the joint pdf of the order statistics \eqref{eq:jointprobability}---furthermore, the upper l.h.s. conditioning  allows the relaxation of $i_{\text{max}}$. Namely, a necessary condition is $z'_{k}+\tau'\sum_{j=1}^{k-1}z'_{j}>\tau'$. By simple algebra, $\sum_{j=1}^{k-1}z_{j}> 1-z_{k}/\tau'$. Recall the condition on the non-zero terms of $\mu'^{(k+i)}$:  $\sum_{j=1}^k z'_{j}+i z'_{k} =\sum_{j=1}^{k-1}z'_{j} +z'_{k}+i z'_{k}  \leq 1$. The condition certainly does \textit{not} hold if $1-z_{k}/\tau'+ z'_{k}+i z'_{k}>1$. We arrive at the inequality $z'_{k} \left(-1/\tau' + 1 +i \right)>0$. Divide both sides by $z'_{k}>0$, and the general upper bound of $i$ follows.
 %    We refer to [CITE].
   \end{proof}
 \end{prop}
