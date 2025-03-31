@@ -65,7 +65,7 @@
 
 \maketitle
 \begin{abstract}
-We investigate the factorial moment measure of the signal-to-interference ratios (SIR) at the typical low Earth orbit base station (LEO BS) with a narrow Gaussian antenna serving an urban area, with a Gaussian mixture shadowing model. The SIR process is characterized using a Poisson-Dirichlet distribution $\text{PD}(0, \cdot)$, allowing us to derive the density of the factorial moment measure. We analyze the coverage probability at the typical LEO BS receiving the three strongest signals and implement successive interference cancellation (SIC). Our results demonstrate that SIC can notably reduce the variance of the SIR while maintaining robust performance.
+We investigate the factorial moment measure of the signal-to-interference ratios (SIR) at the typical low Earth orbit base station (LEO BS) with a narrow Gaussian antenna serving an urban area, with a Gaussian mixture shadowing model. This SIR process is characterized by a Poisson-Dirichlet distribution $\text{PD}(0, \cdot)$, which allows us to derive the density of the factorial moment measure. We analyze the coverage probability at the typical LEO BS receiving the three strongest signals and implement successive interference cancellation (SIC). Our results demonstrate that SIC can notably reduce the variance of the SIR while maintaining robust performance.
 \end{abstract}
 
 % Note that keywords are not normally used for peerreview papers.
@@ -76,7 +76,7 @@ We investigate the factorial moment measure of the signal-to-interference ratios
 
 \section{Introduction}
 
-\IEEEPARstart{W}{hile} the factorial moment measure of the signal-to-interference (SIR)  and interference cancellation has been studied for terrestrial networks \cite{7305791}, they are yet to be explored in low Earth orbit (LEO) networks. We utilize the narrow-beam LEO uplink system model from \cite{10909705} in an urban environment and study the SIR of user equipments (UEs) at the typical LEO base station (BS). We utilize the Gaussian Mixture shadowing model, similar to \cite{modelinguplink} and \cite{9684552}, using the parameters presented in \cite{TR38.811}. The density of the factorial moment measure of the signal-to-total-interference (STIR) process follows a Poisson-Dirichlet distribution PD$(0,\cdot)$ (contrary to PD$(\cdot,0)$ in \cite{7305791}), of which the factorial moment measure is well-known. We derive the joint pdf of the SIR and study the performance metrics of the three strongest UE signals with and without successive interference cancellation (SIC) scheme. In \cite{10909705}, it was observed that the system parameters optimizing the average throughput, corresponding to mean $\log(2)$ user equipments (UEs) inside a LEO BS $-3$ dB footprint, leads to a high variation in the SIR over the LEO BSs. We demonstrate that the link can be made more stable by interference cancellation (IC). Especially with successive interference cancellation (SIC), the number of UEs inside a LEO BS $-3$ dB footprint can be doubled while maintaining the average performance of the strongest UE but profoundly reducing the variance in the SIR. Furthermore, the coverage probability of UEs with less strong signals drastically improves.
+\IEEEPARstart{W}{hile the order statistics} of the signal-to-interference (SIR) and interference cancellation have been studied for terrestrial networks \cite{7305791} by using stochastic geometry, they are yet to be explored in low Earth orbit (LEO) networks. We study the SIR of user equipments (UEs) at the typical LEO base station (BS) by utilizing the narrow-beam LEO uplink system model from \cite{10909705} in an urban environment. We utilize the Gaussian Mixture shadowing model, similar to \cite{modelinguplink} and \cite{9684552}, using the parameters presented in \cite{TR38.811}. The density of the factorial moment measure of the signal-to-total-interference (STIR) process follows a Poisson-Dirichlet distribution PD$(0,\cdot)$ (contrary to PD$(\cdot,0)$ in \cite{7305791}), of which the factorial moment measure is well-known. We derive the joint pdf of the STIR and SIR and study the performance metrics of the three strongest UE signals with and without successive interference cancellation (SIC) schemes. In \cite{10909705}, it was observed that the system parameters optimizing the average throughput, corresponding to mean $\log(2)$ user equipments (UEs) inside a LEO BS $-3$ dB footprint, leads to a high variation in the SIR over the LEO BSs. We demonstrate that the link is more stable with interference cancellation. We show that with the SIC, the number of UEs inside a LEO BS $-3$ dB footprint can be doubled while maintaining the average performance of the strongest UE but profoundly reducing the variance in the SIR. Furthermore, the coverage probability of UEs with less strong signals drastically improves.
 
 \begin{table}
    \captionsetup{size=footnotesize}
@@ -134,7 +134,7 @@ We investigate the factorial moment measure of the signal-to-interference ratios
   } 
   \qquad
   \subfloat[\centering The typical LEO BS as seen from the side. The transmitters are projected into line $(0, \infty)$ according to their norm.]{{\includegraphics[width=\linewidth]{systemmodel2.pdf}}     \label{fig:systemmodel}} %%
-  \caption{The simplified narrow-beam LEO uplink system model. The satellite antenna boresight is oriented towards $\textit{o}$, the focus point of the elliptical footprint. The omnidirectionally transmitting UEs $\{x_i\}$ are located according to the homogeneous PPP on the plane. The transmitter with the strongest signal is the primary served UE.}
+  \caption{The simplified narrow-beam LEO uplink system model. The satellite antenna boresight is oriented towards $\textit{o}$, the focus point of the elliptical footprint. The omnidirectionally transmitting UEs $\{x_i\}$ are located according to the homogeneous PPP on the plane. The transmitter with the strongest signal is the first-served UE.}
 \end{figure}
 
 
@@ -147,7 +147,7 @@ We investigate the factorial moment measure of the signal-to-interference ratios
 
 
 
-A narrow-band LEO  uplink is considered. The UEs follow a homogeneous PPP $\Phi \subset \R^2$ of density $\lambda$. The LEO BSs form a homogeneous point process (p.p.) possibly with a different density than the UEs. Because of the translation invariancy of the PPP, all locations are statistically equivalent, and we define the origin $\textit{o}$ to represent the typical LEO BS footprint focus point.
+A narrow-band LEO  uplink is considered. The UEs follow a homogeneous PPP $\Phi \subset \R^2$ of density $\lambda$. The LEO BSs form a homogeneous point process (p.p.) possibly with a different density than the UEs. Because of the translation invariancy of the PPP, all locations are statistically equivalent, and we define the origin $\textit{o}$ to represent \textit{the typical LEO BS} footprint focus point.
 
 
 The path loss, representing the antenna gain at the typical LEO BS, is given over the planar distance $r \in [0, \infty)$ as a Gaussian function
@@ -185,7 +185,7 @@ The path loss, representing the antenna gain at the typical LEO BS, is given ove
 \subsubsection{Gaussian mixture shadowing model}
 \label{sec:guassianmixture}
 
-Consider a two-tier $\{\text{LoS},\text{NLoS}\}$ (line-of-sight and non-line-of-sight) Gaussian mixture shadow fading model with the parameters $\mu_{\text{LoS}} = 0$ dB, $\sigma_{\text{LoS}} = 4$ dB, $\mu_{\text{NLoS}} = -26$ dB, and $\sigma_{\text{NLoS}} = 6$ dB, which correspond to an urban environment \cite{TR38.811}. Assuming i.i.d. power shadow fading for all UEs, the typical shadowed transmit power $H_{\mathcal{M}\mathcal{L}\mathcal{N}}$ follows a log-normal mixture distribution;
+Consider a two-tier $\{\text{LoS},\text{NLoS}\}$ (line-of-sight and non-line-of-sight) Gaussian mixture shadow fading model with the parameters $\mu_{\text{LoS}} = 0$ dB, $\sigma_{\text{LoS}} = 4$ dB, $\mu_{\text{NLoS}} = -26$ dB, and $\sigma_{\text{NLoS}} = 6$ dB, which correspond to an urban environment \cite{TR38.811}. Assuming i.i.d. power shadow fading for all UEs, \textit{the typical shadowed transmit power} $H_{\mathcal{M}\mathcal{L}\mathcal{N}}$ follows a log-normal mixture distribution;
 \begin{align}
   \label{eq:tier2lognormal}
   H_{\mathcal{M}\mathcal{L}\mathcal{N}} &\sim p_{\text{LoS}} \mathcal{L}\mathcal{N}(\rho \mu_{\text{LoS}}, (\rho \sigma_{\text{LoS}})^2) \nonumber \\
@@ -224,7 +224,7 @@ The parameter $\upsilon=\upsilon(\epsilon)$ varies with the elevation angle, inf
 
 
 \begin{remark}
-  The variable $0 < \upsilon \leq 1$ is not generally solvable for all log-normal distributions (by matching the first two moments). Broadly said, the variance of the shadowing has to be large enough. However, the variable $0<\upsilon \leq 1$ is solvable for almost every shadowing scenario in \cite{TR38.811}, particularly for the urban scenario.
+  The variable $0 < \upsilon \leq 1$ is not generally solvable for all log-normal distribution parameters (by matching the first two moments). Broadly said, the variance of the shadowing has to be large enough. However, the variable $0<\upsilon \leq 1$ is solvable for almost every shadowing scenario in \cite{TR38.811}, particularly for the urban scenario.
 \end{remark}
 
 \subsection{The spherical Earth model in the Monte Carlo simulations }
@@ -240,7 +240,7 @@ The total interference at the typical LEO BS from the UEs in the PPP $\Theta \ca
   \label{eq:mathringptot}
   \mathring{I} \triangleq  \sum_{x \in \Theta \cap E }  \frac{{H_{\mathcal{M}\mathcal{L}\mathcal{N}}}_x G(\varphi_x)}{(d_x/d_0)^{\alpha}},
 \end{equation}
-where $d_0$ is a normalizing constant. For each $x \in \Theta \cap E$, the simulated values are based on the spherical model, the angle $\varphi_x$ and distance $d_x$ calculated precisely, and accurate i.i.d. Gaussian mixture shadowing ${H_{\mathcal{M}\mathcal{L}\mathcal{N}}}_x$.
+where $d_0$ is a normalizing constant. \textit{The simulated values are based on the spherical model}, the angle $\varphi_x$ and distance $d_x$ calculated precisely for each $x \in \Theta \cap E$, \textit{and accurate i.i.d. Gaussian mixture shadowing} ${H_{\mathcal{M}\mathcal{L}\mathcal{N}}}_x$.
 
 \section{Analysis}
 For a more detailed analysis and planar model comparison to the spherical model, please refer to \cite{10909705}.
@@ -256,7 +256,7 @@ The GP is a \textit{projection process} mapping the points from $\mathbb{R}^2$ i
 
 
 
-Since the variables $\{H_x\}_{x \in \Phi}$ are i.i.d., we can denote the shadowing variable simply as $H$ without the subscript.
+Since the variables $\{H_x\}_{x \in \Phi}$ are i.i.d., we can denote the typical shadowing variable simply as $H$ without the subscript.
 \begin{prop}[Density of the GP]\
   Let $F_H(\cdot)$ be the (possibly degenerate) complementary cumulative distribution function (ccdf) of a fading variable $H$. The density function of $\mathcal{G}$ is given by
   \begin{equation}
@@ -288,7 +288,7 @@ Since the variables $\{H_x\}_{x \in \Phi}$ are i.i.d., we can denote the shadowi
 
 
 
-The total interference, or total received power, is defined as the sum of the GP at the typical location $\textit{o}$ 
+The total interference, or total received power, is defined as the sum of the GP at the footprint location  $\textit{o}$ of the typical LEO BS:
 \begin{equation}
   \label{eq:totpow}
   I \triangleq \sum_{x \in \Phi} H_x G(\|x\|) = \sum_{x \in \mathcal{G}} x.
@@ -463,7 +463,7 @@ The joint pdf of the $k$ strongest values of the STIR process $(\mathsf{Z}'_{(1)
   \label{eq:jointprobability}
   f'_{(k)}(z'_1,\dots,z'_k)= \sum^{i_{\text{max}}}_{i=0}\frac{(-1)^i}{i!}{\mu'}_k^{(k+i)}(z'_1,\dots,z'_k),
 \end{equation}
-for $z'_1>z'_2>\dots>z'_k$ and $f'_{(k)}(z'_1,\dots,z'_k) =0 $ otherwise. The upper bound for the index $i_{\text{max}}<1/z'_k-k$ is the non-zero terms of the series expansion. 
+for $z'_1>z'_2>\dots>z'_k$ and $f'_{(k)}(z'_1,\dots,z'_k) =0 $ otherwise. The upper bound for the index $i_{\text{max}}<1/z'_k-k$ corresponds to the non-zero terms of the series expansion. 
 
 The $n$-coverage probability that the first $n$ strongest signals reach the threshold $\theta$ is given by
 \begin{align}
@@ -508,23 +508,23 @@ with $\theta'=\theta/(1+\theta)$ and $i_{\text{max}}<1/\theta'-k$.
 
 
 
-Let $(u_{(1)}, \dots, u_{(k)}) \subset \mathcal{G}$ represent an ordered set of points in the GP, where $u_{(1)}$ denotes the strongest signal at the typical LEO BS. The signals with indices in the set $[k] \triangleq (1,\dots,k), k\geq n$,  are canceled from the total interference. We denote the IC-SIR as
+Let $(u_{(1)}, \dots, u_{(k)}) \subset \mathcal{G}$ represent an ordered set of points in the GP, where $u_{(1)}$ denotes the strongest signal at the typical LEO BS. The signals with indices in the set $[k] \triangleq (1,\dots,k), k\geq n$ are canceled from the total interference. We denote the SIR with interference cancellation as
 \begin{equation}
   \label{eq:IC-SINR}
   \text{SIR}_{n,[k]} \triangleq \frac{u_{(n)}}{I-\sum_{j \in [k]} u_{(j)}}.
 \end{equation}
 
 
-Let us first study $\text{SIR}_{1,[1]}$. Combining \eqref{eq:factorialmoment}, \eqref{eq:jointprobability}, and \eqref{eq:densitySINR}, we can derive a closed-form for the SIR pdf of the strongest signal in the \textit{simple coverage region} $z\geq 1$: $f_{(1)}(z) =  {\tilde{\kappa}\upsilon_{}\left({z + 1} \right)^{-\tilde{\kappa}\upsilon_{}}}/{z}$. The second moment of the SIR is bounded by
+Let us first study $\text{SIR}_{1,[1]}$. Combining \eqref{eq:factorialmoment}, \eqref{eq:jointprobability}, and \eqref{eq:densitySINR}, we can derive a closed-form for the SIR pdf of the strongest signal in the \textit{simple coverage region} $z\geq 1$: $f_{(1)}(z) =  {\tilde{\kappa}\upsilon_{}\left({z + 1} \right)^{-\tilde{\kappa}\upsilon_{}}}/{z}$~\footnote{The SIR has a heavy-tailed distribution, cf. \cite[Eq. (32)]{10909705}.}. The second moment of the SIR is bounded by
 \begin{align}
   \label{eq:SIR2}
   %% &1-\, _2F_1(\tilde{\kappa}\upsilon,\tilde{\kappa}\upsilon;\tilde{\kappa}\upsilon+1;-1) + \frac{2^{1-\tilde{\kappa}v}(\tilde{\kappa}v)^2}{(\tilde{\kappa}\upsilon-1)(\tilde{\kappa}\upsilon-2)} \nonumber \\
 &\mathbb{E}(\text{SIR}^2_{1,[1]}) \geq \int_{1}^{\infty}f_{(1)}(z) z^2 dz = \frac{2^{1-\tilde{\kappa}v}(\tilde{\kappa}v)^2}{(\tilde{\kappa}\upsilon-1)(\tilde{\kappa}\upsilon-2)},
 \end{align}
-which is divergent for $\tilde{\kappa}\upsilon \leq 2$, \textit{i.e.}, for less than $2\log(2)$ effective UEs inside a $-3$ dB footprint on average, the first and second moments---hence, also the variance---are infinite (or undefined). Despite the strong average SIR, the infinite variance for $\tilde{\kappa}\upsilon \leq 2$ is not desirable if we want a consistent user experience in the link quality. The interference cancellation can improve user fairness.
+which is divergent for $\tilde{\kappa}\upsilon \leq 2$, \textit{i.e.}, for less than $2\log(2)$ effective UEs inside a $-3$ dB footprint on average, the first and second moments---hence, also the variance---are infinite (or undefined). Despite the strong average SIR, the infinite variance for $\tilde{\kappa}\upsilon \leq 2$ is not desirable if we want a consistent user experience in the link quality. We demonstrate that successive interference cancellation (SIC) can improve user fairness.
 
 
-Under IC, we have the following identity in terms of the STIR process \cite[Eq. 69]{7305791}:
+Under interference cancellation, we have the following identity in terms of the STIR process \cite[Eq. 69]{7305791}:
 \begin{equation}
    \mathbb{P}(\text{SIR}_{n,[k]} > \theta) = \mathbb{P}\left(\mathsf{Z}'_{(n)}+\theta'\sum_{j\in [k] \setminus \{n\}}\mathsf{Z}'_{(j)} > \theta'\right).
 \end{equation}
@@ -541,7 +541,7 @@ Following the Poisson-Dirichlet order statistics of $\mathsf{Z}'_{(1)} > \mathsf
 %%   &\overset{(a)}{=} \mathbb{P} \left\{ \mathsf{Z}'_{(n)}+\theta'\sum^{j\neq n}_{j\in\{1,\dots,k\}}\mathsf{Z}'_{(j)} +>\theta'\right\}.
 %% \end{align}
 
-Finally, we consider the SIR under the successive signal cancellation (SIC-SIR). A necessary condition for the successful reception of the $n$\textit{th} strongest UE at the typical LEO BS is that the preceding $n$ signals are successively decoded and removed from the interference. Formally, $\{\mathsf{Z}_m'+\tau'\sum_{j=1}^{m-1}\mathsf{Z}_j'>\tau'\}$ for all $m \in \{1 \dots n\}$, where the signal detection threshold is denoted as $ \tau = \tau'/(1-\tau') \leq \theta$. When the first $n$ signals are successfully removed from the interference, the $n$\textit{th} UE is in coverage if SIR$_{n,[n]}>\theta$. If not, the SIC continues until the SIR$_{n,[k]}>\theta$ or the maximum number of IC cycles $K$ is reached. %% Namely, the BS continues the interference cancellation $\{\text{SIR}_{n,[n]} \dots \text{SIR}_{n,[k]}  \}_{n\leq k \leq K}$ until SIR$_{n,[k]}>\theta$, or the served UE enters an outage if $\text{SIR}_{n,[n]} <\tau$, or the maximum number of canceled signals, $K=k-n$, is reached. It is not possible boundlessly improve SIC-SIR$_{n,K}$ as $K \rightarrow \infty$ because, in practical applications, $\mathbb{P}(\text{SIR-SIC}_{n,K}>\theta)$ does not improve after some $K$.
+Finally, we consider the SIR under the (perfect) successive signal cancellation (SIC-SIR). A necessary condition for the successful reception of the $n$\textit{th} strongest UE at the typical LEO BS is that the preceding $n$ signals are successively decoded and removed from the interference. Formally, $\{\mathsf{Z}_m'+\tau'\sum_{j=1}^{m-1}\mathsf{Z}_j'>\tau'\}$ for all $m \in \{1 \dots n\}$, where the signal detection threshold is denoted as $ \tau = \tau'/(1-\tau') \leq \theta$. When the first $n$ signals are successfully removed from the interference, the $n$\textit{th} UE is considered covered if SIR$_{n,[n]}>\theta$. If not, the SIC continues until the SIR$_{n,[k]}>\theta$ or the maximum number of interference cancellation stages $K$ is reached. %% Namely, the BS continues the interference cancellation $\{\text{SIR}_{n,[n]} \dots \text{SIR}_{n,[k]}  \}_{n\leq k \leq K}$ until SIR$_{n,[k]}>\theta$, or the served UE enters an outage if $\text{SIR}_{n,[n]} <\tau$, or the maximum number of canceled signals, $K=k-n$, is reached. It is not possible boundlessly improve SIC-SIR$_{n,K}$ as $K \rightarrow \infty$ because, in practical applications, $\mathbb{P}(\text{SIR-SIC}_{n,K}>\theta)$ does not improve after some $K$.
 
 %% \begin{prop}
 %%   Consider the SIC-SIR with at most $n+k$ canceled signals. The coverage probability of the UE with n\textit{th} strongest signal is given by
@@ -559,7 +559,7 @@ Finally, we consider the SIR under the successive signal cancellation (SIC-SIR).
 
 
 \begin{prop}
-  Consider the SIC with at most $K \geq n$ IC cycles. The coverage probability of the UE with n\textit{th} strongest signal is given by
+  Consider the SIC with at most $K \geq n$ interference cancellation stages. The coverage probability of the UE with n\textit{th} strongest signal is given by
   \begin{align}
     &\mathcal{P}^{(n,K)}_{\textup{SIC}}(\theta,\tau) \triangleq \sum_{k=n}^{K}\Delta^{(n,k)}_{\textup{SIC}}(\theta,\tau),
   \end{align}
@@ -596,14 +596,16 @@ Finally, we consider the SIR under the successive signal cancellation (SIC-SIR).
 \begin{figure}[h]
   \centering
   \includegraphics[width=\linewidth]{ASICSIR.pdf}
-  \caption{The SIC-SIR with double the  number of effective UEs compared to Figure \ref{fig:nprobability}; $\kappa \upsilon = 4 \log(2)$. } 
+  \caption{The SIC-SIR for doubling the {average number of effective UEs inside the $-3$ dB footprints} compared to Figure \ref{fig:nprobability}; $\kappa \upsilon = 4 \log(2)$.} 
   \label{fig:ASICSIR}
 \end{figure}
 
 
-Figures \ref{fig:nprobability} and \ref{fig:ASICSIR} depict the $n$-probabilities \eqref{eq:kprobability} and SIC-SIR for $\tilde{\kappa}\upsilon=2$ and  $\tilde{\kappa}\upsilon=4$ \eqref{eq:SICprob} with $K=3$, respectively. We use the values presented in Table \ref{table:parameters} in the simulations. However, the crucial system parameter is $\tilde{\kappa}\upsilon={\kappa}\upsilon/\log(2)$. Hence, for example, instead of scaling $\lambda$, we could adjust the width of the antenna pattern for each elevation angle according to \eqref{eq:upsilon} and \eqref{eq:kappa} to match the corresponding $\tilde{\kappa}\upsilon$.
+Figures \ref{fig:nprobability} and \ref{fig:ASICSIR} depict the $n$-probabilities \eqref{eq:kprobability} and SIC-SIR for $\tilde{\kappa}\upsilon=2$ and  $\tilde{\kappa}\upsilon=4$ \eqref{eq:SICprob} with $K=3$, respectively. We use the values presented in Table \ref{table:parameters} in the simulations. However, the crucial system parameter is $\tilde{\kappa}\upsilon$. Hence, for example, instead of scaling $\lambda$, we could adjust the width of the antenna gain for each elevation angle according to \eqref{eq:upsilon} and \eqref{eq:kappa} to match the corresponding $\tilde{\kappa}\upsilon\equiv{\kappa}\upsilon/\log(2)$.
 
-The figures illustrate that SIC-SIR can achieve comparable coverage probabilities for the strongest UE within the region $\theta \in (-7,10)$ dB while doubling the average effective number of UEs inside a $-3$ dB footprint, denoted as $\kappa \upsilon$. Similar to \eqref{eq:SIR2}, we can calculate an upper bound for the variance of the SIR of the strongest signal (before IC) for $\tilde{\kappa} \upsilon = 4$: $\text{var}(\text{SIR}_{1,[1]}) \leq 1.2$. This represents a significant improvement compared to the infinite variance for $\tilde{\kappa} \upsilon = 2$. Additionally, the performance of the $2$\textit{nd} and $3$\textit{rd} UEs is significantly enhanced. Consequently, a single LEO BS could potentially serve multiple UEs effectively.
+The figures illustrate that SIC-SIR can achieve comparable coverage probabilities for the strongest UE within the region $\theta \in (-7,10)$ dB while doubling the average number of effective UEs inside a $-3$ dB footprint, denoted as $\kappa \upsilon$. Additionally, the performance of the $2$\textit{nd} and $3$\textit{rd} UEs is significantly enhanced. Consequently, a single LEO BS could potentially serve multiple UEs effectively.
+
+Further, similar to \eqref{eq:SIR2}, we can calculate an upper bound for the variance of the SIR of the strongest signal before interference cancellation for $\tilde{\kappa} \upsilon = 4$: $\text{var}(\text{SIR}_{1,[1]}) =\mathbb{E}(\text{SIR}^2_{1,[1]})-\mathbb{E}(\text{SIR}_{1,[1]})^2  \leq 1.2$. This represents a significant improvement compared to the infinite variance for $\tilde{\kappa} \upsilon = 2$. 
 
 We conclude that interference cancellation, particularly successive interference cancellation (SIC), is a viable solution for mitigating the considerable variability in link quality experienced by users in a narrow-beam low Earth orbit (LEO) uplink. These findings are also relevant to the downlink, given that the LEO footprint locations follow a Poisson distribution on the Earth's surface.
 

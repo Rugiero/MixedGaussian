@@ -129,8 +129,8 @@ legend('Analysis; $n=1$','Analysis; $n=2$','Analysis; $n=3$','Simulated values',
     'FontSize',14,BackgroundAlpha=.3)
 
 xlabel('$\theta$ [dB]','FontSize',14,'Interpreter','latex')
-ylabel('$\mathcal{P}_{\textrm{ASIC}}^{(n,K)}(\theta,\tau)$','FontSize',14,'Interpreter','latex')
-title('ASIC-SIR; ${\kappa}\upsilon= 4 \log(2)$','FontSize',14,'Interpreter','latex')
+ylabel('$\mathcal{P}_{\textrm{SIC}}^{(n,K)}(\theta,\tau)$','FontSize',14,'Interpreter','latex')
+title('SIC-SIR; ${\kappa}\upsilon= 4 \log(2)$','FontSize',14,'Interpreter','latex')
 grid on
 axis([[-7,10],[0,1]])
 
