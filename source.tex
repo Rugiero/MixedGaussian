@@ -3,7 +3,7 @@
 \usepackage{algorithmic}
 \usepackage{algorithm}
 \usepackage{array}
-\usepackage[caption=false,font=footnotesize]{subfig}
+%%\usepackage[caption=false,font=footnotesize]{subfig}
 \usepackage{textcomp}
 \usepackage{stfloats}
 \usepackage{url}
@@ -468,7 +468,7 @@ for $z'_1>z'_2>\dots>z'_k$ and $f'_{(k)}(z'_1,\dots,z'_k) =0 $ otherwise. The up
 The $n$-coverage probability that the first $n$ strongest signals reach the threshold $\theta$ is given by
 \begin{align}
   \label{eq:kprobability}
-  &\mathcal{P}^{(n)}(\theta) \triangleq  \int_{\theta'}^1\dots \int_{\theta'}^1 f'_{(k)}({z'_1},\dots,{z'_k})dz'_1 \dots d{z'_k}, 
+  &\mathcal{P}^{(n)}(\theta) \triangleq  \int_{\theta'}^1\dots \int_{\theta'}^1 f'_{(n)}({z'_1},\dots,{z'_n})dz'_1 \dots d{z'_n}, 
 \end{align}
 with $\theta'=\theta/(1+\theta)$ and $i_{\text{max}}<1/\theta'-k$.
 
