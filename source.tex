@@ -455,7 +455,7 @@ The partial densities can be derived from the density of the $n$th factorial mom
   &{\mu'}_n^{(n+i)}(z'_1,\dots,z'_n) \nonumber \\
   &= \int_{z'_n}^1 \dots \int_{z'_n}^1 {\mu'}^{(n+i)}(z'_1,\dots,z'_n,\zeta'_1,\dots,\zeta'_i) d\zeta'_1 \dots d\zeta'_i,
 \end{align}
-the support of the density being in the region $\sum_{i=1}^nz'_i+iz'_n \leq 1$. 
+the support of the density being in the region $\sum_{j=1}^nz'_j+iz'_n \leq 1$. 
 
 
 The joint pdf of the $k$ strongest values of the STIR process $(\mathsf{Z}'_{(1)}, \dots, \mathsf{Z}'_{(n)})$ is given as a series expansion involving the partial densities \cite[Eq. 64]{7305791}
@@ -596,12 +596,12 @@ Finally, we consider the SIR under the (perfect) successive signal cancellation 
 \begin{figure}[h]
   \centering
   \includegraphics[width=\linewidth]{ASICSIR.pdf}
-  \caption{The SIC-SIR for doubling the {average number of effective UEs inside the $-3$ dB footprints} compared to Figure \ref{fig:nprobability}; $\kappa \upsilon = 4 \log(2)$.} 
+  \caption{The SIC-SIR for the transmitters $n \in \{1,2,3\}$ by doubling the {average number of effective UEs inside the $-3$ dB footprints} compared to Figure \ref{fig:nprobability}; $\kappa \upsilon = 4 \log(2)$. The SIC parameter $K=3$.} 
   \label{fig:ASICSIR}
 \end{figure}
 
 
-Figures \ref{fig:nprobability} and \ref{fig:ASICSIR} depict the $n$-probabilities \eqref{eq:kprobability} and SIC-SIR for $\tilde{\kappa}\upsilon=2$ and  $\tilde{\kappa}\upsilon=4$ \eqref{eq:SICprob} with $K=3$, respectively. We use the values presented in Table \ref{table:parameters} in the simulations. However, the crucial system parameter is $\tilde{\kappa}\upsilon$. Hence, for example, instead of scaling $\lambda$, we could adjust the width of the antenna gain for each elevation angle according to \eqref{eq:upsilon} and \eqref{eq:kappa} to match the corresponding $\tilde{\kappa}\upsilon\equiv{\kappa}\upsilon/\log(2)$.
+Figures \ref{fig:nprobability} and \ref{fig:ASICSIR} depict the $n$-probabilities \eqref{eq:kprobability} and SIC-SIR for $\tilde{\kappa}\upsilon=2$ and  $\tilde{\kappa}\upsilon=4$ \eqref{eq:SICprob} with $K=3$, respectively. The signal detection threshold $\tau=-7$ dB. We use the values presented in Table \ref{table:parameters} in the simulations. However, the crucial system parameter is $\tilde{\kappa}\upsilon$. Hence, for example, instead of scaling $\lambda$, we could adjust the width of the antenna gain for each elevation angle according to \eqref{eq:upsilon} and \eqref{eq:kappa} to match the corresponding $\tilde{\kappa}\upsilon\equiv{\kappa}\upsilon/\log(2)$.
 
 The figures illustrate that SIC-SIR can achieve comparable coverage probabilities for the strongest UE within the region $\theta \in (-7,10)$ dB while doubling the average number of effective UEs inside a $-3$ dB footprint, denoted as $\kappa \upsilon$. Additionally, the performance of the $2$\textit{nd} and $3$\textit{rd} UEs is significantly enhanced. Consequently, a single LEO BS could potentially serve multiple UEs effectively.
 
