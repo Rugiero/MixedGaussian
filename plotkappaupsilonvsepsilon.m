@@ -33,7 +33,7 @@ grid on
 ax = gca;
 ax.FontSize = 14;
 
-pbaspect([2 1 1])
+pbaspect([2 0.6 0.6])
 axis([[30,90],[0.4,1]])
 
 legend('$p_{\textrm{LoS}}=p_{\textrm{LoS}}(\epsilon)$','$\sin(\epsilon)$',...

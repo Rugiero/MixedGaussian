@@ -109,8 +109,10 @@ fill([simtau,fliplr(simtau)],[simres340',fliplr(simres390')],[0.9290 0.6940 0.12
 
 
 				% Create legend
-legend('Analysis; $n=1$','Analysis; $n=2$','Analysis; $n=3$','Simulated values', '(spherical model,','accurate Gaussian)','mixture shadowing)','Interpreter','latex',...
+
+legend('Analysis; $k=1$','Analysis; $k=2$','Analysis; $k=3$ \hspace{0.1cm}','Simulated values:','Gaussian mixture shadowing','and spherical Earth model','Interpreter','latex',...
     'FontSize',14,BackgroundAlpha=.3)
+
 
 
 xlabel('$\theta$ [dB]','FontSize',14,'Interpreter','latex')

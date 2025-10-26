@@ -106,7 +106,7 @@ grid on
 ax = gca;
 ax.FontSize = 14;
 
-pbaspect([2 1 1])
+pbaspect([2 0.6 0.6])
 axis([[0,2],[0,8]])
 
 ylabel('$\lambda_{\mathcal{G}}(t)$','FontSize',14,'Interpreter','latex','Rotation',0)
