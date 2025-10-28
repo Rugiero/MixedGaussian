@@ -74,9 +74,18 @@ We investigate the factorial moment measure of the signal-to-interference ratios
 %% \end{IEEEkeywords}
 
 
-\section{Introduction}
+\section{Introduction and motivation}
 
-\IEEEPARstart{W}{hile the order statistics} of the signal-to-interference (SIR) and interference cancellation have been studied for terrestrial networks \cite{7305791} by using stochastic geometry, they are yet to be explored in low Earth orbit (LEO) networks. We study the SIR of user equipments (UEs) at the typical LEO base station (BS) by utilizing the narrow-beam LEO uplink system model from \cite{10909705} in an urban environment. We utilize the Gaussian Mixture shadowing model, similar to \cite{modelinguplink} and \cite{9684552}, using the parameters presented in \cite{TR38.811}. The density of the factorial moment measure of the signal-to-total-interference (STIR) process follows a Poisson-Dirichlet distribution PD$(0,\cdot)$ (contrary to PD$(\cdot,0)$ in \cite{7305791}), of which the factorial moment measure is well-known. We derive the joint PDF of the STIR and SIR and study the performance metrics of the three strongest UE signals with and without successive interference cancellation (SIC) schemes. In \cite{10909705}, it was observed that the system parameters optimizing the average throughput, corresponding to mean $\log(2)$ user equipments (UEs) inside a satellite base station SBS $-3$ dB footprint, lead to a high variation in the SIR over the SBSs. We demonstrate that the link is more stable with interference cancellation. We show that with the SIC, the number of UEs inside a SBS $-3$ dB footprint can be doubled while maintaining the average performance of the strongest UE, but profoundly reducing the variance in the SIR. Furthermore, the coverage probability of UEs with weaker signals drastically improves.
+Successive interference cancellation (SIC) techniques are used in non-orthogonal multiple access (NOMA) methods. In this regard, while the order statistics of the signal-to-interference (SIR) under interference cancellation (and signal combination) have been studied for terrestrial networks \cite{7305791} by using stochastic geometry, they are yet to be explored in low Earth orbit (LEO) networks. We study the SIR of user equipments (UEs) at the typical LEO base station (BS) by utilizing the narrow-beam LEO uplink system model from \cite{10909705} in an urban environment. We utilize the Gaussian Mixture shadowing model, similar to \cite{modelinguplink} and \cite{9684552}, using the parameters presented in \cite{TR38.811}. The density of the factorial moment measure of the signal-to-total-interference (STIR) process follows a Poisson-Dirichlet distribution PD$(0,\cdot)$ (contrary to PD$(\cdot,0)$ in \cite{7305791}), of which the factorial moment measure is well-known. We derive the joint PDF of the STIR and SIR and study the performance metrics of the three strongest UE signals with and without SIC. In \cite{10909705}, it was observed that the system parameters optimizing the average throughput, corresponding to mean $\log(2)$ user equipments (UEs) inside a satellite base station SBS $-3$ dB footprint, lead to a high variation in the SIR over the SBSs. We demonstrate that the link is more stable with interference cancellation. We show that with the SIC, the number of UEs inside a SBS $-3$ dB footprint can be doubled while maintaining the average performance of the strongest UE, but profoundly reducing the variance in the SIR. Furthermore, the coverage probability of UEs with weaker signals drastically improves.
+
+The proposed methods straightforwardly generalize to signal combination: An emerging topic in the LEO networks utilizing over-the-air computation (AirComp).
+
+
+
+
+
+\section{System model}
+
 
 \begin{table}
    \captionsetup{size=footnotesize}
@@ -119,14 +128,6 @@ We investigate the factorial moment measure of the signal-to-interference ratios
     \end{tabular}
   \end{center}
 \end{table}   
-
-
-
-
-
-\section{System model}
-
-
 
 \begin{figure}[h]%
   \centering
@@ -607,7 +608,9 @@ The figures illustrate that SIC-SIR can achieve comparable coverage probabilitie
 
 Further, similar to \eqref{eq:SIR2}, we can calculate an upper bound for the variance of the SIR of the strongest signal before interference cancellation for $\tilde{\kappa} \upsilon = 4$: $\text{var}(\text{SIR}_{1,[1]}) =\mathbb{E}(\text{SIR}^2_{1,[1]})-\mathbb{E}(\text{SIR}_{1,[1]})^2  \leq 1.2$. This represents a significant improvement compared to the infinite variance for $\tilde{\kappa} \upsilon = 2$. 
 
-We conclude that interference cancellation, particularly successive interference cancellation (SIC), is a viable solution for mitigating the considerable variability in link quality experienced by users in a narrow-beam low Earth orbit (LEO) uplink. 
+We conclude that interference cancellation, particularly successive interference cancellation (SIC), is a viable solution for mitigating the considerable variability in link quality experienced by users in a narrow-beam low Earth orbit (LEO) uplink.
+
+
 
 
 
