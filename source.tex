@@ -81,7 +81,7 @@ Successive interference cancellation (SIC) is used in non-orthogonal multiple ac
 A SIC scheme was studied in \cite{11030605} in the stochastic geometry context in satellite networks. However, while the order statistics of the signal-to-interference ratio (SIR) under interference cancellation (and signal combination) have been studied for terrestrial networks \cite{7305791} using stochastic geometry, they have yet to be explored in low Earth orbit (LEO) networks, where the topology is remarkably different. 
 
 
-Furthermore, in the paper, a highly simplified moment-order-two approximation for log-normal shadowing is proposed and shown to be feasible, with a worst-case error in the point-wise SIR distribution approximation $<0.2$: a \textit{defective} exponential distribution (\textit{two} degrees of freedom instead of \textit{one}). The exponential fading distribution typically yields the simplest and most insightful results in stochastic geometry analysis, which can be leveraged by this approximation.
+Furthermore, in the paper, a highly simplified moment-order-two approximation for log-normal shadowing is proposed and shown to be feasible, with a worst-case error in the point-wise SIR distribution approximation $<0.2$: a \textit{mixture} exponential distribution with a delta at $0$ (\textit{two} degrees of freedom instead of \textit{one}). The exponential fading distribution typically yields the simplest and most insightful results in stochastic geometry analysis, which can be leveraged by this approximation.
 
 
 The proposed methods straightforwardly generalize to signal combination for synchronous schemes and over-the-air computation (AirComp).
@@ -205,15 +205,15 @@ where $p_{\text{LoS}}=1-p_{\text{NLoS}}$ is the LoS probability. Considering a n
 
 
 
-\subsubsection{Defective exponential shadowing distribution}
-As a compromise between analytical tractability and realism, we introduce a defective exponential power fading distribution for the UEs, described by the complementary CDF (CCDF)
+\subsubsection{Mixture exponential shadowing distribution}
+As a compromise between analytical tractability and realism, we introduce a distribution of exponential power fading with an atomic probability measure $0$ for the UEs, described by the complementary CDF (CCDF)
 \begin{equation}
   \label{eq:defexp}
   F_{{H}_{\text{Exp}}}(t) = \upsilon e^{-t}, t>0.
 \end{equation}
-This is a mixture distribution. Namely, $0 \leq 1-\upsilon < 1$ denotes the probability that the shadowed signal is entirely attenuated and takes the value of zero, otherwise, the power follows the exponential distribution. 
+ Namely, $0 \leq 1-\upsilon < 1$ denotes the probability that the shadowed signal is entirely attenuated and takes the value of zero, otherwise, the power follows the exponential distribution. 
 
- We introduce a scaling term, $\Upsilon$, to ensure that the means of the log-normal mixture distribution and the defective exponential distribution match: $\mathbb{E}(\Upsilon \times H_{\mathcal{MLN}}) = \mathbb{E}(H_{\text{Exp}}) = \upsilon$. By equating the first two moments M1 and M2, respectively, of $H_{\text{Exp}}$ (l.h.s.) and $\Upsilon_{}\times H_{\mathcal{M} \mathcal{L}\mathcal{N}}$ (r.h.s.):
+ We introduce a scaling term, $\Upsilon$, to ensure that the means of the log-normal mixture distribution and the mixture exponential distribution match: $\mathbb{E}(\Upsilon \times H_{\mathcal{MLN}}) = \mathbb{E}(H_{\text{Exp}}) = \upsilon$. By equating the first two moments M1 and M2, respectively, of $H_{\text{Exp}}$ (l.h.s.) and $\Upsilon_{}\times H_{\mathcal{M} \mathcal{L}\mathcal{N}}$ (r.h.s.):
 \begin{equation}
   \label{eq:matchingmoments}
   \begin{cases}
@@ -367,7 +367,7 @@ Note that matching the first two moments of the fading distributions \eqref{eq:t
 
 \subsection{Laplace transform of the total received power}
 
-With defective exponential shadowing ${H}_{\text{exp}}$, for Re$(s)>1$,
+With the mixture exponential shadowing ${H}_{\text{exp}}$, for Re$(s)>1$,
 
 \begin{align}
   \label{eq:lapdef}
