@@ -206,14 +206,14 @@ where $p_{\text{LoS}}=1-p_{\text{NLoS}}$ is the LoS probability. Considering a n
 
 
 \subsubsection{Mixture exponential shadowing distribution}
-As a compromise between analytical tractability and realism, we introduce a distribution of exponential power fading with an atomic probability measure $0$ for the UEs, described by the complementary CDF (CCDF)
+As a compromise between analytical tractability and realism, we introduce an exponential distribution with an atomic probability measure at $0$, described by the complementary CDF (CCDF)
 \begin{equation}
   \label{eq:defexp}
   F_{{H}_{\text{Exp}}}(t) = \upsilon e^{-t}, t>0.
 \end{equation}
- Namely, $0 \leq 1-\upsilon < 1$ denotes the probability that the shadowed signal is entirely attenuated and takes the value of zero, otherwise, the power follows the exponential distribution. 
+ The parameter $0 \leq 1-\upsilon < 1$ denotes the probability that the shadowed signal is entirely attenuated and takes the value of zero, otherwise, the power follows the exponential distribution. 
 
- We introduce a scaling term, $\Upsilon$, to ensure that the means of the log-normal mixture distribution and the mixture exponential distribution match: $\mathbb{E}(\Upsilon \times H_{\mathcal{MLN}}) = \mathbb{E}(H_{\text{Exp}}) = \upsilon$. By equating the first two moments M1 and M2, respectively, of $H_{\text{Exp}}$ (l.h.s.) and $\Upsilon_{}\times H_{\mathcal{M} \mathcal{L}\mathcal{N}}$ (r.h.s.):
+In the following, the scaling term $\Upsilon$ ensures that the means of the log-normal mixture distribution and the mixture exponential distribution match: $\mathbb{E}(\Upsilon \times H_{\mathcal{MLN}}) = \mathbb{E}(H_{\text{Exp}}) = \upsilon$. By equating the first two moments M1 and M2 of $H_{\text{Exp}}$ (l.h.s.) and $\Upsilon_{}\times H_{\mathcal{M} \mathcal{L}\mathcal{N}}$ (r.h.s.);
 \begin{equation}
   \label{eq:matchingmoments}
   \begin{cases}
