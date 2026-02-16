@@ -34,9 +34,11 @@ simres390 = round(S.simres3,3);
 
 
 S = importdata("SICsim30.mat");
-simres140 = round(S.simres1,3);
-simres240 = round(S.simres2,3);
-simres340 = round(S.simres3,3);
+simres140 = S.simres1,3;
+simres240 = S.simres2,3;
+simres340 = S.simres3,3;
+S.simres3 = zeros(18,1);
+
 %simres440 = S.simres4;
 
 %% S = importdata("kprobssim30.mat");
