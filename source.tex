@@ -32,6 +32,8 @@
 \usepackage{dsfont}
 %\captionsetup[figure]{font=footnotesize}
 
+\newcommand{\todo}[1]{\textcolor{red}{{#1}}}
+
 \newcommand{\rEarth}{R_{\oplus}}
 \newcommand{\viiva}{\mathop{\Bigg/}}
 \newcommand{\sij}[3]{\viiva\limits_{\hspace*{-5mm}{#1}}^{\hspace*{5mm}{#2}}{#3}}
@@ -48,7 +50,8 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{Order Statistics of the SIR and Interference Cancellation in a Narrow-Beam LEO Uplink}
+%\title{Order Statistics of the SIR and Interference Cancellation in a Narrow-Beam LEO Uplink}
+\title{Successive Interference Cancellation in a Narrow-Beam LEO Uplink...}
 \author{
   \thanks{The work was supported by the Research Council of Finland Grant 339446.}
    Ilari Angervuori, \IEEEmembership{Student Member, IEEE}  and Risto Wichman, \IEEEmembership{Senior Member, IEEE} \thanks{Ilari Angervuori and Risto Wichman are with the Department of Electrical Engineering, Aalto University, Espoo, 02150, Finland. (email: ilari.angervuori@aalto.fi; risto.wichman@aalto.fi).}
@@ -76,15 +79,21 @@
 
 \section{Introduction and motivation}
 
-Successive interference cancellation (SIC) is used in non-orthogonal multiple access (NOMA) systems. We study the SIR of user equipments (UEs) at a typical LEO satellite base station (SBS) by utilizing the narrow-beam LEO uplink system model from \cite{10909705} in an urban environment. We utilize the Gaussian Mixture shadowing model, similar to \cite{modelinguplink} and \cite{9684552}, using the parameters presented in \cite{TR38.811}. The density of the factorial moment measure of the signal-to-total-interference (STIR) process follows a Poisson-Dirichlet distribution PD$(0,\cdot)$ (contrary to PD$(\cdot,0)$ in \cite{7305791}), of which the factorial moment measure is well-known. We derive the joint PDF of the STIR and SIR and study the performance metrics of the three strongest UE signals with and without SIC. In this paper, we demonstrate that the link quality is more stable with interference cancellation because we can increase the network (and constellation) density while mitigating interference with the SIC. Furthermore, the coverage probability of UEs with weaker signals drastically improves, so a single SBS can serve multiple UEs.
+Successive interference cancellation (SIC) has the potential to improve the performance of multiple access communication systems.
+ The order statistics of the signal-to-interference ratio (SIR) under interference cancellation (and signal combination) have been studied for terrestrial networks \cite{7305791} using stochastic geometry, they have yet to be explored in low Earth orbit (LEO) networks, where the topology is remarkably different.
+A SIC scheme was studied in \cite{11030605} in the stochastic geometry context in satellite networks. 
 
-A SIC scheme was studied in \cite{11030605} in the stochastic geometry context in satellite networks. However, while the order statistics of the signal-to-interference ratio (SIR) under interference cancellation (and signal combination) have been studied for terrestrial networks \cite{7305791} using stochastic geometry, they have yet to be explored in low Earth orbit (LEO) networks, where the topology is remarkably different. 
+%Successive interference cancellation (SIC) is used in non-orthogonal multiple access (NOMA) systems. 
+
+We study the SIR of user equipments (UEs) at a typical LEO satellite base station (SBS) by utilizing the narrow-beam LEO uplink system model from \cite{10909705} in an urban environment. We utilize the Gaussian Mixture shadowing model, similar to \cite{modelinguplink} and \cite{9684552}, using the parameters presented in \cite{TR38.811}. The density of the factorial moment measure of the signal-to-total-interference (STIR) process follows a Poisson-Dirichlet distribution PD$(0,\cdot)$ (contrary to PD$(\cdot,0)$ in \cite{7305791}), of which the factorial moment measure is well-known. We derive the joint PDF of the STIR and SIR and study the performance metrics of the three strongest UE signals with and without SIC. In this paper, we demonstrate that the link quality is more stable with interference cancellation because we can increase the network (and constellation) density while mitigating interference with the SIC. Furthermore, the coverage probability of UEs with weaker signals drastically improves, so a single SBS can serve multiple UEs.
+
+%A SIC scheme was studied in \cite{11030605} in the stochastic geometry context in satellite networks. However, while the order statistics of the signal-to-interference ratio (SIR) under interference cancellation (and signal combination) have been studied for terrestrial networks \cite{7305791} using stochastic geometry, they have yet to be explored in low Earth orbit (LEO) networks, where the topology is remarkably different. 
 
 
 Furthermore, in the paper, a highly simplified moment-order-two approximation for log-normal shadowing is proposed and shown to be feasible, with a worst-case error in the point-wise SIR distribution approximation $<0.2$: a \textit{mixture} exponential distribution with a delta at $0$ (\textit{two} degrees of freedom instead of \textit{one}). The exponential fading distribution typically yields the simplest and most insightful results in stochastic geometry analysis, which can be leveraged by this approximation.
 
 
-The proposed methods straightforwardly generalize to signal combination for synchronous schemes and over-the-air computation (AirComp).
+%The proposed methods straightforwardly generalize to signal combination for synchronous schemes and over-the-air computation (AirComp).
 
 
 
@@ -157,7 +166,10 @@ The proposed methods straightforwardly generalize to signal combination for sync
 
 
 
-A narrowband LEO uplink is considered with narrow-beamed LEO receivers, and statistics over short use periods are studied. Due to the narrow beam, the Doppler spread can be ignored. The UEs follow a homogeneous PPP $\Phi \subset \R^2$ of density $\lambda$. No fast-fading is modeled, and the SBSs are associated with the served UEs according to their signal powers at the SBS after log-normal shadowing. The SBSs form a homogeneous point process (p.p.), possibly with a different density than the UEs (uniform constellation); two different SBSs might be partially associated with the same UEs. Because of the translation invariance of the PPP, all locations are statistically equivalent, and we define the origin $\textit{o}$ to represent the typical SBS footprint focus point.
+A narrowband LEO uplink is considered with narrow-beamed LEO receivers, and statistics over short use periods are studied. Due to the narrow beam, the Doppler spread can be ignored. The UEs follow a homogeneous PPP $\Phi \subset \R^2$ of density $\lambda$. No fast-fading is modeled, and the SBSs are associated with the served UEs according to their signal powers at the SBS after log-normal shadowing. The SBSs form a homogeneous point process (p.p.), possibly with a different density than the UEs.
+%(uniform constellation).
+%; two different SBSs might be partially associated with the same UEs. 
+Because of the translation invariance of the PPP, all locations are statistically equivalent, and we define the origin $\textit{o}$ to represent the typical SBS footprint focus point.
 
 
 The path loss, representing the antenna gain at the typical SBS, is given over the planar distance $r \in [0, \infty)$ as a Gaussian function
