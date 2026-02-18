@@ -60,8 +60,8 @@ S.simres3 = zeros(18,1);
 %% plot(10*log10(x2),1-f2,'--','color','#D95319','linewidth',2)
 %% plot(10*log10(x3),1-f3,'--', 'color','#EDB120','linewidth',2)
 
-tau = -7:1:10;
-simtau=-7:1:10;
+tau = -7:1:5;
+simtau=-7:1:5;
 
 
 %% plot(simtau,simres1exp,'-*','color',"#0072BD",'linewidth',2)
@@ -133,10 +133,10 @@ legend('Analysis; $k=1$','Analysis; $k=2$','Analysis; $k=3$ \hspace{0.1cm}','Sim
 
 
 xlabel('$\theta$ [dB]','FontSize',14,'Interpreter','latex')
-ylabel('$\mathcal{P}_{\textrm{SIC}}^{(n,K)}(\theta,\tau)$','FontSize',14,'Interpreter','latex')
-title('SIC-SIR; ${\kappa}\upsilon= 4 \log(2)$','FontSize',14,'Interpreter','latex')
+ylabel('$\mathcal{P}_{\textrm{SIC}}^{(n)}(\theta)$','FontSize',14,'Interpreter','latex')
+title('SIC-SIR; ${\kappa}\upsilon= 3$','FontSize',14,'Interpreter','latex')
 grid on
-axis([[-7,10],[0,1]])
+axis([[-7,5],[0,1]])
 
 % Create textarrow
 annotation(figure1,'textarrow',[0.401754385964912 0.347368421052632],...

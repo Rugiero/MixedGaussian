@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    483135,      10097]
+NotebookDataLength[    483131,      10097]
 NotebookOptionsPosition[    480151,      10050]
-NotebookOutlinePosition[    480646,      10068]
-CellTagsIndexPosition[    480603,      10065]
+NotebookOutlinePosition[    480642,      10068]
+CellTagsIndexPosition[    480599,      10065]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -9324,7 +9324,7 @@ Cell[BoxData[{
    3.949906634992099*^9}, 3.949906719590571*^9, {3.94990679974868*^9, 
    3.949906800226171*^9}, {3.949906886066451*^9, 3.949906969300549*^9}, {
    3.949907010529988*^9, 3.94990708529775*^9}, {3.949907348271856*^9, 
-   3.9499074085323787`*^9}, {3.949907477318581*^9, 3.94990754682059*^9}, {
+   3.9499074085323796`*^9}, {3.949907477318581*^9, 3.94990754682059*^9}, {
    3.949907641674302*^9, 3.949907647389996*^9}, {3.949908151532935*^9, 
    3.949908154297909*^9}, {3.949908228175825*^9, 3.9499082305255623`*^9}, {
    3.949908513024428*^9, 3.9499085545385303`*^9}, {3.949909002525299*^9, 
@@ -9349,7 +9349,7 @@ Cell[BoxData[{
    3.950240396324382*^9, {3.952405398291136*^9, 3.952405399630821*^9}, 
    3.952405461900578*^9, {3.952405652279089*^9, 3.952405678285495*^9}},
  CellLabel->
-  "In[823]:=",ExpressionUUID->"6a1ed57c-6cab-4d66-8a3d-338d32ce3888"],
+  "In[355]:=",ExpressionUUID->"6a1ed57c-6cab-4d66-8a3d-338d32ce3888"],
 
 Cell[CellGroupData[{
 
@@ -10048,8 +10048,8 @@ Cell[BoxData["\[IndentingNewLine]"], "Input",
    3.938679616309466*^9},ExpressionUUID->"b2342eb1-2eb2-444b-8e5b-\
 d3502ea41cca"]
 },
-WindowSize->{614.25, 669},
-WindowMargins->{{-921.75, Automatic}, {Automatic, 0}},
+WindowSize->{614.25, 601.5},
+WindowMargins->{{0, Automatic}, {0, Automatic}},
 TaggingRules->{
  "WelcomeScreenSettings" -> {"FEStarting" -> False}, "TryRealOnly" -> False},
 FrontEndVersion->"14.0 for Linux x86 (64-bit) (December 12, 2023)",

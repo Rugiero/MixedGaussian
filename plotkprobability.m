@@ -46,8 +46,8 @@ simres340 = round(S.simres3,3);
 %simres430 = S.simres4;
 
 
-tau=-7:1:10;
-simtau=-7:1:10;
+tau=-7:1:20;
+simtau=-7:1:20;
 
 
 figure1 = figure;
@@ -119,11 +119,11 @@ xlabel('$\theta$ [dB]','FontSize',14,'Interpreter','latex')
 ylabel('$\mathcal{P}^{(n)}(\theta)$','FontSize',14,'Interpreter','latex')
 %title('$\tilde{\kappa}=3/b_{\epsilon}, \epsilon \in \{90,80,70,60,50,40\}^{\circ}$','FontSize',14,'Interpreter','latex')
 grid on
-axis([[-7,10],[0,1]])
+axis([[-7,20],[0,1]])
 xticks(-7:2:10);
 
 
-title('$n$-probability; ${\kappa}\upsilon= 2 \log(2)$','FontSize',14,'Interpreter','latex')
+title('$n$-probability; ${\kappa}\upsilon= 3 $','FontSize',14,'Interpreter','latex')
 
 
 
