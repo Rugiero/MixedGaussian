@@ -12,7 +12,7 @@ S = importdata("kprobstheory2.mat");
 theoryres1 = round(S.theoryres1,3);
 theoryres2 = round(S.theoryres2,3);
 theoryres3 = round(S.theoryres3,3);
-theoryres1(1)=1;
+%theoryres1(1)=1;
 %theoryres4 = S.theoryres4;
 
 S = importdata("kprobssim90kappa2.mat");
@@ -46,8 +46,8 @@ simres340 = round(S.simres3,3);
 %simres430 = S.simres4;
 
 
-tau=-7:1:20;
-simtau=-7:1:20;
+tau=-7:1:5;
+simtau=-7:1:5;
 
 
 figure1 = figure;
@@ -119,8 +119,8 @@ xlabel('$\theta$ [dB]','FontSize',14,'Interpreter','latex')
 ylabel('$\mathcal{P}^{(n)}(\theta)$','FontSize',14,'Interpreter','latex')
 %title('$\tilde{\kappa}=3/b_{\epsilon}, \epsilon \in \{90,80,70,60,50,40\}^{\circ}$','FontSize',14,'Interpreter','latex')
 grid on
-axis([[-7,20],[0,1]])
-xticks(-7:2:10);
+axis([[-7,5],[0,1]])
+xticks(-7:2:5);
 
 
 title('$n$-probability; ${\kappa}\upsilon= 3 $','FontSize',14,'Interpreter','latex')
