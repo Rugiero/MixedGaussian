@@ -139,7 +139,8 @@ Furthermore, in the paper, a highly simplified moment-order-two approximation fo
       $\kappa \upsilon$& Average number of effective UEs inside a $-3$ dB footprint (a cell).& $\{2,4\}\times \log(2)$ \\
       $n$& Number of served UEs. Set $n=\kappa \upsilon$.& $3$ \\
       $\tilde{\kappa} $& $\kappa/\log(2)$. \\
-      $\theta$ & SIR threshold of a successful signal decoding.&$(0.2,3.16)=\hfill$  \break  $(-7,5) \text{ [dB]}$ \\
+      $\tau$ & Minimum SIR for a successful signal decoding .&$0.2=-7$ dB \\
+      $\theta$ & SIR of the served UE.&$(0.2,3.16)=\hfill$  \break  $(-7,5) \text{ [dB]}$ \\
      % $K$ & Maximum number of interference cancellation cycles in the ASIC\\
      \bottomrule
     \end{tabular}
@@ -560,7 +561,10 @@ We have the following identity in terms of the STIR process \cite[Eq. (69)]{7305
 %%   &\overset{(a)}{=} \mathbb{P} \left\{ \mathsf{Z}'_{(n)}+\theta'\sum^{j\neq n}_{j\in\{1,\dots,k\}}\mathsf{Z}'_{(j)} +>\theta'\right\}.
 %% \end{align}
 
-Finally, we consider the SIR under the \textit{perfect} successive signal cancellation (SIC-SIR).~\footnote{Imperfect interference cancellation is straightforward to analyze by adding an additional term in $(0,1)$ \cite[Eq. (6.21)]{alma998193414406526} to \eqref{eq:identityintermsoftheSTIR}. Furthermore, it is easy to consider a scenario where the successful interference cancellation SIR threshold is smaller than $\theta$.} A necessary condition for the successful reception of the $n$th strongest UE at the typical SBS is that the preceding $n$ signals are successively decoded and removed from the interference. Formally, \begin{equation}\left\{\mathsf{Z}_m'+\theta'\sum_{j=1}^{m-1}\mathsf{Z}_j'>\theta'\right\}  \textup{ for all } m \in \{1, \dots, n\}.\end{equation}  We can use the order statistics theory to study the coverage probability under the SIC. %% Namely, the BS continues the interference cancellation $\{\text{SIR}_{n,[n]} \dots \text{SIR}_{n,[k]}  \}_{n\leq k \leq K}$ until SIR$_{n,[k]}>\theta$, or the served UE enters an outage if $\text{SIR}_{n,[n]} <\tau$, or the maximum number of canceled signals, $K=k-n$, is reached. It is not possible boundlessly improve SIC-SIR$_{n,K}$ as $K \rightarrow \infty$ because, in practical applications, $\mathbb{P}(\text{SIR-SIC}_{n,K}>\theta)$ does not improve after some $K$.
+Finally, we consider the SIR under the \textit{perfect} successive signal cancellation (SIC-SIR).~\footnote{Imperfect interference cancellation is straightforward to analyze by adding an additional term in $(0,1)$ \cite[Eq. (6.21)]{alma998193414406526} to \eqref{eq:identityintermsoftheSTIR}. Furthermore, it is easy to consider a scenario where the successful interference cancellation SIR threshold is smaller than $\theta$.} A necessary condition for the successful reception of the $n$th strongest UE at the typical SBS is that the preceding $n$ signals are successively decoded and removed from the interference. We denote the minimum SIR threshold for a successful decoding by $\tau$ and $\tau' = \tau/(1+\tau)$. In this work, we set $\tau = -7$ dB. Formally, the conditions are \begin{enumerate}
+\item $ \left\{\mathsf{Z}_m'+\tau'\sum_{j=1}^{m-2}\mathsf{Z}_j'>\tau'\right\}$ { for all } $m \in \{1, \dots, n\}$,\textup{ and} 
+  \item $\mathsf{Z}_m'+\theta'\sum_{j=1}^{n-1}\mathsf{Z}_j'>\theta'.$
+\end{enumerate}  We can use the order statistics theory to study the coverage probability under the SIC. %% Namely, the BS continues the interference cancellation $\{\text{SIR}_{n,[n]} \dots \text{SIR}_{n,[k]}  \}_{n\leq k \leq K}$ until SIR$_{n,[k]}>\theta$, or the served UE enters an outage if $\text{SIR}_{n,[n]} <\tau$, or the maximum number of canceled signals, $K=k-n$, is reached. It is not possible boundlessly improve SIC-SIR$_{n,K}$ as $K \rightarrow \infty$ because, in practical applications, $\mathbb{P}(\text{SIR-SIC}_{n,K}>\theta)$ does not improve after some $K$.
 
 %% \begin{prop}
 %%   Consider the SIC-SIR with at most $n+k$ canceled signals. The coverage probability of the UE with n\textit{th} strongest signal is given by
@@ -582,12 +586,12 @@ Finally, we consider the SIR under the \textit{perfect} successive signal cancel
 
   \begin{align}
     \label{eq:SICprob}
-     \mathcal{P}^{(n)}_{\textup{SIC}}(\theta)&\triangleq \int_{0}^{1} \dots \int_{0}^{1}f'_{(n)}(z'_1,\dots,z'_n)      \nonumber \\
-    &  \times \prod_{m=1}^n \mathds{1}\left( z'_m+ \theta'\sum_{j=1}^{m-1} z'_j>\theta'  \right)d z'_1 \dots  d z'_n
+     &\mathcal{P}^{(n)}_{\textup{SIC}}(\theta)\triangleq \int_{0}^{1} \dots \int_{0}^{1}d z'_1 \dots  d z'_n \times f'_{(n)}(z'_1,\dots,z'_n)      \nonumber \\
+    &  \times \mathds{1}\left( z'_m+ \theta'\sum_{j=1}^{m-1} z'_j>\theta'  \right)\prod_{m=1}^n \mathds{1}\left( z'_m+ \tau'\sum_{j=1}^{m-2} z'_j>\tau'  \right)
   \end{align}
-  with the upper summation limit in $f'_{(n)}(\cdot)$ bounded by $i_{\text{max}} < 1/\theta'-1=1/\theta$.
+  with the upper summation limit in $f'_{(n)}(\cdot)$ bounded by $i_{\text{max}} < 1/\tau'-1=1/\tau$.
   \begin{proof}
-    The expression follows using the joint PDF of the order statistics \eqref{eq:jointprobability}. Furthermore, the first condition (with the form $\prod\mathds{1}(\cdot)$)  allows the relaxation of $i_{\text{max}}$. Namely, a necessary condition is $z'_{k}+\theta'\sum_{j=1}^{k-1}z'_{j}>\theta'$. By simple algebra, $\sum_{j=1}^{k-1}z_{j}> 1-z_{k}/\theta'$. Recall the condition on the non-zero terms of $\mu'^{(k+i)}$:  $\sum_{j=1}^k z'_{j}+i z'_{k} =\sum_{j=1}^{k-1}z'_{j} +z'_{k}+i z'_{k}  \leq 1$. The condition certainly does \textit{not} hold if $1-z_{k}/\theta'+ z'_{k}+i z'_{k}>1$. We arrive at the inequality $z'_{k} \left(-1/\theta' + 1 +i \right)>0$. Divide both sides by $z'_{k}>0$, and the general upper bound of $i$ follows.
+    The expression follows using the joint PDF of the order statistics \eqref{eq:jointprobability}. Furthermore, the first condition (with the form $\prod\mathds{1}(\cdot)$)  allows the relaxation of $i_{\text{max}}$. Namely, a necessary condition is $z'_{k}+\tau'\sum_{j=1}^{k-1}z'_{j}>\tau'$. By simple algebra, $\sum_{j=1}^{k-1}z_{j}> 1-z_{k}/\tau'$. Recall the condition on the non-zero terms of $\mu'^{(k+i)}$:  $\sum_{j=1}^k z'_{j}+i z'_{k} =\sum_{j=1}^{k-1}z'_{j} +z'_{k}+i z'_{k}  \leq 1$. The condition certainly does \textit{not} hold if $1-z_{k}/\tau'+ z'_{k}+i z'_{k}>1$. We arrive at the inequality $z'_{k} \left(-1/\tau' + 1 +i \right)>0$. Divide both sides by $z'_{k}>0$, and the general upper bound of $i$ follows.
 %    We refer to [CITE].
   \end{proof}
 \end{prop}
@@ -617,14 +621,14 @@ Finally, we consider the SIR under the \textit{perfect} successive signal cancel
 
 Figures \ref{fig:nprobability} and \ref{fig:ASICSIR} depict the $n$-probabilities and the SIC-SIR for ${\kappa}\upsilon=\tilde{\kappa}\upsilon\log(2)=n=3$, respectively. The systems parameters are presented in Table \ref{table:parameters}. In the simulations, $\lambda$ is determined to match ${\kappa}\upsilon(\epsilon)=2$, for each $\epsilon \in \{30,90\}\degree$. The simulated coverage probabilities with elevation angles $\epsilon \in (30,90) \degree$ fall within the grayed areas in the plots.
 
-The performance of the $2$nd and $3$rd UEs is significantly enhanced with the SIC-SIR compared to the $n$-probability, especially for small $\theta$ (\textit{i.e.}, low-rate/throughput transmissions), showing a $((0.8180-0.0870)/0.0870) \times 100 \% \approx 840 \%$ improvement for the coverage probability of the third UE with a success threshold $\theta = -7$ dB. 
+The performance of the $2$nd and $3$rd UEs is significantly enhanced with the SIC-SIR compared to the $n$-probability, especially for small $\theta$ (\textit{i.e.}, low-rate/throughput transmissions), showing a $((0.8180-0.0870)/0.0870) \times 100 \% \approx 840 \%$ improvement for the coverage probability of the third UE with $\theta = -7$ dB. 
 
 Note that $\kappa \upsilon = 3$ is in the finite-variance region regarding the SIR distribution of each transmitter (recall, \eqref{eq:SIR2}): the link quality is more stable at the SBS compared to a smaller UE density scenario, say, $\kappa \upsilon \in (\log(2),2\log(2)]$, when the SIR variance is infinite. This is desirable if we want a consistent user experience. Explicitly, an (loose) upper bound for the variance of the strongest UE in Figures \ref{fig:nprobability} and \ref{fig:ASICSIR} can be calculated using \eqref{eq:SIR1} and \eqref{eq:SIR2}: $\text{var}(\text{SIR}_{(1)}) =\mathbb{E}(\text{SIR}^2_{1)})-\mathbb{E}(\text{SIR}_{(1)})^2  < 1.3$.  In this regard, the SIC-SIR enables more consistent link quality while maintaining a reasonable throughput at the SBSs. 
 
- Considering an adaptive encoding and decoding that adapts according to the SIR of the strongest UE at the typical SBS, the expected total bandwidth-normalized Shannon throughput \cite[Eq. (7.19)]{alma998193414406526} of the three served UEs is (case Figure \ref{fig:ASICSIR})
+ Considering an adaptive encoding and decoding that adapts according to the SIR of the served UE (after the SIC) at the typical SBS, the expected total bandwidth-normalized Shannon throughput \cite[Eq. (7.19)]{alma998193414406526} of the three served UEs is (case Figure \ref{fig:ASICSIR})
 \begin{align}
   &\mathcal{T}=\sum_{n=1}^3 \mathbb{E}\log\left(1+\text{SIR}^{(n)}_{\text{SIC}}\right)/\log(2) \nonumber \\
-  &=\int_{0}^{\infty}\frac{\mathcal{P}^{(1)}_{\textup{SIC}}(t)+\mathcal{P}^{(2)}_{\textup{SIC}}(t)+\mathcal{P}^{(3)}_{\textup{SIC}}(t)}{(t+1)\log(2)}d t  \approx 0.6 \textup{ bit/s/Hz}.
+  &=\int_{0}^{\infty}\frac{\mathcal{P}^{(1)}_{\textup{SIC}}(t)+\mathcal{P}^{(2)}_{\textup{SIC}}(t)+\mathcal{P}^{(3)}_{\textup{SIC}}(t)}{(t+1)\log(2)}d t  \approx 0.7 \textup{ bit/s/Hz}.
 \end{align}
 
 On the other hand, in the infinite-variance SIR region with one served effective UE in each cell on average ($\kappa \upsilon =n=1$), we have for the served transmitter $\mathcal{T} \approx \log(2)^{-1}\int_{0}^{\infty} \mathcal{P}_{\text{SIC}}^{(1)}(t)/(t+1) dt \approx1$ bit/s/Hz: Under the SIC, there is a considerable but not overwhelming tradeoff between link stability (and the number of served UEs) and throughput. %It is worth noting that the \textit{individual} UE throughputs (contrary to the \textit{total} throughputs of each served UE at the SBSs) are, on average, more significantly reduced with higher $\kappa \upsilon$.
