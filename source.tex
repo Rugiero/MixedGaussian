@@ -463,7 +463,7 @@ We denote $\mathsf{Z}'_{(1)}>\mathsf{Z}'_{(2)} >\mathsf{Z}'_{(3)} \dots$ as the 
 
 
 \begin{prop}
-  The density of the $k$th factorial moment measure \cite[Corollary 10]{7305791} of the STIR process at the typical LEO BS with a narrow Gaussian antenna beam and Gaussian mixture shadow fading is (approximately) given by
+  The density of the $k$th factorial moment measure \cite[Corollary 10]{7305791} of the STIR process at the typical LEO BS with a narrow Gaussian antenna beam under the mixture exponential shadowing is given by
   \begin{align}
     \label{eq:factorialmoment}
     \mu'^{(k)}(t_1',\dots,t'_k) = (\tilde{\kappa}\upsilon_{})^k\prod_{j=1}^k{t'}_{j}^{-1}\left(1- \sum_{j=1}^kt'_j \right)^{\tilde{\kappa}\upsilon_{}-1},       
@@ -567,7 +567,7 @@ We have the following identity in terms of the STIR process \cite[Eq. (69)]{7305
 %%   &\overset{(a)}{=} \mathbb{P} \left\{ \mathsf{Z}'_{(n)}+\theta'\sum^{j\neq n}_{j\in\{1,\dots,k\}}\mathsf{Z}'_{(j)} +>\theta'\right\}.
 %% \end{align}
 
-Finally, we consider the SIR under the \textit{perfect} successive signal cancellation (SIC-SIR).~\footnote{Imperfect interference cancellation is straightforward to analyze by adding an additional term in $(0,1)$ \cite[Eq. (6.21)]{alma998193414406526} to \eqref{eq:identityintermsoftheSTIR}.} Under the SIC, a necessary condition for the successful reception of the $k$th strongest UE at the typical LEO BS is that the preceding $k-1$ signals are successively decoded and removed from the interference. We denote the minimum SIR threshold for a successful decoding by $\tau \leq \theta$ and the corresponding $\tau' = \tau/(1+\tau)$. In this work, we set $\tau = -7$ dB. Formally, the conditions for the SIC-SIR of the $k$th UE to exceed $\theta$ are \begin{enumerate}
+Finally, we consider the SIR under the \textit{perfect} successive signal cancellation (SIC-SIR).~\footnote{Imperfect interference cancellation is straightforward to analyze by adding an additional term in $(0,1)$ \cite[Eq. (6.21)]{alma998193414406526} to \eqref{eq:identityintermsoftheSTIR}.} Under the SIC, a necessary condition for the successful reception of the $k$th strongest UE at the typical LEO BS is that the preceding $k-1$ signals are successively decoded and removed from the interference. We denote the minimum SIR threshold for a successful decoding by $\tau$ and the corresponding $\tau' = \tau/(1+\tau)$. In this work, we set $\tau = -7$ dB. Formally, the conditions for the SIC-SIR of the $k$th UE to exceed $\theta \geq \tau$ are \begin{enumerate}
 \item $ \mathsf{Z}_{(m)}'+\tau'\sum_{j=1}^{m-1}\mathsf{Z}_j'>\tau'$ { for all } $m \in \{1, \dots, k-1\}$,\textup{ and} 
   \item $\mathsf{Z}_{(k)}'+\theta'\sum_{j=1}^{k-1}\mathsf{Z}_j'>\theta'.$
 \end{enumerate}  We can use the order statistics theory to study the coverage probability under the SIC. %% Namely, the BS continues the interference cancellation $\{\text{SIR}_{n,[n]} \dots \text{SIR}_{n,[k]}  \}_{n\leq k \leq K}$ until SIR$_{n,[k]}>\theta$, or the served UE enters an outage if $\text{SIR}_{n,[n]} <\tau$, or the maximum number of canceled signals, $K=k-n$, is reached. It is not possible boundlessly improve SIC-SIR$_{n,K}$ as $K \rightarrow \infty$ because, in practical applications, $\mathbb{P}(\text{SIR-SIC}_{n,K}>\theta)$ does not improve after some $K$.
@@ -631,7 +631,7 @@ Considering an adaptive encoding and decoding that adapts according to the SIR o
 \end{figure}
 
 
-Figures \ref{fig:nprobability} and \ref{fig:ASICSIR} depict the $k$-probabilities and the SIC-SIR for ${\kappa}\upsilon=\tilde{\kappa}\upsilon\log(2)=n=3$, respectively. The systems parameters are presented in Table \ref{table:parameters}. In the simulations, $\lambda$ is determined to match ${\kappa}\upsilon(\epsilon)=2$, for each $\epsilon \in \{30,90\}\degree$. The simulated coverage probabilities with elevation angles $\epsilon \in (30,90) \degree$ fall within the grayed areas in the plots.
+Figures \ref{fig:nprobability} and \ref{fig:ASICSIR} depict the $k$-probabilities \eqref{eq:kprobability} and the SIC-SIR \eqref{eq:SICprob} for ${\kappa}\upsilon=\tilde{\kappa}\upsilon\log(2)=n=3$, respectively. The systems parameters are presented in Table \ref{table:parameters}. In the simulations, $\lambda$ is determined to match ${\kappa}\upsilon(\epsilon)=2$, for each $\epsilon \in \{30,90\}\degree$. The simulated coverage probabilities with elevation angles $\epsilon \in (30,90) \degree$ fall within the grayed areas in the plots.
 
 The performance of the $2$nd and $3$rd UEs is significantly enhanced with the SIC-SIR compared to the $k$-probability, especially for small $\theta$ (\textit{i.e.}, low-rate/throughput transmissions), showing a $((0.8620-0.0870)/0.0870) \times 100 \% \approx 900 \%$ improvement for the coverage probability of the third UE with $\theta = -7$ dB. 
 
@@ -639,9 +639,9 @@ Note that $\kappa \upsilon = 3$ is in the finite-variance region regarding the S
 
 
 
-Considering the SIR distributions in Figure \ref{fig:ASICSIR}, we can derive the throughput \eqref{eq:throughput} as $\mathcal{T}_{3}\approx 0.7 \textup{ bit/s/Hz}$. On the other hand, in the infinite-variance SIR region with one served effective UE in each cell on average ($\kappa \upsilon =n=1$), we have for the served transmitter $\mathcal{T}_1 \approx 1$ bit/s/Hz: Under the SIC, there is a considerable but not overwhelming tradeoff between link stability (and the number of served UEs) and average throughput. %It is worth noting that the \textit{individual} UE throughputs (contrary to the \textit{total} throughputs of each served UE at the LEO BSs) are, on average, more significantly reduced with higher $\kappa \upsilon$.
+Considering the SIR distributions in Figure \ref{fig:ASICSIR}, we can derive the throughput \eqref{eq:throughput} as $\mathcal{T}_{3}\approx 0.7 \textup{ bit/s/Hz}$. On the other hand, in the infinite-variance SIR region with one served effective UE in each cell on average ($\kappa \upsilon =n=1$), we have for the served transmitter $\mathcal{T}_1 \approx 1$ bit/s/Hz: Under the SIC, there is a considerable but not overwhelming tradeoff between link stability (and the number of served UEs) and average network throughput. %It is worth noting that the \textit{individual} UE throughputs (contrary to the \textit{total} throughputs of each served UE at the LEO BSs) are, on average, more significantly reduced with higher $\kappa \upsilon$.
 
-This work presents a comprehensive stochastic geometry framework for performance analysis of the typical LEO BS under interference cancellation in the uplink. The model translates to downlink, considering that the cell locations are located according to the PPP on the Earth. Furthermore, the framework extends straightforwardly to signal combination. A clear improvement in the SIR of the second and third strongest UEs was observed under the SIC. The SIC can also be utilized to attain a consistent link quality while maintaining a reasonable average throughput at the LEO BSs.
+This work presents a comprehensive stochastic geometry framework for performance analysis of the typical LEO BS under interference cancellation in the uplink. The model translates to downlink, considering that the cell locations are located according to the PPP on the Earth. Furthermore, the framework extends straightforwardly to signal combination. A clear improvement in the SIR of the second and third strongest UEs was observed under the SIC. The SIC can also be utilized to attain a consistent link quality while maintaining a good average throughput over the LEO BSs.
 
 
 
