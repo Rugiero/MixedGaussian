@@ -116,14 +116,14 @@ legend('Analysis; $k=1$','Analysis; $k=2$','Analysis; $k=3$ \hspace{0.1cm}','Sim
 
 
 xlabel('$\theta$ [dB]','FontSize',14,'Interpreter','latex')
-ylabel('$\mathcal{P}^{(n)}(\theta)$','FontSize',14,'Interpreter','latex')
+ylabel('$\mathcal{P}^{(k)}(\theta)$','FontSize',14,'Interpreter','latex')
 %title('$\tilde{\kappa}=3/b_{\epsilon}, \epsilon \in \{90,80,70,60,50,40\}^{\circ}$','FontSize',14,'Interpreter','latex')
 grid on
 axis([[-7,5],[0,1]])
 xticks(-7:2:5);
 
 
-title('$n$-probability; ${\kappa}\upsilon= 3 $','FontSize',14,'Interpreter','latex')
+title('$k$-probability; ${\kappa}\upsilon= 3 $','FontSize',14,'Interpreter','latex')
 
 
 
