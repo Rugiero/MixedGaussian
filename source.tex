@@ -603,10 +603,10 @@ Finally, we consider the SIR under the \textit{perfect} successive signal cancel
 \end{prop}
 
 
-Considering an adaptive encoding and decoding that adapts according to the SIR of the served UE (after the SIC) at the typical LEO BS, the expected total bandwidth-normalized Shannon throughput \cite[Eq. (7.19)]{alma998193414406526} of the $n$ served UEs under the SIC is
+Considering an adaptive encoding and decoding that adapts according to the SIR of the served UE (after the SIC) at the typical LEO BS, the expected total bandwidth-normalized Shannon throughput \cite[Eq. (7.19)]{alma998193414406526} of the $n$ served UEs under the SIC is (see analogous derivation in \cite[Eq. (36)]{10909705})
 \begin{align}
   \mathcal{T}_{n}&\triangleq \sum_{k=1}^n \mathbb{E}\left(\frac{\log\Big(1+\text{SIR}_{(k)}\prod_{i=1}^{k-1}\mathds{1}(\text{SIR}_{(i)}>\tau)\Big)}{\log(2)}\right) \nonumber \\
-  &=\sum_{k=1}^n\int_{\tau}^{\infty}\frac{\mathcal{P}^{(k)}_{\textup{SIC}}(t)}{(t+1)\log(2)}d t. \label{eq:throughput}
+  &=\sum_{k=1}^n\int_{\tau}^{\infty}\frac{\mathcal{P}^{(k)}_{\textup{SIC}}(t)}{(t+1)\log(2)}d t \textup{ (bit/s/Hz)}. \label{eq:throughput}
 \end{align}
 
 
