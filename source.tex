@@ -386,7 +386,7 @@ Note that matching the first two moments of the fading distributions \eqref{eq:t
 
 \subsection{Laplace transform of the total received power}
 
-With the mixture exponential shadowing ${H}_{\text{exp}}$, for Re$(s)>1$,
+With the mixture exponential shadowing ${H}_{\text{exp}}$, 
 
 \begin{align}
   \label{eq:lapdef}
@@ -631,7 +631,7 @@ Considering an adaptive encoding and decoding that adapts according to the SIR o
 \end{figure}
 
 
-Figures \ref{fig:nprobability} and \ref{fig:ASICSIR} depict the $k$-probabilities \eqref{eq:kprobability} and the SIC-SIR \eqref{eq:SICprob} for ${\kappa}\upsilon=\tilde{\kappa}\upsilon\log(2)=n=3$, respectively. The systems parameters are presented in Table \ref{table:parameters}. In the simulations, $\lambda$ is determined to match ${\kappa}\upsilon(\epsilon)=2$, for each $\epsilon \in \{30,90\}\degree$. The simulated coverage probabilities with elevation angles $\epsilon \in (30,90) \degree$ fall within the grayed areas in the plots.
+Figures \ref{fig:nprobability} and \ref{fig:ASICSIR} depict the $k$-probabilities \eqref{eq:kprobability} and the SIC-SIR \eqref{eq:SICprob} for ${\kappa}\upsilon=\tilde{\kappa}\upsilon\log(2)=n=3$, respectively. The systems parameters are presented in Table \ref{table:parameters}. In the simulations, $\lambda$ is determined to match ${\kappa}\upsilon(\epsilon)=3$, for each $\epsilon \in \{30,90\}\degree$. The simulated coverage probabilities with elevation angles $\epsilon \in (30,90) \degree$ fall within the grayed areas in the plots.
 
 The performance of the $2$nd and $3$rd UEs is significantly enhanced with the SIC-SIR compared to the $k$-probability, especially for small $\theta$ (\textit{i.e.}, low-rate/throughput transmissions), showing a $((0.8620-0.0870)/0.0870) \times 100 \% \approx 900 \%$ improvement for the coverage probability of the third UE with $\theta = -7$ dB. 
 
@@ -639,7 +639,7 @@ Note that $\kappa \upsilon = 3$ is in the finite-variance region regarding the S
 
 
 
-Considering the SIR distributions in Figure \ref{fig:ASICSIR}, we can derive the throughput \eqref{eq:throughput} as $\mathcal{T}_{3}\approx 0.7 \textup{ bit/s/Hz}$. On the other hand, in the infinite-variance SIR region with one served UE in each cell on average ($\kappa \upsilon =n=1$), we have for the served transmitter $\mathcal{T}_1 \approx 1$ bit/s/Hz: Under the SIC with $\kappa \upsilon=n=3$, there is a considerable but not overwhelming $-0.3$ bit/s/Hz tradeoff for link stability (and number of served UEs) as the cost of average network throughput. %It is worth noting that the \textit{individual} UE throughputs (contrary to the \textit{total} throughputs of each served UE at the LEO BSs) are, on average, more significantly reduced with higher $\kappa \upsilon$.
+Considering the SIR distributions in Figure \ref{fig:ASICSIR}, using the trapezoidal method, we can calculate the throughput \eqref{eq:throughput} as $\mathcal{T}_{3}\approx 0.7 \textup{ bit/s/Hz}$. On the other hand, in the infinite-variance SIR region with one served UE in each cell on average ($\kappa \upsilon =n=1$), we have for the served transmitter $\mathcal{T}_1 \approx 1$ bit/s/Hz: Under the SIC with $\kappa \upsilon=n=3$, there is a considerable but not overwhelming $-0.3$ bit/s/Hz tradeoff for link stability (and number of served UEs) as the cost of average network throughput. %It is worth noting that the \textit{individual} UE throughputs (contrary to the \textit{total} throughputs of each served UE at the LEO BSs) are, on average, more significantly reduced with higher $\kappa \upsilon$.
 
 This work presents a comprehensive stochastic geometry framework for performance analysis of the typical LEO BS under interference cancellation in the uplink. The model translates to downlink, considering that the cell locations are located according to the PPP on the Earth. Furthermore, the framework extends straightforwardly to signal combination. A clear improvement in the SIR of the second and third strongest UEs was observed under the SIC. The SIC can also be utilized to attain a consistent link quality while maintaining a good average throughput over the LEO BSs.
 
