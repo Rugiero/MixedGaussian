@@ -53,8 +53,8 @@
 %\title{Order Statistics of the SIR and Interference Cancellation in a Narrow-Beam LEO Uplink}
 \title{Stochastic Analysis of Successive Interference Cancellation in a Narrow-Beam LEO Uplink}
 \author{
-  \thanks{The work was supported by the Research Council of Finland Grant 339446.}
-   Ilari Angervuori, \IEEEmembership{Student Member, IEEE}  and Risto Wichman, \IEEEmembership{Senior Member, IEEE} \thanks{Ilari Angervuori and Risto Wichman are with the Department of Electrical Engineering, Aalto University, Espoo, 02150, Finland. (email: ilari.angervuori@aalto.fi; risto.wichman@aalto.fi).}
+%  \thanks{The work was supported by the Research Council of Finland Grant 339446.}
+%   Ilari Angervuori, \IEEEmembership{Student Member, IEEE}  and Risto Wichman, \IEEEmembership{Senior Member, IEEE} \thanks{Ilari Angervuori and Risto Wichman are with the Department of Electrical Engineering, Aalto University, Espoo, 02150, Finland. (email: ilari.angervuori@aalto.fi; risto.wichman@aalto.fi).}
  }
 
 % The paper headers
@@ -68,7 +68,7 @@
 
 \maketitle
 \begin{abstract}
-  We investigate the signal-to-interference ratio (SIR) distributions of user equipments (UEs) and the SIR order statistics at a typical low Earth orbit satellite base station (LEO BS) with a narrow Gaussian antenna in an uplink. We study the SIR distributions of the three strongest UEs under successive interference cancellation (SIC). A Gaussian mixture shadowing model is used. The UEs are located on the Earth according to the Poisson point process (PPP). We demonstrate that with the SIC, each LEO BS can serve multiple UEs in its cell, while achieving good average network throughput with good user fairness.
+  We investigate the signal-to-interference ratio (SIR) distributions of user equipments (UEs) and the SIR order statistics at a typical low Earth orbit satellite base station (LEO BS) with a narrow Gaussian antenna in an uplink. We study the SIR distributions of the three strongest UEs under successive interference cancellation (SIC) using a Gaussian mixture shadowing model. The UEs are located on the Earth according to the Poisson point process (PPP). We demonstrate that, with the SIC, each LEO BS can serve multiple UEs in its cell while achieving high average network throughput and good user fairness.
 \end{abstract}
 
 % Note that keywords are not normally used for peerreview papers.
@@ -80,7 +80,7 @@
 \section{Introduction and motivation}
 
 Successive interference cancellation (SIC) has the potential to improve the performance of multiple access communication systems.
-The order statistics of the signal-to-interference ratio (SIR) under interference cancellation (and signal combination) have been extensively studied for terrestrial networks \cite{7305791} using stochastic geometry. In low Earth orbit (LEO) networks, a SIC scheme was studied in \cite{11030605} using the stochastic geometry method in a non-orthogonal access satellite network. However, a comprehensive stochastic geometry framework for the analysis of SIR order statistics and the SIC is, to the best of our knowledge, yet to be explored in LEO networks. Notably, for the LEO network, the order statistics of the SIR process are characterized by a Poisson-Dirichlet distribution PD$(0, \cdot)$, in contrast to terrestrial networks with a singular path loss, where the corresponding process is PD$(\cdot,0)$ \cite{7305791}. That is, the order statistics are characterized by a gamma process, making the analysis crucially distinct from terrestrial networks.
+The order statistics of the signal-to-interference ratio (SIR) under interference cancellation (and signal combination) have been extensively studied for terrestrial networks \cite{7305791} using stochastic geometry. In low Earth orbit (LEO) networks, a SIC scheme was studied in \cite{11030605} using the stochastic geometry method in a non-orthogonal access satellite network. However, a comprehensive stochastic geometry framework for the analysis of SIR order statistics and the SIC is, to the best of our knowledge, yet to be explored in LEO networks. Notably, for the LEO network, the order statistics of the SIR process are characterized by a Poisson-Dirichlet distribution PD$(0, \cdot)$, in contrast to terrestrial networks with a singular path loss, where the corresponding process is PD$(\cdot,0)$ \cite{7305791}. That is, the order statistics are characterized by a gamma process, making the analysis fundamentally distinct from that of terrestrial networks, where the gamma process does not apply. 
 
 
 
@@ -89,13 +89,15 @@ The order statistics of the signal-to-interference ratio (SIR) under interferenc
 %Successive interference cancellation (SIC) is used in non-orthogonal multiple access (NOMA) systems. 
 
 
-In this paper, we study the SIR under the SIC of user equipments (UEs) at a typical LEO satellite base station (LEO BS) in an urban shadowing environment. We utilize the Gaussian Mixture shadowing model, as proposed in \cite{modelinguplink} and \cite{9684552}. We demonstrate that, while maintaining good performance,  link quality can be made more stable with interference cancellation by increasing network density and mitigating interference with the SIC, enabling serving multiple UEs at each LEO BS.
+In this paper, we study the SIR under the SIC of user equipments (UEs) at a typical LEO satellite base station (LEO BS) in an urban shadowing environment. We utilize the Gaussian Mixture shadowing model, as proposed in \cite{modelinguplink} and \cite{9684552}, and approximate it with a mixture exponential distribution to simplify the analysis.  Furthermore, we propose a planar system model. 
+The analytical results are verified by comparing them with Monte Carlo-simulated performance metrics in a realistic system model with a spherical Earth and Gaussian mixture shadowing.
+We demonstrate that, while maintaining good performance, link quality can be made more stable with interference cancellation by increasing network density and mitigating interference with the SIC, thereby enabling the serving of multiple UEs at each LEO BS.
 
 %A SIC scheme was studied in \cite{11030605} in the stochastic geometry context in satellite networks. However, while the order statistics of the signal-to-interference ratio (SIR) under interference cancellation (and signal combination) have been studied for terrestrial networks \cite{7305791} using stochastic geometry, they have yet to be explored in low Earth orbit (LEO) networks, where the topology is remarkably different. 
 
 
-In the paper, a mixture exponential distribution to approximate Gaussian Mixture shadowing is introduced, simplifying the analysis. %The exponential fading distribution typically yields the simplest and most insightful results in stochastic geometry analysis, which can be leveraged by the approximation.
-Furthermore, we propose a planar system model. The analytical results are verified by comparing them with Monte Carlo-simulated performance metrics in a realistic system model with a spherical Earth and Gaussian Mixture shadowing.
+%In this paper, a mixture exponential distribution is proposed to approximate Gaussian mixture shadowing, simplifying the analysis. %The exponential fading distribution typically yields the simplest and most insightful results in stochastic geometry analysis, which can be leveraged by the approximation.
+%Furthermore, we propose a planar system model. The analytical results are verified by comparing them with Monte Carlo-simulated performance metrics in a realistic system model with a spherical Earth and Gaussian mixture shadowing.
 
 
 %The proposed methods straightforwardly generalize to signal combination for synchronous schemes and over-the-air computation (AirComp).
@@ -612,7 +614,7 @@ Considering an adaptive encoding and decoding that adapts according to the SIR o
 
 
 
-\section{Numerical results and conclusions}
+\section{Numerical results}
   
 \begin{figure}[h]
   \centering
@@ -632,7 +634,7 @@ Considering an adaptive encoding and decoding that adapts according to the SIR o
 \end{figure}
 
 
-Figures \ref{fig:nprobability} and \ref{fig:ASICSIR} depict the $k$-probabilities \eqref{eq:kprobability} and the SIC-SIR \eqref{eq:SICprob} for ${\kappa}\upsilon=\tilde{\kappa}\upsilon\log(2)=n=3$, respectively. The systems parameters are presented in Table \ref{table:parameters}. In the simulations, $\lambda$ is determined to match ${\kappa}\upsilon(\epsilon)=3$, for each $\epsilon \in \{30,90\}\degree$. The simulated coverage probabilities with elevation angles $\epsilon \in (30,90) \degree$ fall within the grayed areas in the plots.
+Figures \ref{fig:nprobability} and \ref{fig:ASICSIR} depict the $k$-probabilities \eqref{eq:kprobability} and the SIC-SIR \eqref{eq:SICprob} for ${\kappa}\upsilon=\tilde{\kappa}\upsilon\log(2)=n=3$, respectively. The system parameters are presented in Table \ref{table:parameters}. In the simulations, $\lambda$ is determined to match ${\kappa}\upsilon(\epsilon)=3$, for each $\epsilon \in \{30,90\}\degree$. The simulated coverage probabilities with elevation angles $\epsilon \in (30,90) \degree$ fall within the shadowed areas in the plots.
 
 The performance of the $2$nd and $3$rd UEs is significantly enhanced with the SIC-SIR compared to the $k$-probability, especially for small $\theta$ (\textit{i.e.}, low-rate/throughput transmissions), showing a $((0.8620-0.0870)/0.0870) \times 100 \% \approx 900 \%$ improvement for the coverage probability of the third UE with $\theta = -7$ dB. 
 
@@ -642,6 +644,7 @@ Note that $\kappa \upsilon = 3$ is in the finite-variance region of the SIR dist
 
 Considering the SIR distributions in Figure \ref{fig:ASICSIR}, using the trapezoidal method, we can calculate the throughput \eqref{eq:throughput} as $\mathcal{T}_{3}\approx 0.7 \textup{ bit/s/Hz}$. On the other hand, in the infinite-variance SIR region with one served UE in each cell on average ($\kappa \upsilon =n=1$), we have for the served transmitter $\mathcal{T}_1 \approx 1$ bit/s/Hz: Under the SIC with $\kappa \upsilon=n=3$, there is a considerable but not overwhelming $-0.3$ bit/s/Hz tradeoff for user fairness (and number of served UEs) as the cost of average throughput at the LEO BSs. %It is worth noting that the \textit{individual} UE throughputs (contrary to the \textit{total} throughputs of each served UE at the LEO BSs) are, on average, more significantly reduced with higher $\kappa \upsilon$.
 
+\section{Conclusion}
 This work presents a comprehensive stochastic geometry framework for performance analysis of the typical LEO BS under interference cancellation in the uplink, which also extends straightforwardly to signal combination. % Furthermore, the framework extends straightforwardly to signal combination.
  A clear improvement in the SIR of the second and third strongest UEs was observed under the SIC. Furthermore, the SIC enables an improved user fairness while maintaining a good average total throughput over the LEO BSs.
 
